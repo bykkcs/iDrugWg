@@ -19,7 +19,7 @@
 ## Установка
 1. Клонируй репозиторий:
    
-   git clone https://github.com/ваш_пользователь/idrugwg.git
+   git clone https://github.com/bykkcs/idrugwg.git
   
 2. Открой в Android Studio.
 3. Собери APK:
