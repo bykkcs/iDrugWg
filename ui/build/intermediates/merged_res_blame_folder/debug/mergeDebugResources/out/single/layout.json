@@ -1,0 +1,66 @@
+[
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/tunnel_detail_peer.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/tunnel_detail_peer.xml"
+    },
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/main_activity.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/main_activity.xml"
+    },
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/tv_file_list_item.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/tv_file_list_item.xml"
+    },
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/add_tunnels_bottom_sheet.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/add_tunnels_bottom_sheet.xml"
+    },
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/app_list_dialog_fragment.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/app_list_dialog_fragment.xml"
+    },
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/log_viewer_entry.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/log_viewer_entry.xml"
+    },
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/tv_tunnel_list_item.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/tv_tunnel_list_item.xml"
+    },
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/tunnel_detail_fragment.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/tunnel_detail_fragment.xml"
+    },
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/tv_activity.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/tv_activity.xml"
+    },
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/config_naming_dialog_fragment.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/config_naming_dialog_fragment.xml"
+    },
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/app_list_item.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/app_list_item.xml"
+    },
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/log_viewer_activity.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/log_viewer_activity.xml"
+    },
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/tunnel_list_item.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/tunnel_list_item.xml"
+    },
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/tunnel_editor_peer.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/tunnel_editor_peer.xml"
+    },
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/tunnel_editor_fragment.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/tunnel_editor_fragment.xml"
+    },
+    {
+        "merged": "org.amnezia.awg.ui-mergeDebugResources-48:/layout/tunnel_list_fragment.xml",
+        "source": "org.amnezia.awg.ui-main-51:/layout/tunnel_list_fragment.xml"
+    }
+]

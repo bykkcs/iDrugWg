@@ -1,0 +1,4 @@
+/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/armeabi-v7a/CMakeFiles/elf-cleaner
+/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/armeabi-v7a/CMakeFiles/elf-cleaner.rule
+/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/armeabi-v7a/CMakeFiles/libwg-go.so
+/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/armeabi-v7a/CMakeFiles/libwg-go.so.rule

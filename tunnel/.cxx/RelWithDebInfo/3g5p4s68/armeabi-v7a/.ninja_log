@@ -1,0 +1,25 @@
+# ninja log v5
+1	1554	0	CMakeFiles/libwg-go.so	d2984244aa7f5343
+465	617	1744398470660827125	/Users/bmr/amneziawg-android/tunnel/build/intermediates/cxx/RelWithDebInfo/3g5p4s68/obj/armeabi-v7a/libwg-quick.so	a5f3d2c6f0df2f20
+278	465	1744398470506526247	CMakeFiles/libwg-quick.so.dir/amneziawg-tools/src/wg-quick/android.c.o	5a616f2f22aeabb8
+331	462	1744398470501489801	CMakeFiles/libwg.so.dir/amneziawg-tools/src/show.c.o	6aaa1d9494af1295
+411	443	1744398470486198591	CMakeFiles/libwg.so.dir/ndk-compat/compat.c.o	f5c5858e945b8d06
+1	278	0	/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/armeabi-v7a/CMakeFiles/elf-cleaner	fe86e02c31a01eca
+357	416	1744398470455668878	CMakeFiles/libwg.so.dir/amneziawg-tools/src/wg.c.o	994bc716e0e018b4
+0	6	0	clean	99e3e797db93c8ef
+1	1554	0	/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/armeabi-v7a/CMakeFiles/libwg-go.so	d2984244aa7f5343
+355	438	1744398470479254791	CMakeFiles/libwg.so.dir/amneziawg-tools/src/terminal.c.o	ecb4293912d5f802
+278	355	1744398470397904459	CMakeFiles/libwg.so.dir/amneziawg-tools/src/encoding.c.o	2229d9b1e2a4bc2d
+278	429	1744398470471129295	CMakeFiles/libwg.so.dir/amneziawg-tools/src/config.c.o	f62743a28de6f777
+281	357	1744398470392905222	CMakeFiles/libwg.so.dir/amneziawg-tools/src/pubkey.c.o	f277c713bea55559
+281	341	1744398470384272856	CMakeFiles/libwg.so.dir/amneziawg-tools/src/set.c.o	ff5f8f2e714f4c98
+280	610	1744398470653059875	CMakeFiles/libwg.so.dir/amneziawg-tools/src/ipc.c.o	6604663692cf5d0b
+278	310	1744398470351875539	CMakeFiles/libwg-quick.so.dir/ndk-compat/compat.c.o	550ff5fa47edb0cf
+278	331	1744398470373823886	CMakeFiles/libwg.so.dir/amneziawg-tools/src/genkey.c.o	f2b6b1675dc1efd9
+310	416	1744398470451521965	CMakeFiles/libwg.so.dir/amneziawg-tools/src/setconf.c.o	a798583e5b816334
+341	411	1744398470445697694	CMakeFiles/libwg.so.dir/amneziawg-tools/src/showconf.c.o	d48774ab78853ed4
+611	645	1744398470689371026	/Users/bmr/amneziawg-android/tunnel/build/intermediates/cxx/RelWithDebInfo/3g5p4s68/obj/armeabi-v7a/libwg.so	bda1ef79cfa48ca5
+278	471	1744398470512957136	CMakeFiles/libwg.so.dir/amneziawg-tools/src/curve25519.c.o	f234c0caeea59f0e
+1	278	0	CMakeFiles/elf-cleaner	fe86e02c31a01eca
+0	7	0	clean	99e3e797db93c8ef
+0	5	0	clean	99e3e797db93c8ef

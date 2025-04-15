@@ -1,0 +1,654 @@
+-- Merging decision tree log ---
+permission#org.amnezia.awg.debug.permission.CONTROL_TUNNELS
+INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:30:5-35:47
+	android:label
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:34:9-49
+	android:protectionLevel
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:35:9-44
+	android:icon
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:33:9-43
+	android:description
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:32:9-61
+	android:name
+		INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:31:9-67
+provider#org.amnezia.awg.activity.LogViewerActivity$ExportedLogContentProvider
+INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:101:9-105:50
+	android:grantUriPermissions
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:105:13-47
+	android:authorities
+		INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:103:13-64
+	android:exported
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:104:13-37
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:102:13-82
+receiver#org.amnezia.awg.model.TunnelManager$IntentReceiver
+INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:116:9-125:20
+	android:exported
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:118:13-36
+	android:permission
+		INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:119:13-77
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:117:13-63
+manifest
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:2:1-157:12
+INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:2:1-157:12
+INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:2:1-157:12
+INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:2:1-157:12
+MERGED from [androidx.databinding:databinding-adapters:8.3.0] /home/bykk/.gradle/caches/transforms-3/09d4e49e94ea55c79dc503fbe5810f0a/transformed/databinding-adapters-8.3.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.databinding:databinding-ktx:8.3.0] /home/bykk/.gradle/caches/transforms-3/074fc4b53ce11279d37cc5d770418113/transformed/databinding-ktx-8.3.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.databinding:databinding-runtime:8.3.0] /home/bykk/.gradle/caches/transforms-3/e3428a23a1fdf0201294b2c2ee3ae4b1/transformed/databinding-runtime-8.3.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.databinding:viewbinding:8.3.0] /home/bykk/.gradle/caches/transforms-3/5789aa4f08508e7b469da590692a83ed/transformed/viewbinding-8.3.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.preference:preference-ktx:1.2.1] /home/bykk/.gradle/caches/transforms-3/a238d716b6e9c1c6dfd3474f81622b6e/transformed/preference-ktx-1.2.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.material:material:1.11.0] /home/bykk/.gradle/caches/transforms-3/0f579400f73e2b44fa441c2c381bc29d/transformed/material-1.11.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/transforms-3/1daf2e3e50a597095a3883f19e4b0f1b/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/AndroidManifest.xml:17:1-29:12
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /home/bykk/.gradle/caches/transforms-3/d7ee2d3c8938cbc10b3467977da92160/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.preference:preference:1.2.1] /home/bykk/.gradle/caches/transforms-3/2810b0fbf32bc8008409b20f0452d17c/transformed/preference-1.2.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.6.1] /home/bykk/.gradle/caches/transforms-3/e8b5f0cafc78a728ff89c15776141049/transformed/appcompat-1.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/bykk/.gradle/caches/transforms-3/8afd7cb90ad787d86c21d1cd9d546057/transformed/viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.6.2] /home/bykk/.gradle/caches/transforms-3/468dfa26ec7fb6b7518c00a622b9f255/transformed/fragment-1.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment-ktx:1.6.2] /home/bykk/.gradle/caches/transforms-3/d51fcd4a42101299d6681019b0af3039/transformed/fragment-ktx-1.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.8.2] /home/bykk/.gradle/caches/transforms-3/f07cd0a060ba269e9b75cfdf0786d0e6/transformed/activity-1.8.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity-ktx:1.8.2] /home/bykk/.gradle/caches/transforms-3/a9b5fe371366b19281a89f71c238a3f9/transformed/activity-ktx-1.8.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] /home/bykk/.gradle/caches/transforms-3/2d22dadefd74a4b44178edd67c8e09e5/transformed/coordinatorlayout-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /home/bykk/.gradle/caches/transforms-3/8ee25114c81b71852435d856d7de9ea8/transformed/emoji2-views-helper-1.2.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/bykk/.gradle/caches/transforms-3/62c4cd3c7da9374a6b9b17b6b27051dc/transformed/drawerlayout-1.1.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/bykk/.gradle/caches/transforms-3/da00d0fab5ed5be416df6ad26a3a8a6e/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/bykk/.gradle/caches/transforms-3/0fdb6e107044cecb1ed8af85ae0b8ab2/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/bykk/.gradle/caches/transforms-3/faa0a027144d8302e145a5a59eb75dfb/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/bykk/.gradle/caches/transforms-3/2515478655c58d3a875ae9eea7f8c2a6/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /home/bykk/.gradle/caches/transforms-3/7f3835cd0fa4b4d4e31fd5994e14a486/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/bykk/.gradle/caches/transforms-3/c577c7f4543d68a159ae4643fb5e40d9/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /home/bykk/.gradle/caches/transforms-3/0f39abe6e1e4631644d4a3b739b93d83/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/bykk/.gradle/caches/transforms-3/5a1a584762539b8f59594d321b6cead0/transformed/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.1.0] /home/bykk/.gradle/caches/transforms-3/521442be56a6c30a454cf5a0d2c37510/transformed/customview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.4.1] /home/bykk/.gradle/caches/transforms-3/f51097e4b29fbee65759dc1e720c5374/transformed/transition-1.4.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /home/bykk/.gradle/caches/transforms-3/3f08b089ef569b9cf8811e81afa6c8fe/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] /home/bykk/.gradle/caches/transforms-3/34e238d0845a4d2b2dd386a87b3936b4/transformed/savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] /home/bykk/.gradle/caches/transforms-3/0e146d3b3fb4a2a46305c2f0f6d31847/transformed/lifecycle-viewmodel-ktx-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] /home/bykk/.gradle/caches/transforms-3/008e61cdeb28c8c9d36a18de01b44448/transformed/lifecycle-viewmodel-2.7.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.7.0] /home/bykk/.gradle/caches/transforms-3/5bb94dae93c1a4bc44455c23bcc83d64/transformed/lifecycle-service-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] /home/bykk/.gradle/caches/transforms-3/913d7e98004a96eeca1d06cbe2d26c17/transformed/lifecycle-livedata-core-ktx-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] /home/bykk/.gradle/caches/transforms-3/129f8b6dd246d28c020fcdd1a13b16a2/transformed/lifecycle-livedata-core-2.7.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] /home/bykk/.gradle/caches/transforms-3/73b7fc582e2ec8535fe111c6020043b7/transformed/lifecycle-livedata-2.7.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /home/bykk/.gradle/caches/transforms-3/c8bbef4f4ed31df60739eb70fefe8348/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] /home/bykk/.gradle/caches/transforms-3/acaf60a50ef1a559711eedd7f913ffd2/transformed/lifecycle-runtime-ktx-2.7.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] /home/bykk/.gradle/caches/transforms-3/5468f9bbfc0cb660231289ee2399042d/transformed/lifecycle-viewmodel-savedstate-2.7.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.12.0] /home/bykk/.gradle/caches/transforms-3/282ed389779bccf14e11f414aa56c20c/transformed/core-ktx-1.12.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.datastore:datastore-preferences:1.0.0] /home/bykk/.gradle/caches/transforms-3/e58aa7dfef99f5ad50ba4023ae56f3e6/transformed/datastore-preferences-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.datastore:datastore:1.0.0] /home/bykk/.gradle/caches/transforms-3/e01ad0b912c7a93e2a8705d5032e2b90/transformed/datastore-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:6:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/bykk/.gradle/caches/transforms-3/92fdee7387b4096b170b268a853af6b1/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] /home/bykk/.gradle/caches/transforms-3/c9258772950eea0fc6e970665d22c146/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/bykk/.gradle/caches/transforms-3/f57c8221f39ee1ab6ef0081663064ac3/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/bykk/.gradle/caches/transforms-3/c746d4b9057435825164effab7a74307/transformed/startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /home/bykk/.gradle/caches/transforms-3/c5ab37dde27c47d41f4fa083bf00043a/transformed/tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/bykk/.gradle/caches/transforms-3/e095c722518e2461508c5b8dc48be150/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/bykk/.gradle/caches/transforms-3/7d7f76f9ffae25c3a6ae683851a66d87/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/bykk/.gradle/caches/transforms-3/0b5acec34722ff49f01f4bc24888d136/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/bykk/.gradle/caches/transforms-3/9a76f7d1e3bb937142736be86a024307/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /home/bykk/.gradle/caches/transforms-3/82526810c83341dfcfa0b82411a1519f/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] /home/bykk/.gradle/caches/transforms-3/f3366306e3551ab3c4dfc1ece764f6b1/transformed/annotation-experimental-1.3.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:17:1-56:12
+	package
+		INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:2:11-69
+	android:installLocation
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:4:5-43
+uses-permission#android.permission.CAMERA
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:6:5-65
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:22:5-65
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:22:5-65
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:6:22-62
+uses-permission#android.permission.INTERNET
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:7:5-67
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:7:22-64
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:8:22-78
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:9:5-11:38
+	android:minSdkVersion
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:11:9-35
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:10:9-62
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:12:5-15:40
+	android:maxSdkVersion
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:14:9-35
+	tools:ignore
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:15:9-37
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:13:9-65
+uses-feature#android.hardware.touchscreen
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:17:5-19:36
+	android:required
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:19:9-33
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:18:9-52
+uses-feature#android.software.leanback
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:20:5-22:36
+	android:required
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:22:9-33
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:21:9-49
+uses-feature#android.hardware.camera.any
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:23:5-25:36
+	android:required
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:25:9-33
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:24:9-51
+uses-feature#android.hardware.camera
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:26:5-28:36
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:25:5-27:36
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:25:5-27:36
+	android:required
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:28:9-33
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:27:9-47
+application
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:37:5-149:19
+INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:37:5-149:19
+MERGED from [com.google.android.material:material:1.11.0] /home/bykk/.gradle/caches/transforms-3/0f579400f73e2b44fa441c2c381bc29d/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.11.0] /home/bykk/.gradle/caches/transforms-3/0f579400f73e2b44fa441c2c381bc29d/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/transforms-3/1daf2e3e50a597095a3883f19e4b0f1b/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/transforms-3/1daf2e3e50a597095a3883f19e4b0f1b/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:23:5-33:19
+MERGED from [:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:5-20:19
+MERGED from [:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:5-20:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/bykk/.gradle/caches/transforms-3/f57c8221f39ee1ab6ef0081663064ac3/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/bykk/.gradle/caches/transforms-3/f57c8221f39ee1ab6ef0081663064ac3/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/bykk/.gradle/caches/transforms-3/c746d4b9057435825164effab7a74307/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/bykk/.gradle/caches/transforms-3/c746d4b9057435825164effab7a74307/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:46:5-54:19
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:46:5-54:19
+	android:extractNativeLibs
+		INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:45:9-35
+	android:label
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:43:9-41
+	android:roundIcon
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:44:9-54
+	android:icon
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:42:9-43
+	android:allowBackup
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:39:9-36
+	android:banner
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:40:9-40
+	android:theme
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:46:9-40
+	android:enableOnBackInvokedCallback
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:41:9-51
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:38:9-36
+activity#org.amnezia.awg.activity.TunnelToggleActivity
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:48:9-51:56
+	android:excludeFromRecents
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:50:13-46
+	android:theme
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:51:13-53
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:49:13-58
+activity#org.amnezia.awg.activity.MainActivity
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:53:9-65:20
+	android:exported
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:55:13-36
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:54:13-50
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:56:13-60:29
+action#android.intent.action.MAIN
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:57:17-69
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:57:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:59:17-77
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:59:27-74
+intent-filter#action:name:android.service.quicksettings.action.QS_TILE_PREFERENCES
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:62:13-64:29
+action#android.service.quicksettings.action.QS_TILE_PREFERENCES
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:63:17-99
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:63:25-96
+activity#org.amnezia.awg.activity.TvMainActivity
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:67:9-75:20
+	android:exported
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:69:13-36
+	android:theme
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:70:13-43
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:68:13-52
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LEANBACK_LAUNCHER
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:71:13-74:29
+category#android.intent.category.LEANBACK_LAUNCHER
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:73:17-86
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:73:27-83
+activity#org.amnezia.awg.activity.SettingsActivity
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:77:9-80:67
+	android:parentActivityName
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:80:13-64
+	android:label
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:79:13-45
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:78:13-54
+activity#org.amnezia.awg.activity.TunnelCreatorActivity
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:82:9-85:67
+	android:parentActivityName
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:85:13-64
+	android:label
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:84:13-58
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:83:13-59
+activity#com.journeyapps.barcodescanner.CaptureActivity
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:87:9-90:49
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
+	android:clearTaskOnLaunch
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
+	android:screenOrientation
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:89:13-51
+		REJECTED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:50:13-56
+	android:stateNotNeeded
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
+	android:windowSoftInputMode
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
+	android:theme
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
+	tools:replace
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:90:13-46
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:88:13-74
+activity#org.amnezia.awg.activity.LogViewerActivity
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:92:9-99:20
+	android:label
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:95:13-53
+	android:exported
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:94:13-37
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:93:13-55
+intent-filter#action:name:android.intent.action.MAIN
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:96:13-98:29
+receiver#org.amnezia.awg.BootShutdownReceiver
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:107:9-114:20
+	android:exported
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:109:13-36
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:108:13-49
+intent-filter#action:name:android.intent.action.ACTION_SHUTDOWN+action:name:android.intent.action.BOOT_COMPLETED
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:110:13-113:29
+action#android.intent.action.ACTION_SHUTDOWN
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:111:17-80
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:111:25-77
+action#android.intent.action.BOOT_COMPLETED
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:112:17-79
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:112:25-76
+service#org.amnezia.awg.QuickTileService
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:127:9-144:19
+	android:exported
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:129:13-36
+	android:permission
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:131:13-77
+	android:icon
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:130:13-45
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:128:13-45
+intent-filter#action:name:android.service.quicksettings.action.QS_TILE
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:133:13-135:29
+action#android.service.quicksettings.action.QS_TILE
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:134:17-87
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:134:25-84
+meta-data#android.service.quicksettings.ACTIVE_TILE
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:137:13-139:41
+	android:value
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:139:17-38
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:138:17-73
+meta-data#android.service.quicksettings.TOGGLEABLE_TILE
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:141:13-143:40
+	android:value
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:143:17-37
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:142:17-77
+meta-data#android.content.APP_RESTRICTIONS
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:146:9-148:56
+	android:resource
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:148:13-53
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:147:13-60
+queries
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:151:5-156:15
+intent#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:152:9-155:18
+intent-filter#action:name:org.amnezia.awg.action.REFRESH_TUNNEL_STATES+action:name:org.amnezia.awg.action.SET_TUNNEL_DOWN+action:name:org.amnezia.awg.action.SET_TUNNEL_UP
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:120:13-124:29
+action#org.amnezia.awg.action.REFRESH_TUNNEL_STATES
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:121:17-87
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:121:25-84
+action#org.amnezia.awg.action.SET_TUNNEL_UP
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:122:17-79
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:122:25-76
+action#org.amnezia.awg.action.SET_TUNNEL_DOWN
+ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:123:17-81
+	android:name
+		ADDED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:123:25-78
+uses-sdk
+INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml
+INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml
+MERGED from [androidx.databinding:databinding-adapters:8.3.0] /home/bykk/.gradle/caches/transforms-3/09d4e49e94ea55c79dc503fbe5810f0a/transformed/databinding-adapters-8.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:databinding-adapters:8.3.0] /home/bykk/.gradle/caches/transforms-3/09d4e49e94ea55c79dc503fbe5810f0a/transformed/databinding-adapters-8.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:databinding-ktx:8.3.0] /home/bykk/.gradle/caches/transforms-3/074fc4b53ce11279d37cc5d770418113/transformed/databinding-ktx-8.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:databinding-ktx:8.3.0] /home/bykk/.gradle/caches/transforms-3/074fc4b53ce11279d37cc5d770418113/transformed/databinding-ktx-8.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:databinding-runtime:8.3.0] /home/bykk/.gradle/caches/transforms-3/e3428a23a1fdf0201294b2c2ee3ae4b1/transformed/databinding-runtime-8.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:databinding-runtime:8.3.0] /home/bykk/.gradle/caches/transforms-3/e3428a23a1fdf0201294b2c2ee3ae4b1/transformed/databinding-runtime-8.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:viewbinding:8.3.0] /home/bykk/.gradle/caches/transforms-3/5789aa4f08508e7b469da590692a83ed/transformed/viewbinding-8.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:viewbinding:8.3.0] /home/bykk/.gradle/caches/transforms-3/5789aa4f08508e7b469da590692a83ed/transformed/viewbinding-8.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.preference:preference-ktx:1.2.1] /home/bykk/.gradle/caches/transforms-3/a238d716b6e9c1c6dfd3474f81622b6e/transformed/preference-ktx-1.2.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.preference:preference-ktx:1.2.1] /home/bykk/.gradle/caches/transforms-3/a238d716b6e9c1c6dfd3474f81622b6e/transformed/preference-ktx-1.2.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.material:material:1.11.0] /home/bykk/.gradle/caches/transforms-3/0f579400f73e2b44fa441c2c381bc29d/transformed/material-1.11.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.11.0] /home/bykk/.gradle/caches/transforms-3/0f579400f73e2b44fa441c2c381bc29d/transformed/material-1.11.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/transforms-3/1daf2e3e50a597095a3883f19e4b0f1b/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/transforms-3/1daf2e3e50a597095a3883f19e4b0f1b/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /home/bykk/.gradle/caches/transforms-3/d7ee2d3c8938cbc10b3467977da92160/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /home/bykk/.gradle/caches/transforms-3/d7ee2d3c8938cbc10b3467977da92160/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.preference:preference:1.2.1] /home/bykk/.gradle/caches/transforms-3/2810b0fbf32bc8008409b20f0452d17c/transformed/preference-1.2.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.preference:preference:1.2.1] /home/bykk/.gradle/caches/transforms-3/2810b0fbf32bc8008409b20f0452d17c/transformed/preference-1.2.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.6.1] /home/bykk/.gradle/caches/transforms-3/e8b5f0cafc78a728ff89c15776141049/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] /home/bykk/.gradle/caches/transforms-3/e8b5f0cafc78a728ff89c15776141049/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/bykk/.gradle/caches/transforms-3/8afd7cb90ad787d86c21d1cd9d546057/transformed/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/bykk/.gradle/caches/transforms-3/8afd7cb90ad787d86c21d1cd9d546057/transformed/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.6.2] /home/bykk/.gradle/caches/transforms-3/468dfa26ec7fb6b7518c00a622b9f255/transformed/fragment-1.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.6.2] /home/bykk/.gradle/caches/transforms-3/468dfa26ec7fb6b7518c00a622b9f255/transformed/fragment-1.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment-ktx:1.6.2] /home/bykk/.gradle/caches/transforms-3/d51fcd4a42101299d6681019b0af3039/transformed/fragment-ktx-1.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment-ktx:1.6.2] /home/bykk/.gradle/caches/transforms-3/d51fcd4a42101299d6681019b0af3039/transformed/fragment-ktx-1.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.8.2] /home/bykk/.gradle/caches/transforms-3/f07cd0a060ba269e9b75cfdf0786d0e6/transformed/activity-1.8.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.8.2] /home/bykk/.gradle/caches/transforms-3/f07cd0a060ba269e9b75cfdf0786d0e6/transformed/activity-1.8.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-ktx:1.8.2] /home/bykk/.gradle/caches/transforms-3/a9b5fe371366b19281a89f71c238a3f9/transformed/activity-ktx-1.8.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.8.2] /home/bykk/.gradle/caches/transforms-3/a9b5fe371366b19281a89f71c238a3f9/transformed/activity-ktx-1.8.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] /home/bykk/.gradle/caches/transforms-3/2d22dadefd74a4b44178edd67c8e09e5/transformed/coordinatorlayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] /home/bykk/.gradle/caches/transforms-3/2d22dadefd74a4b44178edd67c8e09e5/transformed/coordinatorlayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /home/bykk/.gradle/caches/transforms-3/8ee25114c81b71852435d856d7de9ea8/transformed/emoji2-views-helper-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /home/bykk/.gradle/caches/transforms-3/8ee25114c81b71852435d856d7de9ea8/transformed/emoji2-views-helper-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/bykk/.gradle/caches/transforms-3/62c4cd3c7da9374a6b9b17b6b27051dc/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/bykk/.gradle/caches/transforms-3/62c4cd3c7da9374a6b9b17b6b27051dc/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/bykk/.gradle/caches/transforms-3/da00d0fab5ed5be416df6ad26a3a8a6e/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/bykk/.gradle/caches/transforms-3/da00d0fab5ed5be416df6ad26a3a8a6e/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/bykk/.gradle/caches/transforms-3/0fdb6e107044cecb1ed8af85ae0b8ab2/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/bykk/.gradle/caches/transforms-3/0fdb6e107044cecb1ed8af85ae0b8ab2/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/bykk/.gradle/caches/transforms-3/faa0a027144d8302e145a5a59eb75dfb/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/bykk/.gradle/caches/transforms-3/faa0a027144d8302e145a5a59eb75dfb/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/bykk/.gradle/caches/transforms-3/2515478655c58d3a875ae9eea7f8c2a6/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/bykk/.gradle/caches/transforms-3/2515478655c58d3a875ae9eea7f8c2a6/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/bykk/.gradle/caches/transforms-3/7f3835cd0fa4b4d4e31fd5994e14a486/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/bykk/.gradle/caches/transforms-3/7f3835cd0fa4b4d4e31fd5994e14a486/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/bykk/.gradle/caches/transforms-3/c577c7f4543d68a159ae4643fb5e40d9/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/bykk/.gradle/caches/transforms-3/c577c7f4543d68a159ae4643fb5e40d9/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /home/bykk/.gradle/caches/transforms-3/0f39abe6e1e4631644d4a3b739b93d83/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /home/bykk/.gradle/caches/transforms-3/0f39abe6e1e4631644d4a3b739b93d83/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/bykk/.gradle/caches/transforms-3/5a1a584762539b8f59594d321b6cead0/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/bykk/.gradle/caches/transforms-3/5a1a584762539b8f59594d321b6cead0/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /home/bykk/.gradle/caches/transforms-3/521442be56a6c30a454cf5a0d2c37510/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /home/bykk/.gradle/caches/transforms-3/521442be56a6c30a454cf5a0d2c37510/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.4.1] /home/bykk/.gradle/caches/transforms-3/f51097e4b29fbee65759dc1e720c5374/transformed/transition-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.4.1] /home/bykk/.gradle/caches/transforms-3/f51097e4b29fbee65759dc1e720c5374/transformed/transition-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /home/bykk/.gradle/caches/transforms-3/3f08b089ef569b9cf8811e81afa6c8fe/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /home/bykk/.gradle/caches/transforms-3/3f08b089ef569b9cf8811e81afa6c8fe/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /home/bykk/.gradle/caches/transforms-3/34e238d0845a4d2b2dd386a87b3936b4/transformed/savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /home/bykk/.gradle/caches/transforms-3/34e238d0845a4d2b2dd386a87b3936b4/transformed/savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] /home/bykk/.gradle/caches/transforms-3/0e146d3b3fb4a2a46305c2f0f6d31847/transformed/lifecycle-viewmodel-ktx-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] /home/bykk/.gradle/caches/transforms-3/0e146d3b3fb4a2a46305c2f0f6d31847/transformed/lifecycle-viewmodel-ktx-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] /home/bykk/.gradle/caches/transforms-3/008e61cdeb28c8c9d36a18de01b44448/transformed/lifecycle-viewmodel-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] /home/bykk/.gradle/caches/transforms-3/008e61cdeb28c8c9d36a18de01b44448/transformed/lifecycle-viewmodel-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.7.0] /home/bykk/.gradle/caches/transforms-3/5bb94dae93c1a4bc44455c23bcc83d64/transformed/lifecycle-service-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.7.0] /home/bykk/.gradle/caches/transforms-3/5bb94dae93c1a4bc44455c23bcc83d64/transformed/lifecycle-service-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] /home/bykk/.gradle/caches/transforms-3/913d7e98004a96eeca1d06cbe2d26c17/transformed/lifecycle-livedata-core-ktx-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] /home/bykk/.gradle/caches/transforms-3/913d7e98004a96eeca1d06cbe2d26c17/transformed/lifecycle-livedata-core-ktx-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] /home/bykk/.gradle/caches/transforms-3/129f8b6dd246d28c020fcdd1a13b16a2/transformed/lifecycle-livedata-core-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] /home/bykk/.gradle/caches/transforms-3/129f8b6dd246d28c020fcdd1a13b16a2/transformed/lifecycle-livedata-core-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] /home/bykk/.gradle/caches/transforms-3/73b7fc582e2ec8535fe111c6020043b7/transformed/lifecycle-livedata-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] /home/bykk/.gradle/caches/transforms-3/73b7fc582e2ec8535fe111c6020043b7/transformed/lifecycle-livedata-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /home/bykk/.gradle/caches/transforms-3/c8bbef4f4ed31df60739eb70fefe8348/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /home/bykk/.gradle/caches/transforms-3/c8bbef4f4ed31df60739eb70fefe8348/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] /home/bykk/.gradle/caches/transforms-3/acaf60a50ef1a559711eedd7f913ffd2/transformed/lifecycle-runtime-ktx-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] /home/bykk/.gradle/caches/transforms-3/acaf60a50ef1a559711eedd7f913ffd2/transformed/lifecycle-runtime-ktx-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] /home/bykk/.gradle/caches/transforms-3/5468f9bbfc0cb660231289ee2399042d/transformed/lifecycle-viewmodel-savedstate-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] /home/bykk/.gradle/caches/transforms-3/5468f9bbfc0cb660231289ee2399042d/transformed/lifecycle-viewmodel-savedstate-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.12.0] /home/bykk/.gradle/caches/transforms-3/282ed389779bccf14e11f414aa56c20c/transformed/core-ktx-1.12.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.12.0] /home/bykk/.gradle/caches/transforms-3/282ed389779bccf14e11f414aa56c20c/transformed/core-ktx-1.12.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-preferences:1.0.0] /home/bykk/.gradle/caches/transforms-3/e58aa7dfef99f5ad50ba4023ae56f3e6/transformed/datastore-preferences-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.datastore:datastore-preferences:1.0.0] /home/bykk/.gradle/caches/transforms-3/e58aa7dfef99f5ad50ba4023ae56f3e6/transformed/datastore-preferences-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.datastore:datastore:1.0.0] /home/bykk/.gradle/caches/transforms-3/e01ad0b912c7a93e2a8705d5032e2b90/transformed/datastore-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.datastore:datastore:1.0.0] /home/bykk/.gradle/caches/transforms-3/e01ad0b912c7a93e2a8705d5032e2b90/transformed/datastore-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:5-44
+MERGED from [:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/bykk/.gradle/caches/transforms-3/92fdee7387b4096b170b268a853af6b1/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/bykk/.gradle/caches/transforms-3/92fdee7387b4096b170b268a853af6b1/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /home/bykk/.gradle/caches/transforms-3/c9258772950eea0fc6e970665d22c146/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /home/bykk/.gradle/caches/transforms-3/c9258772950eea0fc6e970665d22c146/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/bykk/.gradle/caches/transforms-3/f57c8221f39ee1ab6ef0081663064ac3/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/bykk/.gradle/caches/transforms-3/f57c8221f39ee1ab6ef0081663064ac3/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/bykk/.gradle/caches/transforms-3/c746d4b9057435825164effab7a74307/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/bykk/.gradle/caches/transforms-3/c746d4b9057435825164effab7a74307/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/bykk/.gradle/caches/transforms-3/c5ab37dde27c47d41f4fa083bf00043a/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/bykk/.gradle/caches/transforms-3/c5ab37dde27c47d41f4fa083bf00043a/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/bykk/.gradle/caches/transforms-3/e095c722518e2461508c5b8dc48be150/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/bykk/.gradle/caches/transforms-3/e095c722518e2461508c5b8dc48be150/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/bykk/.gradle/caches/transforms-3/7d7f76f9ffae25c3a6ae683851a66d87/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/bykk/.gradle/caches/transforms-3/7d7f76f9ffae25c3a6ae683851a66d87/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/bykk/.gradle/caches/transforms-3/0b5acec34722ff49f01f4bc24888d136/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/bykk/.gradle/caches/transforms-3/0b5acec34722ff49f01f4bc24888d136/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/bykk/.gradle/caches/transforms-3/9a76f7d1e3bb937142736be86a024307/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/bykk/.gradle/caches/transforms-3/9a76f7d1e3bb937142736be86a024307/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/bykk/.gradle/caches/transforms-3/82526810c83341dfcfa0b82411a1519f/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/bykk/.gradle/caches/transforms-3/82526810c83341dfcfa0b82411a1519f/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] /home/bykk/.gradle/caches/transforms-3/f3366306e3551ab3c4dfc1ece764f6b1/transformed/annotation-experimental-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] /home/bykk/.gradle/caches/transforms-3/f3366306e3551ab3c4dfc1ece764f6b1/transformed/annotation-experimental-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:20:5-44
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:20:5-44
+	android:targetSdkVersion
+		INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml
+uses-permission#android.permission.USE_BIOMETRIC
+ADDED from [androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/AndroidManifest.xml:24:5-72
+	android:name
+		ADDED from [androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/AndroidManifest.xml:24:22-69
+uses-permission#android.permission.USE_FINGERPRINT
+ADDED from [androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/AndroidManifest.xml:27:5-74
+	android:name
+		ADDED from [androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/AndroidManifest.xml:27:22-71
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/bykk/.gradle/caches/transforms-3/c746d4b9057435825164effab7a74307/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/bykk/.gradle/caches/transforms-3/c746d4b9057435825164effab7a74307/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+permission#org.amnezia.awg.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+uses-permission#org.amnezia.awg.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+service#org.amnezia.awg.backend.GoBackend$VpnService
+ADDED from [:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:12:9-19:19
+	android:exported
+		ADDED from [:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:14:13-37
+	android:permission
+		ADDED from [:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:15:13-69
+	android:name
+		ADDED from [:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:13:13-72
+intent-filter#action:name:android.net.VpnService
+ADDED from [:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:16:13-18:29
+action#android.net.VpnService
+ADDED from [:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:17:17-65
+	android:name
+		ADDED from [:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:17:25-62
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+uses-feature#android.hardware.camera.front
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:28:5-30:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:30:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:29:9-53
+uses-feature#android.hardware.camera.autofocus
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:33:5-35:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:35:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:34:9-57
+uses-feature#android.hardware.camera.flash
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:36:5-38:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:38:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:37:9-53
+uses-feature#android.hardware.screen.landscape
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:39:5-41:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:41:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:40:9-57
+uses-feature#android.hardware.wifi
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:42:5-44:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:44:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:43:9-45

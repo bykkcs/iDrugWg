@@ -1,18 +1,25 @@
-/.gradle/
-/.idea/*.xml
-/.idea/caches/
-/.idea/dictionaries/
-/.idea/libraries/
-/captures/
-/local.properties
-.DS_Store
-.cxx/
-Thumbs.db
-build/
-*.apk
-*.class
-*.dex
-*.iml
-*.jks
-gradlew.bat
-maint/
+# Сборочные артефакты
+
+\*.apk \*.aab build/ \*.log
+
+# Локальные настройки
+
+local.properties \*.keystore
+
+# Временные файлы Gradle
+
+.gradle/ gradle.properties
+
+# Файлы IDE
+
+.idea/ \*.iml
+
+# Кэш и временные файлы
+
+\*.tmp \*.bak \*.swp .DS_Store
+
+# Большие бинарные файлы (опционально, раскомментируйте, если нужно исключить)
+
+# app/src/main/res/raw/\*
+
+# app/src/main/assets/\*

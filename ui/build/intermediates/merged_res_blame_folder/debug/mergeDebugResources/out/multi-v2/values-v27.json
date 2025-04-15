@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "org.amnezia.awg.ui-mergeDebugResources-47:/values-v27/values-v27.xml",
+            "map": [
+                {
+                    "source": "/home/bykk/amneziawg-android/ui/src/main/res/values-v27/styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "115",
+                        "endLines": "8",
+                        "endColumns": "12",
+                        "endOffsets": "497"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "7",
+                        "endColumns": "12",
+                        "endOffsets": "437"
+                    }
+                }
+            ]
+        }
+    ]
+}

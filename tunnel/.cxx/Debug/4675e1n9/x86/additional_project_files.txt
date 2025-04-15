@@ -1,0 +1,4 @@
+D:\amneziawg-android\tunnel\.cxx\Debug\4675e1n9\x86\CMakeFiles\elf-cleaner
+D:\amneziawg-android\tunnel\.cxx\Debug\4675e1n9\x86\CMakeFiles\elf-cleaner.rule
+D:\amneziawg-android\tunnel\.cxx\Debug\4675e1n9\x86\CMakeFiles\libwg-go.so
+D:\amneziawg-android\tunnel\.cxx\Debug\4675e1n9\x86\CMakeFiles\libwg-go.so.rule

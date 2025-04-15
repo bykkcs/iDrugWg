@@ -1,0 +1,6 @@
+/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/arm64-v8a/CMakeFiles/libwg-quick.so.dir
+/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/arm64-v8a/CMakeFiles/libwg.so.dir
+/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/arm64-v8a/CMakeFiles/libwg-go.so.dir
+/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/arm64-v8a/CMakeFiles/elf-cleaner.dir
+/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/arm64-v8a/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,1 @@
+/home/bykk/amneziawg-android/tunnel/tools/CMakeLists.txt

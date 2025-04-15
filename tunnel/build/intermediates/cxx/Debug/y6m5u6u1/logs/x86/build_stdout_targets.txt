@@ -1,0 +1,26 @@
+ninja: Entering directory `/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86'
+[1/19] Building elf-cleaner
+[2/19] Building C object CMakeFiles/libwg-quick.so.dir/ndk-compat/compat.c.o
+[3/19] Building C object CMakeFiles/libwg.so.dir/ndk-compat/compat.c.o
+[4/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/pubkey.c.o
+[5/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/encoding.c.o
+[6/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/set.c.o
+[7/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/genkey.c.o
+[8/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/config.c.o
+[9/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/setconf.c.o
+[10/19] Building C object CMakeFiles/libwg-quick.so.dir/amneziawg-tools/src/wg-quick/android.c.o
+[11/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/curve25519.c.o
+[12/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/showconf.c.o
+[13/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/wg.c.o
+[14/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/terminal.c.o
+[15/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/show.c.o
+[16/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/ipc.c.o
+[17/19] Linking C executable /home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/x86/libwg-quick.so
+elf-cleaner: Replacing unsupported DF_1_* flags 134217729 with 1 in '/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/x86/libwg-quick.so'
+[18/19] Linking C executable /home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/x86/libwg.so
+elf-cleaner: Replacing unsupported DF_1_* flags 134217729 with 1 in '/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/x86/libwg.so'
+[19/19] Building amneziawg-go
+go build -tags linux -ldflags="-X github.com/amnezia-vpn/amneziawg-go/ipc.socketDirectory=/data/data/org.amnezia.awg.debug/cache/amneziawg -buildid=" -v -trimpath -buildvcs=false -o "/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/x86/libwg-go.so" -buildmode c-shared
+runtime/cgo
+net
+github.com/amnezia-vpn/amneziawg-android

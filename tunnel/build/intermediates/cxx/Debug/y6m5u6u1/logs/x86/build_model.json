@@ -1,0 +1,192 @@
+{
+  "info": {
+    "name": "x86",
+    "bitness": 32,
+    "isDefault": true,
+    "isDeprecated": false,
+    "architecture": "x86",
+    "triple": "i686-linux-android",
+    "llvmTriple": "i686-none-linux-android"
+  },
+  "cxxBuildFolder": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86",
+  "soFolder": "/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/x86",
+  "soRepublishFolder": "/home/bykk/amneziawg-android/tunnel/build/intermediates/cmake/debug/obj/x86",
+  "abiPlatformVersion": 24,
+  "cmake": {
+    "effectiveConfiguration": {
+      "inheritEnvironments": [],
+      "variables": []
+    }
+  },
+  "variant": {
+    "buildSystemArgumentList": [
+      "-DGRADLE_USER_HOME\u003d/home/bykk/.gradle",
+      "-DANDROID_PACKAGE_NAME\u003dorg.amnezia.awg.debug"
+    ],
+    "cFlagsList": [],
+    "cppFlagsList": [],
+    "variantName": "debug",
+    "isDebuggableEnabled": true,
+    "validAbiList": [
+      "armeabi-v7a",
+      "arm64-v8a",
+      "x86",
+      "x86_64"
+    ],
+    "buildTargetSet": [
+      "libwg.so",
+      "libwg-quick.so",
+      "libwg-go.so"
+    ],
+    "implicitBuildTargetSet": [],
+    "cmakeSettingsConfiguration": "android-gradle-plugin-predetermined-name",
+    "module": {
+      "cxxFolder": "/home/bykk/amneziawg-android/tunnel/.cxx",
+      "intermediatesBaseFolder": "/home/bykk/amneziawg-android/tunnel/build/intermediates",
+      "intermediatesFolder": "/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx",
+      "gradleModulePathName": ":tunnel",
+      "moduleRootFolder": "/home/bykk/amneziawg-android/tunnel",
+      "moduleBuildFile": "/home/bykk/amneziawg-android/tunnel/build.gradle.kts",
+      "makeFile": "/home/bykk/amneziawg-android/tunnel/tools/CMakeLists.txt",
+      "buildSystem": "CMAKE",
+      "ndkFolder": "/home/bykk/android-sdk/ndk/26.1.10909125",
+      "ndkFolderBeforeSymLinking": "/home/bykk/android-sdk/ndk/26.1.10909125",
+      "ndkVersion": "26.1.10909125",
+      "ndkSupportedAbiList": [
+        "armeabi-v7a",
+        "arm64-v8a",
+        "x86",
+        "x86_64"
+      ],
+      "ndkDefaultAbiList": [
+        "armeabi-v7a",
+        "arm64-v8a",
+        "x86",
+        "x86_64"
+      ],
+      "ndkDefaultStl": "LIBCXX_STATIC",
+      "ndkMetaPlatforms": {
+        "min": 21,
+        "max": 34,
+        "aliases": {
+          "20": 19,
+          "25": 24,
+          "J": 16,
+          "J-MR1": 17,
+          "J-MR2": 18,
+          "K": 19,
+          "L": 21,
+          "L-MR1": 22,
+          "M": 23,
+          "N": 24,
+          "N-MR1": 24,
+          "O": 26,
+          "O-MR1": 27,
+          "P": 28,
+          "Q": 29,
+          "R": 30,
+          "S": 31,
+          "Sv2": 32,
+          "Tiramisu": 33,
+          "UpsideDownCake": 34
+        }
+      },
+      "ndkMetaAbiList": [
+        {
+          "name": "armeabi-v7a",
+          "bitness": 32,
+          "isDefault": true,
+          "isDeprecated": false,
+          "architecture": "arm",
+          "triple": "arm-linux-androideabi",
+          "llvmTriple": "armv7-none-linux-androideabi"
+        },
+        {
+          "name": "arm64-v8a",
+          "bitness": 64,
+          "isDefault": true,
+          "isDeprecated": false,
+          "architecture": "arm64",
+          "triple": "aarch64-linux-android",
+          "llvmTriple": "aarch64-none-linux-android"
+        },
+        {
+          "name": "x86",
+          "bitness": 32,
+          "isDefault": true,
+          "isDeprecated": false,
+          "architecture": "x86",
+          "triple": "i686-linux-android",
+          "llvmTriple": "i686-none-linux-android"
+        },
+        {
+          "name": "x86_64",
+          "bitness": 64,
+          "isDefault": true,
+          "isDeprecated": false,
+          "architecture": "x86_64",
+          "triple": "x86_64-linux-android",
+          "llvmTriple": "x86_64-none-linux-android"
+        }
+      ],
+      "cmakeToolchainFile": "/home/bykk/android-sdk/ndk/26.1.10909125/build/cmake/android.toolchain.cmake",
+      "cmake": {
+        "cmakeExe": "/home/bykk/android-sdk/cmake/3.22.1/bin/cmake"
+      },
+      "stlSharedObjectMap": {
+        "LIBCXX_SHARED": {
+          "armeabi-v7a": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/libc++_shared.so",
+          "arm64-v8a": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/libc++_shared.so",
+          "x86": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/i686-linux-android/libc++_shared.so",
+          "x86_64": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/x86_64-linux-android/libc++_shared.so"
+        },
+        "LIBCXX_STATIC": {},
+        "NONE": {},
+        "SYSTEM": {}
+      },
+      "project": {
+        "rootBuildGradleFolder": "/home/bykk/amneziawg-android",
+        "sdkFolder": "/home/bykk/android-sdk",
+        "isBuildOnlyTargetAbiEnabled": true,
+        "isCmakeBuildCohabitationEnabled": false,
+        "isPrefabEnabled": false
+      },
+      "outputOptions": [],
+      "ninjaExe": "/home/bykk/android-sdk/cmake/3.22.1/bin/ninja",
+      "hasBuildTimeInformation": true
+    },
+    "prefabClassPaths": [],
+    "prefabPackages": [],
+    "prefabPackageConfigurations": [],
+    "stlType": "c++_static",
+    "optimizationTag": "Debug"
+  },
+  "buildSettings": {
+    "environmentVariables": []
+  },
+  "prefabFolder": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/prefab/x86",
+  "isActiveAbi": true,
+  "fullConfigurationHash": "y6m5u6u1m2j4r1d4d92d3d253u66182o71c556u58w6l4r2e4x2h5e4t3d",
+  "fullConfigurationHashKey": "# Values used to calculate the hash in this folder name.\n# Should not depend on the absolute path of the project itself.\n#   - AGP: 8.3.0.\n#   - $NDK is the path to NDK 26.1.10909125.\n#   - $PROJECT is the path to the parent folder of the root Gradle build file.\n#   - $ABI is the ABI to be built with. The specific value doesn\u0027t contribute to the value of the hash.\n#   - $HASH is the hash value computed from this text.\n#   - $CMAKE is the path to CMake 3.22.1.\n#   - $NINJA is the path to Ninja.\n-H$PROJECT/tunnel/tools\n-DCMAKE_SYSTEM_NAME\u003dAndroid\n-DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON\n-DCMAKE_SYSTEM_VERSION\u003d24\n-DANDROID_PLATFORM\u003dandroid-24\n-DANDROID_ABI\u003d$ABI\n-DCMAKE_ANDROID_ARCH_ABI\u003d$ABI\n-DANDROID_NDK\u003d$NDK\n-DCMAKE_ANDROID_NDK\u003d$NDK\n-DCMAKE_TOOLCHAIN_FILE\u003d$NDK/build/cmake/android.toolchain.cmake\n-DCMAKE_MAKE_PROGRAM\u003d$NINJA\n-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d$PROJECT/tunnel/build/intermediates/cxx/Debug/$HASH/obj/$ABI\n-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d$PROJECT/tunnel/build/intermediates/cxx/Debug/$HASH/obj/$ABI\n-DCMAKE_BUILD_TYPE\u003dDebug\n-B$PROJECT/tunnel/.cxx/Debug/$HASH/$ABI\n-GNinja\n-DGRADLE_USER_HOME\u003d/home/bykk/.gradle\n-DANDROID_PACKAGE_NAME\u003dorg.amnezia.awg.debug",
+  "configurationArguments": [
+    "-H/home/bykk/amneziawg-android/tunnel/tools",
+    "-DCMAKE_SYSTEM_NAME\u003dAndroid",
+    "-DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON",
+    "-DCMAKE_SYSTEM_VERSION\u003d24",
+    "-DANDROID_PLATFORM\u003dandroid-24",
+    "-DANDROID_ABI\u003dx86",
+    "-DCMAKE_ANDROID_ARCH_ABI\u003dx86",
+    "-DANDROID_NDK\u003d/home/bykk/android-sdk/ndk/26.1.10909125",
+    "-DCMAKE_ANDROID_NDK\u003d/home/bykk/android-sdk/ndk/26.1.10909125",
+    "-DCMAKE_TOOLCHAIN_FILE\u003d/home/bykk/android-sdk/ndk/26.1.10909125/build/cmake/android.toolchain.cmake",
+    "-DCMAKE_MAKE_PROGRAM\u003d/home/bykk/android-sdk/cmake/3.22.1/bin/ninja",
+    "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/x86",
+    "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/x86",
+    "-DCMAKE_BUILD_TYPE\u003dDebug",
+    "-B/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86",
+    "-GNinja",
+    "-DGRADLE_USER_HOME\u003d/home/bykk/.gradle",
+    "-DANDROID_PACKAGE_NAME\u003dorg.amnezia.awg.debug"
+  ],
+  "intermediatesParentFolder": "/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1"
+}

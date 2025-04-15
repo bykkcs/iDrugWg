@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8c9b5186-8d90-4e30-81ac-0ebcb510cabd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/dns-hatchet/apply.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/dns-hatchet/apply.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/external-tests/python/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/external-tests/python/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/extract-handshakes/extract-handshakes.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/extract-handshakes/extract-handshakes.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/json/wg-json" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/json/wg-json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/ncat-client-server/client-quick.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/ncat-client-server/client-quick.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/ncat-client-server/client.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/ncat-client-server/client.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/ncat-client-server/server.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/ncat-client-server/server.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/reresolve-dns/reresolve-dns.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/reresolve-dns/reresolve-dns.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/synergy/synergy-client.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/synergy/synergy-client.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/synergy/synergy-server.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/contrib/synergy/synergy-server.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/debian/rules" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/debian/rules" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/debian/tests/keygen" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/debian/tests/keygen" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/debian/tests/netns-mini" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/debian/tests/netns-mini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/debian/tests/wg-quick" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/debian/tests/wg-quick" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/src/wg-quick/darwin.bash" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/src/wg-quick/darwin.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/src/wg-quick/freebsd.bash" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/src/wg-quick/freebsd.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/src/wg-quick/linux.bash" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/src/wg-quick/linux.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/src/wg-quick/openbsd.bash" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/amneziawg-tools/src/wg-quick/openbsd.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-aarch64-api21-cleaned" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-aarch64-api21-cleaned" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-aarch64-api24-cleaned" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-aarch64-api24-cleaned" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-aarch64-original" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-aarch64-original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-arm-api21-cleaned" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-arm-api21-cleaned" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-arm-api24-cleaned" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-arm-api24-cleaned" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-arm-original" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-arm-original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-i686-api21-cleaned" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-i686-api21-cleaned" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-i686-api24-cleaned" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-i686-api24-cleaned" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-i686-original" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-i686-original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-x86_64-api21-cleaned" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-x86_64-api21-cleaned" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-x86_64-api24-cleaned" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-x86_64-api24-cleaned" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-x86_64-original" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/curl-7.83.1-x86_64-original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-aarch64-original" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-aarch64-original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-aarch64-tls-aligned" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-aarch64-tls-aligned" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-arm-original" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-arm-original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-arm-tls-aligned" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-arm-tls-aligned" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-i686-original" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-i686-original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-i686-tls-aligned" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-i686-tls-aligned" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-x86_64-original" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-x86_64-original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-x86_64-tls-aligned" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel/tools/elf-cleaner/tests/valgrind-3.19.0-x86_64-tls-aligned" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/debug/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/debug/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/res/values/strings.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "bykkcs"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/TActrlalt/amneziawg-android",
+    "accountId": "6f4a6acc-1cd9-43e2-80d5-ca119881e80a"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2vauDEcDJL8FTVEzgKtWSIBaEvK" />
+  <component name="ProjectViewState">
+    <option name="flattenPackages" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "mybranch",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/amneziawg-android",
+    "settings.editor.selected.configurable": "AndroidSdkUpdater"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="ui" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="amneziawg-android.ui" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="RESTORE_ENABLED" value="false" />
+      <option name="RESTORE_FILE" value="" />
+      <option name="RESTORE_FRESH_INSTALL_ONLY" value="false" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Hybrid>
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8c9b5186-8d90-4e30-81ac-0ebcb510cabd" name="Changes" comment="" />
+      <created>1744395384659</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1744395384659</updated>
+    </task>
+    <servers />
+  </component>
+</project>

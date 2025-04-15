@@ -1,0 +1,6 @@
+D:/amneziawg-android/tunnel/.cxx/Debug/4675e1n9/x86/CMakeFiles/libwg-quick.so.dir
+D:/amneziawg-android/tunnel/.cxx/Debug/4675e1n9/x86/CMakeFiles/libwg.so.dir
+D:/amneziawg-android/tunnel/.cxx/Debug/4675e1n9/x86/CMakeFiles/libwg-go.so.dir
+D:/amneziawg-android/tunnel/.cxx/Debug/4675e1n9/x86/CMakeFiles/elf-cleaner.dir
+D:/amneziawg-android/tunnel/.cxx/Debug/4675e1n9/x86/CMakeFiles/edit_cache.dir
+D:/amneziawg-android/tunnel/.cxx/Debug/4675e1n9/x86/CMakeFiles/rebuild_cache.dir

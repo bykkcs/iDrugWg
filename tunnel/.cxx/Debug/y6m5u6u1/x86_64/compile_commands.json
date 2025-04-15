@@ -1,0 +1,77 @@
+[
+{
+  "directory": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86_64",
+  "command": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DAWG_PACKAGE_NAME=\\\"org.amnezia.awg.debug\\\" -o CMakeFiles/libwg-quick.so.dir/amneziawg-tools/src/wg-quick/android.c.o -c /home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/wg-quick/android.c",
+  "file": "/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/wg-quick/android.c"
+},
+{
+  "directory": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86_64",
+  "command": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DAWG_PACKAGE_NAME=\\\"org.amnezia.awg.debug\\\" -o CMakeFiles/libwg-quick.so.dir/ndk-compat/compat.c.o -c /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.c",
+  "file": "/home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.c"
+},
+{
+  "directory": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86_64",
+  "command": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/config.c.o -c /home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/config.c",
+  "file": "/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/config.c"
+},
+{
+  "directory": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86_64",
+  "command": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/curve25519.c.o -c /home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/curve25519.c",
+  "file": "/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/curve25519.c"
+},
+{
+  "directory": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86_64",
+  "command": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/encoding.c.o -c /home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/encoding.c",
+  "file": "/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/encoding.c"
+},
+{
+  "directory": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86_64",
+  "command": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/genkey.c.o -c /home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/genkey.c",
+  "file": "/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/genkey.c"
+},
+{
+  "directory": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86_64",
+  "command": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/ipc.c.o -c /home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/ipc.c",
+  "file": "/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/ipc.c"
+},
+{
+  "directory": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86_64",
+  "command": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/pubkey.c.o -c /home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/pubkey.c",
+  "file": "/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/pubkey.c"
+},
+{
+  "directory": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86_64",
+  "command": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/set.c.o -c /home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/set.c",
+  "file": "/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/set.c"
+},
+{
+  "directory": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86_64",
+  "command": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/setconf.c.o -c /home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/setconf.c",
+  "file": "/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/setconf.c"
+},
+{
+  "directory": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86_64",
+  "command": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/show.c.o -c /home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/show.c",
+  "file": "/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/show.c"
+},
+{
+  "directory": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86_64",
+  "command": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/showconf.c.o -c /home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/showconf.c",
+  "file": "/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/showconf.c"
+},
+{
+  "directory": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86_64",
+  "command": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/terminal.c.o -c /home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/terminal.c",
+  "file": "/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/terminal.c"
+},
+{
+  "directory": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86_64",
+  "command": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/wg.c.o -c /home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/wg.c",
+  "file": "/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/wg.c"
+},
+{
+  "directory": "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86_64",
+  "command": "/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/home/bykk/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/home/bykk/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/ndk-compat/compat.c.o -c /home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.c",
+  "file": "/home/bykk/amneziawg-android/tunnel/tools/ndk-compat/compat.c"
+}
+]

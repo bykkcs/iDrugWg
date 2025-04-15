@@ -1,0 +1,437 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="org.amnezia.awg.debug"
+4    android:installLocation="internalOnly"
+5    android:versionCode="5"
+6    android:versionName="1.1.2-debug" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="24"
+10        android:targetSdkVersion="34" />
+11
+12    <uses-permission android:name="android.permission.CAMERA" />
+12-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:6:5-65
+12-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:6:22-62
+13    <uses-permission android:name="android.permission.INTERNET" />
+13-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:7:5-67
+13-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:7:22-64
+14    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+14-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:8:5-81
+14-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:8:22-78
+15    <uses-permission
+15-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:9:5-11:38
+16        android:name="android.permission.SYSTEM_ALERT_WINDOW"
+16-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:10:9-62
+17        android:minSdkVersion="34" />
+17-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:11:9-35
+18    <uses-permission
+18-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:12:5-15:40
+19        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+19-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:13:9-65
+20        android:maxSdkVersion="28" />
+20-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:14:9-35
+21
+22    <uses-feature
+22-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:17:5-19:36
+23        android:name="android.hardware.touchscreen"
+23-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:18:9-52
+24        android:required="false" />
+24-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:19:9-33
+25    <uses-feature
+25-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:20:5-22:36
+26        android:name="android.software.leanback"
+26-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:21:9-49
+27        android:required="false" />
+27-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:22:9-33
+28    <uses-feature
+28-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:23:5-25:36
+29        android:name="android.hardware.camera.any"
+29-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:24:9-51
+30        android:required="false" />
+30-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:25:9-33
+31    <uses-feature
+31-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:26:5-28:36
+32        android:name="android.hardware.camera"
+32-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:27:9-47
+33        android:required="false" />
+33-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:28:9-33
+34
+35    <permission
+36        android:name="org.amnezia.awg.debug.permission.CONTROL_TUNNELS"
+36-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:31:9-67
+37        android:description="@string/permission_description"
+37-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:32:9-61
+38        android:icon="@mipmap/ic_launcher"
+38-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:33:9-43
+39        android:label="@string/permission_label"
+39-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:34:9-49
+40        android:protectionLevel="dangerous" />
+40-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:35:9-44
+41
+42    <queries>
+42-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:151:5-156:15
+43        <intent>
+43-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:152:9-155:18
+44            <action android:name="android.intent.action.MAIN" />
+44-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:57:17-69
+44-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:57:25-66
+45
+46            <category android:name="android.intent.category.LAUNCHER" />
+46-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:59:17-77
+46-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:59:27-74
+47        </intent>
+48    </queries>
+49
+50    <uses-permission android:name="android.permission.USE_BIOMETRIC" /> <!-- suppress DeprecatedClassUsageInspection -->
+50-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/AndroidManifest.xml:24:5-72
+50-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/AndroidManifest.xml:24:22-69
+51    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+51-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/AndroidManifest.xml:27:5-74
+51-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/AndroidManifest.xml:27:22-71
+52
+53    <permission
+53-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+54        android:name="org.amnezia.awg.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+54-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+55        android:protectionLevel="signature" />
+55-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+56
+57    <uses-permission android:name="org.amnezia.awg.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+57-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+57-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+58
+59    <uses-feature
+59-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:28:5-30:36
+60        android:name="android.hardware.camera.front"
+60-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:29:9-53
+61        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
+61-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:30:9-33
+62    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+63    <uses-feature
+63-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:33:5-35:36
+64        android:name="android.hardware.camera.autofocus"
+64-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:34:9-57
+65        android:required="false" />
+65-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:35:9-33
+66    <uses-feature
+66-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:36:5-38:36
+67        android:name="android.hardware.camera.flash"
+67-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:37:9-53
+68        android:required="false" />
+68-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:38:9-33
+69    <uses-feature
+69-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:39:5-41:36
+70        android:name="android.hardware.screen.landscape"
+70-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:40:9-57
+71        android:required="false" />
+71-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:41:9-33
+72    <uses-feature
+72-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:42:5-44:36
+73        android:name="android.hardware.wifi"
+73-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:43:9-45
+74        android:required="false" />
+74-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:44:9-33
+75
+76    <application
+76-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:37:5-149:19
+77        android:name="org.amnezia.awg.Application"
+77-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:38:9-36
+78        android:allowBackup="false"
+78-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:39:9-36
+79        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+79-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+80        android:banner="@mipmap/banner"
+80-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:40:9-40
+81        android:debuggable="true"
+82        android:enableOnBackInvokedCallback="true"
+82-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:41:9-51
+83        android:extractNativeLibs="false"
+84        android:icon="@mipmap/ic_launcher"
+84-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:42:9-43
+85        android:label="@string/app_name"
+85-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:43:9-41
+86        android:localeConfig="@xml/_generated_res_locale_config"
+87        android:roundIcon="@mipmap/ic_launcher_round"
+87-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:44:9-54
+88        android:supportsRtl="true"
+88-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:45:9-35
+89        android:theme="@style/AppTheme" >
+89-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:46:9-40
+90        <activity
+90-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:48:9-51:56
+91            android:name="org.amnezia.awg.activity.TunnelToggleActivity"
+91-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:49:13-58
+92            android:excludeFromRecents="true"
+92-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:50:13-46
+93            android:theme="@style/NoBackgroundTheme" />
+93-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:51:13-53
+94        <activity
+94-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:53:9-65:20
+95            android:name="org.amnezia.awg.activity.MainActivity"
+95-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:54:13-50
+96            android:exported="true" >
+96-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:55:13-36
+97            <intent-filter>
+97-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:56:13-60:29
+98                <action android:name="android.intent.action.MAIN" />
+98-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:57:17-69
+98-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:57:25-66
+99
+100                <category android:name="android.intent.category.LAUNCHER" />
+100-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:59:17-77
+100-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:59:27-74
+101            </intent-filter>
+102            <intent-filter>
+102-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:62:13-64:29
+103                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+103-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:63:17-99
+103-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:63:25-96
+104            </intent-filter>
+105        </activity>
+106        <activity
+106-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:67:9-75:20
+107            android:name="org.amnezia.awg.activity.TvMainActivity"
+107-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:68:13-52
+108            android:exported="true"
+108-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:69:13-36
+109            android:theme="@style/TvTheme" >
+109-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:70:13-43
+110            <intent-filter>
+110-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:71:13-74:29
+111                <action android:name="android.intent.action.MAIN" />
+111-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:57:17-69
+111-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:57:25-66
+112
+113                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+113-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:73:17-86
+113-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:73:27-83
+114            </intent-filter>
+115        </activity>
+116        <activity
+116-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:77:9-80:67
+117            android:name="org.amnezia.awg.activity.SettingsActivity"
+117-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:78:13-54
+118            android:label="@string/settings"
+118-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:79:13-45
+119            android:parentActivityName="org.amnezia.awg.activity.MainActivity" />
+119-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:80:13-64
+120        <activity
+120-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:82:9-85:67
+121            android:name="org.amnezia.awg.activity.TunnelCreatorActivity"
+121-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:83:13-59
+122            android:label="@string/create_activity_title"
+122-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:84:13-58
+123            android:parentActivityName="org.amnezia.awg.activity.MainActivity" />
+123-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:85:13-64
+124        <activity
+124-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:87:9-90:49
+125            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+125-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:88:13-74
+126            android:clearTaskOnLaunch="true"
+126-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
+127            android:screenOrientation="fullSensor"
+127-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:89:13-51
+128            android:stateNotNeeded="true"
+128-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
+129            android:theme="@style/zxing_CaptureTheme"
+129-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
+130            android:windowSoftInputMode="stateAlwaysHidden" />
+130-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
+131        <activity
+131-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:92:9-99:20
+132            android:name="org.amnezia.awg.activity.LogViewerActivity"
+132-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:93:13-55
+133            android:exported="false"
+133-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:94:13-37
+134            android:label="@string/log_viewer_title" >
+134-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:95:13-53
+135            <intent-filter>
+135-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:96:13-98:29
+136                <action android:name="android.intent.action.MAIN" />
+136-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:57:17-69
+136-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:57:25-66
+137            </intent-filter>
+138        </activity>
+139
+140        <provider
+141            android:name="org.amnezia.awg.activity.LogViewerActivity$ExportedLogContentProvider"
+141-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:102:13-82
+142            android:authorities="org.amnezia.awg.debug.exported-log"
+142-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:103:13-64
+143            android:exported="false"
+143-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:104:13-37
+144            android:grantUriPermissions="true" />
+144-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:105:13-47
+145
+146        <receiver
+146-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:107:9-114:20
+147            android:name="org.amnezia.awg.BootShutdownReceiver"
+147-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:108:13-49
+148            android:exported="true" >
+148-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:109:13-36
+149            <intent-filter>
+149-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:110:13-113:29
+150                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+150-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:111:17-80
+150-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:111:25-77
+151                <action android:name="android.intent.action.BOOT_COMPLETED" />
+151-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:112:17-79
+151-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:112:25-76
+152            </intent-filter>
+153        </receiver>
+154        <receiver
+155            android:name="org.amnezia.awg.model.TunnelManager$IntentReceiver"
+155-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:117:13-63
+156            android:exported="true"
+156-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:118:13-36
+157            android:permission="org.amnezia.awg.debug.permission.CONTROL_TUNNELS" >
+157-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:119:13-77
+158            <intent-filter>
+158-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:120:13-124:29
+159                <action android:name="org.amnezia.awg.action.REFRESH_TUNNEL_STATES" />
+159-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:121:17-87
+159-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:121:25-84
+160                <action android:name="org.amnezia.awg.action.SET_TUNNEL_UP" />
+160-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:122:17-79
+160-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:122:25-76
+161                <action android:name="org.amnezia.awg.action.SET_TUNNEL_DOWN" />
+161-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:123:17-81
+161-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:123:25-78
+162            </intent-filter>
+163        </receiver>
+164
+165        <service
+165-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:127:9-144:19
+166            android:name="org.amnezia.awg.QuickTileService"
+166-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:128:13-45
+167            android:exported="true"
+167-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:129:13-36
+168            android:icon="@drawable/ic_tile"
+168-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:130:13-45
+169            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" >
+169-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:131:13-77
+170            <intent-filter>
+170-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:133:13-135:29
+171                <action android:name="android.service.quicksettings.action.QS_TILE" />
+171-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:134:17-87
+171-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:134:25-84
+172            </intent-filter>
+173
+174            <meta-data
+174-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:137:13-139:41
+175                android:name="android.service.quicksettings.ACTIVE_TILE"
+175-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:138:17-73
+176                android:value="false" />
+176-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:139:17-38
+177            <meta-data
+177-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:141:13-143:40
+178                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+178-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:142:17-77
+179                android:value="true" />
+179-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:143:17-37
+180        </service>
+181
+182        <meta-data
+182-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:146:9-148:56
+183            android:name="android.content.APP_RESTRICTIONS"
+183-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:147:13-60
+184            android:resource="@xml/app_restrictions" />
+184-->/home/bykk/amneziawg-android/ui/src/main/AndroidManifest.xml:148:13-53
+185
+186        <provider
+186-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+187            android:name="androidx.startup.InitializationProvider"
+187-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+188            android:authorities="org.amnezia.awg.debug.androidx-startup"
+188-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+189            android:exported="false" >
+189-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+190            <meta-data
+190-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+191                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+191-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+192                android:value="androidx.startup" />
+192-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+193            <meta-data
+193-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+194                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+194-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+195                android:value="androidx.startup" />
+195-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+196            <meta-data
+196-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+197                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+197-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+198                android:value="androidx.startup" />
+198-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+199        </provider>
+200
+201        <uses-library
+201-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
+202            android:name="androidx.window.extensions"
+202-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
+203            android:required="false" />
+203-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
+204        <uses-library
+204-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
+205            android:name="androidx.window.sidecar"
+205-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
+206            android:required="false" />
+206-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
+207
+208        <service
+208-->[:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:12:9-19:19
+209            android:name="org.amnezia.awg.backend.GoBackend$VpnService"
+209-->[:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:13:13-72
+210            android:exported="false"
+210-->[:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:14:13-37
+211            android:permission="android.permission.BIND_VPN_SERVICE" >
+211-->[:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:15:13-69
+212            <intent-filter>
+212-->[:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:16:13-18:29
+213                <action android:name="android.net.VpnService" />
+213-->[:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:17:17-65
+213-->[:tunnel] /home/bykk/amneziawg-android/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:17:25-62
+214            </intent-filter>
+215        </service>
+216
+217        <receiver
+217-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+218            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+218-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+219            android:directBootAware="false"
+219-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+220            android:enabled="true"
+220-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+221            android:exported="true"
+221-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+222            android:permission="android.permission.DUMP" >
+222-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+223            <intent-filter>
+223-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+224                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+224-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+224-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+225            </intent-filter>
+226            <intent-filter>
+226-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+227                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+227-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+227-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+228            </intent-filter>
+229            <intent-filter>
+229-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+230                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+230-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+230-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+231            </intent-filter>
+232            <intent-filter>
+232-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+233                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+233-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+233-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+234            </intent-filter>
+235        </receiver>
+236    </application>
+237
+238</manifest>
