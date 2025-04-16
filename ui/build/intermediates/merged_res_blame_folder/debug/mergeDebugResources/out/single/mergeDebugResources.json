@@ -1,226 +1,274 @@
 [
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/drawable_ic_action_save.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/drawable/ic_action_save.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_main_activity.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/main_activity.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_tv_activity.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/tv_activity.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_tunnel_list_fragment.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/tunnel_list_fragment.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_tv_file_list_item.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/tv_file_list_item.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "org.amnezia.awg.ui-main-51:/mipmap-xhdpi/ic_launcher.png"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-ldpi_ic_launcher_round.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-ldpi/ic_launcher_round.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/color_tv_list_item_tint.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/color/tv_list_item_tint.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/menu_config_editor.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/menu/config_editor.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/drawable_ic_action_generate.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/drawable/ic_action_generate.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-xxxhdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-xxxhdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/drawable_ic_action_edit.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/drawable/ic_action_edit.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/anim_scale_up.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/anim/scale_up.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/drawable_ic_action_select_all.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/drawable/ic_action_select_all.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-xxxhdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-xxxhdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "org.amnezia.awg.ui-main-51:/mipmap-mdpi/ic_launcher_round.png"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-mdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-mdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_tunnel_detail_fragment.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/tunnel_detail_fragment.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/menu_main_activity.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/menu/main_activity.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/drawable_ic_action_share_white.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/drawable/ic_action_share_white.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_tunnel_list_fragment.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/tunnel_list_fragment.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/anim_scale_down.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/anim/scale_down.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_log_viewer_entry.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/log_viewer_entry.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout-sw600dp_main_activity.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout-sw600dp/main_activity.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-xhdpi_banner.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-xhdpi/banner.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_tunnel_editor_fragment.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/tunnel_editor_fragment.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-xxhdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-xxhdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "org.amnezia.awg.ui-main-51:/mipmap-hdpi/ic_launcher_round.png"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/menu_tunnel_list_action_mode.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/menu/tunnel_list_action_mode.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_log_viewer_entry.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/log_viewer_entry.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/drawable_list_item_background.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/drawable/list_item_background.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "org.amnezia.awg.ui-main-51:/mipmap-xxxhdpi/ic_launcher_round.png"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_tunnel_detail_peer.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/tunnel_detail_peer.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/xml__generated_res_locale_config.xml.flat",
-        "source": "org.amnezia.awg.ui-localeConfig-45:/xml/_generated_res_locale_config.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/drawable_ic_arrow_back.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/drawable/ic_arrow_back.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/menu_tunnel_list_action_mode.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/menu/tunnel_list_action_mode.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_add_tunnels_bottom_sheet.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/add_tunnels_bottom_sheet.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "org.amnezia.awg.ui-main-51:/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-xhdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-xhdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/drawable_ic_action_scan_qr_code.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/drawable/ic_action_scan_qr_code.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-ldpi_ic_launcher.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-ldpi/ic_launcher.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/drawable_ic_action_add_white.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/drawable/ic_action_add_white.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/drawable_ic_settings.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/drawable/ic_settings.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout-sw600dp_main_activity.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout-sw600dp/main_activity.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/anim_scale_up.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/anim/scale_up.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-hdpi/ic_launcher_round.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_app_list_dialog_fragment.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/app_list_dialog_fragment.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/drawable_ic_action_add_white.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/drawable/ic_action_add_white.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/menu_config_editor.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/menu/config_editor.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/menu_tunnel_detail.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/menu/tunnel_detail.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_tv_tunnel_list_item.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/tv_tunnel_list_item.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_tunnel_editor_fragment.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/tunnel_editor_fragment.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_config_naming_dialog_fragment.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/config_naming_dialog_fragment.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-hdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-hdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_log_viewer_activity.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/log_viewer_activity.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_tunnel_detail_fragment.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/tunnel_detail_fragment.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/drawable_ic_action_open.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/drawable/ic_action_open.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/drawable_tv_logo_banner.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/drawable/tv_logo_banner.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_tunnel_detail_peer.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/tunnel_detail_peer.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/drawable_ic_icon.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/drawable/ic_icon.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_add_tunnels_bottom_sheet.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/add_tunnels_bottom_sheet.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/drawable_ic_settings.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/drawable/ic_settings.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "org.amnezia.awg.ui-main-51:/mipmap-hdpi/ic_launcher.png"
-    },
-    {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_tunnel_list_item.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/tunnel_list_item.xml"
-    },
-    {
-        "merged": "org.amnezia.awg.ui-debug-49:/menu_main_activity.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/menu/main_activity.xml"
-    },
-    {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_tv_activity.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/tv_activity.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/drawable_ic_action_scan_qr_code.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/drawable/ic_action_scan_qr_code.xml"
     },
     {
         "merged": "org.amnezia.awg.ui-debug-49:/drawable_ic_tile.xml.flat",
         "source": "org.amnezia.awg.ui-main-51:/drawable/ic_tile.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/drawable_tv_logo_banner.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/drawable/tv_logo_banner.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/drawable_ic_action_share_white.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/drawable/ic_action_share_white.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_tv_file_list_item.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/tv_file_list_item.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-mdpi/ic_launcher_round.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_app_list_item.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/app_list_item.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-xxhdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-xxhdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/xml_app_restrictions.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/xml/app_restrictions.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/drawable_ic_action_select_all.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/drawable/ic_action_select_all.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/mipmap-ldpi_ic_launcher_round.png.flat",
-        "source": "org.amnezia.awg.ui-main-51:/mipmap-ldpi/ic_launcher_round.png"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_tunnel_list_item.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/tunnel_list_item.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/xml_preferences.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/xml/preferences.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/anim_scale_down.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/anim/scale_down.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "org.amnezia.awg.ui-main-51:/mipmap-xhdpi/ic_launcher_round.png"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-mdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-mdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "org.amnezia.awg.ui-main-51:/mipmap-xxhdpi/ic_launcher_round.png"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/drawable_ic_tile.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/drawable/ic_tile.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "org.amnezia.awg.ui-main-51:/mipmap-mdpi/ic_launcher.png"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/drawable_ic_action_delete.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/drawable/ic_action_delete.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_app_list_dialog_fragment.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/app_list_dialog_fragment.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "org.amnezia.awg.ui-main-51:/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_tunnel_editor_peer.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/tunnel_editor_peer.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/menu_log_viewer.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/menu/log_viewer.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-hdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-hdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/mipmap-xhdpi_banner.png.flat",
-        "source": "org.amnezia.awg.ui-main-51:/mipmap-xhdpi/banner.png"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/xml_app_restrictions.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/xml/app_restrictions.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/menu_tunnel_detail.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/menu/tunnel_detail.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/menu_log_viewer.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/menu/log_viewer.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/drawable_ic_icon.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/drawable/ic_icon.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_main_activity.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/main_activity.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/mipmap-ldpi_ic_launcher.png.flat",
-        "source": "org.amnezia.awg.ui-main-51:/mipmap-ldpi/ic_launcher.png"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/drawable_ic_arrow_back.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/drawable/ic_arrow_back.xml"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/drawable_list_item_background.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/drawable/list_item_background.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "org.amnezia.awg.ui-debug-49:/layout_tunnel_editor_peer.xml.flat",
-        "source": "org.amnezia.awg.ui-main-51:/layout/tunnel_editor_peer.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/drawable_ic_action_edit.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/drawable/ic_action_edit.xml"
+    },
+    {
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_log_viewer_activity.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/log_viewer_activity.xml"
+    },
+    {
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/drawable_ic_action_generate.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/drawable/ic_action_generate.xml"
+    },
+    {
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_config_naming_dialog_fragment.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/config_naming_dialog_fragment.xml"
+    },
+    {
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-xhdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-xhdpi/ic_launcher_adaptive_fore.png"
+    },
+    {
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/color_tv_list_item_tint.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/color/tv_list_item_tint.xml"
+    },
+    {
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/xml__generated_res_locale_config.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-localeConfig-45:/xml/_generated_res_locale_config.xml"
+    },
+    {
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_tv_tunnel_list_item.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/tv_tunnel_list_item.xml"
+    },
+    {
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/drawable_ic_action_open.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/drawable/ic_action_open.xml"
+    },
+    {
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/layout_app_list_item.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/layout/app_list_item.xml"
+    },
+    {
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/drawable_ic_action_save.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/drawable/ic_action_save.xml"
+    },
+    {
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/xml_preferences.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/xml/preferences.xml"
+    },
+    {
+        "merged": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-debug-49:/drawable_ic_action_delete.xml.flat",
+        "source": "/home/bykk/.gradle/daemon/8.5/org.amnezia.awg.ui-main-51:/drawable/ic_action_delete.xml"
     }
 ]

@@ -1,42 +1,4 @@
-ninja: Entering directory `/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/arm64-v8a'
-[1/19] Building elf-cleaner
-[2/19] Building C object CMakeFiles/libwg.so.dir/ndk-compat/compat.c.o
-[3/19] Building C object CMakeFiles/libwg-quick.so.dir/ndk-compat/compat.c.o
-[4/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/encoding.c.o
-[5/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/genkey.c.o
-[6/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/pubkey.c.o
-[7/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/set.c.o
-[8/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/setconf.c.o
-[9/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/config.c.o
-[10/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/wg.c.o
-[11/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/terminal.c.o
-[12/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/showconf.c.o
-[13/19] Building C object CMakeFiles/libwg-quick.so.dir/amneziawg-tools/src/wg-quick/android.c.o
-[14/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/show.c.o
-[15/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/ipc.c.o
-[16/19] Linking C executable /home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/arm64-v8a/libwg-quick.so
-elf-cleaner: Replacing unsupported DF_1_* flags 134217729 with 1 in '/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/arm64-v8a/libwg-quick.so'
-[17/19] Building C object CMakeFiles/libwg.so.dir/amneziawg-tools/src/curve25519.c.o
-[18/19] Linking C executable /home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/arm64-v8a/libwg.so
-elf-cleaner: Replacing unsupported DF_1_* flags 134217729 with 1 in '/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/arm64-v8a/libwg.so'
-[19/19] Building amneziawg-go
-mkdir -p "/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/arm64-v8a/../generated-src/go-1.24.2/"
-flock "/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/arm64-v8a/../generated-src/go-1.24.2/.prepared.lock" -c ' \
-[ -f "/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/arm64-v8a/../generated-src/go-1.24.2/.prepared" ] && exit 0; \
-tar -C "/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/arm64-v8a/../generated-src/go-1.24.2/" --strip-components=1 -xzf "/home/bykk/.gradle/caches/golang/go1.24.2.linux-amd64.tar.gz" && \
-patch -p1 -f -N -r- -d "/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/arm64-v8a/../generated-src/go-1.24.2/" < goruntime-boottime-over-monotonic.diff && \
-touch "/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/arm64-v8a/../generated-src/go-1.24.2/.prepared"'
-patching file src/runtime/sys_linux_386.s
-patching file src/runtime/sys_linux_amd64.s
-patching file src/runtime/sys_linux_arm.s
-patching file src/runtime/sys_linux_arm64.s
-patching file src/runtime/sys_linux_mips64x.s
-patching file src/runtime/sys_linux_mipsx.s
-patching file src/runtime/sys_linux_ppc64x.s
-Hunk #1 succeeded at 299 (offset 1 line).
-patching file src/runtime/sys_linux_s390x.s
-Hunk #1 succeeded at 297 (offset 1 line).
-go build -tags linux -ldflags="-X github.com/amnezia-vpn/amneziawg-go/ipc.socketDirectory=/data/data/org.amnezia.awg.debug/cache/amneziawg -buildid=" -v -trimpath -buildvcs=false -o "/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/arm64-v8a/libwg-go.so" -buildmode c-shared
-runtime/cgo
-net
-github.com/amnezia-vpn/amneziawg-android
+ninja: Entering directory `/home/bykk/idrugwg/tunnel/.cxx/Debug/y6m5u6u1/arm64-v8a'
+[1/2] Building amneziawg-go
+make: Nothing to be done for 'default'.
+[2/2] Building elf-cleaner

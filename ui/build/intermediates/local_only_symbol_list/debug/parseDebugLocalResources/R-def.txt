@@ -240,6 +240,8 @@ menu tunnel_detail
 menu tunnel_list_action_mode
 mipmap banner
 mipmap ic_launcher
+mipmap ic_launcher_adaptive_back
+mipmap ic_launcher_adaptive_fore
 mipmap ic_launcher_round
 plurals delete_error
 plurals delete_success

@@ -832,7 +832,7 @@ org.amnezia.awg.debug:plurals/persistent_keepalive_seconds_suffix = 0x7f10000a
 org.amnezia.awg.debug:plurals/include_n_applications = 0x7f100006
 org.amnezia.awg.debug:plurals/import_partial_success = 0x7f100004
 org.amnezia.awg.debug:string/androidx_startup = 0x7f120022
-org.amnezia.awg.debug:mipmap/ic_launcher_round = 0x7f0f0002
+org.amnezia.awg.debug:mipmap/ic_launcher_round = 0x7f0f0004
 org.amnezia.awg.debug:menu/log_viewer = 0x7f0e0001
 org.amnezia.awg.debug:menu/config_editor = 0x7f0e0000
 org.amnezia.awg.debug:macro/m3_comp_top_app_bar_small_trailing_icon_color = 0x7f0d0175
@@ -2364,6 +2364,7 @@ org.amnezia.awg.debug:dimen/m3_comp_primary_navigation_tab_inactive_hover_state_
 org.amnezia.awg.debug:id/pre_shared_key_label_layout = 0x7f0901be
 org.amnezia.awg.debug:dimen/m3_comp_primary_navigation_tab_inactive_focus_state_layer_opacity = 0x7f070165
 org.amnezia.awg.debug:style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon = 0x7f130436
+org.amnezia.awg.debug:mipmap/ic_launcher_adaptive_back = 0x7f0f0002
 org.amnezia.awg.debug:drawable/abc_ic_commit_search_api_mtrl_alpha = 0x7f080040
 org.amnezia.awg.debug:dimen/m3_comp_primary_navigation_tab_active_pressed_state_layer_opacity = 0x7f070164
 org.amnezia.awg.debug:style/Widget.AppCompat.SearchView.ActionBar = 0x7f130349
@@ -3492,6 +3493,7 @@ org.amnezia.awg.debug:style/ThemeOverlay.Material3.ExtendedFloatingActionButton.
 org.amnezia.awg.debug:layout/mtrl_calendar_horizontal = 0x7f0c0055
 org.amnezia.awg.debug:color/m3_ref_palette_neutral10 = 0x7f060107
 org.amnezia.awg.debug:dimen/m3_comp_navigation_rail_icon_size = 0x7f070152
+org.amnezia.awg.debug:mipmap/ic_launcher_adaptive_fore = 0x7f0f0003
 org.amnezia.awg.debug:color/m3_ref_palette_primary80 = 0x7f060134
 org.amnezia.awg.debug:id/open_search_view_divider = 0x7f09019d
 org.amnezia.awg.debug:color/m3_ref_palette_neutral0 = 0x7f060106

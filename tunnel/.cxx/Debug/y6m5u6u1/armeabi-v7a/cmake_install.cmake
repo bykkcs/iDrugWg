@@ -1,4 +1,4 @@
-# Install script for directory: /home/bykk/amneziawg-android/tunnel/tools
+# Install script for directory: /home/bykk/idrugwg/tunnel/tools
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/armeabi-v7a/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/bykk/idrugwg/tunnel/.cxx/Debug/y6m5u6u1/armeabi-v7a/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -4168,7 +4168,9 @@ int menu tunnel_detail 0x7f0e0003
 int menu tunnel_list_action_mode 0x7f0e0004
 int mipmap banner 0x7f0f0000
 int mipmap ic_launcher 0x7f0f0001
-int mipmap ic_launcher_round 0x7f0f0002
+int mipmap ic_launcher_adaptive_back 0x7f0f0002
+int mipmap ic_launcher_adaptive_fore 0x7f0f0003
+int mipmap ic_launcher_round 0x7f0f0004
 int plurals delete_error 0x7f100000
 int plurals delete_success 0x7f100001
 int plurals delete_title 0x7f100002

@@ -1,19 +1,19 @@
 {
   "buildFiles": [
-    "/home/bykk/amneziawg-android/tunnel/tools/CMakeLists.txt"
+    "/home/bykk/idrugwg/tunnel/tools/CMakeLists.txt"
   ],
   "cleanCommandsComponents": [
     [
       "/home/bykk/android-sdk/cmake/3.22.1/bin/ninja",
       "-C",
-      "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86",
+      "/home/bykk/idrugwg/tunnel/.cxx/Debug/y6m5u6u1/x86",
       "clean"
     ]
   ],
   "buildTargetsCommandComponents": [
     "/home/bykk/android-sdk/cmake/3.22.1/bin/ninja",
     "-C",
-    "/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86",
+    "/home/bykk/idrugwg/tunnel/.cxx/Debug/y6m5u6u1/x86",
     "{LIST_OF_TARGETS_TO_BUILD}"
   ],
   "libraries": {
@@ -25,13 +25,13 @@
     "libwg-quick.so::@6890427a1f51a3e7e1df": {
       "artifactName": "libwg-quick.so",
       "abi": "x86",
-      "output": "/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/x86/libwg-quick.so",
+      "output": "/home/bykk/idrugwg/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/x86/libwg-quick.so",
       "runtimeFiles": []
     },
     "libwg.so::@6890427a1f51a3e7e1df": {
       "artifactName": "libwg.so",
       "abi": "x86",
-      "output": "/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/x86/libwg.so",
+      "output": "/home/bykk/idrugwg/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/x86/libwg.so",
       "runtimeFiles": []
     },
     "elf-cleaner::@6890427a1f51a3e7e1df": {

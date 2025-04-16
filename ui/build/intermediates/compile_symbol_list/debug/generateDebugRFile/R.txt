@@ -238,6 +238,8 @@ int menu tunnel_detail 0x0
 int menu tunnel_list_action_mode 0x0
 int mipmap banner 0x0
 int mipmap ic_launcher 0x0
+int mipmap ic_launcher_adaptive_back 0x0
+int mipmap ic_launcher_adaptive_fore 0x0
 int mipmap ic_launcher_round 0x0
 int plurals delete_error 0x0
 int plurals delete_success 0x0

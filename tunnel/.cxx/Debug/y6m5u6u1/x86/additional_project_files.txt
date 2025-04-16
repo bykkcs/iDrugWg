@@ -1,4 +1,4 @@
-/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86/CMakeFiles/elf-cleaner
-/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86/CMakeFiles/elf-cleaner.rule
-/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86/CMakeFiles/libwg-go.so
-/home/bykk/amneziawg-android/tunnel/.cxx/Debug/y6m5u6u1/x86/CMakeFiles/libwg-go.so.rule
+/home/bykk/idrugwg/tunnel/.cxx/Debug/y6m5u6u1/x86/CMakeFiles/elf-cleaner
+/home/bykk/idrugwg/tunnel/.cxx/Debug/y6m5u6u1/x86/CMakeFiles/elf-cleaner.rule
+/home/bykk/idrugwg/tunnel/.cxx/Debug/y6m5u6u1/x86/CMakeFiles/libwg-go.so
+/home/bykk/idrugwg/tunnel/.cxx/Debug/y6m5u6u1/x86/CMakeFiles/libwg-go.so.rule

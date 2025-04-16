@@ -64,7 +64,7 @@
     <string name="allow_remote_control_intents_title">Allow remote control apps</string>
     <string name="allowed_ips">Allowed IPs</string>
     <!-- Имя приложения изменено согласно требованиям -->
-    <string name="app_name" translatable="false">iDrug Connections (professional web)</string>
+    <string name="app_name" translatable="false">iDrug Connections</string>
     <string name="bad_config_context">%1$s\'s %2$s</string>
     <string name="bad_config_context_top_level">%s</string>
     <string name="bad_config_error">%1$s in %2$s</string>
@@ -260,6 +260,6 @@
     <string name="biometric_auth_error_reason">Authentication failure: %s</string>
     <string name="import_disclaimer">Ensure that you obtained the configuration file from a trusted source.
     
-Official iDrug Connections services are available only at <a href="https://amnezia.org">amnezia.org</a>
+Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>
 </string>
 </resources>

@@ -42,10 +42,10 @@ org.amnezia.awg.ui-appcompat-1.6.1-40 /home/bykk/.gradle/caches/transforms-3/e8b
 org.amnezia.awg.ui-activity-1.8.2-41 /home/bykk/.gradle/caches/transforms-3/f07cd0a060ba269e9b75cfdf0786d0e6/transformed/activity-1.8.2/res
 org.amnezia.awg.ui-annotation-experimental-1.3.0-42 /home/bykk/.gradle/caches/transforms-3/f3366306e3551ab3c4dfc1ece764f6b1/transformed/annotation-experimental-1.3.0/res
 org.amnezia.awg.ui-transition-1.4.1-43 /home/bykk/.gradle/caches/transforms-3/f51097e4b29fbee65759dc1e720c5374/transformed/transition-1.4.1/res
-org.amnezia.awg.ui-generateDebugEmptyResourceFiles-44 /home/bykk/amneziawg-android/tunnel/build/intermediates/packaged_res/debug/generateDebugEmptyResourceFiles/res
-org.amnezia.awg.ui-pngs-45 /home/bykk/amneziawg-android/ui/build/generated/res/pngs/debug
-org.amnezia.awg.ui-packageDebugResources-46 /home/bykk/amneziawg-android/ui/build/intermediates/incremental/debug/packageDebugResources/merged.dir
-org.amnezia.awg.ui-packageDebugResources-47 /home/bykk/amneziawg-android/ui/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
-org.amnezia.awg.ui-debug-48 /home/bykk/amneziawg-android/ui/build/intermediates/merged_res/debug/mergeDebugResources
-org.amnezia.awg.ui-debug-49 /home/bykk/amneziawg-android/ui/src/debug/res
-org.amnezia.awg.ui-main-50 /home/bykk/amneziawg-android/ui/src/main/res
+org.amnezia.awg.ui-generateDebugEmptyResourceFiles-44 /home/bykk/idrugwg/tunnel/build/intermediates/packaged_res/debug/generateDebugEmptyResourceFiles/res
+org.amnezia.awg.ui-pngs-45 /home/bykk/idrugwg/ui/build/generated/res/pngs/debug
+org.amnezia.awg.ui-packageDebugResources-46 /home/bykk/idrugwg/ui/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+org.amnezia.awg.ui-packageDebugResources-47 /home/bykk/idrugwg/ui/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+org.amnezia.awg.ui-debug-48 /home/bykk/idrugwg/ui/build/intermediates/merged_res/debug/mergeDebugResources
+org.amnezia.awg.ui-debug-49 /home/bykk/idrugwg/ui/src/debug/res
+org.amnezia.awg.ui-main-50 /home/bykk/idrugwg/ui/src/main/res

@@ -1,1 +1,1 @@
-/home/bykk/amneziawg-android/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/arm64-v8a
+/home/bykk/idrugwg/tunnel/build/intermediates/cxx/Debug/y6m5u6u1/obj/arm64-v8a

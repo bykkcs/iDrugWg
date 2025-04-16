@@ -135,7 +135,7 @@
     <string name="allow_remote_control_intents_summary_on">External apps may toggle tunnels (advanced)</string>
     <string name="allow_remote_control_intents_title">Allow remote control apps</string>
     <string name="allowed_ips">Allowed IPs</string>
-    <string name="app_name" translatable="false">iDrug Connections (professional web)</string>
+    <string name="app_name" translatable="false">iDrug Connections</string>
     <string name="applications">Applications</string>
     <string name="bad_config_context">%1$s\'s %2$s</string>
     <string name="bad_config_context_top_level">%s</string>
@@ -204,7 +204,7 @@
     <string name="illegal_filename_error">Illegal file name “%s”</string>
     <string name="import_disclaimer">Ensure that you obtained the configuration file from a trusted source.
     
-Official iDrug Connections services are available only at <a href="https://amnezia.org">amnezia.org</a>
+Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>
 </string>
     <string name="import_error">Unable to import tunnel: %s</string>
     <string name="import_from_qr_code">Import Tunnel from QR Code</string>
