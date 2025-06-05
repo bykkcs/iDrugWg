@@ -11,6 +11,7 @@ import android.os.Looper
 import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.journeyapps.barcodescanner.IntentIntegrator
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
 import com.squareup.picasso.Picasso
@@ -50,14 +51,14 @@ class AccountFragment : Fragment() {
                     safeUi {
                         Toast.makeText(
                             requireContext(),
-                            if (success) "Вход подтверждён через QR" else "Ошибка подтверждения: $message",
+                            if (success) getString(R.string.qr_confirmed) else getString(R.string.generic_error_with_message, message ?: ""),
                             Toast.LENGTH_SHORT
                         ).show()
                         if (success) loadProfileAndSetupUI(requireView())
                     }
                 }
             } else {
-                Toast.makeText(requireContext(), "QR не распознан", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.qr_not_recognized), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -94,13 +95,13 @@ class AccountFragment : Fragment() {
             generateQrLoginToken { token ->
                 setLoading(false)
                 if (token == null) {
-                    Toast.makeText(requireContext(), "Ошибка получения QR токена", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.qr_token_error), Toast.LENGTH_SHORT).show()
                     return@generateQrLoginToken
                 }
                 showQrCode(token, view.findViewById(R.id.qr_code_image))
                 view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.VISIBLE
                 startPollingQrStatus(token)
-                view.findViewById<TextView>(R.id.status_text).text = "Отсканируйте этот QR с устройства, где уже есть вход"
+                view.findViewById<TextView>(R.id.status_text).text = getString(R.string.qr_scan_prompt)
             }
         }
         view.findViewById<Button>(R.id.btn_logout).setOnClickListener {
@@ -115,14 +116,14 @@ class AccountFragment : Fragment() {
             setLoading(true)
             val token = prefs.getString("token", null)
             if (token == null) {
-                Toast.makeText(requireContext(), "Сначала войдите через Telegram", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.login_telegram_first), Toast.LENGTH_SHORT).show()
                 setLoading(false)
                 return@setOnClickListener
             }
             renewSubscription { success, resp ->
                 safeUi {
                     setLoading(false)
-                    Toast.makeText(requireContext(), if (success) "Подписка обновлена" else "Ошибка: $resp", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), if (success) getString(R.string.subscription_updated) else getString(R.string.subscription_update_error, resp ?: ""), Toast.LENGTH_SHORT).show()
                     if (success) loadProfileAndSetupUI(requireView())
                 }
             }
@@ -245,7 +246,7 @@ class AccountFragment : Fragment() {
             override fun onFailure(call: Call, e: IOException) {
                 safeUi {
                     setLoading(false)
-                    Toast.makeText(requireContext(), "Ошибка сети: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.network_error, e.message), Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onResponse(call: Call, response: Response) {
@@ -267,10 +268,10 @@ class AccountFragment : Fragment() {
                             showAccountScreen(view, username, photoUrl, status, expDateStr)
                             setFabScanQr(true)
                         } catch (e: Exception) {
-                            Toast.makeText(requireContext(), "Ошибка обработки профиля", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), getString(R.string.profile_processing_error), Toast.LENGTH_SHORT).show()
                         }
                     } else {
-                        Toast.makeText(requireContext(), "Ошибка получения профиля: ${response.code}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), getString(R.string.profile_error, response.code), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -286,7 +287,7 @@ class AccountFragment : Fragment() {
         view.findViewById<Spinner>(R.id.spinner_server).visibility = View.GONE
         view.findViewById<TextView>(R.id.text_server_choice).visibility = View.GONE
         view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.GONE
-        view.findViewById<TextView>(R.id.text_current_user).text = "Вход через Telegram или QR"
+        view.findViewById<TextView>(R.id.text_current_user).text = getString(R.string.login_telegram_or_qr)
         view.findViewById<TextView>(R.id.status_text).text = ""
         view.findViewById<TextView>(R.id.text_expiration).text = ""
         view.findViewById<ImageView>(R.id.avatar_image).setImageResource(R.drawable.ic_avatar_placeholder)
@@ -312,13 +313,13 @@ class AccountFragment : Fragment() {
         }
         view.findViewById<Button>(R.id.btn_download).visibility = if (status == "active") View.VISIBLE else View.GONE
         view.findViewById<Button>(R.id.btn_renew).visibility = if (status != "active") View.VISIBLE else View.GONE
-        view.findViewById<TextView>(R.id.text_current_user).text = "Ваш логин: $username"
+        view.findViewById<TextView>(R.id.text_current_user).text = getString(R.string.your_login, username)
         view.findViewById<TextView>(R.id.status_text).text =
             when (status) {
-                "revoked" -> "Доступ к конфигу заблокирован. Оплатите подписку для восстановления."
-                "expired" -> "Срок действия подписки истёк. Оплатите для получения нового конфига."
-                "active" -> "Скачайте конфиг для автоматического импорта в приложение"
-                else -> "Статус аккаунта: $status"
+                "revoked" -> getString(R.string.status_revoked)
+                "expired" -> getString(R.string.status_expired)
+                "active" -> getString(R.string.status_active)
+                else -> getString(R.string.status_unknown, status)
             }
         view.findViewById<TextView>(R.id.text_expiration).text = expDateStr?.let {
             if (status == "active" && it.isNotEmpty()) {
@@ -327,7 +328,7 @@ class AccountFragment : Fragment() {
                 val expDate = sdf.parse(fixed)
                 val now = Date()
                 val daysLeft = ((expDate.time - now.time) / (1000 * 60 * 60 * 24)).toInt()
-                "Дней до окончания: $daysLeft"
+                getString(R.string.days_remaining, daysLeft)
             } else ""
         } ?: ""
     }
@@ -353,7 +354,7 @@ private fun afterLogout(view: View) {
         safeUi {
             showLoginScreen(view)
             setFabScanQr(false)
-            Toast.makeText(requireContext(), "Вы вышли из аккаунта", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
         }
     }
 }
@@ -361,7 +362,7 @@ private fun afterLogout(view: View) {
 
     private fun handleDownloadConfig(view: View) {
         if (selectedServerId == null) {
-            Toast.makeText(requireContext(), "Выберите сервер", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.select_server_first), Toast.LENGTH_SHORT).show()
             return
         }
         val serverId = selectedServerId ?: return
@@ -369,7 +370,7 @@ private fun afterLogout(view: View) {
         setLoading(true)
         val token = prefs.getString("token", null)
         if (token == null) {
-            Toast.makeText(requireContext(), "Войдите через Telegram", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.login_telegram_first), Toast.LENGTH_SHORT).show()
             setLoading(false)
             return
         }
@@ -379,7 +380,7 @@ private fun afterLogout(view: View) {
             val tunnel = tunnels.firstOrNull { it.name == tunnelName }
             if (tunnel != null) {
                 safeUi {
-                    Toast.makeText(requireContext(), "Конфиг уже добавлен", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.config_already_added), Toast.LENGTH_SHORT).show()
                     setLoading(false)
                 }
                 return@launch
@@ -395,14 +396,14 @@ private fun afterLogout(view: View) {
                                 val config = Config.parse(file.bufferedReader())
                                 tunnelManager.create(tunnelName, config)
                                 file.delete()
-                                Toast.makeText(requireContext(), "Туннель добавлен", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(), getString(R.string.tunnel_added), Toast.LENGTH_SHORT).show()
                                 loadProfileAndSetupUI(requireView())
                             } catch (e: Exception) {
-                                Toast.makeText(requireContext(), "Ошибка создания туннеля: ${e.message}", Toast.LENGTH_LONG).show()
+                                Toast.makeText(requireContext(), getString(R.string.tunnel_create_error, e.message), Toast.LENGTH_LONG).show()
                             }
                         }
                     } else {
-                        Toast.makeText(requireContext(), "Ошибка: $configOrError", Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), getString(R.string.generic_error_with_message, configOrError ?: ""), Toast.LENGTH_LONG).show()
                     }
                 }
             }
@@ -442,7 +443,7 @@ private fun afterLogout(view: View) {
             }
             imageView.setImageBitmap(bitmap)
         } catch (e: Exception) {
-            Toast.makeText(requireContext(), "Ошибка генерации QR кода", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.qr_generation_error), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -460,7 +461,7 @@ private fun afterLogout(view: View) {
                             .putString("photo_url", photoUrl)
                             .apply()
                         safeUi {
-                            Toast.makeText(requireContext(), "Вход через QR подтверждён!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), getString(R.string.qr_confirmed), Toast.LENGTH_SHORT).show()
                             loadProfileAndSetupUI(requireView())
                         }
                     }
@@ -526,7 +527,7 @@ private fun afterLogout(view: View) {
     private fun confirmQrLoginToken(token: String, callback: (Boolean, String?) -> Unit) {
         val jwt = prefs.getString("token", null)
         if (jwt == null) {
-            callback(false, "Вы не авторизованы")
+            callback(false, getString(R.string.not_authorized))
             return
         }
         val client = OkHttpClient()
@@ -548,8 +549,10 @@ private fun afterLogout(view: View) {
     }
 
     private fun startQrScanner() {
-        // Используй свою ActivityResult/Intent для сканирования QR (ZXing и т.п.)
-        // ...
+        val integrator = com.journeyapps.barcodescanner.IntentIntegrator.forSupportFragment(this)
+        integrator.setDesiredBarcodeFormats(com.journeyapps.barcodescanner.IntentIntegrator.QR_CODE)
+        integrator.setPrompt(getString(R.string.qr_scan_prompt))
+        qrScanLauncher.launch(integrator.createScanIntent())
     }
 
     private fun downloadConfig(token: String, serverId: String, tunnelName: String, callback: (Boolean, String?) -> Unit) {
@@ -574,7 +577,7 @@ private fun afterLogout(view: View) {
     }
 
     private fun renewSubscription(callback: (Boolean, String?) -> Unit) {
-        val token = prefs.getString("token", null) ?: return callback(false, "Нет токена")
+        val token = prefs.getString("token", null) ?: return callback(false, getString(R.string.no_token))
         val client = OkHttpClient()
         val request = Request.Builder()
             .url("https://idrug.pw/api/profile/renew")
@@ -604,7 +607,7 @@ private fun afterLogout(view: View) {
                     .putString("username", username)
                     .putString("photo_url", photoUrl)
                     .apply()
-                Toast.makeText(requireContext(), "Telegram-вход выполнен!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.telegram_login_done), Toast.LENGTH_SHORT).show()
                 showCorrectScreen(requireView())
             }
             requireActivity().intent.data = null

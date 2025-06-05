@@ -259,10 +259,51 @@
     <string name="biometric_prompt_zip_exporter_title">Authenticate to export tunnels</string>
     <string name="biometric_prompt_private_key_title">Authenticate to view private key</string>
     <string name="biometric_auth_error">Authentication failure</string>
-    <string name="account_avatar">Аватар пользователя</string>
+    <string name="account_avatar">User avatar</string>
     <string name="biometric_auth_error_reason">Authentication failure: %s</string>
     <string name="import_disclaimer">Ensure that you obtained the configuration file from a trusted source.
-    
+
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>
 </string>
+    <!-- Account / QR login strings -->
+    <string name="login_via_telegram">Log in via Telegram</string>
+    <string name="show_qr_for_login">Show QR login code</string>
+    <string name="login_telegram_or_qr">Log in via Telegram or QR</string>
+    <string name="select_server">Select server</string>
+    <string name="download_config">Download config</string>
+    <string name="renew_subscription">Renew subscription</string>
+    <string name="logout">Log out</string>
+    <string name="qr_scan_prompt">Scan QR code</string>
+    <string name="qr_not_recognized">QR code not recognized</string>
+    <string name="qr_token_error">Failed to fetch QR token</string>
+    <string name="subscription_updated">Subscription renewed</string>
+    <string name="subscription_update_error">Error: %1$s</string>
+    <string name="network_error">Network error: %1$s</string>
+    <string name="profile_processing_error">Profile parsing error</string>
+    <string name="profile_error">Profile request error: %1$d</string>
+    <string name="config_already_added">Configuration already added</string>
+    <string name="tunnel_added">Tunnel added</string>
+    <string name="tunnel_create_error">Tunnel creation error: %1$s</string>
+    <string name="generic_error_with_message">Error: %1$s</string>
+    <string name="qr_generation_error">QR generation error</string>
+    <string name="qr_confirmed">QR login confirmed!</string>
+    <string name="telegram_login_done">Telegram login successful!</string>
+    <string name="not_authorized">You are not authorized</string>
+    <string name="no_token">No token</string>
+    <string name="logged_out">Logged out</string>
+    <string name="select_server_first">Please select a server</string>
+    <string name="login_telegram_first">Log in via Telegram first</string>
+    <string name="days_remaining">Days remaining: %1$d</string>
+    <string name="apk_not_found">APK not found!</string>
+    <string name="grant_unknown_sources">Grant permission to install from unknown sources and retry</string>
+    <string name="apk_open_error">Failed to open APK for installation: %1$s</string>
+    <string name="update_download_started">Update download started</string>
+    <string name="update_download_title">Downloading update</string>
+    <string name="update_download_description">Downloading new version of the application</string>
+    <string name="delete_old_update_failed">Could not delete old update file</string>
+    <string name="your_login">Your login: %1$s</string>
+    <string name="status_revoked">Access to config blocked. Renew subscription to restore.</string>
+    <string name="status_expired">Subscription expired. Renew to get a new config.</string>
+    <string name="status_active">Download the config for automatic import</string>
+    <string name="status_unknown">Account status: %1$s</string>
 </resources>
