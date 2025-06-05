@@ -33,6 +33,7 @@ import org.amnezia.awg.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigu
 import org.amnezia.awg.databinding.TunnelListFragmentBinding
 import org.amnezia.awg.databinding.TunnelListItemBinding
 import org.amnezia.awg.model.ObservableTunnel
+import org.amnezia.awg.activity.MainActivity
 import org.amnezia.awg.util.ErrorMessages
 import org.amnezia.awg.util.QrCodeFromFileScanner
 import org.amnezia.awg.util.TunnelImporter
@@ -174,6 +175,7 @@ class TunnelListFragment : BaseFragment() {
                 binding.root.setOnClickListener {
                     if (actionMode == null) {
                         selectedTunnel = item
+                        (activity as? MainActivity)?.openEditorForAppSelection()
                     } else {
                         actionModeListener.toggleItemChecked(position)
                     }
@@ -203,6 +205,7 @@ class TunnelListFragment : BaseFragment() {
     private fun viewForTunnel(tunnel: ObservableTunnel, tunnels: List<*>): MultiselectableRelativeLayout? {
         return binding?.tunnelList?.findViewHolderForAdapterPosition(tunnels.indexOf(tunnel))?.itemView as? MultiselectableRelativeLayout
     }
+
 
     private inner class ActionModeListener : ActionMode.Callback {
         val checkedItems: MutableCollection<Int> = HashSet()
