@@ -593,7 +593,8 @@ private fun afterLogout(view: View) {
 
     private fun handleDeepLink(intent: Intent?) {
         val data = intent?.data
-        if (data != null && data.scheme == "idrug" && data.host == "auth") {
+        if (data != null && ((data.scheme == "idrug" && data.host == "auth") ||
+                    (data.scheme == "https" && data.host == "idrug.pw" && data.path?.startsWith("/auth") == true))) {
             val jwt = data.getQueryParameter("jwt")
             val username = data.getQueryParameter("username")
             val photoUrl = data.getQueryParameter("photo_url")
