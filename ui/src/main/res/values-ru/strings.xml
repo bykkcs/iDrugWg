@@ -243,7 +243,6 @@
     <string name="transfer_tibibytes">%.2f ТиБ</string>
     <string name="tun_create_error">Не удалось создать устройство tun</string>
     <string name="tunnel_config_error">Не удалось настроить туннель (awg-quick вернул %d)</string>
-    <string name="tunnel_create_error">Не удалось создать туннель: %s</string>
     <string name="tunnel_create_success">Успешно создан туннель “%s”</string>
     <string name="tunnel_error_already_exists">Туннель “%s” уже существует</string>
     <string name="tunnel_error_invalid_name">Неправильное имя</string>

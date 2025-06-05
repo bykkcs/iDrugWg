@@ -232,7 +232,6 @@
     <string name="transfer_tibibytes">%.2f TiB</string>
     <string name="tun_create_error">Unable to create tun device</string>
     <string name="tunnel_config_error">Unable to configure tunnel (awg-quick returned %d)</string>
-    <string name="tunnel_create_error">Unable to create tunnel: %s</string>
     <string name="tunnel_create_success">Successfully created tunnel “%s”</string>
     <string name="tunnel_error_already_exists">Tunnel “%s” already exists</string>
     <string name="tunnel_error_invalid_name">Invalid name</string>
