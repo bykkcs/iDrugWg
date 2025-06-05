@@ -29,6 +29,7 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
     private var isTwoPaneLayout = false
     private var backPressedCallback: OnBackPressedCallback? = null
 
+
     private fun handleBackPressed() {
         val backStackEntries = supportFragmentManager.backStackEntryCount
         // If the two-pane layout does not have an editor open, going back should exit the app.
@@ -154,4 +155,5 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         }
         return true
     }
+
 }
