@@ -34,6 +34,8 @@ import org.amnezia.awg.databinding.TunnelListFragmentBinding
 import org.amnezia.awg.databinding.TunnelListItemBinding
 import org.amnezia.awg.model.ObservableTunnel
 import org.amnezia.awg.activity.MainActivity
+import org.amnezia.awg.viewmodel.ConfigProxy
+import org.amnezia.awg.fragment.AppListDialogFragment
 import org.amnezia.awg.util.ErrorMessages
 import org.amnezia.awg.util.QrCodeFromFileScanner
 import org.amnezia.awg.util.TunnelImporter
@@ -168,14 +170,24 @@ class TunnelListFragment : BaseFragment() {
         super.onViewStateRestored(savedInstanceState)
         binding ?: return
         binding!!.fragment = this
-        lifecycleScope.launch { binding!!.tunnels = Application.getTunnelManager().getTunnels() }
+        lifecycleScope.launch {
+            val tunnels = Application.getTunnelManager().getTunnels()
+            binding!!.tunnels = tunnels
+            arguments?.getString(ARG_OPEN_TUNNEL_FOR_APPS)?.let { name ->
+                val tunnel = tunnels[name]
+                if (tunnel != null) {
+                    showAppSelectionDialog(tunnel)
+                }
+                arguments?.remove(ARG_OPEN_TUNNEL_FOR_APPS)
+            }
+        }
         binding!!.rowConfigurationHandler = object : RowConfigurationHandler<TunnelListItemBinding, ObservableTunnel> {
             override fun onConfigureRow(binding: TunnelListItemBinding, item: ObservableTunnel, position: Int) {
                 binding.fragment = this@TunnelListFragment
                 binding.root.setOnClickListener {
                     if (actionMode == null) {
                         selectedTunnel = item
-                        (activity as? MainActivity)?.openEditorForAppSelection()
+                        showAppSelectionDialog(item)
                     } else {
                         actionModeListener.toggleItemChecked(position)
                     }
@@ -204,6 +216,54 @@ class TunnelListFragment : BaseFragment() {
 
     private fun viewForTunnel(tunnel: ObservableTunnel, tunnels: List<*>): MultiselectableRelativeLayout? {
         return binding?.tunnelList?.findViewHolderForAdapterPosition(tunnels.indexOf(tunnel))?.itemView as? MultiselectableRelativeLayout
+    }
+
+    private fun showAppSelectionDialog(tunnel: ObservableTunnel) {
+        lifecycleScope.launch {
+            val config = try {
+                tunnel.getConfigAsync()
+            } catch (e: Throwable) {
+                showSnackbar(ErrorMessages[e])
+                return@launch
+            }
+            val iface = config.interface
+            var isExcluded = true
+            var selectedApps = ArrayList(iface.excludedApplications)
+            if (selectedApps.isEmpty()) {
+                selectedApps = ArrayList(iface.includedApplications)
+                if (selectedApps.isNotEmpty()) isExcluded = false
+            }
+            val fragment = AppListDialogFragment.newInstance(selectedApps, isExcluded)
+            parentFragmentManager.setFragmentResultListener(
+                AppListDialogFragment.REQUEST_SELECTION,
+                viewLifecycleOwner
+            ) { _, bundle ->
+                val apps = bundle.getStringArray(AppListDialogFragment.KEY_SELECTED_APPS) ?: return@setFragmentResultListener
+                val excluded = bundle.getBoolean(AppListDialogFragment.KEY_IS_EXCLUDED)
+                val proxy = ConfigProxy(config)
+                proxy.interface.excludedApplications.clear()
+                proxy.interface.includedApplications.clear()
+                if (excluded) {
+                    proxy.interface.excludedApplications.addAll(apps)
+                } else {
+                    proxy.interface.includedApplications.addAll(apps)
+                }
+                val newConfig = try {
+                    proxy.resolve()
+                } catch (e: Throwable) {
+                    showSnackbar(ErrorMessages[e])
+                    return@setFragmentResultListener
+                }
+                lifecycleScope.launch {
+                    try {
+                        tunnel.setConfigAsync(newConfig)
+                    } catch (e: Throwable) {
+                        showSnackbar(ErrorMessages[e])
+                    }
+                }
+            }
+            fragment.show(parentFragmentManager, null)
+        }
     }
 
 
@@ -336,6 +396,7 @@ class TunnelListFragment : BaseFragment() {
 
     companion object {
         private const val CHECKED_ITEMS = "CHECKED_ITEMS"
+        const val ARG_OPEN_TUNNEL_FOR_APPS = "open_tunnel_for_apps"
         private const val TAG = "AmneziaWG/TunnelListFragment"
     }
 }
