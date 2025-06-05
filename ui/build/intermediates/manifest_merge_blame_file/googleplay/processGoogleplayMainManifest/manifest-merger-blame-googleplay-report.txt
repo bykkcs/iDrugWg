@@ -1,0 +1,486 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="org.amnezia.awg"
+4    android:installLocation="internalOnly"
+5    android:versionCode="5"
+6    android:versionName="1.1.2" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="24"
+10        android:targetSdkVersion="34" />
+11
+12    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+12-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:6:5-83
+12-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:6:22-80
+13    <uses-permission android:name="android.permission.CAMERA" />
+13-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:7:5-65
+13-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:7:22-62
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:8:5-67
+14-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:8:22-64
+15    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+15-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:9:5-81
+15-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:9:22-78
+16    <uses-permission
+16-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:10:5-12:38
+17        android:name="android.permission.SYSTEM_ALERT_WINDOW"
+17-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:11:9-62
+18        android:minSdkVersion="34" />
+18-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:12:9-35
+19    <uses-permission
+19-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:13:5-16:40
+20        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+20-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:14:9-65
+21        android:maxSdkVersion="28" />
+21-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:15:9-35
+22
+23    <uses-feature
+23-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:18:5-20:36
+24        android:name="android.hardware.touchscreen"
+24-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:19:9-52
+25        android:required="false" />
+25-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:20:9-33
+26    <uses-feature
+26-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:21:5-23:36
+27        android:name="android.software.leanback"
+27-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:22:9-49
+28        android:required="false" />
+28-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:23:9-33
+29    <uses-feature
+29-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:24:5-26:36
+30        android:name="android.hardware.camera.any"
+30-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:25:9-51
+31        android:required="false" />
+31-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:26:9-33
+32    <uses-feature
+32-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:27:5-29:36
+33        android:name="android.hardware.camera"
+33-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:28:9-47
+34        android:required="false" />
+34-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:29:9-33
+35
+36    <permission
+37        android:name="org.amnezia.awg.permission.CONTROL_TUNNELS"
+37-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:32:9-67
+38        android:description="@string/permission_description"
+38-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:33:9-61
+39        android:icon="@mipmap/ic_launcher"
+39-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:34:9-43
+40        android:label="@string/permission_label"
+40-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:35:9-49
+41        android:protectionLevel="dangerous" />
+41-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:36:9-44
+42
+43    <queries>
+43-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:168:5-173:15
+44        <intent>
+44-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:169:9-172:18
+45            <action android:name="android.intent.action.MAIN" />
+45-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:58:17-69
+45-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:58:25-66
+46
+47            <category android:name="android.intent.category.LAUNCHER" />
+47-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:60:17-77
+47-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:60:27-74
+48        </intent>
+49    </queries>
+50
+51    <uses-permission android:name="android.permission.USE_BIOMETRIC" /> <!-- suppress DeprecatedClassUsageInspection -->
+51-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/AndroidManifest.xml:24:5-72
+51-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/AndroidManifest.xml:24:22-69
+52    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+52-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/AndroidManifest.xml:27:5-74
+52-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/AndroidManifest.xml:27:22-71
+53
+54    <permission
+54-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+55        android:name="org.amnezia.awg.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+55-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+56        android:protectionLevel="signature" />
+56-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+57
+58    <uses-permission android:name="org.amnezia.awg.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+58-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+58-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+59
+60    <uses-feature
+60-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:28:5-30:36
+61        android:name="android.hardware.camera.front"
+61-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:29:9-53
+62        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
+62-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:30:9-33
+63    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+64    <uses-feature
+64-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:33:5-35:36
+65        android:name="android.hardware.camera.autofocus"
+65-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:34:9-57
+66        android:required="false" />
+66-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:35:9-33
+67    <uses-feature
+67-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:36:5-38:36
+68        android:name="android.hardware.camera.flash"
+68-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:37:9-53
+69        android:required="false" />
+69-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:38:9-33
+70    <uses-feature
+70-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:39:5-41:36
+71        android:name="android.hardware.screen.landscape"
+71-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:40:9-57
+72        android:required="false" />
+72-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:41:9-33
+73    <uses-feature
+73-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:42:5-44:36
+74        android:name="android.hardware.wifi"
+74-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:43:9-45
+75        android:required="false" />
+75-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:44:9-33
+76
+77    <application
+77-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:38:5-166:19
+78        android:name="org.amnezia.awg.Application"
+78-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:39:9-36
+79        android:allowBackup="false"
+79-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:40:9-36
+80        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+80-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+81        android:banner="@mipmap/banner"
+81-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:41:9-40
+82        android:enableOnBackInvokedCallback="true"
+82-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:42:9-51
+83        android:extractNativeLibs="false"
+84        android:icon="@mipmap/ic_launcher"
+84-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:43:9-43
+85        android:label="@string/app_name"
+85-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:44:9-41
+86        android:localeConfig="@xml/_generated_res_locale_config"
+87        android:roundIcon="@mipmap/ic_launcher_round"
+87-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:45:9-54
+88        android:supportsRtl="true"
+88-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:46:9-35
+89        android:theme="@style/AppTheme" >
+89-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:47:9-40
+90        <activity
+90-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:49:9-52:56
+91            android:name="org.amnezia.awg.activity.TunnelToggleActivity"
+91-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:50:13-58
+92            android:excludeFromRecents="true"
+92-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:51:13-46
+93            android:theme="@style/NoBackgroundTheme" />
+93-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:52:13-53
+94        <activity
+94-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:54:9-72:20
+95            android:name="org.amnezia.awg.activity.MainActivity"
+95-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:55:13-50
+96            android:exported="true" >
+96-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:56:13-36
+97            <intent-filter>
+97-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:57:13-61:29
+98                <action android:name="android.intent.action.MAIN" />
+98-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:58:17-69
+98-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:58:25-66
+99
+100                <category android:name="android.intent.category.LAUNCHER" />
+100-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:60:17-77
+100-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:60:27-74
+101            </intent-filter>
+102            <intent-filter>
+102-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:13-65:29
+103                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+103-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:64:17-99
+103-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:64:25-96
+104            </intent-filter>
+105            <intent-filter>
+105-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:66:13-71:17
+106                <action android:name="android.intent.action.VIEW" />
+106-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:67:5-57
+106-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:67:13-54
+107
+108                <category android:name="android.intent.category.DEFAULT" />
+108-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:68:5-64
+108-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:68:15-61
+109                <category android:name="android.intent.category.BROWSABLE" />
+109-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:69:5-66
+109-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:69:15-63
+110
+111                <data
+111-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:70:5-55
+112                    android:host="auth"
+112-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:70:34-53
+113                    android:scheme="idrug" />
+113-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:70:11-33
+114            </intent-filter>
+115        </activity>
+116
+117        <provider
+118            android:name="androidx.core.content.FileProvider"
+118-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:75:5-54
+119            android:authorities="org.amnezia.awg.provider"
+119-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:76:5-52
+120            android:exported="false"
+120-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:77:5-29
+121            android:grantUriPermissions="true" >
+121-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:5-39
+122            <meta-data
+122-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:79:5-81:46
+123                android:name="android.support.FILE_PROVIDER_PATHS"
+123-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:80:9-59
+124                android:resource="@xml/file_paths" />
+124-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:81:9-43
+125        </provider>
+126
+127        <activity
+127-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:84:9-92:20
+128            android:name="org.amnezia.awg.activity.TvMainActivity"
+128-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:85:13-52
+129            android:exported="true"
+129-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:86:13-36
+130            android:theme="@style/TvTheme" >
+130-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:87:13-43
+131            <intent-filter>
+131-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:88:13-91:29
+132                <action android:name="android.intent.action.MAIN" />
+132-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:58:17-69
+132-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:58:25-66
+133
+134                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+134-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:90:17-86
+134-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:90:27-83
+135            </intent-filter>
+136        </activity>
+137        <activity
+137-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:94:9-97:67
+138            android:name="org.amnezia.awg.activity.SettingsActivity"
+138-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:95:13-54
+139            android:label="@string/settings"
+139-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:96:13-45
+140            android:parentActivityName="org.amnezia.awg.activity.MainActivity" />
+140-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:97:13-64
+141        <activity
+141-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:99:9-102:67
+142            android:name="org.amnezia.awg.activity.TunnelCreatorActivity"
+142-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:100:13-59
+143            android:label="@string/create_activity_title"
+143-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:101:13-58
+144            android:parentActivityName="org.amnezia.awg.activity.MainActivity" />
+144-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:102:13-64
+145        <activity
+145-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:104:9-107:49
+146            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+146-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:105:13-74
+147            android:clearTaskOnLaunch="true"
+147-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
+148            android:screenOrientation="fullSensor"
+148-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:106:13-51
+149            android:stateNotNeeded="true"
+149-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
+150            android:theme="@style/zxing_CaptureTheme"
+150-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
+151            android:windowSoftInputMode="stateAlwaysHidden" />
+151-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
+152        <activity
+152-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:109:9-116:20
+153            android:name="org.amnezia.awg.activity.LogViewerActivity"
+153-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:110:13-55
+154            android:exported="false"
+154-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:111:13-37
+155            android:label="@string/log_viewer_title" >
+155-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:112:13-53
+156            <intent-filter>
+156-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:113:13-115:29
+157                <action android:name="android.intent.action.MAIN" />
+157-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:58:17-69
+157-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:58:25-66
+158            </intent-filter>
+159        </activity>
+160
+161        <provider
+162            android:name="org.amnezia.awg.activity.LogViewerActivity$ExportedLogContentProvider"
+162-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:119:13-82
+163            android:authorities="org.amnezia.awg.exported-log"
+163-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:120:13-64
+164            android:exported="false"
+164-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:121:13-37
+165            android:grantUriPermissions="true" />
+165-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:122:13-47
+166
+167        <receiver
+167-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:124:9-131:20
+168            android:name="org.amnezia.awg.BootShutdownReceiver"
+168-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:125:13-49
+169            android:exported="true" >
+169-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:126:13-36
+170            <intent-filter>
+170-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:127:13-130:29
+171                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+171-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:128:17-80
+171-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:128:25-77
+172                <action android:name="android.intent.action.BOOT_COMPLETED" />
+172-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:129:17-79
+172-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:129:25-76
+173            </intent-filter>
+174        </receiver>
+175        <receiver
+176            android:name="org.amnezia.awg.model.TunnelManager$IntentReceiver"
+176-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:134:13-63
+177            android:exported="true"
+177-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:135:13-36
+178            android:permission="org.amnezia.awg.permission.CONTROL_TUNNELS" >
+178-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:136:13-77
+179            <intent-filter>
+179-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:137:13-141:29
+180                <action android:name="org.amnezia.awg.action.REFRESH_TUNNEL_STATES" />
+180-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:138:17-87
+180-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:138:25-84
+181                <action android:name="org.amnezia.awg.action.SET_TUNNEL_UP" />
+181-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:139:17-79
+181-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:139:25-76
+182                <action android:name="org.amnezia.awg.action.SET_TUNNEL_DOWN" />
+182-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:140:17-81
+182-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:140:25-78
+183            </intent-filter>
+184        </receiver>
+185
+186        <service
+186-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:144:9-161:19
+187            android:name="org.amnezia.awg.QuickTileService"
+187-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:145:13-45
+188            android:exported="true"
+188-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:146:13-36
+189            android:icon="@drawable/ic_tile"
+189-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:147:13-45
+190            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" >
+190-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:148:13-77
+191            <intent-filter>
+191-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:150:13-152:29
+192                <action android:name="android.service.quicksettings.action.QS_TILE" />
+192-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:151:17-87
+192-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:151:25-84
+193            </intent-filter>
+194
+195            <meta-data
+195-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:154:13-156:41
+196                android:name="android.service.quicksettings.ACTIVE_TILE"
+196-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:155:17-73
+197                android:value="false" />
+197-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:156:17-38
+198            <meta-data
+198-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:158:13-160:40
+199                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+199-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:159:17-77
+200                android:value="true" />
+200-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:160:17-37
+201        </service>
+202
+203        <meta-data
+203-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:163:9-165:56
+204            android:name="android.content.APP_RESTRICTIONS"
+204-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:164:13-60
+205            android:resource="@xml/app_restrictions" />
+205-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:165:13-53
+206
+207        <provider
+207-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+208            android:name="androidx.startup.InitializationProvider"
+208-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+209            android:authorities="org.amnezia.awg.androidx-startup"
+209-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+210            android:exported="false" >
+210-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+211            <meta-data
+211-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+212                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+212-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+213                android:value="androidx.startup" />
+213-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/68994ae59f9a4ec41aa71f79b0ab2cef/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+214            <meta-data
+214-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+215                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+215-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+216                android:value="androidx.startup" />
+216-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/2dc6cdd4ea0f2fcfd31c407bc3489d03/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+217            <meta-data
+217-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+218                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+218-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+219                android:value="androidx.startup" />
+219-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+220        </provider>
+221
+222        <uses-library
+222-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
+223            android:name="androidx.window.extensions"
+223-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
+224            android:required="false" />
+224-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
+225        <uses-library
+225-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
+226            android:name="androidx.window.sidecar"
+226-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
+227            android:required="false" />
+227-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/4dc5756189dcfc45c515794ff5e03c18/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
+228
+229        <provider
+229-->[com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/transforms-3/e29e4f86bd66cd431773626770810e82/transformed/picasso-2.71828/AndroidManifest.xml:8:9-11:40
+230            android:name="com.squareup.picasso.PicassoProvider"
+230-->[com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/transforms-3/e29e4f86bd66cd431773626770810e82/transformed/picasso-2.71828/AndroidManifest.xml:9:13-64
+231            android:authorities="org.amnezia.awg.com.squareup.picasso"
+231-->[com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/transforms-3/e29e4f86bd66cd431773626770810e82/transformed/picasso-2.71828/AndroidManifest.xml:10:13-72
+232            android:exported="false" />
+232-->[com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/transforms-3/e29e4f86bd66cd431773626770810e82/transformed/picasso-2.71828/AndroidManifest.xml:11:13-37
+233
+234        <service
+234-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:12:9-19:19
+235            android:name="org.amnezia.awg.backend.GoBackend$VpnService"
+235-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:13:13-72
+236            android:exported="false"
+236-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:14:13-37
+237            android:permission="android.permission.BIND_VPN_SERVICE" >
+237-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:15:13-69
+238            <intent-filter>
+238-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:16:13-18:29
+239                <action android:name="android.net.VpnService" />
+239-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:17:17-65
+239-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:17:25-62
+240            </intent-filter>
+241        </service>
+242
+243        <receiver
+243-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+244            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+244-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+245            android:directBootAware="false"
+245-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+246            android:enabled="true"
+246-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+247            android:exported="true"
+247-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+248            android:permission="android.permission.DUMP" >
+248-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+249            <intent-filter>
+249-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+250                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+250-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+250-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+251            </intent-filter>
+252            <intent-filter>
+252-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+253                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+253-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+253-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+254            </intent-filter>
+255            <intent-filter>
+255-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+256                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+256-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+256-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+257            </intent-filter>
+258            <intent-filter>
+258-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+259                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+259-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+259-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/7e37d334a775ef1e7f4b383e6d402758/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+260            </intent-filter>
+261        </receiver>
+262    </application>
+263
+264</manifest>

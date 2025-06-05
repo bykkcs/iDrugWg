@@ -1,0 +1,85 @@
+<resources>
+    <!-- Используем в качестве seed ярко-розовый цвет (можно заменить на любой другой). -->
+    <color name="seed">#FF00FF</color>
+
+    <!-- ====================== Тема (Светлая) ====================== -->
+    <color name="md_theme_light_primary">#FF00FF</color>
+    <color name="md_theme_light_onPrimary">#000000</color>
+    <color name="md_theme_light_primaryContainer">#FFCCFF</color>
+    <color name="md_theme_light_onPrimaryContainer">#3F003F</color>
+
+    <color name="md_theme_light_secondary">#00FF00</color>
+    <color name="md_theme_light_onSecondary">#000000</color>
+    <color name="md_theme_light_secondaryContainer">#CCFFCC</color>
+    <color name="md_theme_light_onSecondaryContainer">#003F00</color>
+
+    <color name="md_theme_light_tertiary">#FF7F00</color>
+    <color name="md_theme_light_onTertiary">#000000</color>
+    <color name="md_theme_light_tertiaryContainer">#FFD9B3</color>
+    <color name="md_theme_light_onTertiaryContainer">#3F1F00</color>
+
+    <color name="md_theme_light_error">#FF0000</color>
+    <color name="md_theme_light_errorContainer">#FFCCCC</color>
+    <color name="md_theme_light_onError">#000000</color>
+    <color name="md_theme_light_onErrorContainer">#3F0000</color>
+
+    <!-- В данной «светлой» теме используем чёрный фон, чтобы создать контраст с неоновыми цветами. -->
+    <color name="md_theme_light_background">#000000</color>
+    <color name="md_theme_light_onBackground">#00FF00</color>
+    <color name="md_theme_light_surface">#000000</color>
+    <color name="md_theme_light_onSurface">#FF00FF</color>
+
+    <!-- Дополнительные оттенки для элементов интерфейса, где нужно чуть более тёмное/светлое разделение. -->
+    <color name="md_theme_light_surfaceVariant">#1A1A1A</color>
+    <color name="md_theme_light_onSurfaceVariant">#00FF00</color>
+    <color name="md_theme_light_outline">#FF00FF</color>
+
+    <color name="md_theme_light_inverseOnSurface">#000000</color>
+    <color name="md_theme_light_inverseSurface">#FF00FF</color>
+    <color name="md_theme_light_inversePrimary">#00FF00</color>
+    <color name="md_theme_light_shadow">#000000</color>
+    <color name="md_theme_light_surfaceTint">#FF00FF</color>
+    <color name="md_theme_light_outlineVariant">#00FF00</color>
+    <color name="md_theme_light_scrim">#000000</color>
+
+
+    <!-- ====================== Тема (Тёмная) ====================== -->
+    <color name="md_theme_dark_primary">#FF00FF</color>
+    <color name="md_theme_dark_onPrimary">#000000</color>
+    <color name="md_theme_dark_primaryContainer">#3F003F</color>
+    <color name="md_theme_dark_onPrimaryContainer">#FFCCFF</color>
+
+    <color name="md_theme_dark_secondary">#00FF00</color>
+    <color name="md_theme_dark_onSecondary">#000000</color>
+    <color name="md_theme_dark_secondaryContainer">#003F00</color>
+    <color name="md_theme_dark_onSecondaryContainer">#CCFFCC</color>
+
+    <color name="md_theme_dark_tertiary">#FF7F00</color>
+    <color name="md_theme_dark_onTertiary">#000000</color>
+    <color name="md_theme_dark_tertiaryContainer">#3F1F00</color>
+    <color name="md_theme_dark_onTertiaryContainer">#FFD9B3</color>
+
+    <color name="md_theme_dark_error">#FF0000</color>
+    <color name="md_theme_dark_errorContainer">#3F0000</color>
+    <color name="md_theme_dark_onError">#000000</color>
+    <color name="md_theme_dark_onErrorContainer">#FFCCCC</color>
+
+    <!-- В тёмной теме также задаём чёрный фон под неон. -->
+    <color name="md_theme_dark_background">#000000</color>
+    <color name="md_theme_dark_onBackground">#FF00FF</color>
+    <color name="md_theme_dark_surface">#000000</color>
+    <color name="md_theme_dark_onSurface">#00FF00</color>
+
+    <color name="md_theme_dark_surfaceVariant">#1A1A1A</color>
+    <color name="md_theme_dark_onSurfaceVariant">#00FF00</color>
+    <color name="md_theme_dark_outline">#FF00FF</color>
+
+    <color name="md_theme_dark_inverseOnSurface">#000000</color>
+    <color name="md_theme_dark_inverseSurface">#FF00FF</color>
+    <color name="md_theme_dark_inversePrimary">#00FF00</color>
+    <color name="md_theme_dark_shadow">#000000</color>
+    <color name="md_theme_dark_surfaceTint">#FF00FF</color>
+    <color name="md_theme_dark_outlineVariant">#00FF00</color>
+    <color name="md_theme_dark_scrim">#000000</color>
+
+</resources>

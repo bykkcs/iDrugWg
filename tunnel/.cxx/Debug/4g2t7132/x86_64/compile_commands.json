@@ -1,0 +1,77 @@
+[
+{
+  "directory": "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/x86_64",
+  "command": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DAWG_PACKAGE_NAME=\\\"org.amnezia.awg.debug\\\" -o CMakeFiles/libwg-quick.so.dir/amneziawg-tools/src/wg-quick/android.c.o -c /Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/wg-quick/android.c",
+  "file": "/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/wg-quick/android.c"
+},
+{
+  "directory": "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/x86_64",
+  "command": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DAWG_PACKAGE_NAME=\\\"org.amnezia.awg.debug\\\" -o CMakeFiles/libwg-quick.so.dir/ndk-compat/compat.c.o -c /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.c",
+  "file": "/Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.c"
+},
+{
+  "directory": "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/x86_64",
+  "command": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/config.c.o -c /Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/config.c",
+  "file": "/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/config.c"
+},
+{
+  "directory": "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/x86_64",
+  "command": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/curve25519.c.o -c /Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/curve25519.c",
+  "file": "/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/curve25519.c"
+},
+{
+  "directory": "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/x86_64",
+  "command": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/encoding.c.o -c /Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/encoding.c",
+  "file": "/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/encoding.c"
+},
+{
+  "directory": "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/x86_64",
+  "command": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/genkey.c.o -c /Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/genkey.c",
+  "file": "/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/genkey.c"
+},
+{
+  "directory": "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/x86_64",
+  "command": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/ipc.c.o -c /Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/ipc.c",
+  "file": "/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/ipc.c"
+},
+{
+  "directory": "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/x86_64",
+  "command": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/pubkey.c.o -c /Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/pubkey.c",
+  "file": "/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/pubkey.c"
+},
+{
+  "directory": "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/x86_64",
+  "command": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/set.c.o -c /Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/set.c",
+  "file": "/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/set.c"
+},
+{
+  "directory": "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/x86_64",
+  "command": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/setconf.c.o -c /Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/setconf.c",
+  "file": "/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/setconf.c"
+},
+{
+  "directory": "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/x86_64",
+  "command": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/show.c.o -c /Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/show.c",
+  "file": "/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/show.c"
+},
+{
+  "directory": "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/x86_64",
+  "command": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/showconf.c.o -c /Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/showconf.c",
+  "file": "/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/showconf.c"
+},
+{
+  "directory": "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/x86_64",
+  "command": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/terminal.c.o -c /Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/terminal.c",
+  "file": "/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/terminal.c"
+},
+{
+  "directory": "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/x86_64",
+  "command": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/amneziawg-tools/src/wg.c.o -c /Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/wg.c",
+  "file": "/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/wg.c"
+},
+{
+  "directory": "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/x86_64",
+  "command": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=x86_64-none-linux-android24 --sysroot=/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src/uapi/linux -I/Users/bmr/amneziawg-android/tunnel/tools/amneziawg-tools/src -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -fno-limit-debug-info  -fPIE -Wall -Werror -std=gnu11 -include /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.h -DRUNSTATEDIR=\\\"/data/data/org.amnezia.awg.debug/cache\\\" -o CMakeFiles/libwg.so.dir/ndk-compat/compat.c.o -c /Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.c",
+  "file": "/Users/bmr/amneziawg-android/tunnel/tools/ndk-compat/compat.c"
+}
+]

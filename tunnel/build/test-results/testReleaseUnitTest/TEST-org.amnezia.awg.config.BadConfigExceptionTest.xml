@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.amnezia.awg.config.BadConfigExceptionTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2025-05-31T17:34:23" hostname="DESKTOP-QJN6F25" time="0.049">
+  <properties/>
+  <testcase name="throws_correctly_with_SYNTAX_ERROR_reason" classname="org.amnezia.awg.config.BadConfigExceptionTest" time="0.022"/>
+  <testcase name="throws_correctly_with_UNKNOWN_ATTRIBUTE_reason" classname="org.amnezia.awg.config.BadConfigExceptionTest" time="0.004"/>
+  <testcase name="throws_correctly_with_INVALID_VALUE_reason" classname="org.amnezia.awg.config.BadConfigExceptionTest" time="0.008"/>
+  <testcase name="throws_correctly_with_INVALID_KEY_reason" classname="org.amnezia.awg.config.BadConfigExceptionTest" time="0.002"/>
+  <testcase name="throws_correctly_with_MISSING_ATTRIBUTE_reason" classname="org.amnezia.awg.config.BadConfigExceptionTest" time="0.004"/>
+  <testcase name="throws_correctly_with_UNKNOWN_SECTION_reason" classname="org.amnezia.awg.config.BadConfigExceptionTest" time="0.001"/>
+  <testcase name="throws_correctly_with_MISSING_SECTION_reason" classname="org.amnezia.awg.config.BadConfigExceptionTest" time="0.003"/>
+  <testcase name="throws_correctly_with_INVALID_NUMBER_reason" classname="org.amnezia.awg.config.BadConfigExceptionTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

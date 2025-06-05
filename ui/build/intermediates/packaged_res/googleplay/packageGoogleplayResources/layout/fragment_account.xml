@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Overlay для прогрессбара -->
+    <FrameLayout
+        android:id="@+id/loading_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/progress_loading"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_gravity="center"
+            android:layout_width="64dp"
+            android:layout_height="64dp" />
+    </FrameLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:id="@+id/root_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/avatar_image"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:src="@drawable/ic_avatar_placeholder"
+                android:background="@drawable/avatar_circle_white"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/text_current_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вход через Telegram или QR"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingBottom="16dp"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btn_login_telegram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Войти через Telegram" />
+
+            <Button
+                android:id="@+id/btn_show_qr_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Показать QR для входа"
+                android:layout_marginTop="8dp" />
+
+            <ImageView
+                android:id="@+id/qr_code_image"
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:layout_marginTop="12dp"
+                android:visibility="gone"
+                android:contentDescription="QR-код для входа"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:id="@+id/btn_download"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Скачать конфиг"
+                android:layout_marginTop="8dp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_renew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Продлить подписку"
+                android:layout_marginTop="8dp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Выйти"
+                android:layout_marginTop="8dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/status_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:paddingTop="16dp" />
+
+            <TextView
+                android:id="@+id/text_expiration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="14sp"
+                android:gravity="center"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_scan_qr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_menu_camera"
+        android:contentDescription="Сканировать QR"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="28dp"
+        android:visibility="gone" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

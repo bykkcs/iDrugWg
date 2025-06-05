@@ -1,0 +1,11 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <color android:color="#101415"/>
+    </item>
+    <item>
+        <bitmap
+            android:src="@drawable/matrix_bg_pattern"
+            android:tileMode="repeat"
+            android:gravity="fill" />
+    </item>
+</layer-list>

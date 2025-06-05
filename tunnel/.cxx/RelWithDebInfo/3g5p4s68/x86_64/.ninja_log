@@ -1,0 +1,25 @@
+# ninja log v5
+0	1558	0	/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/x86_64/CMakeFiles/libwg-go.so	cff0a99e05e59bca
+0	1558	0	CMakeFiles/libwg-go.so	cff0a99e05e59bca
+374	533	1744398473688612597	/Users/bmr/amneziawg-android/tunnel/build/intermediates/cxx/RelWithDebInfo/3g5p4s68/obj/x86_64/libwg-quick.so	62bd526f7cfd3db3
+184	374	1744398473527660792	CMakeFiles/libwg-quick.so.dir/amneziawg-tools/src/wg-quick/android.c.o	c037c05c1d32572d
+268	328	1744398473481474957	CMakeFiles/libwg.so.dir/amneziawg-tools/src/wg.c.o	4e1d9ae4e8c2044
+0	5	0	clean	99e3e797db93c8ef
+246	323	1744398473473918205	CMakeFiles/libwg.so.dir/amneziawg-tools/src/terminal.c.o	63695fb1a12cf73e
+184	267	1744398473415700250	CMakeFiles/libwg.so.dir/amneziawg-tools/src/encoding.c.o	797d73cdac9d3ee9
+184	336	1744398473489253373	CMakeFiles/libwg.so.dir/amneziawg-tools/src/config.c.o	597f92a24d78f069
+187	245	1744398473396859245	CMakeFiles/libwg.so.dir/amneziawg-tools/src/set.c.o	e9555cbd89e63b24
+187	245	1744398473391533469	CMakeFiles/libwg.so.dir/amneziawg-tools/src/pubkey.c.o	ac6812c8b2822d00
+185	241	1744398473393537614	CMakeFiles/libwg.so.dir/amneziawg-tools/src/genkey.c.o	3615bdfed459f6f1
+277	324	1744398473478574613	CMakeFiles/libwg.so.dir/ndk-compat/compat.c.o	87b063c676bfab71
+186	483	1744398473636505118	CMakeFiles/libwg.so.dir/amneziawg-tools/src/ipc.c.o	1f3bd7bacccbf1e9
+184	213	1744398473362431074	CMakeFiles/libwg-quick.so.dir/ndk-compat/compat.c.o	f2384cc2797359a1
+241	356	1744398473509657611	CMakeFiles/libwg.so.dir/amneziawg-tools/src/show.c.o	8824fe8d5d642993
+0	184	0	/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/x86_64/CMakeFiles/elf-cleaner	143dc795c97e3802
+1717	1750	1744398474905782672	/Users/bmr/amneziawg-android/tunnel/build/intermediates/cxx/RelWithDebInfo/3g5p4s68/obj/x86_64/libwg.so	eec2a771d48b56de
+245	306	1744398473456877347	CMakeFiles/libwg.so.dir/amneziawg-tools/src/showconf.c.o	b208f99f40c5e739
+214	276	1744398473430210177	CMakeFiles/libwg.so.dir/amneziawg-tools/src/setconf.c.o	b7e25cf303e89b16
+184	1717	1744398474870514636	CMakeFiles/libwg.so.dir/amneziawg-tools/src/curve25519.c.o	15b41c08d8a07954
+0	184	0	CMakeFiles/elf-cleaner	143dc795c97e3802
+0	5	0	clean	99e3e797db93c8ef
+0	19	0	clean	99e3e797db93c8ef

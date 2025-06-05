@@ -1,0 +1,25 @@
+# ninja log v5
+1	1512	0	/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/x86/CMakeFiles/libwg-go.so	e31b1d9078b99296
+1	1512	0	CMakeFiles/libwg-go.so	e31b1d9078b99296
+522	594	1744398472213742006	/Users/bmr/amneziawg-android/tunnel/build/intermediates/cxx/RelWithDebInfo/3g5p4s68/obj/x86/libwg.so	ce835fc4c7f48ecf
+198	439	1744398472057179777	CMakeFiles/libwg-quick.so.dir/amneziawg-tools/src/wg-quick/android.c.o	7d14a02248d1e1b7
+276	392	1744398472009834496	CMakeFiles/libwg.so.dir/amneziawg-tools/src/show.c.o	bb9ec9d8e2085d52
+317	364	1744398471983689737	CMakeFiles/libwg.so.dir/ndk-compat/compat.c.o	a03dc89ef0622a19
+0	6	0	clean	99e3e797db93c8ef
+199	300	1744398471916619793	CMakeFiles/libwg.so.dir/amneziawg-tools/src/encoding.c.o	48871570d36b3b19
+280	353	1744398471972068529	CMakeFiles/libwg.so.dir/amneziawg-tools/src/terminal.c.o	8262564c4ab8a610
+300	376	1744398471993587963	CMakeFiles/libwg.so.dir/amneziawg-tools/src/wg.c.o	e20707be58b2f4d5
+439	594	1744398472213743922	/Users/bmr/amneziawg-android/tunnel/build/intermediates/cxx/RelWithDebInfo/3g5p4s68/obj/x86/libwg-quick.so	5d439b2d774afc30
+199	278	1744398471893707790	CMakeFiles/libwg.so.dir/amneziawg-tools/src/genkey.c.o	a62a135942655d67
+198	409	1744398472025245705	CMakeFiles/libwg.so.dir/amneziawg-tools/src/config.c.o	73b6c527d2e8ea22
+201	275	1744398471891450315	CMakeFiles/libwg.so.dir/amneziawg-tools/src/set.c.o	17e2749139ae5162
+200	280	1744398471894180119	CMakeFiles/libwg.so.dir/amneziawg-tools/src/pubkey.c.o	ccf1a455ead5595e
+1	198	0	/Users/bmr/amneziawg-android/tunnel/.cxx/RelWithDebInfo/3g5p4s68/x86/CMakeFiles/elf-cleaner	388283cb8de54de5
+278	347	1744398471950894049	CMakeFiles/libwg.so.dir/amneziawg-tools/src/showconf.c.o	86a73c229a4eec0c
+234	317	1744398471931372884	CMakeFiles/libwg.so.dir/amneziawg-tools/src/setconf.c.o	b266db12e2f60d26
+198	438	1744398472056805615	CMakeFiles/libwg.so.dir/amneziawg-tools/src/curve25519.c.o	85c9932444f4079d
+1	198	0	CMakeFiles/elf-cleaner	388283cb8de54de5
+199	522	1744398472140891208	CMakeFiles/libwg.so.dir/amneziawg-tools/src/ipc.c.o	632b43d34d752484
+198	234	1744398471835627208	CMakeFiles/libwg-quick.so.dir/ndk-compat/compat.c.o	c9d9b71a964a20ee
+0	5	0	clean	99e3e797db93c8ef
+0	4	0	clean	99e3e797db93c8ef

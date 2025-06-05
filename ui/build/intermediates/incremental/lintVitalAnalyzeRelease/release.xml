@@ -1,0 +1,32 @@
+<variant
+    name="release"
+    package="org.amnezia.awg"
+    minSdkVersion="24"
+    targetSdkVersion="34"
+    mergedManifest="build/intermediates/merged_manifest/release/processReleaseMainManifest/AndroidManifest.xml"
+    proguardFiles="proguard-android-optimize.txt"
+    partialResultsDir="build/intermediates/lint_vital_partial_results/release/lintVitalAnalyzeRelease/out"
+    desugaredMethodsFiles="/home/bykk/.gradle/caches/transforms-3/2019b081876af4318e2ee15e6ec9dd46/transformed/desugar_jdk_libs_configuration-2.0.4-desugar-lint.txt:/home/bykk/.gradle/caches/transforms-3/33c6a9d00eaf1d3a09b3a2ec795cac75/transformed/D8BackportedDesugaredMethods.txt">
+  <buildFeatures
+      coreLibraryDesugaring="true"
+      viewBinding="true"
+      namespacing="REQUIRED"/>
+  <sourceProviders>
+    <sourceProvider
+        manifests="src/main/AndroidManifest.xml"
+        javaDirectories="src/main/java:src/release/java:src/main/kotlin:src/release/kotlin"
+        resDirectories="src/main/res:src/release/res"
+        assetsDirectories="src/main/assets:src/release/assets"/>
+  </sourceProviders>
+  <testSourceProviders>
+  </testSourceProviders>
+  <testFixturesSourceProviders>
+  </testFixturesSourceProviders>
+  <artifact
+      classOutputs="build/intermediates/javac/release/compileReleaseJavaWithJavac/classes:build/tmp/kotlin-classes/release:build/tmp/kapt3/classes/release:build/kotlinToolingMetadata:build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar"
+      type="MAIN"
+      applicationId="org.amnezia.awg"
+      generatedSourceFolders="build/generated/source/kapt/release:build/generated/ap_generated_sources/release/out:build/generated/source/buildConfig/release:build/generated/data_binding_base_class_source_out/release/out"
+      desugaredMethodsFiles="/home/bykk/.gradle/caches/transforms-3/2019b081876af4318e2ee15e6ec9dd46/transformed/desugar_jdk_libs_configuration-2.0.4-desugar-lint.txt:/home/bykk/.gradle/caches/transforms-3/33c6a9d00eaf1d3a09b3a2ec795cac75/transformed/D8BackportedDesugaredMethods.txt">
+  </artifact>
+</variant>

@@ -1,0 +1,6 @@
+/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/RelWithDebInfo/47n2y17h/armeabi-v7a/CMakeFiles/libwg-quick.so.dir
+/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/RelWithDebInfo/47n2y17h/armeabi-v7a/CMakeFiles/libwg.so.dir
+/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/RelWithDebInfo/47n2y17h/armeabi-v7a/CMakeFiles/libwg-go.so.dir
+/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/RelWithDebInfo/47n2y17h/armeabi-v7a/CMakeFiles/elf-cleaner.dir
+/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/RelWithDebInfo/47n2y17h/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/RelWithDebInfo/47n2y17h/armeabi-v7a/CMakeFiles/rebuild_cache.dir

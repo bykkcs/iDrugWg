@@ -1,0 +1,55 @@
+{
+  "buildFiles": [
+    "/Users/bmr/amneziawg-android/tunnel/tools/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/bmr/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/bmr/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/bmr/amneziawg-android/tunnel/.cxx/Debug/4g2t7132/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "elf-cleaner::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "elf-cleaner"
+    },
+    "libwg-go.so::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "libwg-go.so"
+    },
+    "libwg-quick.so::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "libwg-quick.so",
+      "output": "/Users/bmr/amneziawg-android/tunnel/build/intermediates/cxx/Debug/4g2t7132/obj/armeabi-v7a/libwg-quick.so",
+      "runtimeFiles": []
+    },
+    "libwg.so::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "libwg.so",
+      "output": "/Users/bmr/amneziawg-android/tunnel/build/intermediates/cxx/Debug/4g2t7132/obj/armeabi-v7a/libwg.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/Users/bmr/Library/Android/sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": []
+}

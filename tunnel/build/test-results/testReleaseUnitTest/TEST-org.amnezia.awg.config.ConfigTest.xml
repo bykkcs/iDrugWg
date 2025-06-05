@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.amnezia.awg.config.ConfigTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-05-31T17:34:23" hostname="DESKTOP-QJN6F25" time="0.015">
+  <properties/>
+  <testcase name="valid_config_parses_correctly" classname="org.amnezia.awg.config.ConfigTest" time="0.012"/>
+  <testcase name="invalid_config_throws" classname="org.amnezia.awg.config.ConfigTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

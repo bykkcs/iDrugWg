@@ -1,0 +1,29 @@
+<lint-module
+    format="1"
+    dir="/home/bykk/iDrugWgtest/iDrugWg-master/tunnel"
+    name=":tunnel"
+    type="LIBRARY"
+    maven="amneziawg-android:tunnel:"
+    agpVersion="8.3.0"
+    buildFolder="build"
+    bootClassPath="/home/bykk/android-sdk/platforms/android-34/android.jar:/home/bykk/android-sdk/build-tools/34.0.0/core-lambda-stubs.jar"
+    javaSourceLevel="17"
+    compileTarget="android-34"
+    neverShrinking="true">
+  <lintOptions
+      disable="LongLogTag,NewApi"
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true">
+    <severities>
+      <severity
+        id="LongLogTag"
+        severity="IGNORE" />
+      <severity
+        id="NewApi"
+        severity="IGNORE" />
+    </severities>
+  </lintOptions>
+  <variant name="release"/>
+</lint-module>
