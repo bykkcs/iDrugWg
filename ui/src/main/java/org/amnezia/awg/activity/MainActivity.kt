@@ -87,8 +87,15 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
 
         // Open VPN tab by default
         if (savedInstanceState == null) {
+            val fragment = TunnelListFragment()
+            val data = intent?.data
+            if (intent?.action == Intent.ACTION_VIEW && data?.scheme == "idrug" && data.host == "apps") {
+                fragment.arguments = Bundle().apply {
+                    putString(TunnelListFragment.ARG_OPEN_TUNNEL_FOR_APPS, data.lastPathSegment)
+                }
+            }
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, TunnelListFragment())
+                .replace(R.id.fragment_container, fragment)
                 .commit()
             bottomNavigation?.selectedItemId = R.id.nav_vpn
         }
@@ -155,21 +162,4 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         return true
     }
 
-    fun openEditorForAppSelection() {
-        supportFragmentManager.commit {
-            replace(
-                R.id.fragment_container,
-                TunnelEditorFragment().apply {
-                    arguments = Bundle().apply {
-                        putBoolean(
-                            TunnelEditorFragment.ARG_AUTO_SHOW_APP_SELECTOR,
-                            true
-                        )
-                    }
-                }
-            )
-            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            addToBackStack(null)
-        }
-    }
 }
