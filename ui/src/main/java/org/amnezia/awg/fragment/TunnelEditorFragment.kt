@@ -42,9 +42,19 @@ class TunnelEditorFragment : BaseFragment(), MenuProvider {
     private var haveShownKeys = false
     private var binding: TunnelEditorFragmentBinding? = null
     private var tunnel: ObservableTunnel? = null
+    private var autoShowAppSelector = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        autoShowAppSelector = arguments?.getBoolean(ARG_AUTO_SHOW_APP_SELECTOR) ?: false
+    }
 
     private fun onConfigLoaded(config: Config) {
         binding?.config = ConfigProxy(config)
+        if (autoShowAppSelector) {
+            autoShowAppSelector = false
+            onRequestSetExcludedIncludedApplications(null)
+        }
     }
 
     private fun onConfigSaved(savedTunnel: Tunnel, throwable: Throwable?) {
@@ -328,6 +338,7 @@ class TunnelEditorFragment : BaseFragment(), MenuProvider {
     companion object {
         private const val KEY_LOCAL_CONFIG = "local_config"
         private const val KEY_ORIGINAL_NAME = "original_name"
+        const val ARG_AUTO_SHOW_APP_SELECTOR = "auto_show_app_selector"
         private const val TAG = "AmneziaWG/TunnelEditorFragment"
     }
 }

@@ -154,4 +154,22 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         }
         return true
     }
+
+    fun openEditorForAppSelection() {
+        supportFragmentManager.commit {
+            replace(
+                R.id.fragment_container,
+                TunnelEditorFragment().apply {
+                    arguments = Bundle().apply {
+                        putBoolean(
+                            TunnelEditorFragment.ARG_AUTO_SHOW_APP_SELECTOR,
+                            true
+                        )
+                    }
+                }
+            )
+            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+            addToBackStack(null)
+        }
+    }
 }
