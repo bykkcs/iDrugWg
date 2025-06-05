@@ -11,7 +11,8 @@ import android.os.Looper
 import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
-import com.journeyapps.barcodescanner.IntentIntegrator
+import com.journeyapps.barcodescanner.ScanContract
+import com.journeyapps.barcodescanner.ScanOptions
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
 import com.squareup.picasso.Picasso
@@ -41,25 +42,21 @@ class AccountFragment : Fragment() {
     private var serverList: List<Pair<String, String>> = listOf()
     private var qrPollingTimer: Timer? = null
 
-    private val qrScanLauncher = registerForActivityResult(
-        androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == android.app.Activity.RESULT_OK && result.data != null) {
-            val scanned = result.data?.getStringExtra("SCAN_RESULT")
-            if (!scanned.isNullOrEmpty()) {
-                confirmQrLoginToken(scanned) { success, message ->
-                    safeUi {
-                        Toast.makeText(
-                            requireContext(),
-                            if (success) getString(R.string.qr_confirmed) else getString(R.string.generic_error_with_message, message ?: ""),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        if (success) loadProfileAndSetupUI(requireView())
-                    }
+    private val qrScanLauncher = registerForActivityResult(ScanContract()) { result ->
+        val scanned = result.contents
+        if (!scanned.isNullOrEmpty()) {
+            confirmQrLoginToken(scanned) { success, message ->
+                safeUi {
+                    Toast.makeText(
+                        requireContext(),
+                        if (success) getString(R.string.qr_confirmed) else getString(R.string.generic_error_with_message, message ?: ""),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    if (success) loadProfileAndSetupUI(requireView())
                 }
-            } else {
-                Toast.makeText(requireContext(), getString(R.string.qr_not_recognized), Toast.LENGTH_SHORT).show()
             }
+        } else {
+            Toast.makeText(requireContext(), getString(R.string.qr_not_recognized), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -549,10 +546,11 @@ private fun afterLogout(view: View) {
     }
 
     private fun startQrScanner() {
-        val integrator = com.journeyapps.barcodescanner.IntentIntegrator.forSupportFragment(this)
-        integrator.setDesiredBarcodeFormats(com.journeyapps.barcodescanner.IntentIntegrator.QR_CODE)
-        integrator.setPrompt(getString(R.string.qr_scan_prompt))
-        qrScanLauncher.launch(integrator.createScanIntent())
+        val options = ScanOptions().apply {
+            setDesiredBarcodeFormats(ScanOptions.QR_CODE)
+            setPrompt(getString(R.string.qr_scan_prompt))
+        }
+        qrScanLauncher.launch(options)
     }
 
     private fun downloadConfig(token: String, serverId: String, tunnelName: String, callback: (Boolean, String?) -> Unit) {
