@@ -89,7 +89,7 @@
     <string name="config_rename_error">Kan ikke endre navn på konfigurasjonsfilen «%s»</string>
     <string name="config_save_error">Kan ikke lagre konfigurasjonen for “%1$s”: %2$s</string>
     <string name="config_save_success">Vellykket lagring av konfigurasjon for «%s»</string>
-    <string name="create_activity_title">Opprett AmneziaWG tunnel</string>
+    <string name="create_activity_title">Opprett iDrugWG tunnel</string>
     <string name="create_bin_dir_error">Kan ikke opprette lokal binærmappe</string>
     <string name="create_downloads_file_error">Kan ikke opprette fil i nedlastingsmappen</string>
     <string name="create_empty">Lag fra begynnelsen</string>
@@ -133,12 +133,12 @@
     <string name="interface_title">Grensesnitt</string>
     <string name="key_contents_error">Ugyldig tegn i nøkkel</string>
     <string name="key_length_error">Ugyldig nøkkellengde</string>
-    <string name="key_length_explanation_base64">: AmneziaWG base64-nøkler må være 44 tegn (32 byte)</string>
-    <string name="key_length_explanation_binary">: AmneziaWG nøkler må være 32 byte</string>
-    <string name="key_length_explanation_hex">: AmneziaWG hex-nøkler må være 64 tegn (32 byte)</string>
+    <string name="key_length_explanation_base64">: iDrugWG base64-nøkler må være 44 tegn (32 byte)</string>
+    <string name="key_length_explanation_binary">: iDrugWG nøkler må være 32 byte</string>
+    <string name="key_length_explanation_hex">: iDrugWG hex-nøkler må være 64 tegn (32 byte)</string>
     <string name="listen_port">Lytt på port</string>
     <string name="log_export_error">Kan ikke eksportere logg: %s</string>
-    <string name="log_export_subject">AmneziaWG Android loggfil</string>
+    <string name="log_export_subject">iDrugWG Android loggfil</string>
     <string name="log_export_success">Lagret til «%s»</string>
     <string name="log_export_title">Eksporter loggfil</string>
     <string name="log_saver_activity_label">Lagre logg</string>
@@ -171,8 +171,8 @@
     <string name="parse_error_integer">nummer</string>
     <string name="parse_error_reason">Kan ikke tolke %1$s “%2$s”</string>
     <string name="peer">Partner</string>
-    <string name="permission_description">kontroller AmneziaWG-tunneler, aktiver og deaktiver dem. Kan potensielt ta ned internett-tilgangen</string>
-    <string name="permission_label">kontroller AmneziaWG-tunneler</string>
+    <string name="permission_description">kontroller iDrugWG-tunneler, aktiver og deaktiver dem. Kan potensielt ta ned internett-tilgangen</string>
+    <string name="permission_label">kontroller iDrugWG-tunneler</string>
     <string name="persistent_keepalive">Send keepalive-pakker</string>
     <string name="pre_shared_key">Forhåndsdelt nøkkel</string>
     <string name="pre_shared_key_enabled">aktivert</string>
@@ -190,7 +190,7 @@
     <string name="shell_start_error">Skallet klarte ikke å starte: %d</string>
     <string name="success_application_will_restart">Suksess. Programmet vil nå starte på nytt…</string>
     <string name="toggle_all">Toggle alle</string>
-    <string name="toggle_error">Feil under toggling av AmneziaWG tunnel: %s</string>
+    <string name="toggle_error">Feil under toggling av iDrugWG tunnel: %s</string>
     <string name="tools_installer_already">awg og awg-quick er allerede installert</string>
     <string name="tools_installer_failure">Kunne ikke installere kommandolinjeverktøy (ingen root-tilgang?)</string>
     <string name="tools_installer_initial">Installer valgfrie verktøy for skripting</string>
@@ -226,7 +226,7 @@
     <string name="version_summary">%1$s backend %2$s</string>
     <string name="version_summary_checking">Sjekker %s backend versjon</string>
     <string name="version_summary_unknown">Ukjent %s versjon</string>
-    <string name="version_title">AmneziaWG for Android v%s</string>
+    <string name="version_title">iDrugWG for Android v%s</string>
     <string name="vpn_not_authorized_error">VPN-tjeneste er ikke autorisert av bruker</string>
     <string name="vpn_start_error">Kan ikke starte Android VPN-tjenesten</string>
     <string name="zip_export_error">Kan ikke eksportere tunneler: %s</string>

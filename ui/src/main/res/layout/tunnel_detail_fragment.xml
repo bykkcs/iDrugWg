@@ -5,21 +5,21 @@
 
     <data>
 
-        <import type="org.amnezia.awg.backend.Tunnel.State" />
+        <import type="com.idrug.connections.backend.Tunnel.State" />
 
-        <import type="org.amnezia.awg.util.ClipboardUtils" />
+        <import type="com.idrug.connections.util.ClipboardUtils" />
 
         <variable
             name="fragment"
-            type="org.amnezia.awg.fragment.TunnelDetailFragment" />
+            type="com.idrug.connections.fragment.TunnelDetailFragment" />
 
         <variable
             name="tunnel"
-            type="org.amnezia.awg.model.ObservableTunnel" />
+            type="com.idrug.connections.model.ObservableTunnel" />
 
         <variable
             name="config"
-            type="org.amnezia.awg.config.Config" />
+            type="com.idrug.connections.config.Config" />
     </data>
 
     <ScrollView
@@ -57,7 +57,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <org.amnezia.awg.widget.ToggleSwitch
+                    <com.idrug.connections.widget.ToggleSwitch
                         android:id="@+id/tunnel_switch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -483,7 +483,7 @@
                         tools:text="1766607858" />
 
                     <androidx.constraintlayout.widget.Barrier
-                        android:id="@+id/amnezia_barrier"
+                        android:id="@+id/idrug_barrier"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:barrierDirection="bottom"
@@ -497,7 +497,7 @@
                         android:labelFor="@+id/applications_text"
                         android:text="@string/applications"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/amnezia_barrier" />
+                        app:layout_constraintTop_toBottomOf="@+id/idrug_barrier" />
 
                     <TextView
                         android:id="@+id/applications_text"

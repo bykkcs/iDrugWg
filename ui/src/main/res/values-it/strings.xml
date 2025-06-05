@@ -89,7 +89,7 @@
     <string name="config_rename_error">Impossibile rinominare il file di configurazione “%s”</string>
     <string name="config_save_error">Impossibile salvare la configurazione per “%1$s”: %2$s</string>
     <string name="config_save_success">Configurazione per “%s” salvata correttamente</string>
-    <string name="create_activity_title">Crea un tunnel AmneziaWG</string>
+    <string name="create_activity_title">Crea un tunnel iDrugWG</string>
     <string name="create_bin_dir_error">Impossibile creare cartella locale binari</string>
     <string name="create_downloads_file_error">Impossibile creare il file nella cartella di download</string>
     <string name="create_empty">Crea da zero</string>
@@ -133,14 +133,14 @@
     <string name="interface_title">Interfaccia</string>
     <string name="key_contents_error">Caratteri non validi nella chiave</string>
     <string name="key_length_error">Lunghezza non valida della chiave</string>
-    <string name="key_length_explanation_base64">: le chiavi base64 di AmneziaWG devono essere di 44 caratteri (32 byte)</string>
-    <string name="key_length_explanation_binary">: le chiavi di AmneziaWG devono essere di 32 byte</string>
-    <string name="key_length_explanation_hex">: le chiavi esadecimali di AmneziaWG devono essere di 64 caratteri (32 byte)</string>
+    <string name="key_length_explanation_base64">: le chiavi base64 di iDrugWG devono essere di 44 caratteri (32 byte)</string>
+    <string name="key_length_explanation_binary">: le chiavi di iDrugWG devono essere di 32 byte</string>
+    <string name="key_length_explanation_hex">: le chiavi esadecimali di iDrugWG devono essere di 64 caratteri (32 byte)</string>
     <string name="latest_handshake">Ultima negoziazione</string>
     <string name="latest_handshake_ago">%s fa</string>
     <string name="listen_port">Porta in ascolto</string>
     <string name="log_export_error">Impossibile esportare il log: %s</string>
-    <string name="log_export_subject">File di log AmneziaWG Android</string>
+    <string name="log_export_subject">File di log iDrugWG Android</string>
     <string name="log_export_success">Salvato in “%s”</string>
     <string name="log_export_title">Esporta file di log</string>
     <string name="log_saver_activity_label">Salva log</string>
@@ -173,8 +173,8 @@
     <string name="parse_error_integer">numero</string>
     <string name="parse_error_reason">Impossibile analizzare %1$s “%2$s”</string>
     <string name="peer">Peer</string>
-    <string name="permission_description">controllare i tunnel AmneziaWG, abilitando e disabilitando i tunnel a piacimento, potenzialmente dirottando il traffico Internet</string>
-    <string name="permission_label">controlla tunnel AmneziaWG</string>
+    <string name="permission_description">controllare i tunnel iDrugWG, abilitando e disabilitando i tunnel a piacimento, potenzialmente dirottando il traffico Internet</string>
+    <string name="permission_label">controlla tunnel iDrugWG</string>
     <string name="persistent_keepalive">Tieni sempre attivo</string>
     <string name="pre_shared_key">Chiave condivisa (PSK)</string>
     <string name="pre_shared_key_enabled">abilitata</string>
@@ -196,7 +196,7 @@
     <string name="shell_start_error">Avvio della shell non riuscito: %d</string>
     <string name="success_application_will_restart">Successo. L\'applicazione si riavvierà…</string>
     <string name="toggle_all">Inverti tutto</string>
-    <string name="toggle_error">Errore di commutazione tunnel AmneziaWG: %s</string>
+    <string name="toggle_error">Errore di commutazione tunnel iDrugWG: %s</string>
     <string name="tools_installer_already">awg e awg-quick sono già installati</string>
     <string name="tools_installer_failure">Impossibile installare strumenti di riga di comando (non root?)</string>
     <string name="tools_installer_initial">Installa strumenti facoltativi per script</string>
@@ -232,7 +232,7 @@
     <string name="version_summary">Backend %1$s %2$s</string>
     <string name="version_summary_checking">Controllo versione backend %s</string>
     <string name="version_summary_unknown">Versione %s sconosciuta</string>
-    <string name="version_title">AmneziaWG per Android v%s</string>
+    <string name="version_title">iDrugWG per Android v%s</string>
     <string name="vpn_not_authorized_error">Servizio VPN non autorizzato dall\'utente</string>
     <string name="vpn_start_error">Impossibile avviare il servizio VPN di Android</string>
     <string name="zip_export_error">Impossibile esportare i tunnel: %s</string>

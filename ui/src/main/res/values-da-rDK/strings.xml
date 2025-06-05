@@ -85,7 +85,7 @@
     <string name="config_rename_error">Kan ikke omdøbe konfigurationsfilen \"%s\"</string>
     <string name="config_save_error">Kan ikke gemme konfigurationen for \"%1$s\": %2$s</string>
     <string name="config_save_success">Konfiguration for \"%s\" blev gemt</string>
-    <string name="create_activity_title">Opret AmneziaWG tunnel</string>
+    <string name="create_activity_title">Opret iDrugWG tunnel</string>
     <string name="create_empty">Opret fra ny</string>
     <string name="create_from_file">Importér fra fil eller arkiv</string>
     <string name="create_from_qr_code">Scan fra QR-kode</string>
@@ -123,7 +123,7 @@
     <string name="latest_handshake_ago">%s siden</string>
     <string name="listen_port">Lytteport</string>
     <string name="log_export_error">Kunne ikke eksportere log: %s</string>
-    <string name="log_export_subject">AmneziaWG Android Log-fil</string>
+    <string name="log_export_subject">iDrugWG Android Log-fil</string>
     <string name="log_export_success">Gemt til \"%s\"</string>
     <string name="log_export_title">Eksportér log-fil</string>
     <string name="log_saver_activity_label">Gem log</string>
@@ -177,7 +177,7 @@
     <string name="type_name_kernel_module">Kerne modul</string>
     <string name="unknown_error">Ukendt fejl</string>
     <string name="version_summary_unknown">Ukendt %s version</string>
-    <string name="version_title">AmneziaWG for Android v%s</string>
+    <string name="version_title">iDrugWG for Android v%s</string>
     <string name="zip_export_error">Ikke i stand til at eksportere tunneler: %s</string>
     <string name="zip_export_success">Gemt til \"%s\"</string>
     <string name="zip_export_title">Eksportér tunneler til zip-fil</string>

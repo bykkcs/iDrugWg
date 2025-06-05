@@ -5,11 +5,11 @@
 
     <data>
 
-        <import type="org.amnezia.awg.util.ClipboardUtils" />
+        <import type="com.idrug.connections.util.ClipboardUtils" />
 
         <variable
             name="item"
-            type="org.amnezia.awg.config.Peer" />
+            type="com.idrug.connections.config.Peer" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

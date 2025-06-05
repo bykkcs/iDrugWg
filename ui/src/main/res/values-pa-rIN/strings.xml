@@ -129,9 +129,9 @@
     <string name="interface_title">ਇੰਟਰਫੇਸ</string>
     <string name="key_contents_error">ਕੁੰਜੀ ਵਿੱਚ ਗ਼ਲਤ ਅੱਖਰ</string>
     <string name="key_length_error">ਗ਼ਲਤ ਕੁੰਜੀ ਦੀ ਲੰਬਾਈ</string>
-    <string name="key_length_explanation_base64">: AmneziaWG base64 ਕੁੰਜੀਆਂ ਵਿੱਚ 44 ਅੱਖਰ ਹੋਣੇ ਚਾਹੀਦੇ ਹਨ (32 ਬਾਈਟ)</string>
-    <string name="key_length_explanation_binary">: AmneziaWG ਕੁੰਜੀਆਂ 32 ਬਾਈਟ ਹੋਣੀਆਂ ਚਾਹੀਦੀਆਂ ਹਨ</string>
-    <string name="key_length_explanation_hex">: AmneziaWG ਹੈਕਸਾ ਕੁੰਜੀਆਂ ਵਿੱਚ 64 ਅੱਖਰ ਹੋਣੇ ਚਾਹੀਦੇ ਹਨ (32 ਬਾਈਟ)</string>
+    <string name="key_length_explanation_base64">: iDrugWG base64 ਕੁੰਜੀਆਂ ਵਿੱਚ 44 ਅੱਖਰ ਹੋਣੇ ਚਾਹੀਦੇ ਹਨ (32 ਬਾਈਟ)</string>
+    <string name="key_length_explanation_binary">: iDrugWG ਕੁੰਜੀਆਂ 32 ਬਾਈਟ ਹੋਣੀਆਂ ਚਾਹੀਦੀਆਂ ਹਨ</string>
+    <string name="key_length_explanation_hex">: iDrugWG ਹੈਕਸਾ ਕੁੰਜੀਆਂ ਵਿੱਚ 64 ਅੱਖਰ ਹੋਣੇ ਚਾਹੀਦੇ ਹਨ (32 ਬਾਈਟ)</string>
     <string name="listen_port">ਸੁਣਨ ਵਾਲੀ ਪੋਰਟ</string>
     <string name="log_export_error">ਲਾਗ ਐਕਸਪੋਰਟ ਕਰਨ ਲਈ ਅਸਮਰੱਥ: %s</string>
     <string name="log_export_subject">ਵਾਇਰਗਾਰਡ ਐਂਡਰਾਈਡ ਲਾਗ ਫ਼ਾਇਲ</string>
@@ -219,7 +219,7 @@
     <string name="unknown_error">ਅਣਪਛਾਤੀ ਗਲਤੀ</string>
     <string name="version_summary_checking">%s ਬੈਕਐਂਡ ਵਰਜ਼ਨ ਦੀ ਜਾਂਚ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ</string>
     <string name="version_summary_unknown">ਅਣਪਛਾਤਾ %s ਵਰਜਨ</string>
-    <string name="version_title">Android ਲਈ AmneziaWG v%s</string>
+    <string name="version_title">Android ਲਈ iDrugWG v%s</string>
     <string name="vpn_not_authorized_error">VPN ਸੇਵਾ ਨੂੰ ਵਰਤੋਂਕਾਰ ਨੇ ਪਰਮਾਣਿਤ ਨਹੀਂ ਕੀਤਾ</string>
     <string name="vpn_start_error">ਐਂਡਰਾਈਡ VPN ਸੇਵਾ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅਸਮਰੱਥ</string>
     <string name="zip_export_error">ਟਨਲਾਂ ਐਕਸਪੋਰਟ ਕਰਨ ਲਈ ਅਸਮਰੱਥ: %s</string>

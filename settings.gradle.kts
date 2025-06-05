@@ -21,7 +21,7 @@ plugins {
     id("com.android.settings") version "8.3.0"
 }
 
-rootProject.name = "amneziawg-android"
+rootProject.name = "iDrugWG-android"
 
 include(":tunnel")
 include(":ui")
