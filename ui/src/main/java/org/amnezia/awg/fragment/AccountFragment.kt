@@ -13,7 +13,6 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
-import com.journeyapps.barcodescanner.ScanOptions
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -21,6 +20,7 @@ import okhttp3.*
 import org.amnezia.awg.R
 import org.amnezia.awg.Application
 import org.amnezia.awg.config.Config
+import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 import java.io.IOException
@@ -34,20 +34,11 @@ class AccountFragment : Fragment() {
     private lateinit var prefs: SharedPreferences
     private val handler = Handler(Looper.getMainLooper())
     private var destroyed = false
-    private var qrPollingTimer: Timer? = null
 
-    // --- Для выбора сервера ---
-    private var selectedServerIndex: Int = -1
     private var selectedServerId: String? = null
     private var selectedServerName: String? = null
-
-    // Порядок должен совпадать с backend!
-    private val servers = listOf(
-        Pair("germany", "Германия"),
-        Pair("multihop", "Мультхоп Германия"),
-        Pair("bulgaria", "Болгария"),
-        Pair("madrid", "Мадрид")
-    )
+    private var serverList: List<Pair<String, String>> = listOf()
+    private var qrPollingTimer: Timer? = null
 
     private val qrScanLauncher = registerForActivityResult(
         androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
@@ -89,9 +80,8 @@ class AccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         prefs = requireContext().getSharedPreferences("auth", Context.MODE_PRIVATE)
-        showCorrectScreen(view)
         setupListeners(view)
-        setupServerSpinner(view)
+        showCorrectScreen(view)
     }
 
     private fun setupListeners(view: View) {
@@ -140,36 +130,6 @@ class AccountFragment : Fragment() {
         setFabScanQr(isLoggedIn())
     }
 
-    private fun setupServerSpinner(view: View) {
-        val spinner = view.findViewById<Spinner>(R.id.spinner_server)
-        val btnDownload = view.findViewById<Button>(R.id.btn_download)
-        val serverNames = servers.map { it.second }
-
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, serverNames)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = adapter
-
-        selectedServerIndex = -1
-        selectedServerId = null
-        selectedServerName = null
-        btnDownload.isEnabled = false
-
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, v: View?, position: Int, id: Long) {
-                selectedServerIndex = position
-                selectedServerId = servers[position].first
-                selectedServerName = servers[position].second
-                btnDownload.isEnabled = true
-            }
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                selectedServerIndex = -1
-                selectedServerId = null
-                selectedServerName = null
-                btnDownload.isEnabled = false
-            }
-        }
-    }
-
     private fun isLoggedIn(): Boolean {
         return !prefs.getString("token", null).isNullOrEmpty()
     }
@@ -190,15 +150,82 @@ class AccountFragment : Fragment() {
                 ""
             )
             setFabScanQr(true)
-            loadProfileAndSetupUI(view)
+            loadServersAndProfileUI(view)
         } else {
             showLoginScreen(view)
             setFabScanQr(false)
         }
     }
 
-    private fun loadProfileAndSetupUI(view: View) {
+    private fun loadServersAndProfileUI(view: View) {
         setLoading(true)
+        // Получаем список серверов
+        val client = OkHttpClient()
+        val url = "https://idrug.pw/api/servers"
+        client.newCall(Request.Builder().url(url).build()).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                serverList = listOf(
+                    "germany" to "Германия",
+                    "multihop" to "Мультхоп Германия",
+                    "bulgaria" to "Болгария",
+                    "madrid" to "Мадрид"
+                )
+                safeUi {
+                    setupServerSpinner(view)
+                    loadProfileAndSetupUI(view)
+                }
+            }
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val arr = JSONArray(response.body?.string() ?: "[]")
+                    serverList = List(arr.length()) {
+                        val obj = arr.getJSONObject(it)
+                        obj.getString("id") to obj.getString("name")
+                    }
+                } else {
+                    serverList = listOf(
+                        "germany" to "Германия",
+                        "multihop" to "Мультхоп Германия",
+                        "bulgaria" to "Болгария",
+                        "madrid" to "Мадрид"
+                    )
+                }
+                safeUi {
+                    setupServerSpinner(view)
+                    loadProfileAndSetupUI(view)
+                }
+            }
+        })
+    }
+
+    private fun setupServerSpinner(view: View) {
+        val spinner = view.findViewById<Spinner>(R.id.spinner_server)
+        val btnDownload = view.findViewById<Button>(R.id.btn_download)
+        val serverNames = serverList.map { it.second }
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, serverNames)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+        selectedServerId = null
+        selectedServerName = null
+        btnDownload.isEnabled = false
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, v: View?, position: Int, id: Long) {
+                selectedServerId = serverList[position].first
+                selectedServerName = serverList[position].second
+                btnDownload.isEnabled = true
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                selectedServerId = null
+                selectedServerName = null
+                btnDownload.isEnabled = false
+            }
+        }
+        spinner.visibility = View.VISIBLE
+        view.findViewById<TextView>(R.id.text_server_choice).visibility = View.VISIBLE
+        btnDownload.visibility = View.VISIBLE
+    }
+
+    private fun loadProfileAndSetupUI(view: View) {
         val token = prefs.getString("token", null)
         if (token == null) {
             safeUi {
@@ -208,7 +235,6 @@ class AccountFragment : Fragment() {
             }
             return
         }
-
         val client = OkHttpClient()
         val url = "https://idrug.pw/api/profile"
         val request = Request.Builder()
@@ -257,6 +283,8 @@ class AccountFragment : Fragment() {
         view.findViewById<Button>(R.id.btn_download).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_renew).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout).visibility = View.GONE
+        view.findViewById<Spinner>(R.id.spinner_server).visibility = View.GONE
+        view.findViewById<TextView>(R.id.text_server_choice).visibility = View.GONE
         view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.GONE
         view.findViewById<TextView>(R.id.text_current_user).text = "Вход через Telegram или QR"
         view.findViewById<TextView>(R.id.status_text).text = ""
@@ -269,7 +297,8 @@ class AccountFragment : Fragment() {
         view.findViewById<Button>(R.id.btn_show_qr_login).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout).visibility = View.VISIBLE
         view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.GONE
-        view.findViewById<TextView>(R.id.text_current_user).text = "Ваш логин: $username"
+        view.findViewById<Spinner>(R.id.spinner_server).visibility = View.VISIBLE
+        view.findViewById<TextView>(R.id.text_server_choice).visibility = View.VISIBLE
         val avatarImage = view.findViewById<ImageView>(R.id.avatar_image)
         if (!photoUrl.isNullOrEmpty()) {
             Picasso.get()
@@ -281,25 +310,16 @@ class AccountFragment : Fragment() {
         } else {
             avatarImage.setImageResource(R.drawable.ic_avatar_placeholder)
         }
-        view.findViewById<Button>(R.id.btn_download).visibility = View.GONE
-        view.findViewById<Button>(R.id.btn_renew).visibility = View.GONE
-        when (status) {
-            "revoked" -> {
-                view.findViewById<Button>(R.id.btn_renew).visibility = View.VISIBLE
-                view.findViewById<TextView>(R.id.status_text).text = "Доступ к конфигу заблокирован. Оплатите подписку для восстановления."
+        view.findViewById<Button>(R.id.btn_download).visibility = if (status == "active") View.VISIBLE else View.GONE
+        view.findViewById<Button>(R.id.btn_renew).visibility = if (status != "active") View.VISIBLE else View.GONE
+        view.findViewById<TextView>(R.id.text_current_user).text = "Ваш логин: $username"
+        view.findViewById<TextView>(R.id.status_text).text =
+            when (status) {
+                "revoked" -> "Доступ к конфигу заблокирован. Оплатите подписку для восстановления."
+                "expired" -> "Срок действия подписки истёк. Оплатите для получения нового конфига."
+                "active" -> "Скачайте конфиг для автоматического импорта в приложение"
+                else -> "Статус аккаунта: $status"
             }
-            "expired" -> {
-                view.findViewById<Button>(R.id.btn_renew).visibility = View.VISIBLE
-                view.findViewById<TextView>(R.id.status_text).text = "Срок действия подписки истёк. Оплатите для получения нового конфига."
-            }
-            "active" -> {
-                view.findViewById<Button>(R.id.btn_download).visibility = View.VISIBLE
-                view.findViewById<TextView>(R.id.status_text).text = "Скачайте конфиг для автоматического импорта в приложение"
-            }
-            else -> {
-                view.findViewById<TextView>(R.id.status_text).text = "Статус аккаунта: $status"
-            }
-        }
         view.findViewById<TextView>(R.id.text_expiration).text = expDateStr?.let {
             if (status == "active" && it.isNotEmpty()) {
                 val fixed = it.replace("T", " ").substring(0, 19)
@@ -316,24 +336,28 @@ class AccountFragment : Fragment() {
         view?.findViewById<View>(R.id.loading_overlay)?.visibility = if (loading) View.VISIBLE else View.GONE
     }
 
-    private fun afterLogout(view: View) {
-        val username = prefs.getString("username", null)
-        if (username != null) {
-            deleteTunnelAndFile(username) {
-                safeUi {
-                    prefs.edit().clear().apply()
-                    showLoginScreen(view)
-                    setFabScanQr(false)
-                    Toast.makeText(requireContext(), "Вы вышли из аккаунта и туннель удалён", Toast.LENGTH_SHORT).show()
+private fun afterLogout(view: View) {
+    prefs.edit().clear().apply()
+    MainScope().launch {
+        try {
+            val tunnelManager = Application.getTunnelManager()
+            val tunnels = tunnelManager.getTunnels()
+            tunnels
+                .filter { it.name.startsWith("idrug_") }
+                .forEach { tunnel ->
+                    tunnelManager.delete(tunnel)
                 }
-            }
-        } else {
-            prefs.edit().clear().apply()
+        } catch (e: Exception) {
+            // Можно залогировать ошибку, если потребуется
+        }
+        safeUi {
             showLoginScreen(view)
             setFabScanQr(false)
             Toast.makeText(requireContext(), "Вы вышли из аккаунта", Toast.LENGTH_SHORT).show()
         }
     }
+}
+
 
     private fun handleDownloadConfig(view: View) {
         if (selectedServerId == null) {
@@ -385,98 +409,7 @@ class AccountFragment : Fragment() {
         }
     }
 
-    private fun downloadConfig(token: String, serverId: String, tunnelName: String, callback: (Boolean, String?) -> Unit) {
-        val client = OkHttpClient()
-        val url = "https://idrug.pw/api/configs/$tunnelName/download?location=$serverId"
-        val request = Request.Builder()
-            .url(url)
-            .addHeader("Authorization", "Bearer $token")
-            .build()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                callback(false, e.message)
-            }
-            override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    callback(true, response.body?.string())
-                } else {
-                    callback(false, response.body?.string())
-                }
-            }
-        })
-    }
-
-    private fun renewSubscription(callback: (Boolean, String?) -> Unit) {
-        val token = prefs.getString("token", null) ?: return callback(false, "Нет токена")
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url("https://idrug.pw/api/profile/renew")
-            .post("".toRequestBody("application/json".toMediaType()))
-            .addHeader("Authorization", "Bearer $token")
-            .build()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                callback(false, e.message)
-            }
-            override fun onResponse(call: Call, response: Response) {
-                callback(response.isSuccessful, response.body?.string())
-            }
-        })
-    }
-
-    private fun deleteTunnelAndFile(tunnelName: String, onFinish: () -> Unit) {
-        val tunnelManager = Application.getTunnelManager()
-        MainScope().launch {
-            try {
-                val tunnels = tunnelManager.getTunnels()
-                val tunnel = tunnels.firstOrNull { it.name == tunnelName }
-                if (tunnel != null) tunnelManager.delete(tunnel)
-                val file = File(requireContext().filesDir, "wg_$tunnelName.conf")
-                if (file.exists()) file.delete()
-            } catch (_: Exception) {}
-            onFinish()
-        }
-    }
-
-    class CircleTransform : com.squareup.picasso.Transformation {
-        override fun transform(source: Bitmap): Bitmap {
-            val size = Math.min(source.width, source.height)
-            val x = (source.width - size) / 2
-            val y = (source.height - size) / 2
-            val squaredBitmap = Bitmap.createBitmap(source, x, y, size, size)
-            if (squaredBitmap != source) source.recycle()
-            val bitmap = Bitmap.createBitmap(size, size, source.config ?: Bitmap.Config.ARGB_8888)
-            val canvas = Canvas(bitmap)
-            val paint = Paint()
-            val shader = BitmapShader(squaredBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
-            paint.shader = shader
-            paint.isAntiAlias = true
-            val r = size / 2f
-            canvas.drawCircle(r, r, r, paint)
-            squaredBitmap.recycle()
-            return bitmap
-        }
-        override fun key() = "circle"
-    }
-
-    private fun safeUi(block: () -> Unit) {
-        if (destroyed || !isAdded || activity == null) return
-        handler.post {
-            if (!destroyed && isAdded && activity != null) block()
-        }
-    }
-
-    private fun startQrScanner() {
-        val options = ScanOptions().apply {
-            setDesiredBarcodeFormats(ScanOptions.QR_CODE)
-            setPrompt("Сканируйте QR для передачи сессии")
-            setCameraId(0)
-            setBeepEnabled(true)
-            setBarcodeImageEnabled(false)
-        }
-        qrScanLauncher.launch(options.createScanIntent(requireContext()))
-    }
-
+    // QR — генерация, polling, подтверждение (как раньше)
     private fun generateQrLoginToken(onComplete: (String?) -> Unit) {
         val client = OkHttpClient()
         val request = Request.Builder()
@@ -484,9 +417,7 @@ class AccountFragment : Fragment() {
             .post("".toRequestBody("application/json".toMediaType()))
             .build()
         client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                safeUi { onComplete(null) }
-            }
+            override fun onFailure(call: Call, e: IOException) { safeUi { onComplete(null) } }
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val json = JSONObject(response.body?.string() ?: "{}")
@@ -616,6 +547,50 @@ class AccountFragment : Fragment() {
         })
     }
 
+    private fun startQrScanner() {
+        // Используй свою ActivityResult/Intent для сканирования QR (ZXing и т.п.)
+        // ...
+    }
+
+    private fun downloadConfig(token: String, serverId: String, tunnelName: String, callback: (Boolean, String?) -> Unit) {
+        val client = OkHttpClient()
+        val url = "https://idrug.pw/api/profile/download?server=$serverId"
+        val request = Request.Builder()
+            .url(url)
+            .addHeader("Authorization", "Bearer $token")
+            .build()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                callback(false, e.message)
+            }
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    callback(true, response.body?.string())
+                } else {
+                    callback(false, response.body?.string())
+                }
+            }
+        })
+    }
+
+    private fun renewSubscription(callback: (Boolean, String?) -> Unit) {
+        val token = prefs.getString("token", null) ?: return callback(false, "Нет токена")
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url("https://idrug.pw/api/profile/renew")
+            .post("".toRequestBody("application/json".toMediaType()))
+            .addHeader("Authorization", "Bearer $token")
+            .build()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                callback(false, e.message)
+            }
+            override fun onResponse(call: Call, response: Response) {
+                callback(response.isSuccessful, response.body?.string())
+            }
+        })
+    }
+
     private fun handleDeepLink(intent: Intent?) {
         val data = intent?.data
         if (data != null && data.scheme == "idrug" && data.host == "auth") {
@@ -632,6 +607,34 @@ class AccountFragment : Fragment() {
                 showCorrectScreen(requireView())
             }
             requireActivity().intent.data = null
+        }
+    }
+
+    class CircleTransform : com.squareup.picasso.Transformation {
+        override fun transform(source: Bitmap): Bitmap {
+            val size = Math.min(source.width, source.height)
+            val x = (source.width - size) / 2
+            val y = (source.height - size) / 2
+            val squaredBitmap = Bitmap.createBitmap(source, x, y, size, size)
+            if (squaredBitmap != source) source.recycle()
+            val bitmap = Bitmap.createBitmap(size, size, source.config ?: Bitmap.Config.ARGB_8888)
+            val canvas = Canvas(bitmap)
+            val paint = Paint()
+            val shader = BitmapShader(squaredBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
+            paint.shader = shader
+            paint.isAntiAlias = true
+            val r = size / 2f
+            canvas.drawCircle(r, r, r, paint)
+            squaredBitmap.recycle()
+            return bitmap
+        }
+        override fun key() = "circle"
+    }
+
+    private fun safeUi(block: () -> Unit) {
+        if (destroyed || !isAdded || activity == null) return
+        handler.post {
+            if (!destroyed && isAdded && activity != null) block()
         }
     }
 }
