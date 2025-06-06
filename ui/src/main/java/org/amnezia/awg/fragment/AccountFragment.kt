@@ -13,6 +13,8 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
+import com.journeyapps.barcodescanner.ScanContract
+import com.journeyapps.barcodescanner.ScanOptions
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -39,28 +41,27 @@ class AccountFragment : Fragment() {
     private var selectedServerName: String? = null
     private var serverList: List<Pair<String, String>> = listOf()
     private var qrPollingTimer: Timer? = null
-
-    private val qrScanLauncher = registerForActivityResult(
-        androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == android.app.Activity.RESULT_OK && result.data != null) {
-            val scanned = result.data?.getStringExtra("SCAN_RESULT")
-            if (!scanned.isNullOrEmpty()) {
-                confirmQrLoginToken(scanned) { success, message ->
-                    safeUi {
-                        Toast.makeText(
-                            requireContext(),
-                            if (success) "Вход подтверждён через QR" else "Ошибка подтверждения: $message",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        if (success) loadProfileAndSetupUI(requireView())
+    private val qrScanLauncher = registerForActivityResult(ScanContract()) { result ->
+        val scanned = result.contents
+        if (!scanned.isNullOrEmpty()) {
+            confirmQrLoginToken(scanned) { success, message ->
+                safeUi {
+                    Toast.makeText(
+                        requireContext(),
+                        if (success) "Вход подтверждён через QR" else "Ошибка подтверждения: $message",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    if (success) {
+                        loadProfileAndSetupUI(requireView())
                     }
                 }
-            } else {
-                Toast.makeText(requireContext(), "QR не распознан", Toast.LENGTH_SHORT).show()
             }
+        } else {
+            Toast.makeText(requireContext(), "QR не распознан", Toast.LENGTH_SHORT).show()
         }
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -413,7 +414,7 @@ private fun afterLogout(view: View) {
     private fun generateQrLoginToken(onComplete: (String?) -> Unit) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("https://idrug.pw/api/qr/login_token")
+            .url("https://idrug.pw/auth/qr_token")
             .post("".toRequestBody("application/json".toMediaType()))
             .build()
         client.newCall(request).enqueue(object : Callback {
@@ -472,7 +473,7 @@ private fun afterLogout(view: View) {
     private fun pollQrLoginStatus(token: String, onResult: (Boolean, String?, String?, String?) -> Unit) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("https://idrug.pw/api/qr/login_status/$token")
+            .url("https://idrug.pw/auth/wait?token=$token")
             .get()
             .build()
         client.newCall(request).enqueue(object : Callback {
@@ -482,13 +483,10 @@ private fun afterLogout(view: View) {
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val json = JSONObject(response.body?.string() ?: "{}")
-                    val status = json.optString("status")
-                    if (status == "confirmed") {
-                        val jwt = json.optString("token")
+                    val jwt = json.optString("session")
+                    if (!jwt.isNullOrEmpty()) {
                         getProfileFromJwt(jwt) { success, username, photoUrl ->
-                            safeUi {
-                                onResult(success, jwt, username, photoUrl)
-                            }
+                            safeUi { onResult(success, jwt, username, photoUrl) }
                         }
                     } else {
                         safeUi { onResult(false, null, null, null) }
@@ -533,7 +531,7 @@ private fun afterLogout(view: View) {
         val json = """{"token":"$token"}"""
         val body = json.toRequestBody("application/json".toMediaType())
         val request = Request.Builder()
-            .url("https://idrug.pw/api/qr/login_confirm")
+            .url("https://idrug.pw/auth/confirm_qr")
             .addHeader("Authorization", "Bearer $jwt")
             .post(body)
             .build()
@@ -548,8 +546,12 @@ private fun afterLogout(view: View) {
     }
 
     private fun startQrScanner() {
-        // Используй свою ActivityResult/Intent для сканирования QR (ZXing и т.п.)
-        // ...
+        qrScanLauncher.launch(
+            ScanOptions()
+                .setOrientationLocked(false)
+                .setBeepEnabled(false)
+                .setPrompt(getString(R.string.qr_code_hint))
+        )
     }
 
     private fun downloadConfig(token: String, serverId: String, tunnelName: String, callback: (Boolean, String?) -> Unit) {

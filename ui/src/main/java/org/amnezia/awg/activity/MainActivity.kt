@@ -1,6 +1,9 @@
 package org.amnezia.awg.activity
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -57,6 +60,17 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (isTv(this)) {
+            val prefs: SharedPreferences = getSharedPreferences("auth", Context.MODE_PRIVATE)
+            if (prefs.getBoolean("first_tv_launch", true)) {
+                prefs.edit().putBoolean("first_tv_launch", false).apply()
+                startActivity(Intent(this, TvMainActivity::class.java))
+                finish()
+                return
+            }
+        }
+
         setContentView(R.layout.main_activity)
         actionBar = supportActionBar
         isTwoPaneLayout = findViewById<View?>(R.id.master_detail_wrapper) != null
@@ -122,7 +136,6 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                 startActivity(Intent(this, SettingsActivity::class.java))
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -155,5 +168,9 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         }
         return true
     }
-
+    private fun isTv(context: Context): Boolean {
+        val pm = context.packageManager
+        return pm.hasSystemFeature(PackageManager.FEATURE_LEANBACK) ||
+                pm.hasSystemFeature("android.software.leanback")
+    }
 }
