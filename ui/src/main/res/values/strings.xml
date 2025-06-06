@@ -262,7 +262,19 @@
     <string name="account_avatar">Аватар пользователя</string>
     <string name="biometric_auth_error_reason">Authentication failure: %s</string>
     <string name="import_disclaimer">Ensure that you obtained the configuration file from a trusted source.
-    
+
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>
 </string>
+    <string name="login_by_qr">Войти по QR</string>
+    <string name="add_config">Добавить конфиг</string>
+    <string name="tv_toggle_vpn">Переключить VPN</string>
+    <string name="logout">Выйти</string>
+    <string name="login_needed">Требуется вход</string>
+    <string name="vpn_ready">VPN готов</string>
+    <string name="choose_location">Выберите локацию</string>
+    <string name="scan_qr_from_phone">Сканируйте QR с телефона</string>
+    <string name="error_network">Ошибка сети</string>
+    <string name="config_already_added">Конфиг уже добавлен</string>
+    <string name="login_success">Вход выполнен</string>
+    <string name="open_tv_mode">TV режим</string>
 </resources>
