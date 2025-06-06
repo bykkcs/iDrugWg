@@ -13,6 +13,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
+import com.journeyapps.barcodescanner.ScanOptions
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -548,8 +549,14 @@ private fun afterLogout(view: View) {
     }
 
     private fun startQrScanner() {
-        // Используй свою ActivityResult/Intent для сканирования QR (ZXing и т.п.)
-        // ...
+        val options = ScanOptions().apply {
+            setDesiredBarcodeFormats(ScanOptions.QR_CODE)
+            setPrompt("Сканируйте QR для передачи сессии")
+            setCameraId(0)
+            setBeepEnabled(true)
+            setBarcodeImageEnabled(false)
+        }
+        qrScanLauncher.launch(options.createScanIntent(requireContext()))
     }
 
     private fun downloadConfig(token: String, serverId: String, tunnelName: String, callback: (Boolean, String?) -> Unit) {
