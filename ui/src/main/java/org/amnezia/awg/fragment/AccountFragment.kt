@@ -51,10 +51,9 @@ class AccountFragment : Fragment() {
                     safeUi {
                         Toast.makeText(
                             requireContext(),
-                            if (success) "Вход подтверждён через QR" else "Ошибка подтверждения: $message",
+                            if (success) "Сессия передана" else "Ошибка подтверждения: $message",
                             Toast.LENGTH_SHORT
                         ).show()
-                        if (success) loadProfileAndSetupUI(requireView())
                     }
                 }
             } else {
@@ -484,15 +483,21 @@ private fun afterLogout(view: View) {
                 if (response.isSuccessful) {
                     val json = JSONObject(response.body?.string() ?: "{}")
                     val status = json.optString("status")
-                    if (status == "confirmed") {
-                        val jwt = json.optString("token")
-                        getProfileFromJwt(jwt) { success, username, photoUrl ->
-                            safeUi {
-                                onResult(success, jwt, username, photoUrl)
+                    when (status) {
+                        "confirmed" -> {
+                            val jwt = json.optString("token")
+                            getProfileFromJwt(jwt) { success, username, photoUrl ->
+                                safeUi { onResult(success, jwt, username, photoUrl) }
                             }
                         }
-                    } else {
-                        safeUi { onResult(false, null, null, null) }
+                        "expired", "used" -> {
+                            qrPollingTimer?.cancel()
+                            safeUi {
+                                Toast.makeText(requireContext(), "QR-код истёк или уже использован", Toast.LENGTH_SHORT).show()
+                                onResult(false, null, null, null)
+                            }
+                        }
+                        else -> safeUi { onResult(false, null, null, null) }
                     }
                 } else {
                     safeUi { onResult(false, null, null, null) }
