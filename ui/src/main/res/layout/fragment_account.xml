@@ -26,7 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:paddingBottom="@dimen/design_fab_size_normal">
 
         <LinearLayout
             android:id="@+id/root_layout"
@@ -117,6 +118,7 @@
                 android:layout_marginTop="8dp"
                 android:visibility="gone" />
 
+
             <TextView
                 android:id="@+id/status_text"
                 android:layout_width="match_parent"
@@ -146,5 +148,5 @@
         android:src="@android:drawable/ic_menu_camera"
         android:contentDescription="Сканировать QR"
         android:layout_gravity="bottom|end"
-        android:layout_margin="28dp" />
+        android:layout_margin="@dimen/fab_margin" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
