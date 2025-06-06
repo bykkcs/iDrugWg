@@ -416,7 +416,7 @@ private fun afterLogout(view: View) {
     private fun generateQrLoginToken(onComplete: (String?) -> Unit) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("http://194.113.233.251:8000/api/qr/login_token")
+            .url("https://idrug.pw/api/qr/login_token")
             .post("".toRequestBody("application/json".toMediaType()))
             .build()
         client.newCall(request).enqueue(object : Callback {
@@ -459,9 +459,12 @@ private fun afterLogout(view: View) {
                 pollQrLoginStatus(token) { confirmed, jwt, username ->
                     if (confirmed && jwt != null && username != null) {
                         qrPollingTimer?.cancel()
-                        prefs.edit().putString("username", username).putString("token", jwt).apply()
+                        prefs.edit()
+                            .putString("username", username)
+                            .putString("token", jwt)
+                            .apply()
                         Toast.makeText(requireContext(), "Вход подтверждён: $username", Toast.LENGTH_SHORT).show()
-                        safeUi { afterLogin(username, jwt) }
+                        safeUi { showCorrectScreen(requireView()) }
                     }
                 }
             }
@@ -476,7 +479,7 @@ private fun afterLogout(view: View) {
     private fun pollQrLoginStatus(token: String, onResult: (Boolean, String?, String?) -> Unit) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("http://194.113.233.251:8000/api/qr/login_status/$token")
+            .url("https://idrug.pw/api/qr/login_status/$token")
             .get()
             .build()
         client.newCall(request).enqueue(object : Callback {
@@ -531,11 +534,10 @@ private fun afterLogout(view: View) {
             return
         }
         val client = OkHttpClient()
-        val json = """{"token":"$token"}"""
+        val json = """{"token":"$token","session":"$tokenJwt"}"""
         val body = json.toRequestBody("application/json".toMediaType())
         val request = Request.Builder()
-            .url("http://194.113.233.251:8000/api/qr/login_confirm")
-            .addHeader("Authorization", "Bearer $tokenJwt")
+            .url("https://idrug.pw/api/qr/login_confirm")
             .post(body)
             .build()
         client.newCall(request).enqueue(object : Callback {
