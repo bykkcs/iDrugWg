@@ -13,6 +13,7 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import okhttp3.*
 import org.amnezia.awg.Application
 import org.amnezia.awg.R
@@ -265,7 +266,7 @@ class TvMainActivity : AppCompatActivity() {
 
     private fun tunnelExists(name: String): Boolean {
         val tm = Application.getTunnelManager()
-        return tm.getTunnels().any { it.name == name }
+        return runBlocking { tm.getTunnels().any { it.name == name } }
     }
 
     private fun safeUi(block: () -> Unit) { handler.post { block() } }
