@@ -13,6 +13,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
+import com.journeyapps.barcodescanner.ScanOptions
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -34,6 +35,8 @@ class AccountFragment : Fragment() {
     private lateinit var prefs: SharedPreferences
     private val handler = Handler(Looper.getMainLooper())
     private var destroyed = false
+
+    private val ACCOUNT_TUNNELS_KEY = "account_tunnels"
 
     private var selectedServerId: String? = null
     private var selectedServerName: String? = null
@@ -337,19 +340,14 @@ class AccountFragment : Fragment() {
     }
 
 private fun afterLogout(view: View) {
+    val accountTunnels = prefs.getStringSet(ACCOUNT_TUNNELS_KEY, emptySet()) ?: emptySet()
     prefs.edit().clear().apply()
     MainScope().launch {
         try {
             val tunnelManager = Application.getTunnelManager()
             val tunnels = tunnelManager.getTunnels()
-            tunnels
-                .filter { it.name.startsWith("idrug_") }
-                .forEach { tunnel ->
-                    tunnelManager.delete(tunnel)
-                }
-        } catch (e: Exception) {
-            // Можно залогировать ошибку, если потребуется
-        }
+            tunnels.filter { it.name in accountTunnels }.forEach { tunnelManager.delete(it) }
+        } catch (_: Exception) { }
         safeUi {
             showLoginScreen(view)
             setFabScanQr(false)
@@ -395,6 +393,9 @@ private fun afterLogout(view: View) {
                                 val config = Config.parse(file.bufferedReader())
                                 tunnelManager.create(tunnelName, config)
                                 file.delete()
+                                val set = prefs.getStringSet(ACCOUNT_TUNNELS_KEY, mutableSetOf())?.toMutableSet() ?: mutableSetOf()
+                                set.add(tunnelName)
+                                prefs.edit().putStringSet(ACCOUNT_TUNNELS_KEY, set).apply()
                                 Toast.makeText(requireContext(), "Туннель добавлен", Toast.LENGTH_SHORT).show()
                                 loadProfileAndSetupUI(requireView())
                             } catch (e: Exception) {
@@ -548,8 +549,14 @@ private fun afterLogout(view: View) {
     }
 
     private fun startQrScanner() {
-        // Используй свою ActivityResult/Intent для сканирования QR (ZXing и т.п.)
-        // ...
+        val options = ScanOptions().apply {
+            setDesiredBarcodeFormats(ScanOptions.QR_CODE)
+            setPrompt("Сканируйте QR для передачи сессии")
+            setCameraId(0)
+            setBeepEnabled(true)
+            setBarcodeImageEnabled(false)
+        }
+        qrScanLauncher.launch(options.createScanIntent(requireContext()))
     }
 
     private fun downloadConfig(token: String, serverId: String, tunnelName: String, callback: (Boolean, String?) -> Unit) {
