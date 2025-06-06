@@ -122,6 +122,10 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                 startActivity(Intent(this, SettingsActivity::class.java))
                 true
             }
+            R.id.menu_tv_mode -> {
+                startActivity(Intent(this, TvMainActivity::class.java))
+                true
+            }
 
             else -> super.onOptionsItemSelected(item)
         }

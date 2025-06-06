@@ -1,428 +1,255 @@
-/*
- * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
- * SPDX-License-Identifier: Apache-2.0
- */
-
 package org.amnezia.awg.activity
 
-import android.Manifest
-import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.os.Environment
-import android.os.storage.StorageManager
-import android.os.storage.StorageVolume
-import android.util.Log
+import android.os.Handler
+import android.os.Looper
 import android.view.View
-import android.widget.Toast
-import androidx.activity.addCallback
-import androidx.activity.result.contract.ActivityResultContracts
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
-import androidx.core.content.getSystemService
-import androidx.core.view.forEach
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.Observable
-import androidx.databinding.ObservableBoolean
-import androidx.databinding.ObservableField
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import org.amnezia.awg.fragment.AppListDialogFragment
+import org.amnezia.awg.viewmodel.ConfigProxy
+import okhttp3.*
 import org.amnezia.awg.Application
 import org.amnezia.awg.R
-import org.amnezia.awg.backend.GoBackend
 import org.amnezia.awg.backend.Tunnel
-import org.amnezia.awg.databinding.Keyed
-import org.amnezia.awg.databinding.ObservableKeyedArrayList
-import org.amnezia.awg.databinding.ObservableKeyedRecyclerViewAdapter
-import org.amnezia.awg.databinding.TvActivityBinding
-import org.amnezia.awg.databinding.TvFileListItemBinding
-import org.amnezia.awg.databinding.TvTunnelListItemBinding
-import org.amnezia.awg.model.ObservableTunnel
-import org.amnezia.awg.util.ErrorMessages
-import org.amnezia.awg.util.QuantityFormatter
-import org.amnezia.awg.util.TunnelImporter
-import org.amnezia.awg.util.UserKnobs
-import org.amnezia.awg.util.applicationScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import org.amnezia.awg.config.Config
+import org.json.JSONArray
+import org.json.JSONObject
 import java.io.File
+import java.io.IOException
+import java.util.*
+import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.MediaType.Companion.toMediaType
 
 class TvMainActivity : AppCompatActivity() {
-    private val tunnelFileImportResultLauncher = registerForActivityResult(object : ActivityResultContracts.GetContent() {
-        override fun createIntent(context: Context, input: String): Intent {
-            val intent = super.createIntent(context, input)
-
-            /* AndroidTV now comes with stubs that do nothing but display a Toast less helpful than
-             * what we can do, so detect this and throw an exception that we can catch later. */
-            val activitiesToResolveIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                context.packageManager.queryIntentActivities(intent, PackageManager.ResolveInfoFlags.of(PackageManager.MATCH_DEFAULT_ONLY.toLong()))
-            } else {
-                @Suppress("DEPRECATION")
-                context.packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
-            }
-            if (activitiesToResolveIntent.all {
-                    val name = it.activityInfo.packageName
-                    name.startsWith("com.google.android.tv.frameworkpackagestubs") || name.startsWith("com.android.tv.frameworkpackagestubs")
-                }) {
-                throw ActivityNotFoundException()
-            }
-            return intent
-        }
-    }) { data ->
-        if (data == null) return@registerForActivityResult
-        lifecycleScope.launch {
-            TunnelImporter.importTunnel(contentResolver, data) {
-                Toast.makeText(this@TvMainActivity, it, Toast.LENGTH_LONG).show()
-            }
-        }
-    }
-    private var pendingTunnel: ObservableTunnel? = null
-    private val permissionActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        val tunnel = pendingTunnel
-        if (tunnel != null)
-            setTunnelStateWithPermissionsResult(tunnel)
-        pendingTunnel = null
-    }
-
-    private fun setTunnelStateWithPermissionsResult(tunnel: ObservableTunnel) {
-        lifecycleScope.launch {
-            try {
-                tunnel.setStateAsync(Tunnel.State.TOGGLE)
-            } catch (e: Throwable) {
-                val error = ErrorMessages[e]
-                val message = getString(R.string.error_up, error)
-                Toast.makeText(this@TvMainActivity, message, Toast.LENGTH_LONG).show()
-                Log.e(TAG, message, e)
-            }
-            updateStats()
-        }
-    }
-
-    private lateinit var binding: TvActivityBinding
-    private val isDeleting = ObservableBoolean()
-    private val files = ObservableKeyedArrayList<String, KeyedFile>()
-    private val filesRoot = ObservableField("")
+    private lateinit var prefs: SharedPreferences
+    private val handler = Handler(Looper.getMainLooper())
+    private val ACCOUNT_TUNNELS_KEY = "account_tunnels"
+    private var serverList: List<Pair<String, String>> = listOf()
+    private var selectedServerId: String? = null
+    private var tunnelNames: List<String> = listOf()
+    private var selectedTunnelName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_YES) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-                applicationScope.launch {
-                    UserKnobs.setDarkTheme(true)
-                }
-            }
-        }
         super.onCreate(savedInstanceState)
-        binding = TvActivityBinding.inflate(layoutInflater)
-        lifecycleScope.launch {
-            binding.tunnels = Application.getTunnelManager().getTunnels()
-            if (binding.tunnels?.isEmpty() == true)
-                binding.importButton.requestFocus()
-            else
-                binding.tunnelList.requestFocus()
-        }
-        binding.isDeleting = isDeleting
-        binding.files = files
-        binding.filesRoot = filesRoot
-        val gridManager = binding.tunnelList.layoutManager as GridLayoutManager
-        gridManager.spanSizeLookup = SlatedSpanSizeLookup(gridManager)
-        binding.tunnelRowConfigurationHandler = object : ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler<TvTunnelListItemBinding, ObservableTunnel> {
-            override fun onConfigureRow(binding: TvTunnelListItemBinding, item: ObservableTunnel, position: Int) {
-                binding.isDeleting = isDeleting
-                binding.isFocused = ObservableBoolean()
-                binding.root.setOnFocusChangeListener { _, focused ->
-                    binding.isFocused?.set(focused)
-                }
-                binding.root.setOnClickListener {
-                    lifecycleScope.launch {
-                        if (isDeleting.get()) {
-                            try {
-                                item.deleteAsync()
-                                if (this@TvMainActivity.binding.tunnels?.isEmpty() != false)
-                                    isDeleting.set(false)
-                            } catch (e: Throwable) {
-                                val error = ErrorMessages[e]
-                                val message = getString(R.string.config_delete_error, error)
-                                Toast.makeText(this@TvMainActivity, message, Toast.LENGTH_LONG).show()
-                                Log.e(TAG, message, e)
-                            }
-                        } else {
-                            if (Application.getBackend() is GoBackend) {
-                                val intent = GoBackend.VpnService.prepare(binding.root.context)
-                                if (intent != null) {
-                                    pendingTunnel = item
-                                    permissionActivityResultLauncher.launch(intent)
-                                    return@launch
-                                }
-                            }
-                            setTunnelStateWithPermissionsResult(item)
-                        }
-                    }
-                }
-            }
-        }
+        setContentView(R.layout.tv_activity)
 
-        binding.filesRowConfigurationHandler = object : ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler<TvFileListItemBinding, KeyedFile> {
-            override fun onConfigureRow(binding: TvFileListItemBinding, item: KeyedFile, position: Int) {
-                binding.root.setOnClickListener {
-                    if (item.file.isDirectory)
-                        navigateTo(item.file)
-                    else {
-                        val uri = Uri.fromFile(item.file)
-                        files.clear()
-                        filesRoot.set("")
-                        lifecycleScope.launch {
-                            TunnelImporter.importTunnel(contentResolver, uri) {
-                                Toast.makeText(this@TvMainActivity, it, Toast.LENGTH_LONG).show()
-                            }
-                        }
-                        runOnUiThread {
-                            this@TvMainActivity.binding.tunnelList.requestFocus()
-                        }
-                    }
-                }
-            }
-        }
+        prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
 
-        binding.importButton.setOnClickListener {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-                if (filesRoot.get()?.isEmpty() != false) {
-                    navigateTo(File("/"))
-                    runOnUiThread {
-                        binding.filesList.requestFocus()
-                    }
-                } else {
-                    files.clear()
-                    filesRoot.set("")
-                    runOnUiThread {
-                        binding.tunnelList.requestFocus()
-                    }
-                }
-            } else {
-                try {
-                    tunnelFileImportResultLauncher.launch("*/*")
-                } catch (_: Throwable) {
-                    MaterialAlertDialogBuilder(binding.root.context).setMessage(R.string.tv_no_file_picker).setCancelable(false)
-                        .setPositiveButton(android.R.string.ok) { _, _ ->
-                            try {
-                                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://webstoreredirect")))
-                            } catch (_: Throwable) {
-                            }
-                        }.show()
-                }
-            }
-        }
-
-        binding.deleteButton.setOnClickListener {
-            isDeleting.set(!isDeleting.get())
-            runOnUiThread {
-                binding.tunnelList.requestFocus()
-            }
-        }
-
-        val backPressedCallback = onBackPressedDispatcher.addCallback(this) { handleBackPressed() }
-        val updateBackPressedCallback = object : Observable.OnPropertyChangedCallback() {
-            override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
-                backPressedCallback.isEnabled = isDeleting.get() || filesRoot.get()?.isNotEmpty() == true
-            }
-        }
-        isDeleting.addOnPropertyChangedCallback(updateBackPressedCallback)
-        filesRoot.addOnPropertyChangedCallback(updateBackPressedCallback)
-        backPressedCallback.isEnabled = false
-
-        binding.executePendingBindings()
-        setContentView(binding.root)
-
-        lifecycleScope.launch {
-            while (true) {
-                updateStats()
-                delay(1000)
-            }
-        }
-    }
-
-    private var pendingNavigation: File? = null
-    private val permissionRequestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-        val to = pendingNavigation
-        if (it && to != null)
-            navigateTo(to)
-        pendingNavigation = null
-    }
-
-    private var cachedRoots: Collection<KeyedFile>? = null
-
-    private suspend fun makeStorageRoots(): Collection<KeyedFile> = withContext(Dispatchers.IO) {
-        cachedRoots?.let { return@withContext it }
-        val list = HashSet<KeyedFile>()
-        val storageManager: StorageManager = getSystemService() ?: return@withContext list
-        list.addAll(storageManager.storageVolumes.mapNotNull { volume ->
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                volume.directory?.let { KeyedFile(it, volume.getDescription(this@TvMainActivity)) }
-            } else {
-                KeyedFile((StorageVolume::class.java.getMethod("getPathFile").invoke(volume) as File), volume.getDescription(this@TvMainActivity))
-            }
-        })
-        cachedRoots = list
-        list
-    }
-
-    private fun isBelowCachedRoots(maybeChild: File): Boolean {
-        val cachedRoots = cachedRoots ?: return true
-        for (root in cachedRoots) {
-            if (maybeChild.canonicalPath.startsWith(root.file.canonicalPath))
-                return false
-        }
-        return true
-    }
-
-    private fun navigateTo(directory: File) {
-        require(Build.VERSION.SDK_INT < Build.VERSION_CODES.Q)
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            pendingNavigation = directory
-            permissionRequestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+        if (prefs.getString("token", null) == null) {
+            startActivity(Intent(this, TvLoginActivity::class.java))
+            finish()
             return
         }
 
-        lifecycleScope.launch {
-            if (isBelowCachedRoots(directory)) {
-                val roots = makeStorageRoots()
-                if (roots.count() == 1) {
-                    navigateTo(roots.first().file)
-                    return@launch
-                }
-                files.clear()
-                files.addAll(roots)
-                filesRoot.set(getString(R.string.tv_select_a_storage_drive))
-                return@launch
-            }
+        findViewById<Button>(R.id.btn_add_tunnel).setOnClickListener { addSelectedConfig() }
+        findViewById<Button>(R.id.btn_toggle).setOnClickListener { toggleTunnel() }
+        findViewById<Button>(R.id.btn_apps).setOnClickListener { chooseApps() }
+        findViewById<Button>(R.id.btn_logout).setOnClickListener { logout() }
 
-            val newFiles = withContext(Dispatchers.IO) {
-                val newFiles = ArrayList<KeyedFile>()
-                try {
-                    directory.parentFile?.let {
-                        newFiles.add(KeyedFile(it, "../"))
-                    }
-                    val listing = directory.listFiles() ?: return@withContext null
-                    listing.forEach {
-                        if (it.extension == "conf" || it.extension == "zip" || it.isDirectory)
-                            newFiles.add(KeyedFile(it))
-                    }
-                    newFiles.sortWith { a, b ->
-                        if (a.file.isDirectory && !b.file.isDirectory) -1
-                        else if (!a.file.isDirectory && b.file.isDirectory) 1
-                        else a.file.compareTo(b.file)
-                    }
-                } catch (e: Throwable) {
-                    Log.e(TAG, Log.getStackTraceString(e))
-                }
-                newFiles
+        findViewById<Spinner>(R.id.spinner_server).onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                selectedServerId = serverList[position].first
             }
-            if (newFiles?.isEmpty() != false)
-                return@launch
-            files.clear()
-            files.addAll(newFiles)
-            filesRoot.set(directory.canonicalPath)
+            override fun onNothingSelected(parent: AdapterView<*>) { selectedServerId = null }
         }
+
+        findViewById<Spinner>(R.id.spinner_tunnel).onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                selectedTunnelName = tunnelNames.getOrNull(position)
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) { selectedTunnelName = null }
+        }
+
+        updateUi()
     }
 
-    private fun handleBackPressed() {
-        when {
-            isDeleting.get() -> {
-                isDeleting.set(false)
-                runOnUiThread {
-                    binding.tunnelList.requestFocus()
-                }
-            }
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 
-            filesRoot.get()?.isNotEmpty() == true -> {
-                files.clear()
-                filesRoot.set("")
-                runOnUiThread {
-                    binding.tunnelList.requestFocus()
-                }
+    private fun updateUi() {
+        val token = prefs.getString("token", null)
+        val spinnerServer = findViewById<Spinner>(R.id.spinner_server)
+        val spinnerTunnel = findViewById<Spinner>(R.id.spinner_tunnel)
+        val addBtn = findViewById<Button>(R.id.btn_add_tunnel)
+        val toggleBtn = findViewById<Button>(R.id.btn_toggle)
+        val appsBtn = findViewById<Button>(R.id.btn_apps)
+        val logoutBtn = findViewById<Button>(R.id.btn_logout)
+        val status = findViewById<TextView>(R.id.status_text)
+        if (token == null) return
+
+        logoutBtn.visibility = View.VISIBLE
+        loadServers {
+            spinnerServer.visibility = View.VISIBLE
+            loadTunnels {
+                val hasTunnels = tunnelNames.isNotEmpty()
+                spinnerTunnel.visibility = if (hasTunnels) View.VISIBLE else View.GONE
+                toggleBtn.visibility = if (hasTunnels) View.VISIBLE else View.GONE
+                appsBtn.visibility = if (hasTunnels) View.VISIBLE else View.GONE
+                addBtn.visibility = View.VISIBLE
+                status.text = if (hasTunnels) getString(R.string.vpn_ready) else getString(R.string.choose_location)
             }
         }
     }
 
-    private suspend fun updateStats() {
-        binding.tunnelList.forEach { viewItem ->
-            val listItem = DataBindingUtil.findBinding<TvTunnelListItemBinding>(viewItem)
-                ?: return@forEach
+
+    private fun loadServers(done: () -> Unit) {
+        if (serverList.isNotEmpty()) { setupSpinner(); done(); return }
+        val client = OkHttpClient()
+        client.newCall(Request.Builder().url("https://idrug.pw/api/servers").build()).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                serverList = listOf("germany" to "Германия")
+                safeUi { setupSpinner(); done() }
+            }
+            override fun onResponse(call: Call, response: Response) {
+                serverList = if (response.isSuccessful) {
+                    val arr = JSONArray(response.body?.string() ?: "[]")
+                    List(arr.length()) { val obj = arr.getJSONObject(it); obj.getString("id") to obj.getString("name") }
+                } else listOf("germany" to "Германия")
+                safeUi { setupSpinner(); done() }
+            }
+        })
+    }
+
+    private fun setupSpinner() {
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, serverList.map { it.second })
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val spinner = findViewById<Spinner>(R.id.spinner_server)
+        spinner.adapter = adapter
+        if (serverList.isNotEmpty()) selectedServerId = serverList[0].first
+    }
+
+    private fun loadTunnels(done: () -> Unit) {
+        MainScope().launch {
+            val tm = Application.getTunnelManager()
+            val tunnels = tm.getTunnels()
+            tunnelNames = tunnels.map { it.name }.filter { it.startsWith("idrug_") }
+            val adapter = ArrayAdapter(this@TvMainActivity, android.R.layout.simple_spinner_item, tunnelNames)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            val spinner = findViewById<Spinner>(R.id.spinner_tunnel)
+            spinner.adapter = adapter
+            selectedTunnelName = tunnelNames.firstOrNull()
+            done()
+        }
+    }
+
+    private fun addSelectedConfig() {
+        val serverId = selectedServerId ?: return
+        val token = prefs.getString("token", null) ?: return
+        val tunnelName = "idrug_$serverId"
+        if (tunnelExists(tunnelName)) {
+            Toast.makeText(this, R.string.config_already_added, Toast.LENGTH_SHORT).show()
+            return
+        }
+        downloadConfig(token, serverId) { success, config ->
+            if (success) {
+                val file = File(filesDir, "wg_$tunnelName.conf")
+                file.writeText(config ?: "")
+                MainScope().launch {
+                    try {
+                        val cfg = Config.parse(file.bufferedReader())
+                        Application.getTunnelManager().create(tunnelName, cfg)
+                        file.delete()
+                        val set = prefs.getStringSet(ACCOUNT_TUNNELS_KEY, mutableSetOf())?.toMutableSet() ?: mutableSetOf()
+                        set.add(tunnelName)
+                        prefs.edit().putStringSet(ACCOUNT_TUNNELS_KEY, set).apply()
+                        safeUi {
+                            loadTunnels { updateUi() }
+                        }
+                    } catch (e: Exception) {
+                        safeUi { Toast.makeText(this@TvMainActivity, e.message, Toast.LENGTH_LONG).show() }
+                    }
+                }
+            } else {
+                Toast.makeText(this, getString(R.string.error_network), Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun downloadConfig(token: String, serverId: String, cb: (Boolean, String?) -> Unit) {
+        val client = OkHttpClient()
+        val url = "https://idrug.pw/api/profile/download?server=$serverId"
+        val request = Request.Builder().url(url).addHeader("Authorization", "Bearer $token").build()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) { cb(false, null) }
+            override fun onResponse(call: Call, response: Response) {
+                cb(response.isSuccessful, response.body?.string())
+            }
+        })
+    }
+
+    private fun chooseApps() {
+        val name = selectedTunnelName ?: return
+        MainScope().launch {
+            val tm = Application.getTunnelManager()
+            val tunnel = tm.getTunnels().firstOrNull { it.name == name } ?: return@launch
+            val config = tunnel.config
+            var isExcluded = true
+            var selected = ArrayList(config.`interface`.excludedApplications)
+            if (selected.isEmpty()) {
+                selected = ArrayList(config.`interface`.includedApplications)
+                if (selected.isNotEmpty()) isExcluded = false
+            }
+            val fragment = AppListDialogFragment.newInstance(selected, isExcluded)
+            supportFragmentManager.setFragmentResultListener(AppListDialogFragment.REQUEST_SELECTION, this@TvMainActivity) { _, bundle ->
+                val apps = bundle.getStringArray(AppListDialogFragment.KEY_SELECTED_APPS) ?: return@setFragmentResultListener
+                val excluded = bundle.getBoolean(AppListDialogFragment.KEY_IS_EXCLUDED)
+                val proxy = ConfigProxy(config)
+                proxy.`interface`.excludedApplications.clear()
+                proxy.`interface`.includedApplications.clear()
+                if (excluded) proxy.`interface`.excludedApplications.addAll(apps) else proxy.`interface`.includedApplications.addAll(apps)
+                MainScope().launch {
+                    try {
+                        val newConfig = proxy.resolve()
+                        tunnel.setConfigAsync(newConfig)
+                    } catch (e: Throwable) {
+                        safeUi { Toast.makeText(this@TvMainActivity, e.message, Toast.LENGTH_LONG).show() }
+                    }
+                }
+            }
+            fragment.show(supportFragmentManager, null)
+        }
+    }
+
+    private fun toggleTunnel() {
+        val name = selectedTunnelName ?: return
+        MainScope().launch {
+            val tm = Application.getTunnelManager()
+            val tunnel = tm.getTunnels().firstOrNull { it.name == name } ?: return@launch
             try {
-                val tunnel = listItem.item!!
-                if (tunnel.state != Tunnel.State.UP || isDeleting.get()) {
-                    throw Exception()
-                }
-                val statistics = tunnel.getStatisticsAsync()
-                val rx = statistics.totalRx()
-                val tx = statistics.totalTx()
-                listItem.tunnelTransfer.text = getString(R.string.transfer_rx_tx, QuantityFormatter.formatBytes(rx), QuantityFormatter.formatBytes(tx))
-                listItem.tunnelTransfer.visibility = View.VISIBLE
-            } catch (_: Throwable) {
-                listItem.tunnelTransfer.visibility = View.GONE
-                listItem.tunnelTransfer.text = ""
+                tunnel.setStateAsync(Tunnel.State.TOGGLE)
+            } catch (e: Throwable) {
+                safeUi { Toast.makeText(this@TvMainActivity, e.message, Toast.LENGTH_LONG).show() }
             }
         }
     }
 
-    class KeyedFile(val file: File, private val forcedKey: String? = null) : Keyed<String> {
-        override val key: String
-            get() = forcedKey ?: if (file.isDirectory) "${file.name}/" else file.name
-    }
-
-    private class SlatedSpanSizeLookup(private val gridManager: GridLayoutManager) : SpanSizeLookup() {
-        private val originalHeight = gridManager.spanCount
-        private var newWidth = 0
-        private lateinit var sizeMap: Array<IntArray?>
-
-        private fun emptyUnderIndex(index: Int, size: Int): Int {
-            sizeMap[size - 1]?.let { return it[index] }
-            val sizes = IntArray(size)
-            val oh = originalHeight
-            val nw = newWidth
-            var empties = 0
-            for (i in 0 until size) {
-                val ox = (i + empties) / oh
-                val oy = (i + empties) % oh
-                var empty = 0
-                for (j in oy + 1 until oh) {
-                    val ni = nw * j + ox
-                    if (ni < size)
-                        break
-                    empty++
-                }
-                empties += empty
-                sizes[i] = empty
+    private fun logout() {
+        val accountTunnels = prefs.getStringSet(ACCOUNT_TUNNELS_KEY, emptySet()) ?: emptySet()
+        prefs.edit().clear().apply()
+        MainScope().launch {
+            val tm = Application.getTunnelManager()
+            val tunnels = tm.getTunnels()
+            tunnels.filter { it.name in accountTunnels }.forEach { tm.delete(it) }
+            safeUi {
+                loadTunnels { updateUi() }
+                startActivity(Intent(this@TvMainActivity, TvLoginActivity::class.java))
+                finish()
             }
-            sizeMap[size - 1] = sizes
-            return sizes[index]
-        }
-
-        override fun getSpanSize(position: Int): Int {
-            if (newWidth == 0) {
-                val child = gridManager.getChildAt(0) ?: return 1
-                if (child.width == 0) return 1
-                newWidth = gridManager.width / child.width
-                sizeMap = Array(originalHeight * newWidth - 1) { null }
-            }
-            val total = gridManager.itemCount
-            if (total >= originalHeight * newWidth || total == 0)
-                return 1
-            return emptyUnderIndex(position, total) + 1
         }
     }
 
-    companion object {
-        private const val TAG = "AmneziaWG/TvMainActivity"
+    private fun tunnelExists(name: String): Boolean {
+        val tm = Application.getTunnelManager()
+        return runBlocking { tm.getTunnels().any { it.name == name } }
     }
+
+    private fun safeUi(block: () -> Unit) { handler.post { block() } }
 }
