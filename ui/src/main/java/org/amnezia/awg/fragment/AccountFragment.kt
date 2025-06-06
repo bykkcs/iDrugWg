@@ -528,16 +528,17 @@ private fun afterLogout(view: View) {
     }
 
     private fun confirmQrLoginToken(token: String, callback: (Boolean, String?) -> Unit) {
-        val tokenJwt = prefs.getString("token", null)
-        if (tokenJwt == null) {
-            callback(false, "Вы не вошли в аккаунт")
+        val jwt = prefs.getString("token", null)
+        if (jwt == null) {
+            callback(false, "Вы не авторизованы")
             return
         }
         val client = OkHttpClient()
-        val json = """{"token":"$token","session":"$tokenJwt"}"""
+        val json = """{"token":"$token"}"""
         val body = json.toRequestBody("application/json".toMediaType())
         val request = Request.Builder()
             .url("https://idrug.pw/api/qr/login_confirm")
+            .addHeader("Authorization", "Bearer $jwt")
             .post(body)
             .build()
         client.newCall(request).enqueue(object : Callback {
