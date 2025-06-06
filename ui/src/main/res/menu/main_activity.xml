@@ -8,4 +8,8 @@
         android:orderInCategory="1000"
         android:title="@string/settings"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_tv_mode"
+        android:icon="@drawable/ic_action_open"
+        android:title="@string/open_tv_mode" />
 </menu>

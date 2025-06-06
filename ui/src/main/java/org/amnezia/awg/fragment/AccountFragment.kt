@@ -13,6 +13,8 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
+import com.journeyapps.barcodescanner.ScanContract
+import com.journeyapps.barcodescanner.ScanOptions
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -39,28 +41,28 @@ class AccountFragment : Fragment() {
     private var selectedServerName: String? = null
     private var serverList: List<Pair<String, String>> = listOf()
     private var qrPollingTimer: Timer? = null
-
-    private val qrScanLauncher = registerForActivityResult(
-        androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == android.app.Activity.RESULT_OK && result.data != null) {
-            val scanned = result.data?.getStringExtra("SCAN_RESULT")
-            if (!scanned.isNullOrEmpty()) {
-                confirmQrLoginToken(scanned) { success, message ->
-                    safeUi {
-                        Toast.makeText(
-                            requireContext(),
-                            if (success) "Вход подтверждён через QR" else "Ошибка подтверждения: $message",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        if (success) loadProfileAndSetupUI(requireView())
+    private val qrScanLauncher = registerForActivityResult(ScanContract()) { result ->
+        val scanned = result.contents
+        if (!scanned.isNullOrEmpty()) {
+            confirmQrLoginToken(scanned) { success, message ->
+                safeUi {
+                    Toast.makeText(
+                        requireContext(),
+                        if (success) "Вход подтверждён через QR" else "Ошибка подтверждения: $message",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    if (success) {
+                        startActivity(Intent(requireContext(), org.amnezia.awg.activity.TvMainActivity::class.java))
+                        loadProfileAndSetupUI(requireView())
                     }
                 }
-            } else {
-                Toast.makeText(requireContext(), "QR не распознан", Toast.LENGTH_SHORT).show()
             }
+        } else {
+            Toast.makeText(requireContext(), "QR не распознан", Toast.LENGTH_SHORT).show()
         }
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -126,6 +128,9 @@ class AccountFragment : Fragment() {
                     if (success) loadProfileAndSetupUI(requireView())
                 }
             }
+        }
+        view.findViewById<Button>(R.id.btn_tv_mode).setOnClickListener {
+            startActivity(Intent(requireContext(), org.amnezia.awg.activity.TvMainActivity::class.java))
         }
         setFabScanQr(isLoggedIn())
     }
@@ -548,8 +553,12 @@ private fun afterLogout(view: View) {
     }
 
     private fun startQrScanner() {
-        // Используй свою ActivityResult/Intent для сканирования QR (ZXing и т.п.)
-        // ...
+        qrScanLauncher.launch(
+            ScanOptions()
+                .setOrientationLocked(false)
+                .setBeepEnabled(false)
+                .setPrompt(getString(R.string.qr_code_hint))
+        )
     }
 
     private fun downloadConfig(token: String, serverId: String, tunnelName: String, callback: (Boolean, String?) -> Unit) {
