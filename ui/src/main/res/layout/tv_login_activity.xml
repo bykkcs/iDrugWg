@@ -17,10 +17,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <Spinner
-            android:id="@+id/spinner_server"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/qr_code_image"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:layout_marginTop="16dp"
             android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/status_text"
@@ -28,35 +28,12 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
-            android:id="@+id/btn_add_tunnel"
+            android:id="@+id/btn_login_qr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/add_config"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/spinner_server"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <Button
-            android:id="@+id/btn_toggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/tv_toggle_vpn"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/btn_add_tunnel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <Button
-            android:id="@+id/btn_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/logout"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/btn_toggle"
+            android:text="@string/login_by_qr"
+            app:layout_constraintTop_toBottomOf="@id/qr_code_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
