@@ -1,11 +1,13 @@
 package org.amnezia.awg.fragment
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.*
 import android.net.Uri
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import android.view.*
@@ -39,7 +41,8 @@ class AccountFragment : Fragment() {
     private var selectedServerId: String? = null
     private var selectedServerName: String? = null
     private var serverList: List<Pair<String, String>> = listOf()
-    private var qrPollingTimer: Timer? = null
+    private var qrLoginToken: String? = null
+    private var qrPollingTimer: CountDownTimer? = null
 
     private val qrScanLauncher = registerForActivityResult(
         androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
@@ -413,11 +416,14 @@ private fun afterLogout(view: View) {
     private fun generateQrLoginToken(onComplete: (String?) -> Unit) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("https://idrug.pw/api/qr/login_token")
+            .url("http://194.113.233.251:8000/api/qr/login_token")
             .post("".toRequestBody("application/json".toMediaType()))
             .build()
         client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) { safeUi { onComplete(null) } }
+            override fun onFailure(call: Call, e: IOException) {
+                safeUi { Toast.makeText(requireContext(), "Ошибка генерации QR токена", Toast.LENGTH_SHORT).show() }
+                onComplete(null)
+            }
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val json = JSONObject(response.body?.string() ?: "{}")
@@ -448,59 +454,48 @@ private fun afterLogout(view: View) {
 
     private fun startPollingQrStatus(token: String) {
         qrPollingTimer?.cancel()
-        qrPollingTimer = Timer()
-        qrPollingTimer?.schedule(object : TimerTask() {
-            override fun run() {
-                pollQrLoginStatus(token) { confirmed, jwt, username, photoUrl ->
+        qrPollingTimer = object : CountDownTimer(5 * 60 * 1000, 3000) {
+            override fun onTick(millisUntilFinished: Long) {
+                pollQrLoginStatus(token) { confirmed, jwt, username ->
                     if (confirmed && jwt != null && username != null) {
                         qrPollingTimer?.cancel()
-                        prefs.edit()
-                            .putString("username", username)
-                            .putString("token", jwt)
-                            .putString("photo_url", photoUrl)
-                            .apply()
-                        safeUi {
-                            Toast.makeText(requireContext(), "Вход через QR подтверждён!", Toast.LENGTH_SHORT).show()
-                            loadProfileAndSetupUI(requireView())
-                        }
+                        prefs.edit().putString("username", username).putString("token", jwt).apply()
+                        Toast.makeText(requireContext(), "Вход подтверждён: $username", Toast.LENGTH_SHORT).show()
+                        safeUi { afterLogin(username, jwt) }
                     }
                 }
             }
-        }, 0, 3000)
+
+            override fun onFinish() {
+                Toast.makeText(requireContext(), "Время действия QR токена истекло", Toast.LENGTH_SHORT).show()
+            }
+        }
+        qrPollingTimer?.start()
     }
 
-    private fun pollQrLoginStatus(token: String, onResult: (Boolean, String?, String?, String?) -> Unit) {
+    private fun pollQrLoginStatus(token: String, onResult: (Boolean, String?, String?) -> Unit) {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("https://idrug.pw/api/qr/login_status/$token")
+            .url("http://194.113.233.251:8000/api/qr/login_status/$token")
             .get()
             .build()
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                safeUi { onResult(false, null, null, null) }
+                safeUi { onResult(false, null, null) }
             }
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val json = JSONObject(response.body?.string() ?: "{}")
                     val status = json.optString("status")
-                    when (status) {
-                        "confirmed" -> {
-                            val jwt = json.optString("token")
-                            getProfileFromJwt(jwt) { success, username, photoUrl ->
-                                safeUi { onResult(success, jwt, username, photoUrl) }
-                            }
-                        }
-                        "expired", "used" -> {
-                            qrPollingTimer?.cancel()
-                            safeUi {
-                                Toast.makeText(requireContext(), "QR-код истёк или уже использован", Toast.LENGTH_SHORT).show()
-                                onResult(false, null, null, null)
-                            }
-                        }
-                        else -> safeUi { onResult(false, null, null, null) }
+                    if (status == "confirmed") {
+                        val jwt = json.optString("token")
+                        val username = json.optString("username")
+                        safeUi { onResult(true, jwt, username) }
+                    } else {
+                        safeUi { onResult(false, null, null) }
                     }
                 } else {
-                    safeUi { onResult(false, null, null, null) }
+                    safeUi { onResult(false, null, null) }
                 }
             }
         })
@@ -530,16 +525,17 @@ private fun afterLogout(view: View) {
     }
 
     private fun confirmQrLoginToken(token: String, callback: (Boolean, String?) -> Unit) {
-        val jwt = prefs.getString("token", null)
-        if (jwt == null) {
-            callback(false, "Вы не авторизованы")
+        val tokenJwt = prefs.getString("token", null)
+        if (tokenJwt == null) {
+            callback(false, "Вы не вошли в аккаунт")
             return
         }
         val client = OkHttpClient()
-        val payload = """{"token":"$token","session":"$jwt"}"""
-        val body = payload.toRequestBody("application/json".toMediaType())
+        val json = """{"token":"$token"}"""
+        val body = json.toRequestBody("application/json".toMediaType())
         val request = Request.Builder()
-            .url("https://idrug.pw/api/qr/login_confirm")
+            .url("http://194.113.233.251:8000/api/qr/login_confirm")
+            .addHeader("Authorization", "Bearer $tokenJwt")
             .post(body)
             .build()
         client.newCall(request).enqueue(object : Callback {
@@ -555,7 +551,7 @@ private fun afterLogout(view: View) {
     private fun startQrScanner() {
         val options = ScanOptions().apply {
             setDesiredBarcodeFormats(ScanOptions.QR_CODE)
-            setPrompt("Сканируйте QR для передачи сессии")
+            setPrompt("Сканируйте QR для входа")
             setCameraId(0)
             setBeepEnabled(true)
             setBarcodeImageEnabled(false)
