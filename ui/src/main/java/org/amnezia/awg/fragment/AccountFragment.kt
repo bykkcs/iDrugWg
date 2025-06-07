@@ -261,7 +261,7 @@ class AccountFragment : Fragment() {
                             val obj = JSONObject(resp)
                             val status = obj.optString("status", "unknown")
                             val expDateStr = obj.optString("expiration_date", "")
-                            val username = obj.optString("client_name", prefs.getString("username", "") ?: "")
+                            val username = obj.optString("username", prefs.getString("username", "") ?: "")
                             val photoUrl = obj.optString("photo_url", null)
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
@@ -514,7 +514,7 @@ private fun afterLogout(view: View) {
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val json = JSONObject(response.body?.string() ?: "{}")
-                    val username = json.optString("client_name", null)
+                    val username = json.optString("username", null)
                     val photoUrl = json.optString("photo_url", null)
                     callback(true, username, photoUrl)
                 } else {
