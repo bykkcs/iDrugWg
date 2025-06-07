@@ -15,7 +15,7 @@ extern int awgGetSocketV6(int handle);
 extern char *awgGetConfig(int handle);
 extern char *awgVersion();
 
-JNIEXPORT jint JNICALL Java_org_amnezia_awg_GoBackend_awgTurnOn(JNIEnv *env, jclass c, jstring ifname, jint tun_fd, jstring settings)
+JNIEXPORT jint JNICALL Java_com_idrug_connections_pw_GoBackend_awgTurnOn(JNIEnv *env, jclass c, jstring ifname, jint tun_fd, jstring settings)
 {
 	const char *ifname_str = (*env)->GetStringUTFChars(env, ifname, 0);
 	size_t ifname_len = (*env)->GetStringUTFLength(env, ifname);
@@ -33,22 +33,22 @@ JNIEXPORT jint JNICALL Java_org_amnezia_awg_GoBackend_awgTurnOn(JNIEnv *env, jcl
 	return ret;
 }
 
-JNIEXPORT void JNICALL Java_org_amnezia_awg_GoBackend_awgTurnOff(JNIEnv *env, jclass c, jint handle)
+JNIEXPORT void JNICALL Java_com_idrug_connections_pw_GoBackend_awgTurnOff(JNIEnv *env, jclass c, jint handle)
 {
 	awgTurnOff(handle);
 }
 
-JNIEXPORT jint JNICALL Java_org_amnezia_awg_GoBackend_awgGetSocketV4(JNIEnv *env, jclass c, jint handle)
+JNIEXPORT jint JNICALL Java_com_idrug_connections_pw_GoBackend_awgGetSocketV4(JNIEnv *env, jclass c, jint handle)
 {
 	return awgGetSocketV4(handle);
 }
 
-JNIEXPORT jint JNICALL Java_org_amnezia_awg_GoBackend_awgGetSocketV6(JNIEnv *env, jclass c, jint handle)
+JNIEXPORT jint JNICALL Java_com_idrug_connections_pw_GoBackend_awgGetSocketV6(JNIEnv *env, jclass c, jint handle)
 {
 	return awgGetSocketV6(handle);
 }
 
-JNIEXPORT jstring JNICALL Java_org_amnezia_awg_GoBackend_awgGetConfig(JNIEnv *env, jclass c, jint handle)
+JNIEXPORT jstring JNICALL Java_com_idrug_connections_pw_GoBackend_awgGetConfig(JNIEnv *env, jclass c, jint handle)
 {
 	jstring ret;
 	char *config = awgGetConfig(handle);
@@ -59,7 +59,7 @@ JNIEXPORT jstring JNICALL Java_org_amnezia_awg_GoBackend_awgGetConfig(JNIEnv *en
 	return ret;
 }
 
-JNIEXPORT jstring JNICALL Java_org_amnezia_awg_GoBackend_awgVersion(JNIEnv *env, jclass c)
+JNIEXPORT jstring JNICALL Java_com_idrug_connections_pw_GoBackend_awgVersion(JNIEnv *env, jclass c)
 {
 	jstring ret;
 	char *version = awgVersion();

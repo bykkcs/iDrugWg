@@ -17,7 +17,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/list_fragment"
-            android:name="org.amnezia.awg.fragment.TunnelListFragment"
+            android:name="com.idrug.connections.pw.fragment.TunnelListFragment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"

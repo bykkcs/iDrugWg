@@ -7,9 +7,9 @@
 
         <import type="android.view.View" />
 
-        <import type="org.amnezia.awg.model.ObservableTunnel" />
+        <import type="com.idrug.connections.pw.model.ObservableTunnel" />
 
-        <import type="org.amnezia.awg.backend.Tunnel.State" />
+        <import type="com.idrug.connections.pw.backend.Tunnel.State" />
 
         <variable
             name="isDeleting"
@@ -25,10 +25,10 @@
 
         <variable
             name="item"
-            type="org.amnezia.awg.model.ObservableTunnel" />
+            type="com.idrug.connections.pw.model.ObservableTunnel" />
     </data>
 
-    <org.amnezia.awg.widget.TvCardView
+    <com.idrug.connections.pw.widget.TvCardView
         android:layout_width="225dp"
         android:layout_height="110dp"
         android:layout_margin="8dp"
@@ -77,6 +77,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </org.amnezia.awg.widget.TvCardView>
+    </com.idrug.connections.pw.widget.TvCardView>
 
 </layout>
