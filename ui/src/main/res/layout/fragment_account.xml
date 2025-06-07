@@ -49,7 +49,7 @@
                 android:id="@+id/text_current_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Вход через Telegram или QR"
+                android:text="Вход через Telegram"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:paddingBottom="16dp"
@@ -61,22 +61,6 @@
                 android:layout_height="wrap_content"
                 android:text="Войти через Telegram" />
 
-            <Button
-                android:id="@+id/btn_show_qr_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Показать QR для входа"
-                android:layout_marginTop="8dp" />
-
-            <ImageView
-                android:id="@+id/qr_code_image"
-                android:layout_width="220dp"
-                android:layout_height="220dp"
-                android:layout_marginTop="12dp"
-                android:visibility="gone"
-                android:contentDescription="QR-код для входа"
-                android:scaleType="fitCenter"
-                android:background="@android:color/transparent" />
 <TextView
     android:id="@+id/text_server_choice"
     android:layout_width="match_parent"
@@ -139,12 +123,5 @@
         </LinearLayout>
     </ScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_scan_qr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_camera"
-        android:contentDescription="Сканировать QR"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="28dp" />
+    
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
