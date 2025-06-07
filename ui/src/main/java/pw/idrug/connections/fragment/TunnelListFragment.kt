@@ -240,12 +240,12 @@ class TunnelListFragment : BaseFragment() {
                 val apps = bundle.getStringArray(AppListDialogFragment.KEY_SELECTED_APPS) ?: return@setFragmentResultListener
                 val excluded = bundle.getBoolean(AppListDialogFragment.KEY_IS_EXCLUDED)
                 val proxy = ConfigProxy(config)
-                proxy.interface.excludedApplications.clear()
-                proxy.interface.includedApplications.clear()
+                proxy.`interface`.excludedApplications.clear()
+                proxy.`interface`.includedApplications.clear()
                 if (excluded) {
-                    proxy.interface.excludedApplications.addAll(apps)
+                    proxy.`interface`.excludedApplications.addAll(apps)
                 } else {
-                    proxy.interface.includedApplications.addAll(apps)
+                    proxy.`interface`.includedApplications.addAll(apps)
                 }
                 val newConfig = try {
                     proxy.resolve()
