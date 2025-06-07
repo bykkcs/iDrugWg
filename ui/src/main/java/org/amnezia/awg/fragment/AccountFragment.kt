@@ -234,11 +234,23 @@ class AccountFragment : Fragment() {
                             val expDateStr = obj.optString("expiration_date", "")
                             val username = obj.optString("username", prefs.getString("username", "") ?: "")
                             val photoUrl = obj.optString("photo_url", null)
+                            val activeSubs = mutableSetOf<String>()
+                            val subsArr = obj.optJSONArray("subscriptions")
+                            if (subsArr != null) {
+                                for (i in 0 until subsArr.length()) {
+                                    val s = subsArr.optJSONObject(i)
+                                    if (s != null && s.optBoolean("active")) {
+                                        activeSubs += s.optString("id")
+                                    }
+                                }
+                            }
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
                             showAccountScreen(view, username, photoUrl, status, expDateStr)
                             if (status == "revoked" || status == "expired") {
                                 MainScope().launch { removeIdrugTunnels() }
+                            } else {
+                                MainScope().launch { removeIdrugTunnels(activeSubs) }
                             }
                         } catch (e: Exception) {
                             Toast.makeText(requireContext(), "Ошибка обработки профиля", Toast.LENGTH_SHORT).show()
@@ -321,16 +333,20 @@ private fun afterLogout(view: View) {
     }
 }
 
-private suspend fun removeIdrugTunnels() {
+private suspend fun removeIdrugTunnels(activeIds: Set<String>? = null) {
     try {
         val tunnelManager = Application.getTunnelManager()
         val tunnels = tunnelManager.getTunnels()
-        tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
-            tunnelManager.delete(tunnel)
-        }
+        tunnels.filter { it.name.startsWith("idrug_") }
+            .filter { activeIds == null || it.name.removePrefix("idrug_") !in activeIds }
+            .forEach { tunnel ->
+                tunnelManager.delete(tunnel)
+            }
     } catch (_: Exception) { }
     try {
-        val files = requireContext().filesDir.listFiles()?.filter { it.name.startsWith("wg_idrug_") }
+        val files = requireContext().filesDir.listFiles()?.filter {
+            it.name.startsWith("wg_idrug_") && (activeIds == null || it.name.removePrefix("wg_idrug_") !in activeIds)
+        }
         files?.forEach { it.delete() }
     } catch (_: Exception) { }
 }
