@@ -243,7 +243,6 @@
     <string name="transfer_tibibytes">%.2f ТиБ</string>
     <string name="tun_create_error">Не удалось создать устройство tun</string>
     <string name="tunnel_config_error">Не удалось настроить туннель (awg-quick вернул %d)</string>
-    <string name="tunnel_create_error">Не удалось создать туннель: %s</string>
     <string name="tunnel_create_success">Успешно создан туннель “%s”</string>
     <string name="tunnel_error_already_exists">Туннель “%s” уже существует</string>
     <string name="tunnel_error_invalid_name">Неправильное имя</string>
@@ -271,4 +270,45 @@
     <string name="biometric_auth_error">Ошибка аутентификации</string>
     <string name="biometric_auth_error_reason">Ошибка аутентификации: %s</string>
     <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://storage.googleapis.com/amnezia/amnezia.org">amnezia.org</a>\n</string>
+    <!-- Account / QR login strings -->
+    <string name="login_via_telegram">Войти через Telegram</string>
+    <string name="show_qr_for_login">Показать QR для входа</string>
+    <string name="login_telegram_or_qr">Вход через Telegram или QR</string>
+    <string name="select_server">Выберите сервер</string>
+    <string name="download_config">Скачать конфиг</string>
+    <string name="renew_subscription">Продлить подписку</string>
+    <string name="logout">Выйти</string>
+    <string name="qr_scan_prompt">Сканируйте QR-код</string>
+    <string name="qr_not_recognized">QR не распознан</string>
+    <string name="qr_token_error">Ошибка получения QR токена</string>
+    <string name="subscription_updated">Подписка обновлена</string>
+    <string name="subscription_update_error">Ошибка: %1$s</string>
+    <string name="network_error">Ошибка сети: %1$s</string>
+    <string name="profile_processing_error">Ошибка обработки профиля</string>
+    <string name="profile_error">Ошибка получения профиля: %1$d</string>
+    <string name="config_already_added">Конфиг уже добавлен</string>
+    <string name="tunnel_added">Туннель добавлен</string>
+    <string name="tunnel_create_error">Ошибка создания туннеля: %1$s</string>
+    <string name="generic_error_with_message">Ошибка: %1$s</string>
+    <string name="qr_generation_error">Ошибка генерации QR кода</string>
+    <string name="qr_confirmed">Вход через QR подтверждён!</string>
+    <string name="telegram_login_done">Telegram-вход выполнен!</string>
+    <string name="not_authorized">Вы не авторизованы</string>
+    <string name="no_token">Нет токена</string>
+    <string name="logged_out">Вы вышли из аккаунта</string>
+    <string name="select_server_first">Выберите сервер</string>
+    <string name="login_telegram_first">Сначала войдите через Telegram</string>
+    <string name="days_remaining">Дней до окончания: %1$d</string>
+    <string name="apk_not_found">APK не найден!</string>
+    <string name="grant_unknown_sources">Дайте разрешение на установку из неизвестных источников и повторите попытку</string>
+    <string name="apk_open_error">Не удалось открыть APK для установки: %1$s</string>
+    <string name="update_download_started">Скачивание обновления начато</string>
+    <string name="update_download_title">Загрузка обновления</string>
+    <string name="update_download_description">Скачивается новая версия приложения</string>
+    <string name="delete_old_update_failed">Не удалось удалить старый файл обновления</string>
+    <string name="your_login">Ваш логин: %1$s</string>
+    <string name="status_revoked">Доступ к конфигу заблокирован. Оплатите подписку для восстановления.</string>
+    <string name="status_expired">Срок действия подписки истёк. Оплатите для получения нового конфига.</string>
+    <string name="status_active">Скачайте конфиг для автоматического импорта в приложение</string>
+    <string name="status_unknown">Статус аккаунта: %1$s</string>
 </resources>

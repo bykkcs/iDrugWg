@@ -124,13 +124,13 @@ private fun checkForOtaUpdate() {
         if (file.exists()) {
             val deleted = file.delete()
             if (!deleted) {
-                Toast.makeText(context, "Не удалось удалить старый файл обновления", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, context.getString(R.string.delete_old_update_failed), Toast.LENGTH_SHORT).show()
             }
         }
 
         val request = DownloadManager.Request(Uri.parse(url))
-            .setTitle("Загрузка обновления")
-            .setDescription("Скачивается новая версия приложения")
+            .setTitle(context.getString(R.string.update_download_title))
+            .setDescription(context.getString(R.string.update_download_description))
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
             .setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, fileName)
             .setAllowedOverMetered(true)
@@ -139,7 +139,7 @@ private fun checkForOtaUpdate() {
         val manager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         downloadId = manager.enqueue(request)
 
-        Toast.makeText(context, "Скачивание обновления начато", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, context.getString(R.string.update_download_started), Toast.LENGTH_SHORT).show()
 
         // Вот тут исправленный вызов:
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -155,7 +155,7 @@ private fun checkForOtaUpdate() {
             )
         }
     } catch (e: Exception) {
-        Toast.makeText(requireContext(), "Ошибка при запуске обновления: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), getString(R.string.apk_open_error, e.localizedMessage ?: ""), Toast.LENGTH_LONG).show()
         e.printStackTrace()
     }
 }
@@ -165,7 +165,7 @@ private fun checkForOtaUpdate() {
             val fileName = "ui-debug.apk"
             val file = File(requireContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName)
             if (!file.exists()) {
-                Toast.makeText(requireContext(), "APK не найден!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.apk_not_found), Toast.LENGTH_SHORT).show()
                 return
             }
             val apkUri = FileProvider.getUriForFile(
@@ -178,7 +178,7 @@ private fun checkForOtaUpdate() {
                     val intent = Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES)
                     intent.data = Uri.parse("package:" + requireContext().packageName)
                     startActivity(intent)
-                    Toast.makeText(requireContext(), "Дайте разрешение на установку из неизвестных источников и повторите попытку", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), getString(R.string.grant_unknown_sources), Toast.LENGTH_LONG).show()
                     return
                 }
             }
@@ -189,7 +189,7 @@ private fun checkForOtaUpdate() {
             try {
                 startActivity(intent)
             } catch (e: Exception) {
-                Toast.makeText(requireContext(), "Не удалось открыть APK для установки: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), getString(R.string.apk_open_error, e.message ?: ""), Toast.LENGTH_LONG).show()
             }
         }
     }
