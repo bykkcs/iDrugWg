@@ -9,8 +9,10 @@ import android.content.ContentResolver
 import android.net.Uri
 import android.provider.OpenableColumns
 import android.util.Log
+import androidx.fragment.app.FragmentManager
 import pw.idrug.connections.Application
 import pw.idrug.connections.R
+import pw.idrug.connections.fragment.ConfigNamingDialogFragment
 import pw.idrug.connections.model.ObservableTunnel
 import pw.idrug.connections.config.Config
 import kotlinx.coroutines.Deferred
@@ -107,6 +109,18 @@ object TunnelImporter {
             withContext(Dispatchers.Main.immediate) { onTunnelImportFinished(emptyList(), listOf(e), messageCallback) }
         }
     }
+    fun importTunnel(parentFragmentManager: FragmentManager, configText: String, messageCallback: (CharSequence) -> Unit) {
+        try {
+            // Ensure the config text is parseable before proceeding…
+            Config.parse(ByteArrayInputStream(configText.toByteArray(StandardCharsets.UTF_8)))
+
+            // Config text is valid, now create the tunnel…
+            ConfigNamingDialogFragment.newInstance(configText).show(parentFragmentManager, null)
+        } catch (e: Throwable) {
+            onTunnelImportFinished(emptyList(), listOf<Throwable>(e), messageCallback)
+        }
+    }
+
 
 
     private fun onTunnelImportFinished(tunnels: List<ObservableTunnel>, throwables: Collection<Throwable>, messageCallback: (CharSequence) -> Unit) {
