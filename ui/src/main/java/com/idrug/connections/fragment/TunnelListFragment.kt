@@ -32,10 +32,12 @@ import com.idrug.connections.activity.TunnelCreatorActivity
 import com.idrug.connections.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler
 import com.idrug.connections.databinding.TunnelListFragmentBinding
 import com.idrug.connections.databinding.TunnelListItemBinding
+import com.idrug.connections.fragment.AppListDialogFragment
 import com.idrug.connections.model.ObservableTunnel
 import com.idrug.connections.util.ErrorMessages
 import com.idrug.connections.util.QrCodeFromFileScanner
 import com.idrug.connections.util.TunnelImporter
+import com.idrug.connections.viewmodel.ConfigProxy
 import com.idrug.connections.widget.MultiselectableRelativeLayout
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async
@@ -167,13 +169,24 @@ class TunnelListFragment : BaseFragment() {
         super.onViewStateRestored(savedInstanceState)
         binding ?: return
         binding!!.fragment = this
-        lifecycleScope.launch { binding!!.tunnels = Application.getTunnelManager().getTunnels() }
+        lifecycleScope.launch {
+            val tunnels = Application.getTunnelManager().getTunnels()
+            binding!!.tunnels = tunnels
+            arguments?.getString(ARG_OPEN_TUNNEL_FOR_APPS)?.let { name ->
+                val tunnel = tunnels[name]
+                if (tunnel != null) {
+                    showAppSelectionDialog(tunnel)
+                }
+                arguments?.remove(ARG_OPEN_TUNNEL_FOR_APPS)
+            }
+        }
         binding!!.rowConfigurationHandler = object : RowConfigurationHandler<TunnelListItemBinding, ObservableTunnel> {
             override fun onConfigureRow(binding: TunnelListItemBinding, item: ObservableTunnel, position: Int) {
                 binding.fragment = this@TunnelListFragment
                 binding.root.setOnClickListener {
                     if (actionMode == null) {
                         selectedTunnel = item
+                        showAppSelectionDialog(item)
                     } else {
                         actionModeListener.toggleItemChecked(position)
                     }
@@ -202,6 +215,54 @@ class TunnelListFragment : BaseFragment() {
 
     private fun viewForTunnel(tunnel: ObservableTunnel, tunnels: List<*>): MultiselectableRelativeLayout? {
         return binding?.tunnelList?.findViewHolderForAdapterPosition(tunnels.indexOf(tunnel))?.itemView as? MultiselectableRelativeLayout
+    }
+
+    private fun showAppSelectionDialog(tunnel: ObservableTunnel) {
+        lifecycleScope.launch {
+            val config = try {
+                tunnel.getConfigAsync()
+            } catch (e: Throwable) {
+                showSnackbar(ErrorMessages[e])
+                return@launch
+            }
+            val iface = config.`interface`
+            var isExcluded = true
+            var selectedApps = ArrayList(iface.excludedApplications)
+            if (selectedApps.isEmpty()) {
+                selectedApps = ArrayList(iface.includedApplications)
+                if (selectedApps.isNotEmpty()) isExcluded = false
+            }
+            val fragment = AppListDialogFragment.newInstance(selectedApps, isExcluded)
+            parentFragmentManager.setFragmentResultListener(
+                AppListDialogFragment.REQUEST_SELECTION,
+                viewLifecycleOwner
+            ) { _, bundle ->
+                val apps = bundle.getStringArray(AppListDialogFragment.KEY_SELECTED_APPS) ?: return@setFragmentResultListener
+                val excluded = bundle.getBoolean(AppListDialogFragment.KEY_IS_EXCLUDED)
+                val proxy = ConfigProxy(config)
+                proxy.interface.excludedApplications.clear()
+                proxy.interface.includedApplications.clear()
+                if (excluded) {
+                    proxy.interface.excludedApplications.addAll(apps)
+                } else {
+                    proxy.interface.includedApplications.addAll(apps)
+                }
+                val newConfig = try {
+                    proxy.resolve()
+                } catch (e: Throwable) {
+                    showSnackbar(ErrorMessages[e])
+                    return@setFragmentResultListener
+                }
+                lifecycleScope.launch {
+                    try {
+                        tunnel.setConfigAsync(newConfig)
+                    } catch (e: Throwable) {
+                        showSnackbar(ErrorMessages[e])
+                    }
+                }
+            }
+            fragment.show(parentFragmentManager, null)
+        }
     }
 
     private inner class ActionModeListener : ActionMode.Callback {
@@ -333,6 +394,7 @@ class TunnelListFragment : BaseFragment() {
 
     companion object {
         private const val CHECKED_ITEMS = "CHECKED_ITEMS"
+        const val ARG_OPEN_TUNNEL_FOR_APPS = "open_tunnel_for_apps"
         private const val TAG = "iDrugWG/TunnelListFragment"
     }
 }
