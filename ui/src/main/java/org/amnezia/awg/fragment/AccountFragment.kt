@@ -13,7 +13,6 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
-import com.journeyapps.barcodescanner.ScanOptions
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -41,27 +40,7 @@ class AccountFragment : Fragment() {
     private var serverList: List<Pair<String, String>> = listOf()
     private var qrPollingTimer: Timer? = null
 
-    private val qrScanLauncher = registerForActivityResult(
-        androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == android.app.Activity.RESULT_OK && result.data != null) {
-            val scanned = result.data?.getStringExtra("SCAN_RESULT")
-            if (!scanned.isNullOrEmpty()) {
-                confirmQrLoginToken(scanned) { success, message ->
-                    safeUi {
-                        Toast.makeText(
-                            requireContext(),
-                            if (success) "Вход подтверждён через QR" else "Ошибка подтверждения: $message",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        if (success) loadProfileAndSetupUI(requireView())
-                    }
-                }
-            } else {
-                Toast.makeText(requireContext(), "QR не распознан", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
+    // QR вход по другому устройству более не поддерживается
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -128,18 +107,14 @@ class AccountFragment : Fragment() {
                 }
             }
         }
-        setFabScanQr(isLoggedIn())
+        // Кнопка сканирования QR удалена
     }
 
     private fun isLoggedIn(): Boolean {
         return !prefs.getString("token", null).isNullOrEmpty()
     }
 
-    private fun setFabScanQr(show: Boolean) {
-        val fab = view?.findViewById<View>(R.id.fab_scan_qr)
-        fab?.visibility = if (show) View.VISIBLE else View.GONE
-        fab?.setOnClickListener { startQrScanner() }
-    }
+    // FAB для сканирования QR удалён
 
     private fun showCorrectScreen(view: View) {
         if (isLoggedIn()) {
@@ -150,11 +125,9 @@ class AccountFragment : Fragment() {
                 "",
                 ""
             )
-            setFabScanQr(true)
             loadServersAndProfileUI(view)
         } else {
             showLoginScreen(view)
-            setFabScanQr(false)
         }
     }
 
@@ -231,7 +204,6 @@ class AccountFragment : Fragment() {
         if (token == null) {
             safeUi {
                 showLoginScreen(view)
-                setFabScanQr(false)
                 setLoading(false)
             }
             return
@@ -255,7 +227,6 @@ class AccountFragment : Fragment() {
                     setLoading(false)
                     if (response.code == 401) {
                         showLoginScreen(view)
-                        setFabScanQr(false)
                     } else if (response.isSuccessful) {
                         try {
                             val obj = JSONObject(resp)
@@ -266,7 +237,9 @@ class AccountFragment : Fragment() {
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
                             showAccountScreen(view, username, photoUrl, status, expDateStr)
-                            setFabScanQr(true)
+                            if (status == "revoked" || status == "expired") {
+                                MainScope().launch { removeIdrugTunnels() }
+                            }
                         } catch (e: Exception) {
                             Toast.makeText(requireContext(), "Ошибка обработки профиля", Toast.LENGTH_SHORT).show()
                         }
@@ -340,23 +313,26 @@ class AccountFragment : Fragment() {
 private fun afterLogout(view: View) {
     prefs.edit().clear().apply()
     MainScope().launch {
-        try {
-            val tunnelManager = Application.getTunnelManager()
-            val tunnels = tunnelManager.getTunnels()
-            tunnels
-                .filter { it.name.startsWith("idrug_") }
-                .forEach { tunnel ->
-                    tunnelManager.delete(tunnel)
-                }
-        } catch (e: Exception) {
-            // Можно залогировать ошибку, если потребуется
-        }
+        removeIdrugTunnels()
         safeUi {
             showLoginScreen(view)
-            setFabScanQr(false)
             Toast.makeText(requireContext(), "Вы вышли из аккаунта", Toast.LENGTH_SHORT).show()
         }
     }
+}
+
+private suspend fun removeIdrugTunnels() {
+    try {
+        val tunnelManager = Application.getTunnelManager()
+        val tunnels = tunnelManager.getTunnels()
+        tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
+            tunnelManager.delete(tunnel)
+        }
+    } catch (_: Exception) { }
+    try {
+        val files = requireContext().filesDir.listFiles()?.filter { it.name.startsWith("wg_idrug_") }
+        files?.forEach { it.delete() }
+    } catch (_: Exception) { }
 }
 
 
@@ -524,39 +500,9 @@ private fun afterLogout(view: View) {
         })
     }
 
-    private fun confirmQrLoginToken(token: String, callback: (Boolean, String?) -> Unit) {
-        val jwt = prefs.getString("token", null)
-        if (jwt == null) {
-            callback(false, "Вы не авторизованы")
-            return
-        }
-        val client = OkHttpClient()
-        val json = """{"token":"$token","session":"$jwt"}"""
-        val body = json.toRequestBody("application/json".toMediaType())
-        val request = Request.Builder()
-            .url("https://idrug.pw/api/qr/login_confirm")
-            .post(body)
-            .build()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                safeUi { callback(false, e.message) }
-            }
-            override fun onResponse(call: Call, response: Response) {
-                safeUi { callback(response.isSuccessful, response.body?.string()) }
-            }
-        })
-    }
 
-    private fun startQrScanner() {
-        val options = ScanOptions().apply {
-            setDesiredBarcodeFormats(ScanOptions.QR_CODE)
-            setPrompt("Сканируйте QR для передачи сессии")
-            setCameraId(0)
-            setBeepEnabled(true)
-            setBarcodeImageEnabled(false)
-        }
-        qrScanLauncher.launch(options.createScanIntent(requireContext()))
-    }
+
+
 
     private fun downloadConfig(token: String, serverId: String, tunnelName: String, callback: (Boolean, String?) -> Unit) {
         val client = OkHttpClient()
