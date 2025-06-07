@@ -6,21 +6,21 @@
 
         <import type="android.view.View" />
 
-        <import type="org.amnezia.awg.widget.KeyInputFilter" />
+        <import type="com.idrug.connecions.pw.widget.KeyInputFilter" />
 
-        <import type="org.amnezia.awg.databinding.BindingAdapters" />
+        <import type="com.idrug.connecions.pw.databinding.BindingAdapters" />
 
         <variable
             name="collection"
-            type="androidx.databinding.ObservableList&lt;org.amnezia.awg.viewmodel.PeerProxy&gt;" />
+            type="androidx.databinding.ObservableList&lt;com.idrug.connecions.pw.viewmodel.PeerProxy&gt;" />
 
         <variable
             name="item"
-            type="org.amnezia.awg.viewmodel.PeerProxy" />
+            type="com.idrug.connecions.pw.viewmodel.PeerProxy" />
 
         <variable
             name="fragment"
-            type="org.amnezia.awg.fragment.TunnelEditorFragment" />
+            type="com.idrug.connecions.pw.fragment.TunnelEditorFragment" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

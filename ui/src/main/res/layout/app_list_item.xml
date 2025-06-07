@@ -4,11 +4,11 @@
 
     <data>
 
-        <import type="org.amnezia.awg.model.ApplicationData" />
+        <import type="com.idrug.connecions.pw.model.ApplicationData" />
 
         <variable
             name="collection"
-            type="org.amnezia.awg.databinding.ObservableKeyedArrayList&lt;String, org.amnezia.awg.model.ApplicationData&gt;" />
+            type="com.idrug.connecions.pw.databinding.ObservableKeyedArrayList&lt;String, com.idrug.connecions.pw.model.ApplicationData&gt;" />
 
         <variable
             name="key"
@@ -16,7 +16,7 @@
 
         <variable
             name="item"
-            type="org.amnezia.awg.model.ApplicationData" />
+            type="com.idrug.connecions.pw.model.ApplicationData" />
     </data>
 
     <LinearLayout

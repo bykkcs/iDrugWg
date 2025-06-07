@@ -5,13 +5,13 @@
 
     <data>
 
-        <import type="org.amnezia.awg.model.ObservableTunnel" />
+        <import type="com.idrug.connecions.pw.model.ObservableTunnel" />
 
-        <import type="org.amnezia.awg.backend.Tunnel.State" />
+        <import type="com.idrug.connecions.pw.backend.Tunnel.State" />
 
         <variable
             name="collection"
-            type="org.amnezia.awg.databinding.ObservableKeyedArrayList&lt;String, ObservableTunnel&gt;" />
+            type="com.idrug.connecions.pw.databinding.ObservableKeyedArrayList&lt;String, ObservableTunnel&gt;" />
 
         <variable
             name="key"
@@ -19,14 +19,14 @@
 
         <variable
             name="item"
-            type="org.amnezia.awg.model.ObservableTunnel" />
+            type="com.idrug.connecions.pw.model.ObservableTunnel" />
 
         <variable
             name="fragment"
-            type="org.amnezia.awg.fragment.TunnelListFragment" />
+            type="com.idrug.connecions.pw.fragment.TunnelListFragment" />
     </data>
 
-    <org.amnezia.awg.widget.MultiselectableRelativeLayout
+    <com.idrug.connecions.pw.widget.MultiselectableRelativeLayout
         android:id="@+id/tunnel_list_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
             android:textAppearance="?attr/textAppearanceBodyLarge"
             tools:text="@sample/interface_names.json/names/names/name" />
 
-        <org.amnezia.awg.widget.ToggleSwitch
+        <com.idrug.connecions.pw.widget.ToggleSwitch
             android:id="@+id/tunnel_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,5 +59,5 @@
             app:checked="@{item.state == State.UP}"
             app:onBeforeCheckedChanged="@{fragment::setTunnelState}"
             tools:checked="@sample/interface_names.json/names/checked/checked" />
-    </org.amnezia.awg.widget.MultiselectableRelativeLayout>
+    </com.idrug.connecions.pw.widget.MultiselectableRelativeLayout>
 </layout>
