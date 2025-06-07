@@ -50,7 +50,13 @@ class AccountFragment : Fragment() {
         if (result.resultCode == android.app.Activity.RESULT_OK && result.data != null) {
             val scanned = result.data?.getStringExtra("SCAN_RESULT")
             if (!scanned.isNullOrEmpty()) {
-                confirmQrLoginToken(scanned) { success, message ->
+                val uri = Uri.parse(scanned)
+                val token = if (uri.scheme == "idrug" && uri.host == "qrlogin") uri.getQueryParameter("token") else scanned
+                if (token.isNullOrEmpty()) {
+                    Toast.makeText(requireContext(), "QR не распознан", Toast.LENGTH_SHORT).show()
+                    return@registerForActivityResult
+                }
+                confirmQrLoginToken(token) { success, message ->
                     safeUi {
                         Toast.makeText(
                             requireContext(),
@@ -94,15 +100,15 @@ class AccountFragment : Fragment() {
         }
         view.findViewById<Button>(R.id.btn_show_qr_login).setOnClickListener {
             setLoading(true)
-            generateQrLoginToken { token ->
+            generateQrLoginToken { qrContent ->
                 setLoading(false)
-                if (token == null) {
+                if (qrContent == null) {
                     Toast.makeText(requireContext(), "Ошибка получения QR токена", Toast.LENGTH_SHORT).show()
                     return@generateQrLoginToken
                 }
-                showQrCode(token, view.findViewById(R.id.qr_code_image))
+                showQrCode(qrContent, view.findViewById(R.id.qr_code_image))
                 view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.VISIBLE
-                startPollingQrStatus(token)
+                qrLoginToken?.let { startPollingQrStatus(it) }
                 view.findViewById<TextView>(R.id.status_text).text = "Отсканируйте этот QR с устройства, где уже есть вход"
             }
         }
@@ -425,13 +431,15 @@ private fun afterLogout(view: View) {
                 onComplete(null)
             }
             override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    val json = JSONObject(response.body?.string() ?: "{}")
-                    val token = json.optString("qr_token", null)
-                    safeUi { onComplete(token) }
-                } else {
+                if (!response.isSuccessful) {
                     safeUi { onComplete(null) }
+                    return
                 }
+                val json = JSONObject(response.body?.string() ?: "{}")
+                val token = json.optString("qr_token", null)
+                val deeplink = json.optString("deeplink", token)
+                safeUi { onComplete(deeplink) }
+                qrLoginToken = token
             }
         })
     }
@@ -454,6 +462,8 @@ private fun afterLogout(view: View) {
 
     private fun startPollingQrStatus(token: String) {
         qrPollingTimer?.cancel()
+        val statusView = view?.findViewById<TextView>(R.id.status_text)
+        statusView?.text = "Ожидаем подтверждение..."
         qrPollingTimer = object : CountDownTimer(5 * 60 * 1000, 3000) {
             override fun onTick(millisUntilFinished: Long) {
                 pollQrLoginStatus(token) { confirmed, jwt, username ->
@@ -471,6 +481,7 @@ private fun afterLogout(view: View) {
 
             override fun onFinish() {
                 Toast.makeText(requireContext(), "Время действия QR токена истекло", Toast.LENGTH_SHORT).show()
+                statusView?.text = "QR-код истёк"
             }
         }
         qrPollingTimer?.start()
@@ -487,18 +498,25 @@ private fun afterLogout(view: View) {
                 safeUi { onResult(false, null, null) }
             }
             override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    val json = JSONObject(response.body?.string() ?: "{}")
-                    val status = json.optString("status")
-                    if (status == "confirmed") {
+                if (!response.isSuccessful) {
+                    safeUi { onResult(false, null, null) }
+                    return
+                }
+                val json = JSONObject(response.body?.string() ?: "{}")
+                when (json.optString("status")) {
+                    "confirmed" -> {
                         val jwt = json.optString("token")
                         val username = json.optString("username")
                         safeUi { onResult(true, jwt, username) }
-                    } else {
-                        safeUi { onResult(false, null, null) }
                     }
-                } else {
-                    safeUi { onResult(false, null, null) }
+                    "expired", "used" -> {
+                        qrPollingTimer?.cancel()
+                        safeUi {
+                            Toast.makeText(requireContext(), "QR-код истёк", Toast.LENGTH_SHORT).show()
+                            onResult(false, null, null)
+                        }
+                    }
+                    else -> safeUi { onResult(false, null, null) }
                 }
             }
         })
@@ -530,14 +548,16 @@ private fun afterLogout(view: View) {
     private fun confirmQrLoginToken(token: String, callback: (Boolean, String?) -> Unit) {
         val jwt = prefs.getString("token", null)
         if (jwt == null) {
+            qrLoginToken = token
             callback(false, "Вы не авторизованы")
             return
         }
         val client = OkHttpClient()
-        val json = """{"token":"$token","session":"$jwt"}"""
+        val json = """{"token":"$token"}"""
         val body = json.toRequestBody("application/json".toMediaType())
         val request = Request.Builder()
             .url("https://idrug.pw/api/qr/login_confirm")
+            .addHeader("Authorization", "Bearer $jwt")
             .post(body)
             .build()
         client.newCall(request).enqueue(object : Callback {
@@ -601,22 +621,39 @@ private fun afterLogout(view: View) {
     }
 
     private fun handleDeepLink(intent: Intent?) {
-        val data = intent?.data
-        if (data != null && ((data.scheme == "idrug" && data.host == "auth") ||
-                    (data.scheme == "https" && data.host == "idrug.pw" && data.path?.startsWith("/auth") == true))) {
-            val jwt = data.getQueryParameter("jwt")
-            val username = data.getQueryParameter("username")
-            val photoUrl = data.getQueryParameter("photo_url")
-            if (!jwt.isNullOrEmpty() && !username.isNullOrEmpty()) {
-                prefs.edit()
-                    .putString("token", jwt)
-                    .putString("username", username)
-                    .putString("photo_url", photoUrl)
-                    .apply()
-                Toast.makeText(requireContext(), "Telegram-вход выполнен!", Toast.LENGTH_SHORT).show()
-                showCorrectScreen(requireView())
+        val data = intent?.data ?: return
+        when {
+            data.scheme == "idrug" && data.host == "qrlogin" -> {
+                val token = data.getQueryParameter("token")
+                qrLoginToken = token
+                if (!token.isNullOrEmpty() && isLoggedIn()) {
+                    confirmQrLoginToken(token) { success, _ ->
+                        val msg = if (success) "Сессия передана" else "Ошибка подтверждения"
+                        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+                    }
+                }
+                requireActivity().intent.data = null
             }
-            requireActivity().intent.data = null
+            (data.scheme == "idrug" && data.host == "auth") ||
+                (data.scheme == "https" && data.host == "idrug.pw" && data.path?.startsWith("/auth") == true) -> {
+                val jwt = data.getQueryParameter("jwt")
+                val username = data.getQueryParameter("username")
+                val photoUrl = data.getQueryParameter("photo_url")
+                if (!jwt.isNullOrEmpty() && !username.isNullOrEmpty()) {
+                    prefs.edit()
+                        .putString("token", jwt)
+                        .putString("username", username)
+                        .putString("photo_url", photoUrl)
+                        .apply()
+                    Toast.makeText(requireContext(), "Telegram-вход выполнен!", Toast.LENGTH_SHORT).show()
+                    qrLoginToken?.let { pending ->
+                        confirmQrLoginToken(pending) { _, _ -> }
+                        qrLoginToken = null
+                    }
+                    showCorrectScreen(requireView())
+                }
+                requireActivity().intent.data = null
+            }
         }
     }
 
