@@ -534,11 +534,10 @@ private fun afterLogout(view: View) {
             return
         }
         val client = OkHttpClient()
-        val json = """{"token":"$token"}"""
+        val json = """{"token":"$token","session":"$jwt"}"""
         val body = json.toRequestBody("application/json".toMediaType())
         val request = Request.Builder()
             .url("https://idrug.pw/api/qr/login_confirm")
-            .addHeader("Authorization", "Bearer $jwt")
             .post(body)
             .build()
         client.newCall(request).enqueue(object : Callback {
