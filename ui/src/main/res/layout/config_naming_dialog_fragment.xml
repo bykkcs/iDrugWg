@@ -4,7 +4,7 @@
 
     <data>
 
-        <import type="org.amnezia.awg.widget.NameInputFilter" />
+        <import type="com.idrug.connections.pw.widget.NameInputFilter" />
     </data>
 
     <FrameLayout

@@ -1,4 +1,4 @@
-package org.amnezia.awg.activity
+package com.idrug.connections.pw.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,12 +12,12 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import org.amnezia.awg.R
-import org.amnezia.awg.fragment.TunnelDetailFragment
-import org.amnezia.awg.fragment.TunnelEditorFragment
-import org.amnezia.awg.fragment.TunnelListFragment
-import org.amnezia.awg.fragment.AccountFragment
-import org.amnezia.awg.model.ObservableTunnel
+import com.idrug.connections.pw.R
+import com.idrug.connections.pw.fragment.TunnelDetailFragment
+import com.idrug.connections.pw.fragment.TunnelEditorFragment
+import com.idrug.connections.pw.fragment.TunnelListFragment
+import com.idrug.connections.pw.fragment.AccountFragment
+import com.idrug.connections.pw.model.ObservableTunnel
 
 /**
  * CRUD interface for AmneziaWG tunnels. This activity serves as the main entry point to the

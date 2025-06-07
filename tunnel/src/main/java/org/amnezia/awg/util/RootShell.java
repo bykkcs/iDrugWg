@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.util;
+package com.idrug.connections.pw.util;
 
 import android.content.Context;
 import android.util.Log;
 
-import org.amnezia.awg.util.RootShell.RootShellException.Reason;
-import org.amnezia.awg.util.NonNullForAll;
+import com.idrug.connections.pw.util.RootShell.RootShellException.Reason;
+import com.idrug.connections.pw.util.NonNullForAll;
 
 import java.io.BufferedReader;
 import java.io.File;

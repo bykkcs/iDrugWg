@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.crypto;
+package com.idrug.connections.pw.crypto;
 
-import org.amnezia.awg.crypto.KeyFormatException.Type;
-import org.amnezia.awg.util.NonNullForAll;
+import com.idrug.connections.pw.crypto.KeyFormatException.Type;
+import com.idrug.connections.pw.util.NonNullForAll;
 
 import java.security.MessageDigest;
 import java.security.SecureRandom;

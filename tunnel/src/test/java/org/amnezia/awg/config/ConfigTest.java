@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.config;
+package com.idrug.connections.pw.config;
 
 import org.junit.Test;
 

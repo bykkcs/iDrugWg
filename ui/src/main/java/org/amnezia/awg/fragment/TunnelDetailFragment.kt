@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.fragment
+package com.idrug.connections.pw.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,12 +15,12 @@ import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import org.amnezia.awg.R
-import org.amnezia.awg.backend.Tunnel
-import org.amnezia.awg.databinding.TunnelDetailFragmentBinding
-import org.amnezia.awg.databinding.TunnelDetailPeerBinding
-import org.amnezia.awg.model.ObservableTunnel
-import org.amnezia.awg.util.QuantityFormatter
+import com.idrug.connections.pw.R
+import com.idrug.connections.pw.backend.Tunnel
+import com.idrug.connections.pw.databinding.TunnelDetailFragmentBinding
+import com.idrug.connections.pw.databinding.TunnelDetailPeerBinding
+import com.idrug.connections.pw.model.ObservableTunnel
+import com.idrug.connections.pw.util.QuantityFormatter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

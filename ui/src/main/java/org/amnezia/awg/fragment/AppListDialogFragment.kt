@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.fragment
+package com.idrug.connections.pw.fragment
 
 import android.Manifest
 import android.app.Dialog
@@ -21,12 +21,12 @@ import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
-import org.amnezia.awg.BR
-import org.amnezia.awg.R
-import org.amnezia.awg.databinding.AppListDialogFragmentBinding
-import org.amnezia.awg.databinding.ObservableKeyedArrayList
-import org.amnezia.awg.model.ApplicationData
-import org.amnezia.awg.util.ErrorMessages
+import com.idrug.connections.pw.BR
+import com.idrug.connections.pw.R
+import com.idrug.connections.pw.databinding.AppListDialogFragmentBinding
+import com.idrug.connections.pw.databinding.ObservableKeyedArrayList
+import com.idrug.connections.pw.model.ApplicationData
+import com.idrug.connections.pw.util.ErrorMessages
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.util
+package com.idrug.connections.pw.util
 
 import android.content.RestrictionsManager
 import androidx.core.content.getSystemService
-import org.amnezia.awg.Application
+import com.idrug.connections.pw.Application
 
 object AdminKnobs {
     private val restrictions: RestrictionsManager? = Application.get().getSystemService()

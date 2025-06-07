@@ -2,9 +2,9 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.configStore
+package com.idrug.connections.pw.configStore
 
-import org.amnezia.awg.config.Config
+import com.idrug.connections.pw.config.Config
 
 /**
  * Interface for persistent storage providers for AmneziaWG configurations.

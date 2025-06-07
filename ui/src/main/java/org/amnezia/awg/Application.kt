@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg
+package com.idrug.connections.pw
 
 import android.content.Context
 import android.content.Intent
@@ -17,15 +17,15 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import com.google.android.material.color.DynamicColors
-import org.amnezia.awg.backend.Backend
-import org.amnezia.awg.backend.GoBackend
-import org.amnezia.awg.backend.AwgQuickBackend
-import org.amnezia.awg.configStore.FileConfigStore
-import org.amnezia.awg.model.TunnelManager
-import org.amnezia.awg.util.RootShell
-import org.amnezia.awg.util.ToolsInstaller
-import org.amnezia.awg.util.UserKnobs
-import org.amnezia.awg.util.applicationScope
+import com.idrug.connections.pw.backend.Backend
+import com.idrug.connections.pw.backend.GoBackend
+import com.idrug.connections.pw.backend.AwgQuickBackend
+import com.idrug.connections.pw.configStore.FileConfigStore
+import com.idrug.connections.pw.model.TunnelManager
+import com.idrug.connections.pw.util.RootShell
+import com.idrug.connections.pw.util.ToolsInstaller
+import com.idrug.connections.pw.util.UserKnobs
+import com.idrug.connections.pw.util.applicationScope
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

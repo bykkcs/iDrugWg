@@ -3,19 +3,19 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.backend;
+package com.idrug.connections.pw.backend;
 
 import android.content.Context;
 import android.util.Log;
 import android.util.Pair;
 
-import org.amnezia.awg.backend.BackendException.Reason;
-import org.amnezia.awg.backend.Tunnel.State;
-import org.amnezia.awg.util.RootShell;
-import org.amnezia.awg.util.ToolsInstaller;
-import org.amnezia.awg.config.Config;
-import org.amnezia.awg.crypto.Key;
-import org.amnezia.awg.util.NonNullForAll;
+import com.idrug.connections.pw.backend.BackendException.Reason;
+import com.idrug.connections.pw.backend.Tunnel.State;
+import com.idrug.connections.pw.util.RootShell;
+import com.idrug.connections.pw.util.ToolsInstaller;
+import com.idrug.connections.pw.config.Config;
+import com.idrug.connections.pw.crypto.Key;
+import com.idrug.connections.pw.util.NonNullForAll;
 
 import java.io.File;
 import java.io.FileOutputStream;

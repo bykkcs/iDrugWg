@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.backend;
+package com.idrug.connections.pw.backend;
 
-import org.amnezia.awg.config.Config;
-import org.amnezia.awg.util.NonNullForAll;
+import com.idrug.connections.pw.config.Config;
+import com.idrug.connections.pw.util.NonNullForAll;
 
 import java.util.Set;
 

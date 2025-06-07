@@ -2,17 +2,17 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.model
+package com.idrug.connections.pw.model
 
 import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
-import org.amnezia.awg.BR
-import org.amnezia.awg.backend.Statistics
-import org.amnezia.awg.backend.Tunnel
-import org.amnezia.awg.databinding.Keyed
-import org.amnezia.awg.util.applicationScope
-import org.amnezia.awg.config.Config
+import com.idrug.connections.pw.BR
+import com.idrug.connections.pw.backend.Statistics
+import com.idrug.connections.pw.backend.Tunnel
+import com.idrug.connections.pw.databinding.Keyed
+import com.idrug.connections.pw.util.applicationScope
+import com.idrug.connections.pw.config.Config
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

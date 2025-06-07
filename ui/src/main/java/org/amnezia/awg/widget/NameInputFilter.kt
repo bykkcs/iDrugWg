@@ -2,12 +2,12 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.widget
+package com.idrug.connections.pw.widget
 
 import android.text.InputFilter
 import android.text.SpannableStringBuilder
 import android.text.Spanned
-import org.amnezia.awg.backend.Tunnel
+import com.idrug.connections.pw.backend.Tunnel
 
 /**
  * InputFilter for entering AmneziaWG configuration names (Linux interface names).

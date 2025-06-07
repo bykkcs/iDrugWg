@@ -141,9 +141,9 @@
             android:exported="true"
             android:permission="${applicationId}.permission.CONTROL_TUNNELS">
             <intent-filter>
-                <action android:name="org.amnezia.awg.action.REFRESH_TUNNEL_STATES" />
-                <action android:name="org.amnezia.awg.action.SET_TUNNEL_UP" />
-                <action android:name="org.amnezia.awg.action.SET_TUNNEL_DOWN" />
+                <action android:name="com.idrug.connections.pw.action.REFRESH_TUNNEL_STATES" />
+                <action android:name="com.idrug.connections.pw.action.SET_TUNNEL_UP" />
+                <action android:name="com.idrug.connections.pw.action.SET_TUNNEL_DOWN" />
             </intent-filter>
         </receiver>
 

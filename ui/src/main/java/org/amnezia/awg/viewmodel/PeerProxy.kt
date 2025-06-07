@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.viewmodel
+package com.idrug.connections.pw.viewmodel
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -11,10 +11,10 @@ import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.databinding.Observable.OnPropertyChangedCallback
 import androidx.databinding.ObservableList
-import org.amnezia.awg.BR
-import org.amnezia.awg.config.Attribute
-import org.amnezia.awg.config.BadConfigException
-import org.amnezia.awg.config.Peer
+import com.idrug.connections.pw.BR
+import com.idrug.connections.pw.config.Attribute
+import com.idrug.connections.pw.config.BadConfigException
+import com.idrug.connections.pw.config.Peer
 import java.lang.ref.WeakReference
 
 class PeerProxy : BaseObservable, Parcelable {

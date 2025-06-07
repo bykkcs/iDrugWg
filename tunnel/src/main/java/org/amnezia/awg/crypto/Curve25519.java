@@ -4,9 +4,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.crypto;
+package com.idrug.connections.pw.crypto;
 
-import org.amnezia.awg.util.NonNullForAll;
+import com.idrug.connections.pw.util.NonNullForAll;
 
 import java.util.Arrays;
 

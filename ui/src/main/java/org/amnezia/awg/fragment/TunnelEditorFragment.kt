@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.fragment
+package com.idrug.connections.pw.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -23,16 +23,16 @@ import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
-import org.amnezia.awg.Application
-import org.amnezia.awg.R
-import org.amnezia.awg.backend.Tunnel
-import org.amnezia.awg.databinding.TunnelEditorFragmentBinding
-import org.amnezia.awg.model.ObservableTunnel
-import org.amnezia.awg.util.AdminKnobs
-import org.amnezia.awg.util.BiometricAuthenticator
-import org.amnezia.awg.util.ErrorMessages
-import org.amnezia.awg.viewmodel.ConfigProxy
-import org.amnezia.awg.config.Config
+import com.idrug.connections.pw.Application
+import com.idrug.connections.pw.R
+import com.idrug.connections.pw.backend.Tunnel
+import com.idrug.connections.pw.databinding.TunnelEditorFragmentBinding
+import com.idrug.connections.pw.model.ObservableTunnel
+import com.idrug.connections.pw.util.AdminKnobs
+import com.idrug.connections.pw.util.BiometricAuthenticator
+import com.idrug.connections.pw.util.ErrorMessages
+import com.idrug.connections.pw.viewmodel.ConfigProxy
+import com.idrug.connections.pw.config.Config
 import kotlinx.coroutines.launch
 
 /**

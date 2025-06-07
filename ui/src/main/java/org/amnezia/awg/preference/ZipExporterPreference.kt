@@ -2,21 +2,21 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.preference
+package com.idrug.connections.pw.preference
 
 import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
 import androidx.preference.Preference
 import com.google.android.material.snackbar.Snackbar
-import org.amnezia.awg.Application
-import org.amnezia.awg.R
-import org.amnezia.awg.util.AdminKnobs
-import org.amnezia.awg.util.BiometricAuthenticator
-import org.amnezia.awg.util.DownloadsFileSaver
-import org.amnezia.awg.util.ErrorMessages
-import org.amnezia.awg.util.activity
-import org.amnezia.awg.util.lifecycleScope
+import com.idrug.connections.pw.Application
+import com.idrug.connections.pw.R
+import com.idrug.connections.pw.util.AdminKnobs
+import com.idrug.connections.pw.util.BiometricAuthenticator
+import com.idrug.connections.pw.util.DownloadsFileSaver
+import com.idrug.connections.pw.util.ErrorMessages
+import com.idrug.connections.pw.util.activity
+import com.idrug.connections.pw.util.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async

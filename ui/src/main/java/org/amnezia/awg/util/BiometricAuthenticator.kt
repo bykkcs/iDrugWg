@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.util
+package com.idrug.connections.pw.util
 
 import android.os.Handler
 import android.os.Looper
@@ -13,7 +13,7 @@ import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators
 import androidx.biometric.BiometricPrompt
 import androidx.fragment.app.Fragment
-import org.amnezia.awg.R
+import com.idrug.connections.pw.R
 
 
 object BiometricAuthenticator {

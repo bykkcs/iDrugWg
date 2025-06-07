@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.backend;
+package com.idrug.connections.pw.backend;
 
 import android.os.SystemClock;
 
-import org.amnezia.awg.crypto.Key;
-import org.amnezia.awg.util.NonNullForAll;
+import com.idrug.connections.pw.crypto.Key;
+import com.idrug.connections.pw.util.NonNullForAll;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.util
+package com.idrug.connections.pw.util
 
 import android.icu.text.ListFormatter
 import android.icu.text.MeasureFormat
@@ -11,8 +11,8 @@ import android.icu.text.RelativeDateTimeFormatter
 import android.icu.util.Measure
 import android.icu.util.MeasureUnit
 import android.os.Build
-import org.amnezia.awg.Application
-import org.amnezia.awg.R
+import com.idrug.connections.pw.Application
+import com.idrug.connections.pw.R
 import java.util.Locale
 import kotlin.time.Duration.Companion.seconds
 

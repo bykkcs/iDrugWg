@@ -2,13 +2,13 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.configStore
+package com.idrug.connections.pw.configStore
 
 import android.content.Context
 import android.util.Log
-import org.amnezia.awg.R
-import org.amnezia.awg.config.BadConfigException
-import org.amnezia.awg.config.Config
+import com.idrug.connections.pw.R
+import com.idrug.connections.pw.config.BadConfigException
+import com.idrug.connections.pw.config.Config
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileNotFoundException

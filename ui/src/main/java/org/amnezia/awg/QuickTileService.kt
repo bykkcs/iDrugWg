@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg
+package com.idrug.connections.pw
 
 import android.app.PendingIntent
 import android.content.Intent
@@ -19,12 +19,12 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.databinding.Observable
 import androidx.databinding.Observable.OnPropertyChangedCallback
-import org.amnezia.awg.activity.MainActivity
-import org.amnezia.awg.activity.TunnelToggleActivity
-import org.amnezia.awg.backend.Tunnel
-import org.amnezia.awg.model.ObservableTunnel
-import org.amnezia.awg.util.applicationScope
-import org.amnezia.awg.widget.SlashDrawable
+import com.idrug.connections.pw.activity.MainActivity
+import com.idrug.connections.pw.activity.TunnelToggleActivity
+import com.idrug.connections.pw.backend.Tunnel
+import com.idrug.connections.pw.model.ObservableTunnel
+import com.idrug.connections.pw.util.applicationScope
+import com.idrug.connections.pw.widget.SlashDrawable
 import kotlinx.coroutines.launch
 
 /**

@@ -5,19 +5,19 @@
 
     <data>
 
-        <import type="org.amnezia.awg.model.ObservableTunnel" />
+        <import type="com.idrug.connections.pw.model.ObservableTunnel" />
 
         <variable
             name="fragment"
-            type="org.amnezia.awg.fragment.TunnelListFragment" />
+            type="com.idrug.connections.pw.fragment.TunnelListFragment" />
 
         <variable
             name="rowConfigurationHandler"
-            type="org.amnezia.awg.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler" />
+            type="com.idrug.connections.pw.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler" />
 
         <variable
             name="tunnels"
-            type="org.amnezia.awg.databinding.ObservableKeyedArrayList&lt;String, ObservableTunnel&gt;" />
+            type="com.idrug.connections.pw.databinding.ObservableKeyedArrayList&lt;String, ObservableTunnel&gt;" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

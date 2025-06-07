@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.util
+package com.idrug.connections.pw.util
 
 import android.content.ContentResolver
 import android.net.Uri
 import android.provider.OpenableColumns
 import android.util.Log
 import androidx.fragment.app.FragmentManager
-import org.amnezia.awg.Application
-import org.amnezia.awg.R
-import org.amnezia.awg.fragment.ConfigNamingDialogFragment
-import org.amnezia.awg.model.ObservableTunnel
-import org.amnezia.awg.config.Config
+import com.idrug.connections.pw.Application
+import com.idrug.connections.pw.R
+import com.idrug.connections.pw.fragment.ConfigNamingDialogFragment
+import com.idrug.connections.pw.model.ObservableTunnel
+import com.idrug.connections.pw.config.Config
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

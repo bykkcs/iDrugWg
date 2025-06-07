@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.preference
+package com.idrug.connections.pw.preference
 
 import android.content.Context
 import android.content.Intent
@@ -10,14 +10,14 @@ import android.net.Uri
 import android.util.AttributeSet
 import android.widget.Toast
 import androidx.preference.Preference
-import org.amnezia.awg.Application
-import org.amnezia.awg.BuildConfig
-import org.amnezia.awg.R
-import org.amnezia.awg.backend.Backend
-import org.amnezia.awg.backend.GoBackend
-import org.amnezia.awg.backend.AwgQuickBackend
-import org.amnezia.awg.util.ErrorMessages
-import org.amnezia.awg.util.lifecycleScope
+import com.idrug.connections.pw.Application
+import com.idrug.connections.pw.BuildConfig
+import com.idrug.connections.pw.R
+import com.idrug.connections.pw.backend.Backend
+import com.idrug.connections.pw.backend.GoBackend
+import com.idrug.connections.pw.backend.AwgQuickBackend
+import com.idrug.connections.pw.util.ErrorMessages
+import com.idrug.connections.pw.util.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

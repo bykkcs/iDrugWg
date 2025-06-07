@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.fragment
+package com.idrug.connections.pw.fragment
 
 import android.content.Context
 import android.util.Log
@@ -14,16 +14,16 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
-import org.amnezia.awg.Application
-import org.amnezia.awg.R
-import org.amnezia.awg.activity.BaseActivity
-import org.amnezia.awg.activity.BaseActivity.OnSelectedTunnelChangedListener
-import org.amnezia.awg.backend.GoBackend
-import org.amnezia.awg.backend.Tunnel
-import org.amnezia.awg.databinding.TunnelDetailFragmentBinding
-import org.amnezia.awg.databinding.TunnelListItemBinding
-import org.amnezia.awg.model.ObservableTunnel
-import org.amnezia.awg.util.ErrorMessages
+import com.idrug.connections.pw.Application
+import com.idrug.connections.pw.R
+import com.idrug.connections.pw.activity.BaseActivity
+import com.idrug.connections.pw.activity.BaseActivity.OnSelectedTunnelChangedListener
+import com.idrug.connections.pw.backend.GoBackend
+import com.idrug.connections.pw.backend.Tunnel
+import com.idrug.connections.pw.databinding.TunnelDetailFragmentBinding
+import com.idrug.connections.pw.databinding.TunnelListItemBinding
+import com.idrug.connections.pw.model.ObservableTunnel
+import com.idrug.connections.pw.util.ErrorMessages
 import kotlinx.coroutines.launch
 
 /**

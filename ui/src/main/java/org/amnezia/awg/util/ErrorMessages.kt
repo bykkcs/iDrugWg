@@ -2,22 +2,22 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.util
+package com.idrug.connections.pw.util
 
 import android.content.res.Resources
 import android.os.RemoteException
 import com.google.zxing.ChecksumException
 import com.google.zxing.NotFoundException
-import org.amnezia.awg.Application
-import org.amnezia.awg.R
-import org.amnezia.awg.backend.BackendException
-import org.amnezia.awg.util.RootShell.RootShellException
-import org.amnezia.awg.config.BadConfigException
-import org.amnezia.awg.config.InetEndpoint
-import org.amnezia.awg.config.InetNetwork
-import org.amnezia.awg.config.ParseException
-import org.amnezia.awg.crypto.Key
-import org.amnezia.awg.crypto.KeyFormatException
+import com.idrug.connections.pw.Application
+import com.idrug.connections.pw.R
+import com.idrug.connections.pw.backend.BackendException
+import com.idrug.connections.pw.util.RootShell.RootShellException
+import com.idrug.connections.pw.config.BadConfigException
+import com.idrug.connections.pw.config.InetEndpoint
+import com.idrug.connections.pw.config.InetNetwork
+import com.idrug.connections.pw.config.ParseException
+import com.idrug.connections.pw.crypto.Key
+import com.idrug.connections.pw.crypto.KeyFormatException
 import java.net.InetAddress
 
 object ErrorMessages {

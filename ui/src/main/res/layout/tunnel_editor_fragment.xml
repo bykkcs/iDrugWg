@@ -5,19 +5,19 @@
 
     <data>
 
-        <import type="org.amnezia.awg.util.ClipboardUtils" />
+        <import type="com.idrug.connections.pw.util.ClipboardUtils" />
 
-        <import type="org.amnezia.awg.widget.KeyInputFilter" />
+        <import type="com.idrug.connections.pw.widget.KeyInputFilter" />
 
-        <import type="org.amnezia.awg.widget.NameInputFilter" />
+        <import type="com.idrug.connections.pw.widget.NameInputFilter" />
 
         <variable
             name="fragment"
-            type="org.amnezia.awg.fragment.TunnelEditorFragment" />
+            type="com.idrug.connections.pw.fragment.TunnelEditorFragment" />
 
         <variable
             name="config"
-            type="org.amnezia.awg.viewmodel.ConfigProxy" />
+            type="com.idrug.connections.pw.viewmodel.ConfigProxy" />
 
         <variable
             name="name"

@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.activity
+package com.idrug.connections.pw.activity
 
 import android.content.ComponentName
 import android.os.Bundle
@@ -12,12 +12,12 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import org.amnezia.awg.Application
-import org.amnezia.awg.QuickTileService
-import org.amnezia.awg.R
-import org.amnezia.awg.backend.GoBackend
-import org.amnezia.awg.backend.Tunnel
-import org.amnezia.awg.util.ErrorMessages
+import com.idrug.connections.pw.Application
+import com.idrug.connections.pw.QuickTileService
+import com.idrug.connections.pw.R
+import com.idrug.connections.pw.backend.GoBackend
+import com.idrug.connections.pw.backend.Tunnel
+import com.idrug.connections.pw.util.ErrorMessages
 import kotlinx.coroutines.launch
 
 class TunnelToggleActivity : AppCompatActivity() {

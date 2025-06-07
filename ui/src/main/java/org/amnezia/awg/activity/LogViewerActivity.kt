@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.activity
+package com.idrug.connections.pw.activity
 
 import android.content.ClipDescription.compareMimeTypes
 import android.content.ContentProvider
@@ -36,13 +36,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textview.MaterialTextView
-import org.amnezia.awg.BuildConfig
-import org.amnezia.awg.R
-import org.amnezia.awg.databinding.LogViewerActivityBinding
-import org.amnezia.awg.util.DownloadsFileSaver
-import org.amnezia.awg.util.ErrorMessages
-import org.amnezia.awg.util.resolveAttribute
-import org.amnezia.awg.crypto.KeyPair
+import com.idrug.connections.pw.BuildConfig
+import com.idrug.connections.pw.R
+import com.idrug.connections.pw.databinding.LogViewerActivityBinding
+import com.idrug.connections.pw.util.DownloadsFileSaver
+import com.idrug.connections.pw.util.ErrorMessages
+import com.idrug.connections.pw.util.resolveAttribute
+import com.idrug.connections.pw.crypto.KeyPair
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

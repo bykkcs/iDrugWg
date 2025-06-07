@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.activity
+package com.idrug.connections.pw.activity
 
 import android.Manifest
 import android.content.ActivityNotFoundException
@@ -34,22 +34,22 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.amnezia.awg.Application
-import org.amnezia.awg.R
-import org.amnezia.awg.backend.GoBackend
-import org.amnezia.awg.backend.Tunnel
-import org.amnezia.awg.databinding.Keyed
-import org.amnezia.awg.databinding.ObservableKeyedArrayList
-import org.amnezia.awg.databinding.ObservableKeyedRecyclerViewAdapter
-import org.amnezia.awg.databinding.TvActivityBinding
-import org.amnezia.awg.databinding.TvFileListItemBinding
-import org.amnezia.awg.databinding.TvTunnelListItemBinding
-import org.amnezia.awg.model.ObservableTunnel
-import org.amnezia.awg.util.ErrorMessages
-import org.amnezia.awg.util.QuantityFormatter
-import org.amnezia.awg.util.TunnelImporter
-import org.amnezia.awg.util.UserKnobs
-import org.amnezia.awg.util.applicationScope
+import com.idrug.connections.pw.Application
+import com.idrug.connections.pw.R
+import com.idrug.connections.pw.backend.GoBackend
+import com.idrug.connections.pw.backend.Tunnel
+import com.idrug.connections.pw.databinding.Keyed
+import com.idrug.connections.pw.databinding.ObservableKeyedArrayList
+import com.idrug.connections.pw.databinding.ObservableKeyedRecyclerViewAdapter
+import com.idrug.connections.pw.databinding.TvActivityBinding
+import com.idrug.connections.pw.databinding.TvFileListItemBinding
+import com.idrug.connections.pw.databinding.TvTunnelListItemBinding
+import com.idrug.connections.pw.model.ObservableTunnel
+import com.idrug.connections.pw.util.ErrorMessages
+import com.idrug.connections.pw.util.QuantityFormatter
+import com.idrug.connections.pw.util.TunnelImporter
+import com.idrug.connections.pw.util.UserKnobs
+import com.idrug.connections.pw.util.applicationScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

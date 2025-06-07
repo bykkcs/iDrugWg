@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.databinding
+package com.idrug.connections.pw.databinding
 
 import android.text.InputFilter
 import android.view.LayoutInflater
@@ -18,14 +18,14 @@ import androidx.databinding.adapters.ListenerUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import org.amnezia.awg.BR
-import org.amnezia.awg.R
-import org.amnezia.awg.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler
-import org.amnezia.awg.widget.ToggleSwitch
-import org.amnezia.awg.widget.ToggleSwitch.OnBeforeCheckedChangeListener
-import org.amnezia.awg.widget.TvCardView
-import org.amnezia.awg.config.Attribute
-import org.amnezia.awg.config.InetNetwork
+import com.idrug.connections.pw.BR
+import com.idrug.connections.pw.R
+import com.idrug.connections.pw.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler
+import com.idrug.connections.pw.widget.ToggleSwitch
+import com.idrug.connections.pw.widget.ToggleSwitch.OnBeforeCheckedChangeListener
+import com.idrug.connections.pw.widget.TvCardView
+import com.idrug.connections.pw.config.Attribute
+import com.idrug.connections.pw.config.InetNetwork
 import java.net.InetAddress
 import java.util.Optional
 

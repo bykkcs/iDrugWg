@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.fragment
+package com.idrug.connections.pw.fragment
 
 import android.content.Intent
 import android.content.res.Resources
@@ -26,20 +26,20 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.qrcode.QRCodeReader
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
-import org.amnezia.awg.Application
-import org.amnezia.awg.R
-import org.amnezia.awg.activity.TunnelCreatorActivity
-import org.amnezia.awg.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler
-import org.amnezia.awg.databinding.TunnelListFragmentBinding
-import org.amnezia.awg.databinding.TunnelListItemBinding
-import org.amnezia.awg.model.ObservableTunnel
-import org.amnezia.awg.activity.MainActivity
-import org.amnezia.awg.viewmodel.ConfigProxy
-import org.amnezia.awg.fragment.AppListDialogFragment
-import org.amnezia.awg.util.ErrorMessages
-import org.amnezia.awg.util.QrCodeFromFileScanner
-import org.amnezia.awg.util.TunnelImporter
-import org.amnezia.awg.widget.MultiselectableRelativeLayout
+import com.idrug.connections.pw.Application
+import com.idrug.connections.pw.R
+import com.idrug.connections.pw.activity.TunnelCreatorActivity
+import com.idrug.connections.pw.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler
+import com.idrug.connections.pw.databinding.TunnelListFragmentBinding
+import com.idrug.connections.pw.databinding.TunnelListItemBinding
+import com.idrug.connections.pw.model.ObservableTunnel
+import com.idrug.connections.pw.activity.MainActivity
+import com.idrug.connections.pw.viewmodel.ConfigProxy
+import com.idrug.connections.pw.fragment.AppListDialogFragment
+import com.idrug.connections.pw.util.ErrorMessages
+import com.idrug.connections.pw.util.QrCodeFromFileScanner
+import com.idrug.connections.pw.util.TunnelImporter
+import com.idrug.connections.pw.widget.MultiselectableRelativeLayout
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
