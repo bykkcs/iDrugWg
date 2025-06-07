@@ -62,29 +62,28 @@
                 android:text="Войти через Telegram" />
 
             <Button
-                android:id="@+id/btn_show_qr_login"
+                android:id="@+id/btn_show_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Показать QR для входа"
+                android:text="Получить код для входа"
                 android:layout_marginTop="8dp" />
 
             <Button
-                android:id="@+id/btn_scan_qr"
+                android:id="@+id/btn_enter_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Сканировать QR"
+                android:text="Ввести код"
                 android:layout_marginTop="8dp"
                 android:visibility="gone" />
 
-            <ImageView
-                android:id="@+id/qr_code_image"
-                android:layout_width="220dp"
-                android:layout_height="220dp"
+            <TextView
+                android:id="@+id/link_code_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:visibility="gone"
-                android:contentDescription="QR-код для входа"
-                android:scaleType="fitCenter"
-                android:background="@android:color/transparent" />
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
 <TextView
     android:id="@+id/text_server_choice"
     android:layout_width="match_parent"
