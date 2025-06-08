@@ -202,6 +202,7 @@ class AccountFragment : Fragment() {
                             val obj = JSONObject(resp)
                             val status = obj.optString("status", "unknown")
                             val expDateStr = obj.optString("expiration_date", "")
+                            val daysLeftApi = obj.optInt("days_left", -1)
                             val username = obj.optString("client_name", prefs.getString("username", "") ?: "")
                             val photoUrl = obj.optString("photo_url", null)
                             val subsArr = obj.optJSONArray("subscriptions")
@@ -213,7 +214,7 @@ class AccountFragment : Fragment() {
                             }
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
-                            showAccountScreen(view, username, photoUrl, status, expDateStr)
+                            showAccountScreen(view, username, photoUrl, status, expDateStr, daysLeftApi)
                             removeInactiveTunnelsIfNeeded(status, activeSubs)
                         } catch (e: Exception) {
                             Toast.makeText(requireContext(), "Ошибка обработки профиля", Toast.LENGTH_SHORT).show()
@@ -239,7 +240,14 @@ class AccountFragment : Fragment() {
         view.findViewById<ImageView>(R.id.avatar_image).setImageResource(R.drawable.ic_avatar_placeholder)
     }
 
-    private fun showAccountScreen(view: View, username: String, photoUrl: String?, status: String, expDateStr: String?) {
+    private fun showAccountScreen(
+        view: View,
+        username: String,
+        photoUrl: String?,
+        status: String,
+        expDateStr: String?,
+        daysLeft: Int
+    ) {
         view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout).visibility = View.VISIBLE
         view.findViewById<Spinner>(R.id.spinner_server).visibility = View.VISIBLE
@@ -265,16 +273,19 @@ class AccountFragment : Fragment() {
                 "active" -> "Скачайте конфиг для автоматического импорта в приложение"
                 else -> "Статус аккаунта: $status"
             }
-        view.findViewById<TextView>(R.id.text_expiration).text = expDateStr?.let {
-            if (status == "active" && it.isNotEmpty()) {
-                val fixed = it.replace("T", " ").substring(0, 19)
+        val daysText = when {
+            status == "active" && daysLeft >= 0 -> "Дней до окончания: $daysLeft"
+            status == "active" && !expDateStr.isNullOrEmpty() -> {
+                val fixed = expDateStr.replace("T", " ").substring(0, 19)
                 val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
                 val expDate = sdf.parse(fixed)
                 val now = Date()
-                val daysLeft = ((expDate.time - now.time) / (1000 * 60 * 60 * 24)).toInt()
-                "Дней до окончания: $daysLeft"
-            } else ""
-        } ?: ""
+                val calc = ((expDate.time - now.time) / (1000 * 60 * 60 * 24)).toInt()
+                "Дней до окончания: $calc"
+            }
+            else -> ""
+        }
+        view.findViewById<TextView>(R.id.text_expiration).text = daysText
     }
 
     private fun setLoading(loading: Boolean) {
