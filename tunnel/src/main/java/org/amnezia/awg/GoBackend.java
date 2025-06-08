@@ -1,4 +1,4 @@
-package pw.idrug.connections;
+package org.amnezia.awg;
 
 import androidx.annotation.Nullable;
 
