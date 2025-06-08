@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.config;
+package pw.idrug.connections.config;
 
-import org.amnezia.awg.config.BadConfigException.Location;
-import org.amnezia.awg.config.BadConfigException.Reason;
-import org.amnezia.awg.config.BadConfigException.Section;
+import pw.idrug.connections.config.BadConfigException.Location;
+import pw.idrug.connections.config.BadConfigException.Reason;
+import pw.idrug.connections.config.BadConfigException.Section;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

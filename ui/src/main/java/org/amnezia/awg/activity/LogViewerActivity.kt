@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.activity
+package pw.idrug.connections.activity
 
 import android.content.ClipDescription.compareMimeTypes
 import android.content.ContentProvider
@@ -36,13 +36,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textview.MaterialTextView
-import org.amnezia.awg.BuildConfig
-import org.amnezia.awg.R
-import org.amnezia.awg.databinding.LogViewerActivityBinding
-import org.amnezia.awg.util.DownloadsFileSaver
-import org.amnezia.awg.util.ErrorMessages
-import org.amnezia.awg.util.resolveAttribute
-import org.amnezia.awg.crypto.KeyPair
+import pw.idrug.connections.BuildConfig
+import pw.idrug.connections.R
+import pw.idrug.connections.databinding.LogViewerActivityBinding
+import pw.idrug.connections.util.DownloadsFileSaver
+import pw.idrug.connections.util.ErrorMessages
+import pw.idrug.connections.util.resolveAttribute
+import pw.idrug.connections.crypto.KeyPair
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -294,7 +294,7 @@ class LogViewerActivity : AppCompatActivity() {
         private val THREADTIME_LINE: Pattern =
             Pattern.compile("^(\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}.\\d{3})(?:\\s+[0-9A-Za-z]+)?\\s+(\\d+)\\s+(\\d+)\\s+([A-Z])\\s+(.+?)\\s*: (.*)$")
         private val LOGS: MutableMap<String, ByteArray> = ConcurrentHashMap()
-        private const val TAG = "AmneziaWG/LogViewerActivity"
+        private const val TAG = "iDrugConnections/LogViewerActivity"
     }
 
     private inner class LogEntryAdapter : RecyclerView.Adapter<LogEntryAdapter.ViewHolder>() {

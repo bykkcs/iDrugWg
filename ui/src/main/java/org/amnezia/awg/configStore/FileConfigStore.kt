@@ -2,13 +2,13 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.configStore
+package pw.idrug.connections.configStore
 
 import android.content.Context
 import android.util.Log
-import org.amnezia.awg.R
-import org.amnezia.awg.config.BadConfigException
-import org.amnezia.awg.config.Config
+import pw.idrug.connections.R
+import pw.idrug.connections.config.BadConfigException
+import pw.idrug.connections.config.Config
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileNotFoundException
@@ -77,6 +77,6 @@ class FileConfigStore(private val context: Context) : ConfigStore {
     }
 
     companion object {
-        private const val TAG = "AmneziaWG/FileConfigStore"
+        private const val TAG = "iDrugConnections/FileConfigStore"
     }
 }
