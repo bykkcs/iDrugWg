@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.preference
+package pw.idrug.connections.preference
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

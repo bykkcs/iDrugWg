@@ -2,14 +2,14 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg
+package pw.idrug.connections
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import org.amnezia.awg.backend.AwgQuickBackend
-import org.amnezia.awg.util.applicationScope
+import pw.idrug.connections.backend.AwgQuickBackend
+import pw.idrug.connections.util.applicationScope
 import kotlinx.coroutines.launch
 
 class BootShutdownReceiver : BroadcastReceiver() {
@@ -29,6 +29,6 @@ class BootShutdownReceiver : BroadcastReceiver() {
     }
 
     companion object {
-        private const val TAG = "AmneziaWG/BootShutdownReceiver"
+        private const val TAG = "iDrugConnections/BootShutdownReceiver"
     }
 }

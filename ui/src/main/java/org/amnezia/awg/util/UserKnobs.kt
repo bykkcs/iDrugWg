@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.util
+package pw.idrug.connections.util
 
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
-import org.amnezia.awg.Application
+import pw.idrug.connections.Application
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

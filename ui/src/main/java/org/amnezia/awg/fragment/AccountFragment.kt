@@ -1,4 +1,4 @@
-package org.amnezia.awg.fragment
+package pw.idrug.connections.fragment
 
 import android.content.Context
 import android.content.Intent
@@ -17,9 +17,9 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import okhttp3.*
-import org.amnezia.awg.R
-import org.amnezia.awg.Application
-import org.amnezia.awg.config.Config
+import pw.idrug.connections.R
+import pw.idrug.connections.Application
+import pw.idrug.connections.config.Config
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File

@@ -2,21 +2,21 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.preference
+package pw.idrug.connections.preference
 
 import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
 import androidx.preference.Preference
 import com.google.android.material.snackbar.Snackbar
-import org.amnezia.awg.Application
-import org.amnezia.awg.R
-import org.amnezia.awg.util.AdminKnobs
-import org.amnezia.awg.util.BiometricAuthenticator
-import org.amnezia.awg.util.DownloadsFileSaver
-import org.amnezia.awg.util.ErrorMessages
-import org.amnezia.awg.util.activity
-import org.amnezia.awg.util.lifecycleScope
+import pw.idrug.connections.Application
+import pw.idrug.connections.R
+import pw.idrug.connections.util.AdminKnobs
+import pw.idrug.connections.util.BiometricAuthenticator
+import pw.idrug.connections.util.DownloadsFileSaver
+import pw.idrug.connections.util.ErrorMessages
+import pw.idrug.connections.util.activity
+import pw.idrug.connections.util.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async
@@ -108,6 +108,6 @@ class ZipExporterPreference(context: Context, attrs: AttributeSet?) : Preference
     }
 
     companion object {
-        private const val TAG = "AmneziaWG/ZipExporterPreference"
+        private const val TAG = "iDrugConnections/ZipExporterPreference"
     }
 }
