@@ -28,7 +28,7 @@
 #include <sys/system_properties.h>
 
 #ifndef AWG_PACKAGE_NAME
-#define AWG_PACKAGE_NAME "org.amnezia.awg"
+#define AWG_PACKAGE_NAME "pw.idrug.connections"
 #endif
 #ifndef AWG_CONFIG_SEARCH_PATHS
 #define AWG_CONFIG_SEARCH_PATHS "/data/misc/amneziawg /data/data/" AWG_PACKAGE_NAME "/files"
@@ -1075,7 +1075,7 @@ static void broadcast_change(void)
 	const char *pkg = getenv("CALLING_PACKAGE");
 
 	if (!pkg || strcmp(pkg, AWG_PACKAGE_NAME))
-		cmd("am broadcast -a org.amnezia.awg.action.REFRESH_TUNNEL_STATES " AWG_PACKAGE_NAME);
+               cmd("am broadcast -a pw.idrug.connections.action.REFRESH_TUNNEL_STATES " AWG_PACKAGE_NAME);
 }
 
 static void print_search_paths(FILE *file, const char *prefix)
