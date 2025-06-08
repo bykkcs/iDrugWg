@@ -95,10 +95,38 @@ class AccountFragment : Fragment() {
 
     private fun showCorrectScreen(view: View) {
         if (isLoggedIn()) {
+            showCachedAccountScreen(view)
             loadServersAndProfileUI(view)
         } else {
             showLoginScreen(view)
         }
+    }
+
+    private fun showCachedAccountScreen(view: View) {
+        view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.GONE
+        view.findViewById<Button>(R.id.btn_logout).visibility = View.VISIBLE
+        view.findViewById<Button>(R.id.btn_renew).visibility = View.VISIBLE
+        view.findViewById<Button>(R.id.btn_download).visibility = View.GONE
+        view.findViewById<Spinner>(R.id.spinner_server).visibility = View.VISIBLE
+        view.findViewById<TextView>(R.id.text_server_choice).visibility = View.VISIBLE
+
+        val username = prefs.getString("username", "") ?: ""
+        val photoUrl = prefs.getString("photo_url", null)
+        val avatarImage = view.findViewById<ImageView>(R.id.avatar_image)
+        if (!photoUrl.isNullOrEmpty()) {
+            Picasso.get()
+                .load(photoUrl)
+                .placeholder(R.drawable.ic_avatar_placeholder)
+                .error(R.drawable.ic_avatar_placeholder)
+                .transform(CircleTransform())
+                .into(avatarImage)
+        } else {
+            avatarImage.setImageResource(R.drawable.ic_avatar_placeholder)
+        }
+        view.findViewById<TextView>(R.id.text_current_user).text =
+            if (username.isEmpty()) "" else "Ваш логин: $username"
+        view.findViewById<TextView>(R.id.status_text).text = ""
+        view.findViewById<TextView>(R.id.text_expiration).text = ""
     }
 
     private fun loadServersAndProfileUI(view: View) {
@@ -410,9 +438,10 @@ private fun afterLogout(view: View) {
                 val tunnelManager = Application.getTunnelManager()
                 val tunnels = tunnelManager.getTunnels()
                 val deleteAll = status == "revoked" || status == "expired"
+                val subsKnown = activeSubs.isNotEmpty()
                 tunnels.filter { tunnel ->
                     tunnel.name.startsWith("idrug_") &&
-                        (deleteAll || tunnel.name.removePrefix("idrug_") !in activeSubs)
+                        (deleteAll || (subsKnown && tunnel.name.removePrefix("idrug_") !in activeSubs))
                 }.forEach { tunnelManager.delete(it) }
             } catch (_: Exception) {
             }
