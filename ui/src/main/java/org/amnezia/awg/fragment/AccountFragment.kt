@@ -629,14 +629,14 @@ private fun afterLogout(view: View) {
                     }
                     MainScope().launch {
                         val tunnelManager = Application.getTunnelManager()
-                        val tunnels = tunnelManager.getTunnels()
-                        for (tunnel in tunnels) {
-                            if (tunnel.name.startsWith("idrug_")) {
-                                val serverId = tunnel.name.removePrefix("idrug_")
-                                if (serverId !in activeServers) {
-                                    tunnelManager.delete(tunnel)
-                                }
-                            }
+                        // Make a snapshot of tunnels to avoid concurrent modifications
+                        val tunnels = tunnelManager.getTunnels().toList()
+                        val toRemove = tunnels.filter {
+                            it.name.startsWith("idrug_") &&
+                                it.name.removePrefix("idrug_") !in activeServers
+                        }
+                        for (tunnel in toRemove) {
+                            tunnelManager.delete(tunnel)
                         }
                     }
                 } catch (_: Exception) {}
