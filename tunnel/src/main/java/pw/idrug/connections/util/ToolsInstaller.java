@@ -23,7 +23,7 @@ import androidx.annotation.RestrictTo;
 import androidx.annotation.RestrictTo.Scope;
 
 /**
- * Helper to install AmneziaWG tools to the system partition.
+ * Helper to install iDrug Connections tools to the system partition.
  */
 
 @NonNullForAll
@@ -39,7 +39,7 @@ public final class ToolsInstaller {
             new File("/system/bin"),
     };
     @Nullable private static final File INSTALL_DIR = getInstallDir();
-    private static final String TAG = "AmneziaWG/ToolsInstaller";
+    private static final String TAG = "iDrugConnections/ToolsInstaller";
 
     private final Context context;
     private final File localBinaryDir;
@@ -134,8 +134,8 @@ public final class ToolsInstaller {
 
     @RestrictTo(Scope.LIBRARY_GROUP)
     public int install() throws RootShellException, IOException {
-        if (!context.getPackageName().startsWith("org.amnezia."))
-            throw new SecurityException("The tools may only be installed system-wide from the main AmneziaWG app.");
+        if (!context.getPackageName().startsWith("pw.idrug.connections"))
+            throw new SecurityException("The tools may only be installed system-wide from the main iDrug Connections app.");
         return willInstallAsMagiskModule() ? installMagisk() : installSystem();
     }
 
