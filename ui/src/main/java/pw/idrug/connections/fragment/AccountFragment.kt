@@ -63,6 +63,7 @@ class AccountFragment : Fragment() {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://idrug.pw/login?redirect=idrug://auth"))
             startActivity(intent)
         }
+        view.findViewById<Button>(R.id.btn_logout).setOnClickListener {
             setLoading(true)
             afterLogout(view)
             setLoading(false)
