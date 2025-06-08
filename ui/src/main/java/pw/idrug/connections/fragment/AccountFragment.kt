@@ -95,13 +95,6 @@ class AccountFragment : Fragment() {
 
     private fun showCorrectScreen(view: View) {
         if (isLoggedIn()) {
-            showAccountScreen(
-                view,
-                prefs.getString("username", "") ?: "",
-                prefs.getString("photo_url", null),
-                "",
-                ""
-            )
             loadServersAndProfileUI(view)
         } else {
             showLoginScreen(view)
@@ -221,7 +214,7 @@ class AccountFragment : Fragment() {
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
                             showAccountScreen(view, username, photoUrl, status, expDateStr)
-                            removeInactiveTunnelsIfNeeded(activeSubs)
+                            removeInactiveTunnelsIfNeeded(status, activeSubs)
                         } catch (e: Exception) {
                             Toast.makeText(requireContext(), "Ошибка обработки профиля", Toast.LENGTH_SHORT).show()
                         }
@@ -400,14 +393,15 @@ private fun afterLogout(view: View) {
         })
     }
 
-    private fun removeInactiveTunnelsIfNeeded(activeSubs: Set<String>) {
+    private fun removeInactiveTunnelsIfNeeded(status: String, activeSubs: Set<String>) {
         MainScope().launch {
             try {
                 val tunnelManager = Application.getTunnelManager()
                 val tunnels = tunnelManager.getTunnels()
+                val deleteAll = status == "revoked" || status == "expired"
                 tunnels.filter { tunnel ->
                     tunnel.name.startsWith("idrug_") &&
-                        tunnel.name.removePrefix("idrug_") !in activeSubs
+                        (deleteAll || tunnel.name.removePrefix("idrug_") !in activeSubs)
                 }.forEach { tunnelManager.delete(it) }
             } catch (_: Exception) {
             }
