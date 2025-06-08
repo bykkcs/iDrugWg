@@ -186,7 +186,6 @@ class TunnelListFragment : BaseFragment() {
                 binding.fragment = this@TunnelListFragment
                 binding.root.setOnClickListener {
                     if (actionMode == null) {
-                        selectedTunnel = item
                         showAppSelectionDialog(item)
                     } else {
                         actionModeListener.toggleItemChecked(position)
