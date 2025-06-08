@@ -55,7 +55,7 @@ class ConfigNamingDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val activity = requireActivity()
         val alertDialogBuilder = MaterialAlertDialogBuilder(activity)
-        alertDialogBuilder.setTitle(R.string.import_from_qr_code)
+        alertDialogBuilder.setTitle(R.string.import_tunnel)
         binding = ConfigNamingDialogFragmentBinding.inflate(activity.layoutInflater, null, false)
         binding?.apply {
             executePendingBindings()

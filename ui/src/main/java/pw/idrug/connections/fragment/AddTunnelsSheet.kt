@@ -39,11 +39,6 @@ class AddTunnelsSheet : BottomSheetDialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (savedInstanceState != null) dismiss()
         val view = inflater.inflate(R.layout.add_tunnels_bottom_sheet, container, false)
-        if (activity?.packageManager?.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY) != true) {
-            val qrcode = view.findViewById<View>(R.id.create_from_qrcode)
-            qrcode.isEnabled = false
-            qrcode.visibility = View.GONE
-        }
         view.findViewById<TextView>(R.id.disclaimer)?.let { it.movementMethod = LinkMovementMethod.getInstance() }
         return view
     }
@@ -68,10 +63,6 @@ class AddTunnelsSheet : BottomSheetDialogFragment() {
                     dismiss()
                     onRequestImportConfig()
                 }
-                dialog.findViewById<View>(R.id.create_from_qrcode)?.setOnClickListener {
-                    dismiss()
-                    onRequestScanQRCode()
-                }
             }
         })
         val gradientDrawable = GradientDrawable().apply {
@@ -93,15 +84,10 @@ class AddTunnelsSheet : BottomSheetDialogFragment() {
         setFragmentResult(REQUEST_KEY_NEW_TUNNEL, bundleOf(REQUEST_METHOD to REQUEST_IMPORT))
     }
 
-    private fun onRequestScanQRCode() {
-        setFragmentResult(REQUEST_KEY_NEW_TUNNEL, bundleOf(REQUEST_METHOD to REQUEST_SCAN))
-    }
-
     companion object {
         const val REQUEST_KEY_NEW_TUNNEL = "request_new_tunnel"
         const val REQUEST_METHOD = "request_method"
         const val REQUEST_CREATE = "request_create"
         const val REQUEST_IMPORT = "request_import"
-        const val REQUEST_SCAN = "request_scan"
     }
 }

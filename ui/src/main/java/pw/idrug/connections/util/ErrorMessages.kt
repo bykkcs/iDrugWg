@@ -6,8 +6,6 @@ package pw.idrug.connections.util
 
 import android.content.res.Resources
 import android.os.RemoteException
-import com.google.zxing.ChecksumException
-import com.google.zxing.NotFoundException
 import pw.idrug.connections.Application
 import pw.idrug.connections.R
 import pw.idrug.connections.backend.BackendException
@@ -89,13 +87,6 @@ object ErrorMessages {
                 resources.getString(RSE_REASON_MAP.getValue(rootCause.reason), *rootCause.format)
             }
 
-            rootCause is NotFoundException -> {
-                resources.getString(R.string.error_no_qr_found)
-            }
-
-            rootCause is ChecksumException -> {
-                resources.getString(R.string.error_qr_checksum)
-            }
 
             rootCause.localizedMessage != null -> {
                 rootCause.localizedMessage!!

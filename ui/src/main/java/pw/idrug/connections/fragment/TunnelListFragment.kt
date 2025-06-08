@@ -23,9 +23,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ActionMode
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
-import com.google.zxing.qrcode.QRCodeReader
-import com.journeyapps.barcodescanner.ScanContract
-import com.journeyapps.barcodescanner.ScanOptions
 import pw.idrug.connections.Application
 import pw.idrug.connections.R
 import pw.idrug.connections.activity.TunnelCreatorActivity
@@ -37,7 +34,6 @@ import pw.idrug.connections.activity.MainActivity
 import pw.idrug.connections.viewmodel.ConfigProxy
 import pw.idrug.connections.fragment.AppListDialogFragment
 import pw.idrug.connections.util.ErrorMessages
-import pw.idrug.connections.util.QrCodeFromFileScanner
 import pw.idrug.connections.util.TunnelImporter
 import pw.idrug.connections.widget.MultiselectableRelativeLayout
 import kotlinx.coroutines.SupervisorJob
@@ -58,28 +54,7 @@ class TunnelListFragment : BaseFragment() {
         val activity = activity ?: return@registerForActivityResult
         val contentResolver = activity.contentResolver ?: return@registerForActivityResult
         activity.lifecycleScope.launch {
-            if (QrCodeFromFileScanner.validContentType(contentResolver, data)) {
-                try {
-                    val qrCodeFromFileScanner = QrCodeFromFileScanner(contentResolver, QRCodeReader())
-                    val result = qrCodeFromFileScanner.scan(data)
-                    TunnelImporter.importTunnel(parentFragmentManager, result.text) { showSnackbar(it) }
-                } catch (e: Exception) {
-                    val error = ErrorMessages[e]
-                    val message = Application.get().resources.getString(R.string.import_error, error)
-                    Log.e(TAG, message, e)
-                    showSnackbar(message)
-                }
-            } else {
-                TunnelImporter.importTunnel(contentResolver, data) { showSnackbar(it) }
-            }
-        }
-    }
-
-    private val qrImportResultLauncher = registerForActivityResult(ScanContract()) { result ->
-        val qrCode = result.contents
-        val activity = activity
-        if (qrCode != null && activity != null) {
-            activity.lifecycleScope.launch { TunnelImporter.importTunnel(parentFragmentManager, qrCode) { showSnackbar(it) } }
+            TunnelImporter.importTunnel(contentResolver, data) { showSnackbar(it) }
         }
     }
 
@@ -112,15 +87,6 @@ class TunnelListFragment : BaseFragment() {
 
                         AddTunnelsSheet.REQUEST_IMPORT -> {
                             tunnelFileImportResultLauncher.launch("*/*")
-                        }
-
-                        AddTunnelsSheet.REQUEST_SCAN -> {
-                            qrImportResultLauncher.launch(
-                                ScanOptions()
-                                    .setOrientationLocked(false)
-                                    .setBeepEnabled(false)
-                                    .setPrompt(getString(R.string.qr_code_hint))
-                            )
                         }
                     }
                 }

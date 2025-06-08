@@ -440,9 +440,13 @@ private fun afterLogout(view: View) {
                 val tunnels = tunnelManager.getTunnels()
                 tunnels.filter { tunnel ->
                     if (!tunnel.name.startsWith("idrug_")) return@filter false
+                    val server = tunnel.name.removePrefix("idrug_")
                     if (subsKnown) {
-                        val server = tunnel.name.removePrefix("idrug_")
-                        server !in activeSubs
+                        when {
+                            activeSubs.isNotEmpty() -> server !in activeSubs
+                            status == "revoked" || status == "expired" || status == "no_subscription" -> true
+                            else -> false
+                        }
                     } else {
                         status == "revoked" || status == "expired"
                     }

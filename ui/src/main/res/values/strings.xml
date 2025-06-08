@@ -81,8 +81,6 @@
     <string name="bad_config_reason_unknown_section">Unknown section</string>
     <string name="bad_config_reason_value_out_of_range">Value out of range</string>
     <string name="bad_extension_error">File must be .conf or .zip</string>
-    <string name="error_no_qr_found">QR code not found in image</string>
-    <string name="error_qr_checksum">QR code checksum verification failed</string>
     <string name="cancel">Cancel</string>
     <string name="config_delete_error">Cannot delete configuration file %s</string>
     <string name="config_exists_error">Configuration for “%s” already exists</string>
@@ -97,7 +95,6 @@
     <string name="create_downloads_file_error">Cannot create file in downloads directory</string>
     <string name="create_empty">Create from scratch</string>
     <string name="create_from_file">Import from file or archive</string>
-    <string name="create_from_qr_code">Scan from QR code</string>
     <string name="create_output_dir_error">Cannot create output directory</string>
     <string name="create_temp_dir_error">Cannot create local temporary directory</string>
     <string name="create_tunnel">Create Tunnel</string>
@@ -131,7 +128,7 @@
     <string name="hint_random">(random)</string>
     <string name="illegal_filename_error">Illegal file name “%s”</string>
     <string name="import_error">Unable to import tunnel: %s</string>
-    <string name="import_from_qr_code">Import Tunnel from QR Code</string>
+    <string name="import_tunnel">Import Tunnel</string>
     <string name="import_success">Imported “%s”</string>
     <string name="interface_title">Interface</string>
     <string name="key_contents_error">Bad characters in key</string>
@@ -196,7 +193,6 @@
     <string name="pre_shared_key_enabled">enabled</string>
     <string name="private_key">Private key</string>
     <string name="public_key">Public key</string>
-    <string name="qr_code_hint">Tip: generate with `qrencode -t ansiutf8 &lt; tunnel.conf`.</string>
     <string name="quick_settings_tile_add_title">Add tile to quick settings panel</string>
     <string name="quick_settings_tile_add_summary">The shortcut tile toggles the most recent tunnel</string>
     <string name="quick_settings_tile_add_failure">Unable to add shortcut tile: error %d</string>
