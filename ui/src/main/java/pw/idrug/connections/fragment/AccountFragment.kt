@@ -240,10 +240,11 @@ class AccountFragment : Fragment() {
                                     activeSubs.add(subsArr.optString(i))
                                 }
                             }
-                            prefs.edit().putString("username", username).apply()
-                            if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
-                            showAccountScreen(view, username, photoUrl, status, expDateStr, daysLeftApi)
-                            removeInactiveTunnelsIfNeeded(status, activeSubs)
+                            val subsKnown = subsArr != null
+                           prefs.edit().putString("username", username).apply()
+                           if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
+                           showAccountScreen(view, username, photoUrl, status, expDateStr, daysLeftApi)
+                            removeInactiveTunnelsIfNeeded(status, activeSubs, subsKnown)
                         } catch (e: Exception) {
                             Toast.makeText(requireContext(), "Ошибка обработки профиля", Toast.LENGTH_SHORT).show()
                         }
@@ -432,16 +433,19 @@ private fun afterLogout(view: View) {
         })
     }
 
-    private fun removeInactiveTunnelsIfNeeded(status: String, activeSubs: Set<String>) {
+    private fun removeInactiveTunnelsIfNeeded(status: String, activeSubs: Set<String>, subsKnown: Boolean) {
         MainScope().launch {
             try {
                 val tunnelManager = Application.getTunnelManager()
                 val tunnels = tunnelManager.getTunnels()
-                val deleteAll = status == "revoked" || status == "expired"
-                val subsKnown = activeSubs.isNotEmpty()
                 tunnels.filter { tunnel ->
-                    tunnel.name.startsWith("idrug_") &&
-                        (deleteAll || (subsKnown && tunnel.name.removePrefix("idrug_") !in activeSubs))
+                    if (!tunnel.name.startsWith("idrug_")) return@filter false
+                    if (subsKnown) {
+                        val server = tunnel.name.removePrefix("idrug_")
+                        server !in activeSubs
+                    } else {
+                        status == "revoked" || status == "expired"
+                    }
                 }.forEach { tunnelManager.delete(it) }
             } catch (_: Exception) {
             }
