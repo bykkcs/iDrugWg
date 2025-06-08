@@ -214,6 +214,7 @@ class AccountFragment : Fragment() {
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
                             showAccountScreen(view, username, photoUrl, status, expDateStr)
+                            removeInactiveTunnelsIfNeeded(status)
                         } catch (e: Exception) {
                             Toast.makeText(requireContext(), "Ошибка обработки профиля", Toast.LENGTH_SHORT).show()
                         }
@@ -255,7 +256,7 @@ class AccountFragment : Fragment() {
             avatarImage.setImageResource(R.drawable.ic_avatar_placeholder)
         }
         view.findViewById<Button>(R.id.btn_download).visibility = if (status == "active") View.VISIBLE else View.GONE
-        view.findViewById<Button>(R.id.btn_renew).visibility = if (status != "active") View.VISIBLE else View.GONE
+        view.findViewById<Button>(R.id.btn_renew).visibility = View.VISIBLE
         view.findViewById<TextView>(R.id.text_current_user).text = "Ваш логин: $username"
         view.findViewById<TextView>(R.id.status_text).text =
             when (status) {
@@ -390,6 +391,21 @@ private fun afterLogout(view: View) {
                 callback(response.isSuccessful, response.body?.string())
             }
         })
+    }
+
+    private fun removeInactiveTunnelsIfNeeded(status: String) {
+        if (status == "revoked" || status == "expired") {
+            MainScope().launch {
+                try {
+                    val tunnelManager = Application.getTunnelManager()
+                    val tunnels = tunnelManager.getTunnels()
+                    tunnels.filter { it.name.startsWith("idrug_") }.forEach {
+                        tunnelManager.delete(it)
+                    }
+                } catch (_: Exception) {
+                }
+            }
+        }
     }
 
     private fun handleDeepLink(intent: Intent?) {
