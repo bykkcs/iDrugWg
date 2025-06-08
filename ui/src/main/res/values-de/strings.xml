@@ -89,7 +89,7 @@
     <string name="config_rename_error">Konfigurationsdatei „%s “ kann nicht umbenannt werden</string>
     <string name="config_save_error">Konfiguration für „%1$s“ kann nicht gespeichert werden: %2$s</string>
     <string name="config_save_success">Konfiguration für „%s ” erfolgreich gespeichert</string>
-    <string name="create_activity_title">AmneziaWG-Tunnel erstellen</string>
+    <string name="create_activity_title">iDrugConnections-Tunnel erstellen</string>
     <string name="create_bin_dir_error">Lokales Anwendungsverzeichnis kann nicht erstellt werden</string>
     <string name="create_downloads_file_error">Datei kann im Download-Verzeichnis nicht erstellt werden</string>
     <string name="create_empty">Neu erstellen</string>
@@ -133,14 +133,14 @@
     <string name="interface_title">Interface</string>
     <string name="key_contents_error">Unzulässige Zeichen im Schlüssel</string>
     <string name="key_length_error">Falsche Schlüssellänge</string>
-    <string name="key_length_explanation_base64">: AmneziaWG base64-Schlüssel müssen 44 Zeichen enthalten (32 Bytes)</string>
-    <string name="key_length_explanation_binary">: AmneziaWG-Schlüssel müssen 32 Bytes groß sein</string>
-    <string name="key_length_explanation_hex">: AmneziaWG Hex-Schlüssel müssen 64 Zeichen (32 Bytes) groß sein</string>
+    <string name="key_length_explanation_base64">: iDrugConnections base64-Schlüssel müssen 44 Zeichen enthalten (32 Bytes)</string>
+    <string name="key_length_explanation_binary">: iDrugConnections-Schlüssel müssen 32 Bytes groß sein</string>
+    <string name="key_length_explanation_hex">: iDrugConnections Hex-Schlüssel müssen 64 Zeichen (32 Bytes) groß sein</string>
     <string name="latest_handshake">Letzter Handshake</string>
     <string name="latest_handshake_ago">vor %s</string>
     <string name="listen_port">Eingangs-Port</string>
     <string name="log_export_error">Konnte Protokoll nicht exportieren: %s</string>
-    <string name="log_export_subject">AmneziaWG Android Protokolldatei</string>
+    <string name="log_export_subject">iDrugConnections Android Protokolldatei</string>
     <string name="log_export_success">Gespeichert in „%s”</string>
     <string name="log_export_title">Logdatei exportieren</string>
     <string name="log_saver_activity_label">Protokoll speichern</string>
@@ -173,8 +173,8 @@
     <string name="parse_error_integer">Zahl</string>
     <string name="parse_error_reason">Kann %1$s “%2$s ” nicht verarbeiten</string>
     <string name="peer">Teilnehmer</string>
-    <string name="permission_description">AmneziaWG-Tunnel steuern, Tunnel aktivieren und nach Belieben deaktivieren, wodurch der Internetverkehr möglicherweise falsch geleitet wird</string>
-    <string name="permission_label">AmneziaWG-Tunnel steuern</string>
+    <string name="permission_description">iDrugConnections-Tunnel steuern, Tunnel aktivieren und nach Belieben deaktivieren, wodurch der Internetverkehr möglicherweise falsch geleitet wird</string>
+    <string name="permission_label">iDrugConnections-Tunnel steuern</string>
     <string name="persistent_keepalive">Dauerhafte Erhaltung</string>
     <string name="pre_shared_key">Vorab geteilter Schlüssel</string>
     <string name="pre_shared_key_enabled">aktiviert</string>
@@ -196,7 +196,7 @@
     <string name="shell_start_error">Shell konnte nicht gestartet werden: %d</string>
     <string name="success_application_will_restart">Erfolgreich. Die Anwendung wird nun neu starten…</string>
     <string name="toggle_all">Alle umschalten</string>
-    <string name="toggle_error">Fehler beim Umschalten des AmneziaWG-Tunnels: %s</string>
+    <string name="toggle_error">Fehler beim Umschalten des iDrugConnections-Tunnels: %s</string>
     <string name="tools_installer_already">awg und awg-quick sind bereits installiert</string>
     <string name="tools_installer_failure">Kommandozeilenwerkzeuge konnten nicht installiert werden (kein Root?)</string>
     <string name="tools_installer_initial">Optionale Werkzeuge für Skripte installieren</string>
@@ -232,7 +232,7 @@
     <string name="version_summary">%1$s backend %2$s</string>
     <string name="version_summary_checking">Überprüfe %s Backend-Version</string>
     <string name="version_summary_unknown">Unbekannte %s Version</string>
-    <string name="version_title">AmneziaWG für Android v%s</string>
+    <string name="version_title">iDrugConnections für Android v%s</string>
     <string name="vpn_not_authorized_error">VPN-Dienst nicht vom Benutzer autorisiert</string>
     <string name="vpn_start_error">Android VPN-Dienst konnte nicht gestartet werden</string>
     <string name="zip_export_error">Kann Tunnel nicht exportieren: %s</string>

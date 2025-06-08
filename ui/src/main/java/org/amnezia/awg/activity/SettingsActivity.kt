@@ -1,4 +1,4 @@
-package org.amnezia.awg.activity
+package pw.idrug.connections.activity
 
 import android.app.DownloadManager
 import android.content.*
@@ -15,12 +15,12 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import org.amnezia.awg.Application
-import org.amnezia.awg.QuickTileService
-import org.amnezia.awg.R
-import org.amnezia.awg.backend.AwgQuickBackend
-import org.amnezia.awg.preference.PreferencesPreferenceDataStore
-import org.amnezia.awg.util.AdminKnobs
+import pw.idrug.connections.Application
+import pw.idrug.connections.QuickTileService
+import pw.idrug.connections.R
+import pw.idrug.connections.backend.AwgQuickBackend
+import pw.idrug.connections.preference.PreferencesPreferenceDataStore
+import pw.idrug.connections.util.AdminKnobs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

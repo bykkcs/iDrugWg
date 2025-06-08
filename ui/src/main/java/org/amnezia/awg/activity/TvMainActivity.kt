@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.activity
+package pw.idrug.connections.activity
 
 import android.Manifest
 import android.content.ActivityNotFoundException
@@ -34,22 +34,22 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.amnezia.awg.Application
-import org.amnezia.awg.R
-import org.amnezia.awg.backend.GoBackend
-import org.amnezia.awg.backend.Tunnel
-import org.amnezia.awg.databinding.Keyed
-import org.amnezia.awg.databinding.ObservableKeyedArrayList
-import org.amnezia.awg.databinding.ObservableKeyedRecyclerViewAdapter
-import org.amnezia.awg.databinding.TvActivityBinding
-import org.amnezia.awg.databinding.TvFileListItemBinding
-import org.amnezia.awg.databinding.TvTunnelListItemBinding
-import org.amnezia.awg.model.ObservableTunnel
-import org.amnezia.awg.util.ErrorMessages
-import org.amnezia.awg.util.QuantityFormatter
-import org.amnezia.awg.util.TunnelImporter
-import org.amnezia.awg.util.UserKnobs
-import org.amnezia.awg.util.applicationScope
+import pw.idrug.connections.Application
+import pw.idrug.connections.R
+import pw.idrug.connections.backend.GoBackend
+import pw.idrug.connections.backend.Tunnel
+import pw.idrug.connections.databinding.Keyed
+import pw.idrug.connections.databinding.ObservableKeyedArrayList
+import pw.idrug.connections.databinding.ObservableKeyedRecyclerViewAdapter
+import pw.idrug.connections.databinding.TvActivityBinding
+import pw.idrug.connections.databinding.TvFileListItemBinding
+import pw.idrug.connections.databinding.TvTunnelListItemBinding
+import pw.idrug.connections.model.ObservableTunnel
+import pw.idrug.connections.util.ErrorMessages
+import pw.idrug.connections.util.QuantityFormatter
+import pw.idrug.connections.util.TunnelImporter
+import pw.idrug.connections.util.UserKnobs
+import pw.idrug.connections.util.applicationScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -423,6 +423,6 @@ class TvMainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "AmneziaWG/TvMainActivity"
+        private const val TAG = "iDrugConnections/TvMainActivity"
     }
 }

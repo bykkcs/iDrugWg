@@ -2,12 +2,12 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.activity
+package pw.idrug.connections.activity
 
 import android.os.Bundle
 import androidx.fragment.app.commit
-import org.amnezia.awg.fragment.TunnelEditorFragment
-import org.amnezia.awg.model.ObservableTunnel
+import pw.idrug.connections.fragment.TunnelEditorFragment
+import pw.idrug.connections.model.ObservableTunnel
 
 /**
  * Standalone activity for creating tunnels.

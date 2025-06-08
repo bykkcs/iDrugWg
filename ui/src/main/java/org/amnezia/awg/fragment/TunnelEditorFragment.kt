@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.fragment
+package pw.idrug.connections.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -23,20 +23,20 @@ import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
-import org.amnezia.awg.Application
-import org.amnezia.awg.R
-import org.amnezia.awg.backend.Tunnel
-import org.amnezia.awg.databinding.TunnelEditorFragmentBinding
-import org.amnezia.awg.model.ObservableTunnel
-import org.amnezia.awg.util.AdminKnobs
-import org.amnezia.awg.util.BiometricAuthenticator
-import org.amnezia.awg.util.ErrorMessages
-import org.amnezia.awg.viewmodel.ConfigProxy
-import org.amnezia.awg.config.Config
+import pw.idrug.connections.Application
+import pw.idrug.connections.R
+import pw.idrug.connections.backend.Tunnel
+import pw.idrug.connections.databinding.TunnelEditorFragmentBinding
+import pw.idrug.connections.model.ObservableTunnel
+import pw.idrug.connections.util.AdminKnobs
+import pw.idrug.connections.util.BiometricAuthenticator
+import pw.idrug.connections.util.ErrorMessages
+import pw.idrug.connections.viewmodel.ConfigProxy
+import pw.idrug.connections.config.Config
 import kotlinx.coroutines.launch
 
 /**
- * Fragment for editing an AmneziaWG configuration.
+ * Fragment for editing an iDrugConnections configuration.
  */
 class TunnelEditorFragment : BaseFragment(), MenuProvider {
     private var haveShownKeys = false
@@ -339,6 +339,6 @@ class TunnelEditorFragment : BaseFragment(), MenuProvider {
         private const val KEY_LOCAL_CONFIG = "local_config"
         private const val KEY_ORIGINAL_NAME = "original_name"
         const val ARG_AUTO_SHOW_APP_SELECTOR = "auto_show_app_selector"
-        private const val TAG = "AmneziaWG/TunnelEditorFragment"
+        private const val TAG = "iDrugConnections/TunnelEditorFragment"
     }
 }
