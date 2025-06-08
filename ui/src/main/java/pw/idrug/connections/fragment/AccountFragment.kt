@@ -211,10 +211,17 @@ class AccountFragment : Fragment() {
                             val expDateStr = obj.optString("expiration_date", "")
                             val username = obj.optString("client_name", prefs.getString("username", "") ?: "")
                             val photoUrl = obj.optString("photo_url", null)
+                            val subsArr = obj.optJSONArray("subscriptions")
+                            val activeSubs = mutableSetOf<String>()
+                            if (subsArr != null) {
+                                for (i in 0 until subsArr.length()) {
+                                    activeSubs.add(subsArr.optString(i))
+                                }
+                            }
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
                             showAccountScreen(view, username, photoUrl, status, expDateStr)
-                            removeInactiveTunnelsIfNeeded(status)
+                            removeInactiveTunnelsIfNeeded(activeSubs)
                         } catch (e: Exception) {
                             Toast.makeText(requireContext(), "Ошибка обработки профиля", Toast.LENGTH_SHORT).show()
                         }
@@ -393,17 +400,16 @@ private fun afterLogout(view: View) {
         })
     }
 
-    private fun removeInactiveTunnelsIfNeeded(status: String) {
-        if (status == "revoked" || status == "expired") {
-            MainScope().launch {
-                try {
-                    val tunnelManager = Application.getTunnelManager()
-                    val tunnels = tunnelManager.getTunnels()
-                    tunnels.filter { it.name.startsWith("idrug_") }.forEach {
-                        tunnelManager.delete(it)
-                    }
-                } catch (_: Exception) {
-                }
+    private fun removeInactiveTunnelsIfNeeded(activeSubs: Set<String>) {
+        MainScope().launch {
+            try {
+                val tunnelManager = Application.getTunnelManager()
+                val tunnels = tunnelManager.getTunnels()
+                tunnels.filter { tunnel ->
+                    tunnel.name.startsWith("idrug_") &&
+                        tunnel.name.removePrefix("idrug_") !in activeSubs
+                }.forEach { tunnelManager.delete(it) }
+            } catch (_: Exception) {
             }
         }
     }
