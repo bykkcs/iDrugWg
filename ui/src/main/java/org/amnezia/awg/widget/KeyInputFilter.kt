@@ -2,15 +2,15 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.widget
+package pw.idrug.connections.widget
 
 import android.text.InputFilter
 import android.text.SpannableStringBuilder
 import android.text.Spanned
-import org.amnezia.awg.crypto.Key
+import pw.idrug.connections.crypto.Key
 
 /**
- * InputFilter for entering AmneziaWG private/public keys encoded with base64.
+ * InputFilter for entering iDrugConnections private/public keys encoded with base64.
  */
 class KeyInputFilter : InputFilter {
     override fun filter(

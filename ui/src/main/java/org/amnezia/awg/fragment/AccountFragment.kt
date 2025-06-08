@@ -1,4 +1,4 @@
-package org.amnezia.awg.fragment
+package pw.idrug.connections.fragment
 
 import android.content.Context
 import android.content.Intent
@@ -17,9 +17,9 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import okhttp3.*
-import org.amnezia.awg.R
-import org.amnezia.awg.Application
-import org.amnezia.awg.config.Config
+import pw.idrug.connections.R
+import pw.idrug.connections.Application
+import pw.idrug.connections.config.Config
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
@@ -89,20 +89,6 @@ class AccountFragment : Fragment() {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://idrug.pw/login?redirect=idrug://auth"))
             startActivity(intent)
         }
-        view.findViewById<Button>(R.id.btn_show_qr_login).setOnClickListener {
-            setLoading(true)
-            generateQrLoginToken { token ->
-                setLoading(false)
-                if (token == null) {
-                    Toast.makeText(requireContext(), "Ошибка получения QR токена", Toast.LENGTH_SHORT).show()
-                    return@generateQrLoginToken
-                }
-                showQrCode(token, view.findViewById(R.id.qr_code_image))
-                view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.VISIBLE
-                startPollingQrStatus(token)
-                view.findViewById<TextView>(R.id.status_text).text = "Отсканируйте этот QR с устройства, где уже есть вход"
-            }
-        }
         view.findViewById<Button>(R.id.btn_logout).setOnClickListener {
             setLoading(true)
             afterLogout(view)
@@ -127,17 +113,10 @@ class AccountFragment : Fragment() {
                 }
             }
         }
-        setFabScanQr(isLoggedIn())
     }
 
     private fun isLoggedIn(): Boolean {
         return !prefs.getString("token", null).isNullOrEmpty()
-    }
-
-    private fun setFabScanQr(show: Boolean) {
-        val fab = view?.findViewById<View>(R.id.fab_scan_qr)
-        fab?.visibility = if (show) View.VISIBLE else View.GONE
-        fab?.setOnClickListener { startQrScanner() }
     }
 
     private fun showCorrectScreen(view: View) {
@@ -149,11 +128,9 @@ class AccountFragment : Fragment() {
                 "",
                 ""
             )
-            setFabScanQr(true)
             loadServersAndProfileUI(view)
         } else {
             showLoginScreen(view)
-            setFabScanQr(false)
         }
     }
 
@@ -230,7 +207,6 @@ class AccountFragment : Fragment() {
         if (token == null) {
             safeUi {
                 showLoginScreen(view)
-                setFabScanQr(false)
                 setLoading(false)
             }
             return
@@ -254,7 +230,6 @@ class AccountFragment : Fragment() {
                     setLoading(false)
                     if (response.code == 401) {
                         showLoginScreen(view)
-                        setFabScanQr(false)
                     } else if (response.isSuccessful) {
                         try {
                             val obj = JSONObject(resp)
@@ -265,7 +240,6 @@ class AccountFragment : Fragment() {
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
                             showAccountScreen(view, username, photoUrl, status, expDateStr)
-                            setFabScanQr(true)
                         } catch (e: Exception) {
                             Toast.makeText(requireContext(), "Ошибка обработки профиля", Toast.LENGTH_SHORT).show()
                         }
@@ -279,7 +253,6 @@ class AccountFragment : Fragment() {
 
     private fun showLoginScreen(view: View) {
         view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.VISIBLE
-        view.findViewById<Button>(R.id.btn_show_qr_login).visibility = View.VISIBLE
         view.findViewById<Button>(R.id.btn_download).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_renew).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout).visibility = View.GONE
@@ -294,7 +267,6 @@ class AccountFragment : Fragment() {
 
     private fun showAccountScreen(view: View, username: String, photoUrl: String?, status: String, expDateStr: String?) {
         view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.GONE
-        view.findViewById<Button>(R.id.btn_show_qr_login).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout).visibility = View.VISIBLE
         view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.GONE
         view.findViewById<Spinner>(R.id.spinner_server).visibility = View.VISIBLE
@@ -352,7 +324,6 @@ private fun afterLogout(view: View) {
         }
         safeUi {
             showLoginScreen(view)
-            setFabScanQr(false)
             Toast.makeText(requireContext(), "Вы вышли из аккаунта", Toast.LENGTH_SHORT).show()
         }
     }

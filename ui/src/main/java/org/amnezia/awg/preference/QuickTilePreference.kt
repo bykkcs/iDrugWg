@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.preference
+package pw.idrug.connections.preference
 
 import android.app.StatusBarManager
 import android.content.ComponentName
@@ -14,8 +14,8 @@ import android.util.AttributeSet
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.preference.Preference
-import org.amnezia.awg.QuickTileService
-import org.amnezia.awg.R
+import pw.idrug.connections.QuickTileService
+import pw.idrug.connections.R
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class QuickTilePreference(context: Context, attrs: AttributeSet?) : Preference(context, attrs) {

@@ -2,15 +2,15 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.activity
+package pw.idrug.connections.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.CallbackRegistry
 import androidx.databinding.CallbackRegistry.NotifierCallback
 import androidx.lifecycle.lifecycleScope
-import org.amnezia.awg.Application
-import org.amnezia.awg.model.ObservableTunnel
+import pw.idrug.connections.Application
+import pw.idrug.connections.model.ObservableTunnel
 import kotlinx.coroutines.launch
 
 /**

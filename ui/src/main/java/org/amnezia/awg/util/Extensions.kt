@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.util
+package pw.idrug.connections.util
 
 import android.content.Context
 import android.util.TypedValue
 import androidx.annotation.AttrRes
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
-import org.amnezia.awg.Application
-import org.amnezia.awg.activity.SettingsActivity
+import pw.idrug.connections.Application
+import pw.idrug.connections.activity.SettingsActivity
 import kotlinx.coroutines.CoroutineScope
 
 fun Context.resolveAttribute(@AttrRes attrRes: Int): Int {
