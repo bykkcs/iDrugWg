@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.viewmodel
+package pw.idrug.connections.viewmodel
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -10,13 +10,13 @@ import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
-import org.amnezia.awg.BR
-import org.amnezia.awg.config.Attribute
-import org.amnezia.awg.config.BadConfigException
-import org.amnezia.awg.config.Interface
-import org.amnezia.awg.crypto.Key
-import org.amnezia.awg.crypto.KeyFormatException
-import org.amnezia.awg.crypto.KeyPair
+import pw.idrug.connections.BR
+import pw.idrug.connections.config.Attribute
+import pw.idrug.connections.config.BadConfigException
+import pw.idrug.connections.config.Interface
+import pw.idrug.connections.crypto.Key
+import pw.idrug.connections.crypto.KeyFormatException
+import pw.idrug.connections.crypto.KeyPair
 
 class InterfaceProxy : BaseObservable, Parcelable {
     @get:Bindable

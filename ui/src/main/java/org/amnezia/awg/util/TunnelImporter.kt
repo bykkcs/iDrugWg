@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.util
+package pw.idrug.connections.util
 
 import android.content.ContentResolver
 import android.net.Uri
 import android.provider.OpenableColumns
 import android.util.Log
 import androidx.fragment.app.FragmentManager
-import org.amnezia.awg.Application
-import org.amnezia.awg.R
-import org.amnezia.awg.fragment.ConfigNamingDialogFragment
-import org.amnezia.awg.model.ObservableTunnel
-import org.amnezia.awg.config.Config
+import pw.idrug.connections.Application
+import pw.idrug.connections.R
+import pw.idrug.connections.fragment.ConfigNamingDialogFragment
+import pw.idrug.connections.model.ObservableTunnel
+import pw.idrug.connections.config.Config
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -148,5 +148,5 @@ object TunnelImporter {
         messageCallback(message)
     }
 
-    private const val TAG = "AmneziaWG/TunnelImporter"
+    private const val TAG = "iDrugConnections/TunnelImporter"
 }

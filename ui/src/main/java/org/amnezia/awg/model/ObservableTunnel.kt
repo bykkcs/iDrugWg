@@ -2,23 +2,23 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.model
+package pw.idrug.connections.model
 
 import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
-import org.amnezia.awg.BR
-import org.amnezia.awg.backend.Statistics
-import org.amnezia.awg.backend.Tunnel
-import org.amnezia.awg.databinding.Keyed
-import org.amnezia.awg.util.applicationScope
-import org.amnezia.awg.config.Config
+import pw.idrug.connections.BR
+import pw.idrug.connections.backend.Statistics
+import pw.idrug.connections.backend.Tunnel
+import pw.idrug.connections.databinding.Keyed
+import pw.idrug.connections.util.applicationScope
+import pw.idrug.connections.config.Config
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
- * Encapsulates the volatile and nonvolatile state of an AmneziaWG tunnel.
+ * Encapsulates the volatile and nonvolatile state of an iDrugConnections tunnel.
  */
 class ObservableTunnel internal constructor(
     private val manager: TunnelManager,
@@ -141,6 +141,6 @@ class ObservableTunnel internal constructor(
 
 
     companion object {
-        private const val TAG = "AmneziaWG/ObservableTunnel"
+        private const val TAG = "iDrugConnections/ObservableTunnel"
     }
 }

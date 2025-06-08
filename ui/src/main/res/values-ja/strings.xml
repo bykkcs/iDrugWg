@@ -76,7 +76,7 @@
     <string name="config_rename_error">設定ファイル \"%s\" の名前を変更できません</string>
     <string name="config_save_error">“%1$s” の設定を保存できません: %2$s</string>
     <string name="config_save_success">\"%s\" の設定を保存しました</string>
-    <string name="create_activity_title">AmneziaWG トンネルの作成</string>
+    <string name="create_activity_title">iDrugConnections トンネルの作成</string>
     <string name="create_bin_dir_error">ローカルバイナリディレクトリを作成できません</string>
     <string name="create_downloads_file_error">ダウンロードディレクトリにファイルを作成できません</string>
     <string name="create_empty">空の状態から作成</string>
@@ -120,14 +120,14 @@
     <string name="interface_title">インターフェース</string>
     <string name="key_contents_error">鍵に不正な文字があります</string>
     <string name="key_length_error">鍵の長さが不正です</string>
-    <string name="key_length_explanation_base64">: AmneziaWG base64 鍵は44文字 (32バイト) でなければなりません</string>
-    <string name="key_length_explanation_binary">: AmneziaWG 鍵は32バイトでなければなりません</string>
-    <string name="key_length_explanation_hex">: AmneziaWG hex 鍵は64文字 (32バイト) でなければなりません</string>
+    <string name="key_length_explanation_base64">: iDrugConnections base64 鍵は44文字 (32バイト) でなければなりません</string>
+    <string name="key_length_explanation_binary">: iDrugConnections 鍵は32バイトでなければなりません</string>
+    <string name="key_length_explanation_hex">: iDrugConnections hex 鍵は64文字 (32バイト) でなければなりません</string>
     <string name="latest_handshake">直近のハンドシェイク</string>
     <string name="latest_handshake_ago">%s 前</string>
     <string name="listen_port">Listen ポート</string>
     <string name="log_export_error">ログをエクスポートできません: %s</string>
-    <string name="log_export_subject">AmneziaWG Android ログファイル</string>
+    <string name="log_export_subject">iDrugConnections Android ログファイル</string>
     <string name="log_export_success">“%s” に保存しました</string>
     <string name="log_export_title">ログのエクスポート</string>
     <string name="log_saver_activity_label">ログの保存</string>
@@ -160,8 +160,8 @@
     <string name="parse_error_integer">数値</string>
     <string name="parse_error_reason">%1$s の内容を解読できません “%2$s”</string>
     <string name="peer">ピア</string>
-    <string name="permission_description">AmneziaWG トンネルを制御し、自由に有効化/無効化できますが、インターネット向けトラフィックが意図しない方向に流れる可能性があります</string>
-    <string name="permission_label">AmneziaWG トンネルの制御</string>
+    <string name="permission_description">iDrugConnections トンネルを制御し、自由に有効化/無効化できますが、インターネット向けトラフィックが意図しない方向に流れる可能性があります</string>
+    <string name="permission_label">iDrugConnections トンネルの制御</string>
     <string name="persistent_keepalive">持続的キープアライブ</string>
     <string name="pre_shared_key">事前共有鍵</string>
     <string name="pre_shared_key_enabled">有効</string>
@@ -183,7 +183,7 @@
     <string name="shell_start_error">シェルの起動に失敗しました: %d</string>
     <string name="success_application_will_restart">成功。アプリケーションは再起動します…</string>
     <string name="toggle_all">すべての状態を切り替え</string>
-    <string name="toggle_error">AmneziaWG トンネルの状態切り替え時にエラー: %s</string>
+    <string name="toggle_error">iDrugConnections トンネルの状態切り替え時にエラー: %s</string>
     <string name="tools_installer_already">awg および awg-quick はインストール済みです</string>
     <string name="tools_installer_failure">コマンドラインツールをインストールできません(root権限がない？)</string>
     <string name="tools_installer_initial">スクリプティングのためのオプションツールのインストール</string>
@@ -219,7 +219,7 @@
     <string name="version_summary">%1$s バックエンド %2$s</string>
     <string name="version_summary_checking">%s バックエンドのバージョンを確認中</string>
     <string name="version_summary_unknown">未知の %s バージョン</string>
-    <string name="version_title">AmneziaWG for Android v%s</string>
+    <string name="version_title">iDrugConnections for Android v%s</string>
     <string name="vpn_not_authorized_error">VPN サービスはユーザによって認証されていません</string>
     <string name="vpn_start_error">Android VPN サービスを開始できません</string>
     <string name="zip_export_error">トンネル設定をエクスポートできません: %s</string>

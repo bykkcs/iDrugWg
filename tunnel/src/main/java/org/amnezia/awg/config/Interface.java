@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.config;
+package pw.idrug.connections.config;
 
-import org.amnezia.awg.config.BadConfigException.Location;
-import org.amnezia.awg.config.BadConfigException.Reason;
-import org.amnezia.awg.config.BadConfigException.Section;
-import org.amnezia.awg.crypto.Key;
-import org.amnezia.awg.crypto.KeyFormatException;
-import org.amnezia.awg.crypto.KeyPair;
-import org.amnezia.awg.util.NonNullForAll;
+import pw.idrug.connections.config.BadConfigException.Location;
+import pw.idrug.connections.config.BadConfigException.Reason;
+import pw.idrug.connections.config.BadConfigException.Section;
+import pw.idrug.connections.crypto.Key;
+import pw.idrug.connections.crypto.KeyFormatException;
+import pw.idrug.connections.crypto.KeyPair;
+import pw.idrug.connections.util.NonNullForAll;
 
 import java.net.InetAddress;
 import java.util.Collection;
@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 import androidx.annotation.Nullable;
 
 /**
- * Represents the configuration for an AmneziaWG interface (an [Interface] block). Interfaces must
+ * Represents the configuration for an iDrugConnections interface (an [Interface] block). Interfaces must
  * have a private key (used to initialize a {@code KeyPair}), and may optionally have several other
  * attributes.
  * <p>
@@ -232,7 +232,7 @@ public final class Interface {
     }
 
     /**
-     * Returns the UDP port number that the AmneziaWG interface will listen on.
+     * Returns the UDP port number that the iDrugConnections interface will listen on.
      *
      * @return a UDP port number, or {@code Optional.empty()} if none is configured
      */
@@ -241,7 +241,7 @@ public final class Interface {
     }
 
     /**
-     * Returns the MTU used for the AmneziaWG interface.
+     * Returns the MTU used for the iDrugConnections interface.
      *
      * @return the MTU, or {@code Optional.empty()} if none is configured
      */
@@ -250,7 +250,7 @@ public final class Interface {
     }
 
     /**
-     * Returns the junkPacketCount used for the AmneziaWG interface.
+     * Returns the junkPacketCount used for the iDrugConnections interface.
      *
      * @return the junkPacketCount, or {@code Optional.empty()} if none is configured
      */
@@ -259,7 +259,7 @@ public final class Interface {
     }
 
     /**
-     * Returns the junkPacketMinSize used for the AmneziaWG interface.
+     * Returns the junkPacketMinSize used for the iDrugConnections interface.
      *
      * @return the junkPacketMinSize, or {@code Optional.empty()} if none is configured
      */
@@ -268,7 +268,7 @@ public final class Interface {
     }
 
     /**
-     * Returns the junkPacketMaxSize used for the AmneziaWG interface.
+     * Returns the junkPacketMaxSize used for the iDrugConnections interface.
      *
      * @return the junkPacketMaxSize, or {@code Optional.empty()} if none is configured
      */
@@ -277,7 +277,7 @@ public final class Interface {
     }
 
     /**
-     * Returns the initPacketJunkSize used for the AmneziaWG interface.
+     * Returns the initPacketJunkSize used for the iDrugConnections interface.
      *
      * @return the initPacketJunkSize, or {@code Optional.empty()} if none is configured
      */
@@ -286,7 +286,7 @@ public final class Interface {
     }
 
     /**
-     * Returns the responsePacketJunkSize used for the AmneziaWG interface.
+     * Returns the responsePacketJunkSize used for the iDrugConnections interface.
      *
      * @return the responsePacketJunkSize, or {@code Optional.empty()} if none is configured
      */
@@ -295,7 +295,7 @@ public final class Interface {
     }
 
     /**
-     * Returns the initPacketMagicHeader used for the AmneziaWG interface.
+     * Returns the initPacketMagicHeader used for the iDrugConnections interface.
      *
      * @return the initPacketMagicHeader, or {@code Optional.empty()} if none is configured
      */
@@ -304,7 +304,7 @@ public final class Interface {
     }
 
     /**
-     * Returns the responsePacketMagicHeader used for the AmneziaWG interface.
+     * Returns the responsePacketMagicHeader used for the iDrugConnections interface.
      *
      * @return the responsePacketMagicHeader, or {@code Optional.empty()} if none is configured
      */
@@ -313,7 +313,7 @@ public final class Interface {
     }
 
     /**
-     * Returns the underloadPacketMagicHeader used for the AmneziaWG interface.
+     * Returns the underloadPacketMagicHeader used for the iDrugConnections interface.
      *
      * @return the underloadPacketMagicHeader, or {@code Optional.empty()} if none is configured
      */
@@ -322,7 +322,7 @@ public final class Interface {
     }
 
     /**
-     * Returns the transportPacketMagicHeader used for the AmneziaWG interface.
+     * Returns the transportPacketMagicHeader used for the iDrugConnections interface.
      *
      * @return the transportPacketMagicHeader, or {@code Optional.empty()} if none is configured
      */
@@ -403,7 +403,7 @@ public final class Interface {
     }
 
     /**
-     * Serializes the {@code Interface} for use with the AmneziaWG cross-platform userspace API.
+     * Serializes the {@code Interface} for use with the iDrugConnections cross-platform userspace API.
      * Note that not all attributes are included in this representation.
      *
      * @return the {@code Interface} represented as a series of "KEY=VALUE" lines

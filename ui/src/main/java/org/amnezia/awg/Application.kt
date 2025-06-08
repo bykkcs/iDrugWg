@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg
+package pw.idrug.connections
 
 import android.content.Context
 import android.content.Intent
@@ -17,15 +17,15 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import com.google.android.material.color.DynamicColors
-import org.amnezia.awg.backend.Backend
-import org.amnezia.awg.backend.GoBackend
-import org.amnezia.awg.backend.AwgQuickBackend
-import org.amnezia.awg.configStore.FileConfigStore
-import org.amnezia.awg.model.TunnelManager
-import org.amnezia.awg.util.RootShell
-import org.amnezia.awg.util.ToolsInstaller
-import org.amnezia.awg.util.UserKnobs
-import org.amnezia.awg.util.applicationScope
+import pw.idrug.connections.backend.Backend
+import pw.idrug.connections.backend.GoBackend
+import pw.idrug.connections.backend.AwgQuickBackend
+import pw.idrug.connections.configStore.FileConfigStore
+import pw.idrug.connections.model.TunnelManager
+import pw.idrug.connections.util.RootShell
+import pw.idrug.connections.util.ToolsInstaller
+import pw.idrug.connections.util.UserKnobs
+import pw.idrug.connections.util.applicationScope
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -128,8 +128,8 @@ class Application : android.app.Application() {
     }
 
     companion object {
-        val USER_AGENT = String.format(Locale.ENGLISH, "AmneziaWG/%s (Android %d; %s; %s; %s %s; %s)", BuildConfig.VERSION_NAME, Build.VERSION.SDK_INT, if (Build.SUPPORTED_ABIS.isNotEmpty()) Build.SUPPORTED_ABIS[0] else "unknown ABI", Build.BOARD, Build.MANUFACTURER, Build.MODEL, Build.FINGERPRINT)
-        private const val TAG = "AmneziaWG/Application"
+        val USER_AGENT = String.format(Locale.ENGLISH, "iDrugConnections/%s (Android %d; %s; %s; %s %s; %s)", BuildConfig.VERSION_NAME, Build.VERSION.SDK_INT, if (Build.SUPPORTED_ABIS.isNotEmpty()) Build.SUPPORTED_ABIS[0] else "unknown ABI", Build.BOARD, Build.MANUFACTURER, Build.MODEL, Build.FINGERPRINT)
+        private const val TAG = "iDrugConnections/Application"
         private lateinit var weakSelf: WeakReference<Application>
 
         fun get(): Application {

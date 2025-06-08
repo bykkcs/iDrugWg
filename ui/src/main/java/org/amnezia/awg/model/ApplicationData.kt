@@ -2,13 +2,13 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.model
+package pw.idrug.connections.model
 
 import android.graphics.drawable.Drawable
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
-import org.amnezia.awg.BR
-import org.amnezia.awg.databinding.Keyed
+import pw.idrug.connections.BR
+import pw.idrug.connections.databinding.Keyed
 
 class ApplicationData(val icon: Drawable, val name: String, val packageName: String, isSelected: Boolean) : BaseObservable(), Keyed<String> {
     override val key = name

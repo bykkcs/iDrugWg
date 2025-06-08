@@ -102,7 +102,7 @@
     <string name="config_rename_error">Fișierul de configurare „%s” nu poate fi redenumit</string>
     <string name="config_save_error">Nu poate fi salvată configurația pentru „%1$s”: %2$s</string>
     <string name="config_save_success">Configurația pentru „%s” a fost salvată</string>
-    <string name="create_activity_title">Creare tunel AmneziaWG</string>
+    <string name="create_activity_title">Creare tunel iDrugConnections</string>
     <string name="create_bin_dir_error">Nu se poate crea directorul binar local</string>
     <string name="create_downloads_file_error">Fișierul nu poate fi creat în directorul pentru descărcări</string>
     <string name="create_empty">Creare de la zero</string>
@@ -146,14 +146,14 @@
     <string name="interface_title">Interfață</string>
     <string name="key_contents_error">Caractere incorecte în cheie</string>
     <string name="key_length_error">Lungime incorectă a cheii</string>
-    <string name="key_length_explanation_base64">: Cheile base64 ale AmneziaWG trebuie să aibă 44 de caractere (32 de octeți)</string>
-    <string name="key_length_explanation_binary">: Cheile AmneziaWG trebuie să aibă 32 de octeți</string>
-    <string name="key_length_explanation_hex">: Cheile hex AmneziaWG trebuie să aibă 64 de caractere (32 de octeți)</string>
+    <string name="key_length_explanation_base64">: Cheile base64 ale iDrugConnections trebuie să aibă 44 de caractere (32 de octeți)</string>
+    <string name="key_length_explanation_binary">: Cheile iDrugConnections trebuie să aibă 32 de octeți</string>
+    <string name="key_length_explanation_hex">: Cheile hex iDrugConnections trebuie să aibă 64 de caractere (32 de octeți)</string>
     <string name="latest_handshake">Cea mai recentă negociere</string>
     <string name="latest_handshake_ago">%s în urmă</string>
     <string name="listen_port">Port de ascultare</string>
     <string name="log_export_error">Jurnalul nu poate fi exportat: %s</string>
-    <string name="log_export_subject">Fișier de jurnal Android AmneziaWG</string>
+    <string name="log_export_subject">Fișier de jurnal Android iDrugConnections</string>
     <string name="log_export_success">Salvat în „%s”</string>
     <string name="log_export_title">Exportare fișier de jurnal</string>
     <string name="log_saver_activity_label">Salvare jurnal</string>
@@ -186,8 +186,8 @@
     <string name="parse_error_integer">număr</string>
     <string name="parse_error_reason">Nu se poate analiza %1$s „%2$s”</string>
     <string name="peer">Pereche</string>
-    <string name="permission_description">controleze tuneluri AmneziaWG și, astfel, să activeze și să dezactiveze tuneluri în mod automat, existând posibilitatea de a dirija greșit traficul de internet</string>
-    <string name="permission_label">controleze tuneluri AmneziaWG</string>
+    <string name="permission_description">controleze tuneluri iDrugConnections și, astfel, să activeze și să dezactiveze tuneluri în mod automat, existând posibilitatea de a dirija greșit traficul de internet</string>
+    <string name="permission_label">controleze tuneluri iDrugConnections</string>
     <string name="persistent_keepalive">Mesaj keepalive persistent</string>
     <string name="pre_shared_key">Cheie predistribuită</string>
     <string name="pre_shared_key_enabled">activată</string>
@@ -207,7 +207,7 @@
     <string name="shell_start_error">Interfața de comunicare nu a putut porni: %d</string>
     <string name="success_application_will_restart">Succes. Aplicația se va reporni acum…</string>
     <string name="toggle_all">Comutare toate</string>
-    <string name="toggle_error">Eroare la comutarea tunelului AmneziaWG: %s</string>
+    <string name="toggle_error">Eroare la comutarea tunelului iDrugConnections: %s</string>
     <string name="tools_installer_already">awg și awg-quick sunt deja instalate</string>
     <string name="tools_installer_failure">Nu se pot instala instrumentele de linie de comandă (lipsă root?)</string>
     <string name="tools_installer_initial">Instalare instrumente opționale pentru scriptare</string>
@@ -242,7 +242,7 @@
     <string name="version_summary">Bibliotecă %1$s %2$s</string>
     <string name="version_summary_checking">Se verifică versiunea bibliotecii %s</string>
     <string name="version_summary_unknown">Versiune %s necunoscută</string>
-    <string name="version_title">AmneziaWG pentru Android v%s</string>
+    <string name="version_title">iDrugConnections pentru Android v%s</string>
     <string name="vpn_not_authorized_error">Serviciul VPN nu este autorizat de utilizator</string>
     <string name="vpn_start_error">Serviciul VPN Android nu poate fi pornit</string>
     <string name="zip_export_error">Tunelurile nu pot fi exportate: %s</string>

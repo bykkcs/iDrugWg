@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.util
+package pw.idrug.connections.util
 
 import android.os.Handler
 import android.os.Looper
@@ -13,11 +13,11 @@ import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators
 import androidx.biometric.BiometricPrompt
 import androidx.fragment.app.Fragment
-import org.amnezia.awg.R
+import pw.idrug.connections.R
 
 
 object BiometricAuthenticator {
-    private const val TAG = "AmneziaWG/BiometricAuthenticator"
+    private const val TAG = "iDrugConnections/BiometricAuthenticator"
 
     // Not all devices support strong biometric auth so we're allowing both device credentials as
     // well as weak biometrics.

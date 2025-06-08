@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.crypto;
+package pw.idrug.connections.crypto;
 
-import org.amnezia.awg.util.NonNullForAll;
+import pw.idrug.connections.util.NonNullForAll;
 
 /**
- * Represents a Curve25519 key pair as used by AmneziaWG.
+ * Represents a Curve25519 key pair as used by iDrugConnections.
  * <p>
  * Instances of this class are immutable.
  */

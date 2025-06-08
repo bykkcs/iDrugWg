@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.preference
+package pw.idrug.connections.preference
 
 import android.content.Context
 import android.content.Intent
@@ -10,14 +10,14 @@ import android.util.AttributeSet
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
-import org.amnezia.awg.Application
-import org.amnezia.awg.R
-import org.amnezia.awg.activity.SettingsActivity
-import org.amnezia.awg.backend.Tunnel
-import org.amnezia.awg.backend.AwgQuickBackend
-import org.amnezia.awg.util.UserKnobs
-import org.amnezia.awg.util.activity
-import org.amnezia.awg.util.lifecycleScope
+import pw.idrug.connections.Application
+import pw.idrug.connections.R
+import pw.idrug.connections.activity.SettingsActivity
+import pw.idrug.connections.backend.Tunnel
+import pw.idrug.connections.backend.AwgQuickBackend
+import pw.idrug.connections.util.UserKnobs
+import pw.idrug.connections.util.activity
+import pw.idrug.connections.util.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async
@@ -83,6 +83,6 @@ class KernelModuleEnablerPreference(context: Context, attrs: AttributeSet?) : Pr
     }
 
     companion object {
-        private const val TAG = "AmneziaWG/KernelModuleEnablerPreference"
+        private const val TAG = "iDrugConnections/KernelModuleEnablerPreference"
     }
 }
