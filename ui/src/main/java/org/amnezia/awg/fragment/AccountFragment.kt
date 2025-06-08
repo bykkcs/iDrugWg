@@ -240,6 +240,8 @@ class AccountFragment : Fragment() {
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
                             showAccountScreen(view, username, photoUrl, status, expDateStr)
+                            // Важно сразу синхронизировать туннели после получения профиля
+                            syncTunnelsWithProfile()
                         } catch (e: Exception) {
                             Toast.makeText(requireContext(), "Ошибка обработки профиля", Toast.LENGTH_SHORT).show()
                         }
@@ -600,6 +602,46 @@ private fun afterLogout(view: View) {
             return bitmap
         }
         override fun key() = "circle"
+    }
+
+    private fun syncTunnelsWithProfile() {
+        val token = prefs.getString("token", null) ?: return
+        val client = OkHttpClient()
+        val url = "https://idrug.pw/api/profile"
+        val request = Request.Builder()
+            .url(url)
+            .addHeader("Authorization", "Bearer $token")
+            .build()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {}
+            override fun onResponse(call: Call, response: Response) {
+                if (!response.isSuccessful) return
+                val resp = response.body?.string() ?: return
+                try {
+                    val obj = JSONObject(resp)
+                    val subscriptionsArr = obj.optJSONArray("subscriptions") ?: return
+                    val activeServers = mutableSetOf<String>()
+                    for (i in 0 until subscriptionsArr.length()) {
+                        val sObj = subscriptionsArr.getJSONObject(i)
+                        if (sObj.optBoolean("active", false)) {
+                            activeServers.add(sObj.optString("id"))
+                        }
+                    }
+                    MainScope().launch {
+                        val tunnelManager = Application.getTunnelManager()
+                        val tunnels = tunnelManager.getTunnels()
+                        for (tunnel in tunnels) {
+                            if (tunnel.name.startsWith("idrug_")) {
+                                val serverId = tunnel.name.removePrefix("idrug_")
+                                if (serverId !in activeServers) {
+                                    tunnelManager.delete(tunnel)
+                                }
+                            }
+                        }
+                    }
+                } catch (_: Exception) {}
+            }
+        })
     }
 
     private fun safeUi(block: () -> Unit) {
