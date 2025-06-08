@@ -35,7 +35,7 @@ import java.util.concurrent.TimeoutException;
 import androidx.annotation.Nullable;
 import androidx.collection.ArraySet;
 
-import static pw.idrug.connections.GoBackend.*;
+import static org.amnezia.awg.GoBackend.*;
 
 /**
  * Implementation of {@link Backend} that uses the amneziawg-go userspace implementation to provide
