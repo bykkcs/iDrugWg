@@ -1,4 +1,4 @@
-package org.amnezia.awg.activity
+package pw.idrug.connections.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,17 +12,17 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import org.amnezia.awg.R
-import org.amnezia.awg.fragment.TunnelDetailFragment
-import org.amnezia.awg.fragment.TunnelEditorFragment
-import org.amnezia.awg.fragment.TunnelListFragment
-import org.amnezia.awg.fragment.AccountFragment
-import org.amnezia.awg.model.ObservableTunnel
+import pw.idrug.connections.R
+import pw.idrug.connections.fragment.TunnelDetailFragment
+import pw.idrug.connections.fragment.TunnelEditorFragment
+import pw.idrug.connections.fragment.TunnelListFragment
+import pw.idrug.connections.fragment.AccountFragment
+import pw.idrug.connections.model.ObservableTunnel
 
 /**
- * CRUD interface for AmneziaWG tunnels. This activity serves as the main entry point to the
- * AmneziaWG application, and contains several fragments for listing, viewing details of, and
- * editing the configuration and interface state of AmneziaWG tunnels.
+ * CRUD interface for iDrugConnections tunnels. This activity serves as the main entry point to the
+ * iDrugConnections application, and contains several fragments for listing, viewing details of, and
+ * editing the configuration and interface state of iDrugConnections tunnels.
  */
 class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener {
     private var actionBar: ActionBar? = null

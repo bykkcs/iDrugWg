@@ -7,15 +7,15 @@
 
         <import type="android.view.View" />
 
-        <import type="org.amnezia.awg.model.ApplicationData" />
+        <import type="pw.idrug.connections.model.ApplicationData" />
 
         <variable
             name="fragment"
-            type="org.amnezia.awg.fragment.AppListDialogFragment" />
+            type="pw.idrug.connections.fragment.AppListDialogFragment" />
 
         <variable
             name="appData"
-            type="org.amnezia.awg.databinding.ObservableKeyedArrayList&lt;String, ApplicationData&gt;" />
+            type="pw.idrug.connections.databinding.ObservableKeyedArrayList&lt;String, ApplicationData&gt;" />
     </data>
 
     <LinearLayout

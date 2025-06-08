@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.config;
+package pw.idrug.connections.config;
 
-import org.amnezia.awg.config.BadConfigException.Location;
-import org.amnezia.awg.config.BadConfigException.Reason;
-import org.amnezia.awg.config.BadConfigException.Section;
-import org.amnezia.awg.crypto.Key;
-import org.amnezia.awg.crypto.KeyFormatException;
-import org.amnezia.awg.util.NonNullForAll;
+import pw.idrug.connections.config.BadConfigException.Location;
+import pw.idrug.connections.config.BadConfigException.Reason;
+import pw.idrug.connections.config.BadConfigException.Section;
+import pw.idrug.connections.crypto.Key;
+import pw.idrug.connections.crypto.KeyFormatException;
+import pw.idrug.connections.util.NonNullForAll;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -23,7 +23,7 @@ import java.util.Set;
 import androidx.annotation.Nullable;
 
 /**
- * Represents the configuration for an AmneziaWG peer (a [Peer] block). Peers must have a public key,
+ * Represents the configuration for an iDrugConnections peer (a [Peer] block). Peers must have a public key,
  * and may optionally have several other attributes.
  * <p>
  * Instances of this class are immutable.
@@ -185,7 +185,7 @@ public final class Peer {
     }
 
     /**
-     * Serializes the {@code Peer} for use with the AmneziaWG cross-platform userspace API. Note
+     * Serializes the {@code Peer} for use with the iDrugConnections cross-platform userspace API. Note
      * that not all attributes are included in this representation.
      *
      * @return the {@code Peer} represented as a series of "key=value" lines

@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.config;
+package pw.idrug.connections.config;
 
-import org.amnezia.awg.config.BadConfigException.Location;
-import org.amnezia.awg.config.BadConfigException.Reason;
-import org.amnezia.awg.config.BadConfigException.Section;
-import org.amnezia.awg.util.NonNullForAll;
+import pw.idrug.connections.config.BadConfigException.Location;
+import pw.idrug.connections.config.BadConfigException.Reason;
+import pw.idrug.connections.config.BadConfigException.Section;
+import pw.idrug.connections.util.NonNullForAll;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,7 +44,7 @@ public final class Config {
      * {@link BadConfigException} if the input is not well-formed or contains data that cannot
      * be parsed.
      *
-     * @param stream a stream of UTF-8 text that is interpreted as an AmneziaWG configuration
+     * @param stream a stream of UTF-8 text that is interpreted as an iDrugConnections configuration
      * @return a {@code Config} instance representing the supplied configuration
      */
     public static Config parse(final InputStream stream)
@@ -57,7 +57,7 @@ public final class Config {
      * {@link BadConfigException} if the input is not well-formed or contains data that cannot
      * be parsed.
      *
-     * @param reader a BufferedReader of UTF-8 text that is interpreted as an AmneziaWG configuration
+     * @param reader a BufferedReader of UTF-8 text that is interpreted as an iDrugConnections configuration
      * @return a {@code Config} instance representing the supplied configuration
      */
     public static Config parse(final BufferedReader reader)
@@ -169,7 +169,7 @@ public final class Config {
     }
 
     /**
-     * Serializes the {@code Config} for use with the AmneziaWG cross-platform userspace API.
+     * Serializes the {@code Config} for use with the iDrugConnections cross-platform userspace API.
      *
      * @return the {@code Config} represented as a series of "key=value" lines
      */

@@ -76,7 +76,7 @@
     <string name="config_rename_error">Không thể xóa file cấu hình \"%s\"</string>
     <string name="config_save_error">Không thể lưu cấu hình cho \"%1$s\": %2$s</string>
     <string name="config_save_success">Đã lưu cấu hình thành công cho \"%s\"</string>
-    <string name="create_activity_title">Tạo ra AmneziaWG VPN</string>
+    <string name="create_activity_title">Tạo ra iDrugConnections VPN</string>
     <string name="create_bin_dir_error">Không thế tạo local binary directory</string>
     <string name="create_downloads_file_error">Không thể tạo file trong thư mục download</string>
     <string name="create_empty">Làm lại từ đầu</string>
@@ -120,14 +120,14 @@
     <string name="interface_title">Giao diện</string>
     <string name="key_contents_error">Kí tự không hợp lệ trong khoá</string>
     <string name="key_length_error">Độ dài khoá không hợp lệ</string>
-    <string name="key_length_explanation_base64">: Khoá AmneziaWG base64 phải đủ 44 ký tự (32 bytes)</string>
-    <string name="key_length_explanation_binary">: Khoá AmneziaWG phải đủ 32 bytes</string>
-    <string name="key_length_explanation_hex">: Khoá AmneziaWG hex phải đủ 64 ký tự (32 bytes)</string>
+    <string name="key_length_explanation_base64">: Khoá iDrugConnections base64 phải đủ 44 ký tự (32 bytes)</string>
+    <string name="key_length_explanation_binary">: Khoá iDrugConnections phải đủ 32 bytes</string>
+    <string name="key_length_explanation_hex">: Khoá iDrugConnections hex phải đủ 64 ký tự (32 bytes)</string>
     <string name="latest_handshake">Lần bắt tay cuối</string>
     <string name="latest_handshake_ago">%s giây trước</string>
     <string name="listen_port">Cổng</string>
     <string name="log_export_error">Không thể xuất nhật ký: %s</string>
-    <string name="log_export_subject">File nhật ký AmneziaWG Android</string>
+    <string name="log_export_subject">File nhật ký iDrugConnections Android</string>
     <string name="log_export_success">Đã lưu vào \"%s\"</string>
     <string name="log_export_title">Xuất file nhật ký</string>
     <string name="log_saver_activity_label">Lưu nhật ký</string>

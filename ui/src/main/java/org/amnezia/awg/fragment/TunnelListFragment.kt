@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg.fragment
+package pw.idrug.connections.fragment
 
 import android.content.Intent
 import android.content.res.Resources
@@ -26,27 +26,27 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.qrcode.QRCodeReader
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
-import org.amnezia.awg.Application
-import org.amnezia.awg.R
-import org.amnezia.awg.activity.TunnelCreatorActivity
-import org.amnezia.awg.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler
-import org.amnezia.awg.databinding.TunnelListFragmentBinding
-import org.amnezia.awg.databinding.TunnelListItemBinding
-import org.amnezia.awg.model.ObservableTunnel
-import org.amnezia.awg.activity.MainActivity
-import org.amnezia.awg.viewmodel.ConfigProxy
-import org.amnezia.awg.fragment.AppListDialogFragment
-import org.amnezia.awg.util.ErrorMessages
-import org.amnezia.awg.util.QrCodeFromFileScanner
-import org.amnezia.awg.util.TunnelImporter
-import org.amnezia.awg.widget.MultiselectableRelativeLayout
+import pw.idrug.connections.Application
+import pw.idrug.connections.R
+import pw.idrug.connections.activity.TunnelCreatorActivity
+import pw.idrug.connections.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler
+import pw.idrug.connections.databinding.TunnelListFragmentBinding
+import pw.idrug.connections.databinding.TunnelListItemBinding
+import pw.idrug.connections.model.ObservableTunnel
+import pw.idrug.connections.activity.MainActivity
+import pw.idrug.connections.viewmodel.ConfigProxy
+import pw.idrug.connections.fragment.AppListDialogFragment
+import pw.idrug.connections.util.ErrorMessages
+import pw.idrug.connections.util.QrCodeFromFileScanner
+import pw.idrug.connections.util.TunnelImporter
+import pw.idrug.connections.widget.MultiselectableRelativeLayout
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 
 /**
- * Fragment containing a list of known AmneziaWG tunnels. It allows creating and deleting tunnels.
+ * Fragment containing a list of known iDrugConnections tunnels. It allows creating and deleting tunnels.
  */
 class TunnelListFragment : BaseFragment() {
     private val actionModeListener = ActionModeListener()
@@ -186,7 +186,6 @@ class TunnelListFragment : BaseFragment() {
                 binding.fragment = this@TunnelListFragment
                 binding.root.setOnClickListener {
                     if (actionMode == null) {
-                        selectedTunnel = item
                         showAppSelectionDialog(item)
                     } else {
                         actionModeListener.toggleItemChecked(position)
@@ -226,7 +225,7 @@ class TunnelListFragment : BaseFragment() {
                 showSnackbar(ErrorMessages[e])
                 return@launch
             }
-            val iface = config.interface
+            val iface = config.`interface`
             var isExcluded = true
             var selectedApps = ArrayList(iface.excludedApplications)
             if (selectedApps.isEmpty()) {
@@ -241,12 +240,12 @@ class TunnelListFragment : BaseFragment() {
                 val apps = bundle.getStringArray(AppListDialogFragment.KEY_SELECTED_APPS) ?: return@setFragmentResultListener
                 val excluded = bundle.getBoolean(AppListDialogFragment.KEY_IS_EXCLUDED)
                 val proxy = ConfigProxy(config)
-                proxy.interface.excludedApplications.clear()
-                proxy.interface.includedApplications.clear()
+                proxy.`interface`.excludedApplications.clear()
+                proxy.`interface`.includedApplications.clear()
                 if (excluded) {
-                    proxy.interface.excludedApplications.addAll(apps)
+                    proxy.`interface`.excludedApplications.addAll(apps)
                 } else {
-                    proxy.interface.includedApplications.addAll(apps)
+                    proxy.`interface`.includedApplications.addAll(apps)
                 }
                 val newConfig = try {
                     proxy.resolve()
@@ -397,6 +396,6 @@ class TunnelListFragment : BaseFragment() {
     companion object {
         private const val CHECKED_ITEMS = "CHECKED_ITEMS"
         const val ARG_OPEN_TUNNEL_FOR_APPS = "open_tunnel_for_apps"
-        private const val TAG = "AmneziaWG/TunnelListFragment"
+        private const val TAG = "iDrugConnections/TunnelListFragment"
     }
 }

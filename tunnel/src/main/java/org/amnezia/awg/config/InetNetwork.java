@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.amnezia.awg.config;
+package pw.idrug.connections.config;
 
-import org.amnezia.awg.util.NonNullForAll;
+import pw.idrug.connections.util.NonNullForAll;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;

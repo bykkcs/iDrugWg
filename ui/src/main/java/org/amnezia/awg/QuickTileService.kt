@@ -2,7 +2,7 @@
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-package org.amnezia.awg
+package pw.idrug.connections
 
 import android.app.PendingIntent
 import android.content.Intent
@@ -19,12 +19,12 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.databinding.Observable
 import androidx.databinding.Observable.OnPropertyChangedCallback
-import org.amnezia.awg.activity.MainActivity
-import org.amnezia.awg.activity.TunnelToggleActivity
-import org.amnezia.awg.backend.Tunnel
-import org.amnezia.awg.model.ObservableTunnel
-import org.amnezia.awg.util.applicationScope
-import org.amnezia.awg.widget.SlashDrawable
+import pw.idrug.connections.activity.MainActivity
+import pw.idrug.connections.activity.TunnelToggleActivity
+import pw.idrug.connections.backend.Tunnel
+import pw.idrug.connections.model.ObservableTunnel
+import pw.idrug.connections.util.applicationScope
+import pw.idrug.connections.widget.SlashDrawable
 import kotlinx.coroutines.launch
 
 /**
@@ -180,7 +180,7 @@ class QuickTileService : TileService() {
     }
 
     companion object {
-        private const val TAG = "AmneziaWG/QuickTileService"
+        private const val TAG = "iDrugConnections/QuickTileService"
         var isAdded: Boolean = false
             private set
     }
