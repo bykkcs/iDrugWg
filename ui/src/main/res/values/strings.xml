@@ -302,4 +302,5 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="apk_not_found">APK not found</string>
     <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
     <string name="apk_open_error">Failed to open APK for installation: %s</string>
+    <string name="no_browser_error">No application available to open the link</string>
 </resources>
