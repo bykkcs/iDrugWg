@@ -108,7 +108,7 @@ class AccountFragment : Fragment() {
             renewSubscription { success, resp ->
                 safeUi {
                     setLoading(false)
-                    val text = if (success) getString(R.string.subscription_updated) else getString(R.string.generic_error, resp)
+                    val text = if (success) getString(R.string.subscription_updated) else getString(R.string.error_message, resp)
                     Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
                     if (success) loadProfileAndSetupUI(requireView())
                 }
@@ -376,7 +376,7 @@ private fun afterLogout(view: View) {
                             }
                         }
                     } else {
-                        Toast.makeText(requireContext(), getString(R.string.generic_error, configOrError), Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), getString(R.string.error_message, configOrError), Toast.LENGTH_LONG).show()
                     }
                 }
             }

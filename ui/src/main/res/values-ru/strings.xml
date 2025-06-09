@@ -276,7 +276,7 @@
     <string name="qr_not_recognized">QR не распознан</string>
     <string name="login_first">Сначала войдите через Telegram</string>
     <string name="subscription_updated">Подписка обновлена</string>
-    <string name="generic_error">Ошибка: %s</string>
+    <string name="error_message">Ошибка: %s</string>
     <string name="select_server">Выберите сервер</string>
     <string name="login_via_telegram">Войдите через Telegram</string>
     <string name="server_germany">Германия</string>
