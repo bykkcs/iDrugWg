@@ -308,4 +308,5 @@
     <string name="apk_not_found">APK не найден!</string>
     <string name="grant_unknown_sources">Дайте разрешение на установку из неизвестных источников и повторите попытку</string>
     <string name="apk_open_error">Не удалось открыть APK для установки: %s</string>
+    <string name="no_browser_error">Не найдено приложение для открытия ссылки</string>
 </resources>

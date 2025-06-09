@@ -86,7 +86,11 @@ class AccountFragment : Fragment() {
     private fun setupListeners(view: View) {
         view.findViewById<Button>(R.id.btn_login_telegram).setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://idrug.pw/login?redirect=idrug://auth"))
-            startActivity(intent)
+            try {
+                startActivity(intent)
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), getString(R.string.no_browser_error), Toast.LENGTH_SHORT).show()
+            }
         }
         view.findViewById<Button>(R.id.btn_logout).setOnClickListener {
             setLoading(true)
@@ -581,7 +585,9 @@ private fun afterLogout(view: View) {
                     .putString("photo_url", photoUrl)
                     .apply()
                 Toast.makeText(requireContext(), getString(R.string.telegram_login_success), Toast.LENGTH_SHORT).show()
-                showCorrectScreen(requireView())
+                view?.let { v ->
+                    safeUi { showCorrectScreen(v) }
+                }
             }
             requireActivity().intent.data = null
         }
