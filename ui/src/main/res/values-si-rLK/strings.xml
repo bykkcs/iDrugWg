@@ -7,27 +7,34 @@
     <plurals name="set_included_applications">
         <item quantity="one">ඇතුළත් කළ යෙදුම් %d යි</item>
         <item quantity="other">ඇතුළත් කළ යෙදුම් %d යි</item>
+    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="one">%dක් බැහැරයි</item>
         <item quantity="other">%dක් බැහැරයි</item>
+    </plurals>
     <plurals name="n_included_applications">
         <item quantity="one">%dක් ඇතුළත්</item>
         <item quantity="other">%dක් ඇතුළත්</item>
+    </plurals>
     <string name="all_applications">සියළුම යෙදුම්</string>
     <string name="exclude_from_tunnel">බැහැර</string>
     <string name="include_in_tunnel">ඇතුළත් දෑ පමණි</string>
     <plurals name="include_n_applications">
         <item quantity="one">යෙදුම් %dක් ඇතුළත්</item>
         <item quantity="other">යෙදුම් %dක් ඇතුළත්</item>
+    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="one">යෙදුම් %dක් බැහැර</item>
         <item quantity="other">යෙදුම් %dක් බැහැර</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="one">සෑම තත්පරයකට</item>
         <item quantity="other">සෑම තත්පර %d කට</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">තත්පරය</item>
         <item quantity="other">තත්පර</item>
+    </plurals>
     <string name="use_all_applications">සියලුම යෙදුම් භාවිතාකරන්න</string>
     <string name="addresses">ලිපින</string>
     <string name="applications">යෙදුම්</string>
@@ -194,24 +201,4 @@
     <string name="biometric_prompt_private_key_title">පුද්ගලික යතුර බැලීමට සත්‍යාපනය කරන්න</string>
     <string name="biometric_auth_error">සත්‍යාපනය අසාර්ථක වීම</string>
     <string name="biometric_auth_error_reason">සත්‍යාපන අසාර්ථකත්වය: %s</string>
-    <string name="telegram_login_success">Telegram login successful!</string>
-    <string name="server_germany">Germany</string>
-    <string name="server_multihop_germany">Multihop Germany</string>
-    <string name="server_bulgaria">Bulgaria</string>
-    <string name="server_madrid">Madrid</string>
-    <string name="update_delete_failed">Failed to delete old update file</string>
-    <string name="update_title">Downloading update</string>
-    <string name="update_description">Downloading new app version</string>
-    <string name="update_started">Update download started</string>
-    <string name="update_launch_error">Failed to launch update: %s</string>
-    <string name="apk_not_found">APK not found</string>
-    <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
-    <string name="apk_open_error">Failed to open APK for installation: %s</string>
-    <string name="login_via_account">Log in via account</string>
-    <string name="download_button">Download</string>
-    <string name="renew_subscription_button">Renew subscription</string>
-    <string name="logout_button">Log out</string>
-    <string name="server_choice">Server selection</string>
-    <string name="qr_code_login_desc">QR code for login</string>
-    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

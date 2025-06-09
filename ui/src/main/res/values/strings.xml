@@ -232,6 +232,7 @@
     <string name="transfer_tibibytes">%.2f TiB</string>
     <string name="tun_create_error">Unable to create tun device</string>
     <string name="tunnel_config_error">Unable to configure tunnel (awg-quick returned %d)</string>
+    <string name="tunnel_create_error">Unable to create tunnel: %s</string>
     <string name="tunnel_create_success">Successfully created tunnel “%s”</string>
     <string name="tunnel_error_already_exists">Tunnel “%s” already exists</string>
     <string name="tunnel_error_invalid_name">Invalid name</string>
@@ -261,53 +262,7 @@
     <string name="account_avatar">Аватар пользователя</string>
     <string name="biometric_auth_error_reason">Authentication failure: %s</string>
     <string name="import_disclaimer">Ensure that you obtained the configuration file from a trusted source.
-
+    
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>
 </string>
-    <string name="qr_login_confirmed">QR login confirmed</string>
-    <string name="qr_confirm_error">QR confirmation error: %s</string>
-    <string name="qr_not_recognized">QR not recognized</string>
-    <string name="login_first">Please log in via Telegram first</string>
-    <string name="subscription_updated">Subscription renewed</string>
-    <string name="error_message">Error: %s</string>
-    <string name="select_server">Select a server</string>
-    <string name="login_via_telegram">Log in via Telegram</string>
-    <string name="server_germany">Germany</string>
-    <string name="server_multihop_germany">Multihop Germany</string>
-    <string name="server_bulgaria">Bulgaria</string>
-    <string name="server_madrid">Madrid</string>
-    <string name="config_already_added">Config already added</string>
-    <string name="tunnel_added">Tunnel added</string>
-    <string name="tunnel_create_error">Failed to create tunnel: %s</string>
-    <string name="logout_success">Logged out</string>
-    <string name="telegram_login_success">Telegram login successful!</string>
-    <string name="qr_generation_error">Failed to generate QR code</string>
-    <string name="qr_login_confirmed_short">QR login confirmed!</string>
-    <string name="not_authorized">Not authorized</string>
-    <string name="network_error">Network error: %s</string>
-    <string name="profile_error">Profile error: %d</string>
-    <string name="profile_processing_error">Profile processing error</string>
-    <string name="account_status_revoked">Config access blocked. Renew your subscription.</string>
-    <string name="account_status_expired">Subscription expired. Renew to obtain a new config.</string>
-    <string name="account_status_active">Download the config for automatic import</string>
-    <string name="account_status_unknown">Account status: %s</string>
-    <string name="days_left">Days left: %d</string>
-    <string name="login_choice_text">Log in via Telegram or QR</string>
-    <string name="current_user">Your login: %s</string>
-    <string name="update_delete_failed">Failed to delete old update file</string>
-    <string name="update_title">Downloading update</string>
-    <string name="update_description">Downloading new app version</string>
-    <string name="update_started">Update download started</string>
-    <string name="update_launch_error">Failed to launch update: %s</string>
-    <string name="apk_not_found">APK not found</string>
-    <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
-    <string name="apk_open_error">Failed to open APK for installation: %s</string>
-    <string name="no_browser_error">No application available to open the link</string>
-    <string name="login_via_account">Log in via account</string>
-    <string name="download_button">Download</string>
-    <string name="renew_subscription_button">Renew subscription</string>
-    <string name="logout_button">Log out</string>
-    <string name="server_choice">Server selection</string>
-    <string name="qr_code_login_desc">QR code for login</string>
-    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

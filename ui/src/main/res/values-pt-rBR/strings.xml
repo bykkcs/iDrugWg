@@ -7,24 +7,30 @@
     <plurals name="delete_success">
         <item quantity="one">Túnel %d excluído com sucesso</item>
         <item quantity="other">Túneis %d excluídos com êxito</item>
+    </plurals>
     <plurals name="delete_title">
         <item quantity="one">Túnel %d selecionado</item>
         <item quantity="other">Túneis %d selecionados</item>
+    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">Importados %1$d dos %2$d túneis</item>
         <item quantity="other">Importados %1$d dos %2$d túneis</item>
+    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">Importado %d túnel</item>
         <item quantity="other">Importados %d túneis</item>
+    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">Aplicação %d Excluída</item>
         <item quantity="other">Aplicações %d Excluídas</item>
+    </plurals>
     <string name="all_applications">Todos as aplicativos</string>
     <string name="exclude_from_tunnel">Retirar</string>
     <string name="include_in_tunnel">Incluir somente</string>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">segundo</item>
         <item quantity="other">segundos</item>
+    </plurals>
     <string name="use_all_applications">Usar todas aplicações</string>
     <string name="add_peer">Adicionar Par</string>
     <string name="addresses">Endereço</string>
@@ -204,24 +210,4 @@
     <string name="biometric_prompt_private_key_title">Autenticar para ver a chave privada</string>
     <string name="biometric_auth_error">Falha de autenticação</string>
     <string name="biometric_auth_error_reason">Falha de autenticação: %s</string>
-    <string name="telegram_login_success">Telegram login successful!</string>
-    <string name="server_germany">Germany</string>
-    <string name="server_multihop_germany">Multihop Germany</string>
-    <string name="server_bulgaria">Bulgaria</string>
-    <string name="server_madrid">Madrid</string>
-    <string name="update_delete_failed">Failed to delete old update file</string>
-    <string name="update_title">Downloading update</string>
-    <string name="update_description">Downloading new app version</string>
-    <string name="update_started">Update download started</string>
-    <string name="update_launch_error">Failed to launch update: %s</string>
-    <string name="apk_not_found">APK not found</string>
-    <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
-    <string name="apk_open_error">Failed to open APK for installation: %s</string>
-    <string name="login_via_account">Log in via account</string>
-    <string name="download_button">Download</string>
-    <string name="renew_subscription_button">Renew subscription</string>
-    <string name="logout_button">Log out</string>
-    <string name="server_choice">Server selection</string>
-    <string name="qr_code_login_desc">QR code for login</string>
-    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

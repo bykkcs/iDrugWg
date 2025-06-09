@@ -7,42 +7,54 @@
     <plurals name="delete_success">
         <item quantity="one">Túnel eliminado correctamente %d</item>
         <item quantity="other">Túneles eliminados correctamente %d</item>
+    </plurals>
     <plurals name="delete_title">
         <item quantity="one">%d túnel seleccionado</item>
         <item quantity="other">%d túneles seleccionados</item>
+    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">Importados %1$d de %2$d túneles</item>
         <item quantity="other">Importados %1$d de %2$d túneles</item>
+    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">%d túnel importado</item>
         <item quantity="other">%d túneles importados</item>
+    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">%d Aplicación Excluida</item>
         <item quantity="other">%d Aplicaciones Excluidas</item>
+    </plurals>
     <plurals name="set_included_applications">
         <item quantity="one">%d Aplicación Incluida</item>
         <item quantity="other">%d Aplicaciones Incluidas</item>
+    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="one">%d excluido</item>
         <item quantity="other">%d excluidos</item>
+    </plurals>
     <plurals name="n_included_applications">
         <item quantity="one">%d incluído</item>
         <item quantity="other">%d incluidos</item>
+    </plurals>
     <string name="all_applications">Todas las Aplicaciones</string>
     <string name="exclude_from_tunnel">Excluir</string>
     <string name="include_in_tunnel">Sólo inclusión</string>
     <plurals name="include_n_applications">
         <item quantity="one">Incluir %d aplicación</item>
         <item quantity="other">Incluir %d aplicaciones</item>
+    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="one">Excluir %d aplicación</item>
         <item quantity="other">Excluir %d aplicaciones</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="one">cada segundo</item>
         <item quantity="other">cada  %d segundos</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">segundo</item>
         <item quantity="other">segundos</item>
+    </plurals>
     <string name="use_all_applications">Usar todas las aplicaciones</string>
     <string name="add_peer">Añadir par</string>
     <string name="addresses">Direcciones</string>
@@ -227,24 +239,4 @@
     <string name="biometric_prompt_private_key_title">Autenticar para ver la clave privada</string>
     <string name="biometric_auth_error">Error de autenticación</string>
     <string name="biometric_auth_error_reason">Error de autenticación: %s</string>
-    <string name="telegram_login_success">Telegram login successful!</string>
-    <string name="server_germany">Germany</string>
-    <string name="server_multihop_germany">Multihop Germany</string>
-    <string name="server_bulgaria">Bulgaria</string>
-    <string name="server_madrid">Madrid</string>
-    <string name="update_delete_failed">Failed to delete old update file</string>
-    <string name="update_title">Downloading update</string>
-    <string name="update_description">Downloading new app version</string>
-    <string name="update_started">Update download started</string>
-    <string name="update_launch_error">Failed to launch update: %s</string>
-    <string name="apk_not_found">APK not found</string>
-    <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
-    <string name="apk_open_error">Failed to open APK for installation: %s</string>
-    <string name="login_via_account">Log in via account</string>
-    <string name="download_button">Download</string>
-    <string name="renew_subscription_button">Renew subscription</string>
-    <string name="logout_button">Log out</string>
-    <string name="server_choice">Server selection</string>
-    <string name="qr_code_login_desc">QR code for login</string>
-    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

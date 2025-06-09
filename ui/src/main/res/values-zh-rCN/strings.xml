@@ -5,28 +5,43 @@
     </plurals>
     <plurals name="delete_success">
         <item quantity="other">成功删除了 %d 项</item>
+    </plurals>
     <plurals name="delete_title">
         <item quantity="other">已选择 %d 个隧道</item>
+    </plurals>
     <plurals name="import_partial_success">
         <item quantity="other">导入了 %2$d 项中的 %1$d 项</item>
+    </plurals>
     <plurals name="import_total_success">
         <item quantity="other">导入了 %d 个隧道</item>
+    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="other">对 %d 个应用不生效</item>
+    </plurals>
     <plurals name="set_included_applications">
         <item quantity="other">对 %d 个应用生效</item>
+    </plurals>
     <plurals name="n_excluded_applications">
+        <item quantity="other">对 %d 个应用不生效</item>
+    </plurals>
     <plurals name="n_included_applications">
+        <item quantity="other">对 %d 个应用生效</item>
+    </plurals>
     <string name="all_applications">应用过滤</string>
     <string name="exclude_from_tunnel">不生效</string>
     <string name="include_in_tunnel">生效</string>
     <plurals name="include_n_applications">
         <item quantity="other">选定 %d 个应用</item>
+    </plurals>
     <plurals name="exclude_n_applications">
+        <item quantity="other">选定 %d 个应用</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="other">每隔 %d 秒</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="other">秒</item>
+    </plurals>
     <string name="use_all_applications">不设定过滤</string>
     <string name="add_peer">添加节点</string>
     <string name="addresses">局域网 IP 地址</string>
@@ -215,24 +230,4 @@
     <string name="biometric_prompt_private_key_title">查看私钥前需要通过认证</string>
     <string name="biometric_auth_error">认证失败</string>
     <string name="biometric_auth_error_reason">认证失败：%s</string>
-    <string name="telegram_login_success">Telegram login successful!</string>
-    <string name="server_germany">Germany</string>
-    <string name="server_multihop_germany">Multihop Germany</string>
-    <string name="server_bulgaria">Bulgaria</string>
-    <string name="server_madrid">Madrid</string>
-    <string name="update_delete_failed">Failed to delete old update file</string>
-    <string name="update_title">Downloading update</string>
-    <string name="update_description">Downloading new app version</string>
-    <string name="update_started">Update download started</string>
-    <string name="update_launch_error">Failed to launch update: %s</string>
-    <string name="apk_not_found">APK not found</string>
-    <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
-    <string name="apk_open_error">Failed to open APK for installation: %s</string>
-    <string name="login_via_account">Log in via account</string>
-    <string name="download_button">Download</string>
-    <string name="renew_subscription_button">Renew subscription</string>
-    <string name="logout_button">Log out</string>
-    <string name="server_choice">Server selection</string>
-    <string name="qr_code_login_desc">QR code for login</string>
-    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

@@ -5,31 +5,43 @@
     </plurals>
     <plurals name="delete_success">
         <item quantity="other">Đã xóa thành công %d tunnel(s)</item>
+    </plurals>
     <plurals name="delete_title">
         <item quantity="other">Đã chọn %d tunnel(s)</item>
+    </plurals>
     <plurals name="import_partial_success">
         <item quantity="other">Đã nhập %1$d trong số %2$d tunnel(s)</item>
+    </plurals>
     <plurals name="import_total_success">
         <item quantity="other">Đã nhập %d tunnel(s)</item>
+    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="other">%d Ứng dụng được loại trừ</item>
+    </plurals>
     <plurals name="set_included_applications">
         <item quantity="other">%d Ứng dụng được bao gồm</item>
+    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="other">Đã loại trừ %d</item>
+    </plurals>
     <plurals name="n_included_applications">
         <item quantity="other">Đã thêm vào %d</item>
+    </plurals>
     <string name="all_applications">Tất cả các ứng dụng</string>
     <string name="exclude_from_tunnel">Ngoại trừ</string>
     <string name="include_in_tunnel">Chỉ bao gồm</string>
     <plurals name="include_n_applications">
         <item quantity="other">Thêm vào %d ứng dụng</item>
+    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="other">Loại trừ %d ứng dụng</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="other">Mỗi %d giây</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="other">Giây</item>
+    </plurals>
     <string name="use_all_applications">Xài dùng tất cả app</string>
     <string name="add_peer">Thêm cộng tác viên</string>
     <string name="addresses">Địa chỉ</string>
@@ -121,24 +133,4 @@
     <string name="log_saver_activity_label">Lưu nhật ký</string>
     <string name="parse_error_inet_address">Địa chỉ IP</string>
     <string name="peer">Đồng trang lứa</string>
-    <string name="telegram_login_success">Telegram login successful!</string>
-    <string name="server_germany">Germany</string>
-    <string name="server_multihop_germany">Multihop Germany</string>
-    <string name="server_bulgaria">Bulgaria</string>
-    <string name="server_madrid">Madrid</string>
-    <string name="update_delete_failed">Failed to delete old update file</string>
-    <string name="update_title">Downloading update</string>
-    <string name="update_description">Downloading new app version</string>
-    <string name="update_started">Update download started</string>
-    <string name="update_launch_error">Failed to launch update: %s</string>
-    <string name="apk_not_found">APK not found</string>
-    <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
-    <string name="apk_open_error">Failed to open APK for installation: %s</string>
-    <string name="login_via_account">Log in via account</string>
-    <string name="download_button">Download</string>
-    <string name="renew_subscription_button">Renew subscription</string>
-    <string name="logout_button">Log out</string>
-    <string name="server_choice">Server selection</string>
-    <string name="qr_code_login_desc">QR code for login</string>
-    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

@@ -7,42 +7,54 @@
     <plurals name="delete_success">
         <item quantity="one">Slettet %d tunnel</item>
         <item quantity="other">Slettet %d tunneler</item>
+    </plurals>
     <plurals name="delete_title">
         <item quantity="one">%d tunnel valgt</item>
         <item quantity="other">%d tunneler valgt</item>
+    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">Importerte %1$d av %2$d tunneler</item>
         <item quantity="other">Importerte %1$d av %2$d tunneler</item>
+    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">Importerte %d tunnel</item>
         <item quantity="other">Importerte %d tunneler</item>
+    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">%d ekskludert app</item>
         <item quantity="other">%d ekskluderte apper</item>
+    </plurals>
     <plurals name="set_included_applications">
         <item quantity="one">%d inkludert app</item>
         <item quantity="other">%d inkluderte apper</item>
+    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="one">%d ekskludert</item>
         <item quantity="other">%d ekskluderte</item>
+    </plurals>
     <plurals name="n_included_applications">
         <item quantity="one">%d inkludert</item>
         <item quantity="other">%d inkluderte</item>
+    </plurals>
     <string name="all_applications">Alle applikasjoner</string>
     <string name="exclude_from_tunnel">Ekskluder</string>
     <string name="include_in_tunnel">Inkluder kun</string>
     <plurals name="include_n_applications">
         <item quantity="one">Inkluder %d app</item>
         <item quantity="other">Inkluder %d apper</item>
+    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="one">Ekskluder %d app</item>
         <item quantity="other">Ekskluder %d apper</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="one">hvert %d sekund</item>
         <item quantity="other">hvert %d sekund</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">sekund</item>
         <item quantity="other">sekunder</item>
+    </plurals>
     <string name="use_all_applications">Bruk alle apper</string>
     <string name="add_peer">Legg til peer</string>
     <string name="addresses">Adresser</string>
@@ -225,24 +237,4 @@
     <string name="biometric_prompt_private_key_title">Autentiser for å vise privatnøkkel</string>
     <string name="biometric_auth_error">Autentiseringsfeil</string>
     <string name="biometric_auth_error_reason">Autentiseringsfeil: %s</string>
-    <string name="telegram_login_success">Telegram login successful!</string>
-    <string name="server_germany">Germany</string>
-    <string name="server_multihop_germany">Multihop Germany</string>
-    <string name="server_bulgaria">Bulgaria</string>
-    <string name="server_madrid">Madrid</string>
-    <string name="update_delete_failed">Failed to delete old update file</string>
-    <string name="update_title">Downloading update</string>
-    <string name="update_description">Downloading new app version</string>
-    <string name="update_started">Update download started</string>
-    <string name="update_launch_error">Failed to launch update: %s</string>
-    <string name="apk_not_found">APK not found</string>
-    <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
-    <string name="apk_open_error">Failed to open APK for installation: %s</string>
-    <string name="login_via_account">Log in via account</string>
-    <string name="download_button">Download</string>
-    <string name="renew_subscription_button">Renew subscription</string>
-    <string name="logout_button">Log out</string>
-    <string name="server_choice">Server selection</string>
-    <string name="qr_code_login_desc">QR code for login</string>
-    <string name="login_url">https://idrug.pw/auth</string>
 </resources>
