@@ -133,4 +133,9 @@
     <string name="log_saver_activity_label">Lưu nhật ký</string>
     <string name="parse_error_inet_address">Địa chỉ IP</string>
     <string name="peer">Đồng trang lứa</string>
+    <string name="telegram_login_success">Telegram login successful!</string>
+    <string name="server_germany">Germany</string>
+    <string name="server_multihop_germany">Multihop Germany</string>
+    <string name="server_bulgaria">Bulgaria</string>
+    <string name="server_madrid">Madrid</string>
 </resources>

@@ -142,10 +142,10 @@ class AccountFragment : Fragment() {
         client.newCall(Request.Builder().url(url).build()).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 serverList = listOf(
-                    "germany" to "Германия",
-                    "multihop" to "Мультхоп Германия",
-                    "bulgaria" to "Болгария",
-                    "madrid" to "Мадрид"
+                    "germany" to getString(R.string.server_germany),
+                    "multihop" to getString(R.string.server_multihop_germany),
+                    "bulgaria" to getString(R.string.server_bulgaria),
+                    "madrid" to getString(R.string.server_madrid)
                 )
                 safeUi {
                     setupServerSpinner(view)
@@ -161,10 +161,10 @@ class AccountFragment : Fragment() {
                     }
                 } else {
                     serverList = listOf(
-                        "germany" to "Германия",
-                        "multihop" to "Мультхоп Германия",
-                        "bulgaria" to "Болгария",
-                        "madrid" to "Мадрид"
+                        "germany" to getString(R.string.server_germany),
+                        "multihop" to getString(R.string.server_multihop_germany),
+                        "bulgaria" to getString(R.string.server_bulgaria),
+                        "madrid" to getString(R.string.server_madrid)
                     )
                 }
                 safeUi {
@@ -576,7 +576,7 @@ private fun afterLogout(view: View) {
                     .putString("username", username)
                     .putString("photo_url", photoUrl)
                     .apply()
-                Toast.makeText(requireContext(), "Telegram-вход выполнен!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.telegram_login_success), Toast.LENGTH_SHORT).show()
                 showCorrectScreen(requireView())
             }
             requireActivity().intent.data = null

@@ -87,4 +87,9 @@
     <string name="version_summary_unknown">Tuntematon %s versio</string>
     <string name="biometric_auth_error">Varmennusvirhe</string>
     <string name="biometric_auth_error_reason">Varmennusvirhe: %s</string>
+    <string name="telegram_login_success">Telegram login successful!</string>
+    <string name="server_germany">Germany</string>
+    <string name="server_multihop_germany">Multihop Germany</string>
+    <string name="server_bulgaria">Bulgaria</string>
+    <string name="server_madrid">Madrid</string>
 </resources>
