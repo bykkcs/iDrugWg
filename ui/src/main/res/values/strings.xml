@@ -309,4 +309,5 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="logout_button">Log out</string>
     <string name="server_choice">Server selection</string>
     <string name="qr_code_login_desc">QR code for login</string>
+    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

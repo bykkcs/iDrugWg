@@ -7,23 +7,18 @@
     <plurals name="delete_success">
         <item quantity="one">%d टनल को सफलतापूर्वक हटा दिया गया</item>
         <item quantity="other">%d टनलस को सफलतापूर्वक हटा दिया गया</item>
-    </plurals>
     <plurals name="delete_title">
         <item quantity="one">%d टनल चयनित</item>
         <item quantity="other">%d टनलस का चयन किया गया</item>
-    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">आयातित %d %d टनल</item>
         <item quantity="other">आयातित %d %d टनलस</item>
-    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">आयातित %d टनल</item>
         <item quantity="other">आयातित %d टनलस</item>
-    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">%d बहिष्कृत अनुप्रयोग</item>
         <item quantity="other">%d बहिष्कृत अनुप्रयोग</item>
-    </plurals>
     <string name="add_peer">पीयर जोड़ें</string>
     <string name="addresses">एड्रेससैस</string>
     <string name="allowed_ips">अनुमत आईपी</string>
@@ -192,4 +187,5 @@
     <string name="logout_button">Log out</string>
     <string name="server_choice">Server selection</string>
     <string name="qr_code_login_desc">QR code for login</string>
+    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

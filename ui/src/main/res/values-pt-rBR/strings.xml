@@ -7,30 +7,24 @@
     <plurals name="delete_success">
         <item quantity="one">Túnel %d excluído com sucesso</item>
         <item quantity="other">Túneis %d excluídos com êxito</item>
-    </plurals>
     <plurals name="delete_title">
         <item quantity="one">Túnel %d selecionado</item>
         <item quantity="other">Túneis %d selecionados</item>
-    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">Importados %1$d dos %2$d túneis</item>
         <item quantity="other">Importados %1$d dos %2$d túneis</item>
-    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">Importado %d túnel</item>
         <item quantity="other">Importados %d túneis</item>
-    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">Aplicação %d Excluída</item>
         <item quantity="other">Aplicações %d Excluídas</item>
-    </plurals>
     <string name="all_applications">Todos as aplicativos</string>
     <string name="exclude_from_tunnel">Retirar</string>
     <string name="include_in_tunnel">Incluir somente</string>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">segundo</item>
         <item quantity="other">segundos</item>
-    </plurals>
     <string name="use_all_applications">Usar todas aplicações</string>
     <string name="add_peer">Adicionar Par</string>
     <string name="addresses">Endereço</string>
@@ -229,4 +223,5 @@
     <string name="logout_button">Log out</string>
     <string name="server_choice">Server selection</string>
     <string name="qr_code_login_desc">QR code for login</string>
+    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

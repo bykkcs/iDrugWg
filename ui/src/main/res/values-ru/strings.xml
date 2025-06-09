@@ -11,49 +11,41 @@
         <item quantity="few">Успешно удалено %d туннеля</item>
         <item quantity="many">Успешно удалено %d туннелей</item>
         <item quantity="other">Успешно удалено %d туннелей</item>
-    </plurals>
     <plurals name="delete_title">
         <item quantity="one">%d туннель выбран</item>
         <item quantity="few">%d туннеля выбрано</item>
         <item quantity="many">%d туннелей выбрано</item>
         <item quantity="other">%d туннелей выбрано</item>
-    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">Импортирован %1$d из %2$d туннелей</item>
         <item quantity="few">Импортировано %1$d из %2$d туннелей</item>
         <item quantity="many">Импортировано %1$d из %2$d туннелей</item>
         <item quantity="other">Импортировано %1$d из %2$d туннелей</item>
-    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">Импортирован %d туннель</item>
         <item quantity="few">Импортировано %d туннеля</item>
         <item quantity="many">Импортировано %d туннелей</item>
         <item quantity="other">Импортировано %d туннелей</item>
-    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">%d исключенное приложение</item>
         <item quantity="few">%d исключенных приложения</item>
         <item quantity="many">%d исключенных приложений</item>
         <item quantity="other">%d исключенных приложений</item>
-    </plurals>
     <plurals name="set_included_applications">
         <item quantity="one">%d включенное приложение</item>
         <item quantity="few">%d включенных приложения</item>
         <item quantity="many">%d включенных приложений</item>
         <item quantity="other">%d включенных приложений</item>
-    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="one">%d исключено</item>
         <item quantity="few">%d исключено</item>
         <item quantity="many">%d исключено</item>
         <item quantity="other">%d исключено</item>
-    </plurals>
     <plurals name="n_included_applications">
         <item quantity="one">%d включено</item>
         <item quantity="few">%d включено</item>
         <item quantity="many">%d включено</item>
         <item quantity="other">%d включено</item>
-    </plurals>
     <string name="all_applications">Все приложения</string>
     <string name="exclude_from_tunnel">Исключить для</string>
     <string name="include_in_tunnel">Включить для</string>
@@ -62,25 +54,21 @@
         <item quantity="few">Включить %d приложения</item>
         <item quantity="many">Включить %d приложений</item>
         <item quantity="other">Включить %d приложений</item>
-    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="one">Исключить %d приложение</item>
         <item quantity="few">Исключить %d приложения</item>
         <item quantity="many">Исключить %d приложений</item>
         <item quantity="other">Исключить %d приложений</item>
-    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="one">каждую секунду</item>
         <item quantity="few">каждые %d секунды</item>
         <item quantity="many">каждые %d секунд</item>
         <item quantity="other">каждые %d секунд</item>
-    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">секунда</item>
         <item quantity="few">секунды</item>
         <item quantity="many">секунд</item>
         <item quantity="other">секунд</item>
-    </plurals>
     <string name="use_all_applications">Использовать все приложения</string>
     <string name="add_peer">Добавить пир</string>
     <string name="addresses">Адреса</string>
@@ -315,4 +303,5 @@
     <string name="logout_button">Выйти</string>
     <string name="server_choice">Выбор сервера</string>
     <string name="qr_code_login_desc">QR-код для входа</string>
+    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

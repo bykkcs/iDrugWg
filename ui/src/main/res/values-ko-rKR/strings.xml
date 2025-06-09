@@ -5,43 +5,31 @@
     </plurals>
     <plurals name="delete_success">
         <item quantity="other">%d개의 터널을 성공적으로 삭제했습니다</item>
-    </plurals>
     <plurals name="delete_title">
         <item quantity="other">%d개의 터널이 선택되었습니다</item>
-    </plurals>
     <plurals name="import_partial_success">
         <item quantity="other">%2$d개의 터널 중에서 %1$d개를 가져왔습니다</item>
-    </plurals>
     <plurals name="import_total_success">
         <item quantity="other">%d개의 터널을 가져왔습니다</item>
-    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="other">%d개의 앱이 제외됨</item>
-    </plurals>
     <plurals name="set_included_applications">
         <item quantity="other">%d개의 앱이 포함됨</item>
-    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="other">%d개 제외됨</item>
-    </plurals>
     <plurals name="n_included_applications">
         <item quantity="other">%d개 포함됨</item>
-    </plurals>
     <string name="all_applications">모든 앱</string>
     <string name="exclude_from_tunnel">제외</string>
     <string name="include_in_tunnel">이것만 포함</string>
     <plurals name="include_n_applications">
         <item quantity="other">%d개의 앱을 포함함</item>
-    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="other">%d개의 앱을 제외함</item>
-    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="other">%d초 마다</item>
-    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="other">초</item>
-    </plurals>
     <string name="use_all_applications">모든 앱을 사용</string>
     <string name="add_peer">피어 추가</string>
     <string name="addresses">주소</string>
@@ -239,4 +227,5 @@
     <string name="logout_button">Log out</string>
     <string name="server_choice">Server selection</string>
     <string name="qr_code_login_desc">QR code for login</string>
+    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

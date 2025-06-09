@@ -7,54 +7,42 @@
     <plurals name="delete_success">
         <item quantity="one">%d टनल को सफलतापूर्वक हटा दिया गया</item>
         <item quantity="other">%d टनलस को सफलतापूर्वक हटा दिया गया</item>
-    </plurals>
     <plurals name="delete_title">
         <item quantity="one">%d टनल चयनित</item>
         <item quantity="other">%d टनलस का चयन किया गया</item>
-    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">आयातित %d %d टनल</item>
         <item quantity="other">आयातित %d %d टनलस</item>
-    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">आयातित %d टनल</item>
         <item quantity="other">आयातित %d टनलस</item>
-    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">%d बहिष्कृत अनुप्रयोग</item>
         <item quantity="other">%d बहिष्कृत अनुप्रयोग</item>
-    </plurals>
     <plurals name="set_included_applications">
         <item quantity="one">%d ऐप्स शामिल</item>
         <item quantity="other">%d ऐप्स शामिल किये गए</item>
-    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="one">%d अपवर्जित</item>
         <item quantity="other">%d अपवर्जित</item>
-    </plurals>
     <plurals name="n_included_applications">
         <item quantity="one">%d शामिल</item>
         <item quantity="other">%d शामिल</item>
-    </plurals>
     <string name="all_applications">सभी एप्लीकेशन</string>
     <string name="exclude_from_tunnel">वर्जित</string>
     <string name="include_in_tunnel">केवल शामिल करें</string>
     <plurals name="include_n_applications">
         <item quantity="one">%d ऐप शामिल करें</item>
         <item quantity="other">%d ऐप्स शामिल करें</item>
-    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="one">%d ऐप को बाहर करें</item>
         <item quantity="other">%d ऐप्स को बाहर करें</item>
-    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="one">हर सेकंड</item>
         <item quantity="other">हर %d सेकंड्‌स</item>
-    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">सेकंड</item>
         <item quantity="other">सेकंड्‌स</item>
-    </plurals>
     <string name="use_all_applications">सभी ऐप्स का उपयोग करें</string>
     <string name="add_peer">पीयर जोड़ें</string>
     <string name="addresses">एड्रेससैस</string>
@@ -235,4 +223,5 @@
     <string name="logout_button">Log out</string>
     <string name="server_choice">Server selection</string>
     <string name="qr_code_login_desc">QR code for login</string>
+    <string name="login_url">https://idrug.pw/auth</string>
 </resources>
