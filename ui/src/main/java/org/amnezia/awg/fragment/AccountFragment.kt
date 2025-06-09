@@ -296,12 +296,16 @@ class AccountFragment : Fragment() {
             }
         view.findViewById<TextView>(R.id.text_expiration).text = expDateStr?.let {
             if (status == "active" && it.isNotEmpty()) {
-                val fixed = it.replace("T", " ").substring(0, 19)
-                val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-                val expDate = sdf.parse(fixed)
-                val now = Date()
-                val daysLeft = ((expDate.time - now.time) / (1000 * 60 * 60 * 24)).toInt()
-                getString(R.string.days_left, daysLeft)
+                try {
+                    val fixed = it.replace("T", " ").substring(0, 19)
+                    val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+                    val expDate = sdf.parse(fixed)
+                    val now = Date()
+                    val daysLeft = ((expDate.time - now.time) / (1000 * 60 * 60 * 24)).toInt()
+                    getString(R.string.days_left, daysLeft)
+                } catch (_: Exception) {
+                    ""
+                }
             } else ""
         } ?: ""
     }
