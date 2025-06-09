@@ -7,42 +7,54 @@
     <plurals name="delete_success">
         <item quantity="one">%d ਟਨਲ ਕਾਮਯਾਬੀ ਨਾਲ ਹਟਾਈ</item>
         <item quantity="other">%d ਟਨਲਾਂ ਕਾਮਯਾਬੀ ਨਾਲ ਹਟਾਈਆਂ</item>
+    </plurals>
     <plurals name="delete_title">
         <item quantity="one">%d ਟਨਲ ਚੁਣੀ</item>
         <item quantity="other">%d ਟਨਲਾਂ ਚੁਣੀਆਂ</item>
+    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">%2$d ਟਨਲਾਂ ਵਿੱਚੋਂ %1$d ਇੰਪੋਰਟ ਕੀਤੀ</item>
         <item quantity="other">%2$d ਟਨਲਾਂ ਵਿੱਚੋਂ %1$d ਇੰਪੋਰਟ ਕੀਤੀਆਂ</item>
+    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">%d ਟਨਲ ਇੰਪੋਰਟ ਕੀਤੀ</item>
         <item quantity="other">%d ਟਨਲਾਂ ਇੰਪੋਰਟ ਕੀਤੀਆਂ</item>
+    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">%d ਅਲਹਿਦਾ ਕੀਤੀ ਐਪਲੀਕੇਸ਼ਨ</item>
         <item quantity="other">%d ਅਲਹਿਦਾ ਕੀਤੀਆਂ ਐਪਲੀਕੇਸ਼ਨਾਂ</item>
+    </plurals>
     <plurals name="set_included_applications">
         <item quantity="one">%d ਐਪਲੀਕੇਸ਼ਨ ਸਮੇਤ</item>
         <item quantity="other">%d ਐਪਲੀਕੇਸ਼ਨਾਂ ਸਮੇਤ</item>
+    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="one">%d ਅਲਹਿਦਾ ਰੱਖਿਆ</item>
         <item quantity="other">%d ਅਲਹਿਦਾ ਰੱਖੇ</item>
+    </plurals>
     <plurals name="n_included_applications">
         <item quantity="one">%d ਸਮੇਤ</item>
         <item quantity="other">%d ਸਮੇਤ</item>
+    </plurals>
     <string name="all_applications">ਸਾਰੀਆਂ ਐਪਲੀਕੇਸ਼ਨਾਂ</string>
     <string name="exclude_from_tunnel">ਅਲਹਿਦਾ</string>
     <string name="include_in_tunnel">ਸਿਰਫ਼ ਸ਼ਾਮਲ</string>
     <plurals name="include_n_applications">
         <item quantity="one">%d ਐਪ ਸ਼ਾਮਲ ਕਰੋ</item>
         <item quantity="other">%d ਐਪਾਂ ਸ਼ਾਮਲ ਕਰੋ</item>
+    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="one">%d ਐਪ ਅਲਹਿਦਾ ਰੱਖੋ</item>
         <item quantity="other">%d ਐਪਾਂ ਅਲਹਿਦਾ ਰੱਖੋ</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="one">ਹਰ ਸਕਿੰਟ</item>
         <item quantity="other">ਹਰ %d ਸਕਿੰਟ</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">ਸਕਿੰਟ</item>
         <item quantity="other">ਸਕਿੰਟ</item>
+    </plurals>
     <string name="use_all_applications">ਸਾਰੀਆਂ ਐਪਾਂ ਵਰਤੋਂ</string>
     <string name="add_peer">ਪੀਅਰ ਜੋੜੋ</string>
     <string name="addresses">ਸਿਰਨਾਵੇ</string>
@@ -218,24 +230,4 @@
     <string name="biometric_prompt_private_key_title">ਪ੍ਰਾਈਵੇਟ ਕੁੰਜੀ ਵੇਖਣ ਲਈ ਪਰਮਾਣਕਿਤਾ</string>
     <string name="biometric_auth_error">ਪਰਮਾਣਿਤ ਕਰਨ ਲਈ ਅਸਫ਼ਲ</string>
     <string name="biometric_auth_error_reason">ਪਰਮਾਣਿਤ ਕਰਨ ਲਈ ਅਸਫ਼ਲ: %s</string>
-    <string name="telegram_login_success">Telegram login successful!</string>
-    <string name="server_germany">Germany</string>
-    <string name="server_multihop_germany">Multihop Germany</string>
-    <string name="server_bulgaria">Bulgaria</string>
-    <string name="server_madrid">Madrid</string>
-    <string name="update_delete_failed">Failed to delete old update file</string>
-    <string name="update_title">Downloading update</string>
-    <string name="update_description">Downloading new app version</string>
-    <string name="update_started">Update download started</string>
-    <string name="update_launch_error">Failed to launch update: %s</string>
-    <string name="apk_not_found">APK not found</string>
-    <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
-    <string name="apk_open_error">Failed to open APK for installation: %s</string>
-    <string name="login_via_account">Log in via account</string>
-    <string name="download_button">Download</string>
-    <string name="renew_subscription_button">Renew subscription</string>
-    <string name="logout_button">Log out</string>
-    <string name="server_choice">Server selection</string>
-    <string name="qr_code_login_desc">QR code for login</string>
-    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

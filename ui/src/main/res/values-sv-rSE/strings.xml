@@ -7,42 +7,54 @@
     <plurals name="delete_success">
         <item quantity="one">Tog bort %d tunneln</item>
         <item quantity="other">Tog bort %d tunnlar</item>
+    </plurals>
     <plurals name="delete_title">
         <item quantity="one">%d tunnel vald</item>
         <item quantity="other">%d tunnlar valda</item>
+    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">Importerade %1$d av %2$d tunnlar</item>
         <item quantity="other">Importerade %1$d av %2$d tunnlar</item>
+    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">Importerade %d tunnel</item>
         <item quantity="other">Importerade %d tunnlar</item>
+    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">%d exkluderad applikation</item>
         <item quantity="other">%d Exkluderade applikationer</item>
+    </plurals>
     <plurals name="set_included_applications">
         <item quantity="one">%d inkluderad applikation</item>
         <item quantity="other">%d inkluderade applikationer</item>
+    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="one">%d exkluderad</item>
         <item quantity="other">%d exkluderade</item>
+    </plurals>
     <plurals name="n_included_applications">
         <item quantity="one">%d inkluderad</item>
         <item quantity="other">%d inkluderade</item>
+    </plurals>
     <string name="all_applications">Alla applikationer</string>
     <string name="exclude_from_tunnel">Exkludera</string>
     <string name="include_in_tunnel">Inkludera endast</string>
     <plurals name="include_n_applications">
         <item quantity="one">Inkludera %d app</item>
         <item quantity="other">Inkludera %d appar</item>
+    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="one">Exkludera %d app</item>
         <item quantity="other">Exkludera %d appar</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="one">varje sekund</item>
         <item quantity="other">var %d sekund</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">sekund</item>
         <item quantity="other">sekunder</item>
+    </plurals>
     <string name="use_all_applications">Använd alla appar</string>
     <string name="add_peer">Lägg till klient</string>
     <string name="addresses">Adresser</string>
@@ -231,24 +243,4 @@
     <string name="biometric_prompt_private_key_title">Godkänn för att visa tunnelns privata nycklar</string>
     <string name="biometric_auth_error">Fel vid godkännande</string>
     <string name="biometric_auth_error_reason">Fel vid godkännande: %s</string>
-    <string name="telegram_login_success">Telegram login successful!</string>
-    <string name="server_germany">Germany</string>
-    <string name="server_multihop_germany">Multihop Germany</string>
-    <string name="server_bulgaria">Bulgaria</string>
-    <string name="server_madrid">Madrid</string>
-    <string name="update_delete_failed">Failed to delete old update file</string>
-    <string name="update_title">Downloading update</string>
-    <string name="update_description">Downloading new app version</string>
-    <string name="update_started">Update download started</string>
-    <string name="update_launch_error">Failed to launch update: %s</string>
-    <string name="apk_not_found">APK not found</string>
-    <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
-    <string name="apk_open_error">Failed to open APK for installation: %s</string>
-    <string name="login_via_account">Log in via account</string>
-    <string name="download_button">Download</string>
-    <string name="renew_subscription_button">Renew subscription</string>
-    <string name="logout_button">Log out</string>
-    <string name="server_choice">Server selection</string>
-    <string name="qr_code_login_desc">QR code for login</string>
-    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

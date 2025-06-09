@@ -1,5 +1,6 @@
 -allowaccessmodification
 -dontusemixedcaseclassnames
+-dontobfuscate
 -verbose
 
 -keepattributes *Annotation*
@@ -32,8 +33,3 @@
 -keepclasseswithmembers class * {
     @androidx.annotation.Keep <init>(...);
 }
-
-# Suppress warnings about optional security providers referenced by OkHttp
--dontwarn org.bouncycastle.**
--dontwarn org.conscrypt.**
--dontwarn org.openjsse.**

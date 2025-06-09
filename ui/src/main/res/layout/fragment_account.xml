@@ -49,7 +49,7 @@
                 android:id="@+id/text_current_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login_choice_text"
+                android:text="Вход через Telegram или QR"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:paddingBottom="16dp"
@@ -59,7 +59,7 @@
                 android:id="@+id/btn_login_telegram"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/login_via_account" />
+                android:text="Войти через Telegram" />
 
 
             <ImageView
@@ -68,14 +68,14 @@
                 android:layout_height="220dp"
                 android:layout_marginTop="12dp"
                 android:visibility="gone"
-                android:contentDescription="@string/qr_code_login_desc"
+                android:contentDescription="QR-код для входа"
                 android:scaleType="fitCenter"
                 android:background="@android:color/transparent" />
 <TextView
     android:id="@+id/text_server_choice"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="@string/server_choice"
+    android:text="Выберите сервер"
     android:textStyle="bold"
     android:textSize="16sp"
     android:gravity="center"
@@ -91,7 +91,7 @@
                 android:id="@+id/btn_download"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/download_button"
+                android:text="Скачать конфиг"
                 android:layout_marginTop="8dp"
                 android:visibility="gone" />
 
@@ -99,7 +99,7 @@
                 android:id="@+id/btn_renew"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/renew_subscription_button"
+                android:text="Продлить подписку"
                 android:layout_marginTop="8dp"
                 android:visibility="gone" />
 
@@ -107,7 +107,7 @@
                 android:id="@+id/btn_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/logout_button"
+                android:text="Выйти"
                 android:layout_marginTop="8dp"
                 android:visibility="gone" />
 

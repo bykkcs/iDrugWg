@@ -5,30 +5,43 @@
     </plurals>
     <plurals name="delete_success">
         <item quantity="other">Berhasil menghapus terowongan %d</item>
+    </plurals>
     <plurals name="delete_title">
         <item quantity="other">%d terowongan dipilih</item>
+    </plurals>
     <plurals name="import_partial_success">
         <item quantity="other">Mengimpor %1$d terowongan dari %2$d</item>
+    </plurals>
     <plurals name="import_total_success">
         <item quantity="other">Mengimpor %d terowongan</item>
+    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="other">%d Aplikasi Dikecualikan</item>
+    </plurals>
     <plurals name="set_included_applications">
         <item quantity="other">%d Aplikasi Disertakan</item>
+    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="other">%d dikecualikan</item>
+    </plurals>
     <plurals name="n_included_applications">
         <item quantity="other">%d termasuk</item>
+    </plurals>
     <string name="all_applications">Semua aplikasi</string>
     <string name="exclude_from_tunnel">Kecualikan</string>
     <string name="include_in_tunnel">Berlaku hanya untuk</string>
     <plurals name="include_n_applications">
         <item quantity="other">Aplikasi %d yang disertakan</item>
+    </plurals>
     <plurals name="exclude_n_applications">
+        <item quantity="other">Aplikasi %d yang disertakan</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="other">setiap 10 detik</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="other">detik</item>
+    </plurals>
     <string name="use_all_applications">Gunakan semua aplikasi</string>
     <string name="add_peer">Tambahkan rekan</string>
     <string name="addresses">Alamat</string>
@@ -209,24 +222,4 @@
     <string name="biometric_prompt_private_key_title">Otentikasi untuk melihat kunci privat</string>
     <string name="biometric_auth_error">Otentikasi gagal</string>
     <string name="biometric_auth_error_reason">Otentikasi gagal: %s</string>
-    <string name="telegram_login_success">Telegram login successful!</string>
-    <string name="server_germany">Germany</string>
-    <string name="server_multihop_germany">Multihop Germany</string>
-    <string name="server_bulgaria">Bulgaria</string>
-    <string name="server_madrid">Madrid</string>
-    <string name="update_delete_failed">Failed to delete old update file</string>
-    <string name="update_title">Downloading update</string>
-    <string name="update_description">Downloading new app version</string>
-    <string name="update_started">Update download started</string>
-    <string name="update_launch_error">Failed to launch update: %s</string>
-    <string name="apk_not_found">APK not found</string>
-    <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
-    <string name="apk_open_error">Failed to open APK for installation: %s</string>
-    <string name="login_via_account">Log in via account</string>
-    <string name="download_button">Download</string>
-    <string name="renew_subscription_button">Renew subscription</string>
-    <string name="logout_button">Log out</string>
-    <string name="server_choice">Server selection</string>
-    <string name="qr_code_login_desc">QR code for login</string>
-    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

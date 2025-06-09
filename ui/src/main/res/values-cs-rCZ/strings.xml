@@ -11,41 +11,49 @@
         <item quantity="few">%d tunely byly smazány</item>
         <item quantity="many">%d tunelů bylo smazáno</item>
         <item quantity="other">%d tunelů bylo smazáno</item>
+    </plurals>
     <plurals name="delete_title">
         <item quantity="one">Vybrán %d tunel</item>
         <item quantity="few">Vybrány %d tunely</item>
         <item quantity="many">Vybráno %d tunelů</item>
         <item quantity="other">Vybráno %d tunelů</item>
+    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">Importován %1$d z %2$d tunelů</item>
         <item quantity="few">Importovány %1$d z %2$d tunelů</item>
         <item quantity="many">Importováno %1$d z %2$d tunelů</item>
         <item quantity="other">Importováno %1$d z %2$d tunelů</item>
+    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">Importován %d tunel</item>
         <item quantity="few">Importovány %d tunely</item>
         <item quantity="many">Importováno %d tunelů</item>
         <item quantity="other">Importováno %d tunelů</item>
+    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">%d vyloučená aplikace</item>
         <item quantity="few">%d vyloučené aplikace</item>
         <item quantity="many">%d vyloučených aplikací</item>
         <item quantity="other">%d vyloučených aplikací</item>
+    </plurals>
     <plurals name="set_included_applications">
         <item quantity="one">%d zahrnutá aplikace</item>
         <item quantity="few">%d zahrnuté aplikace</item>
         <item quantity="many">%d zahrnutých aplikací</item>
         <item quantity="other">%d zahrnutých aplikací</item>
+    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="one">%d vyloučena</item>
         <item quantity="few">%d vyloučeny</item>
         <item quantity="many">%d vyloučeno</item>
         <item quantity="other">%d vyloučeno</item>
+    </plurals>
     <plurals name="n_included_applications">
         <item quantity="one">%d zahrnuta</item>
         <item quantity="few">%d zahrnuty</item>
         <item quantity="many">%d zahrnuto</item>
         <item quantity="other">%d zahrnuto</item>
+    </plurals>
     <string name="all_applications">Všechny aplikace</string>
     <string name="exclude_from_tunnel">Vyloučit</string>
     <string name="include_in_tunnel">Zahrnout pouze</string>
@@ -54,21 +62,25 @@
         <item quantity="few">Zahrnout %d aplikace</item>
         <item quantity="many">Zahrnout %d aplikací</item>
         <item quantity="other">Zahrnout %d aplikací</item>
+    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="one">Vyloučit %d aplikaci</item>
         <item quantity="few">Vyloučit %d aplikace</item>
         <item quantity="many">Vyloučit %d aplikací</item>
         <item quantity="other">Vyloučit %d aplikací</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="one">každou sekundu</item>
         <item quantity="few">každé %d sekundy</item>
         <item quantity="many">každých %d sekund</item>
         <item quantity="other">každých %d sekund</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">sekunda</item>
         <item quantity="few">sekundy</item>
         <item quantity="many">sekund</item>
         <item quantity="other">sekund</item>
+    </plurals>
     <string name="use_all_applications">Použít všechny aplikace</string>
     <string name="add_peer">Přidat peera</string>
     <string name="addresses">Adresy</string>
@@ -121,24 +133,4 @@
     <string name="multiple_tunnels_summary_on">Více tunelů může být zapnuto najednou</string>
     <string name="multiple_tunnels_title">Povolit více simultánních tunelů</string>
     <string name="name">Název</string>
-    <string name="telegram_login_success">Telegram login successful!</string>
-    <string name="server_germany">Germany</string>
-    <string name="server_multihop_germany">Multihop Germany</string>
-    <string name="server_bulgaria">Bulgaria</string>
-    <string name="server_madrid">Madrid</string>
-    <string name="update_delete_failed">Failed to delete old update file</string>
-    <string name="update_title">Downloading update</string>
-    <string name="update_description">Downloading new app version</string>
-    <string name="update_started">Update download started</string>
-    <string name="update_launch_error">Failed to launch update: %s</string>
-    <string name="apk_not_found">APK not found</string>
-    <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
-    <string name="apk_open_error">Failed to open APK for installation: %s</string>
-    <string name="login_via_account">Log in via account</string>
-    <string name="download_button">Download</string>
-    <string name="renew_subscription_button">Renew subscription</string>
-    <string name="logout_button">Log out</string>
-    <string name="server_choice">Server selection</string>
-    <string name="qr_code_login_desc">QR code for login</string>
-    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

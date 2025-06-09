@@ -9,34 +9,42 @@
         <item quantity="one">%d tunel a fost șters</item>
         <item quantity="few">%d tunele șterse</item>
         <item quantity="other">%d de tunele șterse</item>
+    </plurals>
     <plurals name="delete_title">
         <item quantity="one">%d tunel selectat</item>
         <item quantity="few">%d tuneluri selectate</item>
         <item quantity="other">%d de tuneluri selectate</item>
+    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">%1$d din %2$d tuneluri importate</item>
         <item quantity="few">%1$d din %2$d tuneluri importate</item>
         <item quantity="other">%1$d din %2$d de tuneluri importate</item>
+    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">%d tunel importat</item>
         <item quantity="few">%d tuneluri importate</item>
         <item quantity="other">%d de tuneluri importate</item>
+    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">%d aplicație exclusă</item>
         <item quantity="few">%d aplicații excluse</item>
         <item quantity="other">%d de aplicații excluse</item>
+    </plurals>
     <plurals name="set_included_applications">
         <item quantity="one">%d aplicație inclusă</item>
         <item quantity="few">%d aplicații incluse</item>
         <item quantity="other">%d de aplicații incluse</item>
+    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="one">%d exclusă</item>
         <item quantity="few">%d excluse</item>
         <item quantity="other">%d excluse</item>
+    </plurals>
     <plurals name="n_included_applications">
         <item quantity="one">%d inclusă</item>
         <item quantity="few">%d incluse</item>
         <item quantity="other">%d incluse</item>
+    </plurals>
     <string name="all_applications">Toate aplicațiile</string>
     <string name="exclude_from_tunnel">Excludere</string>
     <string name="include_in_tunnel">Includere numai</string>
@@ -44,18 +52,22 @@
         <item quantity="one">Include %d aplicație</item>
         <item quantity="few">Include %d aplicații</item>
         <item quantity="other">Include %d de aplicații</item>
+    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="one">Exclude %d aplicație</item>
         <item quantity="few">Exclude %d aplicații</item>
         <item quantity="other">Exclude %d de aplicații</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="one">în fiecare secundă</item>
         <item quantity="few">la fiecare %d secunde</item>
         <item quantity="other">la fiecare %d secunde</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">secundă</item>
         <item quantity="few">secunde</item>
         <item quantity="other">secunde</item>
+    </plurals>
     <string name="use_all_applications">Utilizează toate aplicațiile</string>
     <string name="add_peer">Adăugare pereche</string>
     <string name="addresses">Adrese</string>
@@ -241,24 +253,4 @@
     <string name="biometric_prompt_private_key_title">Autentifică-te pentru a vizualiza cheia privată</string>
     <string name="biometric_auth_error">Eroare la autentificare</string>
     <string name="biometric_auth_error_reason">Eroare la autentificare: %s</string>
-    <string name="telegram_login_success">Telegram login successful!</string>
-    <string name="server_germany">Germany</string>
-    <string name="server_multihop_germany">Multihop Germany</string>
-    <string name="server_bulgaria">Bulgaria</string>
-    <string name="server_madrid">Madrid</string>
-    <string name="update_delete_failed">Failed to delete old update file</string>
-    <string name="update_title">Downloading update</string>
-    <string name="update_description">Downloading new app version</string>
-    <string name="update_started">Update download started</string>
-    <string name="update_launch_error">Failed to launch update: %s</string>
-    <string name="apk_not_found">APK not found</string>
-    <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
-    <string name="apk_open_error">Failed to open APK for installation: %s</string>
-    <string name="login_via_account">Log in via account</string>
-    <string name="download_button">Download</string>
-    <string name="renew_subscription_button">Renew subscription</string>
-    <string name="logout_button">Log out</string>
-    <string name="server_choice">Server selection</string>
-    <string name="qr_code_login_desc">QR code for login</string>
-    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

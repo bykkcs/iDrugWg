@@ -7,42 +7,54 @@
     <plurals name="delete_success">
         <item quantity="one">Slettede %d tunnel</item>
         <item quantity="other">%d tunneller blev slettet</item>
+    </plurals>
     <plurals name="delete_title">
         <item quantity="one">%d tunnel valgt</item>
         <item quantity="other">%d tunneler valgt</item>
+    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">Importeret %1$d ud af %2$d tunneler</item>
         <item quantity="other">Importeret %1$d ud af %2$d tunneler</item>
+    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">Importeret %d tunnel</item>
         <item quantity="other">Importeret %d tunneler</item>
+    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">%d Ekskluderet Applikation</item>
         <item quantity="other">%d Ekskluderet Applikationer</item>
+    </plurals>
     <plurals name="set_included_applications">
         <item quantity="one">%d Inkluderet Applikation</item>
         <item quantity="other">%d Inkluderet Applikationer</item>
+    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="one">%d ekskluderet</item>
         <item quantity="other">%d ekskluderet</item>
+    </plurals>
     <plurals name="n_included_applications">
         <item quantity="one">%d inkluderet</item>
         <item quantity="other">%d inkluderet</item>
+    </plurals>
     <string name="all_applications">Alle Applikationer</string>
     <string name="exclude_from_tunnel">Ekskludér</string>
     <string name="include_in_tunnel">Inkludér kun</string>
     <plurals name="include_n_applications">
         <item quantity="one">Inkludér %d app</item>
         <item quantity="other">Inkludér %d apps</item>
+    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="one">Ekskludér %d app</item>
         <item quantity="other">Ekskludér %d apps</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="one">hvert sekund</item>
         <item quantity="other">hver %d. sekund</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">sekund</item>
         <item quantity="other">sekunder</item>
+    </plurals>
     <string name="use_all_applications">Brug alle apps</string>
     <string name="add_peer">Tilføj modpart</string>
     <string name="addresses">Adresser</string>
@@ -171,24 +183,4 @@
     <string name="zip_export_title">Eksportér tunneler til zip-fil</string>
     <string name="biometric_auth_error">Fejl ved godkendelse</string>
     <string name="biometric_auth_error_reason">Fejl ved godkendelse: %s</string>
-    <string name="telegram_login_success">Telegram login successful!</string>
-    <string name="server_germany">Germany</string>
-    <string name="server_multihop_germany">Multihop Germany</string>
-    <string name="server_bulgaria">Bulgaria</string>
-    <string name="server_madrid">Madrid</string>
-    <string name="update_delete_failed">Failed to delete old update file</string>
-    <string name="update_title">Downloading update</string>
-    <string name="update_description">Downloading new app version</string>
-    <string name="update_started">Update download started</string>
-    <string name="update_launch_error">Failed to launch update: %s</string>
-    <string name="apk_not_found">APK not found</string>
-    <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
-    <string name="apk_open_error">Failed to open APK for installation: %s</string>
-    <string name="login_via_account">Log in via account</string>
-    <string name="download_button">Download</string>
-    <string name="renew_subscription_button">Renew subscription</string>
-    <string name="logout_button">Log out</string>
-    <string name="server_choice">Server selection</string>
-    <string name="qr_code_login_desc">QR code for login</string>
-    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

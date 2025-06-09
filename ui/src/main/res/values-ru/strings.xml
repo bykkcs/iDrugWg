@@ -11,41 +11,49 @@
         <item quantity="few">Успешно удалено %d туннеля</item>
         <item quantity="many">Успешно удалено %d туннелей</item>
         <item quantity="other">Успешно удалено %d туннелей</item>
+    </plurals>
     <plurals name="delete_title">
         <item quantity="one">%d туннель выбран</item>
         <item quantity="few">%d туннеля выбрано</item>
         <item quantity="many">%d туннелей выбрано</item>
         <item quantity="other">%d туннелей выбрано</item>
+    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">Импортирован %1$d из %2$d туннелей</item>
         <item quantity="few">Импортировано %1$d из %2$d туннелей</item>
         <item quantity="many">Импортировано %1$d из %2$d туннелей</item>
         <item quantity="other">Импортировано %1$d из %2$d туннелей</item>
+    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">Импортирован %d туннель</item>
         <item quantity="few">Импортировано %d туннеля</item>
         <item quantity="many">Импортировано %d туннелей</item>
         <item quantity="other">Импортировано %d туннелей</item>
+    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">%d исключенное приложение</item>
         <item quantity="few">%d исключенных приложения</item>
         <item quantity="many">%d исключенных приложений</item>
         <item quantity="other">%d исключенных приложений</item>
+    </plurals>
     <plurals name="set_included_applications">
         <item quantity="one">%d включенное приложение</item>
         <item quantity="few">%d включенных приложения</item>
         <item quantity="many">%d включенных приложений</item>
         <item quantity="other">%d включенных приложений</item>
+    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="one">%d исключено</item>
         <item quantity="few">%d исключено</item>
         <item quantity="many">%d исключено</item>
         <item quantity="other">%d исключено</item>
+    </plurals>
     <plurals name="n_included_applications">
         <item quantity="one">%d включено</item>
         <item quantity="few">%d включено</item>
         <item quantity="many">%d включено</item>
         <item quantity="other">%d включено</item>
+    </plurals>
     <string name="all_applications">Все приложения</string>
     <string name="exclude_from_tunnel">Исключить для</string>
     <string name="include_in_tunnel">Включить для</string>
@@ -54,21 +62,25 @@
         <item quantity="few">Включить %d приложения</item>
         <item quantity="many">Включить %d приложений</item>
         <item quantity="other">Включить %d приложений</item>
+    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="one">Исключить %d приложение</item>
         <item quantity="few">Исключить %d приложения</item>
         <item quantity="many">Исключить %d приложений</item>
         <item quantity="other">Исключить %d приложений</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="one">каждую секунду</item>
         <item quantity="few">каждые %d секунды</item>
         <item quantity="many">каждые %d секунд</item>
         <item quantity="other">каждые %d секунд</item>
+    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">секунда</item>
         <item quantity="few">секунды</item>
         <item quantity="many">секунд</item>
         <item quantity="other">секунд</item>
+    </plurals>
     <string name="use_all_applications">Использовать все приложения</string>
     <string name="add_peer">Добавить пир</string>
     <string name="addresses">Адреса</string>
@@ -258,50 +270,5 @@
     <string name="biometric_prompt_private_key_title">Аутентификация для просмотра приватного ключа</string>
     <string name="biometric_auth_error">Ошибка аутентификации</string>
     <string name="biometric_auth_error_reason">Ошибка аутентификации: %s</string>
-    <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
-    <string name="qr_login_confirmed">Вход подтверждён через QR</string>
-    <string name="qr_confirm_error">Ошибка подтверждения: %s</string>
-    <string name="qr_not_recognized">QR не распознан</string>
-    <string name="login_first">Сначала войдите через Telegram</string>
-    <string name="subscription_updated">Подписка обновлена</string>
-    <string name="error_message">Ошибка: %s</string>
-    <string name="select_server">Выберите сервер</string>
-    <string name="login_via_telegram">Войдите через Telegram</string>
-    <string name="server_germany">Германия</string>
-    <string name="server_multihop_germany">Мультхоп Германия</string>
-    <string name="server_bulgaria">Болгария</string>
-    <string name="server_madrid">Мадрид</string>
-    <string name="config_already_added">Конфиг уже добавлен</string>
-    <string name="tunnel_added">Туннель добавлен</string>
-    <string name="logout_success">Вы вышли из аккаунта</string>
-    <string name="telegram_login_success">Вход через Telegram выполнен!</string>
-    <string name="qr_generation_error">Ошибка генерации QR кода</string>
-    <string name="qr_login_confirmed_short">Вход через QR подтверждён!</string>
-    <string name="not_authorized">Вы не авторизованы</string>
-    <string name="network_error">Ошибка сети: %s</string>
-    <string name="profile_error">Ошибка получения профиля: %d</string>
-    <string name="profile_processing_error">Ошибка обработки профиля</string>
-    <string name="account_status_revoked">Доступ к конфигу заблокирован. Оплатите подписку для восстановления.</string>
-    <string name="account_status_expired">Срок действия подписки истёк. Оплатите для получения нового конфига.</string>
-    <string name="account_status_active">Скачайте конфиг для автоматического импорта в приложение</string>
-    <string name="account_status_unknown">Статус аккаунта: %s</string>
-    <string name="days_left">Дней до окончания: %d</string>
-    <string name="login_choice_text">Вход через Telegram или QR</string>
-    <string name="current_user">Ваш логин: %s</string>
-    <string name="update_delete_failed">Не удалось удалить старый файл обновления</string>
-    <string name="update_title">Загрузка обновления</string>
-    <string name="update_description">Скачивается новая версия приложения</string>
-    <string name="update_started">Скачивание обновления начато</string>
-    <string name="update_launch_error">Ошибка при запуске обновления: %s</string>
-    <string name="apk_not_found">APK не найден!</string>
-    <string name="grant_unknown_sources">Дайте разрешение на установку из неизвестных источников и повторите попытку</string>
-    <string name="apk_open_error">Не удалось открыть APK для установки: %s</string>
-    <string name="no_browser_error">Не найдено приложение для открытия ссылки</string>
-    <string name="login_via_account">Войти через личный кабинет</string>
-    <string name="download_button">Скачать</string>
-    <string name="renew_subscription_button">Продлить подписку</string>
-    <string name="logout_button">Выйти</string>
-    <string name="server_choice">Выбор сервера</string>
-    <string name="qr_code_login_desc">QR-код для входа</string>
-    <string name="login_url">https://idrug.pw/auth</string>
+    <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://storage.googleapis.com/amnezia/amnezia.org">amnezia.org</a>\n</string>
 </resources>
