@@ -7,54 +7,42 @@
     <plurals name="delete_success">
         <item quantity="one">%d tunnel succesvol verwijderd</item>
         <item quantity="other">%d tunnels succesvol verwijderd</item>
-    </plurals>
     <plurals name="delete_title">
         <item quantity="one">%d tunnel geselecteerd</item>
         <item quantity="other">%d tunnels geselecteerd</item>
-    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">%1$d van %2$d tunnels geïmporteerd</item>
         <item quantity="other">%1$d van de %2$d tunnels geïmporteerd</item>
-    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">%d tunnel geïmporteerd</item>
         <item quantity="other">%d tunnels geïmporteerd</item>
-    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">%d uitgesloten applicatie(s)</item>
         <item quantity="other">%d uitgesloten applicaties</item>
-    </plurals>
     <plurals name="set_included_applications">
         <item quantity="one">%d inbegrepen applicatie</item>
         <item quantity="other">%d inbegrepen applicaties</item>
-    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="one">%d uitgesloten</item>
         <item quantity="other">%d uitgesloten</item>
-    </plurals>
     <plurals name="n_included_applications">
         <item quantity="one">%d inbegrepen</item>
         <item quantity="other">%d inbegrepen</item>
-    </plurals>
     <string name="all_applications">Alle applicaties</string>
     <string name="exclude_from_tunnel">Uitsluiten</string>
     <string name="include_in_tunnel">Alleen opnemen</string>
     <plurals name="include_n_applications">
         <item quantity="one">Neem %d app op</item>
         <item quantity="other">Voeg %d apps toe</item>
-    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="one">%d app uitsluiten</item>
         <item quantity="other">%d apps uitsluiten</item>
-    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="one">iedere seconde</item>
         <item quantity="other">iedere %d seconden</item>
-    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">seconde</item>
         <item quantity="other">seconden</item>
-    </plurals>
     <string name="use_all_applications">Gebruik alle applicaties</string>
     <string name="add_peer">Peer toevoegen</string>
     <string name="addresses">Adressen</string>
@@ -243,4 +231,5 @@
     <string name="logout_button">Log out</string>
     <string name="server_choice">Server selection</string>
     <string name="qr_code_login_desc">QR code for login</string>
+    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

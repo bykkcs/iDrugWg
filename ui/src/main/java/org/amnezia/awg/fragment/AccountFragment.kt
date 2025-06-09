@@ -85,7 +85,7 @@ class AccountFragment : Fragment() {
 
     private fun setupListeners(view: View) {
         view.findViewById<Button>(R.id.btn_login_telegram).setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://idrug.pw/login?redirect=idrug://auth"))
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.login_url)))
             try {
                 startActivity(intent)
             } catch (e: Exception) {
@@ -574,7 +574,9 @@ private fun afterLogout(view: View) {
 
     private fun handleDeepLink(intent: Intent?) {
         val data = intent?.data
-        if (data != null && data.scheme == "idrug" && data.host == "auth") {
+        if (data != null &&
+            ((data.scheme == "idrug" && data.host == "auth") ||
+             (data.scheme == "https" && data.host == "idrug.pw" && data.path?.startsWith("/auth") == true))) {
             val jwt = data.getQueryParameter("jwt")
             val username = data.getQueryParameter("username")
             val photoUrl = data.getQueryParameter("photo_url")

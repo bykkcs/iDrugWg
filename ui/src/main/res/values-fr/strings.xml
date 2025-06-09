@@ -7,54 +7,42 @@
     <plurals name="delete_success">
         <item quantity="one">Suppression réussie du tunnel %d</item>
         <item quantity="other">%d tunnels supprimés avec succès</item>
-    </plurals>
     <plurals name="delete_title">
         <item quantity="one">%d tunnel sélectionné</item>
         <item quantity="other">%d tunnels sélectionnés</item>
-    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">%1$d de %2$d tunnels importés</item>
         <item quantity="other">%1$d de %2$d tunnels importés</item>
-    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">%d tunnel importé</item>
         <item quantity="other">%d tunnels importés</item>
-    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">%d application exclue</item>
         <item quantity="other">%d applications exclues</item>
-    </plurals>
     <plurals name="set_included_applications">
         <item quantity="one">%d application incluse</item>
         <item quantity="other">%d applications incluses</item>
-    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="one">%d exclue</item>
         <item quantity="other">%d exclues</item>
-    </plurals>
     <plurals name="n_included_applications">
         <item quantity="one">%d incluse</item>
         <item quantity="other">%d incluses</item>
-    </plurals>
     <string name="all_applications">Toutes les Applications</string>
     <string name="exclude_from_tunnel">Exclure</string>
     <string name="include_in_tunnel">Inclure uniquement</string>
     <plurals name="include_n_applications">
         <item quantity="one">Inclure %d application</item>
         <item quantity="other">Inclure %d applications</item>
-    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="one">Exclure %d application</item>
         <item quantity="other">Exclure %d applications</item>
-    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="one">chaque seconde</item>
         <item quantity="other">tous les %d secondes</item>
-    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">seconde</item>
         <item quantity="other">secondes</item>
-    </plurals>
     <string name="use_all_applications">Utiliser toutes les applications</string>
     <string name="add_peer">Ajouter un pair</string>
     <string name="addresses">Adresses</string>
@@ -262,4 +250,5 @@
     <string name="logout_button">Log out</string>
     <string name="server_choice">Server selection</string>
     <string name="qr_code_login_desc">QR code for login</string>
+    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

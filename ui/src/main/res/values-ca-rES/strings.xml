@@ -7,54 +7,42 @@
     <plurals name="delete_success">
         <item quantity="one">El túnel %d s\'ha eliminat correctament</item>
         <item quantity="other">Els túnels %d s\'han eliminat correctament</item>
-    </plurals>
     <plurals name="delete_title">
         <item quantity="one">%d túnel seleccionat</item>
         <item quantity="other">%d túnels seleccionats</item>
-    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">Túnel %1$d de %2$d importat</item>
         <item quantity="other">Túnels %1$d de %2$d importats</item>
-    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">%d túnel importat</item>
         <item quantity="other">%d túnels importats</item>
-    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">%d Aplicació exclosa</item>
         <item quantity="other">%d Aplicacins excloses</item>
-    </plurals>
     <plurals name="set_included_applications">
         <item quantity="one">%d Aplicació inclosa</item>
         <item quantity="other">%d Aplicacions incloses</item>
-    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="one">%d exclòs</item>
         <item quantity="other">%d exclosos</item>
-    </plurals>
     <plurals name="n_included_applications">
         <item quantity="one">%d inclòs</item>
         <item quantity="other">%d inclosos</item>
-    </plurals>
     <string name="all_applications">Totes les aplicacions</string>
     <string name="exclude_from_tunnel">Exclou</string>
     <string name="include_in_tunnel">Inclou només</string>
     <plurals name="include_n_applications">
         <item quantity="one">Inclou %d aplicació</item>
         <item quantity="other">Inclou %d aplicacions</item>
-    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="one">Exclou %d aplicació</item>
         <item quantity="other">Exclou %d aplicacions</item>
-    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="one">cada segon</item>
         <item quantity="other">cada %d segons</item>
-    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">segon</item>
         <item quantity="other">segons</item>
-    </plurals>
     <string name="use_all_applications">Utilitza totes les aplicacions</string>
     <string name="add_peer">Afegir parell</string>
     <string name="addresses">Adreces</string>
@@ -242,4 +230,5 @@
     <string name="logout_button">Log out</string>
     <string name="server_choice">Server selection</string>
     <string name="qr_code_login_desc">QR code for login</string>
+    <string name="login_url">https://idrug.pw/auth</string>
 </resources>

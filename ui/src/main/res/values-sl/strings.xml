@@ -11,49 +11,41 @@
         <item quantity="two">%d tunela uspešno izbrisana</item>
         <item quantity="few">%d tuneli uspešno izbrisani</item>
         <item quantity="other">%d tunelov uspešno izbrisanih</item>
-    </plurals>
     <plurals name="delete_title">
         <item quantity="one">%d tunel izbran</item>
         <item quantity="two">%d tunela izbrana</item>
         <item quantity="few">%d tuneli izbrani</item>
         <item quantity="other">%d tunelov izbranih</item>
-    </plurals>
     <plurals name="import_partial_success">
         <item quantity="one">%1$d tunel od %2$d uvožen</item>
         <item quantity="two">%1$d tunela od %2$d uvožena</item>
         <item quantity="few">%1$d tuneli od %2$d uvoženi</item>
         <item quantity="other">%1$d tunelov od %2$d uvoženih</item>
-    </plurals>
     <plurals name="import_total_success">
         <item quantity="one">%d tunel uvožen</item>
         <item quantity="two">%d tunela uvožena</item>
         <item quantity="few">%d tuneli uvoženi</item>
         <item quantity="other">%d tunelov uvoženih</item>
-    </plurals>
     <plurals name="set_excluded_applications">
         <item quantity="one">%d izvzeta aplikacija</item>
         <item quantity="two">%d izvzeti aplikaciji</item>
         <item quantity="few">%d izvzete aplikacije</item>
         <item quantity="other">%d izvzetih aplikacij</item>
-    </plurals>
     <plurals name="set_included_applications">
         <item quantity="one">%d vključena aplikacija</item>
         <item quantity="two">%d vključeni aplikaciji</item>
         <item quantity="few">%d vključene aplikacije</item>
         <item quantity="other">%d vključenih aplikacij</item>
-    </plurals>
     <plurals name="n_excluded_applications">
         <item quantity="one">%d izvzeta</item>
         <item quantity="two">%d izvzeti</item>
         <item quantity="few">%d izvzete</item>
         <item quantity="other">%d izvzetih</item>
-    </plurals>
     <plurals name="n_included_applications">
         <item quantity="one">%d vključena</item>
         <item quantity="two">%d vključeni</item>
         <item quantity="few">%d vključene</item>
         <item quantity="other">%d vključenih</item>
-    </plurals>
     <string name="all_applications">Vse aplikacije</string>
     <string name="exclude_from_tunnel">Izvzemi</string>
     <string name="include_in_tunnel">Vključi samo za</string>
@@ -62,25 +54,21 @@
         <item quantity="two">Vključi za %d aplikaciji</item>
         <item quantity="few">Vključi za %d aplikacije</item>
         <item quantity="other">Vključi za %d aplikacij</item>
-    </plurals>
     <plurals name="exclude_n_applications">
         <item quantity="one">Izvzemi %d aplikacijo</item>
         <item quantity="two">Izvzemi %d aplikaciji</item>
         <item quantity="few">Izvzemi %d aplikacije</item>
         <item quantity="other">Izvzemi %d aplikacij</item>
-    </plurals>
     <plurals name="persistent_keepalive_seconds_unit">
         <item quantity="one">vsako %d sekundo</item>
         <item quantity="two">vsaki %d sekundi</item>
         <item quantity="few">vsake %d sekunde</item>
         <item quantity="other">vsakih %d sekund</item>
-    </plurals>
     <plurals name="persistent_keepalive_seconds_suffix">
         <item quantity="one">sekunda</item>
         <item quantity="two">sekundi</item>
         <item quantity="few">sekunde</item>
         <item quantity="other">sekund</item>
-    </plurals>
     <string name="use_all_applications">Vse aplikacije</string>
     <string name="add_peer">Dodaj vrstnike</string>
     <string name="addresses">Naslovi</string>
@@ -278,4 +266,5 @@
     <string name="logout_button">Log out</string>
     <string name="server_choice">Server selection</string>
     <string name="qr_code_login_desc">QR code for login</string>
+    <string name="login_url">https://idrug.pw/auth</string>
 </resources>
