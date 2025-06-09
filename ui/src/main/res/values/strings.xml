@@ -262,7 +262,32 @@
     <string name="account_avatar">Аватар пользователя</string>
     <string name="biometric_auth_error_reason">Authentication failure: %s</string>
     <string name="import_disclaimer">Ensure that you obtained the configuration file from a trusted source.
-    
+
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>
 </string>
+    <string name="qr_login_confirmed">QR login confirmed</string>
+    <string name="qr_confirm_error">QR confirmation error: %s</string>
+    <string name="qr_not_recognized">QR not recognized</string>
+    <string name="login_first">Please log in via Telegram first</string>
+    <string name="subscription_updated">Subscription renewed</string>
+    <string name="generic_error">Error: %s</string>
+    <string name="select_server">Select a server</string>
+    <string name="login_via_telegram">Log in via Telegram</string>
+    <string name="config_already_added">Config already added</string>
+    <string name="tunnel_added">Tunnel added</string>
+    <string name="tunnel_create_error">Failed to create tunnel: %s</string>
+    <string name="logout_success">Logged out</string>
+    <string name="qr_generation_error">Failed to generate QR code</string>
+    <string name="qr_login_confirmed_short">QR login confirmed!</string>
+    <string name="not_authorized">Not authorized</string>
+    <string name="network_error">Network error: %s</string>
+    <string name="profile_error">Profile error: %d</string>
+    <string name="profile_processing_error">Profile processing error</string>
+    <string name="account_status_revoked">Config access blocked. Renew your subscription.</string>
+    <string name="account_status_expired">Subscription expired. Renew to obtain a new config.</string>
+    <string name="account_status_active">Download the config for automatic import</string>
+    <string name="account_status_unknown">Account status: %s</string>
+    <string name="days_left">Days left: %d</string>
+    <string name="login_choice_text">Log in via Telegram or QR</string>
+    <string name="current_user">Your login: %s</string>
 </resources>

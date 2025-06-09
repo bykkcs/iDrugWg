@@ -271,4 +271,29 @@
     <string name="biometric_auth_error">Ошибка аутентификации</string>
     <string name="biometric_auth_error_reason">Ошибка аутентификации: %s</string>
     <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
+    <string name="qr_login_confirmed">Вход подтверждён через QR</string>
+    <string name="qr_confirm_error">Ошибка подтверждения: %s</string>
+    <string name="qr_not_recognized">QR не распознан</string>
+    <string name="login_first">Сначала войдите через Telegram</string>
+    <string name="subscription_updated">Подписка обновлена</string>
+    <string name="generic_error">Ошибка: %s</string>
+    <string name="select_server">Выберите сервер</string>
+    <string name="login_via_telegram">Войдите через Telegram</string>
+    <string name="config_already_added">Конфиг уже добавлен</string>
+    <string name="tunnel_added">Туннель добавлен</string>
+    <string name="tunnel_create_error">Ошибка создания туннеля: %s</string>
+    <string name="logout_success">Вы вышли из аккаунта</string>
+    <string name="qr_generation_error">Ошибка генерации QR кода</string>
+    <string name="qr_login_confirmed_short">Вход через QR подтверждён!</string>
+    <string name="not_authorized">Вы не авторизованы</string>
+    <string name="network_error">Ошибка сети: %s</string>
+    <string name="profile_error">Ошибка получения профиля: %d</string>
+    <string name="profile_processing_error">Ошибка обработки профиля</string>
+    <string name="account_status_revoked">Доступ к конфигу заблокирован. Оплатите подписку для восстановления.</string>
+    <string name="account_status_expired">Срок действия подписки истёк. Оплатите для получения нового конфига.</string>
+    <string name="account_status_active">Скачайте конфиг для автоматического импорта в приложение</string>
+    <string name="account_status_unknown">Статус аккаунта: %s</string>
+    <string name="days_left">Дней до окончания: %d</string>
+    <string name="login_choice_text">Вход через Telegram или QR</string>
+    <string name="current_user">Ваш логин: %s</string>
 </resources>
