@@ -309,4 +309,10 @@
     <string name="grant_unknown_sources">Дайте разрешение на установку из неизвестных источников и повторите попытку</string>
     <string name="apk_open_error">Не удалось открыть APK для установки: %s</string>
     <string name="no_browser_error">Не найдено приложение для открытия ссылки</string>
+    <string name="login_via_account">Войти через личный кабинет</string>
+    <string name="download_button">Скачать</string>
+    <string name="renew_subscription_button">Продлить подписку</string>
+    <string name="logout_button">Выйти</string>
+    <string name="server_choice">Выбор сервера</string>
+    <string name="qr_code_login_desc">QR-код для входа</string>
 </resources>
