@@ -301,4 +301,12 @@
     <string name="days_left">Дней до окончания: %d</string>
     <string name="login_choice_text">Вход через Telegram или QR</string>
     <string name="current_user">Ваш логин: %s</string>
+    <string name="update_delete_failed">Не удалось удалить старый файл обновления</string>
+    <string name="update_title">Загрузка обновления</string>
+    <string name="update_description">Скачивается новая версия приложения</string>
+    <string name="update_started">Скачивание обновления начато</string>
+    <string name="update_launch_error">Ошибка при запуске обновления: %s</string>
+    <string name="apk_not_found">APK не найден!</string>
+    <string name="grant_unknown_sources">Дайте разрешение на установку из неизвестных источников и повторите попытку</string>
+    <string name="apk_open_error">Не удалось открыть APK для установки: %s</string>
 </resources>
