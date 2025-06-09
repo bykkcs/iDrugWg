@@ -350,7 +350,7 @@ private fun afterLogout(view: View) {
         setLoading(true)
         val token = prefs.getString("token", null)
         if (token == null) {
-            Toast.makeText(requireContext(), getString(R.string.login_via_telegram), Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.login_via_account), Toast.LENGTH_SHORT).show()
             setLoading(false)
             return
         }

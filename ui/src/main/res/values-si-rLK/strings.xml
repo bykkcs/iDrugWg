@@ -214,4 +214,10 @@
     <string name="apk_not_found">APK not found</string>
     <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
     <string name="apk_open_error">Failed to open APK for installation: %s</string>
+    <string name="login_via_account">Log in via account</string>
+    <string name="download_button">Download</string>
+    <string name="renew_subscription_button">Renew subscription</string>
+    <string name="logout_button">Log out</string>
+    <string name="server_choice">Server selection</string>
+    <string name="qr_code_login_desc">QR code for login</string>
 </resources>
