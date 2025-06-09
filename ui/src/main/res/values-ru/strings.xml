@@ -285,7 +285,6 @@
     <string name="server_madrid">Мадрид</string>
     <string name="config_already_added">Конфиг уже добавлен</string>
     <string name="tunnel_added">Туннель добавлен</string>
-    <string name="tunnel_create_error">Ошибка создания туннеля: %s</string>
     <string name="logout_success">Вы вышли из аккаунта</string>
     <string name="telegram_login_success">Вход через Telegram выполнен!</string>
     <string name="qr_generation_error">Ошибка генерации QR кода</string>
