@@ -85,8 +85,7 @@ class AccountFragment : Fragment() {
 
     private fun setupListeners(view: View) {
         view.findViewById<Button>(R.id.btn_login_telegram).setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW,
-                Uri.parse("$baseUrl/login?redirect=$baseUrl/auth"))
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://idrug.pw/login?redirect=idrug://auth"))
             startActivity(intent)
         }
         view.findViewById<Button>(R.id.btn_logout).setOnClickListener {
