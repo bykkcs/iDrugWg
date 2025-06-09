@@ -89,20 +89,6 @@ class AccountFragment : Fragment() {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://idrug.pw/login?redirect=idrug://auth"))
             startActivity(intent)
         }
-        view.findViewById<Button>(R.id.btn_show_qr_login).setOnClickListener {
-            setLoading(true)
-            generateQrLoginToken { token ->
-                setLoading(false)
-                if (token == null) {
-                    Toast.makeText(requireContext(), "Ошибка получения QR токена", Toast.LENGTH_SHORT).show()
-                    return@generateQrLoginToken
-                }
-                showQrCode(token, view.findViewById(R.id.qr_code_image))
-                view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.VISIBLE
-                startPollingQrStatus(token)
-                view.findViewById<TextView>(R.id.status_text).text = "Отсканируйте этот QR с устройства, где уже есть вход"
-            }
-        }
         view.findViewById<Button>(R.id.btn_logout).setOnClickListener {
             setLoading(true)
             afterLogout(view)
@@ -127,17 +113,10 @@ class AccountFragment : Fragment() {
                 }
             }
         }
-        setFabScanQr(isLoggedIn())
     }
 
     private fun isLoggedIn(): Boolean {
         return !prefs.getString("token", null).isNullOrEmpty()
-    }
-
-    private fun setFabScanQr(show: Boolean) {
-        val fab = view?.findViewById<View>(R.id.fab_scan_qr)
-        fab?.visibility = if (show) View.VISIBLE else View.GONE
-        fab?.setOnClickListener { startQrScanner() }
     }
 
     private fun showCorrectScreen(view: View) {
@@ -149,11 +128,9 @@ class AccountFragment : Fragment() {
                 "",
                 ""
             )
-            setFabScanQr(true)
             loadServersAndProfileUI(view)
         } else {
             showLoginScreen(view)
-            setFabScanQr(false)
         }
     }
 
@@ -230,7 +207,6 @@ class AccountFragment : Fragment() {
         if (token == null) {
             safeUi {
                 showLoginScreen(view)
-                setFabScanQr(false)
                 setLoading(false)
             }
             return
@@ -254,7 +230,6 @@ class AccountFragment : Fragment() {
                     setLoading(false)
                     if (response.code == 401) {
                         showLoginScreen(view)
-                        setFabScanQr(false)
                     } else if (response.isSuccessful) {
                         try {
                             val obj = JSONObject(resp)
@@ -265,7 +240,8 @@ class AccountFragment : Fragment() {
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
                             showAccountScreen(view, username, photoUrl, status, expDateStr)
-                            setFabScanQr(true)
+                            // Важно сразу синхронизировать туннели после получения профиля
+                            syncTunnelsWithProfile()
                         } catch (e: Exception) {
                             Toast.makeText(requireContext(), "Ошибка обработки профиля", Toast.LENGTH_SHORT).show()
                         }
@@ -279,7 +255,6 @@ class AccountFragment : Fragment() {
 
     private fun showLoginScreen(view: View) {
         view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.VISIBLE
-        view.findViewById<Button>(R.id.btn_show_qr_login).visibility = View.VISIBLE
         view.findViewById<Button>(R.id.btn_download).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_renew).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout).visibility = View.GONE
@@ -294,7 +269,6 @@ class AccountFragment : Fragment() {
 
     private fun showAccountScreen(view: View, username: String, photoUrl: String?, status: String, expDateStr: String?) {
         view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.GONE
-        view.findViewById<Button>(R.id.btn_show_qr_login).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout).visibility = View.VISIBLE
         view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.GONE
         view.findViewById<Spinner>(R.id.spinner_server).visibility = View.VISIBLE
@@ -352,7 +326,6 @@ private fun afterLogout(view: View) {
         }
         safeUi {
             showLoginScreen(view)
-            setFabScanQr(false)
             Toast.makeText(requireContext(), "Вы вышли из аккаунта", Toast.LENGTH_SHORT).show()
         }
     }
@@ -629,6 +602,46 @@ private fun afterLogout(view: View) {
             return bitmap
         }
         override fun key() = "circle"
+    }
+
+    private fun syncTunnelsWithProfile() {
+        val token = prefs.getString("token", null) ?: return
+        val client = OkHttpClient()
+        val url = "https://idrug.pw/api/profile"
+        val request = Request.Builder()
+            .url(url)
+            .addHeader("Authorization", "Bearer $token")
+            .build()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {}
+            override fun onResponse(call: Call, response: Response) {
+                if (!response.isSuccessful) return
+                val resp = response.body?.string() ?: return
+                try {
+                    val obj = JSONObject(resp)
+                    val subscriptionsArr = obj.optJSONArray("subscriptions") ?: return
+                    val activeServers = mutableSetOf<String>()
+                    for (i in 0 until subscriptionsArr.length()) {
+                        val sObj = subscriptionsArr.getJSONObject(i)
+                        if (sObj.optBoolean("active", false)) {
+                            activeServers.add(sObj.optString("id"))
+                        }
+                    }
+                    MainScope().launch {
+                        val tunnelManager = Application.getTunnelManager()
+                        // Make a snapshot of tunnels to avoid concurrent modifications
+                        val tunnels = tunnelManager.getTunnels().toList()
+                        val toRemove = tunnels.filter {
+                            it.name.startsWith("idrug_") &&
+                                it.name.removePrefix("idrug_") !in activeServers
+                        }
+                        for (tunnel in toRemove) {
+                            tunnelManager.delete(tunnel)
+                        }
+                    }
+                } catch (_: Exception) {}
+            }
+        })
     }
 
     private fun safeUi(block: () -> Unit) {

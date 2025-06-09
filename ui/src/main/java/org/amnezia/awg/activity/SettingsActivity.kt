@@ -118,8 +118,8 @@ class SettingsActivity : AppCompatActivity() {
 private fun checkForOtaUpdate() {
     try {
         val context = requireContext()
-        val url = "https://idrug.pw/ota/ui-debug.apk"
-        val fileName = "ui-debug.apk"
+        val url = "https://idrug.pw/ota/iDrugConnections.apk"
+        val fileName = "iDrugConnections.apk"
         val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName)
         if (file.exists()) {
             val deleted = file.delete()
@@ -162,7 +162,7 @@ private fun checkForOtaUpdate() {
 
 
         private fun installApk() {
-            val fileName = "ui-debug.apk"
+            val fileName = "iDrugConnections.apk"
             val file = File(requireContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName)
             if (!file.exists()) {
                 Toast.makeText(requireContext(), "APK не найден!", Toast.LENGTH_SHORT).show()
