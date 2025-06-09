@@ -183,4 +183,9 @@
     <string name="zip_export_title">Eksportér tunneler til zip-fil</string>
     <string name="biometric_auth_error">Fejl ved godkendelse</string>
     <string name="biometric_auth_error_reason">Fejl ved godkendelse: %s</string>
+    <string name="telegram_login_success">Telegram login successful!</string>
+    <string name="server_germany">Germany</string>
+    <string name="server_multihop_germany">Multihop Germany</string>
+    <string name="server_bulgaria">Bulgaria</string>
+    <string name="server_madrid">Madrid</string>
 </resources>

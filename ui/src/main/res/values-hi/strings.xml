@@ -173,4 +173,9 @@
     <string name="zip_export_title">जिप फाइल के लिए टनल को एक्सपोर्ट करें</string>
     <string name="key_length_error">चाबी की लम्बाई गलत </string>
     <string name="key_contents_error">चाबी में खराब वर्ण</string>
+    <string name="telegram_login_success">Telegram login successful!</string>
+    <string name="server_germany">Germany</string>
+    <string name="server_multihop_germany">Multihop Germany</string>
+    <string name="server_bulgaria">Bulgaria</string>
+    <string name="server_madrid">Madrid</string>
 </resources>

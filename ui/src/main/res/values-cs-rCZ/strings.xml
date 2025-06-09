@@ -133,4 +133,9 @@
     <string name="multiple_tunnels_summary_on">Více tunelů může být zapnuto najednou</string>
     <string name="multiple_tunnels_title">Povolit více simultánních tunelů</string>
     <string name="name">Název</string>
+    <string name="telegram_login_success">Telegram login successful!</string>
+    <string name="server_germany">Germany</string>
+    <string name="server_multihop_germany">Multihop Germany</string>
+    <string name="server_bulgaria">Bulgaria</string>
+    <string name="server_madrid">Madrid</string>
 </resources>

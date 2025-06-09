@@ -279,10 +279,15 @@
     <string name="generic_error">Ошибка: %s</string>
     <string name="select_server">Выберите сервер</string>
     <string name="login_via_telegram">Войдите через Telegram</string>
+    <string name="server_germany">Германия</string>
+    <string name="server_multihop_germany">Мультхоп Германия</string>
+    <string name="server_bulgaria">Болгария</string>
+    <string name="server_madrid">Мадрид</string>
     <string name="config_already_added">Конфиг уже добавлен</string>
     <string name="tunnel_added">Туннель добавлен</string>
     <string name="tunnel_create_error">Ошибка создания туннеля: %s</string>
     <string name="logout_success">Вы вышли из аккаунта</string>
+    <string name="telegram_login_success">Вход через Telegram выполнен!</string>
     <string name="qr_generation_error">Ошибка генерации QR кода</string>
     <string name="qr_login_confirmed_short">Вход через QR подтверждён!</string>
     <string name="not_authorized">Вы не авторизованы</string>
