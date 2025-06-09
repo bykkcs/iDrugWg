@@ -295,4 +295,12 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="days_left">Days left: %d</string>
     <string name="login_choice_text">Log in via Telegram or QR</string>
     <string name="current_user">Your login: %s</string>
+    <string name="update_delete_failed">Failed to delete old update file</string>
+    <string name="update_title">Downloading update</string>
+    <string name="update_description">Downloading new app version</string>
+    <string name="update_started">Update download started</string>
+    <string name="update_launch_error">Failed to launch update: %s</string>
+    <string name="apk_not_found">APK not found</string>
+    <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
+    <string name="apk_open_error">Failed to open APK for installation: %s</string>
 </resources>

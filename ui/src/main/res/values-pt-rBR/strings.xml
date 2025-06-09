@@ -215,4 +215,12 @@
     <string name="server_multihop_germany">Multihop Germany</string>
     <string name="server_bulgaria">Bulgaria</string>
     <string name="server_madrid">Madrid</string>
+    <string name="update_delete_failed">Failed to delete old update file</string>
+    <string name="update_title">Downloading update</string>
+    <string name="update_description">Downloading new app version</string>
+    <string name="update_started">Update download started</string>
+    <string name="update_launch_error">Failed to launch update: %s</string>
+    <string name="apk_not_found">APK not found</string>
+    <string name="grant_unknown_sources">Allow installation from unknown sources and retry</string>
+    <string name="apk_open_error">Failed to open APK for installation: %s</string>
 </resources>
