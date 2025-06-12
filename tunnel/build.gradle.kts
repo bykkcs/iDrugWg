@@ -2,7 +2,7 @@
 
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
-val pkg: String = providers.gradleProperty("amneziawgPackageName").get()
+val pkg: String = providers.gradleProperty("idrugConnectionsPackageName").get()
 val cmakeAndroidPackageName: String = providers.environmentVariable("ANDROID_PACKAGE_NAME").getOrElse(pkg)
 
 plugins {
