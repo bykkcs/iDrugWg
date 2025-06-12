@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <plurals name="delete_error">
         <item quantity="one">Unable to delete %d tunnel: %s</item>
@@ -63,7 +63,7 @@
     <string name="allow_remote_control_intents_summary_on">External apps may toggle tunnels (advanced)</string>
     <string name="allow_remote_control_intents_title">Allow remote control apps</string>
     <string name="allowed_ips">Allowed IPs</string>
-    <!-- Имя приложения изменено согласно требованиям -->
+    
     <string name="app_name" translatable="false">iDrug Connections</string>
     <string name="bad_config_context">%1$s\'s %2$s</string>
     <string name="bad_config_context_top_level">%s</string>
@@ -91,7 +91,7 @@
     <string name="config_rename_error">Cannot rename configuration file “%s”</string>
     <string name="config_save_error">Cannot save configuration for “%1$s”: %2$s</string>
     <string name="config_save_success">Successfully saved configuration for “%s”</string>
-    <!-- Здесь изменено название туннеля на iDrug Connections Tunnel -->
+    
     <string name="create_activity_title">Create iDrug Connections Tunnel</string>
     <string name="create_bin_dir_error">Cannot create local binary directory</string>
     <string name="create_downloads_file_error">Cannot create file in downloads directory</string>
@@ -143,7 +143,7 @@
     <string name="latest_handshake_ago">%s ago</string>
     <string name="listen_port">Listen port</string>
     <string name="log_export_error">Unable to export log: %s</string>
-    <!-- Изменено название продукта в теме экспорта лога -->
+    
     <string name="log_export_subject">iDrug Connections Android Log File</string>
     <string name="log_export_success">Saved to “%s”</string>
     <string name="log_export_title">Export log file</string>
@@ -188,7 +188,7 @@
     <string name="parse_error_integer">number</string>
     <string name="parse_error_reason">Cannot parse %1$s “%2$s”</string>
     <string name="peer">Peer</string>
-    <!-- Изменены упоминания в описании разрешения -->
+    
     <string name="permission_description">control iDrug Connections tunnels, enabling and disabling tunnels at will, potentially misdirecting Internet traffic</string>
     <string name="permission_label">control iDrug Connections tunnels</string>
     <string name="persistent_keepalive">Persistent keepalive</string>
@@ -248,7 +248,7 @@
     <string name="version_summary">%1$s backend %2$s</string>
     <string name="version_summary_checking">Checking %s backend version</string>
     <string name="version_summary_unknown">Unknown %s version</string>
-    <!-- Здесь также изменено название продукта -->
+    
     <string name="version_title">iDrug Connections for Android v%s</string>
     <string name="vpn_not_authorized_error">VPN service not authorized by user</string>
     <string name="vpn_start_error">Unable to start Android VPN service</string>
@@ -265,4 +265,4 @@
     
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>
 </string>
-</resources>
+<string name="update_delete_old_file_error">Failed to delete old update file</string><string name="update_download_title">Update download</string><string name="update_download_description">Downloading new version of the app</string><string name="update_download_started">Update download started</string><string name="update_launch_error">Error starting update: %s</string><string name="apk_not_found">APK not found!</string><string name="grant_unknown_sources">Grant permission to install from unknown sources and try again</string><string name="apk_open_error">Failed to open APK for installation: %s</string><string name="qr_login_success">Login confirmed via QR</string><string name="qr_login_error">Confirmation error: %s</string><string name="qr_not_recognized">QR not recognized</string><string name="login_telegram_first">Login via Telegram first</string><string name="subscription_updated">Subscription updated</string><string name="network_error">Network error: %s</string><string name="profile_parse_error">Profile processing error</string><string name="profile_fetch_error">Profile fetch error: %s</string><string name="logged_out">You have logged out</string><string name="select_server">Select a server</string><string name="login_telegram">Log in via Telegram</string><string name="config_already_added">Config already added</string><string name="tunnel_added">Tunnel added</string><string name="generic_error_msg">Error: %s</string><string name="qr_generation_error">QR code generation error</string><string name="qr_confirmed">QR login confirmed!</string><string name="telegram_login_success">Telegram login successful!</string><string name="login_telegram_or_qr">Login via Telegram or QR</string><string name="your_login">Your login: %s</string><string name="status_revoked">Access to config blocked. Pay the subscription to restore.</string><string name="status_expired">Subscription expired. Pay to get a new config.</string><string name="status_active">Download the config for automatic import in the app</string><string name="status_unknown">Account status: %s</string><string name="days_remaining">Days remaining: %d</string><string name="no_token">No token</string></resources>

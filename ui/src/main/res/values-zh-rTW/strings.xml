@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <plurals name="delete_error">
         <item quantity="other">無法刪除 %d 個通道: %s</item>
@@ -222,4 +222,4 @@
     <string name="biometric_prompt_private_key_title">驗證私鑰</string>
     <string name="biometric_auth_error">驗證失敗</string>
     <string name="biometric_auth_error_reason">驗證失敗: %s</string>
-</resources>
+<string name="update_delete_old_file_error">无法删除旧更新文件</string><string name="update_download_title">加载更新</string><string name="update_download_description">下载了该应用程序的新版本</string><string name="update_download_started">下载更新已经开始</string><string name="update_launch_error">开始更新时出错：％s</string><string name="apk_not_found">找不到APK！</string><string name="grant_unknown_sources">允许从未知来源安装并重复尝试</string><string name="apk_open_error">无法打开安装APK：％s</string><string name="qr_login_success">入口通过QR确认</string><string name="qr_login_error">确认错误：％s</string><string name="qr_not_recognized">QR未被认可</string><string name="login_telegram_first">首先通过电报</string><string name="subscription_updated">订阅更新</string><string name="network_error">网络错误：％s</string><string name="profile_parse_error">配置文件处理错误</string><string name="profile_fetch_error">配置文件错误：％s％</string><string name="logged_out">你离开了帐户</string><string name="select_server">选择服务器</string><string name="login_telegram">通过电报登录</string><string name="config_already_added">配置已经添加</string><string name="tunnel_added">添加了隧道</string><string name="generic_error_msg">错误：％s</string><string name="qr_generation_error">代码生成错误</string><string name="qr_confirmed">通过QR入口确认！</string><string name="telegram_login_success">电报输入！</string><string name="login_telegram_or_qr">通过电报或QR入口</string><string name="your_login">您的登录名：％s</string><string name="status_revoked">对配置的访问被阻止。支付订阅以进行恢复。</string><string name="status_expired">订阅的有效性已过期。支付新的配置。</string><string name="status_active">将自动导入的配置下载到应用程序中</string><string name="status_unknown">帐户状态：％s</string><string name="days_remaining">结束前几天：％D</string><string name="no_token">没有令牌</string></resources>
