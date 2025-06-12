@@ -20,10 +20,10 @@ import (
 	"strings"
 	"unsafe"
 
-    "github.com/idrugconnections/idrugconnections-go/conn"
-    "github.com/idrugconnections/idrugconnections-go/device"
-    "github.com/idrugconnections/idrugconnections-go/ipc"
-    "github.com/idrugconnections/idrugconnections-go/tun"
+	"github.com/amnezia-vpn/amneziawg-go/conn"
+	"github.com/amnezia-vpn/amneziawg-go/device"
+	"github.com/amnezia-vpn/amneziawg-go/ipc"
+	"github.com/amnezia-vpn/amneziawg-go/tun"
 	"golang.org/x/sys/unix"
 )
 
@@ -213,7 +213,7 @@ func awgVersion() *C.char {
 		return C.CString("unknown")
 	}
 	for _, dep := range info.Deps {
-               if dep.Path == "github.com/idrugconnections/idrugconnections-go" {
+		if dep.Path == "github.com/amnezia-vpn/amneziawg-go" {
 			parts := strings.Split(dep.Version, "-")
 			if len(parts) == 3 && len(parts[2]) == 12 {
 				return C.CString(parts[2][:7])

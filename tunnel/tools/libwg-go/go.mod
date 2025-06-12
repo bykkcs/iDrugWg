@@ -1,9 +1,9 @@
-module github.com/idrugconnections/idrugconnections-android
+module github.com/amnezia-vpn/amneziawg-android
 
 go 1.22.3
 
 require (
-    github.com/idrugconnections/idrugconnections-go v0.2.11
+	github.com/amnezia-vpn/amneziawg-go v0.2.11
 	golang.org/x/sys v0.18.0
 )
 
