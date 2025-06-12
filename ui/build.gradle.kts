@@ -3,7 +3,7 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val pkg: String = providers.gradleProperty("amneziawgPackageName").get()
+val pkg: String = providers.gradleProperty("idrugConnectionsPackageName").get()
 
 plugins {
     alias(libs.plugins.android.application)
@@ -21,8 +21,8 @@ android {
     defaultConfig {
         applicationId = pkg
         targetSdk = 34
-        versionCode = providers.gradleProperty("amneziawgVersionCode").get().toInt()
-        versionName = providers.gradleProperty("amneziawgVersionName").get()
+        versionCode = providers.gradleProperty("idrugConnectionsVersionCode").get().toInt()
+        versionName = providers.gradleProperty("idrugConnectionsVersionName").get()
         buildConfigField("int", "MIN_SDK_VERSION", minSdk.toString())
     }
     compileOptions {
