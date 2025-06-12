@@ -48,6 +48,10 @@ class AppListDialogFragment : DialogFragment() {
                     val packageInfos = getPackagesHoldingPermissions(pm, arrayOf(Manifest.permission.INTERNET))
                     packageInfos.forEach {
                         val packageName = it.packageName
+                        // Only show applications that have a launcher entry
+                        if (pm.getLaunchIntentForPackage(packageName) == null) {
+                            return@forEach
+                        }
                         val appInfo = it.applicationInfo
                         val appData =
                             ApplicationData(appInfo.loadIcon(pm), appInfo.loadLabel(pm).toString(), packageName, currentlySelectedApps.contains(packageName))
