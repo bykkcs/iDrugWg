@@ -21,10 +21,11 @@ plugins {
     id("com.android.settings") version "8.3.0"
 }
 
-rootProject.name = "idrugconnections-android"
+rootProject.name = "idrugconnections"
 
 include(":tunnel")
-include(":ui")
+include(":idrugconnections")
+project(":idrugconnections").projectDir = file("ui")
 
 configure<SettingsExtension> {
     buildToolsVersion = "34.0.0"
