@@ -292,7 +292,6 @@
 <string name="login_telegram">Войдите через Telegram</string>
 <string name="config_already_added">Конфиг уже добавлен</string>
 <string name="tunnel_added">Туннель добавлен</string>
-<string name="tunnel_create_error">Ошибка создания туннеля: %s</string>
 <string name="generic_error_msg">Ошибка: %s</string>
 <string name="qr_generation_error">Ошибка генерации QR кода</string>
 <string name="qr_confirmed">Вход через QR подтверждён!</string>
