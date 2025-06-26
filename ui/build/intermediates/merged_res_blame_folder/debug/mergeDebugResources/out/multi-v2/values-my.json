@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "org.amnezia.awg.ui-mergeDebugResources-48:/values-my/values-my.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeDebugResources-48:/values-my/values-my.xml",
             "map": [
                 {
                     "source": "/home/bykk/.gradle/caches/transforms-3/2810b0fbf32bc8008409b20f0452d17c/transformed/preference-1.2.1/res/values-my/values-my.xml",

@@ -1,5 +1,5 @@
 -- Merging decision tree log ---
-permission#org.amnezia.awg.debug.permission.CONTROL_TUNNELS
+permission#pw.idrug.connections.debug.permission.CONTROL_TUNNELS
 INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:31:5-36:47
 	android:label
 		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:35:9-49
@@ -13,41 +13,41 @@ INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.
 		INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml
 		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:32:9-67
 provider#androidx.core.content.FileProvider
-INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:74:9-82:12
+INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:80:9-88:12
 	android:grantUriPermissions
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:5-39
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:84:5-39
 	android:authorities
 		INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:76:5-52
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:82:5-52
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:77:5-29
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:83:5-29
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:75:5-54
-provider#org.amnezia.awg.activity.LogViewerActivity$ExportedLogContentProvider
-INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:118:9-122:50
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:81:5-54
+provider#pw.idrug.connections.activity.LogViewerActivity$ExportedLogContentProvider
+INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:124:9-128:50
 	android:grantUriPermissions
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:122:13-47
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:128:13-47
 	android:authorities
 		INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:120:13-64
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:126:13-64
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:121:13-37
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:127:13-37
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:119:13-82
-receiver#org.amnezia.awg.model.TunnelManager$IntentReceiver
-INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:133:9-142:20
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:125:13-82
+receiver#pw.idrug.connections.model.TunnelManager$IntentReceiver
+INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:139:9-148:20
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:135:13-36
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:141:13-36
 	android:permission
 		INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:136:13-77
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:142:13-77
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:134:13-63
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:140:13-63
 manifest
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-174:12
-INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-174:12
-INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-174:12
-INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-174:12
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-180:12
+INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-180:12
+INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-180:12
+INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-180:12
 MERGED from [androidx.databinding:databinding-adapters:8.3.0] /home/bykk/.gradle/caches/transforms-3/09d4e49e94ea55c79dc503fbe5810f0a/transformed/databinding-adapters-8.3.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-ktx:8.3.0] /home/bykk/.gradle/caches/transforms-3/074fc4b53ce11279d37cc5d770418113/transformed/databinding-ktx-8.3.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-runtime:8.3.0] /home/bykk/.gradle/caches/transforms-3/e3428a23a1fdf0201294b2c2ee3ae4b1/transformed/databinding-runtime-8.3.0/AndroidManifest.xml:2:1-7:12
@@ -183,8 +183,8 @@ MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/ca
 	android:name
 		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:28:9-47
 application
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:38:5-166:19
-INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:38:5-166:19
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:38:5-172:19
+INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:38:5-172:19
 MERGED from [com.google.android.material:material:1.11.0] /home/bykk/.gradle/caches/transforms-3/0f579400f73e2b44fa441c2c381bc29d/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] /home/bykk/.gradle/caches/transforms-3/0f579400f73e2b44fa441c2c381bc29d/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/transforms-3/1daf2e3e50a597095a3883f19e4b0f1b/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -231,7 +231,7 @@ MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/ca
 		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:42:9-51
 	android:name
 		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:39:9-36
-activity#org.amnezia.awg.activity.TunnelToggleActivity
+activity#pw.idrug.connections.activity.TunnelToggleActivity
 ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:49:9-52:56
 	android:excludeFromRecents
 		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:51:13-46
@@ -239,8 +239,8 @@ ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml
 		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:52:13-53
 	android:name
 		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:50:13-58
-activity#org.amnezia.awg.activity.MainActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:54:9-72:20
+activity#pw.idrug.connections.activity.MainActivity
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:54:9-78:20
 	android:exported
 		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:56:13-36
 	android:name
@@ -281,44 +281,46 @@ ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml
 		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:70:34-53
 	android:scheme
 		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:70:11-33
-activity#org.amnezia.awg.activity.TvMainActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:84:9-92:20
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:apps+data:scheme:idrug
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:72:13-77:29
+activity#pw.idrug.connections.activity.TvMainActivity
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:90:9-98:20
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:86:13-36
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:92:13-36
 	android:theme
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:87:13-43
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:93:13-43
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:85:13-52
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:91:13-52
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LEANBACK_LAUNCHER
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:88:13-91:29
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:94:13-97:29
 category#android.intent.category.LEANBACK_LAUNCHER
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:90:17-86
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:96:17-86
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:90:27-83
-activity#org.amnezia.awg.activity.SettingsActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:94:9-97:67
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:96:27-83
+activity#pw.idrug.connections.activity.SettingsActivity
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:100:9-103:67
 	android:parentActivityName
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:97:13-64
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:103:13-64
 	android:label
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:96:13-45
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:102:13-45
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:95:13-54
-activity#org.amnezia.awg.activity.TunnelCreatorActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:99:9-102:67
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:101:13-54
+activity#pw.idrug.connections.activity.TunnelCreatorActivity
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:105:9-108:67
 	android:parentActivityName
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:102:13-64
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:108:13-64
 	android:label
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:101:13-58
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:107:13-58
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:100:13-59
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:106:13-59
 activity#com.journeyapps.barcodescanner.CaptureActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:104:9-107:49
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:110:9-113:49
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
 	android:clearTaskOnLaunch
 		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
 	android:screenOrientation
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:106:13-51
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:112:13-51
 		REJECTED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:50:13-56
 	android:stateNotNeeded
 		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
@@ -327,93 +329,93 @@ MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/ca
 	android:theme
 		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
 	tools:replace
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:107:13-46
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:113:13-46
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:105:13-74
-activity#org.amnezia.awg.activity.LogViewerActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:109:9-116:20
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:111:13-74
+activity#pw.idrug.connections.activity.LogViewerActivity
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:115:9-122:20
 	android:label
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:112:13-53
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:118:13-53
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:111:13-37
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:117:13-37
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:110:13-55
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:116:13-55
 intent-filter#action:name:android.intent.action.MAIN
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:113:13-115:29
-receiver#org.amnezia.awg.BootShutdownReceiver
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:124:9-131:20
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:119:13-121:29
+receiver#pw.idrug.connections.BootShutdownReceiver
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:130:9-137:20
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:126:13-36
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:132:13-36
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:125:13-49
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:131:13-49
 intent-filter#action:name:android.intent.action.ACTION_SHUTDOWN+action:name:android.intent.action.BOOT_COMPLETED
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:127:13-130:29
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:133:13-136:29
 action#android.intent.action.ACTION_SHUTDOWN
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:128:17-80
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:134:17-80
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:128:25-77
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:134:25-77
 action#android.intent.action.BOOT_COMPLETED
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:129:17-79
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:135:17-79
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:129:25-76
-service#org.amnezia.awg.QuickTileService
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:144:9-161:19
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:135:25-76
+service#pw.idrug.connections.QuickTileService
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:150:9-167:19
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:146:13-36
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:152:13-36
 	android:permission
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:148:13-77
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:154:13-77
 	android:icon
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:147:13-45
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:153:13-45
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:145:13-45
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:151:13-45
 intent-filter#action:name:android.service.quicksettings.action.QS_TILE
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:150:13-152:29
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:156:13-158:29
 action#android.service.quicksettings.action.QS_TILE
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:151:17-87
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:157:17-87
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:151:25-84
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:157:25-84
 meta-data#android.service.quicksettings.ACTIVE_TILE
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:154:13-156:41
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:160:13-162:41
 	android:value
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:156:17-38
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:162:17-38
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:155:17-73
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:161:17-73
 meta-data#android.service.quicksettings.TOGGLEABLE_TILE
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:158:13-160:40
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:164:13-166:40
 	android:value
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:160:17-37
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:166:17-37
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:159:17-77
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:165:17-77
 meta-data#android.content.APP_RESTRICTIONS
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:163:9-165:56
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:169:9-171:56
 	android:resource
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:165:13-53
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:171:13-53
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:164:13-60
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:170:13-60
 queries
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:168:5-173:15
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:174:5-179:15
 intent#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:169:9-172:18
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:175:9-178:18
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:79:5-81:46
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:85:5-87:46
 	android:resource
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:81:9-43
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:87:9-43
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:80:9-59
-intent-filter#action:name:org.amnezia.awg.action.REFRESH_TUNNEL_STATES+action:name:org.amnezia.awg.action.SET_TUNNEL_DOWN+action:name:org.amnezia.awg.action.SET_TUNNEL_UP
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:137:13-141:29
-action#org.amnezia.awg.action.REFRESH_TUNNEL_STATES
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:138:17-87
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:86:9-59
+intent-filter#action:name:pw.idrug.connections.action.REFRESH_TUNNEL_STATES+action:name:pw.idrug.connections.action.SET_TUNNEL_DOWN+action:name:pw.idrug.connections.action.SET_TUNNEL_UP
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:143:13-147:29
+action#pw.idrug.connections.action.REFRESH_TUNNEL_STATES
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:144:17-92
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:138:25-84
-action#org.amnezia.awg.action.SET_TUNNEL_UP
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:139:17-79
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:144:25-89
+action#pw.idrug.connections.action.SET_TUNNEL_UP
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:145:17-84
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:139:25-76
-action#org.amnezia.awg.action.SET_TUNNEL_DOWN
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:140:17-81
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:145:25-81
+action#pw.idrug.connections.action.SET_TUNNEL_DOWN
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:146:17-86
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:140:25-78
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:146:25-83
 uses-sdk
 INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml
@@ -598,7 +600,7 @@ ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/27
 		ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
 	android:name
 		ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
-permission#org.amnezia.awg.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+permission#pw.idrug.connections.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
 	android:protectionLevel
 		ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
@@ -608,7 +610,7 @@ uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
-uses-permission#org.amnezia.awg.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+uses-permission#pw.idrug.connections.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
@@ -626,14 +628,14 @@ ADDED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/tran
 		ADDED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/transforms-3/e29e4f86bd66cd431773626770810e82/transformed/picasso-2.71828/AndroidManifest.xml:11:13-37
 	android:name
 		ADDED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/transforms-3/e29e4f86bd66cd431773626770810e82/transformed/picasso-2.71828/AndroidManifest.xml:9:13-64
-service#org.amnezia.awg.backend.GoBackend$VpnService
+service#pw.idrug.connections.backend.GoBackend$VpnService
 ADDED from [:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:12:9-19:19
 	android:exported
 		ADDED from [:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:14:13-37
 	android:permission
 		ADDED from [:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:15:13-69
 	android:name
-		ADDED from [:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:13:13-72
+		ADDED from [:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:13:13-77
 intent-filter#action:name:android.net.VpnService
 ADDED from [:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:16:13-18:29
 action#android.net.VpnService

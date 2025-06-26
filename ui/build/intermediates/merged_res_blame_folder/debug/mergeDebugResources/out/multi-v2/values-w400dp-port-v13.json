@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "org.amnezia.awg.ui-mergeDebugResources-48:/values-w400dp-port-v13/values-w400dp-port-v13.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeDebugResources-48:/values-w400dp-port-v13/values-w400dp-port-v13.xml",
             "map": [
                 {
                     "source": "/home/bykk/.gradle/caches/transforms-3/0f579400f73e2b44fa441c2c381bc29d/transformed/material-1.11.0/res/values-w400dp-port-v13/values-w400dp-port-v13.xml",

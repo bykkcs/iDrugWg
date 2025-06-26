@@ -99,7 +99,6 @@ int drawable ic_settings 0x0
 int drawable ic_tile 0x0
 int drawable ic_vpn 0x0
 int drawable list_item_background 0x0
-int drawable matrix_bg_pattern 0x0
 int drawable tv_logo_banner 0x0
 int id add_peer_button 0x0
 int id addresses_label 0x0
@@ -122,7 +121,6 @@ int id btn_download 0x0
 int id btn_login_telegram 0x0
 int id btn_logout 0x0
 int id btn_renew 0x0
-int id btn_show_qr_login 0x0
 int id coordinator 0x0
 int id create_empty 0x0
 int id create_fab 0x0
@@ -142,7 +140,6 @@ int id dns_servers_text 0x0
 int id endpoint_label 0x0
 int id endpoint_label_layout 0x0
 int id endpoint_text 0x0
-int id fab_scan_qr 0x0
 int id files_list 0x0
 int id files_root_label 0x0
 int id fragment_container 0x0
@@ -490,14 +487,14 @@ int string zip_export_error 0x0
 int string zip_export_success 0x0
 int string zip_export_summary 0x0
 int string zip_export_title 0x0
-int style AmneziaWgTheme 0x0
-int style AmneziaWgTheme_BottomSheetDialog 0x0
-int style AmneziaWgTheme_MaterialCardView 0x0
-int style AmneziaWgTheme_Toolbar 0x0
 int style AppTheme 0x0
 int style AppThemeBase 0x0
 int style NoBackgroundTheme 0x0
 int style TvTheme 0x0
+int style iDrugConnectionsTheme 0x0
+int style iDrugConnectionsTheme_BottomSheetDialog 0x0
+int style iDrugConnectionsTheme_MaterialCardView 0x0
+int style iDrugConnectionsTheme_Toolbar 0x0
 int[] styleable Multiselected { 0x0 }
 int styleable Multiselected_state_multiselected 0
 int[] styleable TvCardView { 0x0, 0x0 }

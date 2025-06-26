@@ -1,0 +1,26 @@
+# ninja log v5
+0	700	0	CMakeFiles/elf-cleaner	cfb3cc3327de0e6d
+0	700	0	/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/RelWithDebInfo/3we2l723/arm64-v8a/CMakeFiles/elf-cleaner	cfb3cc3327de0e6d
+700	747	1749132501935229016	CMakeFiles/libwg-quick.so.dir/ndk-compat/compat.c.o	59de90bd69a616
+702	839	1749132502025229018	CMakeFiles/libwg.so.dir/idrugwg-tools/src/pubkey.c.o	859a0011bb61eb9e
+701	856	1749132502043229017	CMakeFiles/libwg.so.dir/idrugwg-tools/src/genkey.c.o	c593658e392fb6c7
+702	864	1749132502043229017	CMakeFiles/libwg.so.dir/idrugwg-tools/src/set.c.o	f35c11b03f783750
+747	925	1749132502115229020	CMakeFiles/libwg.so.dir/idrugwg-tools/src/setconf.c.o	be66458e161119ef
+857	1005	1749132502196229022	CMakeFiles/libwg.so.dir/idrugwg-tools/src/showconf.c.o	9aabd8b2128eb68a
+701	1023	1749132502205229022	CMakeFiles/libwg.so.dir/idrugwg-tools/src/encoding.c.o	7e8764f68a1d7d1b
+925	1040	1749132502223229023	CMakeFiles/libwg.so.dir/idrugwg-tools/src/wg.c.o	3f90c1d069abaf56
+864	1046	1749132502232229023	CMakeFiles/libwg.so.dir/idrugwg-tools/src/terminal.c.o	bfa68a399c9c3fa4
+1005	1055	1749132502241229023	CMakeFiles/libwg.so.dir/ndk-compat/compat.c.o	b476611bc7a71b4b
+840	1136	1749132502322229025	CMakeFiles/libwg.so.dir/idrugwg-tools/src/show.c.o	9e3b42254fe593b8
+700	1140	1749132502322229025	CMakeFiles/libwg.so.dir/idrugwg-tools/src/config.c.o	a0e0981ada1a1854
+700	1279	1749132502466229028	CMakeFiles/libwg-quick.so.dir/idrugwg-tools/src/wg-quick/android.c.o	7794f611063f0668
+1279	1395	1749132502574229028	/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/cxx/RelWithDebInfo/3we2l723/obj/arm64-v8a/libwg-quick.so	9e1d9fdca3adc0a
+701	1665	1749132502844229033	CMakeFiles/libwg.so.dir/idrugwg-tools/src/ipc.c.o	4ef227a51683c005
+700	4230	1749132505418229088	CMakeFiles/libwg.so.dir/idrugwg-tools/src/curve25519.c.o	af45f0d34e6196da
+4231	4363	1749132505526229090	/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/cxx/RelWithDebInfo/3we2l723/obj/arm64-v8a/libwg.so	652ced69503c058b
+0	6524	0	CMakeFiles/libwg-go.so	9a6b6f029a9f685c
+0	6524	0	/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/RelWithDebInfo/3we2l723/arm64-v8a/CMakeFiles/libwg-go.so	9a6b6f029a9f685c
+1	12	0	CMakeFiles/libwg-go.so	9a6b6f029a9f685c
+1	12	0	/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/RelWithDebInfo/3we2l723/arm64-v8a/CMakeFiles/libwg-go.so	9a6b6f029a9f685c
+2	589	0	CMakeFiles/elf-cleaner	cfb3cc3327de0e6d
+2	589	0	/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/RelWithDebInfo/3we2l723/arm64-v8a/CMakeFiles/elf-cleaner	cfb3cc3327de0e6d

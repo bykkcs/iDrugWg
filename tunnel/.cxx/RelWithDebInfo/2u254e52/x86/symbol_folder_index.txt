@@ -1,0 +1,1 @@
+/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/cxx/RelWithDebInfo/2u254e52/obj/x86

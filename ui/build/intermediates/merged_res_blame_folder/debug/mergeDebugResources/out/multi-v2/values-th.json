@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "org.amnezia.awg.ui-mergeDebugResources-48:/values-th/values-th.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeDebugResources-48:/values-th/values-th.xml",
             "map": [
                 {
                     "source": "/home/bykk/.gradle/caches/transforms-3/afc098aacc258b7840551f917d68566a/transformed/zxing-android-embedded-4.3.0/res/values-th/values-th.xml",
