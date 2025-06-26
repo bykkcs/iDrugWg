@@ -271,6 +271,13 @@
     <string name="update_application_title">Update application</string>
     <string name="update_application_summary">Check for a new version and update the app</string>
     <string name="your_username">Your username: %s</string>
+    <string name="subscription_active_days">%1$s: until %2$s (%3$d d)</string>
+    <string name="subscription_forever">%1$s: lifetime</string>
+    <string name="subscription_inactive">%1$s: inactive</string>
+    <string name="server_germany">Germany</string>
+<string name="server_multihop_germany">Multihop Germany</string>
+<string name="server_bulgaria">Bulgaria</string>
+<string name="server_madrid">Madrid</string>
     <string name="import_disclaimer">Ensure that you obtained the configuration file from a trusted source.
 
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>

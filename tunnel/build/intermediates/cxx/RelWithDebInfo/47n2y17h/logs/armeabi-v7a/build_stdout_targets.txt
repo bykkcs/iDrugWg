@@ -1,9 +1,0 @@
-ninja: Entering directory `/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/RelWithDebInfo/47n2y17h/armeabi-v7a'
-[1/2] Building amneziawg-go
-mkdir -p "/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/cxx/RelWithDebInfo/47n2y17h/obj/armeabi-v7a/../generated-src/go-1.24.2/"
-flock "/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/cxx/RelWithDebInfo/47n2y17h/obj/armeabi-v7a/../generated-src/go-1.24.2/.prepared.lock" -c ' \
-[ -f "/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/cxx/RelWithDebInfo/47n2y17h/obj/armeabi-v7a/../generated-src/go-1.24.2/.prepared" ] && exit 0; \
-tar -C "/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/cxx/RelWithDebInfo/47n2y17h/obj/armeabi-v7a/../generated-src/go-1.24.2/" --strip-components=1 -xzf "/home/bykk/.gradle/caches/golang/go1.24.2.linux-amd64.tar.gz" && \
-patch -p1 -f -N -r- -d "/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/cxx/RelWithDebInfo/47n2y17h/obj/armeabi-v7a/../generated-src/go-1.24.2/" < goruntime-boottime-over-monotonic.diff && \
-touch "/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/cxx/RelWithDebInfo/47n2y17h/obj/armeabi-v7a/../generated-src/go-1.24.2/.prepared"'
-[2/2] Building elf-cleaner

@@ -316,6 +316,7 @@ string biometric_auth_error_reason
 string biometric_prompt_private_key_title
 string biometric_prompt_zip_exporter_title
 string cancel
+string choose_server
 string config_delete_error
 string config_exists_error
 string config_file_exists_error
@@ -342,6 +343,7 @@ string disable_config_export_description
 string disable_config_export_title
 string dns_search_domains
 string dns_servers
+string download_config
 string edit
 string endpoint
 string error_down
@@ -389,6 +391,9 @@ string log_viewer_pref_summary
 string log_viewer_pref_title
 string log_viewer_title
 string logcat_error
+string login_via_telegram
+string login_via_telegram_or_qr
+string logout
 string module_enabler_disabled_summary
 string module_enabler_disabled_title
 string module_enabler_enabled_summary
@@ -404,6 +409,7 @@ string multiple_tunnels_summary_off
 string multiple_tunnels_summary_on
 string multiple_tunnels_title
 string name
+string nav_account_title
 string no_config_error
 string no_configs_error
 string no_tunnels_error
@@ -426,6 +432,7 @@ string quick_settings_tile_action
 string quick_settings_tile_add_failure
 string quick_settings_tile_add_summary
 string quick_settings_tile_add_title
+string renew_subscription
 string response_packet_junk_size
 string response_packet_magic_header
 string restore_on_boot_summary_off
@@ -433,10 +440,17 @@ string restore_on_boot_summary_on
 string restore_on_boot_title
 string save
 string select_all
+string server_bulgaria
+string server_germany
+string server_madrid
+string server_multihop_germany
 string settings
 string shell_exit_status_read_error
 string shell_marker_count_error
 string shell_start_error
+string subscription_active_days
+string subscription_forever
+string subscription_inactive
 string success_application_will_restart
 string toggle_all
 string toggle_error
@@ -478,6 +492,8 @@ string type_name_go_userspace
 string type_name_kernel_module
 string underload_packet_magic_header
 string unknown_error
+string update_application_summary
+string update_application_title
 string use_all_applications
 string version_summary
 string version_summary_checking
@@ -485,6 +501,7 @@ string version_summary_unknown
 string version_title
 string vpn_not_authorized_error
 string vpn_start_error
+string your_username
 string zip_export_error
 string zip_export_success
 string zip_export_summary
