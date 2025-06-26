@@ -12,6 +12,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.messaging.FirebaseMessaging
+import android.util.Log
 import pw.idrug.connections.R
 import pw.idrug.connections.fragment.TunnelDetailFragment
 import pw.idrug.connections.fragment.TunnelEditorFragment
@@ -98,6 +100,15 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                 .replace(R.id.fragment_container, fragment)
                 .commit()
             bottomNavigation?.selectedItemId = R.id.nav_vpn
+        }
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("FCM", "Fetching FCM registration token failed", task.exception)
+                return@addOnCompleteListener
+            }
+            val token = task.result
+            Log.d("FCM", "Current FCM token: $token")
         }
     }
 
