@@ -314,6 +314,7 @@ int string biometric_auth_error_reason 0x0
 int string biometric_prompt_private_key_title 0x0
 int string biometric_prompt_zip_exporter_title 0x0
 int string cancel 0x0
+int string choose_server 0x0
 int string config_delete_error 0x0
 int string config_exists_error 0x0
 int string config_file_exists_error 0x0
@@ -340,6 +341,7 @@ int string disable_config_export_description 0x0
 int string disable_config_export_title 0x0
 int string dns_search_domains 0x0
 int string dns_servers 0x0
+int string download_config 0x0
 int string edit 0x0
 int string endpoint 0x0
 int string error_down 0x0
@@ -387,6 +389,9 @@ int string log_viewer_pref_summary 0x0
 int string log_viewer_pref_title 0x0
 int string log_viewer_title 0x0
 int string logcat_error 0x0
+int string login_via_telegram 0x0
+int string login_via_telegram_or_qr 0x0
+int string logout 0x0
 int string module_enabler_disabled_summary 0x0
 int string module_enabler_disabled_title 0x0
 int string module_enabler_enabled_summary 0x0
@@ -402,6 +407,7 @@ int string multiple_tunnels_summary_off 0x0
 int string multiple_tunnels_summary_on 0x0
 int string multiple_tunnels_title 0x0
 int string name 0x0
+int string nav_account_title 0x0
 int string no_config_error 0x0
 int string no_configs_error 0x0
 int string no_tunnels_error 0x0
@@ -424,6 +430,7 @@ int string quick_settings_tile_action 0x0
 int string quick_settings_tile_add_failure 0x0
 int string quick_settings_tile_add_summary 0x0
 int string quick_settings_tile_add_title 0x0
+int string renew_subscription 0x0
 int string response_packet_junk_size 0x0
 int string response_packet_magic_header 0x0
 int string restore_on_boot_summary_off 0x0
@@ -431,10 +438,17 @@ int string restore_on_boot_summary_on 0x0
 int string restore_on_boot_title 0x0
 int string save 0x0
 int string select_all 0x0
+int string server_bulgaria 0x0
+int string server_germany 0x0
+int string server_madrid 0x0
+int string server_multihop_germany 0x0
 int string settings 0x0
 int string shell_exit_status_read_error 0x0
 int string shell_marker_count_error 0x0
 int string shell_start_error 0x0
+int string subscription_active_days 0x0
+int string subscription_forever 0x0
+int string subscription_inactive 0x0
 int string success_application_will_restart 0x0
 int string toggle_all 0x0
 int string toggle_error 0x0
@@ -476,6 +490,8 @@ int string type_name_go_userspace 0x0
 int string type_name_kernel_module 0x0
 int string underload_packet_magic_header 0x0
 int string unknown_error 0x0
+int string update_application_summary 0x0
+int string update_application_title 0x0
 int string use_all_applications 0x0
 int string version_summary 0x0
 int string version_summary_checking 0x0
@@ -483,6 +499,7 @@ int string version_summary_unknown 0x0
 int string version_title 0x0
 int string vpn_not_authorized_error 0x0
 int string vpn_start_error 0x0
+int string your_username 0x0
 int string zip_export_error 0x0
 int string zip_export_success 0x0
 int string zip_export_summary 0x0

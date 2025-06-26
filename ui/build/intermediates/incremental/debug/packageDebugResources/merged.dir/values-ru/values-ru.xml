@@ -78,6 +78,7 @@
         <item quantity="many">%d включенных приложений</item>
         <item quantity="other">%d включенных приложений</item>
     </plurals>
+    <string name="account_avatar">Аватар пользователя</string>
     <string name="add_peer">Добавить пир</string>
     <string name="addresses">Адреса</string>
     <string name="all_applications">Все приложения</string>
@@ -86,6 +87,7 @@
     <string name="allow_remote_control_intents_title">Разрешить управление через внешние приложения</string>
     <string name="allowed_ips">Разрешенные IP</string>
     <string name="applications">Приложения</string>
+    <string name="avatar">Аватар</string>
     <string name="bad_config_context">%1$s из %2$s</string>
     <string name="bad_config_context_top_level">%s</string>
     <string name="bad_config_error">%1$s в %2$s</string>
@@ -107,9 +109,11 @@
     <string name="biometric_prompt_private_key_title">Аутентификация для просмотра приватного ключа</string>
     <string name="biometric_prompt_zip_exporter_title">Аутентификация для экспорта туннелей</string>
     <string name="cancel">Отмена</string>
+    <string name="choose_server">Выберите сервер</string>
     <string name="config_delete_error">Не удалось удалить файл конфигурации %s</string>
     <string name="config_exists_error">Конфигурация для “%s” уже существует</string>
     <string name="config_file_exists_error">Файл конфигурации “%s” уже существует</string>
+    <string name="config_load_error">Ошибка загрузки конфигурации туннеля %1$s: %2$s</string>
     <string name="config_not_found_error">Файл конфигурации “%s” не найден</string>
     <string name="config_rename_error">Не удалось переименовать файл конфигурации “%s”</string>
     <string name="config_save_error">Не удалось сохранить конфигурацию для “%1$s”: %2$s</string>
@@ -132,6 +136,7 @@
     <string name="disable_config_export_title">Отключить экспорт конфигурации</string>
     <string name="dns_search_domains">Домены поиска</string>
     <string name="dns_servers">DNS-серверы</string>
+    <string name="download_config">Скачать конфиг</string>
     <string name="edit">Изменить</string>
     <string name="endpoint">Конечная точка</string>
     <string name="error_down">Ошибка при отключении туннеля: %s</string>
@@ -151,12 +156,17 @@
     <string name="hint_optional_discouraged">(необязательно, не рекомендуется)</string>
     <string name="hint_random">(случайно)</string>
     <string name="illegal_filename_error">Недопустимое имя файла “%s”</string>
-    <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://storage.googleapis.com/amnezia/amnezia.org">amnezia.org</a>\n</string>
+    <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
     <string name="import_error">Невозможно импортировать туннель: %s</string>
     <string name="import_from_qr_code">Импортировать туннель из QR-кода</string>
     <string name="import_success">Импортировано “%s”</string>
     <string name="include_in_tunnel">Включить для</string>
+    <string name="init_packet_junk_size">Размер джанка пакета инициализации</string>
+    <string name="init_packet_magic_header">Магический заголовок пакета инициализации</string>
     <string name="interface_title">Интерфейс</string>
+    <string name="junk_packet_count">Количество джанк-пакетов</string>
+    <string name="junk_packet_max_size">Максимальный размер джанк-пакета</string>
+    <string name="junk_packet_min_size">Минимальный размер джанк-пакета</string>
     <string name="key_contents_error">Плохие символы в ключе</string>
     <string name="key_length_error">Неправильная длина ключа</string>
     <string name="key_length_explanation_base64">: ключи iDrug Connections base64 должны содержать 44 символа (32 байта)</string>
@@ -174,6 +184,9 @@
     <string name="log_viewer_pref_title">Просмотр журналов приложения</string>
     <string name="log_viewer_title">Журнал</string>
     <string name="logcat_error">Не удалось запустить logcat: </string>
+    <string name="login_via_telegram">Войти через Telegram</string>
+    <string name="login_via_telegram_or_qr">Вход через Telegram или QR</string>
+    <string name="logout">Выйти</string>
     <string name="module_enabler_disabled_summary">Экспериментальный модуль ядра может улучшить производительность</string>
     <string name="module_enabler_disabled_title">Включить бэкэнд модуля ядра</string>
     <string name="module_enabler_enabled_summary">Пользовательское пространство немного медленнее и улучшает стабильность</string>
@@ -189,6 +202,7 @@
     <string name="multiple_tunnels_summary_on">Одновременно можно включить несколько туннелей</string>
     <string name="multiple_tunnels_title">Несколько туннелей</string>
     <string name="name">Название</string>
+    <string name="nav_account_title">Личный кабинет</string>
     <string name="no_config_error">Попытка поднять туннель без конфигурации</string>
     <string name="no_configs_error">Конфигурации не найдены</string>
     <string name="no_tunnels_error">Туннелей не существует</string>
@@ -211,15 +225,25 @@
     <string name="quick_settings_tile_add_failure">Не удается добавить ярлык: ошибка %d</string>
     <string name="quick_settings_tile_add_summary">Элемент переключает последний активный туннель</string>
     <string name="quick_settings_tile_add_title">Добавить элемент в панель быстрых настроек</string>
+    <string name="renew_subscription">Продлить подписку</string>
+    <string name="response_packet_junk_size">Размер джанка пакета ответа</string>
+    <string name="response_packet_magic_header">Магический заголовок пакета ответа</string>
     <string name="restore_on_boot_summary_off">Не поднимать ранее выбранные туннели при загрузке</string>
     <string name="restore_on_boot_summary_on">Поднимать ранее выбранные туннели при загрузке</string>
     <string name="restore_on_boot_title">Восстановить при загрузке</string>
     <string name="save">Сохранить</string>
     <string name="select_all">Выбрать все</string>
+    <string name="server_bulgaria">Болгария</string>
+    <string name="server_germany">Германия</string>
+    <string name="server_madrid">Мадрид</string>
+    <string name="server_multihop_germany">Мультихоп Германия</string>
     <string name="settings">Настройки</string>
     <string name="shell_exit_status_read_error">Shell не может прочитать статус выхода</string>
     <string name="shell_marker_count_error">Shell ожидает 4 маркера, получено %d</string>
     <string name="shell_start_error">Не удалось запустить Shell: %d</string>
+    <string name="subscription_active_days">%1$s: до %2$s (%3$d дн.)</string>
+    <string name="subscription_forever">%1$s: навсегда</string>
+    <string name="subscription_inactive">%1$s: не активна</string>
     <string name="success_application_will_restart">Успешно. Приложение будет перезапущено…</string>
     <string name="toggle_all">Инвертировать все</string>
     <string name="toggle_error">Ошибка переключения туннеля iDrug Connections: %s</string>
@@ -240,6 +264,7 @@
     <string name="transfer_mibibytes">%.2f МиБ</string>
     <string name="transfer_rx_tx">Принято: %1$s, Передано: %2$s</string>
     <string name="transfer_tibibytes">%.2f ТиБ</string>
+    <string name="transport_packet_magic_header">Магический заголовок транспортного пакета</string>
     <string name="tun_create_error">Не удалось создать устройство tun</string>
     <string name="tunnel_config_error">Не удалось настроить туннель (awg-quick вернул %d)</string>
     <string name="tunnel_create_error">Не удалось создать туннель: %s</string>
@@ -258,7 +283,10 @@
     <string name="tv_select_a_storage_drive">Выберите накопитель</string>
     <string name="type_name_go_userspace">Go в пользовательском пространстве</string>
     <string name="type_name_kernel_module">Модуль ядра</string>
+    <string name="underload_packet_magic_header">Магический заголовок underload-пакета</string>
     <string name="unknown_error">Неизвестная ошибка</string>
+    <string name="update_application_summary">Проверить новую версию и обновить приложение</string>
+    <string name="update_application_title">Обновить приложение</string>
     <string name="use_all_applications">Использовать все приложения</string>
     <string name="version_summary">Бэкенд: %1$s %2$s</string>
     <string name="version_summary_checking">Проверка версии бэкэнда %s</string>
@@ -266,6 +294,7 @@
     <string name="version_title">iDrug Connections для Android v%s</string>
     <string name="vpn_not_authorized_error">Сервис VPN не авторизован пользователем</string>
     <string name="vpn_start_error">Не удалось запустить службу Android VPN</string>
+    <string name="your_username">Ваш логин: %s</string>
     <string name="zip_export_error">Не удалось экспортировать туннели: %s</string>
     <string name="zip_export_success">Сохранено в “%s”</string>
     <string name="zip_export_summary">Zip-файл будет сохранен в папке загрузок</string>

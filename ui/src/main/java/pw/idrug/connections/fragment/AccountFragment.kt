@@ -28,6 +28,12 @@ import java.text.SimpleDateFormat
 import java.util.*
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.MediaType.Companion.toMediaType
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.StyleSpan
+import android.text.style.ForegroundColorSpan
+import android.graphics.Typeface
+import android.graphics.Color
 
 class AccountFragment : Fragment() {
 
@@ -51,6 +57,17 @@ class AccountFragment : Fragment() {
         fun isActive(): Boolean = active
     }
     private var subscriptions: List<Subscription> = emptyList()
+
+    // --- Локализация названия сервера ---
+    private fun getServerName(location: String): String {
+        return when (location) {
+            "germany" -> getString(R.string.server_germany)
+            "multihop" -> getString(R.string.server_multihop_germany)
+            "bulgaria" -> getString(R.string.server_bulgaria)
+            "madrid" -> getString(R.string.server_madrid)
+            else -> location
+        }
+    }
 
     private val qrScanLauncher = registerForActivityResult(
         androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
@@ -152,10 +169,10 @@ class AccountFragment : Fragment() {
         client.newCall(Request.Builder().url(url).build()).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 serverList = listOf(
-                    "germany" to "Germany",
-                    "multihop" to "Multihop Germany",
-                    "bulgaria" to "Bulgaria",
-                    "madrid" to "Madrid"
+                    "germany" to getServerName("germany"),
+                    "multihop" to getServerName("multihop"),
+                    "bulgaria" to getServerName("bulgaria"),
+                    "madrid" to getServerName("madrid")
                 )
                 safeUi {
                     setupServerSpinner(view)
@@ -167,14 +184,15 @@ class AccountFragment : Fragment() {
                     val arr = JSONArray(response.body?.string() ?: "[]")
                     serverList = List(arr.length()) {
                         val obj = arr.getJSONObject(it)
-                        obj.getString("id") to obj.getString("name")
+                        val id = obj.getString("id")
+                        id to getServerName(id)
                     }
                 } else {
                     serverList = listOf(
-                        "germany" to "Germany",
-                        "multihop" to "Multihop Germany",
-                        "bulgaria" to "Bulgaria",
-                        "madrid" to "Madrid"
+                        "germany" to getServerName("germany"),
+                        "multihop" to getServerName("multihop"),
+                        "bulgaria" to getServerName("bulgaria"),
+                        "madrid" to getServerName("madrid")
                     )
                 }
                 safeUi {
@@ -248,13 +266,7 @@ class AccountFragment : Fragment() {
                             for (i in 0 until subsArr.length()) {
                                 val o = subsArr.getJSONObject(i)
                                 val id = o.optString("location", o.optString("id", ""))
-                                val name = when (id) {
-                                    "germany" -> "Germany"
-                                    "multihop" -> "Multihop Germany"
-                                    "bulgaria" -> "Bulgaria"
-                                    "madrid" -> "Madrid"
-                                    else -> id
-                                }
+                                val name = getServerName(id)
                                 val expires = o.optString("expires", null)
                                 val forever = o.optBoolean("forever", false)
                                 val active = o.optBoolean("active", false)
@@ -314,20 +326,41 @@ class AccountFragment : Fragment() {
         view.findViewById<Button>(R.id.btn_download).visibility = View.VISIBLE
         view.findViewById<Button>(R.id.btn_renew).visibility = View.VISIBLE
         view.findViewById<TextView>(R.id.text_current_user).text = getString(R.string.your_username, username)
-        val lines = subs.joinToString("\n") { s ->
+
+        val statusTextView = view.findViewById<TextView>(R.id.status_text)
+        val lines = mutableListOf<CharSequence>()
+
+        subs.forEach { s ->
+            val name = getServerName(s.location)
             val expFixed = s.expires?.replace("T", " ")?.substring(0, 19) ?: ""
-            val days = if (expFixed.isNotEmpty()) {
+            val days: Int? = if (expFixed.isNotEmpty()) {
                 try {
                     val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
                     val exp = sdf.parse(expFixed)
                     val now = Date()
-                    ((exp.time - now.time) / (1000 * 60 * 60 * 24)).toInt().toString()
+                    ((exp.time - now.time) / (1000 * 60 * 60 * 24)).toInt()
                 } catch (_: Exception) { null }
             } else null
-            val daysStr = days?.let { " ($it d)" } ?: ""
-            "${s.name}: ${if (s.active) "active" else "inactive"}${if (expFixed.isNotEmpty()) " until $expFixed" else ""}$daysStr"
+
+            val str: String = when {
+                s.forever -> getString(R.string.subscription_forever, name)
+                s.active && expFixed.isNotEmpty() && days != null ->
+                    getString(R.string.subscription_active_days, name, expFixed.substring(0, 10).replace("-", "."), days)
+                !s.active -> getString(R.string.subscription_inactive, name)
+                else -> name
+            }
+
+            if (days != null && days <= 7 && s.active && !s.forever) {
+                val spannable = SpannableString(str)
+                spannable.setSpan(StyleSpan(Typeface.BOLD), 0, str.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                spannable.setSpan(ForegroundColorSpan(Color.parseColor("#D32F2F")), 0, str.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                lines.add(spannable)
+            } else {
+                lines.add(str)
+            }
         }
-        view.findViewById<TextView>(R.id.status_text).text = lines
+
+        statusTextView.text = android.text.TextUtils.join("\n", lines)
         view.findViewById<TextView>(R.id.text_expiration).text = ""
         updateDownloadButtonState(view)
     }
@@ -574,17 +607,17 @@ class AccountFragment : Fragment() {
     }
 
     private fun renewSubscription(callback: (Boolean, String?) -> Unit) {
-    val message = "Hello! I want to purchase or renew VPN. My login: " +
-        (prefs.getString("username", "") ?: "unknown")
+        val message = "Hello! I want to purchase or renew VPN. My login: " +
+            (prefs.getString("username", "") ?: "unknown")
 
-    val url = "https://t.me/idrug_vpn?start=" + Uri.encode(message)
-    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-    try {
-        startActivity(intent)
-    } catch (e: Exception) {
-        Toast.makeText(requireContext(), "Unable to open Telegram", Toast.LENGTH_SHORT).show()
+        val url = "https://t.me/idrug_vpn?start=" + Uri.encode(message)
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        try {
+            startActivity(intent)
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), "Unable to open Telegram", Toast.LENGTH_SHORT).show()
+        }
     }
-}
 
     private fun handleDeepLink(intent: Intent?) {
         val data = intent?.data

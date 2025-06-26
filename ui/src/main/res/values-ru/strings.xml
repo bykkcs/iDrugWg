@@ -292,5 +292,12 @@
     <string name="update_application_title">Обновить приложение</string>
     <string name="update_application_summary">Проверить новую версию и обновить приложение</string>
     <string name="your_username">Ваш логин: %s</string>
-    <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://storage.googleapis.com/amnezia/amnezia.org">amnezia.org</a>\n</string>
+    <string name="subscription_active_days">%1$s: до %2$s (%3$d дн.)</string>
+    <string name="subscription_forever">%1$s: навсегда</string>
+    <string name="subscription_inactive">%1$s: не активна</string>
+    <string name="server_germany">Германия</string>
+<string name="server_multihop_germany">Мультихоп Германия</string>
+<string name="server_bulgaria">Болгария</string>
+<string name="server_madrid">Мадрид</string>
+    <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
 </resources>
