@@ -2,7 +2,7 @@
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:key="settings">
 
-    <!-- iDrug connections for Android (можно добавить ссылку на гит в summary) -->
+    <!-- iDrug Connections for Android (you can add a GitHub link in the summary) -->
     <pw.idrug.connections.preference.VersionPreference
         android:icon="@drawable/ic_icon"
         android:key="version" />
@@ -10,11 +10,11 @@
     <!-- Add tile to quick settings -->
     <pw.idrug.connections.preference.QuickTilePreference android:key="quick_tile" />
     
-    <!-- КНОПКА ДЛЯ ОБНОВЛЕНИЯ ПРИЛОЖЕНИЯ -->
+    <!-- BUTTON FOR APP UPDATE -->
     <Preference
         android:key="ota_update"
-        android:title="Обновить приложение"
-        android:summary="Проверить наличие новой версии и обновить приложение" />
+        android:title="Update application"
+        android:summary="Check for a new version and update the app" />
 
     <!--
     <CheckBoxPreference
