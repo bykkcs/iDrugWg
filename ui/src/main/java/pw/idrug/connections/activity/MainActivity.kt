@@ -17,6 +17,7 @@ import pw.idrug.connections.fragment.TunnelDetailFragment
 import pw.idrug.connections.fragment.TunnelEditorFragment
 import pw.idrug.connections.fragment.TunnelListFragment
 import pw.idrug.connections.fragment.AccountFragment
+import pw.idrug.connections.onboarding.OnboardingFragment
 import pw.idrug.connections.model.ObservableTunnel
 
 /**
@@ -98,6 +99,11 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                 .replace(R.id.fragment_container, fragment)
                 .commit()
             bottomNavigation?.selectedItemId = R.id.nav_vpn
+
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragment_container, pw.idrug.connections.onboarding.OnboardingFragment())
+                .addToBackStack(null)
+                .commit()
         }
     }
 
