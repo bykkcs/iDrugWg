@@ -4,13 +4,13 @@
   ~ SPDX-License-Identifier: Apache-2.0
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.amnezia.awg.tunnel" >
+    package="pw.idrug.connections.tunnel" >
 
     <uses-sdk android:minSdkVersion="24" />
 
     <application>
         <service
-            android:name="org.amnezia.awg.backend.GoBackend$VpnService"
+            android:name="pw.idrug.connections.backend.GoBackend$VpnService"
             android:exported="false"
             android:permission="android.permission.BIND_VPN_SERVICE" >
             <intent-filter>

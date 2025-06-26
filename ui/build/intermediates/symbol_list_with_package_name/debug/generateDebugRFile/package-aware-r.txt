@@ -1,4 +1,4 @@
-org.amnezia.awg
+pw.idrug.connections
 anim scale_down
 anim scale_up
 attr state_isDeleting
@@ -100,7 +100,6 @@ drawable ic_settings
 drawable ic_tile
 drawable ic_vpn
 drawable list_item_background
-drawable matrix_bg_pattern
 drawable tv_logo_banner
 id add_peer_button
 id addresses_label
@@ -123,7 +122,6 @@ id btn_download
 id btn_login_telegram
 id btn_logout
 id btn_renew
-id btn_show_qr_login
 id coordinator
 id create_empty
 id create_fab
@@ -143,7 +141,6 @@ id dns_servers_text
 id endpoint_label
 id endpoint_label_layout
 id endpoint_text
-id fab_scan_qr
 id files_list
 id files_root_label
 id fragment_container
@@ -491,14 +488,14 @@ string zip_export_error
 string zip_export_success
 string zip_export_summary
 string zip_export_title
-style AmneziaWgTheme
-style AmneziaWgTheme_BottomSheetDialog
-style AmneziaWgTheme_MaterialCardView
-style AmneziaWgTheme_Toolbar
 style AppTheme
 style AppThemeBase
 style NoBackgroundTheme
 style TvTheme
+style iDrugConnectionsTheme
+style iDrugConnectionsTheme_BottomSheetDialog
+style iDrugConnectionsTheme_MaterialCardView
+style iDrugConnectionsTheme_Toolbar
 styleable Multiselected state_multiselected
 styleable TvCardView state_isDeleting state_isUp
 xml _generated_res_locale_config

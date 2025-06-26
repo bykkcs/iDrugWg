@@ -4,7 +4,7 @@
 4  ~ SPDX-License-Identifier: Apache-2.0
 5-->
 6<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-7    package="org.amnezia.awg.tunnel" >
+7    package="pw.idrug.connections.tunnel" >
 8
 9    <uses-sdk android:minSdkVersion="24" />
 10
@@ -12,8 +12,8 @@
 11-->/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/src/main/AndroidManifest.xml:8:5-17:19
 12        <service
 12-->/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/src/main/AndroidManifest.xml:9:9-16:19
-13            android:name="org.amnezia.awg.backend.GoBackend$VpnService"
-13-->/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/src/main/AndroidManifest.xml:10:13-72
+13            android:name="pw.idrug.connections.backend.GoBackend$VpnService"
+13-->/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/src/main/AndroidManifest.xml:10:13-77
 14            android:exported="false"
 14-->/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/src/main/AndroidManifest.xml:12:13-37
 15            android:permission="android.permission.BIND_VPN_SERVICE" >

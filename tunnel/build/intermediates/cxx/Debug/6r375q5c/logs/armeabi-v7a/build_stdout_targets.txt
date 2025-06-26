@@ -1,0 +1,4 @@
+ninja: Entering directory `/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/Debug/6r375q5c/armeabi-v7a'
+[1/2] Building amneziawg-go
+make: Nothing to be done for 'default'.
+[2/2] Building elf-cleaner

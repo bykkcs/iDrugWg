@@ -40,7 +40,16 @@ class AccountFragment : Fragment() {
     private var serverList: List<Pair<String, String>> = listOf()
     private var qrPollingTimer: Timer? = null
 
-    private data class Subscription(val id: String, val name: String, val expires: String?, val active: Boolean)
+    // Модель подписки. Только поле active решает всё.
+    private data class Subscription(
+        val location: String,
+        val name: String,
+        val expires: String?,
+        val forever: Boolean,
+        val active: Boolean
+    ) {
+        fun isActive(): Boolean = active
+    }
     private var subscriptions: List<Subscription> = emptyList()
 
     private val qrScanLauncher = registerForActivityResult(
@@ -138,7 +147,6 @@ class AccountFragment : Fragment() {
 
     private fun loadServersAndProfileUI(view: View) {
         setLoading(true)
-        // Получаем список серверов
         val client = OkHttpClient()
         val url = "https://idrug.pw/api/servers"
         client.newCall(Request.Builder().url(url).build()).enqueue(object : Callback {
@@ -236,25 +244,33 @@ class AccountFragment : Fragment() {
                         try {
                             val obj = JSONObject(resp)
                             val subsArr = obj.optJSONArray("subscriptions") ?: JSONArray()
-                            val subsList = List(subsArr.length()) { i ->
+                            val subsList = mutableListOf<Subscription>()
+                            for (i in 0 until subsArr.length()) {
                                 val o = subsArr.getJSONObject(i)
-                                Subscription(
-                                    o.optString("id"),
-                                    o.optString("name"),
-                                    o.optString("expires", null),
-                                    o.optBoolean("active", false)
-                                )
+                                val id = o.optString("location", o.optString("id", ""))
+                                val name = when (id) {
+                                    "germany" -> "Германия"
+                                    "multihop" -> "Мультхоп Германия"
+                                    "bulgaria" -> "Болгария"
+                                    "madrid" -> "Мадрид"
+                                    else -> id
+                                }
+                                val expires = o.optString("expires", null)
+                                val forever = o.optBoolean("forever", false)
+                                val active = o.optBoolean("active", false)
+                                subsList.add(Subscription(id, name, expires, forever, active))
                             }
                             subscriptions = subsList
-                            val username = obj.optString("client_name", prefs.getString("username", "") ?: "")
+                            val username = obj.optString("username", prefs.getString("username", "") ?: "")
                             val photoUrl = obj.optString("photo_url", null)
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
                             showAccountScreen(view, username, photoUrl, subsList)
-                            // Важно сразу синхронизировать туннели после получения профиля
                             syncTunnelsWithProfile()
                         } catch (e: Exception) {
-                            Toast.makeText(requireContext(), "Ошибка обработки профиля", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "Ошибка обработки профиля: ${e.message}", Toast.LENGTH_SHORT).show()
+                            subscriptions = emptyList()
+                            showAccountScreen(view, prefs.getString("username", "") ?: "", prefs.getString("photo_url", null), emptyList())
                         }
                     } else {
                         Toast.makeText(requireContext(), "Ошибка получения профиля: ${response.code}", Toast.LENGTH_SHORT).show()
@@ -298,18 +314,18 @@ class AccountFragment : Fragment() {
         view.findViewById<Button>(R.id.btn_download).visibility = View.VISIBLE
         view.findViewById<Button>(R.id.btn_renew).visibility = View.VISIBLE
         view.findViewById<TextView>(R.id.text_current_user).text = "Ваш логин: $username"
-        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         val lines = subs.joinToString("\n") { s ->
-            val fixed = s.expires?.replace("T", " ")?.substring(0, 19) ?: ""
-            val days = if (!fixed.isEmpty()) {
+            val expFixed = s.expires?.replace("T", " ")?.substring(0, 19) ?: ""
+            val days = if (expFixed.isNotEmpty()) {
                 try {
-                    val exp = sdf.parse(fixed)
+                    val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+                    val exp = sdf.parse(expFixed)
                     val now = Date()
                     ((exp.time - now.time) / (1000 * 60 * 60 * 24)).toInt().toString()
                 } catch (_: Exception) { null }
             } else null
             val daysStr = days?.let { " ($it дн.)" } ?: ""
-            "${s.name}: ${if (s.active) "активна" else "не активна"}${if (fixed.isNotEmpty()) " до $fixed" else ""}$daysStr"
+            "${s.name}: ${if (s.active) "активна" else "не активна"}${if (expFixed.isNotEmpty()) " до $expFixed" else ""}$daysStr"
         }
         view.findViewById<TextView>(R.id.status_text).text = lines
         view.findViewById<TextView>(R.id.text_expiration).text = ""
@@ -319,34 +335,31 @@ class AccountFragment : Fragment() {
     private fun updateDownloadButtonState(view: View) {
         val btnDownload = view.findViewById<Button>(R.id.btn_download)
         val id = selectedServerId
-        btnDownload.isEnabled = id != null && subscriptions.any { it.id == id && it.active }
+        btnDownload.isEnabled = id != null && subscriptions.any { it.location == id && it.active }
     }
 
     private fun setLoading(loading: Boolean) {
         view?.findViewById<View>(R.id.loading_overlay)?.visibility = if (loading) View.VISIBLE else View.GONE
     }
 
-private fun afterLogout(view: View) {
-    prefs.edit().clear().apply()
-    MainScope().launch {
-        try {
-            val tunnelManager = Application.getTunnelManager()
-            val tunnels = tunnelManager.getTunnels()
-            tunnels
-                .filter { it.name.startsWith("idrug_") }
-                .forEach { tunnel ->
-                    tunnelManager.delete(tunnel)
-                }
-        } catch (e: Exception) {
-            // Можно залогировать ошибку, если потребуется
-        }
-        safeUi {
-            showLoginScreen(view)
-            Toast.makeText(requireContext(), "Вы вышли из аккаунта", Toast.LENGTH_SHORT).show()
+    private fun afterLogout(view: View) {
+        prefs.edit().clear().apply()
+        MainScope().launch {
+            try {
+                val tunnelManager = Application.getTunnelManager()
+                val tunnels = tunnelManager.getTunnels()
+                tunnels
+                    .filter { it.name.startsWith("idrug_") }
+                    .forEach { tunnel ->
+                        tunnelManager.delete(tunnel)
+                    }
+            } catch (e: Exception) {}
+            safeUi {
+                showLoginScreen(view)
+                Toast.makeText(requireContext(), "Вы вышли из аккаунта", Toast.LENGTH_SHORT).show()
+            }
         }
     }
-}
-
 
     private fun handleDownloadConfig(view: View) {
         if (selectedServerId == null) {
@@ -354,7 +367,7 @@ private fun afterLogout(view: View) {
             return
         }
         val serverId = selectedServerId ?: return
-        if (!subscriptions.any { it.id == serverId && it.active }) {
+        if (!subscriptions.any { it.location == serverId && it.active }) {
             Toast.makeText(requireContext(), "Подписка не активна", Toast.LENGTH_SHORT).show()
             return
         }
@@ -402,7 +415,6 @@ private fun afterLogout(view: View) {
         }
     }
 
-    // QR — генерация, polling, подтверждение (как раньше)
     private fun generateQrLoginToken(onComplete: (String?) -> Unit) {
         val client = OkHttpClient()
         val request = Request.Builder()
@@ -506,7 +518,7 @@ private fun afterLogout(view: View) {
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val json = JSONObject(response.body?.string() ?: "{}")
-                    val username = json.optString("client_name", null)
+                    val username = json.optString("username", null)
                     val photoUrl = json.optString("photo_url", null)
                     callback(true, username, photoUrl)
                 } else {
@@ -540,11 +552,6 @@ private fun afterLogout(view: View) {
         })
     }
 
-    private fun startQrScanner() {
-        // Используй свою ActivityResult/Intent для сканирования QR (ZXing и т.п.)
-        // ...
-    }
-
     private fun downloadConfig(token: String, serverId: String, tunnelName: String, callback: (Boolean, String?) -> Unit) {
         val client = OkHttpClient()
         val url = "https://idrug.pw/api/profile/download?server=$serverId"
@@ -567,22 +574,17 @@ private fun afterLogout(view: View) {
     }
 
     private fun renewSubscription(callback: (Boolean, String?) -> Unit) {
-        val token = prefs.getString("token", null) ?: return callback(false, "Нет токена")
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url("https://idrug.pw/api/profile/renew")
-            .post("".toRequestBody("application/json".toMediaType()))
-            .addHeader("Authorization", "Bearer $token")
-            .build()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                callback(false, e.message)
-            }
-            override fun onResponse(call: Call, response: Response) {
-                callback(response.isSuccessful, response.body?.string())
-            }
-        })
+    val message = "Здравствуйте! Хочу купить или продлить VPN. Мой логин: " +
+        (prefs.getString("username", "") ?: "неизвестно")
+
+    val url = "https://t.me/idrug_vpn?start=" + Uri.encode(message)
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+    try {
+        startActivity(intent)
+    } catch (e: Exception) {
+        Toast.makeText(requireContext(), "Не удалось открыть Telegram", Toast.LENGTH_SHORT).show()
     }
+}
 
     private fun handleDeepLink(intent: Intent?) {
         val data = intent?.data
@@ -644,12 +646,11 @@ private fun afterLogout(view: View) {
                     for (i in 0 until subscriptionsArr.length()) {
                         val sObj = subscriptionsArr.getJSONObject(i)
                         if (sObj.optBoolean("active", false)) {
-                            activeServers.add(sObj.optString("id"))
+                            activeServers.add(sObj.optString("location"))
                         }
                     }
                     MainScope().launch {
                         val tunnelManager = Application.getTunnelManager()
-                        // Make a snapshot of tunnels to avoid concurrent modifications
                         val tunnels = tunnelManager.getTunnels().toList()
                         val toRemove = tunnels.filter {
                             it.name.startsWith("idrug_") &&

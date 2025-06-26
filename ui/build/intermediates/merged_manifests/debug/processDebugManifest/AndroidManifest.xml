@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.amnezia.awg.debug"
+    package="pw.idrug.connections.debug"
     android:installLocation="internalOnly"
     android:versionCode="5"
     android:versionName="1.1.2-debug" >
@@ -34,7 +34,7 @@
         android:required="false" />
 
     <permission
-        android:name="org.amnezia.awg.debug.permission.CONTROL_TUNNELS"
+        android:name="pw.idrug.connections.debug.permission.CONTROL_TUNNELS"
         android:description="@string/permission_description"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/permission_label"
@@ -52,10 +52,10 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <permission
-        android:name="org.amnezia.awg.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="pw.idrug.connections.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="org.amnezia.awg.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="pw.idrug.connections.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <uses-feature
         android:name="android.hardware.camera.front"
@@ -75,7 +75,7 @@
         android:required="false" />
 
     <application
-        android:name="org.amnezia.awg.Application"
+        android:name="pw.idrug.connections.Application"
         android:allowBackup="false"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:banner="@mipmap/banner"
@@ -89,11 +89,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="org.amnezia.awg.activity.TunnelToggleActivity"
+            android:name="pw.idrug.connections.activity.TunnelToggleActivity"
             android:excludeFromRecents="true"
             android:theme="@style/NoBackgroundTheme" />
         <activity
-            android:name="org.amnezia.awg.activity.MainActivity"
+            android:name="pw.idrug.connections.activity.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -113,11 +113,21 @@
                     android:host="auth"
                     android:scheme="idrug" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="apps"
+                    android:scheme="idrug" />
+            </intent-filter>
         </activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="org.amnezia.awg.debug.provider"
+            android:authorities="pw.idrug.connections.debug.provider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
@@ -126,7 +136,7 @@
         </provider>
 
         <activity
-            android:name="org.amnezia.awg.activity.TvMainActivity"
+            android:name="pw.idrug.connections.activity.TvMainActivity"
             android:exported="true"
             android:theme="@style/TvTheme" >
             <intent-filter>
@@ -136,13 +146,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="org.amnezia.awg.activity.SettingsActivity"
+            android:name="pw.idrug.connections.activity.SettingsActivity"
             android:label="@string/settings"
-            android:parentActivityName="org.amnezia.awg.activity.MainActivity" />
+            android:parentActivityName="pw.idrug.connections.activity.MainActivity" />
         <activity
-            android:name="org.amnezia.awg.activity.TunnelCreatorActivity"
+            android:name="pw.idrug.connections.activity.TunnelCreatorActivity"
             android:label="@string/create_activity_title"
-            android:parentActivityName="org.amnezia.awg.activity.MainActivity" />
+            android:parentActivityName="pw.idrug.connections.activity.MainActivity" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:clearTaskOnLaunch="true"
@@ -151,7 +161,7 @@
             android:theme="@style/zxing_CaptureTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="org.amnezia.awg.activity.LogViewerActivity"
+            android:name="pw.idrug.connections.activity.LogViewerActivity"
             android:exported="false"
             android:label="@string/log_viewer_title" >
             <intent-filter>
@@ -160,13 +170,13 @@
         </activity>
 
         <provider
-            android:name="org.amnezia.awg.activity.LogViewerActivity$ExportedLogContentProvider"
-            android:authorities="org.amnezia.awg.debug.exported-log"
+            android:name="pw.idrug.connections.activity.LogViewerActivity$ExportedLogContentProvider"
+            android:authorities="pw.idrug.connections.debug.exported-log"
             android:exported="false"
             android:grantUriPermissions="true" />
 
         <receiver
-            android:name="org.amnezia.awg.BootShutdownReceiver"
+            android:name="pw.idrug.connections.BootShutdownReceiver"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_SHUTDOWN" />
@@ -174,18 +184,18 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name="org.amnezia.awg.model.TunnelManager$IntentReceiver"
+            android:name="pw.idrug.connections.model.TunnelManager$IntentReceiver"
             android:exported="true"
-            android:permission="org.amnezia.awg.debug.permission.CONTROL_TUNNELS" >
+            android:permission="pw.idrug.connections.debug.permission.CONTROL_TUNNELS" >
             <intent-filter>
-                <action android:name="org.amnezia.awg.action.REFRESH_TUNNEL_STATES" />
-                <action android:name="org.amnezia.awg.action.SET_TUNNEL_UP" />
-                <action android:name="org.amnezia.awg.action.SET_TUNNEL_DOWN" />
+                <action android:name="pw.idrug.connections.action.REFRESH_TUNNEL_STATES" />
+                <action android:name="pw.idrug.connections.action.SET_TUNNEL_UP" />
+                <action android:name="pw.idrug.connections.action.SET_TUNNEL_DOWN" />
             </intent-filter>
         </receiver>
 
         <service
-            android:name="org.amnezia.awg.QuickTileService"
+            android:name="pw.idrug.connections.QuickTileService"
             android:exported="true"
             android:icon="@drawable/ic_tile"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" >
@@ -207,7 +217,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="org.amnezia.awg.debug.androidx-startup"
+            android:authorities="pw.idrug.connections.debug.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"
@@ -229,11 +239,11 @@
 
         <provider
             android:name="com.squareup.picasso.PicassoProvider"
-            android:authorities="org.amnezia.awg.debug.com.squareup.picasso"
+            android:authorities="pw.idrug.connections.debug.com.squareup.picasso"
             android:exported="false" />
 
         <service
-            android:name="org.amnezia.awg.backend.GoBackend$VpnService"
+            android:name="pw.idrug.connections.backend.GoBackend$VpnService"
             android:exported="false"
             android:permission="android.permission.BIND_VPN_SERVICE" >
             <intent-filter>

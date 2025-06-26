@@ -1,0 +1,4 @@
+/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/RelWithDebInfo/2u254e52/arm64-v8a/CMakeFiles/elf-cleaner
+/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/RelWithDebInfo/2u254e52/arm64-v8a/CMakeFiles/elf-cleaner.rule
+/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/RelWithDebInfo/2u254e52/arm64-v8a/CMakeFiles/libwg-go.so
+/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/RelWithDebInfo/2u254e52/arm64-v8a/CMakeFiles/libwg-go.so.rule

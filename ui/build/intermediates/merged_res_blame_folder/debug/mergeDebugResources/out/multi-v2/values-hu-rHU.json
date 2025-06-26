@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "org.amnezia.awg.ui-mergeDebugResources-48:/values-hu-rHU/values-hu-rHU.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeDebugResources-48:/values-hu-rHU/values-hu-rHU.xml",
             "map": [
                 {
                     "source": "/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/res/values-hu-rHU/strings.xml",

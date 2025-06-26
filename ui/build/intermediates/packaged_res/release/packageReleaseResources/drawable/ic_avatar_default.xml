@@ -1,0 +1,10 @@
+<!-- user_avatar.svg -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="60dp"
+    android:height="60dp"
+    android:viewportWidth="60"
+    android:viewportHeight="60">
+    <path
+        android:fillColor="#C4C4C4"
+        android:pathData="M30,2A28,28 0 1,0 30,58A28,28 0 1,0 30,2ZM30,9a11,11 0 1,1 0,22 11,11 0 0,1 0,-22zm0,39c-8.28,0 -16.08,-4.17 -20.45,-10.7 0.06,-7.03 14,-10.88 20.45,-10.88 6.45,0 20.39,3.85 20.45,10.88C46.08,43.83 38.28,48 30,48z"/>
+</vector>

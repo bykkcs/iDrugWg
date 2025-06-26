@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "org.amnezia.awg.ui-mergeDebugResources-48:/values-en-rAU/values-en-rAU.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeDebugResources-48:/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
                     "source": "/home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/res/values-en-rAU/values-en-rAU.xml",
