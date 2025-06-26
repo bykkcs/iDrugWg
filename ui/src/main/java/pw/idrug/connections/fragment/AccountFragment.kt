@@ -40,6 +40,9 @@ class AccountFragment : Fragment() {
     private var serverList: List<Pair<String, String>> = listOf()
     private var qrPollingTimer: Timer? = null
 
+    private data class Subscription(val id: String, val name: String, val expires: String?, val active: Boolean)
+    private var subscriptions: List<Subscription> = emptyList()
+
     private val qrScanLauncher = registerForActivityResult(
         androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -125,8 +128,7 @@ class AccountFragment : Fragment() {
                 view,
                 prefs.getString("username", "") ?: "",
                 prefs.getString("photo_url", null),
-                "",
-                ""
+                emptyList()
             )
             loadServersAndProfileUI(view)
         } else {
@@ -189,12 +191,12 @@ class AccountFragment : Fragment() {
             override fun onItemSelected(parent: AdapterView<*>, v: View?, position: Int, id: Long) {
                 selectedServerId = serverList[position].first
                 selectedServerName = serverList[position].second
-                btnDownload.isEnabled = true
+                updateDownloadButtonState(view)
             }
             override fun onNothingSelected(parent: AdapterView<*>) {
                 selectedServerId = null
                 selectedServerName = null
-                btnDownload.isEnabled = false
+                updateDownloadButtonState(view)
             }
         }
         spinner.visibility = View.VISIBLE
@@ -233,13 +235,22 @@ class AccountFragment : Fragment() {
                     } else if (response.isSuccessful) {
                         try {
                             val obj = JSONObject(resp)
-                            val status = obj.optString("status", "unknown")
-                            val expDateStr = obj.optString("expiration_date", "")
+                            val subsArr = obj.optJSONArray("subscriptions") ?: JSONArray()
+                            val subsList = List(subsArr.length()) { i ->
+                                val o = subsArr.getJSONObject(i)
+                                Subscription(
+                                    o.optString("id"),
+                                    o.optString("name"),
+                                    o.optString("expires", null),
+                                    o.optBoolean("active", false)
+                                )
+                            }
+                            subscriptions = subsList
                             val username = obj.optString("client_name", prefs.getString("username", "") ?: "")
                             val photoUrl = obj.optString("photo_url", null)
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
-                            showAccountScreen(view, username, photoUrl, status, expDateStr)
+                            showAccountScreen(view, username, photoUrl, subsList)
                             // Важно сразу синхронизировать туннели после получения профиля
                             syncTunnelsWithProfile()
                         } catch (e: Exception) {
@@ -267,7 +278,7 @@ class AccountFragment : Fragment() {
         view.findViewById<ImageView>(R.id.avatar_image).setImageResource(R.drawable.ic_avatar_placeholder)
     }
 
-    private fun showAccountScreen(view: View, username: String, photoUrl: String?, status: String, expDateStr: String?) {
+    private fun showAccountScreen(view: View, username: String, photoUrl: String?, subs: List<Subscription>) {
         view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout).visibility = View.VISIBLE
         view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.GONE
@@ -284,26 +295,31 @@ class AccountFragment : Fragment() {
         } else {
             avatarImage.setImageResource(R.drawable.ic_avatar_placeholder)
         }
-        view.findViewById<Button>(R.id.btn_download).visibility = if (status == "active") View.VISIBLE else View.GONE
-        view.findViewById<Button>(R.id.btn_renew).visibility = if (status != "active") View.VISIBLE else View.GONE
+        view.findViewById<Button>(R.id.btn_download).visibility = View.VISIBLE
+        view.findViewById<Button>(R.id.btn_renew).visibility = View.VISIBLE
         view.findViewById<TextView>(R.id.text_current_user).text = "Ваш логин: $username"
-        view.findViewById<TextView>(R.id.status_text).text =
-            when (status) {
-                "revoked" -> "Доступ к конфигу заблокирован. Оплатите подписку для восстановления."
-                "expired" -> "Срок действия подписки истёк. Оплатите для получения нового конфига."
-                "active" -> "Скачайте конфиг для автоматического импорта в приложение"
-                else -> "Статус аккаунта: $status"
-            }
-        view.findViewById<TextView>(R.id.text_expiration).text = expDateStr?.let {
-            if (status == "active" && it.isNotEmpty()) {
-                val fixed = it.replace("T", " ").substring(0, 19)
-                val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-                val expDate = sdf.parse(fixed)
-                val now = Date()
-                val daysLeft = ((expDate.time - now.time) / (1000 * 60 * 60 * 24)).toInt()
-                "Дней до окончания: $daysLeft"
-            } else ""
-        } ?: ""
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val lines = subs.joinToString("\n") { s ->
+            val fixed = s.expires?.replace("T", " ")?.substring(0, 19) ?: ""
+            val days = if (!fixed.isEmpty()) {
+                try {
+                    val exp = sdf.parse(fixed)
+                    val now = Date()
+                    ((exp.time - now.time) / (1000 * 60 * 60 * 24)).toInt().toString()
+                } catch (_: Exception) { null }
+            } else null
+            val daysStr = days?.let { " ($it дн.)" } ?: ""
+            "${s.name}: ${if (s.active) "активна" else "не активна"}${if (fixed.isNotEmpty()) " до $fixed" else ""}$daysStr"
+        }
+        view.findViewById<TextView>(R.id.status_text).text = lines
+        view.findViewById<TextView>(R.id.text_expiration).text = ""
+        updateDownloadButtonState(view)
+    }
+
+    private fun updateDownloadButtonState(view: View) {
+        val btnDownload = view.findViewById<Button>(R.id.btn_download)
+        val id = selectedServerId
+        btnDownload.isEnabled = id != null && subscriptions.any { it.id == id && it.active }
     }
 
     private fun setLoading(loading: Boolean) {
@@ -338,6 +354,10 @@ private fun afterLogout(view: View) {
             return
         }
         val serverId = selectedServerId ?: return
+        if (!subscriptions.any { it.id == serverId && it.active }) {
+            Toast.makeText(requireContext(), "Подписка не активна", Toast.LENGTH_SHORT).show()
+            return
+        }
         val tunnelName = "idrug_$serverId"
         setLoading(true)
         val token = prefs.getString("token", null)
