@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import pw.idrug.connections.R
@@ -32,7 +33,10 @@ class OnboardingFragment : Fragment() {
             if (pager.currentItem < onboardPages.size - 1) {
                 pager.currentItem += 1
             } else {
-                // TODO: переход к логину/главному экрану
+                requireContext().getSharedPreferences("auth", Context.MODE_PRIVATE)
+                    .edit()
+                    .putBoolean("onboarding_done", true)
+                    .apply()
                 requireActivity().supportFragmentManager.popBackStack()
             }
         }

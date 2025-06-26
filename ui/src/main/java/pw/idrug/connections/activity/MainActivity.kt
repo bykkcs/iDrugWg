@@ -18,6 +18,7 @@ import pw.idrug.connections.fragment.TunnelEditorFragment
 import pw.idrug.connections.fragment.TunnelListFragment
 import pw.idrug.connections.fragment.AccountFragment
 import pw.idrug.connections.onboarding.OnboardingFragment
+import android.content.Context
 import pw.idrug.connections.model.ObservableTunnel
 
 /**
@@ -100,12 +101,18 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                 .commit()
             bottomNavigation?.selectedItemId = R.id.nav_vpn
 
-            supportFragmentManager.beginTransaction()
-                .add(R.id.fragment_container, pw.idrug.connections.onboarding.OnboardingFragment())
-                .addToBackStack(null)
-                .commit()
-        }
-    }
+            val prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
+            val showOnboarding =
+                !prefs.getBoolean("onboarding_done", false) &&
+                prefs.getString("token", null).isNullOrEmpty()
+            if (showOnboarding) {
+                supportFragmentManager.beginTransaction()
+                    .add(R.id.fragment_container, OnboardingFragment())
+                    .addToBackStack(null)
+                    .commit()
+            }
+       }
+   }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_activity, menu)
