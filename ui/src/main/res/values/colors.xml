@@ -1,8 +1,8 @@
 <resources>
-    <!-- Используем в качестве seed ярко-розовый цвет (можно заменить на любой другой). -->
+    <!-- Use bright pink as the seed color (change as needed). -->
     <color name="seed">#FF00FF</color>
 
-    <!-- ====================== Тема (Светлая) ====================== -->
+    <!-- ====================== Light theme ====================== -->
     <color name="md_theme_light_primary">#FF00FF</color>
     <color name="md_theme_light_onPrimary">#000000</color>
     <color name="md_theme_light_primaryContainer">#FFCCFF</color>
@@ -23,13 +23,13 @@
     <color name="md_theme_light_onError">#000000</color>
     <color name="md_theme_light_onErrorContainer">#3F0000</color>
 
-    <!-- В данной «светлой» теме используем чёрный фон, чтобы создать контраст с неоновыми цветами. -->
+    <!-- In this light theme we use a black background to contrast the neon colors. -->
     <color name="md_theme_light_background">#000000</color>
     <color name="md_theme_light_onBackground">#00FF00</color>
     <color name="md_theme_light_surface">#000000</color>
     <color name="md_theme_light_onSurface">#FF00FF</color>
 
-    <!-- Дополнительные оттенки для элементов интерфейса, где нужно чуть более тёмное/светлое разделение. -->
+    <!-- Additional shades for UI elements that need slight dark/light separation. -->
     <color name="md_theme_light_surfaceVariant">#1A1A1A</color>
     <color name="md_theme_light_onSurfaceVariant">#00FF00</color>
     <color name="md_theme_light_outline">#FF00FF</color>
@@ -43,7 +43,7 @@
     <color name="md_theme_light_scrim">#000000</color>
 
 
-    <!-- ====================== Тема (Тёмная) ====================== -->
+    <!-- ====================== Dark theme ====================== -->
     <color name="md_theme_dark_primary">#FF00FF</color>
     <color name="md_theme_dark_onPrimary">#000000</color>
     <color name="md_theme_dark_primaryContainer">#3F003F</color>
@@ -64,7 +64,7 @@
     <color name="md_theme_dark_onError">#000000</color>
     <color name="md_theme_dark_onErrorContainer">#FFCCCC</color>
 
-    <!-- В тёмной теме также задаём чёрный фон под неон. -->
+    <!-- The dark theme also uses a black background for the neon effect. -->
     <color name="md_theme_dark_background">#000000</color>
     <color name="md_theme_dark_onBackground">#FF00FF</color>
     <color name="md_theme_dark_surface">#000000</color>
