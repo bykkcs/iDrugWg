@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Overlay для прогрессбара -->
+    <!-- Overlay for progress bar -->
     <FrameLayout
         android:id="@+id/loading_overlay"
         android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                 android:id="@+id/text_current_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Вход через Telegram или QR"
+                android:text="Login via Telegram or QR"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:paddingBottom="16dp"
@@ -59,7 +59,7 @@
                 android:id="@+id/btn_login_telegram"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Войти через Telegram" />
+                android:text="Login via Telegram" />
 
 
             <ImageView
@@ -68,14 +68,14 @@
                 android:layout_height="220dp"
                 android:layout_marginTop="12dp"
                 android:visibility="gone"
-                android:contentDescription="QR-код для входа"
+                android:contentDescription="QR code for login"
                 android:scaleType="fitCenter"
                 android:background="@android:color/transparent" />
 <TextView
     android:id="@+id/text_server_choice"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Выберите сервер"
+    android:text="Choose server"
     android:textStyle="bold"
     android:textSize="16sp"
     android:gravity="center"
@@ -91,7 +91,7 @@
                 android:id="@+id/btn_download"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Скачать конфиг"
+                android:text="Download config"
                 android:layout_marginTop="8dp"
                 android:visibility="gone" />
 
@@ -99,7 +99,7 @@
                 android:id="@+id/btn_renew"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Продлить подписку"
+                android:text="Renew subscription"
                 android:layout_marginTop="8dp"
                 android:visibility="gone" />
 
@@ -107,7 +107,7 @@
                 android:id="@+id/btn_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Выйти"
+                android:text="Logout"
                 android:layout_marginTop="8dp"
                 android:visibility="gone" />
 

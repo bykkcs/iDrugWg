@@ -63,7 +63,7 @@
     <string name="allow_remote_control_intents_summary_on">External apps may toggle tunnels (advanced)</string>
     <string name="allow_remote_control_intents_title">Allow remote control apps</string>
     <string name="allowed_ips">Allowed IPs</string>
-    <!-- Имя приложения изменено согласно требованиям -->
+    <!-- Application name updated as required -->
     <string name="app_name" translatable="false">iDrug Connections</string>
     <string name="bad_config_context">%1$s\'s %2$s</string>
     <string name="bad_config_context_top_level">%s</string>
@@ -91,7 +91,7 @@
     <string name="config_rename_error">Cannot rename configuration file “%s”</string>
     <string name="config_save_error">Cannot save configuration for “%1$s”: %2$s</string>
     <string name="config_save_success">Successfully saved configuration for “%s”</string>
-    <!-- Здесь изменено название туннеля на iDrug Connections Tunnel -->
+    <!-- Tunnel name changed to iDrug Connections Tunnel -->
     <string name="create_activity_title">Create iDrug Connections Tunnel</string>
     <string name="create_bin_dir_error">Cannot create local binary directory</string>
     <string name="create_downloads_file_error">Cannot create file in downloads directory</string>
@@ -143,7 +143,7 @@
     <string name="latest_handshake_ago">%s ago</string>
     <string name="listen_port">Listen port</string>
     <string name="log_export_error">Unable to export log: %s</string>
-    <!-- Изменено название продукта в теме экспорта лога -->
+    <!-- Product name updated in log export subject -->
     <string name="log_export_subject">iDrug Connections Android Log File</string>
     <string name="log_export_success">Saved to “%s”</string>
     <string name="log_export_title">Export log file</string>
@@ -186,7 +186,7 @@
     <string name="parse_error_integer">number</string>
     <string name="parse_error_reason">Cannot parse %1$s “%2$s”</string>
     <string name="peer">Peer</string>
-    <!-- Изменены упоминания в описании разрешения -->
+    <!-- Mentions updated in permission description -->
     <string name="permission_description">control iDrug Connections tunnels, enabling and disabling tunnels at will, potentially misdirecting Internet traffic</string>
     <string name="permission_label">control iDrug Connections tunnels</string>
     <string name="persistent_keepalive">Persistent keepalive</string>
@@ -246,7 +246,7 @@
     <string name="version_summary">%1$s backend %2$s</string>
     <string name="version_summary_checking">Checking %s backend version</string>
     <string name="version_summary_unknown">Unknown %s version</string>
-    <!-- Здесь также изменено название продукта -->
+    <!-- Product name also updated here -->
     <string name="version_title">iDrug Connections for Android v%s</string>
     <string name="vpn_not_authorized_error">VPN service not authorized by user</string>
     <string name="vpn_start_error">Unable to start Android VPN service</string>
