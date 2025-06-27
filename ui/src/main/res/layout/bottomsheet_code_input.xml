@@ -38,17 +38,17 @@
         android:alignmentMode="alignMargins"
         android:useDefaultMargins="true">
 
-        <Button android:id="@+id/btn1" android:text="1" android:onClick="onDigitClick"/>
-        <Button android:id="@+id/btn2" android:text="2" android:onClick="onDigitClick"/>
-        <Button android:id="@+id/btn3" android:text="3" android:onClick="onDigitClick"/>
-        <Button android:id="@+id/btn4" android:text="4" android:onClick="onDigitClick"/>
-        <Button android:id="@+id/btn5" android:text="5" android:onClick="onDigitClick"/>
-        <Button android:id="@+id/btn6" android:text="6" android:onClick="onDigitClick"/>
-        <Button android:id="@+id/btn7" android:text="7" android:onClick="onDigitClick"/>
-        <Button android:id="@+id/btn8" android:text="8" android:onClick="onDigitClick"/>
-        <Button android:id="@+id/btn9" android:text="9" android:onClick="onDigitClick"/>
+        <Button android:id="@+id/btn1" style="@style/KeypadButton" android:text="1" />
+        <Button android:id="@+id/btn2" style="@style/KeypadButton" android:text="2" />
+        <Button android:id="@+id/btn3" style="@style/KeypadButton" android:text="3" />
+        <Button android:id="@+id/btn4" style="@style/KeypadButton" android:text="4" />
+        <Button android:id="@+id/btn5" style="@style/KeypadButton" android:text="5" />
+        <Button android:id="@+id/btn6" style="@style/KeypadButton" android:text="6" />
+        <Button android:id="@+id/btn7" style="@style/KeypadButton" android:text="7" />
+        <Button android:id="@+id/btn8" style="@style/KeypadButton" android:text="8" />
+        <Button android:id="@+id/btn9" style="@style/KeypadButton" android:text="9" />
         <View android:layout_width="0dp" android:layout_height="0dp" />
-        <Button android:id="@+id/btn0" android:text="0" android:onClick="onDigitClick"/>
-        <Button android:id="@+id/btnDel" android:text="DEL" android:onClick="onDigitClick"/>
+        <Button android:id="@+id/btn0" style="@style/KeypadButton" android:text="0" />
+        <Button android:id="@+id/btnDel" style="@style/KeypadButton" android:text="DEL" />
     </GridLayout>
 </LinearLayout>

@@ -35,9 +35,26 @@ class CodeInputDialogFragment(
             view.findViewById(R.id.pin5),
             view.findViewById(R.id.pin6)
         )
+
+        val btns = listOf(
+            R.id.btn0,
+            R.id.btn1,
+            R.id.btn2,
+            R.id.btn3,
+            R.id.btn4,
+            R.id.btn5,
+            R.id.btn6,
+            R.id.btn7,
+            R.id.btn8,
+            R.id.btn9,
+            R.id.btnDel
+        )
+        btns.forEach { id ->
+            view.findViewById<View>(id).setOnClickListener(this::onDigitClick)
+        }
     }
 
-    fun onDigitClick(v: View) {
+    private fun onDigitClick(v: View) {
         when (v.id) {
             R.id.btnDel -> removeDigit()
             R.id.btn0 -> addDigit("0")
