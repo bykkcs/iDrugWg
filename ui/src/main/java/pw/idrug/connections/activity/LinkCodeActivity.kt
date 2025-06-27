@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import pw.idrug.connections.R
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException

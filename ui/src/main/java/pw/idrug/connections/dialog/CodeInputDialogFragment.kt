@@ -1,5 +1,6 @@
 package pw.idrug.connections.dialog
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputFilter
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -17,6 +19,8 @@ import pw.idrug.connections.R
 class CodeInputDialogFragment(
     private val onCodeEntered: (String) -> Unit
 ) : BottomSheetDialogFragment() {
+
+    override fun getTheme(): Int = R.style.CodeInputBottomSheet
 
     private lateinit var inputs: List<EditText>
 
@@ -64,5 +68,12 @@ class CodeInputDialogFragment(
             }
         }
         return v
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        inputs[0].requestFocus()
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(inputs[0], InputMethodManager.SHOW_IMPLICIT)
     }
 }
