@@ -33,3 +33,8 @@
 -keepclasseswithmembers class * {
     @androidx.annotation.Keep <init>(...);
 }
+
+# Ignore optional security provider implementations referenced by OkHttp
+-dontwarn org.bouncycastle.**
+-dontwarn org.conscrypt.**
+-dontwarn org.openjsse.**
