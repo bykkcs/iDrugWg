@@ -86,7 +86,7 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0") // опционально
 
-    implementation(platform("com.google.firebase:firebase-bom:33.15.0"))
+    implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
     implementation("com.google.firebase:firebase-messaging")
     implementation("com.google.firebase:firebase-analytics")
 

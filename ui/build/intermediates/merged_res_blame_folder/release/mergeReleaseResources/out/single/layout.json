@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/tunnel_editor_peer.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/tunnel_editor_peer.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/main_activity.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/main_activity.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/tunnel_editor_fragment.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/tunnel_editor_fragment.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/tunnel_detail_fragment.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/tunnel_detail_fragment.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/tunnel_list_fragment.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/tunnel_list_fragment.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/tunnel_list_item.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/tunnel_list_item.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/config_naming_dialog_fragment.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/config_naming_dialog_fragment.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/app_list_dialog_fragment.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/app_list_dialog_fragment.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/add_tunnels_bottom_sheet.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/add_tunnels_bottom_sheet.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/log_viewer_entry.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/log_viewer_entry.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/log_viewer_activity.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/log_viewer_activity.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/tunnel_detail_peer.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/tunnel_detail_peer.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/tv_activity.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/tv_activity.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/tv_tunnel_list_item.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/tv_tunnel_list_item.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/app_list_item.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/app_list_item.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/tv_file_list_item.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/tv_file_list_item.xml"
+    },
+    {
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout/fragment_account.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout/fragment_account.xml"
+    }
+]

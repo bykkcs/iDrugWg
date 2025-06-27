@@ -1,6 +1,0 @@
-/home/bykk/android-sdk/cmake/3.22.1/bin/ninja \
-  -C \
-  /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/.cxx/Debug/6r375q5c/arm64-v8a \
-  libwg-go.so \
-  libwg-quick.so \
-  libwg.so
