@@ -11,6 +11,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.messaging.FirebaseMessaging
 import android.util.Log
@@ -71,16 +72,12 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
             when (item.itemId) {
                 R.id.nav_vpn -> {
                     supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, TunnelListFragment())
-                        .commit()
+                    safeReplaceFragment(TunnelListFragment())
                     true
                 }
                 R.id.nav_account -> {
                     supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, AccountFragment())
-                        .commit()
+                    safeReplaceFragment(AccountFragment())
                     true
                 }
                 else -> false
@@ -188,4 +185,12 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         return true
     }
 
+    private fun safeReplaceFragment(fragment: Fragment) {
+        val fm = supportFragmentManager
+        if (!fm.isStateSaved) {
+            fm.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .commit()
+        }
+    }
 }
