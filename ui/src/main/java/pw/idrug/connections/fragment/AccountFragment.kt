@@ -393,7 +393,6 @@ class AccountFragment : Fragment() {
 
     private fun setLoading(loading: Boolean) {
         view?.findViewById<View>(R.id.loading_overlay)?.visibility = if (loading) View.VISIBLE else View.GONE
-        activity?.findViewById<View>(R.id.interaction_blocker)?.visibility = if (loading) View.VISIBLE else View.GONE
     }
 
     private fun afterLogout(view: View) {
