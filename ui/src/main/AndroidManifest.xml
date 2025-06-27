@@ -121,6 +121,12 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activity.LinkCodeActivity"
+            android:exported="true"
+            android:label="@string/link_device"
+            android:parentActivityName=".activity.MainActivity" />
+
         <provider
             android:name=".activity.LogViewerActivity$ExportedLogContentProvider"
             android:authorities="${applicationId}.exported-log"

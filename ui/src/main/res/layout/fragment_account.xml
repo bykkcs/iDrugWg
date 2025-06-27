@@ -61,6 +61,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/login_via_telegram" />
 
+            <Button
+                android:id="@+id/btn_link_device"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/link_device" />
+
 
             <ImageView
                 android:id="@+id/qr_code_image"

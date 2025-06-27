@@ -287,6 +287,10 @@
     <string name="choose_server">Выберите сервер</string>
     <string name="download_config">Скачать конфиг</string>
     <string name="renew_subscription">Продлить подписку</string>
+    <string name="link_device">Привязать устройство</string>
+    <string name="enter_code">Введите код</string>
+    <string name="submit_code">Войти</string>
+    <string name="code_login_title">Введите 6-значный код</string>
     <string name="logout">Выйти</string>
     <string name="nav_account_title">Личный кабинет</string>
     <string name="update_application_title">Обновить приложение</string>
