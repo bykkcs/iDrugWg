@@ -7,6 +7,7 @@ package pw.idrug.connections.fragment
 import android.content.Context
 import android.util.Log
 import android.view.View
+import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
@@ -31,6 +32,26 @@ import kotlinx.coroutines.launch
  * attached to a `BaseActivity`.
  */
 abstract class BaseFragment : Fragment(), OnSelectedTunnelChangedListener {
+    protected var destroyed = false
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        destroyed = false
+    }
+
+    override fun onDestroyView() {
+        destroyed = true
+        super.onDestroyView()
+    }
+
+    protected fun safeUi(block: () -> Unit) {
+        if (destroyed || !isAdded || view == null || activity == null) return
+        view?.post {
+            if (!destroyed && isAdded && view != null && activity != null) {
+                block()
+            }
+        }
+    }
     private var pendingTunnel: ObservableTunnel? = null
     private var pendingTunnelUp: Boolean? = null
     private val permissionActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {

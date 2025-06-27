@@ -6,11 +6,9 @@ import android.content.SharedPreferences
 import android.graphics.*
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.*
 import android.widget.*
-import androidx.fragment.app.Fragment
+
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
 import com.squareup.picasso.Picasso
@@ -22,6 +20,7 @@ import pw.idrug.connections.dialog.CodeInputDialogFragment
 import androidx.fragment.app.DialogFragment
 import pw.idrug.connections.Application
 import pw.idrug.connections.config.Config
+import pw.idrug.connections.model.ObservableTunnel
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
@@ -37,11 +36,9 @@ import android.text.style.ForegroundColorSpan
 import android.graphics.Typeface
 import android.graphics.Color
 
-class AccountFragment : Fragment() {
+class AccountFragment : BaseFragment() {
 
     private lateinit var prefs: SharedPreferences
-    private val handler = Handler(Looper.getMainLooper())
-    private var destroyed = false
 
     private var selectedServerId: String? = null
     private var selectedServerName: String? = null
@@ -88,21 +85,21 @@ class AccountFragment : Fragment() {
                     }
                 }
             } else {
-                Toast.makeText(requireContext(), "QR code not recognized", Toast.LENGTH_SHORT).show()
+                safeUi {
+                    Toast.makeText(requireContext(), "QR code not recognized", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        destroyed = true
         qrPollingTimer?.cancel()
         (parentFragmentManager.findFragmentByTag("code_input") as? DialogFragment)?.dismissAllowingStateLoss()
         (parentFragmentManager.findFragmentByTag("link_code") as? DialogFragment)?.dismissAllowingStateLoss()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        destroyed = false
         return inflater.inflate(R.layout.fragment_account, container, false)
     }
 
@@ -144,7 +141,9 @@ class AccountFragment : Fragment() {
             setLoading(true)
             val token = prefs.getString("token", null)
             if (token == null) {
-                Toast.makeText(requireContext(), "Please log in via Telegram first", Toast.LENGTH_SHORT).show()
+                safeUi {
+                    Toast.makeText(requireContext(), "Please log in via Telegram first", Toast.LENGTH_SHORT).show()
+                }
                 setLoading(false)
                 return@setOnClickListener
             }
@@ -416,19 +415,25 @@ class AccountFragment : Fragment() {
 
     private fun handleDownloadConfig(view: View) {
         if (selectedServerId == null) {
-            Toast.makeText(requireContext(), "Select a server", Toast.LENGTH_SHORT).show()
+            safeUi {
+                Toast.makeText(requireContext(), "Select a server", Toast.LENGTH_SHORT).show()
+            }
             return
         }
         val serverId = selectedServerId ?: return
         if (!subscriptions.any { it.location == serverId && it.active }) {
-            Toast.makeText(requireContext(), "Subscription inactive", Toast.LENGTH_SHORT).show()
+            safeUi {
+                Toast.makeText(requireContext(), "Subscription inactive", Toast.LENGTH_SHORT).show()
+            }
             return
         }
         val tunnelName = "idrug_$serverId"
         setLoading(true)
         val token = prefs.getString("token", null)
         if (token == null) {
-            Toast.makeText(requireContext(), "Log in via Telegram", Toast.LENGTH_SHORT).show()
+            safeUi {
+                Toast.makeText(requireContext(), "Log in via Telegram", Toast.LENGTH_SHORT).show()
+            }
             setLoading(false)
             return
         }
@@ -454,10 +459,14 @@ class AccountFragment : Fragment() {
                                 val config = Config.parse(file.bufferedReader())
                                 tunnelManager.create(tunnelName, config)
                                 file.delete()
-                                Toast.makeText(requireContext(), "Tunnel added", Toast.LENGTH_SHORT).show()
-                                loadProfileAndSetupUI(requireView())
+                                safeUi {
+                                    Toast.makeText(requireContext(), "Tunnel added", Toast.LENGTH_SHORT).show()
+                                    loadProfileAndSetupUI(requireView())
+                                }
                             } catch (e: Exception) {
-                                Toast.makeText(requireContext(), "Tunnel creation error: ${e.message}", Toast.LENGTH_LONG).show()
+                                safeUi {
+                                    Toast.makeText(requireContext(), "Tunnel creation error: ${e.message}", Toast.LENGTH_LONG).show()
+                                }
                             }
                         }
                     } else {
@@ -500,7 +509,9 @@ class AccountFragment : Fragment() {
             }
             imageView.setImageBitmap(bitmap)
         } catch (e: Exception) {
-            Toast.makeText(requireContext(), "QR code generation error", Toast.LENGTH_SHORT).show()
+            safeUi {
+                Toast.makeText(requireContext(), "QR code generation error", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -635,7 +646,9 @@ class AccountFragment : Fragment() {
         try {
             startActivity(intent)
         } catch (e: Exception) {
-            Toast.makeText(requireContext(), "Unable to open Telegram", Toast.LENGTH_SHORT).show()
+            safeUi {
+                Toast.makeText(requireContext(), "Unable to open Telegram", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -764,10 +777,7 @@ class AccountFragment : Fragment() {
         })
     }
 
-    private fun safeUi(block: () -> Unit) {
-        if (destroyed || !isAdded || activity == null) return
-        handler.post {
-            if (!destroyed && isAdded && activity != null) block()
-        }
+    override fun onSelectedTunnelChanged(oldTunnel: ObservableTunnel?, newTunnel: ObservableTunnel?) {
+        // Account screen doesn't depend on tunnel selection
     }
 }

@@ -76,13 +76,16 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                 return@setOnItemSelectedListener true
             }
             lastNavTime = now
+            val current = supportFragmentManager.findFragmentById(R.id.fragment_container)
             when (item.itemId) {
                 R.id.nav_vpn -> {
+                    if (current is TunnelListFragment) return@setOnItemSelectedListener true
                     supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                     safeReplaceFragment(TunnelListFragment())
                     true
                 }
                 R.id.nav_account -> {
+                    if (current is AccountFragment) return@setOnItemSelectedListener true
                     supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                     safeReplaceFragment(AccountFragment())
                     true
