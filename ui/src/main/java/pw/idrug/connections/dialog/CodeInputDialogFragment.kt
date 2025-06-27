@@ -1,18 +1,10 @@
 package pw.idrug.connections.dialog
 
-import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.InputFilter
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import pw.idrug.connections.R
 
@@ -22,58 +14,58 @@ class CodeInputDialogFragment(
 
     override fun getTheme(): Int = R.style.CodeInputBottomSheet
 
-    private lateinit var inputs: List<EditText>
+    private lateinit var cells: List<TextView>
+    private var code: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val v = inflater.inflate(R.layout.dialog_code_input, container, false)
-        inputs = listOf(
-            v.findViewById(R.id.code_1),
-            v.findViewById(R.id.code_2),
-            v.findViewById(R.id.code_3),
-            v.findViewById(R.id.code_4),
-            v.findViewById(R.id.code_5),
-            v.findViewById(R.id.code_6)
-        )
-        for ((i, et) in inputs.withIndex()) {
-            et.filters = arrayOf(InputFilter.LengthFilter(1))
-            et.inputType = EditorInfo.TYPE_CLASS_NUMBER
-            et.addTextChangedListener(object : TextWatcher {
-                override fun afterTextChanged(s: Editable?) {
-                    if (!s.isNullOrEmpty() && i < inputs.size - 1) {
-                        inputs[i + 1].requestFocus()
-                    }
-                }
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-            })
-            et.setOnKeyListener { _, keyCode, _ ->
-                if (keyCode == android.view.KeyEvent.KEYCODE_DEL && et.text.isEmpty() && i > 0) {
-                    inputs[i - 1].requestFocus()
-                    inputs[i - 1].text.clear()
-                    true
-                } else false
-            }
-        }
-        v.findViewById<Button>(R.id.btnSubmit).setOnClickListener {
-            val code = inputs.joinToString(separator = "") { it.text.toString() }
-            if (code.length == 6) {
-                onCodeEntered(code)
-                dismiss()
-            } else {
-                Toast.makeText(requireContext(), getString(R.string.enter_code), Toast.LENGTH_SHORT).show()
-            }
-        }
-        return v
+        return inflater.inflate(R.layout.bottomsheet_code_input, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        inputs[0].requestFocus()
-        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(inputs[0], InputMethodManager.SHOW_IMPLICIT)
+        cells = listOf(
+            view.findViewById(R.id.pin1),
+            view.findViewById(R.id.pin2),
+            view.findViewById(R.id.pin3),
+            view.findViewById(R.id.pin4),
+            view.findViewById(R.id.pin5),
+            view.findViewById(R.id.pin6)
+        )
+    }
+
+    fun onDigitClick(v: View) {
+        when (v.id) {
+            R.id.btnDel -> removeDigit()
+            R.id.btn0 -> addDigit("0")
+            R.id.btn1 -> addDigit("1")
+            R.id.btn2 -> addDigit("2")
+            R.id.btn3 -> addDigit("3")
+            R.id.btn4 -> addDigit("4")
+            R.id.btn5 -> addDigit("5")
+            R.id.btn6 -> addDigit("6")
+            R.id.btn7 -> addDigit("7")
+            R.id.btn8 -> addDigit("8")
+            R.id.btn9 -> addDigit("9")
+        }
+    }
+
+    private fun addDigit(d: String) {
+        if (code.length >= 6) return
+        cells[code.length].text = d
+        code += d
+        if (code.length == 6) {
+            onCodeEntered(code)
+            dismiss()
+        }
+    }
+
+    private fun removeDigit() {
+        if (code.isEmpty()) return
+        code = code.dropLast(1)
+        cells[code.length].text = ""
     }
 }

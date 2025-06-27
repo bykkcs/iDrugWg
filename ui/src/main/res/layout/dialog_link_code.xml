@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="123456"
-        android:textSize="32sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         android:padding="12dp"
         android:textColor="@android:color/black" />
