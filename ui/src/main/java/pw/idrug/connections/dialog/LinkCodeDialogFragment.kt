@@ -21,10 +21,12 @@ class LinkCodeDialogFragment : DialogFragment() {
         val codeText: TextView = view.findViewById(R.id.code_text)
         val timerText: TextView = view.findViewById(R.id.timer_text)
         fetchCode(codeText, timerText)
-        return AlertDialog.Builder(requireContext())
+        val dialog = AlertDialog.Builder(requireContext())
             .setView(view)
             .setNegativeButton(android.R.string.cancel) { _, _ -> }
             .create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        return dialog
     }
 
     override fun onDestroyView() {
