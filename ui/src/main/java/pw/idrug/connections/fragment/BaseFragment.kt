@@ -45,11 +45,10 @@ abstract class BaseFragment : Fragment(), OnSelectedTunnelChangedListener {
     }
 
     protected fun safeUi(block: () -> Unit) {
-        if (destroyed || !isAdded || view == null || activity == null) return
-        view?.post {
-            if (!destroyed && isAdded && view != null && activity != null) {
-                block()
-            }
+        if (!isAdded || destroyed || view == null || activity == null) return
+        requireActivity().runOnUiThread {
+            if (!isAdded || destroyed || view == null || activity == null) return@runOnUiThread
+            block()
         }
     }
     private var pendingTunnel: ObservableTunnel? = null
