@@ -10,10 +10,6 @@ import android.os.Handler
 import android.os.Looper
 import android.view.*
 import android.widget.*
-import android.os.CountDownTimer
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
@@ -133,7 +129,8 @@ class AccountFragment : Fragment() {
         }
         view.findViewById<Button>(R.id.btn_link_device).setOnClickListener {
             if (isLoggedIn()) {
-                showLinkDeviceDialog()
+                pw.idrug.connections.dialog.LinkCodeDialogFragment()
+                    .show(parentFragmentManager, "link_code")
             } else {
                 CodeInputDialogFragment { code ->
                     handleLinkCodeLogin(code)
@@ -639,71 +636,6 @@ class AccountFragment : Fragment() {
         }
     }
 
-    private fun showLinkDeviceDialog() {
-        val dialog = android.app.AlertDialog.Builder(requireContext())
-        dialog.setTitle(getString(R.string.link_device))
-
-        val layout = LinearLayout(requireContext())
-        layout.orientation = LinearLayout.VERTICAL
-        layout.setPadding(48, 24, 48, 24)
-
-        val codeText = TextView(requireContext())
-        codeText.textSize = 32f
-        codeText.gravity = Gravity.CENTER
-        codeText.text = "------"
-
-        val timerText = TextView(requireContext())
-        timerText.textSize = 14f
-        timerText.gravity = Gravity.CENTER
-        timerText.setPadding(0, 8, 0, 0)
-
-        layout.addView(codeText)
-        layout.addView(timerText)
-        dialog.setView(layout)
-
-        var countdownTimer: CountDownTimer? = null
-
-        dialog.setNegativeButton(android.R.string.cancel) { dlg, _ ->
-            countdownTimer?.cancel()
-            dlg.dismiss()
-        }
-
-        dialog.show()
-
-        val token = prefs.getString("token", null) ?: return
-        val client = OkHttpClient()
-        val req = Request.Builder()
-            .url("https://idrug.pw/api/linking/generate")
-            .addHeader("Authorization", "Bearer $token")
-            .post(FormBody.Builder().build())
-            .build()
-        client.newCall(req).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                safeUi { codeText.text = "Error" }
-            }
-            override fun onResponse(call: Call, response: Response) {
-                val body = response.body?.string() ?: ""
-                if (!response.isSuccessful) {
-                    safeUi { codeText.text = "Error" }
-                    return
-                }
-                val obj = JSONObject(body)
-                val code = obj.optString("link_code")
-                val ttl = obj.optInt("ttl", 180)
-                safeUi {
-                    codeText.text = code
-                    countdownTimer = object : CountDownTimer((ttl * 1000).toLong(), 1000) {
-                        override fun onTick(millisUntilFinished: Long) {
-                            timerText.text = "Expires in ${millisUntilFinished / 1000}s"
-                        }
-                        override fun onFinish() {
-                            timerText.text = getString(R.string.login_via_telegram_or_qr)
-                        }
-                    }.start()
-                }
-            }
-        })
-    }
 
     private fun handleLinkCodeLogin(code: String) {
         linkAccountWithCode(code) { success, token, username, message ->
