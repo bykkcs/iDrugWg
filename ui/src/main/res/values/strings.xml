@@ -273,6 +273,7 @@
     <string name="code_login_title">Enter 6-digit code</string>
     <string name="code_expires_in">Code expires in %1$d s</string>
     <string name="code_expired">Code expired. Generate new.</string>
+    <string name="code_generating">Generating code…</string>
     <string name="logout">Logout</string>
     <string name="nav_account_title">Account</string>
     <string name="update_application_title">Update application</string>
