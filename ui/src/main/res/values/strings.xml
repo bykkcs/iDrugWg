@@ -266,6 +266,10 @@
     <string name="choose_server">Choose server</string>
     <string name="download_config">Download config</string>
     <string name="renew_subscription">Renew subscription</string>
+    <string name="link_device">Link device</string>
+    <string name="enter_code">Enter code</string>
+    <string name="submit_code">Link</string>
+    <string name="code_login_title">Enter 6-digit code</string>
     <string name="logout">Logout</string>
     <string name="nav_account_title">Account</string>
     <string name="update_application_title">Update application</string>
