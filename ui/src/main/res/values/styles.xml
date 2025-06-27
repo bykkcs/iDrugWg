@@ -67,6 +67,14 @@
         <item name="android:textColor">#111111</item>
         <item name="android:layout_margin">4dp</item>
     </style>
+
+    <style name="KeypadButton">
+        <item name="android:layout_width">72dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#111111</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
     <style name="TvTheme" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
