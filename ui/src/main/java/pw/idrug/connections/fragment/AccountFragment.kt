@@ -15,6 +15,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.view.Gravity
 import androidx.fragment.app.Fragment
+import pw.idrug.connections.activity.LinkCodeActivity
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
 import com.squareup.picasso.Picasso
@@ -131,7 +132,11 @@ class AccountFragment : Fragment() {
             handleDownloadConfig(view)
         }
         view.findViewById<Button>(R.id.btn_link_device).setOnClickListener {
-            showLinkDeviceDialog()
+            if (isLoggedIn()) {
+                showLinkDeviceDialog()
+            } else {
+                startActivity(Intent(requireContext(), LinkCodeActivity::class.java))
+            }
         }
         view.findViewById<Button>(R.id.btn_renew).setOnClickListener {
             setLoading(true)
@@ -301,7 +306,9 @@ class AccountFragment : Fragment() {
 
     private fun showLoginScreen(view: View) {
         view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.VISIBLE
-        view.findViewById<Button>(R.id.btn_link_device).visibility = View.VISIBLE
+        val linkButton = view.findViewById<Button>(R.id.btn_link_device)
+        linkButton.visibility = View.VISIBLE
+        linkButton.text = getString(R.string.login_with_code)
         view.findViewById<Button>(R.id.btn_download).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_renew).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout).visibility = View.GONE
@@ -316,7 +323,9 @@ class AccountFragment : Fragment() {
 
     private fun showAccountScreen(view: View, username: String, photoUrl: String?, subs: List<Subscription>) {
         view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.GONE
-        view.findViewById<Button>(R.id.btn_link_device).visibility = View.GONE
+        val linkButton = view.findViewById<Button>(R.id.btn_link_device)
+        linkButton.visibility = View.VISIBLE
+        linkButton.text = getString(R.string.link_device)
         view.findViewById<Button>(R.id.btn_logout).visibility = View.VISIBLE
         view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.GONE
         view.findViewById<Spinner>(R.id.spinner_server).visibility = View.VISIBLE
