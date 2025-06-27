@@ -1,32 +1,25 @@
 package pw.idrug.connections.dialog
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import androidx.fragment.app.DialogFragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import pw.idrug.connections.R
 
 class CodeInputDialogFragment(
     private val onCodeEntered: (String) -> Unit
-) : BottomSheetDialogFragment() {
-
-    override fun getTheme(): Int = R.style.CodeInputBottomSheet
+) : DialogFragment() {
 
     private lateinit var cells: List<TextView>
     private var code: String = ""
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.bottomsheet_code_input, container, false)
-    }
+override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val view = LayoutInflater.from(requireContext())
+            .inflate(R.layout.bottomsheet_code_input, null)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         cells = listOf(
             view.findViewById(R.id.pin1),
             view.findViewById(R.id.pin2),
@@ -52,6 +45,12 @@ class CodeInputDialogFragment(
         btns.forEach { id ->
             view.findViewById<View>(id).setOnClickListener(this::onDigitClick)
         }
+
+        val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.NoBackgroundTheme)
+            .setView(view)
+            .create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        return dialog
     }
 
     private fun onDigitClick(v: View) {
