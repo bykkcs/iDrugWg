@@ -294,6 +294,7 @@
     <string name="code_login_title">Введите 6-значный код</string>
     <string name="code_expires_in">Код истекает через %1$d с</string>
     <string name="code_expired">Код истёк. Сгенерируйте новый.</string>
+    <string name="code_generating">Генерация кода…</string>
     <string name="logout">Выйти</string>
     <string name="nav_account_title">Личный кабинет</string>
     <string name="update_application_title">Обновить приложение</string>
