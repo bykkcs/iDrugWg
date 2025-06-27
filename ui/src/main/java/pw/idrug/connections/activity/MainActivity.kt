@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
+import android.os.SystemClock
 import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -31,6 +32,7 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
     private var actionBar: ActionBar? = null
     private var isTwoPaneLayout = false
     private var backPressedCallback: OnBackPressedCallback? = null
+    private var lastNavTime = 0L
 
     private fun handleBackPressed() {
         val backStackEntries = supportFragmentManager.backStackEntryCount
@@ -69,6 +71,11 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         // --- BottomNavigationView setup ---
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation?.setOnItemSelectedListener { item ->
+            val now = SystemClock.elapsedRealtime()
+            if (now - lastNavTime < 300) {
+                return@setOnItemSelectedListener true
+            }
+            lastNavTime = now
             when (item.itemId) {
                 R.id.nav_vpn -> {
                     supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
