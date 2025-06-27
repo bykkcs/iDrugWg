@@ -33,8 +33,9 @@ android {
     }
     buildTypes {
         release {
-            isMinifyEnabled = false
-            isShrinkResources = false
+            // Enable code shrinking and resource shrinking for production
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles("proguard-android-optimize.txt")
             packaging {
                 resources {

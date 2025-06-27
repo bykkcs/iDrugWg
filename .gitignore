@@ -1,25 +1,30 @@
 # Build artifacts
-
-\*.apk \*.aab build/ \*.log
+*.apk
+*.aab
+build/
+*.log
 
 # Local settings
-
-local.properties \*.keystore
+local.properties
+*.keystore
 
 # Gradle temporary files
-
-.gradle/ gradle.properties
+.gradle/
+gradle.properties
 
 # IDE files
-
-.idea/ \*.iml
+.idea/
+*.iml
 
 # Cache and temporary files
-
-\*.tmp \*.bak \*.swp .DS_Store
+*.tmp
+*.bak
+*.swp
+.DS_Store
+*.DS_Store
 
 # Large binary files (optional, uncomment to exclude)
+# app/src/main/res/raw/*
+# app/src/main/assets/*
 
-# app/src/main/res/raw/\*
-
-# app/src/main/assets/\*
+ui/google-services.json
