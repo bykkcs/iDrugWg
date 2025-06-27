@@ -710,8 +710,10 @@ class AccountFragment : BaseFragment() {
                     .putString("username", username)
                     .putString("photo_url", photoUrl)
                     .apply()
-                Toast.makeText(requireContext(), "Telegram login successful!", Toast.LENGTH_SHORT).show()
-                showCorrectScreen(requireView())
+                safeUi {
+                    Toast.makeText(requireContext(), "Telegram login successful!", Toast.LENGTH_SHORT).show()
+                    showCorrectScreen(requireView())
+                }
             }
             requireActivity().intent.data = null
         }
