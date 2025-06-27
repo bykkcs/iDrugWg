@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.fragment.app.DialogFragment
 import okhttp3.*
 import org.json.JSONObject
@@ -21,10 +21,11 @@ class LinkCodeDialogFragment : DialogFragment() {
         val codeText: TextView = view.findViewById(R.id.code_text)
         val timerText: TextView = view.findViewById(R.id.timer_text)
         fetchCode(codeText, timerText)
-        return AlertDialog.Builder(requireContext())
+        val dialog = MaterialAlertDialogBuilder(requireContext())
             .setView(view)
-            .setNegativeButton(android.R.string.cancel) { _, _ -> }
             .create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        return dialog
     }
 
     override fun onDestroyView() {

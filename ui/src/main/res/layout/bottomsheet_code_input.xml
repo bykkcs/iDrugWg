@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="@string/enter_code"
         android:textSize="18sp"
+        android:textColor="#111111"
         android:paddingBottom="12dp"/>
 
     <LinearLayout
@@ -49,6 +50,6 @@
         <Button android:id="@+id/btn9" style="@style/KeypadButton" android:text="9" />
         <View android:layout_width="0dp" android:layout_height="0dp" />
         <Button android:id="@+id/btn0" style="@style/KeypadButton" android:text="0" />
-        <Button android:id="@+id/btnDel" style="@style/KeypadButton" android:text="DEL" />
+        <Button android:id="@+id/btnDel" style="@style/KeypadButton" android:text="⌫" />
     </GridLayout>
 </LinearLayout>
