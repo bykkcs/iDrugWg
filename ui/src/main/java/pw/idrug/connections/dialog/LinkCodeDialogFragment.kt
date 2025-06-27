@@ -23,7 +23,6 @@ class LinkCodeDialogFragment : DialogFragment() {
         fetchCode(codeText, timerText)
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setView(view)
-            .setNegativeButton(android.R.string.cancel) { _, _ -> }
             .create()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         return dialog
