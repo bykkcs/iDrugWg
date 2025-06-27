@@ -288,6 +288,7 @@
     <string name="download_config">Скачать конфиг</string>
     <string name="renew_subscription">Продлить подписку</string>
     <string name="link_device">Привязать устройство</string>
+    <string name="login_with_code">Войти через код</string>
     <string name="enter_code">Введите код</string>
     <string name="submit_code">Войти</string>
     <string name="code_login_title">Введите 6-значный код</string>
