@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 import okhttp3.*
 import pw.idrug.connections.R
 import pw.idrug.connections.dialog.CodeInputDialogFragment
+import androidx.fragment.app.DialogFragment
 import pw.idrug.connections.Application
 import pw.idrug.connections.config.Config
 import org.json.JSONArray
@@ -96,6 +97,8 @@ class AccountFragment : Fragment() {
         super.onDestroyView()
         destroyed = true
         qrPollingTimer?.cancel()
+        (parentFragmentManager.findFragmentByTag("code_input") as? DialogFragment)?.dismissAllowingStateLoss()
+        (parentFragmentManager.findFragmentByTag("link_code") as? DialogFragment)?.dismissAllowingStateLoss()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {

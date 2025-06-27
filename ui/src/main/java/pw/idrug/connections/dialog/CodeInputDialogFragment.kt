@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import pw.idrug.connections.R
 
@@ -20,7 +21,7 @@ class CodeInputDialogFragment(
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         return inflater.inflate(R.layout.bottomsheet_code_input, container, false)
     }
@@ -52,6 +53,12 @@ class CodeInputDialogFragment(
         btns.forEach { id ->
             view.findViewById<View>(id).setOnClickListener(this::onDigitClick)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        (dialog as? BottomSheetDialog)?.setCanceledOnTouchOutside(true)
     }
 
     private fun onDigitClick(v: View) {
