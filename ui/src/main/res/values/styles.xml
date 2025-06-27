@@ -38,6 +38,17 @@
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
+    <style name="CodeInput">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:background">@drawable/code_bg</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:padding">0dp</item>
+    </style>
     <style name="TvTheme" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
