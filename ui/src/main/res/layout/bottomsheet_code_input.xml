@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/bg_bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_code"
+        android:textSize="18sp"
+        android:paddingBottom="12dp"/>
+
+    <LinearLayout
+        android:id="@+id/pin_input_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="12dp">
+        <TextView android:id="@+id/pin1" style="@style/PinCell"/>
+        <TextView android:id="@+id/pin2" style="@style/PinCell"/>
+        <TextView android:id="@+id/pin3" style="@style/PinCell"/>
+        <TextView android:id="@+id/pin4" style="@style/PinCell"/>
+        <TextView android:id="@+id/pin5" style="@style/PinCell"/>
+        <TextView android:id="@+id/pin6" style="@style/PinCell"/>
+    </LinearLayout>
+
+    <GridLayout
+        android:id="@+id/keypad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="4"
+        android:columnCount="3"
+        android:alignmentMode="alignMargins"
+        android:useDefaultMargins="true">
+
+        <Button android:id="@+id/btn1" android:text="1" android:onClick="onDigitClick"/>
+        <Button android:id="@+id/btn2" android:text="2" android:onClick="onDigitClick"/>
+        <Button android:id="@+id/btn3" android:text="3" android:onClick="onDigitClick"/>
+        <Button android:id="@+id/btn4" android:text="4" android:onClick="onDigitClick"/>
+        <Button android:id="@+id/btn5" android:text="5" android:onClick="onDigitClick"/>
+        <Button android:id="@+id/btn6" android:text="6" android:onClick="onDigitClick"/>
+        <Button android:id="@+id/btn7" android:text="7" android:onClick="onDigitClick"/>
+        <Button android:id="@+id/btn8" android:text="8" android:onClick="onDigitClick"/>
+        <Button android:id="@+id/btn9" android:text="9" android:onClick="onDigitClick"/>
+        <View android:layout_width="0dp" android:layout_height="0dp" />
+        <Button android:id="@+id/btn0" android:text="0" android:onClick="onDigitClick"/>
+        <Button android:id="@+id/btnDel" android:text="DEL" android:onClick="onDigitClick"/>
+    </GridLayout>
+</LinearLayout>
