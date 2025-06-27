@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -83,8 +84,11 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("com.google.zxing:core:3.5.1")
     implementation("com.squareup.picasso:picasso:2.71828")
-implementation("com.squareup.okhttp3:logging-interceptor:4.10.0") // опционально
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0") // опционально
 
+    implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
+    implementation("com.google.firebase:firebase-messaging")
+    implementation("com.google.firebase:firebase-analytics")
 
     coreLibraryDesugaring(libs.desugarJdkLibs)
 }

@@ -1,24 +1,24 @@
-# Сборочные артефакты
+# Build artifacts
 
 \*.apk \*.aab build/ \*.log
 
-# Локальные настройки
+# Local settings
 
 local.properties \*.keystore
 
-# Временные файлы Gradle
+# Gradle temporary files
 
 .gradle/ gradle.properties
 
-# Файлы IDE
+# IDE files
 
 .idea/ \*.iml
 
-# Кэш и временные файлы
+# Cache and temporary files
 
 \*.tmp \*.bak \*.swp .DS_Store
 
-# Большие бинарные файлы (опционально, раскомментируйте, если нужно исключить)
+# Large binary files (optional, uncomment to exclude)
 
 # app/src/main/res/raw/\*
 

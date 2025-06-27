@@ -28,6 +28,12 @@ import java.text.SimpleDateFormat
 import java.util.*
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.MediaType.Companion.toMediaType
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.StyleSpan
+import android.text.style.ForegroundColorSpan
+import android.graphics.Typeface
+import android.graphics.Color
 
 class AccountFragment : Fragment() {
 
@@ -40,6 +46,29 @@ class AccountFragment : Fragment() {
     private var serverList: List<Pair<String, String>> = listOf()
     private var qrPollingTimer: Timer? = null
 
+    // Subscription model. Only the active field matters.
+    private data class Subscription(
+        val location: String,
+        val name: String,
+        val expires: String?,
+        val forever: Boolean,
+        val active: Boolean
+    ) {
+        fun isActive(): Boolean = active
+    }
+    private var subscriptions: List<Subscription> = emptyList()
+
+    // --- Локализация названия сервера ---
+    private fun getServerName(location: String): String {
+        return when (location) {
+            "germany" -> getString(R.string.server_germany)
+            "multihop" -> getString(R.string.server_multihop_germany)
+            "bulgaria" -> getString(R.string.server_bulgaria)
+            "madrid" -> getString(R.string.server_madrid)
+            else -> location
+        }
+    }
+
     private val qrScanLauncher = registerForActivityResult(
         androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -50,14 +79,14 @@ class AccountFragment : Fragment() {
                     safeUi {
                         Toast.makeText(
                             requireContext(),
-                            if (success) "Вход подтверждён через QR" else "Ошибка подтверждения: $message",
+                            if (success) "QR login confirmed" else "Confirmation error: $message",
                             Toast.LENGTH_SHORT
                         ).show()
                         if (success) loadProfileAndSetupUI(requireView())
                     }
                 }
             } else {
-                Toast.makeText(requireContext(), "QR не распознан", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "QR code not recognized", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -101,14 +130,14 @@ class AccountFragment : Fragment() {
             setLoading(true)
             val token = prefs.getString("token", null)
             if (token == null) {
-                Toast.makeText(requireContext(), "Сначала войдите через Telegram", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Please log in via Telegram first", Toast.LENGTH_SHORT).show()
                 setLoading(false)
                 return@setOnClickListener
             }
             renewSubscription { success, resp ->
                 safeUi {
                     setLoading(false)
-                    Toast.makeText(requireContext(), if (success) "Подписка обновлена" else "Ошибка: $resp", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), if (success) "Subscription renewed" else "Error: $resp", Toast.LENGTH_SHORT).show()
                     if (success) loadProfileAndSetupUI(requireView())
                 }
             }
@@ -125,8 +154,7 @@ class AccountFragment : Fragment() {
                 view,
                 prefs.getString("username", "") ?: "",
                 prefs.getString("photo_url", null),
-                "",
-                ""
+                emptyList()
             )
             loadServersAndProfileUI(view)
         } else {
@@ -136,16 +164,15 @@ class AccountFragment : Fragment() {
 
     private fun loadServersAndProfileUI(view: View) {
         setLoading(true)
-        // Получаем список серверов
         val client = OkHttpClient()
         val url = "https://idrug.pw/api/servers"
         client.newCall(Request.Builder().url(url).build()).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 serverList = listOf(
-                    "germany" to "Германия",
-                    "multihop" to "Мультхоп Германия",
-                    "bulgaria" to "Болгария",
-                    "madrid" to "Мадрид"
+                    "germany" to getServerName("germany"),
+                    "multihop" to getServerName("multihop"),
+                    "bulgaria" to getServerName("bulgaria"),
+                    "madrid" to getServerName("madrid")
                 )
                 safeUi {
                     setupServerSpinner(view)
@@ -157,14 +184,15 @@ class AccountFragment : Fragment() {
                     val arr = JSONArray(response.body?.string() ?: "[]")
                     serverList = List(arr.length()) {
                         val obj = arr.getJSONObject(it)
-                        obj.getString("id") to obj.getString("name")
+                        val id = obj.getString("id")
+                        id to getServerName(id)
                     }
                 } else {
                     serverList = listOf(
-                        "germany" to "Германия",
-                        "multihop" to "Мультхоп Германия",
-                        "bulgaria" to "Болгария",
-                        "madrid" to "Мадрид"
+                        "germany" to getServerName("germany"),
+                        "multihop" to getServerName("multihop"),
+                        "bulgaria" to getServerName("bulgaria"),
+                        "madrid" to getServerName("madrid")
                     )
                 }
                 safeUi {
@@ -189,12 +217,12 @@ class AccountFragment : Fragment() {
             override fun onItemSelected(parent: AdapterView<*>, v: View?, position: Int, id: Long) {
                 selectedServerId = serverList[position].first
                 selectedServerName = serverList[position].second
-                btnDownload.isEnabled = true
+                updateDownloadButtonState(view)
             }
             override fun onNothingSelected(parent: AdapterView<*>) {
                 selectedServerId = null
                 selectedServerName = null
-                btnDownload.isEnabled = false
+                updateDownloadButtonState(view)
             }
         }
         spinner.visibility = View.VISIBLE
@@ -221,7 +249,7 @@ class AccountFragment : Fragment() {
             override fun onFailure(call: Call, e: IOException) {
                 safeUi {
                     setLoading(false)
-                    Toast.makeText(requireContext(), "Ошибка сети: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Network error: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onResponse(call: Call, response: Response) {
@@ -233,20 +261,31 @@ class AccountFragment : Fragment() {
                     } else if (response.isSuccessful) {
                         try {
                             val obj = JSONObject(resp)
-                            val status = obj.optString("status", "unknown")
-                            val expDateStr = obj.optString("expiration_date", "")
-                            val username = obj.optString("client_name", prefs.getString("username", "") ?: "")
+                            val subsArr = obj.optJSONArray("subscriptions") ?: JSONArray()
+                            val subsList = mutableListOf<Subscription>()
+                            for (i in 0 until subsArr.length()) {
+                                val o = subsArr.getJSONObject(i)
+                                val id = o.optString("location", o.optString("id", ""))
+                                val name = getServerName(id)
+                                val expires = o.optString("expires", null)
+                                val forever = o.optBoolean("forever", false)
+                                val active = o.optBoolean("active", false)
+                                subsList.add(Subscription(id, name, expires, forever, active))
+                            }
+                            subscriptions = subsList
+                            val username = obj.optString("username", prefs.getString("username", "") ?: "")
                             val photoUrl = obj.optString("photo_url", null)
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
-                            showAccountScreen(view, username, photoUrl, status, expDateStr)
-                            // Важно сразу синхронизировать туннели после получения профиля
+                            showAccountScreen(view, username, photoUrl, subsList)
                             syncTunnelsWithProfile()
                         } catch (e: Exception) {
-                            Toast.makeText(requireContext(), "Ошибка обработки профиля", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "Profile processing error: ${e.message}", Toast.LENGTH_SHORT).show()
+                            subscriptions = emptyList()
+                            showAccountScreen(view, prefs.getString("username", "") ?: "", prefs.getString("photo_url", null), emptyList())
                         }
                     } else {
-                        Toast.makeText(requireContext(), "Ошибка получения профиля: ${response.code}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Failed to retrieve profile: ${response.code}", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -261,13 +300,13 @@ class AccountFragment : Fragment() {
         view.findViewById<Spinner>(R.id.spinner_server).visibility = View.GONE
         view.findViewById<TextView>(R.id.text_server_choice).visibility = View.GONE
         view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.GONE
-        view.findViewById<TextView>(R.id.text_current_user).text = "Вход через Telegram или QR"
+        view.findViewById<TextView>(R.id.text_current_user).text = getString(R.string.login_via_telegram_or_qr)
         view.findViewById<TextView>(R.id.status_text).text = ""
         view.findViewById<TextView>(R.id.text_expiration).text = ""
         view.findViewById<ImageView>(R.id.avatar_image).setImageResource(R.drawable.ic_avatar_placeholder)
     }
 
-    private fun showAccountScreen(view: View, username: String, photoUrl: String?, status: String, expDateStr: String?) {
+    private fun showAccountScreen(view: View, username: String, photoUrl: String?, subs: List<Subscription>) {
         view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout).visibility = View.VISIBLE
         view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.GONE
@@ -284,65 +323,92 @@ class AccountFragment : Fragment() {
         } else {
             avatarImage.setImageResource(R.drawable.ic_avatar_placeholder)
         }
-        view.findViewById<Button>(R.id.btn_download).visibility = if (status == "active") View.VISIBLE else View.GONE
-        view.findViewById<Button>(R.id.btn_renew).visibility = if (status != "active") View.VISIBLE else View.GONE
-        view.findViewById<TextView>(R.id.text_current_user).text = "Ваш логин: $username"
-        view.findViewById<TextView>(R.id.status_text).text =
-            when (status) {
-                "revoked" -> "Доступ к конфигу заблокирован. Оплатите подписку для восстановления."
-                "expired" -> "Срок действия подписки истёк. Оплатите для получения нового конфига."
-                "active" -> "Скачайте конфиг для автоматического импорта в приложение"
-                else -> "Статус аккаунта: $status"
+        view.findViewById<Button>(R.id.btn_download).visibility = View.VISIBLE
+        view.findViewById<Button>(R.id.btn_renew).visibility = View.VISIBLE
+        view.findViewById<TextView>(R.id.text_current_user).text = getString(R.string.your_username, username)
+
+        val statusTextView = view.findViewById<TextView>(R.id.status_text)
+        val lines = mutableListOf<CharSequence>()
+
+        subs.forEach { s ->
+            val name = getServerName(s.location)
+            val expFixed = s.expires?.replace("T", " ")?.substring(0, 19) ?: ""
+            val days: Int? = if (expFixed.isNotEmpty()) {
+                try {
+                    val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+                    val exp = sdf.parse(expFixed)
+                    val now = Date()
+                    ((exp.time - now.time) / (1000 * 60 * 60 * 24)).toInt()
+                } catch (_: Exception) { null }
+            } else null
+
+            val str: String = when {
+                s.forever -> getString(R.string.subscription_forever, name)
+                s.active && expFixed.isNotEmpty() && days != null ->
+                    getString(R.string.subscription_active_days, name, expFixed.substring(0, 10).replace("-", "."), days)
+                !s.active -> getString(R.string.subscription_inactive, name)
+                else -> name
             }
-        view.findViewById<TextView>(R.id.text_expiration).text = expDateStr?.let {
-            if (status == "active" && it.isNotEmpty()) {
-                val fixed = it.replace("T", " ").substring(0, 19)
-                val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-                val expDate = sdf.parse(fixed)
-                val now = Date()
-                val daysLeft = ((expDate.time - now.time) / (1000 * 60 * 60 * 24)).toInt()
-                "Дней до окончания: $daysLeft"
-            } else ""
-        } ?: ""
+
+            if (days != null && days <= 7 && s.active && !s.forever) {
+                val spannable = SpannableString(str)
+                spannable.setSpan(StyleSpan(Typeface.BOLD), 0, str.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                spannable.setSpan(ForegroundColorSpan(Color.parseColor("#D32F2F")), 0, str.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                lines.add(spannable)
+            } else {
+                lines.add(str)
+            }
+        }
+
+        statusTextView.text = android.text.TextUtils.join("\n", lines)
+        view.findViewById<TextView>(R.id.text_expiration).text = ""
+        updateDownloadButtonState(view)
+    }
+
+    private fun updateDownloadButtonState(view: View) {
+        val btnDownload = view.findViewById<Button>(R.id.btn_download)
+        val id = selectedServerId
+        btnDownload.isEnabled = id != null && subscriptions.any { it.location == id && it.active }
     }
 
     private fun setLoading(loading: Boolean) {
         view?.findViewById<View>(R.id.loading_overlay)?.visibility = if (loading) View.VISIBLE else View.GONE
     }
 
-private fun afterLogout(view: View) {
-    prefs.edit().clear().apply()
-    MainScope().launch {
-        try {
-            val tunnelManager = Application.getTunnelManager()
-            val tunnels = tunnelManager.getTunnels()
-            tunnels
-                .filter { it.name.startsWith("idrug_") }
-                .forEach { tunnel ->
-                    tunnelManager.delete(tunnel)
-                }
-        } catch (e: Exception) {
-            // Можно залогировать ошибку, если потребуется
-        }
-        safeUi {
-            showLoginScreen(view)
-            Toast.makeText(requireContext(), "Вы вышли из аккаунта", Toast.LENGTH_SHORT).show()
+    private fun afterLogout(view: View) {
+        prefs.edit().clear().apply()
+        MainScope().launch {
+            try {
+                val tunnelManager = Application.getTunnelManager()
+                val tunnels = tunnelManager.getTunnels()
+                tunnels
+                    .filter { it.name.startsWith("idrug_") }
+                    .forEach { tunnel ->
+                        tunnelManager.delete(tunnel)
+                    }
+            } catch (e: Exception) {}
+            safeUi {
+                showLoginScreen(view)
+                Toast.makeText(requireContext(), "You have logged out", Toast.LENGTH_SHORT).show()
+            }
         }
     }
-}
-
 
     private fun handleDownloadConfig(view: View) {
         if (selectedServerId == null) {
-            Toast.makeText(requireContext(), "Выберите сервер", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Select a server", Toast.LENGTH_SHORT).show()
             return
         }
         val serverId = selectedServerId ?: return
+        if (!subscriptions.any { it.location == serverId && it.active }) {
+            Toast.makeText(requireContext(), "Subscription inactive", Toast.LENGTH_SHORT).show()
+            return
+        }
         val tunnelName = "idrug_$serverId"
         setLoading(true)
         val token = prefs.getString("token", null)
         if (token == null) {
-            Toast.makeText(requireContext(), "Войдите через Telegram", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Log in via Telegram", Toast.LENGTH_SHORT).show()
             setLoading(false)
             return
         }
@@ -352,7 +418,7 @@ private fun afterLogout(view: View) {
             val tunnel = tunnels.firstOrNull { it.name == tunnelName }
             if (tunnel != null) {
                 safeUi {
-                    Toast.makeText(requireContext(), "Конфиг уже добавлен", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Config already added", Toast.LENGTH_SHORT).show()
                     setLoading(false)
                 }
                 return@launch
@@ -368,21 +434,20 @@ private fun afterLogout(view: View) {
                                 val config = Config.parse(file.bufferedReader())
                                 tunnelManager.create(tunnelName, config)
                                 file.delete()
-                                Toast.makeText(requireContext(), "Туннель добавлен", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(), "Tunnel added", Toast.LENGTH_SHORT).show()
                                 loadProfileAndSetupUI(requireView())
                             } catch (e: Exception) {
-                                Toast.makeText(requireContext(), "Ошибка создания туннеля: ${e.message}", Toast.LENGTH_LONG).show()
+                                Toast.makeText(requireContext(), "Tunnel creation error: ${e.message}", Toast.LENGTH_LONG).show()
                             }
                         }
                     } else {
-                        Toast.makeText(requireContext(), "Ошибка: $configOrError", Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), "Error: $configOrError", Toast.LENGTH_LONG).show()
                     }
                 }
             }
         }
     }
 
-    // QR — генерация, polling, подтверждение (как раньше)
     private fun generateQrLoginToken(onComplete: (String?) -> Unit) {
         val client = OkHttpClient()
         val request = Request.Builder()
@@ -415,7 +480,7 @@ private fun afterLogout(view: View) {
             }
             imageView.setImageBitmap(bitmap)
         } catch (e: Exception) {
-            Toast.makeText(requireContext(), "Ошибка генерации QR кода", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "QR code generation error", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -433,7 +498,7 @@ private fun afterLogout(view: View) {
                             .putString("photo_url", photoUrl)
                             .apply()
                         safeUi {
-                            Toast.makeText(requireContext(), "Вход через QR подтверждён!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "QR login confirmed!", Toast.LENGTH_SHORT).show()
                             loadProfileAndSetupUI(requireView())
                         }
                     }
@@ -486,7 +551,7 @@ private fun afterLogout(view: View) {
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val json = JSONObject(response.body?.string() ?: "{}")
-                    val username = json.optString("client_name", null)
+                    val username = json.optString("username", null)
                     val photoUrl = json.optString("photo_url", null)
                     callback(true, username, photoUrl)
                 } else {
@@ -499,7 +564,7 @@ private fun afterLogout(view: View) {
     private fun confirmQrLoginToken(token: String, callback: (Boolean, String?) -> Unit) {
         val jwt = prefs.getString("token", null)
         if (jwt == null) {
-            callback(false, "Вы не авторизованы")
+            callback(false, "You are not authenticated")
             return
         }
         val client = OkHttpClient()
@@ -518,11 +583,6 @@ private fun afterLogout(view: View) {
                 safeUi { callback(response.isSuccessful, response.body?.string()) }
             }
         })
-    }
-
-    private fun startQrScanner() {
-        // Используй свою ActivityResult/Intent для сканирования QR (ZXing и т.п.)
-        // ...
     }
 
     private fun downloadConfig(token: String, serverId: String, tunnelName: String, callback: (Boolean, String?) -> Unit) {
@@ -547,21 +607,16 @@ private fun afterLogout(view: View) {
     }
 
     private fun renewSubscription(callback: (Boolean, String?) -> Unit) {
-        val token = prefs.getString("token", null) ?: return callback(false, "Нет токена")
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url("https://idrug.pw/api/profile/renew")
-            .post("".toRequestBody("application/json".toMediaType()))
-            .addHeader("Authorization", "Bearer $token")
-            .build()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                callback(false, e.message)
-            }
-            override fun onResponse(call: Call, response: Response) {
-                callback(response.isSuccessful, response.body?.string())
-            }
-        })
+        val message = "Hello! I want to purchase or renew VPN. My login: " +
+            (prefs.getString("username", "") ?: "unknown")
+
+        val url = "https://t.me/idrug_vpn?start=" + Uri.encode(message)
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        try {
+            startActivity(intent)
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), "Unable to open Telegram", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun handleDeepLink(intent: Intent?) {
@@ -576,7 +631,7 @@ private fun afterLogout(view: View) {
                     .putString("username", username)
                     .putString("photo_url", photoUrl)
                     .apply()
-                Toast.makeText(requireContext(), "Telegram-вход выполнен!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Telegram login successful!", Toast.LENGTH_SHORT).show()
                 showCorrectScreen(requireView())
             }
             requireActivity().intent.data = null
@@ -624,12 +679,11 @@ private fun afterLogout(view: View) {
                     for (i in 0 until subscriptionsArr.length()) {
                         val sObj = subscriptionsArr.getJSONObject(i)
                         if (sObj.optBoolean("active", false)) {
-                            activeServers.add(sObj.optString("id"))
+                            activeServers.add(sObj.optString("location"))
                         }
                     }
                     MainScope().launch {
                         val tunnelManager = Application.getTunnelManager()
-                        // Make a snapshot of tunnels to avoid concurrent modifications
                         val tunnels = tunnelManager.getTunnels().toList()
                         val toRemove = tunnels.filter {
                             it.name.startsWith("idrug_") &&

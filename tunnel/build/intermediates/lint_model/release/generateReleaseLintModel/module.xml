@@ -3,7 +3,7 @@
     dir="/home/bykk/iDrugWgtest/iDrugWg-master/tunnel"
     name=":tunnel"
     type="LIBRARY"
-    maven="amneziawg-android:tunnel:"
+    maven="idrugconnections-android:tunnel:"
     agpVersion="8.3.0"
     buildFolder="build"
     bootClassPath="/home/bykk/android-sdk/platforms/android-34/android.jar:/home/bykk/android-sdk/build-tools/34.0.0/core-lambda-stubs.jar"

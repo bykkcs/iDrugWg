@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "org.amnezia.awg.ui-mergeReleaseResources-48:/values-en-rXC/values-en-rXC.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-56:/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
-                    "source": "/home/bykk/.gradle/caches/transforms-3/e4fe2027d8bfe8f91ef3332e1a564b81/transformed/biometric-1.1.0/res/values-en-rXC/values-en-rXC.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,264,457,676,908,1149,1379,1600,1833,2035,2264,2505",
-                        "endColumns": "208,192,218,231,240,229,220,232,201,228,240,221",
-                        "endOffsets": "259,452,671,903,1144,1374,1595,1828,2030,2259,2500,2722"
-                    },
-                    "to": {
-                        "startLines": "36,38,40,41,42,43,44,45,46,47,48,49",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "6955,7335,7717,7936,8168,8409,8639,8860,9093,9295,9524,9765",
-                        "endColumns": "208,192,218,231,240,229,220,232,201,228,240,221",
-                        "endOffsets": "7159,7523,7931,8163,8404,8634,8855,9088,9290,9519,9760,9982"
-                    }
-                },
-                {
-                    "source": "/home/bykk/.gradle/caches/transforms-3/2810b0fbf32bc8008409b20f0452d17c/transformed/preference-1.2.1/res/values-en-rXC/values-en-rXC.xml",
+                    "source": "/home/bykk/.gradle/caches/transforms-3/e441eea320cea180f7923455c603a41f/transformed/preference-1.2.1/res/values-en-rXC/values-en-rXC.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
                         "startColumns": "4,4,4,4,4,4,4",
@@ -38,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "/home/bykk/.gradle/caches/transforms-3/e8b5f0cafc78a728ff89c15776141049/transformed/appcompat-1.6.1/res/values-en-rXC/values-en-rXC.xml",
+                    "source": "/home/bykk/.gradle/caches/transforms-3/77acf25191175c877665689cfa1ea863/transformed/core-1.12.0/res/values-en-rXC/values-en-rXC.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,251,456,657,858,1065,1270,1482",
+                        "endColumns": "195,204,200,200,206,204,211,203",
+                        "endOffsets": "246,451,652,853,1060,1265,1477,1681"
+                    },
+                    "to": {
+                        "startLines": "29,30,31,32,33,34,35,53",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "5528,5724,5929,6130,6331,6538,6743,10602",
+                        "endColumns": "195,204,200,200,206,204,211,203",
+                        "endOffsets": "5719,5924,6125,6326,6533,6738,6950,10801"
+                    }
+                },
+                {
+                    "source": "/home/bykk/.gradle/caches/transforms-3/b3a12ff0c9844a9c1fe2542f9c9c7e32/transformed/appcompat-1.6.1/res/values-en-rXC/values-en-rXC.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -55,20 +55,20 @@
                     }
                 },
                 {
-                    "source": "/home/bykk/.gradle/caches/transforms-3/271ccda32ac8601da02f1dc3213fa182/transformed/core-1.12.0/res/values-en-rXC/values-en-rXC.xml",
+                    "source": "/home/bykk/.gradle/caches/transforms-3/700b2a547fcc52f8e35ce30872b144bf/transformed/biometric-1.1.0/res/values-en-rXC/values-en-rXC.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,251,456,657,858,1065,1270,1482",
-                        "endColumns": "195,204,200,200,206,204,211,203",
-                        "endOffsets": "246,451,652,853,1060,1265,1477,1681"
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,264,457,676,908,1149,1379,1600,1833,2035,2264,2505",
+                        "endColumns": "208,192,218,231,240,229,220,232,201,228,240,221",
+                        "endOffsets": "259,452,671,903,1144,1374,1595,1828,2030,2259,2500,2722"
                     },
                     "to": {
-                        "startLines": "29,30,31,32,33,34,35,53",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "5528,5724,5929,6130,6331,6538,6743,10602",
-                        "endColumns": "195,204,200,200,206,204,211,203",
-                        "endOffsets": "5719,5924,6125,6326,6533,6738,6950,10801"
+                        "startLines": "36,38,40,41,42,43,44,45,46,47,48,49",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "6955,7335,7717,7936,8168,8409,8639,8860,9093,9295,9524,9765",
+                        "endColumns": "208,192,218,231,240,229,220,232,201,228,240,221",
+                        "endOffsets": "7159,7523,7931,8163,8404,8634,8855,9088,9290,9519,9760,9982"
                     }
                 }
             ]

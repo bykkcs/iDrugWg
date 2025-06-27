@@ -10,12 +10,12 @@
             replacement=""/>
         <location
             file="${:ui*projectDir}/build.gradle.kts"
-            line="82"
+            line="83"
             column="5"
-            startOffset="2629"
-            endLine="82"
+            startOffset="2670"
+            endLine="83"
             endColumn="45"
-            endOffset="2669"/>
+            endOffset="2710"/>
     </incident>
 
 </incidents>

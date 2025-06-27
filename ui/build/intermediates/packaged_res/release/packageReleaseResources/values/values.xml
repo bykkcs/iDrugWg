@@ -128,7 +128,7 @@
         <item quantity="one">%d Included Application</item>
         <item quantity="other">%d Included Applications</item>
     </plurals>
-    <string name="account_avatar">Аватар пользователя</string>
+    <string name="account_avatar">User avatar</string>
     <string name="add_peer">Add peer</string>
     <string name="addresses">Addresses</string>
     <string name="all_applications">All Applications</string>
@@ -138,6 +138,7 @@
     <string name="allowed_ips">Allowed IPs</string>
     <string name="app_name" translatable="false">iDrug Connections</string>
     <string name="applications">Applications</string>
+    <string name="avatar">Avatar</string>
     <string name="bad_config_context">%1$s\'s %2$s</string>
     <string name="bad_config_context_top_level">%s</string>
     <string name="bad_config_error">%1$s in %2$s</string>
@@ -159,9 +160,11 @@
     <string name="biometric_prompt_private_key_title">Authenticate to view private key</string>
     <string name="biometric_prompt_zip_exporter_title">Authenticate to export tunnels</string>
     <string name="cancel">Cancel</string>
+    <string name="choose_server">Choose server</string>
     <string name="config_delete_error">Cannot delete configuration file %s</string>
     <string name="config_exists_error">Configuration for “%s” already exists</string>
     <string name="config_file_exists_error">Configuration file “%s” already exists</string>
+    <string name="config_load_error">Error loading tunnel configuration %1$s: %2$s</string>
     <string name="config_not_found_error">Configuration file “%s” not found</string>
     <string name="config_rename_error">Cannot rename configuration file “%s”</string>
     <string name="config_save_error">Cannot save configuration for “%1$s”: %2$s</string>
@@ -184,6 +187,7 @@
     <string name="disable_config_export_title">Disable config exporting</string>
     <string name="dns_search_domains">Search domains</string>
     <string name="dns_servers">DNS servers</string>
+    <string name="download_config">Download config</string>
     <string name="edit">Edit</string>
     <string name="endpoint">Endpoint</string>
     <string name="error_down">Error bringing down tunnel: %s</string>
@@ -195,8 +199,13 @@
     <string name="error_up">Error bringing up tunnel: %s</string>
     <string name="exclude_from_tunnel">Exclude</string>
     <string name="exclude_private_ips">Exclude private IPs</string>
+    <string name="gcm_defaultSenderId" translatable="false">1075697493779</string>
     <string name="generate_new_private_key">Generate new private key</string>
     <string name="generic_error">Unknown “%s” error</string>
+    <string name="google_api_key" translatable="false">AIzaSyALhg1GGPpz4DOb-0i-HUSWnEt76kFICPc</string>
+    <string name="google_app_id" translatable="false">1:1075697493779:android:fd0dad5582650ba0c3dce6</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyALhg1GGPpz4DOb-0i-HUSWnEt76kFICPc</string>
+    <string name="google_storage_bucket" translatable="false">idrugwg.firebasestorage.app</string>
     <string name="hint_automatic">(auto)</string>
     <string name="hint_generated">(generated)</string>
     <string name="hint_optional">(optional)</string>
@@ -204,7 +213,7 @@
     <string name="hint_random">(random)</string>
     <string name="illegal_filename_error">Illegal file name “%s”</string>
     <string name="import_disclaimer">Ensure that you obtained the configuration file from a trusted source.
-    
+
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>
 </string>
     <string name="import_error">Unable to import tunnel: %s</string>
@@ -234,6 +243,9 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="log_viewer_pref_title">View application log</string>
     <string name="log_viewer_title">Log</string>
     <string name="logcat_error">Unable to run logcat: </string>
+    <string name="login_via_telegram">Login via Telegram</string>
+    <string name="login_via_telegram_or_qr">Login via Telegram or QR</string>
+    <string name="logout">Logout</string>
     <string name="module_enabler_disabled_summary">The experimental kernel module can improve performance</string>
     <string name="module_enabler_disabled_title">Enable kernel module backend</string>
     <string name="module_enabler_enabled_summary">The slower userspace backend may improve stability</string>
@@ -249,6 +261,7 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="multiple_tunnels_summary_on">Multiple tunnels may be turned on simultaneously</string>
     <string name="multiple_tunnels_title">Allow multiple simultaneous tunnels</string>
     <string name="name">Name</string>
+    <string name="nav_account_title">Account</string>
     <string name="no_config_error">Trying to bring up a tunnel with no config</string>
     <string name="no_configs_error">No configurations found</string>
     <string name="no_tunnels_error">No tunnels exist</string>
@@ -265,12 +278,14 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="pre_shared_key">Pre-shared key</string>
     <string name="pre_shared_key_enabled">enabled</string>
     <string name="private_key">Private key</string>
+    <string name="project_id" translatable="false">idrugwg</string>
     <string name="public_key">Public key</string>
     <string name="qr_code_hint">Tip: generate with `qrencode -t ansiutf8 &lt; tunnel.conf`.</string>
     <string name="quick_settings_tile_action">Toggle tunnel</string>
     <string name="quick_settings_tile_add_failure">Unable to add shortcut tile: error %d</string>
     <string name="quick_settings_tile_add_summary">The shortcut tile toggles the most recent tunnel</string>
     <string name="quick_settings_tile_add_title">Add tile to quick settings panel</string>
+    <string name="renew_subscription">Renew subscription</string>
     <string name="response_packet_junk_size">Response packet junk size</string>
     <string name="response_packet_magic_header">Response packet magic header</string>
     <string name="restore_on_boot_summary_off">Will not bring up enabled tunnels at boot</string>
@@ -278,10 +293,17 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="restore_on_boot_title">Restore on boot</string>
     <string name="save">Save</string>
     <string name="select_all">Select all</string>
+    <string name="server_bulgaria">Bulgaria</string>
+    <string name="server_germany">Germany</string>
+    <string name="server_madrid">Madrid</string>
+    <string name="server_multihop_germany">Multihop Germany</string>
     <string name="settings">Settings</string>
     <string name="shell_exit_status_read_error">Shell cannot read exit status</string>
     <string name="shell_marker_count_error">Shell expected 4 markers, received %d</string>
     <string name="shell_start_error">Shell failed to start: %d</string>
+    <string name="subscription_active_days">%1$s: until %2$s (%3$d d)</string>
+    <string name="subscription_forever">%1$s: lifetime</string>
+    <string name="subscription_inactive">%1$s: inactive</string>
     <string name="success_application_will_restart">Success. The application will now restart…</string>
     <string name="toggle_all">Toggle All</string>
     <string name="toggle_error">Error toggling tunnel: %s</string>
@@ -323,6 +345,8 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="type_name_kernel_module">Kernel module</string>
     <string name="underload_packet_magic_header">Underload packet magic header</string>
     <string name="unknown_error">Unknown error</string>
+    <string name="update_application_summary">Check for a new version and update the app</string>
+    <string name="update_application_title">Update application</string>
     <string name="use_all_applications">Use all apps</string>
     <string name="version_summary">%1$s backend %2$s</string>
     <string name="version_summary_checking">Checking %s backend version</string>
@@ -330,11 +354,35 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="version_title">iDrug Connections for Android v%s</string>
     <string name="vpn_not_authorized_error">VPN service not authorized by user</string>
     <string name="vpn_start_error">Unable to start Android VPN service</string>
+    <string name="your_username">Your username: %s</string>
     <string name="zip_export_error">Unable to export tunnels: %s</string>
     <string name="zip_export_success">Saved to “%s”</string>
     <string name="zip_export_summary">Zip file will be saved to downloads folder</string>
     <string name="zip_export_title">Export tunnels to zip file</string>
-    <style name="AmneziaWgTheme" parent="Theme.Material3.Light">
+    <style name="AppTheme" parent="AppThemeBase"/>
+    <style name="AppThemeBase" parent="iDrugConnectionsTheme">
+        <item name="materialCardViewStyle">@style/iDrugConnectionsTheme.MaterialCardView</item>
+        <item name="toolbarStyle">@style/iDrugConnectionsTheme.Toolbar</item>
+        <item name="bottomSheetDialogTheme">@style/iDrugConnectionsTheme.BottomSheetDialog</item>
+        <item name="android:statusBarColor">@null</item>
+    </style>
+    <style name="NoBackgroundTheme" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+    <style name="TvTheme" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="iDrugConnectionsTheme" parent="Theme.Material3.Light">
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
@@ -362,39 +410,16 @@ Official iDrug Connections services are available only at <a href="https://idrug
         <item name="colorSurfaceInverse">@color/md_theme_light_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</item>
     </style>
-    <style name="AmneziaWgTheme.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
+    <style name="iDrugConnectionsTheme.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
         <item name="android:windowIsFloating">false</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
-    <style name="AmneziaWgTheme.MaterialCardView" parent="Widget.Material3.CardView.Elevated">
+    <style name="iDrugConnectionsTheme.MaterialCardView" parent="Widget.Material3.CardView.Elevated">
         <item name="cornerRadius">4dp</item>
         <item name="contentPadding">8dp</item>
     </style>
-    <style name="AmneziaWgTheme.Toolbar" parent="Widget.Material3.Toolbar">
+    <style name="iDrugConnectionsTheme.Toolbar" parent="Widget.Material3.Toolbar">
         <item name="android:background">?attr/colorSurface</item>
-    </style>
-    <style name="AppTheme" parent="AppThemeBase"/>
-    <style name="AppThemeBase" parent="AmneziaWgTheme">
-        <item name="materialCardViewStyle">@style/AmneziaWgTheme.MaterialCardView</item>
-        <item name="toolbarStyle">@style/AmneziaWgTheme.Toolbar</item>
-        <item name="bottomSheetDialogTheme">@style/AmneziaWgTheme.BottomSheetDialog</item>
-        <item name="android:statusBarColor">@null</item>
-    </style>
-    <style name="NoBackgroundTheme" parent="AppTheme">
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="colorPrimaryDark">@android:color/transparent</item>
-        <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
-        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
-    </style>
-    <style name="TvTheme" parent="AppTheme">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
     </style>
     <declare-styleable name="Multiselected">
         <attr format="boolean" name="state_multiselected"/>

@@ -186,13 +186,24 @@
     <string name="module_installer_working">Скачивание и установка…</string>
     <string name="module_version_error">Невозможно определить версию модуля ядра</string>
     <string name="mtu">MTU</string>
+    <string name="junk_packet_count">Количество джанк-пакетов</string>
+    <string name="junk_packet_min_size">Минимальный размер джанк-пакета</string>
+    <string name="junk_packet_max_size">Максимальный размер джанк-пакета</string>
+    <string name="init_packet_junk_size">Размер джанка пакета инициализации</string>
+    <string name="response_packet_junk_size">Размер джанка пакета ответа</string>
+    <string name="init_packet_magic_header">Магический заголовок пакета инициализации</string>
+    <string name="response_packet_magic_header">Магический заголовок пакета ответа</string>
+    <string name="underload_packet_magic_header">Магический заголовок underload-пакета</string>
+    <string name="transport_packet_magic_header">Магический заголовок транспортного пакета</string>
     <string name="multiple_tunnels_summary_off">Включение одного туннеля отключит другие</string>
     <string name="multiple_tunnels_summary_on">Одновременно можно включить несколько туннелей</string>
     <string name="multiple_tunnels_title">Несколько туннелей</string>
     <string name="name">Название</string>
+    <string name="avatar">Аватар</string>
     <string name="no_config_error">Попытка поднять туннель без конфигурации</string>
     <string name="no_configs_error">Конфигурации не найдены</string>
     <string name="no_tunnels_error">Туннелей не существует</string>
+    <string name="config_load_error">Ошибка загрузки конфигурации туннеля %1$s: %2$s</string>
     <string name="parse_error_generic">строка</string>
     <string name="parse_error_inet_address">IP-адрес</string>
     <string name="parse_error_inet_endpoint">конечная точка</string>
@@ -270,5 +281,23 @@
     <string name="biometric_prompt_private_key_title">Аутентификация для просмотра приватного ключа</string>
     <string name="biometric_auth_error">Ошибка аутентификации</string>
     <string name="biometric_auth_error_reason">Ошибка аутентификации: %s</string>
-    <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://storage.googleapis.com/amnezia/amnezia.org">amnezia.org</a>\n</string>
+    <string name="account_avatar">Аватар пользователя</string>
+    <string name="login_via_telegram_or_qr">Вход через Telegram или QR</string>
+    <string name="login_via_telegram">Войти через Telegram</string>
+    <string name="choose_server">Выберите сервер</string>
+    <string name="download_config">Скачать конфиг</string>
+    <string name="renew_subscription">Продлить подписку</string>
+    <string name="logout">Выйти</string>
+    <string name="nav_account_title">Личный кабинет</string>
+    <string name="update_application_title">Обновить приложение</string>
+    <string name="update_application_summary">Проверить новую версию и обновить приложение</string>
+    <string name="your_username">Ваш логин: %s</string>
+    <string name="subscription_active_days">%1$s: до %2$s (%3$d дн.)</string>
+    <string name="subscription_forever">%1$s: навсегда</string>
+    <string name="subscription_inactive">%1$s: не активна</string>
+    <string name="server_germany">Германия</string>
+<string name="server_multihop_germany">Мультихоп Германия</string>
+<string name="server_bulgaria">Болгария</string>
+<string name="server_madrid">Мадрид</string>
+    <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
 </resources>

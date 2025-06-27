@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "org.amnezia.awg.ui-mergeReleaseResources-48:/values-sw360dp-v13/values-sw360dp-v13.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-56:/values-sw360dp-v13/values-sw360dp-v13.xml",
             "map": [
                 {
-                    "source": "/home/bykk/.gradle/caches/transforms-3/2810b0fbf32bc8008409b20f0452d17c/transformed/preference-1.2.1/res/values-sw360dp-v13/values-sw360dp-v13.xml",
+                    "source": "/home/bykk/.gradle/caches/transforms-3/e441eea320cea180f7923455c603a41f/transformed/preference-1.2.1/res/values-sw360dp-v13/values-sw360dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

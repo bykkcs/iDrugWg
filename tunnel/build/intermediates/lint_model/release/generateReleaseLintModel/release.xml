@@ -1,6 +1,6 @@
 <variant
     name="release"
-    package="org.amnezia.awg.tunnel"
+    package="pw.idrug.connections.tunnel"
     minSdkVersion="24"
     targetSdkVersion="24"
     mergedManifest="build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml"
@@ -22,8 +22,8 @@
   <artifact
       classOutputs="build/intermediates/javac/release/compileReleaseJavaWithJavac/classes"
       type="MAIN"
-      applicationId="org.amnezia.awg.tunnel"
+      applicationId="pw.idrug.connections.tunnel"
       generatedSourceFolders="build/generated/ap_generated_sources/release/out"
-      desugaredMethodsFiles="/home/bykk/.gradle/caches/transforms-3/5232f8d69e33d45199e3068f2afbaab5/transformed/D8BackportedDesugaredMethods.txt">
+      desugaredMethodsFiles="/home/bykk/.gradle/caches/transforms-3/f88786917dfec56ae9bc6f8119485562/transformed/D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>

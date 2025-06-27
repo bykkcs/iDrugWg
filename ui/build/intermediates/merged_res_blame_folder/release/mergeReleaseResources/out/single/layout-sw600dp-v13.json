@@ -1,6 +1,6 @@
 [
     {
-        "merged": "org.amnezia.awg.ui-mergeReleaseResources-49:/layout-sw600dp-v13/main_activity.xml",
-        "source": "org.amnezia.awg.ui-main-51:/layout-sw600dp/main_activity.xml"
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-57:/layout-sw600dp-v13/main_activity.xml",
+        "source": "pw.idrug.connections.ui-main-59:/layout-sw600dp/main_activity.xml"
     }
 ]

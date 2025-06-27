@@ -6,7 +6,7 @@
     <color name="error_tag_color">#ff0000</color>
     <color name="info_tag_color">#00ff00</color>
     <color name="warning_tag_color">#ffff00</color>
-    <style name="AmneziaWgTheme" parent="Theme.Material3.Dark">
+    <style name="iDrugConnectionsTheme" parent="Theme.Material3.Dark">
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
         <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</item>

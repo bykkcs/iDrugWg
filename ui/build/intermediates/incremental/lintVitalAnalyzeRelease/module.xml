@@ -3,7 +3,7 @@
     dir="/home/bykk/iDrugWgtest/iDrugWg-master/ui"
     name=":ui"
     type="APP"
-    maven="amneziawg-android:ui:"
+    maven="idrugconnections-android:ui:"
     agpVersion="8.3.0"
     buildFolder="build"
     bootClassPath="/home/bykk/android-sdk/platforms/android-34/android.jar:/home/bykk/android-sdk/build-tools/34.0.0/core-lambda-stubs.jar"

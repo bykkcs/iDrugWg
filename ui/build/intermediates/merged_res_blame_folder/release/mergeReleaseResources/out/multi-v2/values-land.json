@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "org.amnezia.awg.ui-mergeReleaseResources-48:/values-land/values-land.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-56:/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "/home/bykk/.gradle/caches/transforms-3/0f579400f73e2b44fa441c2c381bc29d/transformed/material-1.11.0/res/values-land/values-land.xml",
+                    "source": "/home/bykk/.gradle/caches/transforms-3/e7f0dca14df91e5e0241f9cb0c9bbfce/transformed/material-1.11.0/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,26,35,40",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/bykk/.gradle/caches/transforms-3/e8b5f0cafc78a728ff89c15776141049/transformed/appcompat-1.6.1/res/values-land/values-land.xml",
+                    "source": "/home/bykk/.gradle/caches/transforms-3/b3a12ff0c9844a9c1fe2542f9c9c7e32/transformed/appcompat-1.6.1/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",

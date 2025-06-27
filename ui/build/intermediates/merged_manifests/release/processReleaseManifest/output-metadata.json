@@ -4,7 +4,7 @@
     "type": "MERGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "org.amnezia.awg",
+  "applicationId": "pw.idrug.connections",
   "variantName": "release",
   "elements": [
     {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.amnezia.awg"
+    package="pw.idrug.connections"
     android:installLocation="internalOnly"
     android:versionCode="5"
     android:versionName="1.1.2" >
@@ -34,7 +34,7 @@
         android:required="false" />
 
     <permission
-        android:name="org.amnezia.awg.permission.CONTROL_TUNNELS"
+        android:name="pw.idrug.connections.permission.CONTROL_TUNNELS"
         android:description="@string/permission_description"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/permission_label"
@@ -50,12 +50,20 @@
 
     <uses-permission android:name="android.permission.USE_BIOMETRIC" /> <!-- suppress DeprecatedClassUsageInspection -->
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
 
     <permission
-        android:name="org.amnezia.awg.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="pw.idrug.connections.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="org.amnezia.awg.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="pw.idrug.connections.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <uses-feature
         android:name="android.hardware.camera.front"
@@ -75,7 +83,7 @@
         android:required="false" />
 
     <application
-        android:name="org.amnezia.awg.Application"
+        android:name="pw.idrug.connections.Application"
         android:allowBackup="false"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:banner="@mipmap/banner"
@@ -88,11 +96,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="org.amnezia.awg.activity.TunnelToggleActivity"
+            android:name="pw.idrug.connections.activity.TunnelToggleActivity"
             android:excludeFromRecents="true"
             android:theme="@style/NoBackgroundTheme" />
         <activity
-            android:name="org.amnezia.awg.activity.MainActivity"
+            android:name="pw.idrug.connections.activity.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -112,11 +120,21 @@
                     android:host="auth"
                     android:scheme="idrug" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="apps"
+                    android:scheme="idrug" />
+            </intent-filter>
         </activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="org.amnezia.awg.provider"
+            android:authorities="pw.idrug.connections.provider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
@@ -125,7 +143,7 @@
         </provider>
 
         <activity
-            android:name="org.amnezia.awg.activity.TvMainActivity"
+            android:name="pw.idrug.connections.activity.TvMainActivity"
             android:exported="true"
             android:theme="@style/TvTheme" >
             <intent-filter>
@@ -135,13 +153,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="org.amnezia.awg.activity.SettingsActivity"
+            android:name="pw.idrug.connections.activity.SettingsActivity"
             android:label="@string/settings"
-            android:parentActivityName="org.amnezia.awg.activity.MainActivity" />
+            android:parentActivityName="pw.idrug.connections.activity.MainActivity" />
         <activity
-            android:name="org.amnezia.awg.activity.TunnelCreatorActivity"
+            android:name="pw.idrug.connections.activity.TunnelCreatorActivity"
             android:label="@string/create_activity_title"
-            android:parentActivityName="org.amnezia.awg.activity.MainActivity" />
+            android:parentActivityName="pw.idrug.connections.activity.MainActivity" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:clearTaskOnLaunch="true"
@@ -150,7 +168,7 @@
             android:theme="@style/zxing_CaptureTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="org.amnezia.awg.activity.LogViewerActivity"
+            android:name="pw.idrug.connections.activity.LogViewerActivity"
             android:exported="false"
             android:label="@string/log_viewer_title" >
             <intent-filter>
@@ -159,13 +177,13 @@
         </activity>
 
         <provider
-            android:name="org.amnezia.awg.activity.LogViewerActivity$ExportedLogContentProvider"
-            android:authorities="org.amnezia.awg.exported-log"
+            android:name="pw.idrug.connections.activity.LogViewerActivity$ExportedLogContentProvider"
+            android:authorities="pw.idrug.connections.exported-log"
             android:exported="false"
             android:grantUriPermissions="true" />
 
         <receiver
-            android:name="org.amnezia.awg.BootShutdownReceiver"
+            android:name="pw.idrug.connections.BootShutdownReceiver"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_SHUTDOWN" />
@@ -173,18 +191,18 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name="org.amnezia.awg.model.TunnelManager$IntentReceiver"
+            android:name="pw.idrug.connections.model.TunnelManager$IntentReceiver"
             android:exported="true"
-            android:permission="org.amnezia.awg.permission.CONTROL_TUNNELS" >
+            android:permission="pw.idrug.connections.permission.CONTROL_TUNNELS" >
             <intent-filter>
-                <action android:name="org.amnezia.awg.action.REFRESH_TUNNEL_STATES" />
-                <action android:name="org.amnezia.awg.action.SET_TUNNEL_UP" />
-                <action android:name="org.amnezia.awg.action.SET_TUNNEL_DOWN" />
+                <action android:name="pw.idrug.connections.action.REFRESH_TUNNEL_STATES" />
+                <action android:name="pw.idrug.connections.action.SET_TUNNEL_UP" />
+                <action android:name="pw.idrug.connections.action.SET_TUNNEL_DOWN" />
             </intent-filter>
         </receiver>
 
         <service
-            android:name="org.amnezia.awg.QuickTileService"
+            android:name="pw.idrug.connections.QuickTileService"
             android:exported="true"
             android:icon="@drawable/ic_tile"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" >
@@ -199,14 +217,112 @@
                 android:name="android.service.quicksettings.TOGGLEABLE_TILE"
                 android:value="true" />
         </service>
+        <service
+            android:name="pw.idrug.connections.MyFirebaseMessagingService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_launcher_foreground" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="fcm_default_channel" />
         <meta-data
             android:name="android.content.APP_RESTRICTIONS"
             android:resource="@xml/app_restrictions" />
 
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+                android:value="true" />
+        </receiver>
+        <!--
+             FirebaseMessagingService performs security checks at runtime,
+             but set to not exported to explicitly avoid allowing another app to call it.
+        -->
+        <service
+            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+            android:directBootAware="true"
+            android:exported="false" >
+            <intent-filter android:priority="-500" >
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.google.firebase.components.ComponentDiscoveryService"
+            android:directBootAware="true"
+            android:exported="false" >
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service>
+
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true"
+            android:exported="false" >
+        </receiver>
+
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <property
+            android:name="android.adservices.AD_SERVICES_CONFIG"
+            android:resource="@xml/ga_ad_services_config" />
+
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="pw.idrug.connections.firebaseinitprovider"
+            android:directBootAware="true"
+            android:exported="false"
+            android:initOrder="100" />
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="org.amnezia.awg.androidx-startup"
+            android:authorities="pw.idrug.connections.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"
@@ -220,26 +336,48 @@
         </provider>
 
         <uses-library
+            android:name="android.ext.adservices"
+            android:required="false" />
+        <uses-library
             android:name="androidx.window.extensions"
             android:required="false" />
         <uses-library
             android:name="androidx.window.sidecar"
             android:required="false" />
 
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <provider
             android:name="com.squareup.picasso.PicassoProvider"
-            android:authorities="org.amnezia.awg.com.squareup.picasso"
+            android:authorities="pw.idrug.connections.com.squareup.picasso"
             android:exported="false" />
 
         <service
-            android:name="org.amnezia.awg.backend.GoBackend$VpnService"
+            android:name="pw.idrug.connections.backend.GoBackend$VpnService"
             android:exported="false"
             android:permission="android.permission.BIND_VPN_SERVICE" >
             <intent-filter>
                 <action android:name="android.net.VpnService" />
             </intent-filter>
         </service>
+        <service
+            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+            android:exported="false" >
+            <meta-data
+                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+                android:value="cct" />
+        </service>
+        <service
+            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" >
+        </service>
 
+        <receiver
+            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+            android:exported="false" />
         <receiver
             android:name="androidx.profileinstaller.ProfileInstallReceiver"
             android:directBootAware="false"
