@@ -15,7 +15,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.view.Gravity
 import androidx.fragment.app.Fragment
-import pw.idrug.connections.activity.LinkCodeActivity
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
 import com.squareup.picasso.Picasso
@@ -23,6 +22,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import okhttp3.*
 import pw.idrug.connections.R
+import pw.idrug.connections.dialog.CodeInputDialogFragment
 import pw.idrug.connections.Application
 import pw.idrug.connections.config.Config
 import org.json.JSONArray
@@ -135,7 +135,9 @@ class AccountFragment : Fragment() {
             if (isLoggedIn()) {
                 showLinkDeviceDialog()
             } else {
-                startActivity(Intent(requireContext(), LinkCodeActivity::class.java))
+                CodeInputDialogFragment { code ->
+                    handleLinkCodeLogin(code)
+                }.show(parentFragmentManager, "code_input")
             }
         }
         view.findViewById<Button>(R.id.btn_renew).setOnClickListener {
@@ -698,6 +700,51 @@ class AccountFragment : Fragment() {
                             timerText.text = getString(R.string.login_via_telegram_or_qr)
                         }
                     }.start()
+                }
+            }
+        })
+    }
+
+    private fun handleLinkCodeLogin(code: String) {
+        linkAccountWithCode(code) { success, token, username, message ->
+            safeUi {
+                if (success && token != null && username != null) {
+                    prefs.edit()
+                        .putString("token", token)
+                        .putString("username", username)
+                        .apply()
+                    Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
+                    showCorrectScreen(requireView())
+                } else {
+                    Toast.makeText(requireContext(), message ?: getString(R.string.login_via_telegram_or_qr), Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    private fun linkAccountWithCode(code: String, callback: (Boolean, String?, String?, String?) -> Unit) {
+        val client = OkHttpClient()
+        val body = FormBody.Builder().add("code", code).build()
+        val request = Request.Builder()
+            .url("https://idrug.pw/api/linking/consume")
+            .post(body)
+            .build()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                callback(false, null, null, e.message)
+            }
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val obj = JSONObject(response.body?.string() ?: "{}")
+                    val jwt = obj.optString("jwt", null)
+                    val username = obj.optString("username", null)
+                    if (!jwt.isNullOrEmpty() && !username.isNullOrEmpty()) {
+                        callback(true, jwt, username, null)
+                    } else {
+                        callback(false, null, null, "Invalid response")
+                    }
+                } else {
+                    callback(false, null, null, "Code invalid or expired")
                 }
             }
         })
