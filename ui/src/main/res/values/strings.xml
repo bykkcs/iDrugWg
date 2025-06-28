@@ -211,7 +211,7 @@
     <string name="shell_marker_count_error">Shell expected 4 markers, received %d</string>
     <string name="shell_start_error">Shell failed to start: %d</string>
     <string name="success_application_will_restart">Success. The application will now restart…</string>
-    <string name="toggle_all">Toggle All</string>
+    <string name="toggle_all">Invert all</string>
     <string name="toggle_error">Error toggling tunnel: %s</string>
     <string name="tools_installer_already">awg and awg-quick are already installed</string>
     <string name="tools_installer_failure">Unable to install command-line tools (no root?)</string>
