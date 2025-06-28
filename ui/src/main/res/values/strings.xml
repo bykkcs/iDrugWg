@@ -63,6 +63,8 @@
     <string name="allow_remote_control_intents_summary_on">External apps may toggle tunnels (advanced)</string>
     <string name="allow_remote_control_intents_title">Allow remote control apps</string>
     <string name="allowed_ips">Allowed IPs</string>
+    <string name="killswitch_active">Internet access blocked</string>
+    <string name="reconnect">Reconnect</string>
     <!-- Application name updated as required -->
     <string name="app_name" translatable="false">iDrug Connections</string>
     <string name="bad_config_context">%1$s\'s %2$s</string>

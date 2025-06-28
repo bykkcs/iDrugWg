@@ -25,6 +25,7 @@ import pw.idrug.connections.util.ErrorMessages
 import pw.idrug.connections.util.UserKnobs
 import pw.idrug.connections.util.applicationScope
 import pw.idrug.connections.config.Config
+import pw.idrug.connections.KillSwitchService
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -205,10 +206,20 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
             throwable = e
         }
         tunnel.onStateChanged(newState)
+        handleKillSwitch(newState)
         saveState()
         if (throwable != null)
             throw throwable
         newState
+    }
+
+    private fun handleKillSwitch(state: Tunnel.State) {
+        val intent = Intent(context, KillSwitchService::class.java)
+        if (state == Tunnel.State.DOWN) {
+            context.startService(intent)
+        } else if (state == Tunnel.State.UP) {
+            context.stopService(intent)
+        }
     }
 
     class IntentReceiver : BroadcastReceiver() {
