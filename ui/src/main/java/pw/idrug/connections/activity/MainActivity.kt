@@ -8,6 +8,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import kotlinx.coroutines.runBlocking
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
@@ -69,15 +70,8 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val prefsAuth = getSharedPreferences("auth", Context.MODE_PRIVATE)
-        val prefsApp = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
         val tokenEmpty = prefsAuth.getString("token", null).isNullOrEmpty()
-        val showOnboarding = try {
-            !prefsApp.getBoolean("onboarding_done", false)
-        } catch (e: Exception) {
-            Log.w("MainActivity", "Unable to read onboarding flag", e)
-            true
-        }
-        if (tokenEmpty && showOnboarding) {
+        if (tokenEmpty) {
             startActivity(Intent(this, OnboardingActivity::class.java))
             finish()
             return
@@ -125,8 +119,17 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         if (savedInstanceState == null) {
             val data = intent?.data
             val openedViaDeepLink = intent?.action == Intent.ACTION_VIEW && data != null
-            val openAccount = intent?.getBooleanExtra(EXTRA_OPEN_ACCOUNT, false) == true ||
+            val openAccountByIntent = intent?.getBooleanExtra(EXTRA_OPEN_ACCOUNT, false) == true ||
                 (openedViaDeepLink && data?.host == "auth")
+            val openAccountByTunnels = runBlocking {
+                try {
+                    Application.getTunnelManager().getTunnels().isEmpty()
+                } catch (e: Exception) {
+                    Log.w("MainActivity", "Unable to check tunnels", e)
+                    false
+                }
+            }
+            val openAccount = openAccountByIntent || openAccountByTunnels
 
             val fragment: Fragment = if (openAccount) {
                 AccountFragment()
