@@ -49,7 +49,6 @@ public final class BackendException extends Exception {
      * Enum class containing all known reasons for why a {@link BackendException} might be thrown.
      */
     public enum Reason {
-        UNKNOWN_KERNEL_MODULE_NAME,
         AWG_QUICK_CONFIG_ERROR_CODE,
         TUNNEL_MISSING_CONFIG,
         VPN_NOT_AUTHORIZED,
