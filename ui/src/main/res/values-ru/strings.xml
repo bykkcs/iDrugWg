@@ -81,7 +81,7 @@
         <item quantity="many">секунд</item>
         <item quantity="other">секунд</item>
     </plurals>
-    <string name="use_all_applications">Все приложения</string>
+    <string name="use_all_applications">Выбрать все</string>
     <string name="add_peer">Добавить пир</string>
     <string name="addresses">Адреса</string>
     <string name="applications">Приложения</string>
