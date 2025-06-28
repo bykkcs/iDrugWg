@@ -15,7 +15,6 @@ import pw.idrug.connections.BuildConfig
 import pw.idrug.connections.R
 import pw.idrug.connections.backend.Backend
 import pw.idrug.connections.backend.GoBackend
-import pw.idrug.connections.backend.AwgQuickBackend
 import pw.idrug.connections.util.ErrorMessages
 import pw.idrug.connections.util.lifecycleScope
 import kotlinx.coroutines.Dispatchers
@@ -41,7 +40,6 @@ class VersionPreference(context: Context, attrs: AttributeSet?) : Preference(con
 
     companion object {
         private fun getBackendPrettyName(context: Context, backend: Backend) = when (backend) {
-            is AwgQuickBackend -> context.getString(R.string.type_name_kernel_module)
             is GoBackend -> context.getString(R.string.type_name_go_userspace)
             else -> ""
         }

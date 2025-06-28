@@ -121,16 +121,6 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
             bottomNavigation?.selectedItemId = R.id.nav_vpn
         }
 
-        // --- Получить FCM token (опционально, если вдруг надо где-то показать или залогать) ---
-        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                Log.w("FCM", "Fetching FCM registration token failed", task.exception)
-                return@addOnCompleteListener
-            }
-            val token = task.result
-            Log.d("FCM", "Current FCM token: $token")
-        }
-
         // --- Подписать на глобальный топик для всех пушей ---
         subscribeToGlobalNotifications()
     }

@@ -15,16 +15,20 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import pw.idrug.connections.Application
+import pw.idrug.connections.BuildConfig
 import pw.idrug.connections.QuickTileService
 import pw.idrug.connections.R
-import pw.idrug.connections.backend.AwgQuickBackend
 import pw.idrug.connections.preference.PreferencesPreferenceDataStore
 import pw.idrug.connections.util.AdminKnobs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
+import java.net.URL
+import java.security.MessageDigest
+import org.json.JSONObject
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +50,7 @@ class SettingsActivity : AppCompatActivity() {
 
     class SettingsFragment : PreferenceFragmentCompat() {
         private var downloadId: Long = -1
+        private var expectedHash: String? = null
 
         private val downloadReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
@@ -76,37 +81,9 @@ class SettingsActivity : AppCompatActivity() {
                 val zipExporter = preferenceManager.findPreference<Preference>("zip_exporter")
                 zipExporter?.parent?.removePreference(zipExporter)
             }
-            val awgQuickOnlyPrefs = arrayOf(
-                preferenceManager.findPreference("tools_installer"),
-                preferenceManager.findPreference("restore_on_boot"),
-                preferenceManager.findPreference<Preference>("multiple_tunnels")
-            ).filterNotNull()
-            awgQuickOnlyPrefs.forEach { it.isVisible = false }
-            lifecycleScope.launch {
-                if (Application.getBackend() is AwgQuickBackend) {
-                    ++preferenceScreen.initialExpandedChildrenCount
-                    awgQuickOnlyPrefs.forEach { it.isVisible = true }
-                } else {
-                    awgQuickOnlyPrefs.forEach { it.parent?.removePreference(it) }
-                }
-            }
             preferenceManager.findPreference<Preference>("log_viewer")?.setOnPreferenceClickListener {
                 startActivity(Intent(requireContext(), LogViewerActivity::class.java))
                 true
-            }
-            val kernelModuleEnabler = preferenceManager.findPreference<Preference>("kernel_module_enabler")
-            if (AwgQuickBackend.hasKernelSupport()) {
-                lifecycleScope.launch {
-                    if (Application.getBackend() !is AwgQuickBackend) {
-                        try {
-                            withContext(Dispatchers.IO) { Application.getRootShell().start() }
-                        } catch (_: Throwable) {
-                            kernelModuleEnabler?.parent?.removePreference(kernelModuleEnabler)
-                        }
-                    }
-                }
-            } else {
-                kernelModuleEnabler?.parent?.removePreference(kernelModuleEnabler)
             }
 
             preferenceManager.findPreference<Preference>("ota_update")?.setOnPreferenceClickListener {
@@ -116,14 +93,38 @@ class SettingsActivity : AppCompatActivity() {
         }
 
 private fun checkForOtaUpdate() {
+    lifecycleScope.launch {
+        try {
+            val context = requireContext()
+            val manifestText = withContext(kotlinx.coroutines.Dispatchers.IO) { URL("https://idrug.pw/ota/manifest.json").readText() }
+            val obj = JSONObject(manifestText)
+            val version = obj.getInt("versionCode")
+            if (version <= BuildConfig.VERSION_CODE) {
+                Toast.makeText(context, getString(R.string.update_not_available), Toast.LENGTH_SHORT).show()
+                return@launch
+            }
+            val apkUrl = obj.getString("apkUrl")
+            expectedHash = obj.optString("sha256")
+
+            MaterialAlertDialogBuilder(context)
+                .setTitle(R.string.update_confirmation_title)
+                .setMessage(R.string.update_confirmation_message)
+                .setPositiveButton(android.R.string.ok) { _, _ -> startDownload(apkUrl) }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), getString(R.string.update_check_error, e.localizedMessage), Toast.LENGTH_LONG).show()
+        }
+    }
+}
+
+private fun startDownload(url: String) {
     try {
         val context = requireContext()
-        val url = "https://idrug.pw/ota/iDrugConnections.apk"
         val fileName = "iDrugConnections.apk"
         val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName)
         if (file.exists()) {
-            val deleted = file.delete()
-            if (!deleted) {
+            if (!file.delete()) {
                 Toast.makeText(context, context.getString(R.string.update_delete_old_failed), Toast.LENGTH_SHORT).show()
             }
         }
@@ -141,22 +142,13 @@ private fun checkForOtaUpdate() {
 
         Toast.makeText(context, context.getString(R.string.update_download_started), Toast.LENGTH_SHORT).show()
 
-        // Corrected call:
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            context.registerReceiver(
-                downloadReceiver,
-                IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE),
-                Context.RECEIVER_NOT_EXPORTED
-            )
+            context.registerReceiver(downloadReceiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE), Context.RECEIVER_NOT_EXPORTED)
         } else {
-            context.registerReceiver(
-                downloadReceiver,
-                IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
-            )
+            context.registerReceiver(downloadReceiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
         }
     } catch (e: Exception) {
         Toast.makeText(requireContext(), getString(R.string.update_start_error, e.localizedMessage), Toast.LENGTH_LONG).show()
-        e.printStackTrace()
     }
 }
 
@@ -167,6 +159,25 @@ private fun checkForOtaUpdate() {
             if (!file.exists()) {
                 Toast.makeText(requireContext(), getString(R.string.apk_not_found), Toast.LENGTH_SHORT).show()
                 return
+            }
+            expectedHash?.let { expected ->
+                try {
+                    val digest = MessageDigest.getInstance("SHA-256")
+                    file.inputStream().use { input ->
+                        val buf = ByteArray(8192)
+                        var r: Int
+                        while (input.read(buf).also { r = it } > 0) {
+                            digest.update(buf, 0, r)
+                        }
+                    }
+                    val hash = digest.digest().joinToString("") { "%02x".format(it) }
+                    if (!hash.equals(expected, ignoreCase = true)) {
+                        Toast.makeText(requireContext(), getString(R.string.update_hash_mismatch), Toast.LENGTH_LONG).show()
+                        return
+                    }
+                } catch (_: Exception) {
+                    // ignore and proceed
+                }
             }
             val apkUri = FileProvider.getUriForFile(
                 requireContext(),

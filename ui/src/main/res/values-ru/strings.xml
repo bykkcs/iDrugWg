@@ -309,6 +309,11 @@
 <string name="server_madrid">Мадрид</string>
     <string name="update_delete_old_failed">Не удалось удалить старый файл обновления</string>
     <string name="update_download_started">Начата загрузка обновления</string>
+    <string name="update_not_available">У вас уже последняя версия</string>
+    <string name="update_check_error">Ошибка проверки обновления: %s</string>
+    <string name="update_confirmation_title">Загрузить обновление</string>
+    <string name="update_confirmation_message">Вы скачиваете обновление из Интернета. Устанавливайте только если доверяете источнику!</string>
+    <string name="update_hash_mismatch">Хеш скачанного файла не совпадает</string>
     <string name="update_start_error">Ошибка запуска обновления: %s</string>
     <string name="apk_not_found">APK не найден</string>
     <string name="permission_unknown_sources">Разрешите установку из неизвестных источников и повторите</string>

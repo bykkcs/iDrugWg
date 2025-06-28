@@ -8,7 +8,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import pw.idrug.connections.backend.AwgQuickBackend
 import pw.idrug.connections.util.applicationScope
 import kotlinx.coroutines.launch
 
@@ -16,7 +15,6 @@ class BootShutdownReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val action = intent.action ?: return
         applicationScope.launch {
-            if (Application.getBackend() !is AwgQuickBackend) return@launch
             val tunnelManager = Application.getTunnelManager()
             if (Intent.ACTION_BOOT_COMPLETED == action) {
                 Log.i(TAG, "Broadcast receiver restoring state (boot)")

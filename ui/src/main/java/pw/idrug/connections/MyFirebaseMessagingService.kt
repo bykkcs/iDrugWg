@@ -13,7 +13,6 @@ import pw.idrug.connections.R
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        Log.d("FCM", "FCM token: $token")
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {

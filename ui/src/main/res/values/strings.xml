@@ -288,6 +288,11 @@
 <string name="server_madrid">Madrid</string>
     <string name="update_delete_old_failed">Failed to delete old update file</string>
     <string name="update_download_started">Update download started</string>
+    <string name="update_not_available">You already have the latest version</string>
+    <string name="update_check_error">Error checking for update: %s</string>
+    <string name="update_confirmation_title">Download update</string>
+    <string name="update_confirmation_message">You are downloading an update from the Internet. Install only if you trust the source!</string>
+    <string name="update_hash_mismatch">Downloaded file checksum mismatch</string>
     <string name="update_start_error">Error starting update: %s</string>
     <string name="apk_not_found">APK not found!</string>
     <string name="permission_unknown_sources">Grant permission to install from unknown sources and try again</string>
