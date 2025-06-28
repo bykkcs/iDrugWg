@@ -53,6 +53,9 @@
             android:theme="@style/NoBackgroundTheme" />
 
         <activity
+            android:name=".activity.OnboardingActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
