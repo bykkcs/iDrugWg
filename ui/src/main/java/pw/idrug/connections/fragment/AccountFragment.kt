@@ -36,6 +36,8 @@ import android.text.style.StyleSpan
 import android.text.style.ForegroundColorSpan
 import android.graphics.Typeface
 import android.graphics.Color
+import android.util.Log
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class AccountFragment : Fragment() {
 
@@ -61,13 +63,20 @@ class AccountFragment : Fragment() {
     private var subscriptions: List<Subscription> = emptyList()
 
     // --- Локализация названия сервера ---
-    private fun getServerName(location: String): String {
+    private fun getServerName(location: String?): String {
+        if (location.isNullOrBlank()) {
+            Log.w("AccountFragment", "getServerName: empty or null location")
+            return "Unknown"
+        }
         return when (location) {
             "germany" -> getString(R.string.server_germany)
             "multihop" -> getString(R.string.server_multihop_germany)
             "bulgaria" -> getString(R.string.server_bulgaria)
             "madrid" -> getString(R.string.server_madrid)
-            else -> location
+            else -> {
+                Log.w("AccountFragment", "getServerName: unrecognized location $location")
+                location
+            }
         }
     }
 
@@ -393,6 +402,7 @@ class AccountFragment : Fragment() {
 
     private fun setLoading(loading: Boolean) {
         view?.findViewById<View>(R.id.loading_overlay)?.visibility = if (loading) View.VISIBLE else View.GONE
+        activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)?.isEnabled = !loading
     }
 
     private fun afterLogout(view: View) {
