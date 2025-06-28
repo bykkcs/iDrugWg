@@ -191,34 +191,34 @@ class AccountFragment : Fragment() {
         val url = "https://idrug.pw/api/servers"
         client.newCall(Request.Builder().url(url).build()).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                serverList = listOf(
-                    "germany" to getServerName("germany"),
-                    "multihop" to getServerName("multihop"),
-                    "bulgaria" to getServerName("bulgaria"),
-                    "madrid" to getServerName("madrid")
-                )
                 safeUi {
-                    setupServerSpinner(view)
-                    loadProfileAndSetupUI(view)
-                }
-            }
-            override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    val arr = JSONArray(response.body?.string() ?: "[]")
-                    serverList = List(arr.length()) {
-                        val obj = arr.getJSONObject(it)
-                        val id = obj.getString("id")
-                        id to getServerName(id)
-                    }
-                } else {
                     serverList = listOf(
                         "germany" to getServerName("germany"),
                         "multihop" to getServerName("multihop"),
                         "bulgaria" to getServerName("bulgaria"),
                         "madrid" to getServerName("madrid")
                     )
+                    setupServerSpinner(view)
+                    loadProfileAndSetupUI(view)
                 }
+            }
+            override fun onResponse(call: Call, response: Response) {
                 safeUi {
+                    if (response.isSuccessful) {
+                        val arr = JSONArray(response.body?.string() ?: "[]")
+                        serverList = List(arr.length()) {
+                            val obj = arr.getJSONObject(it)
+                            val id = obj.getString("id")
+                            id to getServerName(id)
+                        }
+                    } else {
+                        serverList = listOf(
+                            "germany" to getServerName("germany"),
+                            "multihop" to getServerName("multihop"),
+                            "bulgaria" to getServerName("bulgaria"),
+                            "madrid" to getServerName("madrid")
+                        )
+                    }
                     setupServerSpinner(view)
                     loadProfileAndSetupUI(view)
                 }
