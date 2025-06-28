@@ -81,7 +81,7 @@
         <item quantity="many">секунд</item>
         <item quantity="other">секунд</item>
     </plurals>
-    <string name="use_all_applications">Использовать все приложения</string>
+    <string name="use_all_applications">Все приложения</string>
     <string name="add_peer">Добавить пир</string>
     <string name="addresses">Адреса</string>
     <string name="applications">Приложения</string>
@@ -307,5 +307,30 @@
 <string name="server_multihop_germany">Мультихоп Германия</string>
 <string name="server_bulgaria">Болгария</string>
 <string name="server_madrid">Мадрид</string>
+    <string name="update_delete_old_failed">Не удалось удалить старый файл обновления</string>
+    <string name="update_download_started">Начата загрузка обновления</string>
+    <string name="update_start_error">Ошибка запуска обновления: %s</string>
+    <string name="apk_not_found">APK не найден</string>
+    <string name="permission_unknown_sources">Разрешите установку из неизвестных источников и повторите</string>
+    <string name="apk_open_error">Не удалось открыть APK для установки: %s</string>
+    <string name="qr_login_confirmed">Вход по QR подтверждён</string>
+    <string name="qr_confirmation_error">Ошибка подтверждения: %s</string>
+    <string name="qr_not_recognized">QR-код не распознан</string>
+    <string name="login_telegram_first">Сначала войдите через Telegram</string>
+    <string name="subscription_renewed">Подписка продлена</string>
+    <string name="error_with_message">Ошибка: %s</string>
+    <string name="network_error_msg">Сетевая ошибка: %s</string>
+    <string name="profile_processing_error">Ошибка обработки профиля: %s</string>
+    <string name="profile_retrieval_failed">Не удалось получить профиль: %d</string>
+    <string name="logged_out">Вы вышли из аккаунта</string>
+    <string name="select_server">Выберите сервер</string>
+    <string name="subscription_inactive_msg">Подписка не активна</string>
+    <string name="config_already_added">Конфиг уже добавлен</string>
+    <string name="tunnel_added">Туннель добавлен</string>
+    <string name="tunnel_creation_error">Ошибка создания туннеля: %s</string>
+    <string name="qr_generation_error">Ошибка генерации QR-кода</string>
+    <string name="unable_open_telegram">Не удалось открыть Telegram</string>
+    <string name="login_successful">Вход выполнен</string>
+    <string name="telegram_login_successful">Вход через Telegram выполнен!</string>
     <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
 </resources>
