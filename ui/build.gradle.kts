@@ -81,7 +81,6 @@ dependencies {
     implementation(libs.zxing.android.embedded)
     implementation(libs.kotlinx.coroutines.android)
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
-    implementation("org.json:json:20231013")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("com.google.zxing:core:3.5.1")
     implementation("com.squareup.picasso:picasso:2.71828")
