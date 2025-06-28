@@ -21,11 +21,14 @@ class OnboardingActivity : AppCompatActivity() {
     private var errorText: TextView? = null
     private var nextButton: Button? = null
     private lateinit var adapter: OnboardingAdapter
+    private val prefs by lazy {
+        getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (isLoggedIn()) {
-            startMain()
+        if (isOnboardingCompleted() || isLoggedIn()) {
+            startMain(openAccount = !isLoggedIn())
             return
         }
         setContentView(R.layout.activity_onboarding)
@@ -82,6 +85,15 @@ class OnboardingActivity : AppCompatActivity() {
         }
     }
 
+    private fun isOnboardingCompleted(): Boolean {
+        return try {
+            prefs.getBoolean(KEY_ONBOARDING_SHOWN, false)
+        } catch (e: Exception) {
+            Log.w(TAG, "Unable to read onboarding flag", e)
+            false
+        }
+    }
+
     private fun loadItems(): List<OnboardingItem> {
         val emojis = safeArray(R.array.onboarding_emojis)
         val titles = safeArray(R.array.onboarding_titles)
@@ -105,6 +117,11 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun finishOnboarding() {
+        try {
+            prefs.edit().putBoolean(KEY_ONBOARDING_SHOWN, true).apply()
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to persist onboarding flag", e)
+        }
         startMain(openAccount = true)
     }
 
@@ -150,5 +167,7 @@ class OnboardingActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "OnboardingActivity"
+        private const val PREFS_NAME = "app_prefs"
+        private const val KEY_ONBOARDING_SHOWN = "onboarding_shown"
     }
 }
