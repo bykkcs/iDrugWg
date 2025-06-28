@@ -22,7 +22,6 @@ import androidx.preference.PreferenceFragmentCompat
 import pw.idrug.connections.Application
 import pw.idrug.connections.QuickTileService
 import pw.idrug.connections.R
-import pw.idrug.connections.backend.AwgQuickBackend
 import pw.idrug.connections.preference.PreferencesPreferenceDataStore
 import pw.idrug.connections.util.AdminKnobs
 import kotlinx.coroutines.Dispatchers
@@ -80,37 +79,9 @@ class SettingsActivity : AppCompatActivity() {
                 val zipExporter = preferenceManager.findPreference<Preference>("zip_exporter")
                 zipExporter?.parent?.removePreference(zipExporter)
             }
-            val awgQuickOnlyPrefs = arrayOf(
-                preferenceManager.findPreference("tools_installer"),
-                preferenceManager.findPreference("restore_on_boot"),
-                preferenceManager.findPreference<Preference>("multiple_tunnels")
-            ).filterNotNull()
-            awgQuickOnlyPrefs.forEach { it.isVisible = false }
-            lifecycleScope.launch {
-                if (Application.getBackend() is AwgQuickBackend) {
-                    ++preferenceScreen.initialExpandedChildrenCount
-                    awgQuickOnlyPrefs.forEach { it.isVisible = true }
-                } else {
-                    awgQuickOnlyPrefs.forEach { it.parent?.removePreference(it) }
-                }
-            }
             preferenceManager.findPreference<Preference>("log_viewer")?.setOnPreferenceClickListener {
                 startActivity(Intent(requireContext(), LogViewerActivity::class.java))
                 true
-            }
-            val kernelModuleEnabler = preferenceManager.findPreference<Preference>("kernel_module_enabler")
-            if (AwgQuickBackend.hasKernelSupport()) {
-                lifecycleScope.launch {
-                    if (Application.getBackend() !is AwgQuickBackend) {
-                        try {
-                            withContext(Dispatchers.IO) { Application.getRootShell().start() }
-                        } catch (_: Throwable) {
-                            kernelModuleEnabler?.parent?.removePreference(kernelModuleEnabler)
-                        }
-                    }
-                }
-            } else {
-                kernelModuleEnabler?.parent?.removePreference(kernelModuleEnabler)
             }
 
             preferenceManager.findPreference<Preference>("ota_update")?.setOnPreferenceClickListener {

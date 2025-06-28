@@ -19,11 +19,8 @@ import androidx.datastore.preferences.preferencesDataStoreFile
 import com.google.android.material.color.DynamicColors
 import pw.idrug.connections.backend.Backend
 import pw.idrug.connections.backend.GoBackend
-import pw.idrug.connections.backend.AwgQuickBackend
 import pw.idrug.connections.configStore.FileConfigStore
 import pw.idrug.connections.model.TunnelManager
-import pw.idrug.connections.util.RootShell
-import pw.idrug.connections.util.ToolsInstaller
 import pw.idrug.connections.util.UserKnobs
 import pw.idrug.connections.util.applicationScope
 import kotlinx.coroutines.CompletableDeferred
@@ -43,9 +40,7 @@ class Application : android.app.Application() {
     private val futureBackend = CompletableDeferred<Backend>()
     private val coroutineScope = CoroutineScope(Job() + Dispatchers.Main.immediate)
     private var backend: Backend? = null
-    private lateinit var rootShell: RootShell
     private lateinit var preferencesDataStore: DataStore<Preferences>
-    private lateinit var toolsInstaller: ToolsInstaller
     private lateinit var tunnelManager: TunnelManager
 
     override fun attachBaseContext(context: Context) {
@@ -61,23 +56,8 @@ class Application : android.app.Application() {
     }
 
     private suspend fun determineBackend(): Backend {
-        var backend: Backend? = null
-        if (UserKnobs.enableKernelModule.first() && AwgQuickBackend.hasKernelSupport()) {
-            try {
-                rootShell.start()
-                val awgQuickBackend = AwgQuickBackend(applicationContext, rootShell, toolsInstaller)
-                awgQuickBackend.setMultipleTunnels(UserKnobs.multipleTunnels.first())
-                backend = awgQuickBackend
-                UserKnobs.multipleTunnels.onEach {
-                    awgQuickBackend.setMultipleTunnels(it)
-                }.launchIn(coroutineScope)
-            } catch (ignored: Exception) {
-            }
-        }
-        if (backend == null) {
-            backend = GoBackend(applicationContext)
-            GoBackend.setAlwaysOnCallback { get().applicationScope.launch { get().tunnelManager.restoreState(true) } }
-        }
+        val backend = GoBackend(applicationContext)
+        GoBackend.setAlwaysOnCallback { get().applicationScope.launch { get().tunnelManager.restoreState(true) } }
         return backend
     }
 
@@ -85,8 +65,6 @@ class Application : android.app.Application() {
         Log.i(TAG, USER_AGENT)
         super.onCreate()
         DynamicColors.applyToActivitiesIfAvailable(this)
-        rootShell = RootShell(applicationContext)
-        toolsInstaller = ToolsInstaller(applicationContext, rootShell)
         preferencesDataStore = PreferenceDataStoreFactory.create { applicationContext.preferencesDataStoreFile("settings") }
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             runBlocking {
@@ -138,11 +116,7 @@ class Application : android.app.Application() {
 
         suspend fun getBackend() = get().futureBackend.await()
 
-        fun getRootShell() = get().rootShell
-
         fun getPreferencesDataStore() = get().preferencesDataStore
-
-        fun getToolsInstaller() = get().toolsInstaller
 
         fun getTunnelManager() = get().tunnelManager
 
