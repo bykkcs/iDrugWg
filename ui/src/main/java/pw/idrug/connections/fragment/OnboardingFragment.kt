@@ -38,6 +38,15 @@ class OnboardingFragment : Fragment() {
         adapter = OnboardingAdapter(items)
         viewPager.adapter = adapter
 
+        if (adapter.itemCount == 0) {
+            // Nothing to show, immediately continue
+            startActivity(Intent(requireContext(), MainActivity::class.java).apply {
+                putExtra(MainActivity.EXTRA_OPEN_ACCOUNT, true)
+            })
+            requireActivity().finish()
+            return
+        }
+
         updateButtonText()
 
         nextButton.setOnClickListener {
