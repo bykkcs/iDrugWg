@@ -233,7 +233,7 @@
     <string name="shell_marker_count_error">Shell ожидает 4 маркера, получено %d</string>
     <string name="shell_start_error">Не удалось запустить Shell: %d</string>
     <string name="success_application_will_restart">Успешно. Приложение будет перезапущено…</string>
-    <string name="toggle_all">Инвертировать все</string>
+    <string name="toggle_all">Инверт. все</string>
     <string name="toggle_error">Ошибка переключения туннеля iDrug Connections: %s</string>
     <string name="tools_installer_already">awg и awg-quick уже установлены</string>
     <string name="tools_installer_failure">Не удалось установить инструменты командной строки (нет root?)</string>
@@ -287,7 +287,7 @@
     <string name="choose_server">Выберите сервер</string>
     <string name="download_config">Скачать конфиг</string>
     <string name="renew_subscription">Продлить подписку</string>
-    <string name="link_device">Привязать</string>
+    <string name="link_device">Привязать устр.</string>
     <string name="login_with_code">Войти через код</string>
     <string name="enter_code">Введите код</string>
     <string name="submit_code">Войти</string>

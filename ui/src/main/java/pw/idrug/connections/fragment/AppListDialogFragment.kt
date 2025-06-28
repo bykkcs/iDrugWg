@@ -121,7 +121,7 @@ class AppListDialogFragment : DialogFragment() {
             })
         }
         alertDialogBuilder.setPositiveButton(" ") { _, _ -> setSelectionAndDismiss() }
-        alertDialogBuilder.setNegativeButton(R.string.cancel) { dialog, _ -> dialog.dismiss() }
+        // remove explicit cancel button to keep buttons compact
         alertDialogBuilder.setNeutralButton(R.string.toggle_all) { _, _ -> }
         binding.fragment = this
         binding.appData = appData
