@@ -25,6 +25,7 @@ import pw.idrug.connections.R
 import pw.idrug.connections.fragment.TunnelDetailFragment
 import pw.idrug.connections.fragment.TunnelEditorFragment
 import pw.idrug.connections.fragment.TunnelListFragment
+import pw.idrug.connections.activity.OnboardingActivity
 import pw.idrug.connections.fragment.AccountFragment
 import pw.idrug.connections.model.ObservableTunnel
 
@@ -67,6 +68,12 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val prefsAuth = getSharedPreferences("auth", Context.MODE_PRIVATE)
+        if (prefsAuth.getString("token", null).isNullOrEmpty()) {
+            startActivity(Intent(this, OnboardingActivity::class.java))
+            finish()
+            return
+        }
         setContentView(R.layout.main_activity)
         actionBar = supportActionBar
         isTwoPaneLayout = findViewById<View?>(R.id.master_detail_wrapper) != null

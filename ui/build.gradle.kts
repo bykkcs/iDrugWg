@@ -84,6 +84,7 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("com.google.zxing:core:3.5.1")
     implementation("com.squareup.picasso:picasso:2.71828")
+    implementation(libs.viewpager2)
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0") // опционально
 
     implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
