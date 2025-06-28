@@ -109,7 +109,7 @@ int id addresses_text 0x0
 int id allowed_ips_label 0x0
 int id allowed_ips_label_layout 0x0
 int id allowed_ips_text 0x0
-int id amnezia_barrier 0x0
+int id idrugconnections_barrier 0x0
 int id app_icon 0x0
 int id app_list 0x0
 int id app_name 0x0

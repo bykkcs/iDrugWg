@@ -30,7 +30,7 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
   public final TextView addressesText;
 
   @NonNull
-  public final Barrier amneziaBarrier;
+  public final Barrier idrugconnectionsBarrier;
 
   @NonNull
   public final TextView applicationsLabel;
@@ -153,7 +153,7 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
   protected Config mConfig;
 
   protected TunnelDetailFragmentBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      TextView addressesLabel, TextView addressesText, Barrier amneziaBarrier,
+      TextView addressesLabel, TextView addressesText, Barrier idrugconnectionsBarrier,
       TextView applicationsLabel, TextView applicationsText, TextView dnsSearchDomainsLabel,
       TextView dnsSearchDomainsText, TextView dnsServersLabel, TextView dnsServersText,
       TextView initPacketJunkSizeLabel, TextView initPacketJunkSizeText,
@@ -172,7 +172,7 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
     super(_bindingComponent, _root, _localFieldCount);
     this.addressesLabel = addressesLabel;
     this.addressesText = addressesText;
-    this.amneziaBarrier = amneziaBarrier;
+    this.idrugconnectionsBarrier = idrugconnectionsBarrier;
     this.applicationsLabel = applicationsLabel;
     this.applicationsText = applicationsText;
     this.dnsSearchDomainsLabel = dnsSearchDomainsLabel;
