@@ -13,12 +13,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import pw.idrug.connections.R
+import pw.idrug.connections.activity.MainActivity
 
 class OnboardingActivity : AppCompatActivity() {
 
-    private lateinit var viewPager: ViewPager2
-    private lateinit var errorText: TextView
-    private lateinit var nextButton: Button
+    private var viewPager: ViewPager2? = null
+    private var errorText: TextView? = null
+    private var nextButton: Button? = null
     private lateinit var adapter: OnboardingAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,28 +29,31 @@ class OnboardingActivity : AppCompatActivity() {
             return
         }
         setContentView(R.layout.activity_onboarding)
-        viewPager = findViewById(R.id.view_pager)
-        errorText = findViewById(R.id.error_text)
-        nextButton = findViewById(R.id.btn_next)
+        try {
+            viewPager = findViewById(R.id.view_pager)
+            errorText = findViewById(R.id.error_text)
+            nextButton = findViewById(R.id.btn_next)
+        } catch (e: Exception) {
+            Log.e(TAG, "Unable to find onboarding views", e)
+        }
 
         val items = loadItems()
         if (items.isEmpty()) {
-            viewPager.visibility = View.GONE
-            errorText.visibility = View.VISIBLE
-            nextButton.text = getString(android.R.string.ok)
-            nextButton.setOnClickListener { finish() }
+            viewPager?.visibility = View.GONE
+            errorText?.visibility = View.VISIBLE
+            nextButton?.text = getString(android.R.string.ok)
+            nextButton?.setOnClickListener { finish() }
             return
         }
         adapter = OnboardingAdapter(items)
-        viewPager.adapter = adapter
+        viewPager?.adapter = adapter
 
-        nextButton.setOnClickListener {
-            val next = viewPager.currentItem + 1
+        nextButton?.setOnClickListener {
+            val next = (viewPager?.currentItem ?: 0) + 1
             if (next < adapter.itemCount) {
-                viewPager.currentItem = next
+                viewPager?.currentItem = next
             } else {
-                startActivity(Intent(this, LinkCodeActivity::class.java))
-                finish()
+                finishOnboarding()
             }
         }
     }
@@ -86,8 +90,22 @@ class OnboardingActivity : AppCompatActivity() {
         }
     }
 
-    private fun startMain() {
-        startActivity(Intent(this, MainActivity::class.java))
+    private fun finishOnboarding() {
+        try {
+            val prefs = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+            prefs.edit().putBoolean("onboarding_done", true).apply()
+        } catch (e: Exception) {
+            Log.w(TAG, "Unable to save onboarding flag", e)
+        }
+        startMain(openAccount = true)
+    }
+
+    private fun startMain(openAccount: Boolean = false) {
+        val intent = Intent(this, MainActivity::class.java)
+        if (openAccount) {
+            intent.putExtra(MainActivity.EXTRA_OPEN_ACCOUNT, true)
+        }
+        startActivity(intent)
         finish()
     }
 

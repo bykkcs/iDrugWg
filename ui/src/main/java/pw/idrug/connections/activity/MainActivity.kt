@@ -69,7 +69,15 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val prefsAuth = getSharedPreferences("auth", Context.MODE_PRIVATE)
-        if (prefsAuth.getString("token", null).isNullOrEmpty()) {
+        val prefsApp = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        val tokenEmpty = prefsAuth.getString("token", null).isNullOrEmpty()
+        val showOnboarding = try {
+            !prefsApp.getBoolean("onboarding_done", false)
+        } catch (e: Exception) {
+            Log.w("MainActivity", "Unable to read onboarding flag", e)
+            true
+        }
+        if (tokenEmpty && showOnboarding) {
             startActivity(Intent(this, OnboardingActivity::class.java))
             finish()
             return
@@ -113,19 +121,25 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
             }
         }
 
-        // Open VPN tab by default
+        // Open initial tab
         if (savedInstanceState == null) {
-            val fragment = TunnelListFragment()
-            val data = intent?.data
-            if (intent?.action == Intent.ACTION_VIEW && data?.scheme == "idrug" && data.host == "apps") {
-                fragment.arguments = Bundle().apply {
-                    putString(TunnelListFragment.ARG_OPEN_TUNNEL_FOR_APPS, data.lastPathSegment)
+            val openAccount = intent?.getBooleanExtra(EXTRA_OPEN_ACCOUNT, false) == true
+            val fragment: Fragment = if (openAccount) {
+                AccountFragment()
+            } else {
+                val def = TunnelListFragment()
+                val data = intent?.data
+                if (intent?.action == Intent.ACTION_VIEW && data?.scheme == "idrug" && data.host == "apps") {
+                    def.arguments = Bundle().apply {
+                        putString(TunnelListFragment.ARG_OPEN_TUNNEL_FOR_APPS, data.lastPathSegment)
+                    }
                 }
+                def
             }
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
                 .commit()
-            bottomNavigation?.selectedItemId = R.id.nav_vpn
+            bottomNavigation?.selectedItemId = if (openAccount) R.id.nav_account else R.id.nav_vpn
         }
 
         // --- Получить FCM token (опционально, если вдруг надо где-то показать или залогать) ---
@@ -221,5 +235,9 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                 .replace(R.id.fragment_container, fragment)
                 .commit()
         }
+    }
+
+    companion object {
+        const val EXTRA_OPEN_ACCOUNT = "open_account"
     }
 }
