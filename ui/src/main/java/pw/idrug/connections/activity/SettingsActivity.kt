@@ -9,6 +9,10 @@ import android.os.Environment
 import android.provider.Settings
 import android.view.MenuItem
 import android.widget.Toast
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import org.json.JSONObject
+import pw.idrug.connections.BuildConfig
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.fragment.app.commit
@@ -115,50 +119,74 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
-private fun checkForOtaUpdate() {
-    try {
-        val context = requireContext()
-        val url = "https://idrug.pw/ota/iDrugConnections.apk"
-        val fileName = "iDrugConnections.apk"
-        val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName)
-        if (file.exists()) {
-            val deleted = file.delete()
-            if (!deleted) {
-                Toast.makeText(context, context.getString(R.string.update_delete_old_failed), Toast.LENGTH_SHORT).show()
+        private fun checkForOtaUpdate() {
+            lifecycleScope.launch {
+                val context = requireContext()
+                val manifestUrl = "https://idrug.pw/ota/manifest.json"
+                try {
+                    val client = OkHttpClient()
+                    val request = Request.Builder().url(manifestUrl).build()
+                    val response = withContext(Dispatchers.IO) { client.newCall(request).execute() }
+                    if (!response.isSuccessful) {
+                        Toast.makeText(context, getString(R.string.update_check_error, response.code), Toast.LENGTH_LONG).show()
+                        return@launch
+                    }
+                    val json = JSONObject(response.body?.string() ?: "{}")
+                    val versionCode = json.optInt("versionCode", -1)
+                    val apkUrl = json.optString("apkUrl")
+                    if (versionCode <= BuildConfig.VERSION_CODE || apkUrl.isBlank()) {
+                        Toast.makeText(context, getString(R.string.update_no_new_version), Toast.LENGTH_SHORT).show()
+                        return@launch
+                    }
+                    downloadApk(apkUrl)
+                } catch (e: Exception) {
+                    Toast.makeText(context, getString(R.string.update_check_error, e.localizedMessage ?: ""), Toast.LENGTH_LONG).show()
+                }
             }
         }
 
-        val request = DownloadManager.Request(Uri.parse(url))
-            .setTitle("Downloading update")
-            .setDescription("Downloading new application version")
-            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-            .setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, fileName)
-            .setAllowedOverMetered(true)
-            .setAllowedOverRoaming(true)
+        private fun downloadApk(url: String) {
+            try {
+                val context = requireContext()
+                val fileName = "iDrugConnections.apk"
+                val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName)
+                if (file.exists()) {
+                    val deleted = file.delete()
+                    if (!deleted) {
+                        Toast.makeText(context, context.getString(R.string.update_delete_old_failed), Toast.LENGTH_SHORT).show()
+                    }
+                }
 
-        val manager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-        downloadId = manager.enqueue(request)
+                val request = DownloadManager.Request(Uri.parse(url))
+                    .setTitle("Downloading update")
+                    .setDescription("Downloading new application version")
+                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    .setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, fileName)
+                    .setAllowedOverMetered(true)
+                    .setAllowedOverRoaming(true)
 
-        Toast.makeText(context, context.getString(R.string.update_download_started), Toast.LENGTH_SHORT).show()
+                val manager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                downloadId = manager.enqueue(request)
 
-        // Corrected call:
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            context.registerReceiver(
-                downloadReceiver,
-                IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE),
-                Context.RECEIVER_NOT_EXPORTED
-            )
-        } else {
-            context.registerReceiver(
-                downloadReceiver,
-                IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
-            )
+                Toast.makeText(context, context.getString(R.string.update_download_started), Toast.LENGTH_SHORT).show()
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    context.registerReceiver(
+                        downloadReceiver,
+                        IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE),
+                        Context.RECEIVER_NOT_EXPORTED
+                    )
+                } else {
+                    context.registerReceiver(
+                        downloadReceiver,
+                        IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
+                    )
+                }
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), getString(R.string.update_start_error, e.localizedMessage), Toast.LENGTH_LONG).show()
+                e.printStackTrace()
+            }
         }
-    } catch (e: Exception) {
-        Toast.makeText(requireContext(), getString(R.string.update_start_error, e.localizedMessage), Toast.LENGTH_LONG).show()
-        e.printStackTrace()
-    }
-}
 
 
         private fun installApk() {
