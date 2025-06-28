@@ -19,7 +19,7 @@ public class TunnelDetailFragmentBindingImpl extends TunnelDetailFragmentBinding
         sViewsWithIds.put(R.id.interface_name_label, 36);
         sViewsWithIds.put(R.id.public_key_label, 37);
         sViewsWithIds.put(R.id.listen_port_mtu_barrier, 38);
-        sViewsWithIds.put(R.id.amnezia_barrier, 39);
+        sViewsWithIds.put(R.id.idrugconnections_barrier, 39);
         sViewsWithIds.put(R.id.applications_label, 40);
     }
     // views

@@ -3411,7 +3411,7 @@ int id allowed_ips_label 0x7f090052
 int id allowed_ips_label_layout 0x7f090053
 int id allowed_ips_text 0x7f090054
 int id always 0x7f090055
-int id amnezia_barrier 0x7f090056
+int id idrugconnections_barrier 0x7f090056
 int id androidx_window_activity_scope 0x7f090057
 int id animateToEnd 0x7f090058
 int id animateToStart 0x7f090059

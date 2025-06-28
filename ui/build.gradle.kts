@@ -3,7 +3,7 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val pkg: String = providers.gradleProperty("amneziawgPackageName").get()
+val pkg: String = providers.gradleProperty("idrugconnectionsPackageName").get()
 
 plugins {
     alias(libs.plugins.android.application)
@@ -22,8 +22,8 @@ android {
     defaultConfig {
         applicationId = pkg
         targetSdk = 34
-        versionCode = providers.gradleProperty("amneziawgVersionCode").get().toInt()
-        versionName = providers.gradleProperty("amneziawgVersionName").get()
+        versionCode = providers.gradleProperty("idrugconnectionsVersionCode").get().toInt()
+        versionName = providers.gradleProperty("idrugconnectionsVersionName").get()
         buildConfigField("int", "MIN_SDK_VERSION", minSdk.toString())
     }
     compileOptions {
@@ -81,7 +81,6 @@ dependencies {
     implementation(libs.zxing.android.embedded)
     implementation(libs.kotlinx.coroutines.android)
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
-    implementation("org.json:json:20231013")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("com.google.zxing:core:3.5.1")
     implementation("com.squareup.picasso:picasso:2.71828")

@@ -111,7 +111,7 @@ id addresses_text
 id allowed_ips_label
 id allowed_ips_label_layout
 id allowed_ips_text
-id amnezia_barrier
+id idrugconnections_barrier
 id app_icon
 id app_list
 id app_name
