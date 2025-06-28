@@ -47,6 +47,20 @@ class OnboardingActivity : AppCompatActivity() {
         }
         adapter = OnboardingAdapter(items)
         viewPager?.adapter = adapter
+        viewPager?.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                try {
+                    nextButton?.text = if (position == adapter.itemCount - 1) {
+                        getString(R.string.onboarding_start)
+                    } else {
+                        getString(R.string.onboarding_next)
+                    }
+                } catch (e: Exception) {
+                    Log.w(TAG, "Failed to update button text", e)
+                }
+            }
+        })
 
         nextButton?.setOnClickListener {
             val next = (viewPager?.currentItem ?: 0) + 1
@@ -91,12 +105,6 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun finishOnboarding() {
-        try {
-            val prefs = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-            prefs.edit().putBoolean("onboarding_done", true).apply()
-        } catch (e: Exception) {
-            Log.w(TAG, "Unable to save onboarding flag", e)
-        }
         startMain(openAccount = true)
     }
 
