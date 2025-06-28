@@ -70,9 +70,11 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val prefs = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        val onboardingShown = prefs.getBoolean("onboarding_shown", false)
         val prefsAuth = getSharedPreferences("auth", Context.MODE_PRIVATE)
         val tokenEmpty = prefsAuth.getString("token", null).isNullOrEmpty()
-        if (tokenEmpty) {
+        if (!onboardingShown && tokenEmpty) {
             startActivity(Intent(this, OnboardingActivity::class.java))
             finish()
             return
