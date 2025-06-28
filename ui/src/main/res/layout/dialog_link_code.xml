@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:text="@string/link_device"
         android:paddingBottom="16dp"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="?attr/colorOnSurface" />
 
     <TextView
         android:id="@+id/code_text"
@@ -23,12 +24,13 @@
         android:textSize="36sp"
         android:textStyle="bold"
         android:padding="12dp"
-        android:textColor="@android:color/black" />
+        android:textColor="?attr/colorOnSurface" />
 
     <TextView
         android:id="@+id/timer_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp" />
+        android:paddingTop="8dp"
+        android:textColor="?attr/colorOnSurface" />
 
 </LinearLayout>

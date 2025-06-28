@@ -38,7 +38,7 @@
     </plurals>
     <string name="all_applications">All Applications</string>
     <string name="exclude_from_tunnel">Exclude</string>
-    <string name="include_in_tunnel">Include only</string>
+    <string name="include_in_tunnel">Include</string>
     <plurals name="include_n_applications">
         <item quantity="one">Include %d app</item>
         <item quantity="other">Include %d apps</item>
@@ -55,7 +55,7 @@
         <item quantity="one">second</item>
         <item quantity="other">seconds</item>
     </plurals>
-    <string name="use_all_applications">Use all apps</string>
+    <string name="use_all_applications">Select all</string>
     <string name="add_peer">Add peer</string>
     <string name="addresses">Addresses</string>
     <string name="applications">Applications</string>
@@ -211,7 +211,7 @@
     <string name="shell_marker_count_error">Shell expected 4 markers, received %d</string>
     <string name="shell_start_error">Shell failed to start: %d</string>
     <string name="success_application_will_restart">Success. The application will now restart…</string>
-    <string name="toggle_all">Toggle All</string>
+    <string name="toggle_all">Invert all</string>
     <string name="toggle_error">Error toggling tunnel: %s</string>
     <string name="tools_installer_already">awg and awg-quick are already installed</string>
     <string name="tools_installer_failure">Unable to install command-line tools (no root?)</string>
@@ -286,6 +286,33 @@
 <string name="server_multihop_germany">Multihop Germany</string>
 <string name="server_bulgaria">Bulgaria</string>
 <string name="server_madrid">Madrid</string>
+    <string name="update_delete_old_failed">Failed to delete old update file</string>
+    <string name="update_download_started">Update download started</string>
+    <string name="update_start_error">Error starting update: %s</string>
+    <string name="apk_not_found">APK not found!</string>
+    <string name="permission_unknown_sources">Grant permission to install from unknown sources and try again</string>
+    <string name="apk_open_error">Failed to open APK for installation: %s</string>
+    <string name="qr_login_confirmed">QR login confirmed</string>
+    <string name="qr_confirmation_error">Confirmation error: %s</string>
+    <string name="qr_not_recognized">QR code not recognized</string>
+    <string name="login_telegram_first">Please log in via Telegram first</string>
+    <string name="subscription_renewed">Subscription renewed</string>
+    <string name="error_with_message">Error: %s</string>
+    <string name="network_error_msg">Network error: %s</string>
+    <string name="profile_processing_error">Profile processing error: %s</string>
+    <string name="profile_retrieval_failed">Failed to retrieve profile: %d</string>
+    <string name="logged_out">You have logged out</string>
+    <string name="select_server">Select a server</string>
+    <string name="subscription_inactive_msg">Subscription inactive</string>
+    <string name="config_already_added">Config already added</string>
+    <string name="tunnel_added">Tunnel added</string>
+    <string name="tunnel_creation_error">Tunnel creation error: %s</string>
+    <string name="qr_generation_error">QR code generation error</string>
+    <string name="unable_open_telegram">Unable to open Telegram</string>
+    <string name="login_successful">Login successful</string>
+    <string name="telegram_login_successful">Telegram login successful!</string>
+    <string name="invalid_response">Invalid response</string>
+    <string name="code_invalid_or_expired">Code invalid or expired</string>
     <string name="import_disclaimer">Ensure that you obtained the configuration file from a trusted source.
 
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>

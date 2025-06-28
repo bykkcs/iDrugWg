@@ -107,7 +107,7 @@ class AppListDialogFragment : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val alertDialogBuilder = MaterialAlertDialogBuilder(requireActivity())
+        val alertDialogBuilder = MaterialAlertDialogBuilder(requireActivity(), R.style.MonetAlertDialog)
         val binding = AppListDialogFragmentBinding.inflate(requireActivity().layoutInflater, null, false)
         binding.executePendingBindings()
         alertDialogBuilder.setView(binding.root)
@@ -121,7 +121,7 @@ class AppListDialogFragment : DialogFragment() {
             })
         }
         alertDialogBuilder.setPositiveButton(" ") { _, _ -> setSelectionAndDismiss() }
-        alertDialogBuilder.setNegativeButton(R.string.cancel) { dialog, _ -> dialog.dismiss() }
+        // remove explicit cancel button to keep buttons compact
         alertDialogBuilder.setNeutralButton(R.string.toggle_all) { _, _ -> }
         binding.fragment = this
         binding.appData = appData

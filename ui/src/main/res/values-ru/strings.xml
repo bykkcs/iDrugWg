@@ -55,8 +55,8 @@
         <item quantity="other">%d включено</item>
     </plurals>
     <string name="all_applications">Все приложения</string>
-    <string name="exclude_from_tunnel">Исключить для</string>
-    <string name="include_in_tunnel">Включить для</string>
+    <string name="exclude_from_tunnel">Исключить</string>
+    <string name="include_in_tunnel">Включить</string>
     <plurals name="include_n_applications">
         <item quantity="one">Включить %d приложение</item>
         <item quantity="few">Включить %d приложения</item>
@@ -81,7 +81,7 @@
         <item quantity="many">секунд</item>
         <item quantity="other">секунд</item>
     </plurals>
-    <string name="use_all_applications">Использовать все приложения</string>
+    <string name="use_all_applications">Выбрать все</string>
     <string name="add_peer">Добавить пир</string>
     <string name="addresses">Адреса</string>
     <string name="applications">Приложения</string>
@@ -233,7 +233,7 @@
     <string name="shell_marker_count_error">Shell ожидает 4 маркера, получено %d</string>
     <string name="shell_start_error">Не удалось запустить Shell: %d</string>
     <string name="success_application_will_restart">Успешно. Приложение будет перезапущено…</string>
-    <string name="toggle_all">Инвертировать все</string>
+    <string name="toggle_all">Инверт. все</string>
     <string name="toggle_error">Ошибка переключения туннеля iDrug Connections: %s</string>
     <string name="tools_installer_already">awg и awg-quick уже установлены</string>
     <string name="tools_installer_failure">Не удалось установить инструменты командной строки (нет root?)</string>
@@ -287,7 +287,7 @@
     <string name="choose_server">Выберите сервер</string>
     <string name="download_config">Скачать конфиг</string>
     <string name="renew_subscription">Продлить подписку</string>
-    <string name="link_device">Привязать устройство</string>
+    <string name="link_device">Привязать устр.</string>
     <string name="login_with_code">Войти через код</string>
     <string name="enter_code">Введите код</string>
     <string name="submit_code">Войти</string>
@@ -307,5 +307,32 @@
 <string name="server_multihop_germany">Мультихоп Германия</string>
 <string name="server_bulgaria">Болгария</string>
 <string name="server_madrid">Мадрид</string>
+    <string name="update_delete_old_failed">Не удалось удалить старый файл обновления</string>
+    <string name="update_download_started">Начата загрузка обновления</string>
+    <string name="update_start_error">Ошибка запуска обновления: %s</string>
+    <string name="apk_not_found">APK не найден</string>
+    <string name="permission_unknown_sources">Разрешите установку из неизвестных источников и повторите</string>
+    <string name="apk_open_error">Не удалось открыть APK для установки: %s</string>
+    <string name="qr_login_confirmed">Вход по QR подтверждён</string>
+    <string name="qr_confirmation_error">Ошибка подтверждения: %s</string>
+    <string name="qr_not_recognized">QR-код не распознан</string>
+    <string name="login_telegram_first">Сначала войдите через Telegram</string>
+    <string name="subscription_renewed">Подписка продлена</string>
+    <string name="error_with_message">Ошибка: %s</string>
+    <string name="network_error_msg">Сетевая ошибка: %s</string>
+    <string name="profile_processing_error">Ошибка обработки профиля: %s</string>
+    <string name="profile_retrieval_failed">Не удалось получить профиль: %d</string>
+    <string name="logged_out">Вы вышли из аккаунта</string>
+    <string name="select_server">Выберите сервер</string>
+    <string name="subscription_inactive_msg">Подписка не активна</string>
+    <string name="config_already_added">Конфиг уже добавлен</string>
+    <string name="tunnel_added">Туннель добавлен</string>
+    <string name="tunnel_creation_error">Ошибка создания туннеля: %s</string>
+    <string name="qr_generation_error">Ошибка генерации QR-кода</string>
+    <string name="unable_open_telegram">Не удалось открыть Telegram</string>
+    <string name="login_successful">Вход выполнен</string>
+    <string name="telegram_login_successful">Вход через Telegram выполнен!</string>
+    <string name="invalid_response">Неверный ответ</string>
+    <string name="code_invalid_or_expired">Код неверный или истёк</string>
     <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
 </resources>

@@ -124,7 +124,7 @@ private fun checkForOtaUpdate() {
         if (file.exists()) {
             val deleted = file.delete()
             if (!deleted) {
-                Toast.makeText(context, "Failed to delete old update file", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, context.getString(R.string.update_delete_old_failed), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -139,7 +139,7 @@ private fun checkForOtaUpdate() {
         val manager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         downloadId = manager.enqueue(request)
 
-        Toast.makeText(context, "Update download started", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, context.getString(R.string.update_download_started), Toast.LENGTH_SHORT).show()
 
         // Corrected call:
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -155,7 +155,7 @@ private fun checkForOtaUpdate() {
             )
         }
     } catch (e: Exception) {
-        Toast.makeText(requireContext(), "Error starting update: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), getString(R.string.update_start_error, e.localizedMessage), Toast.LENGTH_LONG).show()
         e.printStackTrace()
     }
 }
@@ -165,7 +165,7 @@ private fun checkForOtaUpdate() {
             val fileName = "iDrugConnections.apk"
             val file = File(requireContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName)
             if (!file.exists()) {
-                Toast.makeText(requireContext(), "APK not found!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.apk_not_found), Toast.LENGTH_SHORT).show()
                 return
             }
             val apkUri = FileProvider.getUriForFile(
@@ -178,7 +178,7 @@ private fun checkForOtaUpdate() {
                     val intent = Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES)
                     intent.data = Uri.parse("package:" + requireContext().packageName)
                     startActivity(intent)
-                    Toast.makeText(requireContext(), "Grant permission to install from unknown sources and try again", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), getString(R.string.permission_unknown_sources), Toast.LENGTH_LONG).show()
                     return
                 }
             }
@@ -189,7 +189,7 @@ private fun checkForOtaUpdate() {
             try {
                 startActivity(intent)
             } catch (e: Exception) {
-                Toast.makeText(requireContext(), "Failed to open APK for installation: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), getString(R.string.apk_open_error, e.message), Toast.LENGTH_LONG).show()
             }
         }
     }
