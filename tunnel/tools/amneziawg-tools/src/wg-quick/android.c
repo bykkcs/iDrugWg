@@ -612,23 +612,10 @@ static int32_t dnsresolver_set_resolver_configuration(void *handle, const struct
 
 static void auto_su(int argc, char *argv[])
 {
-	char *args[argc + 4];
-
-	if (!getuid())
-		return;
-
-	args[0] = "su";
-	args[1] = "-p";
-	args[2] = "-c";
-	memcpy(&args[3], argv, argc * sizeof(*args));
-	args[argc + 3] = NULL;
-
-	printf("[$] su -p -c ");
-	for (int i = 0; i < argc; ++i)
-		printf("%s%c", argv[i], i == argc - 1 ? '\n' : ' ');
-
-	execvp("su", args);
-	exit(errno);
+        (void)argc;
+        (void)argv;
+        /* Root escalation disabled for Play compatibility */
+        return;
 }
 
 static void add_if(const char *iface)
