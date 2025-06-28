@@ -335,4 +335,30 @@
     <string name="invalid_response">Неверный ответ</string>
     <string name="code_invalid_or_expired">Код неверный или истёк</string>
     <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
+    <string name="onboarding_next">Далее</string>
+    <string name="onboarding_start">Начать</string>
+    <string-array name="onboard_emojis">
+        <item>🔒</item>
+        <item>📡</item>
+        <item>📱</item>
+        <item>📺</item>
+        <item>🚦</item>
+        <item>💸</item>
+    </string-array>
+    <string-array name="onboard_titles">
+        <item>Анонимность без компромиссов</item>
+        <item>Мощные серверы по всему миру</item>
+        <item>Автозагрузка конфигов</item>
+        <item>Android TV поддержка</item>
+        <item>Раздельное туннелирование</item>
+        <item>Прозрачные тарифы</item>
+    </string-array>
+    <string-array name="onboard_descriptions">
+        <item>Твой реальный IP и действия надёжно скрыты. Мы не ведём логи. Всё, что делаешь — только твоё дело.</item>
+        <item>Локации — 🇩🇪 Германия, 🇸🇪 Швеция, 🇧🇬 Болгария, 🇪🇸 Испания и другие. Меняй страну за 1 клик.</item>
+        <item>Подключайся мгновенно. Конфиги и ключи автоматически сохраняются в приложении — ничего не теряется.</item>
+        <item>Удобное приложение для телевизоров — линкинг через код, запуск в 1 клик. Всё, как надо.</item>
+        <item>В настройках туннеля выбери приложения — их трафик пойдёт только через VPN, остальное напрямую.</item>
+        <item>Тарифы от 250₽ в месяц. Без скрытых платежей, оплата любым способом: карта, крипта, всё что удобно.</item>
+    </string-array>
 </resources>

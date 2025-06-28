@@ -34,6 +34,7 @@ import pw.idrug.connections.model.ObservableTunnel
  * editing the configuration and interface state of iDrugConnections tunnels.
  */
 class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener {
+    companion object { const val EXTRA_OPEN_ACCOUNT = "open_account" }
     private var actionBar: ActionBar? = null
     private var isTwoPaneLayout = false
     private var backPressedCallback: OnBackPressedCallback? = null
@@ -106,11 +107,11 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
             }
         }
 
-        // Open VPN tab by default
         if (savedInstanceState == null) {
-            val fragment = TunnelListFragment()
+            val openAccount = intent?.getBooleanExtra(EXTRA_OPEN_ACCOUNT, false) == true
+            val fragment: Fragment = if (openAccount) AccountFragment() else TunnelListFragment()
             val data = intent?.data
-            if (intent?.action == Intent.ACTION_VIEW && data?.scheme == "idrug" && data.host == "apps") {
+            if (!openAccount && intent?.action == Intent.ACTION_VIEW && data?.scheme == "idrug" && data.host == "apps") {
                 fragment.arguments = Bundle().apply {
                     putString(TunnelListFragment.ARG_OPEN_TUNNEL_FOR_APPS, data.lastPathSegment)
                 }
@@ -118,7 +119,7 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
                 .commit()
-            bottomNavigation?.selectedItemId = R.id.nav_vpn
+            bottomNavigation?.selectedItemId = if (openAccount) R.id.nav_account else R.id.nav_vpn
         }
 
         // --- Получить FCM token (опционально, если вдруг надо где-то показать или залогать) ---
