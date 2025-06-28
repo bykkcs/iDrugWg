@@ -8,6 +8,7 @@ package pw.idrug.connections.util
 import android.content.Context
 import android.util.TypedValue
 import androidx.annotation.AttrRes
+import androidx.annotation.StringRes
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import pw.idrug.connections.Application
@@ -29,3 +30,11 @@ val Preference.activity: SettingsActivity
 
 val Preference.lifecycleScope: CoroutineScope
     get() = activity.lifecycleScope
+
+fun Context.safeGetString(@StringRes resId: Int, vararg args: Any?): String {
+    return try {
+        getString(resId, *args)
+    } catch (_: Exception) {
+        "Error"
+    }
+}

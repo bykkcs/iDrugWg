@@ -290,4 +290,30 @@
 
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>
 </string>
+    <!-- Toast messages -->
+    <string name="toast_qr_login_confirmed">QR login confirmed</string>
+    <string name="toast_confirmation_error">Confirmation error: %1$s</string>
+    <string name="toast_qr_code_not_recognized">QR code not recognized</string>
+    <string name="toast_login_via_telegram_first">Please log in via Telegram first</string>
+    <string name="toast_subscription_renewed">Subscription renewed</string>
+    <string name="toast_error_with_message">Error: %1$s</string>
+    <string name="toast_network_error">Network error: %1$s</string>
+    <string name="toast_profile_processing_error">Profile processing error: %1$s</string>
+    <string name="toast_failed_retrieve_profile">Failed to retrieve profile: %1$d</string>
+    <string name="toast_logged_out">You have logged out</string>
+    <string name="toast_select_server">Select a server</string>
+    <string name="toast_subscription_inactive">Subscription inactive</string>
+    <string name="toast_config_already_added">Config already added</string>
+    <string name="toast_tunnel_added">Tunnel added</string>
+    <string name="toast_tunnel_creation_error">Tunnel creation error: %1$s</string>
+    <string name="toast_qr_code_generation_error">QR code generation error</string>
+    <string name="toast_unable_open_telegram">Unable to open Telegram</string>
+    <string name="toast_login_successful">Login successful</string>
+    <string name="toast_telegram_login_successful">Telegram login successful!</string>
+    <string name="toast_delete_old_update_file_failed">Failed to delete old update file</string>
+    <string name="toast_update_download_started">Update download started</string>
+    <string name="toast_update_start_error">Error starting update: %1$s</string>
+    <string name="toast_apk_not_found">APK not found!</string>
+    <string name="toast_grant_unknown_sources">Grant permission to install from unknown sources and try again</string>
+    <string name="toast_failed_open_apk">Failed to open APK for installation: %1$s</string>
 </resources>

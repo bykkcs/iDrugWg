@@ -22,6 +22,7 @@ import pw.idrug.connections.dialog.CodeInputDialogFragment
 import androidx.fragment.app.DialogFragment
 import pw.idrug.connections.Application
 import pw.idrug.connections.config.Config
+import pw.idrug.connections.util.safeGetString
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
@@ -79,16 +80,24 @@ class AccountFragment : Fragment() {
             if (!scanned.isNullOrEmpty()) {
                 confirmQrLoginToken(scanned) { success, message ->
                     safeUi {
+                        val ctx = requireContext()
                         Toast.makeText(
-                            requireContext(),
-                            if (success) "QR login confirmed" else "Confirmation error: $message",
+                            ctx,
+                            if (success)
+                                ctx.safeGetString(R.string.toast_qr_login_confirmed)
+                            else
+                                ctx.safeGetString(R.string.toast_confirmation_error, message ?: ""),
                             Toast.LENGTH_SHORT
                         ).show()
                         if (success) loadProfileAndSetupUI(requireView())
                     }
                 }
             } else {
-                Toast.makeText(requireContext(), "QR code not recognized", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    requireContext().safeGetString(R.string.toast_qr_code_not_recognized),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -144,14 +153,26 @@ class AccountFragment : Fragment() {
             setLoading(true)
             val token = prefs.getString("token", null)
             if (token == null) {
-                Toast.makeText(requireContext(), "Please log in via Telegram first", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    requireContext().safeGetString(R.string.toast_login_via_telegram_first),
+                    Toast.LENGTH_SHORT
+                ).show()
                 setLoading(false)
                 return@setOnClickListener
             }
             renewSubscription { success, resp ->
                 safeUi {
                     setLoading(false)
-                    Toast.makeText(requireContext(), if (success) "Subscription renewed" else "Error: $resp", Toast.LENGTH_SHORT).show()
+                    val ctx = requireContext()
+                    Toast.makeText(
+                        ctx,
+                        if (success)
+                            ctx.safeGetString(R.string.toast_subscription_renewed)
+                        else
+                            ctx.safeGetString(R.string.toast_error_with_message, resp ?: ""),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     if (success) loadProfileAndSetupUI(requireView())
                 }
             }
@@ -263,7 +284,11 @@ class AccountFragment : Fragment() {
             override fun onFailure(call: Call, e: IOException) {
                 safeUi {
                     setLoading(false)
-                    Toast.makeText(requireContext(), "Network error: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        requireContext().safeGetString(R.string.toast_network_error, e.message ?: ""),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
             override fun onResponse(call: Call, response: Response) {
@@ -294,12 +319,26 @@ class AccountFragment : Fragment() {
                             showAccountScreen(view, username, photoUrl, subsList)
                             syncTunnelsWithProfile()
                         } catch (e: Exception) {
-                            Toast.makeText(requireContext(), "Profile processing error: ${e.message}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                requireContext(),
+                                requireContext().safeGetString(
+                                    R.string.toast_profile_processing_error,
+                                    e.message ?: ""
+                                ),
+                                Toast.LENGTH_SHORT
+                            ).show()
                             subscriptions = emptyList()
                             showAccountScreen(view, prefs.getString("username", "") ?: "", prefs.getString("photo_url", null), emptyList())
                         }
                     } else {
-                        Toast.makeText(requireContext(), "Failed to retrieve profile: ${response.code}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            requireContext().safeGetString(
+                                R.string.toast_failed_retrieve_profile,
+                                response.code
+                            ),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
@@ -409,26 +448,42 @@ class AccountFragment : Fragment() {
             } catch (e: Exception) {}
             safeUi {
                 showLoginScreen(view)
-                Toast.makeText(requireContext(), "You have logged out", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    requireContext().safeGetString(R.string.toast_logged_out),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
 
     private fun handleDownloadConfig(view: View) {
         if (selectedServerId == null) {
-            Toast.makeText(requireContext(), "Select a server", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                requireContext().safeGetString(R.string.toast_select_server),
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
         val serverId = selectedServerId ?: return
         if (!subscriptions.any { it.location == serverId && it.active }) {
-            Toast.makeText(requireContext(), "Subscription inactive", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                requireContext().safeGetString(R.string.toast_subscription_inactive),
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
         val tunnelName = "idrug_$serverId"
         setLoading(true)
         val token = prefs.getString("token", null)
         if (token == null) {
-            Toast.makeText(requireContext(), "Log in via Telegram", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                requireContext().safeGetString(R.string.login_via_telegram),
+                Toast.LENGTH_SHORT
+            ).show()
             setLoading(false)
             return
         }
@@ -438,7 +493,11 @@ class AccountFragment : Fragment() {
             val tunnel = tunnels.firstOrNull { it.name == tunnelName }
             if (tunnel != null) {
                 safeUi {
-                    Toast.makeText(requireContext(), "Config already added", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        requireContext().safeGetString(R.string.toast_config_already_added),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     setLoading(false)
                 }
                 return@launch
@@ -454,14 +513,29 @@ class AccountFragment : Fragment() {
                                 val config = Config.parse(file.bufferedReader())
                                 tunnelManager.create(tunnelName, config)
                                 file.delete()
-                                Toast.makeText(requireContext(), "Tunnel added", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    requireContext(),
+                                    requireContext().safeGetString(R.string.toast_tunnel_added),
+                                    Toast.LENGTH_SHORT
+                                ).show()
                                 loadProfileAndSetupUI(requireView())
                             } catch (e: Exception) {
-                                Toast.makeText(requireContext(), "Tunnel creation error: ${e.message}", Toast.LENGTH_LONG).show()
+                                Toast.makeText(
+                                    requireContext(),
+                                    requireContext().safeGetString(
+                                        R.string.toast_tunnel_creation_error,
+                                        e.message ?: ""
+                                    ),
+                                    Toast.LENGTH_LONG
+                                ).show()
                             }
                         }
                     } else {
-                        Toast.makeText(requireContext(), "Error: $configOrError", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            requireContext(),
+                            requireContext().safeGetString(R.string.toast_error_with_message, configOrError ?: ""),
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
             }
@@ -500,7 +574,11 @@ class AccountFragment : Fragment() {
             }
             imageView.setImageBitmap(bitmap)
         } catch (e: Exception) {
-            Toast.makeText(requireContext(), "QR code generation error", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                requireContext().safeGetString(R.string.toast_qr_code_generation_error),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -518,7 +596,11 @@ class AccountFragment : Fragment() {
                             .putString("photo_url", photoUrl)
                             .apply()
                         safeUi {
-                            Toast.makeText(requireContext(), "QR login confirmed!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                requireContext(),
+                                requireContext().safeGetString(R.string.toast_qr_login_confirmed),
+                                Toast.LENGTH_SHORT
+                            ).show()
                             loadProfileAndSetupUI(requireView())
                         }
                     }
@@ -635,7 +717,11 @@ class AccountFragment : Fragment() {
         try {
             startActivity(intent)
         } catch (e: Exception) {
-            Toast.makeText(requireContext(), "Unable to open Telegram", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                requireContext().safeGetString(R.string.toast_unable_open_telegram),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -648,10 +734,18 @@ class AccountFragment : Fragment() {
                         .putString("token", token)
                         .putString("username", username)
                         .apply()
-                    Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        requireContext().safeGetString(R.string.toast_login_successful),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     showCorrectScreen(requireView())
                 } else {
-                    Toast.makeText(requireContext(), message ?: getString(R.string.login_via_telegram_or_qr), Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        requireContext(),
+                        message ?: requireContext().safeGetString(R.string.login_via_telegram_or_qr),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         }
@@ -697,7 +791,11 @@ class AccountFragment : Fragment() {
                     .putString("username", username)
                     .putString("photo_url", photoUrl)
                     .apply()
-                Toast.makeText(requireContext(), "Telegram login successful!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    requireContext().safeGetString(R.string.toast_telegram_login_successful),
+                    Toast.LENGTH_SHORT
+                ).show()
                 showCorrectScreen(requireView())
             }
             requireActivity().intent.data = null

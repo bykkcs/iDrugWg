@@ -308,4 +308,30 @@
 <string name="server_bulgaria">Болгария</string>
 <string name="server_madrid">Мадрид</string>
     <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
+    <!-- Toast messages -->
+    <string name="toast_qr_login_confirmed">Вход по QR подтверждён</string>
+    <string name="toast_confirmation_error">Ошибка подтверждения: %1$s</string>
+    <string name="toast_qr_code_not_recognized">QR-код не распознан</string>
+    <string name="toast_login_via_telegram_first">Сначала войдите через Telegram</string>
+    <string name="toast_subscription_renewed">Подписка продлена</string>
+    <string name="toast_error_with_message">Ошибка: %1$s</string>
+    <string name="toast_network_error">Сетевая ошибка: %1$s</string>
+    <string name="toast_profile_processing_error">Ошибка обработки профиля: %1$s</string>
+    <string name="toast_failed_retrieve_profile">Не удалось получить профиль: %1$d</string>
+    <string name="toast_logged_out">Вы вышли из аккаунта</string>
+    <string name="toast_select_server">Выберите сервер</string>
+    <string name="toast_subscription_inactive">Подписка не активна</string>
+    <string name="toast_config_already_added">Конфиг уже добавлен</string>
+    <string name="toast_tunnel_added">Туннель добавлен</string>
+    <string name="toast_tunnel_creation_error">Ошибка создания туннеля: %1$s</string>
+    <string name="toast_qr_code_generation_error">Ошибка генерации QR-кода</string>
+    <string name="toast_unable_open_telegram">Не удалось открыть Telegram</string>
+    <string name="toast_login_successful">Вход выполнен</string>
+    <string name="toast_telegram_login_successful">Вход через Telegram выполнен!</string>
+    <string name="toast_delete_old_update_file_failed">Не удалось удалить старый файл обновления</string>
+    <string name="toast_update_download_started">Началась загрузка обновления</string>
+    <string name="toast_update_start_error">Ошибка запуска обновления: %1$s</string>
+    <string name="toast_apk_not_found">APK не найден!</string>
+    <string name="toast_grant_unknown_sources">Разрешите установку из неизвестных источников и попробуйте снова</string>
+    <string name="toast_failed_open_apk">Не удалось открыть APK для установки: %1$s</string>
 </resources>
