@@ -308,6 +308,5 @@
     <string name="telegram_login_successful">Вход через Telegram выполнен!</string>
     <string name="invalid_response">Неверный ответ</string>
     <string name="code_invalid_or_expired">Код неверный или истёк</string>
-    <string name="module_version_error">Невозможно определить версию модуля ядра</string>
     <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
 </resources>

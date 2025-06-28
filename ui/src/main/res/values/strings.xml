@@ -268,7 +268,6 @@
     <string name="apk_not_found">APK not found!</string>
     <string name="permission_unknown_sources">Grant permission to install from unknown sources and try again</string>
     <string name="apk_open_error">Failed to open APK for installation: %s</string>
-    <string name="module_version_error">Unable to determine kernel module version</string>
     <string name="qr_login_confirmed">QR login confirmed</string>
     <string name="qr_confirmation_error">Confirmation error: %s</string>
     <string name="qr_not_recognized">QR code not recognized</string>
