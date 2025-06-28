@@ -211,7 +211,10 @@ class TvMainActivity : AppCompatActivity() {
                 try {
                     tunnelFileImportResultLauncher.launch("*/*")
                 } catch (_: Throwable) {
-                    MaterialAlertDialogBuilder(binding.root.context).setMessage(R.string.tv_no_file_picker).setCancelable(false)
+                    MaterialAlertDialogBuilder(
+                        binding.root.context,
+                        R.style.iDrugConnectionsTheme_AlertDialog
+                    ).setMessage(R.string.tv_no_file_picker).setCancelable(false)
                         .setPositiveButton(android.R.string.ok) { _, _ ->
                             try {
                                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://webstoreredirect")))

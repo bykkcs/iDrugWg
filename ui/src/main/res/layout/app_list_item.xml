@@ -45,7 +45,9 @@
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:singleLine="true"
+            android:minEms="8"
+            android:maxEms="20"
             android:text="@{key}"
             android:textAppearance="?attr/textAppearanceBodyLarge"
             tools:text="@tools:sample/full_names" />

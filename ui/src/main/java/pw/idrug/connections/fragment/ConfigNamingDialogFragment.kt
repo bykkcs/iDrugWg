@@ -54,7 +54,10 @@ class ConfigNamingDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val activity = requireActivity()
-        val alertDialogBuilder = MaterialAlertDialogBuilder(activity)
+        val alertDialogBuilder = MaterialAlertDialogBuilder(
+            activity,
+            R.style.iDrugConnectionsTheme_AlertDialog
+        )
         alertDialogBuilder.setTitle(R.string.import_from_qr_code)
         binding = ConfigNamingDialogFragmentBinding.inflate(activity.layoutInflater, null, false)
         binding?.apply {

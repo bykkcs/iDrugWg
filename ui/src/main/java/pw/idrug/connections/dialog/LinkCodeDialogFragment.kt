@@ -21,7 +21,10 @@ class LinkCodeDialogFragment : DialogFragment() {
         val codeText: TextView = view.findViewById(R.id.code_text)
         val timerText: TextView = view.findViewById(R.id.timer_text)
         fetchCode(codeText, timerText)
-        val dialog = MaterialAlertDialogBuilder(requireContext())
+        val dialog = MaterialAlertDialogBuilder(
+            requireContext(),
+            R.style.iDrugConnectionsTheme_AlertDialog
+        )
             .setView(view)
             .create()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)

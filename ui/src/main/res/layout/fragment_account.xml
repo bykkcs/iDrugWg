@@ -72,6 +72,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:minEms="8"
+                    android:maxEms="15"
                     android:text="@string/link_device" />
 
                 <Button
@@ -80,6 +84,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:minEms="8"
+                    android:maxEms="15"
                     android:text="@string/logout"
                     android:visibility="gone" />
             </LinearLayout>
