@@ -319,4 +319,32 @@
 
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>
 </string>
+    <string-array name="onboarding_emojis">
+        <item>🔒</item>
+        <item>📡</item>
+        <item>📱</item>
+        <item>📺</item>
+        <item>🚦</item>
+        <item>💸</item>
+    </string-array>
+    <string-array name="onboarding_titles">
+        <item>True Anonymity</item>
+        <item>Global Fast Servers</item>
+        <item>Auto Configs</item>
+        <item>Android TV ready</item>
+        <item>Split Tunneling</item>
+        <item>Transparent tariffs</item>
+    </string-array>
+    <string-array name="onboarding_descriptions">
+        <item>Your real IP and actions are hidden. No logs. No tracking. Your privacy, your rules.</item>
+        <item>Locations: Germany, Sweden, Bulgaria, Spain and more. Switch countries in one tap.</item>
+        <item>Instant connection. Configs and keys are saved in-app — nothing gets lost.</item>
+        <item>Dedicated TV app — link by code, launch in one click. Pure comfort.</item>
+        <item>Pick apps for VPN in tunnel settings — only their traffic goes via VPN, the rest goes direct.</item>
+        <item>Plans from 250₽/month. No hidden fees, pay by card or crypto, whatever suits you.</item>
+    </string-array>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_start">Start</string>
+    <string name="onboarding_error">Onboarding failed to load. Please update the app or contact support.</string>
 </resources>
+
