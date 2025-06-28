@@ -29,7 +29,8 @@ class OnboardingFragment : Fragment() {
         val emojis = resources.getStringArray(R.array.onboard_emojis)
         val titles = resources.getStringArray(R.array.onboard_titles)
         val descs = resources.getStringArray(R.array.onboard_descriptions)
-        val items = List(emojis.size) { i ->
+        val size = listOf(emojis.size, titles.size, descs.size).minOrNull() ?: 0
+        val items = List(size) { i ->
             OnboardingAdapter.Item(emojis[i], titles[i], descs[i])
         }
         viewPager = view.findViewById(R.id.viewPager)
@@ -58,7 +59,7 @@ class OnboardingFragment : Fragment() {
     }
 
     private fun updateButtonText() {
-        nextButton.text = if (::adapter.isInitialized && viewPager.currentItem == adapter.itemCount - 1) {
+        nextButton.text = if (::adapter.isInitialized && viewPager.currentItem >= adapter.itemCount - 1) {
             getString(R.string.onboarding_start)
         } else {
             getString(R.string.onboarding_next)
