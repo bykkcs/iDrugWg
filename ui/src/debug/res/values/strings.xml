@@ -244,6 +244,7 @@
     <string name="update_check_error">Update check failed: %s</string>
     <string name="update_no_new_version">Application is already up to date</string>
     <string name="your_username">Your username: %s</string>
+    <string name="module_version_error">Unable to determine kernel module version</string>
     <string name="import_disclaimer">Ensure that you obtained the configuration file from a trusted source.
     
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>
