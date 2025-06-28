@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="@string/enter_code"
         android:textSize="18sp"
-        android:textColor="#111111"
+        android:textColor="?attr/colorOnSurface"
         android:paddingBottom="12dp"/>
 
     <LinearLayout
