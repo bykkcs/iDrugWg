@@ -413,6 +413,8 @@ class AccountFragment : Fragment() {
 
     private fun afterLogout(view: View) {
         prefs.edit().clear().apply()
+        requireContext().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+            .edit().putBoolean("is_linked", false).apply()
         MainScope().launch {
             try {
                 val tunnelManager = Application.getTunnelManager()

@@ -53,13 +53,19 @@
             android:theme="@style/NoBackgroundTheme" />
 
         <activity
-            android:name=".activity.MainActivity"
-            android:exported="true">
+            android:name=".activity.LauncherActivity"
+            android:exported="true"
+            android:theme="@style/NoBackgroundTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true">
 
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
@@ -91,12 +97,7 @@
         <activity
             android:name=".activity.TvMainActivity"
             android:exported="true"
-            android:theme="@style/TvTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/TvTheme" />
         
         <activity
             android:name=".activity.SettingsActivity"
