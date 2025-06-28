@@ -682,7 +682,7 @@ class AccountFragment : Fragment() {
             .build()
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                callback(false, null, null, e.message)
+                callback(false, null, null, getString(R.string.network_error_msg, e.message))
             }
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
@@ -692,10 +692,10 @@ class AccountFragment : Fragment() {
                     if (!jwt.isNullOrEmpty() && !username.isNullOrEmpty()) {
                         callback(true, jwt, username, null)
                     } else {
-                        callback(false, null, null, "Invalid response")
+                        callback(false, null, null, getString(R.string.invalid_response))
                     }
                 } else {
-                    callback(false, null, null, "Code invalid or expired")
+                    callback(false, null, null, getString(R.string.code_invalid_or_expired))
                 }
             }
         })
