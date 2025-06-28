@@ -55,8 +55,8 @@
         <item quantity="other">%d включено</item>
     </plurals>
     <string name="all_applications">Все приложения</string>
-    <string name="exclude_from_tunnel">Исключить для</string>
-    <string name="include_in_tunnel">Включить для</string>
+    <string name="exclude_from_tunnel">Исключить</string>
+    <string name="include_in_tunnel">Включить</string>
     <plurals name="include_n_applications">
         <item quantity="one">Включить %d приложение</item>
         <item quantity="few">Включить %d приложения</item>
@@ -287,7 +287,7 @@
     <string name="choose_server">Выберите сервер</string>
     <string name="download_config">Скачать конфиг</string>
     <string name="renew_subscription">Продлить подписку</string>
-    <string name="link_device">Привязать устройство</string>
+    <string name="link_device">Привязать</string>
     <string name="login_with_code">Войти через код</string>
     <string name="enter_code">Введите код</string>
     <string name="submit_code">Войти</string>
@@ -332,5 +332,7 @@
     <string name="unable_open_telegram">Не удалось открыть Telegram</string>
     <string name="login_successful">Вход выполнен</string>
     <string name="telegram_login_successful">Вход через Telegram выполнен!</string>
+    <string name="invalid_response">Неверный ответ</string>
+    <string name="code_invalid_or_expired">Код неверный или истёк</string>
     <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
 </resources>

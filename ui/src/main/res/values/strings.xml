@@ -38,7 +38,7 @@
     </plurals>
     <string name="all_applications">All Applications</string>
     <string name="exclude_from_tunnel">Exclude</string>
-    <string name="include_in_tunnel">Include only</string>
+    <string name="include_in_tunnel">Include</string>
     <plurals name="include_n_applications">
         <item quantity="one">Include %d app</item>
         <item quantity="other">Include %d apps</item>
@@ -311,6 +311,8 @@
     <string name="unable_open_telegram">Unable to open Telegram</string>
     <string name="login_successful">Login successful</string>
     <string name="telegram_login_successful">Telegram login successful!</string>
+    <string name="invalid_response">Invalid response</string>
+    <string name="code_invalid_or_expired">Code invalid or expired</string>
     <string name="import_disclaimer">Ensure that you obtained the configuration file from a trusted source.
 
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>
