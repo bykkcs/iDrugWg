@@ -267,6 +267,8 @@
     <string name="nav_account_title">Account</string>
     <string name="update_application_title">Update application</string>
     <string name="update_application_summary">Check for a new version and update the app</string>
+    <string name="update_check_error">Update check failed: %s</string>
+    <string name="update_no_new_version">Application is already up to date</string>
     <string name="your_username">Your username: %s</string>
     <string name="import_disclaimer">Ensure that you obtained the configuration file from a trusted source.
     
