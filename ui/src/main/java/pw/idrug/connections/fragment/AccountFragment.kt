@@ -174,7 +174,7 @@ class AccountFragment : Fragment() {
         }
 
         view.findViewById<Button>(R.id.btn_referral).setOnClickListener {
-            val tgId = prefs.getString("username", "") ?: ""
+            val tgId = prefs.getString("telegram_id", prefs.getString("username", "")) ?: ""
             val shareIntent = Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
                 putExtra(Intent.EXTRA_TEXT, getString(R.string.referral_share_text, tgId))
@@ -313,8 +313,12 @@ class AccountFragment : Fragment() {
                             }
                             subscriptions = subsList
                             val username = obj.optString("username", prefs.getString("username", "") ?: "")
+                            val telegramId = obj.optString("telegram_id", username)
                             val photoUrl = obj.optString("photo_url", null)
-                            prefs.edit().putString("username", username).apply()
+                            prefs.edit()
+                                .putString("username", username)
+                                .putString("telegram_id", telegramId)
+                                .apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
                             showAccountScreen(view, username, photoUrl, subsList)
                             syncTunnelsWithProfile()
@@ -350,7 +354,8 @@ class AccountFragment : Fragment() {
     }
 
     private fun showAccountScreen(view: View, username: String, photoUrl: String?, subs: List<Subscription>) {
-        subscribeToUserTopic(username)
+        val telegramId = prefs.getString("telegram_id", prefs.getString("username", "")) ?: ""
+        subscribeToUserTopic(telegramId)
         view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.GONE
         val linkButton = view.findViewById<Button>(R.id.btn_link_device)
         linkButton.visibility = View.VISIBLE
@@ -578,8 +583,11 @@ class AccountFragment : Fragment() {
                     val status = json.optString("status")
                     if (status == "confirmed") {
                         val jwt = json.optString("token")
-                        getProfileFromJwt(jwt) { success, username, photoUrl ->
+                        getProfileFromJwt(jwt) { success, username, photoUrl, telegramId ->
                             safeUi {
+                                if (success) {
+                                    prefs.edit().putString("telegram_id", telegramId).apply()
+                                }
                                 onResult(success, jwt, username, photoUrl)
                             }
                         }
@@ -593,7 +601,7 @@ class AccountFragment : Fragment() {
         })
     }
 
-    private fun getProfileFromJwt(jwt: String, callback: (Boolean, String?, String?) -> Unit) {
+    private fun getProfileFromJwt(jwt: String, callback: (Boolean, String?, String?, String?) -> Unit) {
         val client = OkHttpClient()
         val request = Request.Builder()
             .url("https://idrug.pw/api/profile")
@@ -601,16 +609,17 @@ class AccountFragment : Fragment() {
             .build()
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                callback(false, null, null)
+                callback(false, null, null, null)
             }
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val json = JSONObject(response.body?.string() ?: "{}")
                     val username = json.optString("username", null)
+                    val telegramId = json.optString("telegram_id", username)
                     val photoUrl = json.optString("photo_url", null)
-                    callback(true, username, photoUrl)
+                    callback(true, username, photoUrl, telegramId)
                 } else {
-                    callback(false, null, null)
+                    callback(false, null, null, null)
                 }
             }
         })
@@ -676,12 +685,13 @@ class AccountFragment : Fragment() {
 
 
     private fun handleLinkCodeLogin(code: String) {
-        linkAccountWithCode(code) { success, token, username, message ->
+        linkAccountWithCode(code) { success, token, username, telegramId, message ->
             safeUi {
                 if (success && token != null && username != null) {
                     prefs.edit()
                         .putString("token", token)
                         .putString("username", username)
+                        .putString("telegram_id", telegramId ?: username)
                         .apply()
                     Toast.makeText(requireContext(), getString(R.string.login_successful), Toast.LENGTH_SHORT).show()
                     showCorrectScreen(requireView())
@@ -708,7 +718,9 @@ class AccountFragment : Fragment() {
                     val obj = JSONObject(response.body?.string() ?: "{}")
                     val jwt = obj.optString("jwt", null)
                     val username = obj.optString("username", null)
+                    val telegramId = obj.optString("telegram_id", username)
                     if (!jwt.isNullOrEmpty() && !username.isNullOrEmpty()) {
+                        prefs.edit().putString("telegram_id", telegramId).apply()
                         callback(true, jwt, username, null)
                     } else {
                         callback(false, null, null, getString(R.string.invalid_response))
@@ -725,11 +737,13 @@ class AccountFragment : Fragment() {
         if (data != null && data.scheme == "idrug" && data.host == "auth") {
             val jwt = data.getQueryParameter("jwt")
             val username = data.getQueryParameter("username")
+            val telegramId = data.getQueryParameter("telegram_id") ?: username
             val photoUrl = data.getQueryParameter("photo_url")
             if (!jwt.isNullOrEmpty() && !username.isNullOrEmpty()) {
                 prefs.edit()
                     .putString("token", jwt)
                     .putString("username", username)
+                    .putString("telegram_id", telegramId)
                     .putString("photo_url", photoUrl)
                     .apply()
                 Toast.makeText(requireContext(), getString(R.string.telegram_login_successful), Toast.LENGTH_SHORT).show()
