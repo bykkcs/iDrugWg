@@ -312,6 +312,8 @@
     <string name="qr_generation_error">QR code generation error</string>
     <string name="unable_open_telegram">Unable to open Telegram</string>
     <string name="login_successful">Login successful</string>
+    <string name="referral_link">Referral link</string>
+    <string name="referral_share_text">My referral link: https://idrug.pw/login?ref=%s</string>
     <string name="telegram_login_successful">Telegram login successful!</string>
     <string name="invalid_response">Invalid response</string>
     <string name="code_invalid_or_expired">Code invalid or expired</string>

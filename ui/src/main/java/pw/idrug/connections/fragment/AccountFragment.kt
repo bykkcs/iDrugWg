@@ -38,6 +38,7 @@ import android.graphics.Typeface
 import android.graphics.Color
 import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.messaging.FirebaseMessaging
 
 class AccountFragment : Fragment() {
 
@@ -170,6 +171,15 @@ class AccountFragment : Fragment() {
                     if (success) loadProfileAndSetupUI(requireView())
                 }
             }
+        }
+
+        view.findViewById<Button>(R.id.btn_referral).setOnClickListener {
+            val tgId = prefs.getString("username", "") ?: ""
+            val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, getString(R.string.referral_share_text, tgId))
+            }
+            startActivity(Intent.createChooser(shareIntent, null))
         }
     }
 
@@ -328,6 +338,7 @@ class AccountFragment : Fragment() {
         linkButton.text = getString(R.string.login_with_code)
         view.findViewById<Button>(R.id.btn_download).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_renew).visibility = View.GONE
+        view.findViewById<Button>(R.id.btn_referral).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout).visibility = View.GONE
         view.findViewById<Spinner>(R.id.spinner_server).visibility = View.GONE
         view.findViewById<TextView>(R.id.text_server_choice).visibility = View.GONE
@@ -339,6 +350,7 @@ class AccountFragment : Fragment() {
     }
 
     private fun showAccountScreen(view: View, username: String, photoUrl: String?, subs: List<Subscription>) {
+        subscribeToUserTopic(username)
         view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.GONE
         val linkButton = view.findViewById<Button>(R.id.btn_link_device)
         linkButton.visibility = View.VISIBLE
@@ -360,6 +372,7 @@ class AccountFragment : Fragment() {
         }
         view.findViewById<Button>(R.id.btn_download).visibility = View.VISIBLE
         view.findViewById<Button>(R.id.btn_renew).visibility = View.VISIBLE
+        view.findViewById<Button>(R.id.btn_referral).visibility = View.VISIBLE
         view.findViewById<TextView>(R.id.text_current_user).text = getString(R.string.your_username, username)
 
         val statusTextView = view.findViewById<TextView>(R.id.status_text)
@@ -385,10 +398,16 @@ class AccountFragment : Fragment() {
                 else -> name
             }
 
-            if (days != null && days <= 7 && s.active && !s.forever) {
+            val color = when {
+                s.forever -> Color.parseColor("#388E3C")
+                days != null && days >= 15 -> Color.parseColor("#388E3C")
+                days != null && days in 8..14 -> Color.parseColor("#FBC02D")
+                days != null && days in 0..7 -> Color.parseColor("#D32F2F")
+                else -> null
+            }
+            if (color != null && s.active) {
                 val spannable = SpannableString(str)
-                spannable.setSpan(StyleSpan(Typeface.BOLD), 0, str.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-                spannable.setSpan(ForegroundColorSpan(Color.parseColor("#D32F2F")), 0, str.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                spannable.setSpan(ForegroundColorSpan(color), 0, str.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
                 lines.add(spannable)
             } else {
                 lines.add(str)
@@ -718,6 +737,17 @@ class AccountFragment : Fragment() {
             }
             requireActivity().intent.data = null
         }
+    }
+
+    private fun subscribeToUserTopic(telegramId: String) {
+        FirebaseMessaging.getInstance().subscribeToTopic("user_$telegramId")
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("FCM", "Subscribed to user topic user_$telegramId")
+                } else {
+                    Log.e("FCM", "Failed to subscribe to user topic", task.exception)
+                }
+            }
     }
 
     class CircleTransform : com.squareup.picasso.Transformation {

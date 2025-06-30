@@ -331,6 +331,8 @@
     <string name="qr_generation_error">Ошибка генерации QR-кода</string>
     <string name="unable_open_telegram">Не удалось открыть Telegram</string>
     <string name="login_successful">Вход выполнен</string>
+    <string name="referral_link">Реферальная ссылка</string>
+    <string name="referral_share_text">Моя реферальная ссылка: https://idrug.pw/login?ref=%s</string>
     <string name="telegram_login_successful">Вход через Telegram выполнен!</string>
     <string name="invalid_response">Неверный ответ</string>
     <string name="code_invalid_or_expired">Код неверный или истёк</string>
