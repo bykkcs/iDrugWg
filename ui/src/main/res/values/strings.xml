@@ -320,6 +320,10 @@
 
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>
 </string>
+    <string name="connect">Connect</string>
+    <string name="active">active</string>
+    <string name="inactive">inactive</string>
+    <string name="no_configs">Нет доступных конфигов</string>
     <string-array name="onboarding_emojis">
         <item>🔒</item>
         <item>📡</item>
