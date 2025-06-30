@@ -99,8 +99,13 @@
 
         <activity
             android:name=".activity.TvEntryActivity"
-            android:exported="false"
-            android:theme="@style/TvTheme" />
+            android:exported="true"
+            android:theme="@style/TvTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".activity.ConfigListActivity"
