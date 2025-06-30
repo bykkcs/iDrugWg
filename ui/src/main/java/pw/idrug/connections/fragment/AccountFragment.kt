@@ -171,6 +171,15 @@ class AccountFragment : Fragment() {
                 }
             }
         }
+
+        view.findViewById<Button>(R.id.btn_referral).setOnClickListener {
+            val tgId = prefs.getString("telegram_id", "") ?: ""
+            val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, "Моя реферальная ссылка: https://idrug.pw/login?ref=$tgId")
+            }
+            startActivity(Intent.createChooser(shareIntent, null))
+        }
     }
 
     private fun isLoggedIn(): Boolean {
@@ -304,8 +313,13 @@ class AccountFragment : Fragment() {
                             subscriptions = subsList
                             val username = obj.optString("username", prefs.getString("username", "") ?: "")
                             val photoUrl = obj.optString("photo_url", null)
+                            val telegramId = obj.optString("telegram_id", null)
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
+                            if (!telegramId.isNullOrEmpty()) {
+                                prefs.edit().putString("telegram_id", telegramId).apply()
+                                FirebaseMessaging.getInstance().subscribeToTopic("user_$telegramId")
+                            }
                             showAccountScreen(view, username, photoUrl, subsList)
                             syncTunnelsWithProfile()
                         } catch (e: Exception) {
@@ -328,6 +342,7 @@ class AccountFragment : Fragment() {
         linkButton.text = getString(R.string.login_with_code)
         view.findViewById<Button>(R.id.btn_download).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_renew).visibility = View.GONE
+        view.findViewById<Button>(R.id.btn_referral).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout).visibility = View.GONE
         view.findViewById<Spinner>(R.id.spinner_server).visibility = View.GONE
         view.findViewById<TextView>(R.id.text_server_choice).visibility = View.GONE
@@ -339,6 +354,10 @@ class AccountFragment : Fragment() {
     }
 
     private fun showAccountScreen(view: View, username: String, photoUrl: String?, subs: List<Subscription>) {
+        val tgId = prefs.getString("telegram_id", null)
+        if (!tgId.isNullOrEmpty()) {
+            FirebaseMessaging.getInstance().subscribeToTopic("user_$tgId")
+        }
         view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.GONE
         val linkButton = view.findViewById<Button>(R.id.btn_link_device)
         linkButton.visibility = View.VISIBLE
@@ -360,6 +379,7 @@ class AccountFragment : Fragment() {
         }
         view.findViewById<Button>(R.id.btn_download).visibility = View.VISIBLE
         view.findViewById<Button>(R.id.btn_renew).visibility = View.VISIBLE
+        view.findViewById<Button>(R.id.btn_referral).visibility = View.VISIBLE
         view.findViewById<TextView>(R.id.text_current_user).text = getString(R.string.your_username, username)
 
         val statusTextView = view.findViewById<TextView>(R.id.status_text)
@@ -385,10 +405,16 @@ class AccountFragment : Fragment() {
                 else -> name
             }
 
-            if (days != null && days <= 7 && s.active && !s.forever) {
+            val color = when {
+                s.forever -> Color.parseColor("#388E3C")
+                days != null && days >= 15 -> Color.parseColor("#388E3C")
+                days != null && days in 8..14 -> Color.parseColor("#FBC02D")
+                days != null && days in 0..7 -> Color.parseColor("#D32F2F")
+                else -> null
+            }
+            if (color != null && s.active) {
                 val spannable = SpannableString(str)
-                spannable.setSpan(StyleSpan(Typeface.BOLD), 0, str.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-                spannable.setSpan(ForegroundColorSpan(Color.parseColor("#D32F2F")), 0, str.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                spannable.setSpan(ForegroundColorSpan(color), 0, str.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
                 lines.add(spannable)
             } else {
                 lines.add(str)
@@ -589,6 +615,11 @@ class AccountFragment : Fragment() {
                     val json = JSONObject(response.body?.string() ?: "{}")
                     val username = json.optString("username", null)
                     val photoUrl = json.optString("photo_url", null)
+                    val telegramId = json.optString("telegram_id", null)
+                    if (!telegramId.isNullOrEmpty()) {
+                        prefs.edit().putString("telegram_id", telegramId).apply()
+                        FirebaseMessaging.getInstance().subscribeToTopic("user_$telegramId")
+                    }
                     callback(true, username, photoUrl)
                 } else {
                     callback(false, null, null)
@@ -689,7 +720,12 @@ class AccountFragment : Fragment() {
                     val obj = JSONObject(response.body?.string() ?: "{}")
                     val jwt = obj.optString("jwt", null)
                     val username = obj.optString("username", null)
+                    val telegramId = obj.optString("telegram_id", null)
                     if (!jwt.isNullOrEmpty() && !username.isNullOrEmpty()) {
+                        if (!telegramId.isNullOrEmpty()) {
+                            prefs.edit().putString("telegram_id", telegramId).apply()
+                            FirebaseMessaging.getInstance().subscribeToTopic("user_$telegramId")
+                        }
                         callback(true, jwt, username, null)
                     } else {
                         callback(false, null, null, getString(R.string.invalid_response))
@@ -707,12 +743,17 @@ class AccountFragment : Fragment() {
             val jwt = data.getQueryParameter("jwt")
             val username = data.getQueryParameter("username")
             val photoUrl = data.getQueryParameter("photo_url")
+            val telegramId = data.getQueryParameter("telegram_id")
             if (!jwt.isNullOrEmpty() && !username.isNullOrEmpty()) {
                 prefs.edit()
                     .putString("token", jwt)
                     .putString("username", username)
                     .putString("photo_url", photoUrl)
                     .apply()
+                if (!telegramId.isNullOrEmpty()) {
+                    prefs.edit().putString("telegram_id", telegramId).apply()
+                    FirebaseMessaging.getInstance().subscribeToTopic("user_$telegramId")
+                }
                 Toast.makeText(requireContext(), getString(R.string.telegram_login_successful), Toast.LENGTH_SHORT).show()
                 showCorrectScreen(requireView())
             }
