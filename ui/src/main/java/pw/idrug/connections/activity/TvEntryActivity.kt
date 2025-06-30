@@ -19,6 +19,7 @@ import pw.idrug.connections.R
 import pw.idrug.connections.Application
 import pw.idrug.connections.config.Config
 import java.io.File
+import java.io.IOException
 
 class TvEntryActivity : AppCompatActivity() {
     private lateinit var codeInput: EditText
@@ -125,12 +126,14 @@ class TvEntryActivity : AppCompatActivity() {
                                     if (ok && config != null) {
                                         val file = File(filesDir, "wg_$name.conf")
                                         file.writeText(config)
-                                        try {
-                                            val parsed = Config.parse(file.bufferedReader())
-                                            tm.create(name, parsed)
-                                        } catch (_: Exception) {
-                                        } finally {
-                                            file.delete()
+                                        MainScope().launch {
+                                            try {
+                                                val parsed = Config.parse(file.bufferedReader())
+                                                tm.create(name, parsed)
+                                            } catch (_: Exception) {
+                                            } finally {
+                                                file.delete()
+                                            }
                                         }
                                     }
                                 }

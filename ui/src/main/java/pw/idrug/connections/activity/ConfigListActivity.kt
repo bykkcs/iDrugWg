@@ -45,15 +45,17 @@ class ConfigListActivity : AppCompatActivity() {
     }
 
     private fun requestToggle(tunnel: ObservableTunnel) {
-        if (Application.getBackend() is GoBackend) {
-            val intent = GoBackend.VpnService.prepare(this)
-            if (intent != null) {
-                pendingTunnel = tunnel
-                permissionLauncher.launch(intent)
-                return
+        lifecycleScope.launch {
+            if (Application.getBackend() is GoBackend) {
+                val intent = GoBackend.VpnService.prepare(this@ConfigListActivity)
+                if (intent != null) {
+                    pendingTunnel = tunnel
+                    permissionLauncher.launch(intent)
+                    return@launch
+                }
             }
+            toggleTunnel(tunnel)
         }
-        toggleTunnel(tunnel)
     }
 
     private fun toggleTunnel(tunnel: ObservableTunnel) {

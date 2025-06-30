@@ -17,6 +17,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import okhttp3.*
+import com.google.firebase.messaging.FirebaseMessaging
 import pw.idrug.connections.R
 import pw.idrug.connections.dialog.CodeInputDialogFragment
 import androidx.fragment.app.DialogFragment
