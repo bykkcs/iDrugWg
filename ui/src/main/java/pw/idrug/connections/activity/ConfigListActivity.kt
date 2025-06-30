@@ -28,19 +28,29 @@ class ConfigListActivity : AppCompatActivity() {
             pendingTunnel = null
         }
 
+    private lateinit var emptyView: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tv_config_list)
         val list = findViewById<RecyclerView>(R.id.config_list)
-        val empty = findViewById<TextView>(R.id.empty_view)
+        emptyView = findViewById(R.id.empty_view)
         adapter = TunnelAdapter()
         list.layoutManager = LinearLayoutManager(this)
         list.adapter = adapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadTunnels()
+    }
+
+    private fun loadTunnels() {
         lifecycleScope.launch {
             val tunnels = Application.getTunnelManager().getTunnels()
             val data = tunnels.toList()
             adapter.update(data)
-            empty.visibility = if (data.isEmpty()) View.VISIBLE else View.GONE
+            emptyView.visibility = if (data.isEmpty()) View.VISIBLE else View.GONE
         }
     }
 
