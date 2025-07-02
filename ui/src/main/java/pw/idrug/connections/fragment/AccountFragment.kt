@@ -2,6 +2,7 @@ package pw.idrug.connections.fragment
 
 import android.content.Context
 import android.content.Intent
+import androidx.browser.customtabs.CustomTabsIntent
 import android.content.SharedPreferences
 import android.graphics.*
 import android.net.Uri
@@ -130,8 +131,13 @@ class AccountFragment : Fragment() {
 
     private fun setupListeners(view: View) {
         view.findViewById<Button>(R.id.btn_login_telegram).setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://idrug.pw/login?redirect=idrug://auth"))
-            startActivity(intent)
+            val url = "https://idrug.pw/login?redirect=idrug://auth"
+            try {
+                val customTabsIntent = CustomTabsIntent.Builder().build()
+                customTabsIntent.launchUrl(requireContext(), Uri.parse(url))
+            } catch (e: Exception) {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+            }
         }
         view.findViewById<Button>(R.id.btn_logout).setOnClickListener {
             setLoading(true)
