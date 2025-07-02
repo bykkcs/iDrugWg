@@ -77,7 +77,8 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https" android:host="idrug.pw" android:pathPrefix="/auth" />
+                <!-- Verify links for the entire domain to guarantee redirects are handled -->
+                <data android:scheme="https" android:host="idrug.pw" android:pathPrefix="/" />
                 <data android:scheme="idrug" android:host="auth" />
             </intent-filter>
             <intent-filter>

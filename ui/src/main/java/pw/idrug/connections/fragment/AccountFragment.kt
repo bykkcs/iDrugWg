@@ -131,7 +131,10 @@ class AccountFragment : Fragment() {
 
     private fun setupListeners(view: View) {
         view.findViewById<Button>(R.id.btn_login_telegram).setOnClickListener {
-            val url = "https://idrug.pw/login?redirect=app"
+            // Open Telegram login in a Custom Tab and ask the server to redirect
+            // back to the verified HTTPS deep link for the app
+            val url =
+                "https://idrug.pw/login?redirect=https%3A%2F%2Fidrug.pw%2Fauth"
             try {
                 val customTabsIntent = CustomTabsIntent.Builder().build()
                 customTabsIntent.launchUrl(requireContext(), Uri.parse(url))
