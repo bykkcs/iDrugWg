@@ -26,3 +26,4 @@ gradle.properties
 # Large binary files (optional, uncomment to exclude)
 # app/src/main/res/raw/*
 # app/src/main/assets/*
+keystore/

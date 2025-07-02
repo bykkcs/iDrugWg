@@ -3,18 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:installLocation="internalOnly">
 
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Base permissions only -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission
-        android:name="android.permission.SYSTEM_ALERT_WINDOW"
-        android:minSdkVersion="34" />
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="28"
-        tools:ignore="ScopedStorage" />
 
     <uses-feature
         android:name="android.hardware.touchscreen"
@@ -46,6 +38,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- Digital Asset Links -->
+        <meta-data
+            android:name="asset_statements"
+            android:resource="@raw/asset_statements" />
 
         <activity
             android:name=".activity.TunnelToggleActivity"

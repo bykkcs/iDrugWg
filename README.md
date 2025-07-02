@@ -13,8 +13,9 @@ iDrugWG is the official VPN client from the iDrug team. It helps you stay online
 1. Clone the repository:
    `git clone https://github.com/bykkcs/idrugwg.git`
 2. Open in Android Studio.
-3. Build the APK:
-   `./gradlew assembleDebug`
+3. Generate a release APK with signing (set `RELEASE_STORE_PASSWORD` and
+   `RELEASE_KEY_PASSWORD` environment variables):
+   `./gradlew assembleRelease`
 4. Install on your device.
 
 ## Requirements
