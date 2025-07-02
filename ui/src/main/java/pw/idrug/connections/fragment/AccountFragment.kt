@@ -131,7 +131,7 @@ class AccountFragment : Fragment() {
 
     private fun setupListeners(view: View) {
         view.findViewById<Button>(R.id.btn_login_telegram).setOnClickListener {
-            val url = "https://idrug.pw/login?redirect=idrug://auth"
+            val url = "https://idrug.pw/login?redirect=https://idrug.pw/auth"
             try {
                 val customTabsIntent = CustomTabsIntent.Builder().build()
                 customTabsIntent.launchUrl(requireContext(), Uri.parse(url))
