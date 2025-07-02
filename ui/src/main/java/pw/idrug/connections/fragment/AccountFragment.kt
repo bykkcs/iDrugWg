@@ -38,6 +38,7 @@ import android.text.style.ForegroundColorSpan
 import android.graphics.Typeface
 import android.graphics.Color
 import android.util.Log
+import androidx.browser.customtabs.CustomTabsIntent
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class AccountFragment : Fragment() {
@@ -130,8 +131,17 @@ class AccountFragment : Fragment() {
 
     private fun setupListeners(view: View) {
         view.findViewById<Button>(R.id.btn_login_telegram).setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://idrug.pw/login?redirect=idrug://auth"))
-            startActivity(intent)
+            val url = "https://idrug.pw/login?redirect=idrug://auth"
+            val uri = Uri.parse(url)
+            try {
+                CustomTabsIntent.Builder()
+                    .setShowTitle(true)
+                    .build()
+                    .launchUrl(requireContext(), uri)
+            } catch (e: Exception) {
+                // Fallback to regular browser if Custom Tabs unavailable
+                startActivity(Intent(Intent.ACTION_VIEW, uri))
+            }
         }
         view.findViewById<Button>(R.id.btn_logout).setOnClickListener {
             setLoading(true)
