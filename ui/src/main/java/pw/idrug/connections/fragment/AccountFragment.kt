@@ -746,7 +746,11 @@ class AccountFragment : Fragment() {
 
     private fun handleDeepLink(intent: Intent?) {
         val data = intent?.data
-        if (data != null && data.scheme == "idrug" && data.host == "auth") {
+        val isAuthLink = data != null && (
+            (data.scheme == "idrug" && data.host == "auth") ||
+                (data.scheme == "https" && data.host == "idrug.pw" && data.path?.startsWith("/auth") == true)
+            )
+        if (isAuthLink) {
             val jwt = data.getQueryParameter("jwt")
             val username = data.getQueryParameter("username")
             val photoUrl = data.getQueryParameter("photo_url")

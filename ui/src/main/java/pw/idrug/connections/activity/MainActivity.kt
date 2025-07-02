@@ -122,8 +122,12 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         if (savedInstanceState == null) {
             val data = intent?.data
             val openedViaDeepLink = intent?.action == Intent.ACTION_VIEW && data != null
+            val isAuthLink = data != null && (
+                (data.scheme == "idrug" && data.host == "auth") ||
+                    (data.scheme == "https" && data.host == "idrug.pw" && data.path?.startsWith("/auth") == true)
+                )
             val openAccountByIntent = intent?.getBooleanExtra(EXTRA_OPEN_ACCOUNT, false) == true ||
-                (openedViaDeepLink && data?.host == "auth")
+                (openedViaDeepLink && isAuthLink)
             val openAccountByTunnels = runBlocking {
                 try {
                     Application.getTunnelManager().getTunnels().isEmpty()
@@ -164,6 +168,28 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
 
         // --- Подписать на глобальный топик для всех пушей ---
         subscribeToGlobalNotifications()
+
+        handleIntent(intent)
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        handleIntent(intent)
+    }
+
+    private fun handleIntent(intent: Intent?) {
+        val data = intent?.data
+        val isAuthLink = data != null && (
+            (data.scheme == "idrug" && data.host == "auth") ||
+                (data.scheme == "https" && data.host == "idrug.pw" && data.path?.startsWith("/auth") == true)
+            )
+        if (isAuthLink) {
+            val current = supportFragmentManager.findFragmentById(R.id.fragment_container)
+            if (current !is AccountFragment) {
+                safeReplaceFragment(AccountFragment())
+            }
+        }
     }
 
     private fun subscribeToGlobalNotifications() {
