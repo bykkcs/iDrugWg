@@ -185,6 +185,24 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                 (data.scheme == "https" && data.host == "idrug.pw" && data.path?.startsWith("/auth") == true)
             )
         if (isAuthLink) {
+            val jwt = data?.getQueryParameter("jwt")
+            val username = data?.getQueryParameter("username")
+            val photoUrl = data?.getQueryParameter("photo_url")
+            val telegramId = data?.getQueryParameter("telegram_id")
+            if (!jwt.isNullOrEmpty() && !username.isNullOrEmpty()) {
+                val prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
+                prefs.edit()
+                    .putString("token", jwt)
+                    .putString("username", username)
+                    .putString("photo_url", photoUrl)
+                    .apply()
+                if (!telegramId.isNullOrEmpty()) {
+                    prefs.edit().putString("telegram_id", telegramId).apply()
+                    FirebaseMessaging.getInstance().subscribeToTopic("user_$telegramId")
+                }
+            }
+
+            intent?.data = null
             val current = supportFragmentManager.findFragmentById(R.id.fragment_container)
             if (current !is AccountFragment) {
                 safeReplaceFragment(AccountFragment())
