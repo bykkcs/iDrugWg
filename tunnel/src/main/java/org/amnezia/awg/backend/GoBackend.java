@@ -38,7 +38,7 @@ import androidx.collection.ArraySet;
 import static org.amnezia.awg.GoBackend.*;
 
 /**
- * Implementation of {@link Backend} that uses the amneziawg-go userspace implementation to provide
+ * Implementation of {@link Backend} that uses the idrugwg-go userspace implementation to provide
  * iDrugConnections tunnels.
  */
 @NonNullForAll
@@ -170,9 +170,9 @@ public final class GoBackend implements Backend {
     }
 
     /**
-     * Get the version of the underlying amneziawg-go library.
+     * Get the version of the underlying idrugwg-go library.
      *
-     * @return {@link String} value of the version of the amneziawg-go library.
+     * @return {@link String} value of the version of the idrugwg-go library.
      */
     @Override
     public String getVersion() {

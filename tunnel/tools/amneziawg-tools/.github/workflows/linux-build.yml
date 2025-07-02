@@ -12,7 +12,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Build AmneziaWG tools
+    - name: Build iDrugWG tools
       run: |
         apt -y update &&
         apt -y install build-essential &&
@@ -25,7 +25,7 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: ubuntu-22.04-amneziawg-tools
+        name: ubuntu-22.04-idrugwg-tools
         path: ./src/build
 
   Build-for-Alpine:
@@ -37,7 +37,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Build AmneziaWG tools
+    - name: Build iDrugWG tools
       run: |
         apk add linux-headers build-base &&
         cd src &&
@@ -49,7 +49,7 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: alpine-3.19-amneziawg-tools
+        name: alpine-3.19-idrugwg-tools
         path: ./src/build
 
   GitHub-Release:
@@ -69,16 +69,16 @@ jobs:
         uses: actions/download-artifact@v4
 
       - name: Calculate checksums
-        run: for file in $(find ./${{ matrix.os }}-${{ matrix.release }}-amneziawg-tools/ -type f); do openssl dgst -sha256 -r "$file" | awk '{print $1}' > "${file}.sha256"; done
+        run: for file in $(find ./${{ matrix.os }}-${{ matrix.release }}-idrugwg-tools/ -type f); do openssl dgst -sha256 -r "$file" | awk '{print $1}' > "${file}.sha256"; done
         
       - name: Zip files
-        run: zip -r ${{ matrix.os }}-${{ matrix.release }}-amneziawg-tools.zip ${{ matrix.os }}-${{ matrix.release }}-amneziawg-tools
+        run: zip -r ${{ matrix.os }}-${{ matrix.release }}-idrugwg-tools.zip ${{ matrix.os }}-${{ matrix.release }}-idrugwg-tools
 
       - name: Upload binaries to Release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./${{ matrix.os }}-${{ matrix.release }}-amneziawg-tools.zip
+          file: ./${{ matrix.os }}-${{ matrix.release }}-idrugwg-tools.zip
           tag: ${{ github.ref }}
           release_name: ${{ github.ref_name }}
           overwrite: true

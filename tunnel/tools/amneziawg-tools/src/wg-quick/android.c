@@ -1161,7 +1161,7 @@ static void cmd_down(const char *iface)
 		}
 	}
 	if (!found) {
-		fprintf(stderr, "Error: %s is not a AmneziaWG interface\n", iface);
+               fprintf(stderr, "Error: %s is not an iDrugWG interface\n", iface);
 		exit(EMEDIUMTYPE);
 	}
 

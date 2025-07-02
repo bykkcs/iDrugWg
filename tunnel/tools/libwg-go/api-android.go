@@ -66,7 +66,7 @@ func init() {
 					n--
 				}
 				buf[n] = 0
-				C.__android_log_write(C.ANDROID_LOG_ERROR, cstring("AmneziaWG/Stacktrace"), (*C.char)(unsafe.Pointer(&buf[0])))
+                                C.__android_log_write(C.ANDROID_LOG_ERROR, cstring("iDrugWG/Stacktrace"), (*C.char)(unsafe.Pointer(&buf[0])))
 			}
 		}
 	}()
@@ -74,7 +74,7 @@ func init() {
 
 //export awgTurnOn
 func awgTurnOn(interfaceName string, tunFd int32, settings string) int32 {
-	tag := cstring("AmneziaWG/" + interfaceName)
+       tag := cstring("iDrugWG/" + interfaceName)
 	logger := &device.Logger{
 		Verbosef: AndroidLogger{level: C.ANDROID_LOG_DEBUG, tag: tag}.Printf,
 		Errorf:   AndroidLogger{level: C.ANDROID_LOG_ERROR, tag: tag}.Printf,
