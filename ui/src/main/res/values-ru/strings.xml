@@ -286,7 +286,7 @@
     <string name="login_via_telegram">Войти через Telegram</string>
     <string name="choose_server">Выберите сервер</string>
     <string name="download_config">Скачать конфиг</string>
-    <string name="renew_subscription">Продлить подписку</string>
+    <string name="renew_subscription">Купить/Продлить</string>
     <string name="referral_link">Реферальная ссылка</string>
     <string name="link_device">Привязать устр.</string>
     <string name="login_with_code">Войти через код</string>
