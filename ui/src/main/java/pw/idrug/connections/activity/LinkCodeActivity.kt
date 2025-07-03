@@ -63,9 +63,9 @@ class LinkCodeActivity : AppCompatActivity() {
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val obj = JSONObject(response.body?.string() ?: "{}")
-                    val jwt = obj.optString("jwt", null)
-                    val username = obj.optString("username", null)
-                    if (!jwt.isNullOrEmpty() && !username.isNullOrEmpty()) {
+                    val jwt = obj.optString("jwt")
+                    val username = obj.optString("username")
+                    if (jwt.isNotEmpty() && username.isNotEmpty()) {
                         callback(true, jwt, username, null)
                     } else {
                         callback(false, null, null, getString(R.string.invalid_response))
