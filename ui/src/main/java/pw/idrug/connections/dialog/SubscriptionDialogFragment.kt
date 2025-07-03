@@ -13,6 +13,14 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import okhttp3.FormBody
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.Response
+import java.io.IOException
+import org.json.JSONObject
 import pw.idrug.connections.R
 
 class SubscriptionDialogFragment : DialogFragment() {
@@ -28,17 +36,19 @@ class SubscriptionDialogFragment : DialogFragment() {
         "multihop" to R.string.server_multihop_germany
     )
     private val durations = listOf(
-        1 to R.string.duration_1_month,
-        3 to R.string.duration_3_months,
-        12 to R.string.duration_1_year
+        30 to R.string.duration_1_month,
+        90 to R.string.duration_3_months,
+        365 to R.string.duration_1_year
     )
 
     private val prices: Map<String, Map<Int, Int>> = mapOf(
-        "germany" to mapOf(1 to 250, 3 to 600, 12 to 2000),
-        "bulgaria" to mapOf(1 to 250, 3 to 600, 12 to 2000),
-        "madrid" to mapOf(1 to 250, 3 to 600, 12 to 2000),
-        "multihop" to mapOf(1 to 300, 3 to 700, 12 to 2200)
+        "germany" to mapOf(30 to 199, 90 to 549, 365 to 1799),
+        "bulgaria" to mapOf(30 to 199, 90 to 549, 365 to 1799),
+        "madrid" to mapOf(30 to 199, 90 to 549, 365 to 1799),
+        "multihop" to mapOf(30 to 299, 90 to 799, 365 to 2599)
     )
+
+    private val client = OkHttpClient()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val ctx = requireContext()
@@ -88,13 +98,47 @@ class SubscriptionDialogFragment : DialogFragment() {
         val token = prefs.getString("token", null) ?: return
         val location = locations[locationSpinner.selectedItemPosition].first
         val duration = durations[durationSpinner.selectedItemPosition].first
-        val url = generatePaymentLink(location, duration, token)
+
+        val formBody = FormBody.Builder()
+            .add("location", location)
+            .add("duration", duration.toString())
+            .add("token", token)
+            .build()
+
+        val req = Request.Builder()
+            .url("https://idrug.pw/api/pay")
+            .post(formBody)
+            .build()
+
+        client.newCall(req).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                showToast(getString(R.string.connection_error, e.message ?: ""))
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val json = JSONObject(response.body?.string() ?: "{}")
+                    val url = json.optString("payment_url")
+                    if (url.isNotEmpty()) {
+                        openPaymentPage(url)
+                    } else {
+                        showToast(getString(R.string.generic_error))
+                    }
+                } else {
+                    showToast(getString(R.string.generic_error))
+                }
+            }
+        })
+    }
+
+    private fun openPaymentPage(url: String) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         startActivity(intent)
     }
 
-    private fun generatePaymentLink(location: String, duration: Int, token: String): String {
-        val baseUrl = "https://idrug.pw/api/pay"
-        return "$baseUrl?location=$location&duration=$duration&token=$token"
+    private fun showToast(message: String) {
+        activity?.runOnUiThread {
+            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        }
     }
 }

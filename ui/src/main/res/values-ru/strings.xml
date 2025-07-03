@@ -343,6 +343,7 @@
     <string name="duration_1_month">1 месяц</string>
     <string name="duration_3_months">3 месяца</string>
     <string name="duration_1_year">1 год</string>
+    <string name="connection_error">Ошибка подключения: %1$s</string>
     <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
     <string-array name="onboarding_emojis">
         <item>🔒</item>
