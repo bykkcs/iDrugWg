@@ -87,8 +87,8 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         onBackStackChanged()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            val prefs = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-            if (!prefs.getBoolean("notification_permission_requested", false)) {
+            val notifPrefs = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+            if (!notifPrefs.getBoolean("notification_permission_requested", false)) {
                 if (ContextCompat.checkSelfPermission(
                         this,
                         Manifest.permission.POST_NOTIFICATIONS
@@ -96,7 +96,7 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                 ) {
                     notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
                 }
-                prefs.edit().putBoolean("notification_permission_requested", true).apply()
+                notifPrefs.edit().putBoolean("notification_permission_requested", true).apply()
             }
         }
 
