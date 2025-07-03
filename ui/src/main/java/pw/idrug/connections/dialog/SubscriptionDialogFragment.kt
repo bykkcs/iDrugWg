@@ -86,7 +86,6 @@ class SubscriptionDialogFragment : DialogFragment() {
 
         return MaterialAlertDialogBuilder(ctx, R.style.MonetAlertDialog)
             .setView(view)
-            .setTitle(R.string.choose_plan)
             .create()
     }
 
