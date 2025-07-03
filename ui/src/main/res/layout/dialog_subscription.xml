@@ -42,4 +42,11 @@
         android:text=""
         android:textStyle="bold"
         android:paddingTop="12dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/pay_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/pay" />
 </LinearLayout>

@@ -11,6 +11,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import okhttp3.FormBody
@@ -28,6 +29,7 @@ class SubscriptionDialogFragment : DialogFragment() {
     private lateinit var locationSpinner: Spinner
     private lateinit var durationSpinner: Spinner
     private lateinit var priceText: TextView
+    private lateinit var payButton: View
 
     private val locations = listOf(
         "germany" to R.string.server_germany,
@@ -56,6 +58,7 @@ class SubscriptionDialogFragment : DialogFragment() {
         locationSpinner = view.findViewById(R.id.spinner_location)
         durationSpinner = view.findViewById(R.id.spinner_duration)
         priceText = view.findViewById(R.id.text_price)
+        payButton = view.findViewById(R.id.pay_button)
 
         val locAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_item, locations.map { getString(it.second) })
         locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -77,12 +80,13 @@ class SubscriptionDialogFragment : DialogFragment() {
         durationSpinner.onItemSelectedListener = listener
         updatePrice()
 
+        payButton.setOnClickListener {
+            sendPaymentRequest()
+        }
+
         return MaterialAlertDialogBuilder(ctx, R.style.MonetAlertDialog)
             .setView(view)
-            .setPositiveButton(R.string.pay) { _, _ ->
-                startPayment()
-            }
-            .setNegativeButton(R.string.cancel, null)
+            .setTitle(R.string.choose_plan)
             .create()
     }
 
@@ -93,16 +97,16 @@ class SubscriptionDialogFragment : DialogFragment() {
         priceText.text = getString(R.string.price_template, price)
     }
 
-    private fun startPayment() {
+    private fun sendPaymentRequest() {
         val prefs = requireContext().getSharedPreferences("auth", Context.MODE_PRIVATE)
-        val token = prefs.getString("token", null) ?: return
+        val token = prefs.getString("telegram_id", null) ?: return
         val location = locations[locationSpinner.selectedItemPosition].first
         val duration = durations[durationSpinner.selectedItemPosition].first
 
         val formBody = FormBody.Builder()
             .add("location", location)
             .add("duration", duration.toString())
-            .add("token", token)
+            .add("user_id", token)
             .build()
 
         val req = Request.Builder()
