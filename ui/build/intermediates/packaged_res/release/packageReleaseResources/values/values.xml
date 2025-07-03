@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="onboarding_descriptions">
+        <item>Your real IP and actions are hidden. No logs. No tracking. Your privacy, your rules.</item>
+        <item>Locations: Germany, Sweden, Bulgaria, Spain and more. Switch countries in one tap.</item>
+        <item>Instant connection. Configs and keys are saved in-app — nothing gets lost.</item>
+        <item>Dedicated TV app — link by code, launch in one click. Pure comfort.</item>
+        <item>Pick apps for VPN in tunnel settings — only their traffic goes via VPN, the rest goes direct.</item>
+        <item>Plans from 250₽/month. No hidden fees, pay by card or crypto, whatever suits you.</item>
+    </string-array>
+    <string-array name="onboarding_emojis">
+        <item>🔒</item>
+        <item>📡</item>
+        <item>📱</item>
+        <item>📺</item>
+        <item>🚦</item>
+        <item>💸</item>
+    </string-array>
+    <string-array name="onboarding_titles">
+        <item>True Anonymity</item>
+        <item>Global Fast Servers</item>
+        <item>Auto Configs</item>
+        <item>Android TV ready</item>
+        <item>Split Tunneling</item>
+        <item>Transparent tariffs</item>
+    </string-array>
     <bool name="light_navigation_bar">true</bool>
     <bool name="light_status_bar">true</bool>
     <color name="debug_tag_color">#444444</color>
@@ -129,6 +153,7 @@
         <item quantity="other">%d Included Applications</item>
     </plurals>
     <string name="account_avatar">User avatar</string>
+    <string name="active">active</string>
     <string name="add_peer">Add peer</string>
     <string name="addresses">Addresses</string>
     <string name="all_applications">All Applications</string>
@@ -136,6 +161,8 @@
     <string name="allow_remote_control_intents_summary_on">External apps may toggle tunnels (advanced)</string>
     <string name="allow_remote_control_intents_title">Allow remote control apps</string>
     <string name="allowed_ips">Allowed IPs</string>
+    <string name="apk_not_found">APK not found!</string>
+    <string name="apk_open_error">Failed to open APK for installation: %s</string>
     <string name="app_name" translatable="false">iDrug Connections</string>
     <string name="applications">Applications</string>
     <string name="avatar">Avatar</string>
@@ -161,6 +188,12 @@
     <string name="biometric_prompt_zip_exporter_title">Authenticate to export tunnels</string>
     <string name="cancel">Cancel</string>
     <string name="choose_server">Choose server</string>
+    <string name="code_expired">Code expired. Generate new.</string>
+    <string name="code_expires_in">Code expires in %1$d s</string>
+    <string name="code_generating">Generating code…</string>
+    <string name="code_invalid_or_expired">Code invalid or expired</string>
+    <string name="code_login_title">Enter 6-digit code</string>
+    <string name="config_already_added">Config already added</string>
     <string name="config_delete_error">Cannot delete configuration file %s</string>
     <string name="config_exists_error">Configuration for “%s” already exists</string>
     <string name="config_file_exists_error">Configuration file “%s” already exists</string>
@@ -169,6 +202,7 @@
     <string name="config_rename_error">Cannot rename configuration file “%s”</string>
     <string name="config_save_error">Cannot save configuration for “%1$s”: %2$s</string>
     <string name="config_save_success">Successfully saved configuration for “%s”</string>
+    <string name="connect">Connect</string>
     <string name="copied_to_clipboard">%s copied to clipboard</string>
     <string name="create_activity_title">Create iDrug Connections Tunnel</string>
     <string name="create_bin_dir_error">Cannot create local binary directory</string>
@@ -190,6 +224,7 @@
     <string name="download_config">Download config</string>
     <string name="edit">Edit</string>
     <string name="endpoint">Endpoint</string>
+    <string name="enter_code">Enter code</string>
     <string name="error_down">Error bringing down tunnel: %s</string>
     <string name="error_fetching_apps">Error fetching apps list: %s</string>
     <string name="error_no_qr_found">QR code not found in image</string>
@@ -197,6 +232,7 @@
     <string name="error_qr_checksum">QR code checksum verification failed</string>
     <string name="error_root">Please obtain root access and try again</string>
     <string name="error_up">Error bringing up tunnel: %s</string>
+    <string name="error_with_message">Error: %s</string>
     <string name="exclude_from_tunnel">Exclude</string>
     <string name="exclude_private_ips">Exclude private IPs</string>
     <string name="gcm_defaultSenderId" translatable="false">1075697493779</string>
@@ -219,10 +255,12 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="import_error">Unable to import tunnel: %s</string>
     <string name="import_from_qr_code">Import Tunnel from QR Code</string>
     <string name="import_success">Imported “%s”</string>
-    <string name="include_in_tunnel">Include only</string>
+    <string name="inactive">inactive</string>
+    <string name="include_in_tunnel">Include</string>
     <string name="init_packet_junk_size">Init packet junk size</string>
     <string name="init_packet_magic_header">Init packet magic header</string>
     <string name="interface_title">Interface</string>
+    <string name="invalid_response">Invalid response</string>
     <string name="junk_packet_count">Junk packet count</string>
     <string name="junk_packet_max_size">Junk packet maximum size</string>
     <string name="junk_packet_min_size">Junk packet minimum size</string>
@@ -233,6 +271,7 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="key_length_explanation_hex">: iDrug Connections hex keys must be 64 characters (32 bytes)</string>
     <string name="latest_handshake">Latest handshake</string>
     <string name="latest_handshake_ago">%s ago</string>
+    <string name="link_device">Link device</string>
     <string name="listen_port">Listen port</string>
     <string name="log_export_error">Unable to export log: %s</string>
     <string name="log_export_subject">iDrug Connections Android Log File</string>
@@ -243,8 +282,12 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="log_viewer_pref_title">View application log</string>
     <string name="log_viewer_title">Log</string>
     <string name="logcat_error">Unable to run logcat: </string>
+    <string name="logged_out">You have logged out</string>
+    <string name="login_successful">Login successful</string>
+    <string name="login_telegram_first">Please log in via Telegram first</string>
     <string name="login_via_telegram">Login via Telegram</string>
     <string name="login_via_telegram_or_qr">Login via Telegram or QR</string>
+    <string name="login_with_code">Login with code</string>
     <string name="logout">Logout</string>
     <string name="module_enabler_disabled_summary">The experimental kernel module can improve performance</string>
     <string name="module_enabler_disabled_title">Enable kernel module backend</string>
@@ -262,9 +305,14 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="multiple_tunnels_title">Allow multiple simultaneous tunnels</string>
     <string name="name">Name</string>
     <string name="nav_account_title">Account</string>
+    <string name="network_error_msg">Network error: %s</string>
     <string name="no_config_error">Trying to bring up a tunnel with no config</string>
+    <string name="no_configs">Нет доступных конфигов</string>
     <string name="no_configs_error">No configurations found</string>
     <string name="no_tunnels_error">No tunnels exist</string>
+    <string name="onboarding_error">Onboarding failed to load. Please update the app or contact support.</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_start">Start</string>
     <string name="parse_error_generic">string</string>
     <string name="parse_error_inet_address">IP address</string>
     <string name="parse_error_inet_endpoint">endpoint</string>
@@ -274,17 +322,25 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="peer">Peer</string>
     <string name="permission_description">control iDrug Connections tunnels, enabling and disabling tunnels at will, potentially misdirecting Internet traffic</string>
     <string name="permission_label">control iDrug Connections tunnels</string>
+    <string name="permission_unknown_sources">Grant permission to install from unknown sources and try again</string>
     <string name="persistent_keepalive">Persistent keepalive</string>
     <string name="pre_shared_key">Pre-shared key</string>
     <string name="pre_shared_key_enabled">enabled</string>
     <string name="private_key">Private key</string>
+    <string name="profile_processing_error">Profile processing error: %s</string>
+    <string name="profile_retrieval_failed">Failed to retrieve profile: %d</string>
     <string name="project_id" translatable="false">idrugwg</string>
     <string name="public_key">Public key</string>
     <string name="qr_code_hint">Tip: generate with `qrencode -t ansiutf8 &lt; tunnel.conf`.</string>
+    <string name="qr_confirmation_error">Confirmation error: %s</string>
+    <string name="qr_generation_error">QR code generation error</string>
+    <string name="qr_login_confirmed">QR login confirmed</string>
+    <string name="qr_not_recognized">QR code not recognized</string>
     <string name="quick_settings_tile_action">Toggle tunnel</string>
     <string name="quick_settings_tile_add_failure">Unable to add shortcut tile: error %d</string>
     <string name="quick_settings_tile_add_summary">The shortcut tile toggles the most recent tunnel</string>
     <string name="quick_settings_tile_add_title">Add tile to quick settings panel</string>
+    <string name="referral_link">Referral link</string>
     <string name="renew_subscription">Renew subscription</string>
     <string name="response_packet_junk_size">Response packet junk size</string>
     <string name="response_packet_magic_header">Response packet magic header</string>
@@ -293,6 +349,7 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="restore_on_boot_title">Restore on boot</string>
     <string name="save">Save</string>
     <string name="select_all">Select all</string>
+    <string name="select_server">Select a server</string>
     <string name="server_bulgaria">Bulgaria</string>
     <string name="server_germany">Germany</string>
     <string name="server_madrid">Madrid</string>
@@ -301,11 +358,15 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="shell_exit_status_read_error">Shell cannot read exit status</string>
     <string name="shell_marker_count_error">Shell expected 4 markers, received %d</string>
     <string name="shell_start_error">Shell failed to start: %d</string>
+    <string name="submit_code">Link</string>
     <string name="subscription_active_days">%1$s: until %2$s (%3$d d)</string>
     <string name="subscription_forever">%1$s: lifetime</string>
     <string name="subscription_inactive">%1$s: inactive</string>
+    <string name="subscription_inactive_msg">Subscription inactive</string>
+    <string name="subscription_renewed">Subscription renewed</string>
     <string name="success_application_will_restart">Success. The application will now restart…</string>
-    <string name="toggle_all">Toggle All</string>
+    <string name="telegram_login_successful">Telegram login successful!</string>
+    <string name="toggle_all">Invert all</string>
     <string name="toggle_error">Error toggling tunnel: %s</string>
     <string name="tools_installer_already">awg and awg-quick are already installed</string>
     <string name="tools_installer_failure">Unable to install command-line tools (no root?)</string>
@@ -326,9 +387,11 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="transfer_tibibytes">%.2f TiB</string>
     <string name="transport_packet_magic_header">Transport packet magic header</string>
     <string name="tun_create_error">Unable to create tun device</string>
+    <string name="tunnel_added">Tunnel added</string>
     <string name="tunnel_config_error">Unable to configure tunnel (awg-quick returned %d)</string>
     <string name="tunnel_create_error">Unable to create tunnel: %s</string>
     <string name="tunnel_create_success">Successfully created tunnel “%s”</string>
+    <string name="tunnel_creation_error">Tunnel creation error: %s</string>
     <string name="tunnel_dns_failure">Unable to resolve DNS hostname: “%s”</string>
     <string name="tunnel_error_already_exists">Tunnel “%s” already exists</string>
     <string name="tunnel_error_invalid_name">Invalid name</string>
@@ -343,11 +406,17 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="tv_select_a_storage_drive">Select a storage drive</string>
     <string name="type_name_go_userspace">Go userspace</string>
     <string name="type_name_kernel_module">Kernel module</string>
+    <string name="unable_open_telegram">Unable to open Telegram</string>
     <string name="underload_packet_magic_header">Underload packet magic header</string>
     <string name="unknown_error">Unknown error</string>
     <string name="update_application_summary">Check for a new version and update the app</string>
     <string name="update_application_title">Update application</string>
-    <string name="use_all_applications">Use all apps</string>
+    <string name="update_check_error">Update check failed: %s</string>
+    <string name="update_delete_old_failed">Failed to delete old update file</string>
+    <string name="update_download_started">Update download started</string>
+    <string name="update_no_new_version">Application is already up to date</string>
+    <string name="update_start_error">Error starting update: %s</string>
+    <string name="use_all_applications">Select all</string>
     <string name="version_summary">%1$s backend %2$s</string>
     <string name="version_summary_checking">Checking %s backend version</string>
     <string name="version_summary_unknown">Unknown %s version</string>
@@ -366,6 +435,36 @@ Official iDrug Connections services are available only at <a href="https://idrug
         <item name="bottomSheetDialogTheme">@style/iDrugConnectionsTheme.BottomSheetDialog</item>
         <item name="android:statusBarColor">@null</item>
     </style>
+    <style name="CodeInput">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:background">@drawable/code_bg</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:padding">0dp</item>
+    </style>
+    <style name="CodeInputBottomSheet" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CodeInputBottomSheetStyle</item>
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+    <style name="CodeInputBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet</item>
+    </style>
+    <style name="KeypadButton">
+        <item name="android:layout_width">72dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+    <style name="MonetAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="backgroundTint">?attr/colorSurface</item>
+        <item name="android:textColorPrimary">?attr/colorOnSurface</item>
+    </style>
     <style name="NoBackgroundTheme" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -377,6 +476,15 @@ Official iDrug Connections services are available only at <a href="https://idrug
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+    <style name="PinCell">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/bg_pin_cell</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:layout_margin">4dp</item>
     </style>
     <style name="TvTheme" parent="AppTheme">
         <item name="windowActionBar">false</item>

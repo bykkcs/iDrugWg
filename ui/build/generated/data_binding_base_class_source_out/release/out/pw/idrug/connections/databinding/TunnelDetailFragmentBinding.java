@@ -30,9 +30,6 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
   public final TextView addressesText;
 
   @NonNull
-  public final Barrier idrugconnectionsBarrier;
-
-  @NonNull
   public final TextView applicationsLabel;
 
   @NonNull
@@ -49,6 +46,9 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
 
   @NonNull
   public final TextView dnsServersText;
+
+  @NonNull
+  public final Barrier idrugconnectionsBarrier;
 
   @NonNull
   public final TextView initPacketJunkSizeLabel;
@@ -153,9 +153,9 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
   protected Config mConfig;
 
   protected TunnelDetailFragmentBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      TextView addressesLabel, TextView addressesText, Barrier idrugconnectionsBarrier,
-      TextView applicationsLabel, TextView applicationsText, TextView dnsSearchDomainsLabel,
-      TextView dnsSearchDomainsText, TextView dnsServersLabel, TextView dnsServersText,
+      TextView addressesLabel, TextView addressesText, TextView applicationsLabel,
+      TextView applicationsText, TextView dnsSearchDomainsLabel, TextView dnsSearchDomainsText,
+      TextView dnsServersLabel, TextView dnsServersText, Barrier idrugconnectionsBarrier,
       TextView initPacketJunkSizeLabel, TextView initPacketJunkSizeText,
       TextView initPacketMagicHeaderLabel, TextView initPacketMagicHeaderText,
       TextView interfaceNameLabel, TextView interfaceNameText, MaterialTextView interfaceTitle,
@@ -172,13 +172,13 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
     super(_bindingComponent, _root, _localFieldCount);
     this.addressesLabel = addressesLabel;
     this.addressesText = addressesText;
-    this.idrugconnectionsBarrier = idrugconnectionsBarrier;
     this.applicationsLabel = applicationsLabel;
     this.applicationsText = applicationsText;
     this.dnsSearchDomainsLabel = dnsSearchDomainsLabel;
     this.dnsSearchDomainsText = dnsSearchDomainsText;
     this.dnsServersLabel = dnsServersLabel;
     this.dnsServersText = dnsServersText;
+    this.idrugconnectionsBarrier = idrugconnectionsBarrier;
     this.initPacketJunkSizeLabel = initPacketJunkSizeLabel;
     this.initPacketJunkSizeText = initPacketJunkSizeText;
     this.initPacketMagicHeaderLabel = initPacketMagicHeaderLabel;

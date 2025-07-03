@@ -106,7 +106,7 @@ class AppListDialogFragment : DialogFragment() {
         }
     }
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val alertDialogBuilder = MaterialAlertDialogBuilder(requireActivity(), R.style.MonetAlertDialog)
         val binding = AppListDialogFragmentBinding.inflate(requireActivity().layoutInflater, null, false)
         binding.executePendingBindings()
@@ -122,7 +122,16 @@ class AppListDialogFragment : DialogFragment() {
         }
         alertDialogBuilder.setPositiveButton(" ") { _, _ -> setSelectionAndDismiss() }
         // remove explicit cancel button to keep buttons compact
-        alertDialogBuilder.setNeutralButton(R.string.toggle_all) { _, _ -> }
+        alertDialogBuilder.setNeutralButton(R.string.toggle_all) { _, _ -> 
+            val selectAll = appData.none { it.isSelected }  // Проверяем, если ничего не выбрано, то выбираем все
+            appData.forEach {
+                it.isSelected = selectAll  // Устанавливаем состояние для всех элементов
+            }
+            // Обновляем текст кнопки после выбора всех приложений
+            setButtonText()
+            // Убираем закрытие диалога, чтобы он оставался открыт
+            // dismiss() тут не вызываем!
+        }
         binding.fragment = this
         binding.appData = appData
         loadData()
@@ -130,12 +139,6 @@ class AppListDialogFragment : DialogFragment() {
         dialog.setOnShowListener {
             button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
             setButtonText()
-            dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener { _ ->
-                val selectAll = appData.none { it.isSelected }
-                appData.forEach {
-                    it.isSelected = selectAll
-                }
-            }
         }
         return dialog
     }

@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission
         android:name="android.permission.SYSTEM_ALERT_WINDOW"
         android:minSdkVersion="34" />
@@ -51,7 +52,6 @@
     <uses-permission android:name="android.permission.USE_BIOMETRIC" /> <!-- suppress DeprecatedClassUsageInspection -->
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
@@ -100,13 +100,21 @@
             android:excludeFromRecents="true"
             android:theme="@style/NoBackgroundTheme" />
         <activity
-            android:name="pw.idrug.connections.activity.MainActivity"
-            android:exported="true" >
+            android:name="pw.idrug.connections.activity.OnboardingActivity"
+            android:exported="false" />
+        <activity
+            android:name="pw.idrug.connections.activity.SplashActivity"
+            android:exported="true"
+            android:theme="@style/NoBackgroundTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="pw.idrug.connections.activity.MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
@@ -143,7 +151,7 @@
         </provider>
 
         <activity
-            android:name="pw.idrug.connections.activity.TvMainActivity"
+            android:name="pw.idrug.connections.activity.TvEntryActivity"
             android:exported="true"
             android:theme="@style/TvTheme" >
             <intent-filter>
@@ -152,6 +160,10 @@
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="pw.idrug.connections.activity.ConfigListActivity"
+            android:exported="false"
+            android:theme="@style/TvTheme" />
         <activity
             android:name="pw.idrug.connections.activity.SettingsActivity"
             android:label="@string/settings"
@@ -175,6 +187,11 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="pw.idrug.connections.activity.LinkCodeActivity"
+            android:exported="false"
+            android:label="@string/link_device"
+            android:parentActivityName="pw.idrug.connections.activity.MainActivity" />
 
         <provider
             android:name="pw.idrug.connections.activity.LogViewerActivity$ExportedLogContentProvider"
@@ -227,7 +244,7 @@
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_launcher_foreground" />
+            android:resource="@drawable/ic_notification" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="fcm_default_channel" />

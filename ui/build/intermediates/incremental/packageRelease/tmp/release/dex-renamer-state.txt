@@ -1,13 +1,7 @@
-#Thu Jun 26 23:24:21 MSK 2025
-path.3=classes2.dex
-path.2=classes1000.dex
-path.1=classes.dex
-path.0=classes.dex
-base.3=/home/bykk/iDrugWgtest/iDrugWg-master/ui/build/intermediates/dex/release/mergeDexRelease/classes2.dex
-base.2=/home/bykk/iDrugWgtest/iDrugWg-master/ui/build/intermediates/desugar_lib_dex/release/l8DexDesugarLibRelease/classes1000.dex
-base.1=/home/bykk/iDrugWgtest/iDrugWg-master/ui/build/intermediates/global_synthetics_dex/release/mergeReleaseGlobalSynthetics/classes.dex
-base.0=/home/bykk/iDrugWgtest/iDrugWg-master/ui/build/intermediates/dex/release/mergeDexRelease/classes.dex
-renamed.3=classes4.dex
-renamed.2=classes3.dex
+#Thu Jul 03 14:49:58 MSK 2025
+base.1=/home/bykk/iDrugWgtest/iDrugWg-master/ui/build/intermediates/desugar_lib_dex/release/l8DexDesugarLibRelease/classes1000.dex
+path.1=classes1000.dex
+base.0=/home/bykk/iDrugWgtest/iDrugWg-master/ui/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
+path.0=classes.dex

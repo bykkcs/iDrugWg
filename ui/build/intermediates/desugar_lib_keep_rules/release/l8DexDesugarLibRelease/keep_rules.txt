@@ -1,22 +1,14 @@
 -keep class j$.time.Duration {
   public static j$.time.Duration between(j$.time.temporal.Temporal,j$.time.temporal.Temporal);
-  public int compareTo(j$.time.Duration);
-  public int getNano();
-  public long getSeconds();
   public static j$.time.Duration ofMillis(long);
-  public static j$.time.Duration ofSeconds(long,long);
   public long toMillis();
   public long toMinutes();
-  j$.time.Duration ZERO;
 }
 -keep class j$.time.Instant {
   public j$.time.OffsetDateTime atOffset(j$.time.ZoneOffset);
-  public int hashCode();
   public static j$.time.Instant now();
   public long toEpochMilli();
   j$.time.Instant EPOCH;
-  j$.time.Instant MAX;
-  j$.time.Instant MIN;
 }
 -keep class j$.time.LocalDateTime {
   public java.lang.String format(j$.time.format.DateTimeFormatter);
@@ -26,7 +18,6 @@
 }
 -keep class j$.time.TimeConversions {
   public static java.time.Duration convert(j$.time.Duration);
-  public static java.time.Instant convert(j$.time.Instant);
   public static j$.time.Duration convert(java.time.Duration);
 }
 -keep class j$.time.ZoneOffset {
@@ -34,10 +25,6 @@
 }
 -keep class j$.time.format.DateTimeFormatter {
   j$.time.format.DateTimeFormatter ISO_LOCAL_DATE;
-}
--keep enum j$.time.temporal.ChronoUnit {
-  public j$.time.Duration getDuration();
-  j$.time.temporal.ChronoUnit MILLIS;
 }
 -keep interface j$.time.temporal.Temporal {
 }

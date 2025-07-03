@@ -24,9 +24,6 @@ import pw.idrug.connections.databinding.TunnelEditorFragmentBindingImpl;
 import pw.idrug.connections.databinding.TunnelEditorPeerBindingImpl;
 import pw.idrug.connections.databinding.TunnelListFragmentBindingImpl;
 import pw.idrug.connections.databinding.TunnelListItemBindingImpl;
-import pw.idrug.connections.databinding.TvActivityBindingImpl;
-import pw.idrug.connections.databinding.TvFileListItemBindingImpl;
-import pw.idrug.connections.databinding.TvTunnelListItemBindingImpl;
 
 public class DataBinderMapperImpl extends DataBinderMapper {
   private static final int LAYOUT_APPLISTDIALOGFRAGMENT = 1;
@@ -47,13 +44,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_TUNNELLISTITEM = 9;
 
-  private static final int LAYOUT_TVACTIVITY = 10;
-
-  private static final int LAYOUT_TVFILELISTITEM = 11;
-
-  private static final int LAYOUT_TVTUNNELLISTITEM = 12;
-
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(12);
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(9);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(pw.idrug.connections.R.layout.app_list_dialog_fragment, LAYOUT_APPLISTDIALOGFRAGMENT);
@@ -65,9 +56,6 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(pw.idrug.connections.R.layout.tunnel_editor_peer, LAYOUT_TUNNELEDITORPEER);
     INTERNAL_LAYOUT_ID_LOOKUP.put(pw.idrug.connections.R.layout.tunnel_list_fragment, LAYOUT_TUNNELLISTFRAGMENT);
     INTERNAL_LAYOUT_ID_LOOKUP.put(pw.idrug.connections.R.layout.tunnel_list_item, LAYOUT_TUNNELLISTITEM);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(pw.idrug.connections.R.layout.tv_activity, LAYOUT_TVACTIVITY);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(pw.idrug.connections.R.layout.tv_file_list_item, LAYOUT_TVFILELISTITEM);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(pw.idrug.connections.R.layout.tv_tunnel_list_item, LAYOUT_TVTUNNELLISTITEM);
   }
 
   @Override
@@ -133,24 +121,6 @@ public class DataBinderMapperImpl extends DataBinderMapper {
           }
           throw new IllegalArgumentException("The tag for tunnel_list_item is invalid. Received: " + tag);
         }
-        case  LAYOUT_TVACTIVITY: {
-          if ("layout/tv_activity_0".equals(tag)) {
-            return new TvActivityBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for tv_activity is invalid. Received: " + tag);
-        }
-        case  LAYOUT_TVFILELISTITEM: {
-          if ("layout/tv_file_list_item_0".equals(tag)) {
-            return new TvFileListItemBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for tv_file_list_item is invalid. Received: " + tag);
-        }
-        case  LAYOUT_TVTUNNELLISTITEM: {
-          if ("layout/tv_tunnel_list_item_0".equals(tag)) {
-            return new TvTunnelListItemBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for tv_tunnel_list_item is invalid. Received: " + tag);
-        }
       }
     }
     return null;
@@ -196,7 +166,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerBrLookup {
-    static final SparseArray<String> sKeys = new SparseArray<String>(44);
+    static final SparseArray<String> sKeys = new SparseArray<String>(38);
 
     static {
       sKeys.put(0, "_all");
@@ -210,44 +180,38 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put(8, "endpoint");
       sKeys.put(9, "excludedApplications");
       sKeys.put(10, "excludingPrivateIps");
-      sKeys.put(11, "files");
-      sKeys.put(12, "filesRoot");
-      sKeys.put(13, "filesRowConfigurationHandler");
-      sKeys.put(14, "fragment");
-      sKeys.put(15, "includedApplications");
-      sKeys.put(16, "initPacketJunkSize");
-      sKeys.put(17, "initPacketMagicHeader");
-      sKeys.put(18, "isDeleting");
-      sKeys.put(19, "isFocused");
-      sKeys.put(20, "item");
-      sKeys.put(21, "junkPacketCount");
-      sKeys.put(22, "junkPacketMaxSize");
-      sKeys.put(23, "junkPacketMinSize");
-      sKeys.put(24, "key");
-      sKeys.put(25, "lastUsedTunnel");
-      sKeys.put(26, "listenPort");
-      sKeys.put(27, "mtu");
-      sKeys.put(28, "name");
-      sKeys.put(29, "persistentKeepalive");
-      sKeys.put(30, "preSharedKey");
-      sKeys.put(31, "privateKey");
-      sKeys.put(32, "publicKey");
-      sKeys.put(33, "responsePacketJunkSize");
-      sKeys.put(34, "responsePacketMagicHeader");
-      sKeys.put(35, "rowConfigurationHandler");
-      sKeys.put(36, "selected");
-      sKeys.put(37, "state");
-      sKeys.put(38, "statistics");
-      sKeys.put(39, "transportPacketMagicHeader");
-      sKeys.put(40, "tunnel");
-      sKeys.put(41, "tunnelRowConfigurationHandler");
-      sKeys.put(42, "tunnels");
-      sKeys.put(43, "underloadPacketMagicHeader");
+      sKeys.put(11, "fragment");
+      sKeys.put(12, "includedApplications");
+      sKeys.put(13, "initPacketJunkSize");
+      sKeys.put(14, "initPacketMagicHeader");
+      sKeys.put(15, "item");
+      sKeys.put(16, "junkPacketCount");
+      sKeys.put(17, "junkPacketMaxSize");
+      sKeys.put(18, "junkPacketMinSize");
+      sKeys.put(19, "key");
+      sKeys.put(20, "lastUsedTunnel");
+      sKeys.put(21, "listenPort");
+      sKeys.put(22, "mtu");
+      sKeys.put(23, "name");
+      sKeys.put(24, "persistentKeepalive");
+      sKeys.put(25, "preSharedKey");
+      sKeys.put(26, "privateKey");
+      sKeys.put(27, "publicKey");
+      sKeys.put(28, "responsePacketJunkSize");
+      sKeys.put(29, "responsePacketMagicHeader");
+      sKeys.put(30, "rowConfigurationHandler");
+      sKeys.put(31, "selected");
+      sKeys.put(32, "state");
+      sKeys.put(33, "statistics");
+      sKeys.put(34, "transportPacketMagicHeader");
+      sKeys.put(35, "tunnel");
+      sKeys.put(36, "tunnels");
+      sKeys.put(37, "underloadPacketMagicHeader");
     }
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(12);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(9);
 
     static {
       sKeys.put("layout/app_list_dialog_fragment_0", pw.idrug.connections.R.layout.app_list_dialog_fragment);
@@ -259,9 +223,6 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/tunnel_editor_peer_0", pw.idrug.connections.R.layout.tunnel_editor_peer);
       sKeys.put("layout/tunnel_list_fragment_0", pw.idrug.connections.R.layout.tunnel_list_fragment);
       sKeys.put("layout/tunnel_list_item_0", pw.idrug.connections.R.layout.tunnel_list_item);
-      sKeys.put("layout/tv_activity_0", pw.idrug.connections.R.layout.tv_activity);
-      sKeys.put("layout/tv_file_list_item_0", pw.idrug.connections.R.layout.tv_file_list_item);
-      sKeys.put("layout/tv_tunnel_list_item_0", pw.idrug.connections.R.layout.tv_tunnel_list_item);
     }
   }
 }

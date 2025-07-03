@@ -24,6 +24,6 @@
       type="MAIN"
       applicationId="pw.idrug.connections.tunnel"
       generatedSourceFolders="build/generated/ap_generated_sources/release/out"
-      desugaredMethodsFiles="/home/bykk/.gradle/caches/transforms-3/f88786917dfec56ae9bc6f8119485562/transformed/D8BackportedDesugaredMethods.txt">
+      desugaredMethodsFiles="/home/bykk/.gradle/caches/transforms-3/2102cdcf33ded13e5b5515d7544cd991/transformed/D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>
