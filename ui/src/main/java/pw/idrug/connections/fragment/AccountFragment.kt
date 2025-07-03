@@ -675,13 +675,16 @@ class AccountFragment : Fragment() {
                         for (server in toAdd) {
                             downloadConfig(token, server) { success, config ->
                                 if (success && config != null) {
-                                    try {
-                                        val file = File(requireContext().filesDir, "wg_idrug_${server}.conf")
-                                        file.writeText(config)
-                                        val parsed = Config.parse(file.bufferedReader())
-                                        tunnelManager.create("idrug_$server", parsed)
-                                        file.delete()
-                                    } catch (_: Exception) {}
+                                    MainScope().launch {
+                                        try {
+                                            val file = File(requireContext().filesDir, "wg_idrug_${server}.conf")
+                                            file.writeText(config)
+                                            val parsed = Config.parse(file.bufferedReader())
+                                            tunnelManager.create("idrug_$server", parsed)
+                                            file.delete()
+                                        } catch (_: Exception) {
+                                        }
+                                    }
                                 }
                             }
                         }
