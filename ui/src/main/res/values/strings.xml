@@ -265,7 +265,7 @@
     <string name="login_via_telegram">Login via Telegram</string>
     <string name="choose_server">Choose server</string>
     <string name="download_config">Download config</string>
-    <string name="renew_subscription">Renew subscription</string>
+    <string name="renew_subscription">Buy/Renew</string>
     <string name="referral_link">Referral link</string>
     <string name="link_device">Link device</string>
     <string name="login_with_code">Login with code</string>
