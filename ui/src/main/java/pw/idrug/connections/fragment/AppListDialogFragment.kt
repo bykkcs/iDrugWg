@@ -120,24 +120,31 @@ class AppListDialogFragment : DialogFragment() {
                 override fun onTabSelected(tab: TabLayout.Tab?) = setButtonText()
             })
         }
-        alertDialogBuilder.setPositiveButton(" ") { _, _ -> setSelectionAndDismiss() }
+        alertDialogBuilder.setPositiveButton(" ", null)
         // remove explicit cancel button to keep buttons compact
-        alertDialogBuilder.setNeutralButton(R.string.toggle_all) { _, _ -> 
-            val selectAll = appData.none { it.isSelected }  // Проверяем, если ничего не выбрано, то выбираем все
-            appData.forEach {
-                it.isSelected = selectAll  // Устанавливаем состояние для всех элементов
-            }
-            // Обновляем текст кнопки после выбора всех приложений
-            setButtonText()
-            // Убираем закрытие диалога, чтобы он оставался открыт
-            // dismiss() тут не вызываем!
-        }
+        alertDialogBuilder.setNeutralButton(R.string.toggle_all, null)
+        alertDialogBuilder.setNegativeButton(R.string.use_all_applications, null)
         binding.fragment = this
         binding.appData = appData
         loadData()
         val dialog = alertDialogBuilder.create()
         dialog.setOnShowListener {
             button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+            val invertButton = dialog.getButton(AlertDialog.BUTTON_NEUTRAL)
+            val selectAllButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+
+            button?.setOnClickListener { setSelectionAndDismiss() }
+
+            invertButton.setOnClickListener {
+                appData.forEach { it.isSelected = !it.isSelected }
+                setButtonText()
+            }
+
+            selectAllButton.setOnClickListener {
+                appData.forEach { it.isSelected = true }
+                setButtonText()
+            }
+
             setButtonText()
         }
         return dialog

@@ -116,7 +116,7 @@ class AccountFragment : Fragment() {
             setLoading(false)
         }
         view.findViewById<Button>(R.id.btn_download).setOnClickListener {
-            handleDownloadConfig(view)
+            handleDownloadConfig()
         }
         view.findViewById<Button>(R.id.btn_link_device).setOnClickListener {
             if (isLoggedIn()) {
@@ -136,18 +136,8 @@ class AccountFragment : Fragment() {
                 setLoading(false)
                 return@setOnClickListener
             }
-            renewSubscription { success, resp ->
-                safeUi {
-                    setLoading(false)
-                    val text = if (success) {
-                        getString(R.string.subscription_renewed)
-                    } else {
-                        getString(R.string.error_with_message, resp)
-                    }
-                    Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
-                    if (success) loadProfileAndSetupUI(requireView())
-                }
-            }
+            setLoading(false)
+            renewSubscription()
         }
 
         view.findViewById<Button>(R.id.btn_referral).setOnClickListener {
@@ -283,15 +273,15 @@ class AccountFragment : Fragment() {
                                 val o = subsArr.getJSONObject(i)
                                 val id = o.optString("location", o.optString("id", ""))
                                 val name = getServerName(id)
-                                val expires = o.optString("expires", null)
+                                val expires = o.optString("expires")
                                 val forever = o.optBoolean("forever", false)
                                 val active = o.optBoolean("active", false)
                                 subsList.add(Subscription(id, name, expires, forever, active))
                             }
                             subscriptions = subsList
                             val username = obj.optString("username", prefs.getString("username", "") ?: "")
-                            val photoUrl = obj.optString("photo_url", null)
-                            val telegramId = obj.optString("telegram_id", null)
+                            val photoUrl = obj.optString("photo_url")
+                            val telegramId = obj.optString("telegram_id")
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
                             if (!telegramId.isNullOrEmpty()) {
@@ -371,7 +361,9 @@ class AccountFragment : Fragment() {
                     val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
                     val exp = sdf.parse(expFixed)
                     val now = Date()
-                    ((exp.time - now.time) / (1000 * 60 * 60 * 24)).toInt()
+                    if (exp != null) {
+                        ((exp.time - now.time) / (1000 * 60 * 60 * 24)).toInt()
+                    } else null
                 } catch (_: Exception) { null }
             } else null
 
@@ -434,7 +426,7 @@ class AccountFragment : Fragment() {
         }
     }
 
-    private fun handleDownloadConfig(view: View) {
+    private fun handleDownloadConfig() {
         if (selectedServerId == null) {
             Toast.makeText(requireContext(), getString(R.string.select_server), Toast.LENGTH_SHORT).show()
             return
@@ -463,7 +455,7 @@ class AccountFragment : Fragment() {
                 }
                 return@launch
             }
-            downloadConfig(token, serverId, tunnelName) { success, configOrError ->
+            downloadConfig(token, serverId) { success, configOrError ->
                 safeUi {
                     setLoading(false)
                     if (success) {
@@ -504,9 +496,9 @@ class AccountFragment : Fragment() {
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val json = JSONObject(response.body?.string() ?: "{}")
-                    val username = json.optString("username", null)
-                    val photoUrl = json.optString("photo_url", null)
-                    val telegramId = json.optString("telegram_id", null)
+                    val username = json.optString("username")
+                    val photoUrl = json.optString("photo_url")
+                    val telegramId = json.optString("telegram_id")
                     if (!telegramId.isNullOrEmpty()) {
                         prefs.edit().putString("telegram_id", telegramId).apply()
                         FirebaseMessaging.getInstance().subscribeToTopic("user_$telegramId")
@@ -519,7 +511,7 @@ class AccountFragment : Fragment() {
         })
     }
 
-    private fun downloadConfig(token: String, serverId: String, tunnelName: String, callback: (Boolean, String?) -> Unit) {
+    private fun downloadConfig(token: String, serverId: String, callback: (Boolean, String?) -> Unit) {
         val client = OkHttpClient()
         val url = "https://idrug.pw/api/profile/download?server=$serverId"
         val request = Request.Builder()
@@ -540,7 +532,7 @@ class AccountFragment : Fragment() {
         })
     }
 
-    private fun renewSubscription(callback: (Boolean, String?) -> Unit) {
+    private fun renewSubscription() {
         val message = "Hello! I want to purchase or renew VPN. My login: " +
             (prefs.getString("username", "") ?: "unknown")
 
@@ -585,9 +577,9 @@ class AccountFragment : Fragment() {
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val obj = JSONObject(response.body?.string() ?: "{}")
-                    val jwt = obj.optString("jwt", null)
-                    val username = obj.optString("username", null)
-                    val telegramId = obj.optString("telegram_id", null)
+                    val jwt = obj.optString("jwt")
+                    val username = obj.optString("username")
+                    val telegramId = obj.optString("telegram_id")
                     if (!jwt.isNullOrEmpty() && !username.isNullOrEmpty()) {
                         if (!telegramId.isNullOrEmpty()) {
                             prefs.edit().putString("telegram_id", telegramId).apply()
@@ -635,7 +627,7 @@ class AccountFragment : Fragment() {
             val y = (source.height - size) / 2
             val squaredBitmap = Bitmap.createBitmap(source, x, y, size, size)
             if (squaredBitmap != source) source.recycle()
-            val bitmap = Bitmap.createBitmap(size, size, source.config ?: Bitmap.Config.ARGB_8888)
+            val bitmap = Bitmap.createBitmap(size, size, source.config)
             val canvas = Canvas(bitmap)
             val paint = Paint()
             val shader = BitmapShader(squaredBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
