@@ -20,6 +20,7 @@ import okhttp3.*
 import com.google.firebase.messaging.FirebaseMessaging
 import pw.idrug.connections.R
 import pw.idrug.connections.dialog.CodeInputDialogFragment
+import pw.idrug.connections.dialog.SubscriptionDialogFragment
 import androidx.fragment.app.DialogFragment
 import pw.idrug.connections.Application
 import pw.idrug.connections.config.Config
@@ -129,15 +130,7 @@ class AccountFragment : Fragment() {
             }
         }
         view.findViewById<Button>(R.id.btn_renew).setOnClickListener {
-            setLoading(true)
-            val token = prefs.getString("token", null)
-            if (token == null) {
-                Toast.makeText(requireContext(), getString(R.string.login_telegram_first), Toast.LENGTH_SHORT).show()
-                setLoading(false)
-                return@setOnClickListener
-            }
-            setLoading(false)
-            renewSubscription()
+            SubscriptionDialogFragment().show(parentFragmentManager, "subscription")
         }
 
         view.findViewById<Button>(R.id.btn_referral).setOnClickListener {
