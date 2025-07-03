@@ -13,6 +13,16 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        create("release") {
+            storeFile = file("keystore/release.jks")
+            storePassword = System.getenv("RELEASE_STORE_PASSWORD")
+            keyAlias = "release"
+            keyPassword = System.getenv("RELEASE_KEY_PASSWORD")
+            enableV3Signing = true
+            enableV4Signing = true
+        }
+    }
     buildFeatures {
         buildConfig = true
         dataBinding = true
@@ -36,6 +46,8 @@ android {
             // Enable code shrinking and resource shrinking for production
             isMinifyEnabled = true
             isShrinkResources = true
+            isDebuggable = false
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
             packaging {
                 resources {
@@ -52,6 +64,7 @@ android {
         create("googleplay") {
             initWith(getByName("release"))
             matchingFallbacks += "release"
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     androidResources {
