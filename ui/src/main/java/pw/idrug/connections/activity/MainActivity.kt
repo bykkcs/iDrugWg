@@ -176,6 +176,11 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
             Log.d("FCM", "Current FCM token: $token")
         }
         subscribeToGlobalNotifications()
+        val prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
+        val tgId = prefs.getString("telegram_id", null)
+        if (!tgId.isNullOrEmpty()) {
+            FirebaseMessaging.getInstance().subscribeToTopic("user_$tgId")
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
