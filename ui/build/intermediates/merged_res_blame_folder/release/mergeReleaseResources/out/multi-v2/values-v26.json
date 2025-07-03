@@ -4,7 +4,7 @@
             "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-56:/values-v26/values-v26.xml",
             "map": [
                 {
-                    "source": "/home/bykk/.gradle/caches/transforms-3/b3a12ff0c9844a9c1fe2542f9c9c7e32/transformed/appcompat-1.6.1/res/values-v26/values-v26.xml",
+                    "source": "/home/bykk/.gradle/caches/transforms-3/031193c7c036034c82e0710c84c1426f/transformed/appcompat-1.6.1/res/values-v26/values-v26.xml",
                     "from": {
                         "startLines": "2,3,4,8,12,16",
                         "startColumns": "4,4,4,4,4,4",

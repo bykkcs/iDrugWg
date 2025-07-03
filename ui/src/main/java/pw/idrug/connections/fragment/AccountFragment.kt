@@ -81,29 +81,6 @@ class AccountFragment : Fragment() {
         }
     }
 
-    private val qrScanLauncher = registerForActivityResult(
-        androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == android.app.Activity.RESULT_OK && result.data != null) {
-            val scanned = result.data?.getStringExtra("SCAN_RESULT")
-            if (!scanned.isNullOrEmpty()) {
-                confirmQrLoginToken(scanned) { success, message ->
-                    safeUi {
-                        val text = if (success) {
-                            getString(R.string.qr_login_confirmed)
-                        } else {
-                            getString(R.string.qr_confirmation_error, message)
-                        }
-                        Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
-                        if (success) loadProfileAndSetupUI(requireView())
-                    }
-                }
-            } else {
-                Toast.makeText(requireContext(), getString(R.string.qr_not_recognized), Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         destroyed = true
@@ -511,95 +488,8 @@ class AccountFragment : Fragment() {
         }
     }
 
-    private fun generateQrLoginToken(onComplete: (String?) -> Unit) {
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url("https://idrug.pw/api/qr/login_token")
-            .post("".toRequestBody("application/json".toMediaType()))
-            .build()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) { safeUi { onComplete(null) } }
-            override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    val json = JSONObject(response.body?.string() ?: "{}")
-                    val token = json.optString("qr_token", null)
-                    safeUi { onComplete(token) }
-                } else {
-                    safeUi { onComplete(null) }
-                }
-            }
-        })
-    }
 
-    private fun showQrCode(token: String, imageView: ImageView) {
-        try {
-            val size = 512
-            val bits = QRCodeWriter().encode(token, BarcodeFormat.QR_CODE, size, size)
-            val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.RGB_565)
-            for (x in 0 until size) {
-                for (y in 0 until size) {
-                    bitmap.setPixel(x, y, if (bits.get(x, y)) android.graphics.Color.BLACK else android.graphics.Color.WHITE)
-                }
-            }
-            imageView.setImageBitmap(bitmap)
-        } catch (e: Exception) {
-            Toast.makeText(requireContext(), getString(R.string.qr_generation_error), Toast.LENGTH_SHORT).show()
-        }
-    }
 
-    private fun startPollingQrStatus(token: String) {
-        qrPollingTimer?.cancel()
-        qrPollingTimer = Timer()
-        qrPollingTimer?.schedule(object : TimerTask() {
-            override fun run() {
-                pollQrLoginStatus(token) { confirmed, jwt, username, photoUrl ->
-                    if (confirmed && jwt != null && username != null) {
-                        qrPollingTimer?.cancel()
-                        prefs.edit()
-                            .putString("username", username)
-                            .putString("token", jwt)
-                            .putString("photo_url", photoUrl)
-                            .apply()
-                        safeUi {
-                            Toast.makeText(requireContext(), getString(R.string.qr_login_confirmed), Toast.LENGTH_SHORT).show()
-                            loadProfileAndSetupUI(requireView())
-                        }
-                    }
-                }
-            }
-        }, 0, 3000)
-    }
-
-    private fun pollQrLoginStatus(token: String, onResult: (Boolean, String?, String?, String?) -> Unit) {
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url("https://idrug.pw/api/qr/login_status/$token")
-            .get()
-            .build()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                safeUi { onResult(false, null, null, null) }
-            }
-            override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    val json = JSONObject(response.body?.string() ?: "{}")
-                    val status = json.optString("status")
-                    if (status == "confirmed") {
-                        val jwt = json.optString("token")
-                        getProfileFromJwt(jwt) { success, username, photoUrl ->
-                            safeUi {
-                                onResult(success, jwt, username, photoUrl)
-                            }
-                        }
-                    } else {
-                        safeUi { onResult(false, null, null, null) }
-                    }
-                } else {
-                    safeUi { onResult(false, null, null, null) }
-                }
-            }
-        })
-    }
 
     private fun getProfileFromJwt(jwt: String, callback: (Boolean, String?, String?) -> Unit) {
         val client = OkHttpClient()
@@ -625,30 +515,6 @@ class AccountFragment : Fragment() {
                 } else {
                     callback(false, null, null)
                 }
-            }
-        })
-    }
-
-    private fun confirmQrLoginToken(token: String, callback: (Boolean, String?) -> Unit) {
-        val jwt = prefs.getString("token", null)
-        if (jwt == null) {
-            callback(false, "You are not authenticated")
-            return
-        }
-        val client = OkHttpClient()
-        val json = """{"token":"$token"}"""
-        val body = json.toRequestBody("application/json".toMediaType())
-        val request = Request.Builder()
-            .url("https://idrug.pw/api/qr/login_confirm")
-            .addHeader("Authorization", "Bearer $jwt")
-            .post(body)
-            .build()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                safeUi { callback(false, e.message) }
-            }
-            override fun onResponse(call: Call, response: Response) {
-                safeUi { callback(response.isSuccessful, response.body?.string()) }
             }
         })
     }

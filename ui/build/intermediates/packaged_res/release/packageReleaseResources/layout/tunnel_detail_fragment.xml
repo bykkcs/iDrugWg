@@ -483,7 +483,7 @@
                         tools:text="1766607858" />
 
                     <androidx.constraintlayout.widget.Barrier
-                        android:id="@+id/amnezia_barrier"
+                        android:id="@+id/idrugconnections_barrier"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:barrierDirection="bottom"
@@ -497,7 +497,7 @@
                         android:labelFor="@+id/applications_text"
                         android:text="@string/applications"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/amnezia_barrier" />
+                        app:layout_constraintTop_toBottomOf="@+id/idrugconnections_barrier" />
 
                     <TextView
                         android:id="@+id/applications_text"
