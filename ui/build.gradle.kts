@@ -80,6 +80,7 @@ dependencies {
     implementation(libs.google.material)
     implementation(libs.zxing.android.embedded)
     implementation(libs.kotlinx.coroutines.android)
+    implementation("androidx.browser:browser:1.8.0")
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("com.google.zxing:core:3.5.1")
