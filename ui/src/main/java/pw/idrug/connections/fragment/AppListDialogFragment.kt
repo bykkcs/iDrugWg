@@ -142,8 +142,14 @@ class AppListDialogFragment : DialogFragment() {
             }
 
             selectAllButton.setOnClickListener {
-                appData.forEach { it.isSelected = true }
-                setButtonText()
+                val numSelected = appData.count { it.isSelected }
+                if (numSelected == 0) {
+                    appData.forEach { it.isSelected = true }
+                    setButtonText()
+                } else {
+                    sendResult()
+                    dismiss()
+                }
             }
 
             setButtonText()
