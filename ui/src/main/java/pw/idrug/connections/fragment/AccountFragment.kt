@@ -457,7 +457,7 @@ class AccountFragment : Fragment() {
                     if (success) {
                         lifecycleScope.launch {
                             try {
-                                val file = File(requireContext().filesDir, "wg_$tunnelName.conf")
+                                val file = File(requireContext().filesDir, "idrug_${tunnelName}.conf")
                                 file.writeText(configOrError ?: "")
                                 val config = Config.parse(file.bufferedReader())
                                 tunnelManager.create(tunnelName, config)
@@ -675,16 +675,22 @@ class AccountFragment : Fragment() {
                             tunnelManager.delete(tunnel)
                         }
                         val toAdd = activeServers.filter { "idrug_$it" !in existing }
+                        if (toAdd.isNotEmpty()) {
+                            safeUi {
+                                Toast.makeText(requireContext(), getString(R.string.servers_imported), Toast.LENGTH_SHORT).show()
+                            }
+                        }
                         for (server in toAdd) {
                             downloadConfig(token, server) { success, config ->
                                 if (success && config != null) {
                                     lifecycleScope.launch {
                                         try {
-                                            val file = File(requireContext().filesDir, "wg_idrug_${server}.conf")
+                                            val file = File(requireContext().filesDir, "idrug_${server}.conf")
                                             file.writeText(config)
                                             val parsed = Config.parse(file.bufferedReader())
                                             tunnelManager.create("idrug_$server", parsed)
                                             file.delete()
+                                            loadProfileAndSetupUI(requireView())
                                         } catch (_: Exception) {
                                         }
                                     }

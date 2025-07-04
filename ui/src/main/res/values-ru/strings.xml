@@ -328,6 +328,7 @@
     <string name="subscription_inactive_msg">Подписка не активна</string>
     <string name="config_already_added">Конфиг уже добавлен</string>
     <string name="tunnel_added">Туннель добавлен</string>
+    <string name="servers_imported">Новые конфиги загружены</string>
     <string name="tunnel_creation_error">Ошибка создания туннеля: %s</string>
     <string name="qr_generation_error">Ошибка генерации QR-кода</string>
     <string name="unable_open_telegram">Не удалось открыть Telegram</string>

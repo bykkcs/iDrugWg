@@ -309,6 +309,7 @@
     <string name="subscription_inactive_msg">Subscription inactive</string>
     <string name="config_already_added">Config already added</string>
     <string name="tunnel_added">Tunnel added</string>
+    <string name="servers_imported">New servers imported</string>
     <string name="tunnel_creation_error">Tunnel creation error: %s</string>
     <string name="qr_generation_error">QR code generation error</string>
     <string name="unable_open_telegram">Unable to open Telegram</string>
