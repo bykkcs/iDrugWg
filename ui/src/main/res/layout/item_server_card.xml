@@ -7,9 +7,12 @@
     android:clickable="true"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
-    android:background="@drawable/card_focus_outline"
     app:cardElevation="@dimen/card_elevation"
     app:cardUseCompatPadding="true"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardBackgroundColor="@color/card_bg"
+    app:strokeColor="@color/card_stroke"
+    app:strokeWidth="@dimen/focus_stroke_width"
     android:stateListAnimator="@animator/card_focus_animator">
 
     <LinearLayout
@@ -41,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/connect"
+            android:textSize="@dimen/tv_button_text_size"
             android:enabled="false" />
 
     </LinearLayout>

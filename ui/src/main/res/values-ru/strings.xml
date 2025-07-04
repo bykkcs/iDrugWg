@@ -291,7 +291,7 @@
     <string name="link_device">Привязать устр.</string>
     <string name="login_with_code">Войти через код</string>
     <string name="enter_code">Введите код</string>
-    <string name="submit_code">Войти</string>
+    <string name="submit_code">Продолжить</string>
     <string name="code_login_title">Введите 6-значный код</string>
     <string name="code_expires_in">Код истекает через %1$d с</string>
     <string name="code_expired">Код истёк. Сгенерируйте новый.</string>
@@ -344,6 +344,8 @@
     <string name="duration_3_months">3 месяца</string>
     <string name="duration_1_year">1 год</string>
     <string name="connection_error">Ошибка подключения: %1$s</string>
+    <string name="connect">Подключить</string>
+    <string name="disconnect">Отключить</string>
     <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
     <string-array name="onboarding_emojis">
         <item>🔒</item>

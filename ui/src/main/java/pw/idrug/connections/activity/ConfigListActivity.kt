@@ -187,7 +187,13 @@ class ConfigListActivity : AppCompatActivity() {
         fun bind(t: ObservableTunnel) {
             tunnel = t
             name.text = t.name.removePrefix("idrug_")
-            button.setOnClickListener { requestToggle(tunnel) }
+            button.isEnabled = false
+            button.text = if (t.state == Tunnel.State.UP) {
+                getString(R.string.disconnect)
+            } else {
+                getString(R.string.connect)
+            }
+            itemView.setOnClickListener { requestToggle(tunnel) }
         }
     }
 }

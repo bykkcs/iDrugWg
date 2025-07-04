@@ -11,6 +11,8 @@
     <!-- TV specific dimensions -->
     <dimen name="tv_header_text_size">32sp</dimen>
     <dimen name="server_name_text_size">24sp</dimen>
+    <dimen name="tv_input_text_size">24sp</dimen>
+    <dimen name="tv_button_text_size">22sp</dimen>
     <dimen name="card_elevation">8dp</dimen>
     <dimen name="large_padding">32dp</dimen>
     <dimen name="large_margin">32dp</dimen>

@@ -2,9 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="@dimen/large_margin">
+
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="@dimen/large_margin"
+        android:src="@drawable/ic_logo"
+        android:contentDescription="@string/app_name" />
 
     <EditText
         android:id="@+id/edit_code"
@@ -13,7 +22,7 @@
         android:inputType="number"
         android:hint="@string/enter_code"
         android:maxLength="6"
-        android:textSize="24sp"
+        android:textSize="@dimen/tv_input_text_size"
         android:gravity="center" />
 
     <Button
@@ -21,14 +30,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/submit_code"
-        android:layout_marginTop="16dp" />
+        android:textSize="@dimen/tv_button_text_size"
+        android:layout_marginTop="@dimen/large_margin" />
 
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="@dimen/large_margin" />
 
     <TextView
         android:id="@+id/error_text"
@@ -36,5 +46,5 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/holo_red_light"
         android:visibility="gone"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="@dimen/large_margin" />
 </LinearLayout>

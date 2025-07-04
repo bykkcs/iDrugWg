@@ -18,7 +18,7 @@
                 android:id="@+id/logo_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/logo"
+                android:src="@drawable/ic_logo"
                 android:contentDescription="@string/app_name"
                 android:layout_alignParentStart="true" />
 
