@@ -17,6 +17,8 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlin.coroutines.resume
 import okhttp3.*
 import com.google.firebase.messaging.FirebaseMessaging
 import pw.idrug.connections.R
@@ -663,7 +665,7 @@ class AccountFragment : Fragment() {
                             activeServers.add(sObj.optString("location"))
                         }
                     }
-                    MainScope().launch {
+                    lifecycleScope.launch {
                         val tunnelManager = Application.getTunnelManager()
                         val tunnels = tunnelManager.getTunnels().toList()
                         val existing = tunnels.map { it.name }.toSet()
@@ -675,26 +677,23 @@ class AccountFragment : Fragment() {
                             tunnelManager.delete(tunnel)
                         }
                         val toAdd = activeServers.filter { "idrug_$it" !in existing }
-                        if (toAdd.isNotEmpty()) {
-                            safeUi {
-                                Toast.makeText(requireContext(), getString(R.string.servers_imported), Toast.LENGTH_SHORT).show()
+                        for (server in toAdd) {
+                            val (success, config) = downloadConfigSuspend(token, server)
+                            if (success && config != null) {
+                                try {
+                                    val file = File(requireContext().filesDir, "idrug_${server}.conf")
+                                    file.writeText(config)
+                                    val parsed = Config.parse(file.bufferedReader())
+                                    tunnelManager.create("idrug_$server", parsed)
+                                    file.delete()
+                                } catch (_: Exception) {
+                                }
                             }
                         }
-                        for (server in toAdd) {
-                            downloadConfig(token, server) { success, config ->
-                                if (success && config != null) {
-                                    lifecycleScope.launch {
-                                        try {
-                                            val file = File(requireContext().filesDir, "idrug_${server}.conf")
-                                            file.writeText(config)
-                                            val parsed = Config.parse(file.bufferedReader())
-                                            tunnelManager.create("idrug_$server", parsed)
-                                            file.delete()
-                                            loadProfileAndSetupUI(requireView())
-                                        } catch (_: Exception) {
-                                        }
-                                    }
-                                }
+                        if (toAdd.isNotEmpty()) {
+                            loadProfileAndSetupUI(requireView())
+                            safeUi {
+                                Toast.makeText(requireContext(), getString(R.string.servers_imported), Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
@@ -702,6 +701,13 @@ class AccountFragment : Fragment() {
             }
         })
     }
+
+    private suspend fun downloadConfigSuspend(token: String, serverId: String): Pair<Boolean, String?> =
+        suspendCancellableCoroutine { cont ->
+            downloadConfig(token, serverId) { success, config ->
+                cont.resume(success to config)
+            }
+        }
 
     private fun safeUi(block: () -> Unit) {
         if (destroyed || !isAdded || activity == null) return
