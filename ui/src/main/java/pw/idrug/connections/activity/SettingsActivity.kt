@@ -9,6 +9,10 @@ import android.os.Environment
 import android.provider.Settings
 import android.view.MenuItem
 import android.widget.Toast
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import org.json.JSONObject
+import pw.idrug.connections.BuildConfig
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.fragment.app.commit
@@ -115,57 +119,81 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
-private fun checkForOtaUpdate() {
-    try {
-        val context = requireContext()
-        val url = "https://idrug.pw/ota/iDrugConnections.apk"
-        val fileName = "iDrugConnections.apk"
-        val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName)
-        if (file.exists()) {
-            val deleted = file.delete()
-            if (!deleted) {
-                Toast.makeText(context, "Failed to delete old update file", Toast.LENGTH_SHORT).show()
+        private fun checkForOtaUpdate() {
+            lifecycleScope.launch {
+                val context = requireContext()
+                val manifestUrl = "https://idrug.pw/ota/manifest.json"
+                try {
+                    val client = OkHttpClient()
+                    val request = Request.Builder().url(manifestUrl).build()
+                    val response = withContext(Dispatchers.IO) { client.newCall(request).execute() }
+                    if (!response.isSuccessful) {
+                        Toast.makeText(context, getString(R.string.update_check_error, response.code), Toast.LENGTH_LONG).show()
+                        return@launch
+                    }
+                    val json = JSONObject(response.body?.string() ?: "{}")
+                    val versionCode = json.optInt("versionCode", -1)
+                    val apkUrl = json.optString("apkUrl")
+                    if (versionCode <= BuildConfig.VERSION_CODE || apkUrl.isBlank()) {
+                        Toast.makeText(context, getString(R.string.update_no_new_version), Toast.LENGTH_SHORT).show()
+                        return@launch
+                    }
+                    downloadApk(apkUrl)
+                } catch (e: Exception) {
+                    Toast.makeText(context, getString(R.string.update_check_error, e.localizedMessage ?: ""), Toast.LENGTH_LONG).show()
+                }
             }
         }
 
-        val request = DownloadManager.Request(Uri.parse(url))
-            .setTitle("Downloading update")
-            .setDescription("Downloading new application version")
-            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-            .setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, fileName)
-            .setAllowedOverMetered(true)
-            .setAllowedOverRoaming(true)
+        private fun downloadApk(url: String) {
+            try {
+                val context = requireContext()
+                val fileName = "iDrugConnections.apk"
+                val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName)
+                if (file.exists()) {
+                    val deleted = file.delete()
+                    if (!deleted) {
+                        Toast.makeText(context, context.getString(R.string.update_delete_old_failed), Toast.LENGTH_SHORT).show()
+                    }
+                }
 
-        val manager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-        downloadId = manager.enqueue(request)
+                val request = DownloadManager.Request(Uri.parse(url))
+                    .setTitle("Downloading update")
+                    .setDescription("Downloading new application version")
+                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    .setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, fileName)
+                    .setAllowedOverMetered(true)
+                    .setAllowedOverRoaming(true)
 
-        Toast.makeText(context, "Update download started", Toast.LENGTH_SHORT).show()
+                val manager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                downloadId = manager.enqueue(request)
 
-        // Corrected call:
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            context.registerReceiver(
-                downloadReceiver,
-                IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE),
-                Context.RECEIVER_NOT_EXPORTED
-            )
-        } else {
-            context.registerReceiver(
-                downloadReceiver,
-                IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
-            )
+                Toast.makeText(context, context.getString(R.string.update_download_started), Toast.LENGTH_SHORT).show()
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    context.registerReceiver(
+                        downloadReceiver,
+                        IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE),
+                        Context.RECEIVER_NOT_EXPORTED
+                    )
+                } else {
+                    context.registerReceiver(
+                        downloadReceiver,
+                        IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
+                    )
+                }
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), getString(R.string.update_start_error, e.localizedMessage), Toast.LENGTH_LONG).show()
+                e.printStackTrace()
+            }
         }
-    } catch (e: Exception) {
-        Toast.makeText(requireContext(), "Error starting update: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
-        e.printStackTrace()
-    }
-}
 
 
         private fun installApk() {
             val fileName = "iDrugConnections.apk"
             val file = File(requireContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName)
             if (!file.exists()) {
-                Toast.makeText(requireContext(), "APK not found!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.apk_not_found), Toast.LENGTH_SHORT).show()
                 return
             }
             val apkUri = FileProvider.getUriForFile(
@@ -178,7 +206,7 @@ private fun checkForOtaUpdate() {
                     val intent = Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES)
                     intent.data = Uri.parse("package:" + requireContext().packageName)
                     startActivity(intent)
-                    Toast.makeText(requireContext(), "Grant permission to install from unknown sources and try again", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), getString(R.string.permission_unknown_sources), Toast.LENGTH_LONG).show()
                     return
                 }
             }
@@ -189,7 +217,7 @@ private fun checkForOtaUpdate() {
             try {
                 startActivity(intent)
             } catch (e: Exception) {
-                Toast.makeText(requireContext(), "Failed to open APK for installation: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), getString(R.string.apk_open_error, e.message), Toast.LENGTH_LONG).show()
             }
         }
     }

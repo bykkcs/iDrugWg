@@ -1,0 +1,8 @@
+-dontwarn org.bouncycastle.**
+-dontwarn org.conscrypt.**
+-dontwarn org.openjsse.**
+-dontnote org.bouncycastle.**
+-dontnote org.conscrypt.**
+-dontnote org.openjsse.**
+-keep class okhttp3.** { *; }
+-keep class okio.** { *; }

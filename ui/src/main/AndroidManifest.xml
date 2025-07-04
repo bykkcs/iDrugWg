@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission
         android:name="android.permission.SYSTEM_ALERT_WINDOW"
         android:minSdkVersion="34" />
@@ -52,13 +53,21 @@
             android:theme="@style/NoBackgroundTheme" />
 
         <activity
-            android:name=".activity.MainActivity"
-            android:exported="true">
+            android:name=".activity.OnboardingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SplashActivity"
+            android:exported="true"
+            android:theme="@style/NoBackgroundTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true">
 
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
@@ -87,8 +96,9 @@
         android:resource="@xml/file_paths" />
 </provider>
 
+
         <activity
-            android:name=".activity.TvMainActivity"
+            android:name=".activity.TvEntryActivity"
             android:exported="true"
             android:theme="@style/TvTheme">
             <intent-filter>
@@ -96,6 +106,11 @@
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activity.ConfigListActivity"
+            android:exported="false"
+            android:theme="@style/TvTheme" />
         
         <activity
             android:name=".activity.SettingsActivity"
@@ -120,6 +135,12 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activity.LinkCodeActivity"
+            android:exported="false"
+            android:label="@string/link_device"
+            android:parentActivityName=".activity.MainActivity" />
 
         <provider
             android:name=".activity.LogViewerActivity$ExportedLogContentProvider"
@@ -175,7 +196,7 @@
         </service>
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_launcher_foreground" />
+            android:resource="@drawable/ic_notification" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="fcm_default_channel" />

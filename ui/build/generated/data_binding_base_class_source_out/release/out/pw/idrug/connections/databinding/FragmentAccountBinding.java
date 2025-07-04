@@ -33,10 +33,16 @@ public final class FragmentAccountBinding implements ViewBinding {
   public final Button btnDownload;
 
   @NonNull
+  public final Button btnLinkDevice;
+
+  @NonNull
   public final Button btnLoginTelegram;
 
   @NonNull
   public final Button btnLogout;
+
+  @NonNull
+  public final Button btnReferral;
 
   @NonNull
   public final Button btnRenew;
@@ -75,8 +81,9 @@ public final class FragmentAccountBinding implements ViewBinding {
   public final TextView textServerChoice;
 
   private FragmentAccountBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull ImageView avatarImage, @NonNull Button btnDownload, @NonNull Button btnLoginTelegram,
-      @NonNull Button btnLogout, @NonNull Button btnRenew, @NonNull CoordinatorLayout coordinator,
+      @NonNull ImageView avatarImage, @NonNull Button btnDownload, @NonNull Button btnLinkDevice,
+      @NonNull Button btnLoginTelegram, @NonNull Button btnLogout, @NonNull Button btnReferral,
+      @NonNull Button btnRenew, @NonNull CoordinatorLayout coordinator,
       @NonNull FrameLayout loadingOverlay, @NonNull ProgressBar progressLoading,
       @NonNull ImageView qrCodeImage, @NonNull LinearLayout rootLayout,
       @NonNull ScrollView scrollView, @NonNull Spinner spinnerServer, @NonNull TextView statusText,
@@ -85,8 +92,10 @@ public final class FragmentAccountBinding implements ViewBinding {
     this.rootView = rootView;
     this.avatarImage = avatarImage;
     this.btnDownload = btnDownload;
+    this.btnLinkDevice = btnLinkDevice;
     this.btnLoginTelegram = btnLoginTelegram;
     this.btnLogout = btnLogout;
+    this.btnReferral = btnReferral;
     this.btnRenew = btnRenew;
     this.coordinator = coordinator;
     this.loadingOverlay = loadingOverlay;
@@ -140,6 +149,12 @@ public final class FragmentAccountBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btn_link_device;
+      Button btnLinkDevice = ViewBindings.findChildViewById(rootView, id);
+      if (btnLinkDevice == null) {
+        break missingId;
+      }
+
       id = R.id.btn_login_telegram;
       Button btnLoginTelegram = ViewBindings.findChildViewById(rootView, id);
       if (btnLoginTelegram == null) {
@@ -149,6 +164,12 @@ public final class FragmentAccountBinding implements ViewBinding {
       id = R.id.btn_logout;
       Button btnLogout = ViewBindings.findChildViewById(rootView, id);
       if (btnLogout == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_referral;
+      Button btnReferral = ViewBindings.findChildViewById(rootView, id);
+      if (btnReferral == null) {
         break missingId;
       }
 
@@ -221,9 +242,9 @@ public final class FragmentAccountBinding implements ViewBinding {
       }
 
       return new FragmentAccountBinding((CoordinatorLayout) rootView, avatarImage, btnDownload,
-          btnLoginTelegram, btnLogout, btnRenew, coordinator, loadingOverlay, progressLoading,
-          qrCodeImage, rootLayout, scrollView, spinnerServer, statusText, textCurrentUser,
-          textExpiration, textServerChoice);
+          btnLinkDevice, btnLoginTelegram, btnLogout, btnReferral, btnRenew, coordinator,
+          loadingOverlay, progressLoading, qrCodeImage, rootLayout, scrollView, spinnerServer,
+          statusText, textCurrentUser, textExpiration, textServerChoice);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

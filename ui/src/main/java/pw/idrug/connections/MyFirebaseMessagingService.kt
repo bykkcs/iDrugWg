@@ -6,19 +6,29 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import pw.idrug.connections.R
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onNewToken(token: String) {
         super.onNewToken(token)
         Log.d("FCM", "FCM token: $token")
+        FirebaseMessaging.getInstance().subscribeToTopic("all-users")
+        val prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
+        val tgId = prefs.getString("telegram_id", null)
+        if (!tgId.isNullOrEmpty()) {
+            FirebaseMessaging.getInstance().subscribeToTopic("user_$tgId")
+        }
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
-        val title = remoteMessage.notification?.title ?: "Новое уведомление"
-        val body = remoteMessage.notification?.body ?: ""
+        val data = remoteMessage.data
+        val title = remoteMessage.notification?.title ?: data["title"] ?: "Новое уведомление"
+        val body = remoteMessage.notification?.body ?: data["body"] ?: ""
+        Log.d("FCM", "Message received: $data")
         showNotification(title, body)
     }
 
@@ -35,7 +45,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
 
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(android.R.drawable.ic_dialog_info)
+            .setSmallIcon(R.drawable.ic_notification)
             .setContentTitle(title)
             .setContentText(message)
             .setAutoCancel(true)

@@ -12,7 +12,9 @@ import android.content.pm.PackageManager.PackageInfoFlags
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
+import android.view.View
 import android.widget.Toast
+import android.content.DialogInterface
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.databinding.Observable
@@ -35,7 +37,7 @@ class AppListDialogFragment : DialogFragment() {
     private val appData = ObservableKeyedArrayList<String, ApplicationData>()
     private var currentlySelectedApps = emptyList<String>()
     private var initiallyExcluded = false
-    private var button: Button? = null
+    private var selectButton: Button? = null
     private var tabs: TabLayout? = null
 
     private fun loadData() {
@@ -97,7 +99,7 @@ class AppListDialogFragment : DialogFragment() {
 
     private fun setButtonText() {
         val numSelected = appData.count { it.isSelected }
-        button?.text = if (numSelected == 0)
+        selectButton?.text = if (numSelected == 0)
             getString(R.string.use_all_applications)
         else when (tabs?.selectedTabPosition) {
             0 -> resources.getQuantityString(R.plurals.exclude_n_applications, numSelected, numSelected)
@@ -106,8 +108,8 @@ class AppListDialogFragment : DialogFragment() {
         }
     }
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val alertDialogBuilder = MaterialAlertDialogBuilder(requireActivity())
+     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val alertDialogBuilder = MaterialAlertDialogBuilder(requireActivity(), R.style.MonetAlertDialog)
         val binding = AppListDialogFragmentBinding.inflate(requireActivity().layoutInflater, null, false)
         binding.executePendingBindings()
         alertDialogBuilder.setView(binding.root)
@@ -120,40 +122,54 @@ class AppListDialogFragment : DialogFragment() {
                 override fun onTabSelected(tab: TabLayout.Tab?) = setButtonText()
             })
         }
-        alertDialogBuilder.setPositiveButton(" ") { _, _ -> setSelectionAndDismiss() }
-        alertDialogBuilder.setNegativeButton(R.string.cancel) { dialog, _ -> dialog.dismiss() }
-        alertDialogBuilder.setNeutralButton(R.string.toggle_all) { _, _ -> }
+        // remove explicit cancel button to keep buttons compact
+        alertDialogBuilder.setNeutralButton(R.string.toggle_all, null)
+        alertDialogBuilder.setNegativeButton(R.string.use_all_applications, null)
         binding.fragment = this
         binding.appData = appData
         loadData()
         val dialog = alertDialogBuilder.create()
         dialog.setOnShowListener {
-            button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-            setButtonText()
-            dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener { _ ->
-                val selectAll = appData.none { it.isSelected }
-                appData.forEach {
-                    it.isSelected = selectAll
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)?.visibility = View.GONE
+            val invertButton = dialog.getButton(AlertDialog.BUTTON_NEUTRAL)
+            val selectAllButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+
+            selectButton = selectAllButton
+
+            invertButton.setOnClickListener {
+                appData.forEach { it.isSelected = !it.isSelected }
+                setButtonText()
+            }
+
+            selectAllButton.setOnClickListener {
+                val numSelected = appData.count { it.isSelected }
+                if (numSelected == 0) {
+                    appData.forEach { it.isSelected = true }
+                    setButtonText()
+                } else {
+                    sendResult()
+                    dismiss()
                 }
             }
+
+            setButtonText()
         }
         return dialog
     }
 
-    private fun setSelectionAndDismiss() {
-        val selectedApps: MutableList<String> = ArrayList()
-        for (data in appData) {
-            if (data.isSelected) {
-                selectedApps.add(data.packageName)
-            }
-        }
+    private fun sendResult() {
+        val selectedApps = appData.filter { it.isSelected }.map { it.packageName }
         setFragmentResult(
             REQUEST_SELECTION, bundleOf(
                 KEY_SELECTED_APPS to selectedApps.toTypedArray(),
                 KEY_IS_EXCLUDED to (tabs?.selectedTabPosition == 0)
             )
         )
-        dismiss()
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        sendResult()
+        super.onDismiss(dialog)
     }
 
     companion object {

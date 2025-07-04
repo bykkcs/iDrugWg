@@ -55,8 +55,8 @@
         <item quantity="other">%d включено</item>
     </plurals>
     <string name="all_applications">Все приложения</string>
-    <string name="exclude_from_tunnel">Исключить для</string>
-    <string name="include_in_tunnel">Включить для</string>
+    <string name="exclude_from_tunnel">Исключить</string>
+    <string name="include_in_tunnel">Включить</string>
     <plurals name="include_n_applications">
         <item quantity="one">Включить %d приложение</item>
         <item quantity="few">Включить %d приложения</item>
@@ -81,7 +81,7 @@
         <item quantity="many">секунд</item>
         <item quantity="other">секунд</item>
     </plurals>
-    <string name="use_all_applications">Использовать все приложения</string>
+    <string name="use_all_applications">Выбрать все</string>
     <string name="add_peer">Добавить пир</string>
     <string name="addresses">Адреса</string>
     <string name="applications">Приложения</string>
@@ -233,7 +233,7 @@
     <string name="shell_marker_count_error">Shell ожидает 4 маркера, получено %d</string>
     <string name="shell_start_error">Не удалось запустить Shell: %d</string>
     <string name="success_application_will_restart">Успешно. Приложение будет перезапущено…</string>
-    <string name="toggle_all">Инвертировать все</string>
+    <string name="toggle_all">Инверт. все</string>
     <string name="toggle_error">Ошибка переключения туннеля iDrug Connections: %s</string>
     <string name="tools_installer_already">awg и awg-quick уже установлены</string>
     <string name="tools_installer_failure">Не удалось установить инструменты командной строки (нет root?)</string>
@@ -286,7 +286,16 @@
     <string name="login_via_telegram">Войти через Telegram</string>
     <string name="choose_server">Выберите сервер</string>
     <string name="download_config">Скачать конфиг</string>
-    <string name="renew_subscription">Продлить подписку</string>
+    <string name="renew_subscription">Купить/Продлить</string>
+    <string name="referral_link">Реферальная ссылка</string>
+    <string name="link_device">Привязать устр.</string>
+    <string name="login_with_code">Войти через код</string>
+    <string name="enter_code">Введите код</string>
+    <string name="submit_code">Войти</string>
+    <string name="code_login_title">Введите 6-значный код</string>
+    <string name="code_expires_in">Код истекает через %1$d с</string>
+    <string name="code_expired">Код истёк. Сгенерируйте новый.</string>
+    <string name="code_generating">Генерация кода…</string>
     <string name="logout">Выйти</string>
     <string name="nav_account_title">Личный кабинет</string>
     <string name="update_application_title">Обновить приложение</string>
@@ -299,5 +308,69 @@
 <string name="server_multihop_germany">Мультихоп Германия</string>
 <string name="server_bulgaria">Болгария</string>
 <string name="server_madrid">Мадрид</string>
+    <string name="update_delete_old_failed">Не удалось удалить старый файл обновления</string>
+    <string name="update_download_started">Начата загрузка обновления</string>
+    <string name="update_start_error">Ошибка запуска обновления: %s</string>
+    <string name="apk_not_found">APK не найден</string>
+    <string name="permission_unknown_sources">Разрешите установку из неизвестных источников и повторите</string>
+    <string name="apk_open_error">Не удалось открыть APK для установки: %s</string>
+    <string name="qr_login_confirmed">Вход по QR подтверждён</string>
+    <string name="qr_confirmation_error">Ошибка подтверждения: %s</string>
+    <string name="qr_not_recognized">QR-код не распознан</string>
+    <string name="login_telegram_first">Сначала войдите через Telegram</string>
+    <string name="subscription_renewed">Подписка продлена</string>
+    <string name="error_with_message">Ошибка: %s</string>
+    <string name="network_error_msg">Сетевая ошибка: %s</string>
+    <string name="profile_processing_error">Ошибка обработки профиля: %s</string>
+    <string name="profile_retrieval_failed">Не удалось получить профиль: %d</string>
+    <string name="logged_out">Вы вышли из аккаунта</string>
+    <string name="select_server">Выберите сервер</string>
+    <string name="subscription_inactive_msg">Подписка не активна</string>
+    <string name="config_already_added">Конфиг уже добавлен</string>
+    <string name="tunnel_added">Туннель добавлен</string>
+    <string name="tunnel_creation_error">Ошибка создания туннеля: %s</string>
+    <string name="qr_generation_error">Ошибка генерации QR-кода</string>
+    <string name="unable_open_telegram">Не удалось открыть Telegram</string>
+    <string name="login_successful">Вход выполнен</string>
+    <string name="telegram_login_successful">Вход через Telegram выполнен!</string>
+    <string name="invalid_response">Неверный ответ</string>
+    <string name="code_invalid_or_expired">Код неверный или истёк</string>
+    <string name="choose_plan">Выберите тариф</string>
+    <string name="location_label">Локация</string>
+    <string name="duration_label">Срок</string>
+    <string name="pay">Оплатить</string>
+    <string name="price_template">Цена: %1$d₽</string>
+    <string name="duration_1_month">1 месяц</string>
+    <string name="duration_3_months">3 месяца</string>
+    <string name="duration_1_year">1 год</string>
+    <string name="connection_error">Ошибка подключения: %1$s</string>
     <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
+    <string-array name="onboarding_emojis">
+        <item>🔒</item>
+        <item>📡</item>
+        <item>📱</item>
+        <item>📺</item>
+        <item>🚦</item>
+        <item>💸</item>
+    </string-array>
+    <string-array name="onboarding_titles">
+        <item>Анонимность без компромиссов</item>
+        <item>Мощные серверы по всему миру</item>
+        <item>Автозагрузка конфигов</item>
+        <item>Android TV поддержка</item>
+        <item>Раздельное туннелирование</item>
+        <item>Прозрачные тарифы</item>
+    </string-array>
+    <string-array name="onboarding_descriptions">
+        <item>Твой реальный IP и действия надёжно скрыты. Мы не ведём логи. Всё, что делаешь — только твоё дело.</item>
+        <item>Локации — 🇩🇪 Германия, 🇸🇪 Швеция, 🇧🇬 Болгария, 🇪🇸 Испания и другие. Меняй страну за 1 клик.</item>
+        <item>Подключайся мгновенно. Конфиги и ключи автоматически сохраняются в приложении — ничего не теряется.</item>
+        <item>Удобное приложение для телевизоров — линкинг через код, запуск в 1 клик. Всё, как надо.</item>
+        <item>В настройках туннеля выбери приложения — их трафик пойдёт только через VPN, остальное напрямую.</item>
+        <item>Тарифы от 250₽ в месяц. Без скрытых платежей, оплата любым способом: карта, крипта, всё что удобно.</item>
+    </string-array>
+    <string name="onboarding_next">Далее</string>
+    <string name="onboarding_start">Начать</string>
+    <string name="onboarding_error">Ошибка загрузки обучения. Пожалуйста, обновите приложение или свяжитесь с поддержкой.</string>
 </resources>
+

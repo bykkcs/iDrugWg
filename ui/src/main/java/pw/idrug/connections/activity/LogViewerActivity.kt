@@ -171,7 +171,7 @@ class LogViewerActivity : AppCompatActivity() {
         var outputFile: DownloadsFileSaver.DownloadsFile? = null
         withContext(Dispatchers.IO) {
             try {
-                outputFile = downloadsFileSaver.save("amneziawg-log.txt", "text/plain", true)
+        outputFile = downloadsFileSaver.save("idrugconnections-log.txt", "text/plain", true)
                 outputFile?.outputStream?.write(rawLogBytes())
             } catch (e: Throwable) {
                 outputFile?.delete()
@@ -353,7 +353,7 @@ class LogViewerActivity : AppCompatActivity() {
         override fun query(uri: Uri, projection: Array<out String>?, selection: String?, selectionArgs: Array<out String>?, sortOrder: String?): Cursor? =
             logForUri(uri)?.let {
                 val m = MatrixCursor(arrayOf(android.provider.OpenableColumns.DISPLAY_NAME, android.provider.OpenableColumns.SIZE), 1)
-                m.addRow(arrayOf("amneziawg-log.txt", it.size.toLong()))
+                m.addRow(arrayOf("idrugconnections-log.txt", it.size.toLong()))
                 m
             }
 

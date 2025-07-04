@@ -17,7 +17,11 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import okhttp3.*
+import com.google.firebase.messaging.FirebaseMessaging
 import pw.idrug.connections.R
+import pw.idrug.connections.dialog.CodeInputDialogFragment
+import pw.idrug.connections.dialog.SubscriptionDialogFragment
+import androidx.fragment.app.DialogFragment
 import pw.idrug.connections.Application
 import pw.idrug.connections.config.Config
 import org.json.JSONArray
@@ -34,6 +38,8 @@ import android.text.style.StyleSpan
 import android.text.style.ForegroundColorSpan
 import android.graphics.Typeface
 import android.graphics.Color
+import android.util.Log
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class AccountFragment : Fragment() {
 
@@ -59,34 +65,19 @@ class AccountFragment : Fragment() {
     private var subscriptions: List<Subscription> = emptyList()
 
     // --- Локализация названия сервера ---
-    private fun getServerName(location: String): String {
+    private fun getServerName(location: String?): String {
+        if (location.isNullOrBlank()) {
+            Log.w("AccountFragment", "getServerName: empty or null location")
+            return "Unknown"
+        }
         return when (location) {
             "germany" -> getString(R.string.server_germany)
             "multihop" -> getString(R.string.server_multihop_germany)
             "bulgaria" -> getString(R.string.server_bulgaria)
             "madrid" -> getString(R.string.server_madrid)
-            else -> location
-        }
-    }
-
-    private val qrScanLauncher = registerForActivityResult(
-        androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == android.app.Activity.RESULT_OK && result.data != null) {
-            val scanned = result.data?.getStringExtra("SCAN_RESULT")
-            if (!scanned.isNullOrEmpty()) {
-                confirmQrLoginToken(scanned) { success, message ->
-                    safeUi {
-                        Toast.makeText(
-                            requireContext(),
-                            if (success) "QR login confirmed" else "Confirmation error: $message",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        if (success) loadProfileAndSetupUI(requireView())
-                    }
-                }
-            } else {
-                Toast.makeText(requireContext(), "QR code not recognized", Toast.LENGTH_SHORT).show()
+            else -> {
+                Log.w("AccountFragment", "getServerName: unrecognized location $location")
+                location
             }
         }
     }
@@ -95,6 +86,8 @@ class AccountFragment : Fragment() {
         super.onDestroyView()
         destroyed = true
         qrPollingTimer?.cancel()
+        (parentFragmentManager.findFragmentByTag("code_input") as? DialogFragment)?.dismissAllowingStateLoss()
+        (parentFragmentManager.findFragmentByTag("link_code") as? DialogFragment)?.dismissAllowingStateLoss()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -105,6 +98,9 @@ class AccountFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         handleDeepLink(requireActivity().intent)
+        if (isLoggedIn()) {
+            loadProfileAndSetupUI(requireView())
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -124,23 +120,29 @@ class AccountFragment : Fragment() {
             setLoading(false)
         }
         view.findViewById<Button>(R.id.btn_download).setOnClickListener {
-            handleDownloadConfig(view)
+            handleDownloadConfig()
+        }
+        view.findViewById<Button>(R.id.btn_link_device).setOnClickListener {
+            if (isLoggedIn()) {
+                pw.idrug.connections.dialog.LinkCodeDialogFragment()
+                    .show(parentFragmentManager, "link_code")
+            } else {
+                CodeInputDialogFragment { code ->
+                    handleLinkCodeLogin(code)
+                }.show(parentFragmentManager, "code_input")
+            }
         }
         view.findViewById<Button>(R.id.btn_renew).setOnClickListener {
-            setLoading(true)
-            val token = prefs.getString("token", null)
-            if (token == null) {
-                Toast.makeText(requireContext(), "Please log in via Telegram first", Toast.LENGTH_SHORT).show()
-                setLoading(false)
-                return@setOnClickListener
+            SubscriptionDialogFragment().show(parentFragmentManager, "subscription")
+        }
+
+        view.findViewById<Button>(R.id.btn_referral).setOnClickListener {
+            val tgId = prefs.getString("telegram_id", "") ?: ""
+            val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, "Моя реферальная ссылка: https://idrug.pw/login?ref=$tgId")
             }
-            renewSubscription { success, resp ->
-                safeUi {
-                    setLoading(false)
-                    Toast.makeText(requireContext(), if (success) "Subscription renewed" else "Error: $resp", Toast.LENGTH_SHORT).show()
-                    if (success) loadProfileAndSetupUI(requireView())
-                }
-            }
+            startActivity(Intent.createChooser(shareIntent, null))
         }
     }
 
@@ -168,34 +170,34 @@ class AccountFragment : Fragment() {
         val url = "https://idrug.pw/api/servers"
         client.newCall(Request.Builder().url(url).build()).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                serverList = listOf(
-                    "germany" to getServerName("germany"),
-                    "multihop" to getServerName("multihop"),
-                    "bulgaria" to getServerName("bulgaria"),
-                    "madrid" to getServerName("madrid")
-                )
                 safeUi {
-                    setupServerSpinner(view)
-                    loadProfileAndSetupUI(view)
-                }
-            }
-            override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    val arr = JSONArray(response.body?.string() ?: "[]")
-                    serverList = List(arr.length()) {
-                        val obj = arr.getJSONObject(it)
-                        val id = obj.getString("id")
-                        id to getServerName(id)
-                    }
-                } else {
                     serverList = listOf(
                         "germany" to getServerName("germany"),
                         "multihop" to getServerName("multihop"),
                         "bulgaria" to getServerName("bulgaria"),
                         "madrid" to getServerName("madrid")
                     )
+                    setupServerSpinner(view)
+                    loadProfileAndSetupUI(view)
                 }
+            }
+            override fun onResponse(call: Call, response: Response) {
                 safeUi {
+                    if (response.isSuccessful) {
+                        val arr = JSONArray(response.body?.string() ?: "[]")
+                        serverList = List(arr.length()) {
+                            val obj = arr.getJSONObject(it)
+                            val id = obj.getString("id")
+                            id to getServerName(id)
+                        }
+                    } else {
+                        serverList = listOf(
+                            "germany" to getServerName("germany"),
+                            "multihop" to getServerName("multihop"),
+                            "bulgaria" to getServerName("bulgaria"),
+                            "madrid" to getServerName("madrid")
+                        )
+                    }
                     setupServerSpinner(view)
                     loadProfileAndSetupUI(view)
                 }
@@ -249,7 +251,7 @@ class AccountFragment : Fragment() {
             override fun onFailure(call: Call, e: IOException) {
                 safeUi {
                     setLoading(false)
-                    Toast.makeText(requireContext(), "Network error: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.network_error_msg, e.message), Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onResponse(call: Call, response: Response) {
@@ -267,25 +269,30 @@ class AccountFragment : Fragment() {
                                 val o = subsArr.getJSONObject(i)
                                 val id = o.optString("location", o.optString("id", ""))
                                 val name = getServerName(id)
-                                val expires = o.optString("expires", null)
+                                val expires = o.optString("expires")
                                 val forever = o.optBoolean("forever", false)
                                 val active = o.optBoolean("active", false)
                                 subsList.add(Subscription(id, name, expires, forever, active))
                             }
                             subscriptions = subsList
                             val username = obj.optString("username", prefs.getString("username", "") ?: "")
-                            val photoUrl = obj.optString("photo_url", null)
+                            val photoUrl = obj.optString("photo_url")
+                            val telegramId = obj.optString("telegram_id")
                             prefs.edit().putString("username", username).apply()
                             if (!photoUrl.isNullOrEmpty()) prefs.edit().putString("photo_url", photoUrl).apply()
+                            if (!telegramId.isNullOrEmpty()) {
+                                prefs.edit().putString("telegram_id", telegramId).apply()
+                                FirebaseMessaging.getInstance().subscribeToTopic("user_$telegramId")
+                            }
                             showAccountScreen(view, username, photoUrl, subsList)
                             syncTunnelsWithProfile()
                         } catch (e: Exception) {
-                            Toast.makeText(requireContext(), "Profile processing error: ${e.message}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), getString(R.string.profile_processing_error, e.message), Toast.LENGTH_SHORT).show()
                             subscriptions = emptyList()
                             showAccountScreen(view, prefs.getString("username", "") ?: "", prefs.getString("photo_url", null), emptyList())
                         }
                     } else {
-                        Toast.makeText(requireContext(), "Failed to retrieve profile: ${response.code}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), getString(R.string.profile_retrieval_failed, response.code), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -294,8 +301,12 @@ class AccountFragment : Fragment() {
 
     private fun showLoginScreen(view: View) {
         view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.VISIBLE
+        val linkButton = view.findViewById<Button>(R.id.btn_link_device)
+        linkButton.visibility = View.VISIBLE
+        linkButton.text = getString(R.string.login_with_code)
         view.findViewById<Button>(R.id.btn_download).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_renew).visibility = View.GONE
+        view.findViewById<Button>(R.id.btn_referral).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout).visibility = View.GONE
         view.findViewById<Spinner>(R.id.spinner_server).visibility = View.GONE
         view.findViewById<TextView>(R.id.text_server_choice).visibility = View.GONE
@@ -307,7 +318,14 @@ class AccountFragment : Fragment() {
     }
 
     private fun showAccountScreen(view: View, username: String, photoUrl: String?, subs: List<Subscription>) {
+        val tgId = prefs.getString("telegram_id", null)
+        if (!tgId.isNullOrEmpty()) {
+            FirebaseMessaging.getInstance().subscribeToTopic("user_$tgId")
+        }
         view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.GONE
+        val linkButton = view.findViewById<Button>(R.id.btn_link_device)
+        linkButton.visibility = View.VISIBLE
+        linkButton.text = getString(R.string.link_device)
         view.findViewById<Button>(R.id.btn_logout).visibility = View.VISIBLE
         view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.GONE
         view.findViewById<Spinner>(R.id.spinner_server).visibility = View.VISIBLE
@@ -325,6 +343,7 @@ class AccountFragment : Fragment() {
         }
         view.findViewById<Button>(R.id.btn_download).visibility = View.VISIBLE
         view.findViewById<Button>(R.id.btn_renew).visibility = View.VISIBLE
+        view.findViewById<Button>(R.id.btn_referral).visibility = View.VISIBLE
         view.findViewById<TextView>(R.id.text_current_user).text = getString(R.string.your_username, username)
 
         val statusTextView = view.findViewById<TextView>(R.id.status_text)
@@ -338,7 +357,9 @@ class AccountFragment : Fragment() {
                     val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
                     val exp = sdf.parse(expFixed)
                     val now = Date()
-                    ((exp.time - now.time) / (1000 * 60 * 60 * 24)).toInt()
+                    if (exp != null) {
+                        ((exp.time - now.time) / (1000 * 60 * 60 * 24)).toInt()
+                    } else null
                 } catch (_: Exception) { null }
             } else null
 
@@ -350,10 +371,16 @@ class AccountFragment : Fragment() {
                 else -> name
             }
 
-            if (days != null && days <= 7 && s.active && !s.forever) {
+            val color = when {
+                s.forever -> Color.parseColor("#388E3C")
+                days != null && days >= 15 -> Color.parseColor("#388E3C")
+                days != null && days in 8..14 -> Color.parseColor("#FBC02D")
+                days != null && days in 0..7 -> Color.parseColor("#D32F2F")
+                else -> null
+            }
+            if (color != null && s.active) {
                 val spannable = SpannableString(str)
-                spannable.setSpan(StyleSpan(Typeface.BOLD), 0, str.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-                spannable.setSpan(ForegroundColorSpan(Color.parseColor("#D32F2F")), 0, str.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                spannable.setSpan(ForegroundColorSpan(color), 0, str.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
                 lines.add(spannable)
             } else {
                 lines.add(str)
@@ -373,6 +400,7 @@ class AccountFragment : Fragment() {
 
     private fun setLoading(loading: Boolean) {
         view?.findViewById<View>(R.id.loading_overlay)?.visibility = if (loading) View.VISIBLE else View.GONE
+        activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)?.isEnabled = !loading
     }
 
     private fun afterLogout(view: View) {
@@ -389,26 +417,26 @@ class AccountFragment : Fragment() {
             } catch (e: Exception) {}
             safeUi {
                 showLoginScreen(view)
-                Toast.makeText(requireContext(), "You have logged out", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun handleDownloadConfig(view: View) {
+    private fun handleDownloadConfig() {
         if (selectedServerId == null) {
-            Toast.makeText(requireContext(), "Select a server", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.select_server), Toast.LENGTH_SHORT).show()
             return
         }
         val serverId = selectedServerId ?: return
         if (!subscriptions.any { it.location == serverId && it.active }) {
-            Toast.makeText(requireContext(), "Subscription inactive", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.subscription_inactive_msg), Toast.LENGTH_SHORT).show()
             return
         }
         val tunnelName = "idrug_$serverId"
         setLoading(true)
         val token = prefs.getString("token", null)
         if (token == null) {
-            Toast.makeText(requireContext(), "Log in via Telegram", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.login_via_telegram_or_qr), Toast.LENGTH_SHORT).show()
             setLoading(false)
             return
         }
@@ -418,12 +446,12 @@ class AccountFragment : Fragment() {
             val tunnel = tunnels.firstOrNull { it.name == tunnelName }
             if (tunnel != null) {
                 safeUi {
-                    Toast.makeText(requireContext(), "Config already added", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.config_already_added), Toast.LENGTH_SHORT).show()
                     setLoading(false)
                 }
                 return@launch
             }
-            downloadConfig(token, serverId, tunnelName) { success, configOrError ->
+            downloadConfig(token, serverId) { success, configOrError ->
                 safeUi {
                     setLoading(false)
                     if (success) {
@@ -434,109 +462,22 @@ class AccountFragment : Fragment() {
                                 val config = Config.parse(file.bufferedReader())
                                 tunnelManager.create(tunnelName, config)
                                 file.delete()
-                                Toast.makeText(requireContext(), "Tunnel added", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(), getString(R.string.tunnel_added), Toast.LENGTH_SHORT).show()
                                 loadProfileAndSetupUI(requireView())
                             } catch (e: Exception) {
-                                Toast.makeText(requireContext(), "Tunnel creation error: ${e.message}", Toast.LENGTH_LONG).show()
+                                Toast.makeText(requireContext(), getString(R.string.tunnel_creation_error, e.message), Toast.LENGTH_LONG).show()
                             }
                         }
                     } else {
-                        Toast.makeText(requireContext(), "Error: $configOrError", Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), getString(R.string.error_with_message, configOrError), Toast.LENGTH_LONG).show()
                     }
                 }
             }
         }
     }
 
-    private fun generateQrLoginToken(onComplete: (String?) -> Unit) {
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url("https://idrug.pw/api/qr/login_token")
-            .post("".toRequestBody("application/json".toMediaType()))
-            .build()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) { safeUi { onComplete(null) } }
-            override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    val json = JSONObject(response.body?.string() ?: "{}")
-                    val token = json.optString("qr_token", null)
-                    safeUi { onComplete(token) }
-                } else {
-                    safeUi { onComplete(null) }
-                }
-            }
-        })
-    }
 
-    private fun showQrCode(token: String, imageView: ImageView) {
-        try {
-            val size = 512
-            val bits = QRCodeWriter().encode(token, BarcodeFormat.QR_CODE, size, size)
-            val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.RGB_565)
-            for (x in 0 until size) {
-                for (y in 0 until size) {
-                    bitmap.setPixel(x, y, if (bits.get(x, y)) android.graphics.Color.BLACK else android.graphics.Color.WHITE)
-                }
-            }
-            imageView.setImageBitmap(bitmap)
-        } catch (e: Exception) {
-            Toast.makeText(requireContext(), "QR code generation error", Toast.LENGTH_SHORT).show()
-        }
-    }
 
-    private fun startPollingQrStatus(token: String) {
-        qrPollingTimer?.cancel()
-        qrPollingTimer = Timer()
-        qrPollingTimer?.schedule(object : TimerTask() {
-            override fun run() {
-                pollQrLoginStatus(token) { confirmed, jwt, username, photoUrl ->
-                    if (confirmed && jwt != null && username != null) {
-                        qrPollingTimer?.cancel()
-                        prefs.edit()
-                            .putString("username", username)
-                            .putString("token", jwt)
-                            .putString("photo_url", photoUrl)
-                            .apply()
-                        safeUi {
-                            Toast.makeText(requireContext(), "QR login confirmed!", Toast.LENGTH_SHORT).show()
-                            loadProfileAndSetupUI(requireView())
-                        }
-                    }
-                }
-            }
-        }, 0, 3000)
-    }
-
-    private fun pollQrLoginStatus(token: String, onResult: (Boolean, String?, String?, String?) -> Unit) {
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url("https://idrug.pw/api/qr/login_status/$token")
-            .get()
-            .build()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                safeUi { onResult(false, null, null, null) }
-            }
-            override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    val json = JSONObject(response.body?.string() ?: "{}")
-                    val status = json.optString("status")
-                    if (status == "confirmed") {
-                        val jwt = json.optString("token")
-                        getProfileFromJwt(jwt) { success, username, photoUrl ->
-                            safeUi {
-                                onResult(success, jwt, username, photoUrl)
-                            }
-                        }
-                    } else {
-                        safeUi { onResult(false, null, null, null) }
-                    }
-                } else {
-                    safeUi { onResult(false, null, null, null) }
-                }
-            }
-        })
-    }
 
     private fun getProfileFromJwt(jwt: String, callback: (Boolean, String?, String?) -> Unit) {
         val client = OkHttpClient()
@@ -551,8 +492,13 @@ class AccountFragment : Fragment() {
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val json = JSONObject(response.body?.string() ?: "{}")
-                    val username = json.optString("username", null)
-                    val photoUrl = json.optString("photo_url", null)
+                    val username = json.optString("username")
+                    val photoUrl = json.optString("photo_url")
+                    val telegramId = json.optString("telegram_id")
+                    if (!telegramId.isNullOrEmpty()) {
+                        prefs.edit().putString("telegram_id", telegramId).apply()
+                        FirebaseMessaging.getInstance().subscribeToTopic("user_$telegramId")
+                    }
                     callback(true, username, photoUrl)
                 } else {
                     callback(false, null, null)
@@ -561,31 +507,7 @@ class AccountFragment : Fragment() {
         })
     }
 
-    private fun confirmQrLoginToken(token: String, callback: (Boolean, String?) -> Unit) {
-        val jwt = prefs.getString("token", null)
-        if (jwt == null) {
-            callback(false, "You are not authenticated")
-            return
-        }
-        val client = OkHttpClient()
-        val json = """{"token":"$token"}"""
-        val body = json.toRequestBody("application/json".toMediaType())
-        val request = Request.Builder()
-            .url("https://idrug.pw/api/qr/login_confirm")
-            .addHeader("Authorization", "Bearer $jwt")
-            .post(body)
-            .build()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                safeUi { callback(false, e.message) }
-            }
-            override fun onResponse(call: Call, response: Response) {
-                safeUi { callback(response.isSuccessful, response.body?.string()) }
-            }
-        })
-    }
-
-    private fun downloadConfig(token: String, serverId: String, tunnelName: String, callback: (Boolean, String?) -> Unit) {
+    private fun downloadConfig(token: String, serverId: String, callback: (Boolean, String?) -> Unit) {
         val client = OkHttpClient()
         val url = "https://idrug.pw/api/profile/download?server=$serverId"
         val request = Request.Builder()
@@ -606,7 +528,7 @@ class AccountFragment : Fragment() {
         })
     }
 
-    private fun renewSubscription(callback: (Boolean, String?) -> Unit) {
+    private fun renewSubscription() {
         val message = "Hello! I want to purchase or renew VPN. My login: " +
             (prefs.getString("username", "") ?: "unknown")
 
@@ -615,8 +537,59 @@ class AccountFragment : Fragment() {
         try {
             startActivity(intent)
         } catch (e: Exception) {
-            Toast.makeText(requireContext(), "Unable to open Telegram", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.unable_open_telegram), Toast.LENGTH_SHORT).show()
         }
+    }
+
+
+    private fun handleLinkCodeLogin(code: String) {
+        linkAccountWithCode(code) { success, token, username, message ->
+            safeUi {
+                if (success && token != null && username != null) {
+                    prefs.edit()
+                        .putString("token", token)
+                        .putString("username", username)
+                        .apply()
+                    Toast.makeText(requireContext(), getString(R.string.login_successful), Toast.LENGTH_SHORT).show()
+                    showCorrectScreen(requireView())
+                } else {
+                    Toast.makeText(requireContext(), message ?: getString(R.string.login_via_telegram_or_qr), Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    private fun linkAccountWithCode(code: String, callback: (Boolean, String?, String?, String?) -> Unit) {
+        val client = OkHttpClient()
+        val body = FormBody.Builder().add("code", code).build()
+        val request = Request.Builder()
+            .url("https://idrug.pw/api/linking/consume")
+            .post(body)
+            .build()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                callback(false, null, null, getString(R.string.network_error_msg, e.message))
+            }
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val obj = JSONObject(response.body?.string() ?: "{}")
+                    val jwt = obj.optString("jwt")
+                    val username = obj.optString("username")
+                    val telegramId = obj.optString("telegram_id")
+                    if (!jwt.isNullOrEmpty() && !username.isNullOrEmpty()) {
+                        if (!telegramId.isNullOrEmpty()) {
+                            prefs.edit().putString("telegram_id", telegramId).apply()
+                            FirebaseMessaging.getInstance().subscribeToTopic("user_$telegramId")
+                        }
+                        callback(true, jwt, username, null)
+                    } else {
+                        callback(false, null, null, getString(R.string.invalid_response))
+                    }
+                } else {
+                    callback(false, null, null, getString(R.string.code_invalid_or_expired))
+                }
+            }
+        })
     }
 
     private fun handleDeepLink(intent: Intent?) {
@@ -625,13 +598,18 @@ class AccountFragment : Fragment() {
             val jwt = data.getQueryParameter("jwt")
             val username = data.getQueryParameter("username")
             val photoUrl = data.getQueryParameter("photo_url")
+            val telegramId = data.getQueryParameter("telegram_id")
             if (!jwt.isNullOrEmpty() && !username.isNullOrEmpty()) {
                 prefs.edit()
                     .putString("token", jwt)
                     .putString("username", username)
                     .putString("photo_url", photoUrl)
                     .apply()
-                Toast.makeText(requireContext(), "Telegram login successful!", Toast.LENGTH_SHORT).show()
+                if (!telegramId.isNullOrEmpty()) {
+                    prefs.edit().putString("telegram_id", telegramId).apply()
+                    FirebaseMessaging.getInstance().subscribeToTopic("user_$telegramId")
+                }
+                Toast.makeText(requireContext(), getString(R.string.telegram_login_successful), Toast.LENGTH_SHORT).show()
                 showCorrectScreen(requireView())
             }
             requireActivity().intent.data = null
@@ -645,7 +623,7 @@ class AccountFragment : Fragment() {
             val y = (source.height - size) / 2
             val squaredBitmap = Bitmap.createBitmap(source, x, y, size, size)
             if (squaredBitmap != source) source.recycle()
-            val bitmap = Bitmap.createBitmap(size, size, source.config ?: Bitmap.Config.ARGB_8888)
+            val bitmap = Bitmap.createBitmap(size, size, source.config)
             val canvas = Canvas(bitmap)
             val paint = Paint()
             val shader = BitmapShader(squaredBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
@@ -685,12 +663,30 @@ class AccountFragment : Fragment() {
                     MainScope().launch {
                         val tunnelManager = Application.getTunnelManager()
                         val tunnels = tunnelManager.getTunnels().toList()
+                        val existing = tunnels.map { it.name }.toSet()
                         val toRemove = tunnels.filter {
                             it.name.startsWith("idrug_") &&
                                 it.name.removePrefix("idrug_") !in activeServers
                         }
                         for (tunnel in toRemove) {
                             tunnelManager.delete(tunnel)
+                        }
+                        val toAdd = activeServers.filter { "idrug_$it" !in existing }
+                        for (server in toAdd) {
+                            downloadConfig(token, server) { success, config ->
+                                if (success && config != null) {
+                                    MainScope().launch {
+                                        try {
+                                            val file = File(requireContext().filesDir, "wg_idrug_${server}.conf")
+                                            file.writeText(config)
+                                            val parsed = Config.parse(file.bufferedReader())
+                                            tunnelManager.create("idrug_$server", parsed)
+                                            file.delete()
+                                        } catch (_: Exception) {
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 } catch (_: Exception) {}

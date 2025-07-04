@@ -8,8 +8,7 @@
     buildFolder="build"
     bootClassPath="/home/bykk/android-sdk/platforms/android-34/android.jar:/home/bykk/android-sdk/build-tools/34.0.0/core-lambda-stubs.jar"
     javaSourceLevel="17"
-    compileTarget="android-34"
-    neverShrinking="true">
+    compileTarget="android-34">
   <lintOptions
       disable="LongLogTag"
       abortOnError="true"

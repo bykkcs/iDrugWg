@@ -38,7 +38,7 @@
     </plurals>
     <string name="all_applications">All Applications</string>
     <string name="exclude_from_tunnel">Exclude</string>
-    <string name="include_in_tunnel">Include only</string>
+    <string name="include_in_tunnel">Include</string>
     <plurals name="include_n_applications">
         <item quantity="one">Include %d app</item>
         <item quantity="other">Include %d apps</item>
@@ -55,7 +55,7 @@
         <item quantity="one">second</item>
         <item quantity="other">seconds</item>
     </plurals>
-    <string name="use_all_applications">Use all apps</string>
+    <string name="use_all_applications">Select all</string>
     <string name="add_peer">Add peer</string>
     <string name="addresses">Addresses</string>
     <string name="applications">Applications</string>
@@ -211,7 +211,7 @@
     <string name="shell_marker_count_error">Shell expected 4 markers, received %d</string>
     <string name="shell_start_error">Shell failed to start: %d</string>
     <string name="success_application_will_restart">Success. The application will now restart…</string>
-    <string name="toggle_all">Toggle All</string>
+    <string name="toggle_all">Invert all</string>
     <string name="toggle_error">Error toggling tunnel: %s</string>
     <string name="tools_installer_already">awg and awg-quick are already installed</string>
     <string name="tools_installer_failure">Unable to install command-line tools (no root?)</string>
@@ -265,7 +265,16 @@
     <string name="login_via_telegram">Login via Telegram</string>
     <string name="choose_server">Choose server</string>
     <string name="download_config">Download config</string>
-    <string name="renew_subscription">Renew subscription</string>
+    <string name="renew_subscription">Buy/Renew</string>
+    <string name="referral_link">Referral link</string>
+    <string name="link_device">Link device</string>
+    <string name="login_with_code">Login with code</string>
+    <string name="enter_code">Enter code</string>
+    <string name="submit_code">Link</string>
+    <string name="code_login_title">Enter 6-digit code</string>
+    <string name="code_expires_in">Code expires in %1$d s</string>
+    <string name="code_expired">Code expired. Generate new.</string>
+    <string name="code_generating">Generating code…</string>
     <string name="logout">Logout</string>
     <string name="nav_account_title">Account</string>
     <string name="update_application_title">Update application</string>
@@ -278,8 +287,78 @@
 <string name="server_multihop_germany">Multihop Germany</string>
 <string name="server_bulgaria">Bulgaria</string>
 <string name="server_madrid">Madrid</string>
+    <string name="update_delete_old_failed">Failed to delete old update file</string>
+    <string name="update_download_started">Update download started</string>
+    <string name="update_start_error">Error starting update: %s</string>
+    <string name="update_check_error">Update check failed: %s</string>
+    <string name="update_no_new_version">Application is already up to date</string>
+    <string name="apk_not_found">APK not found!</string>
+    <string name="permission_unknown_sources">Grant permission to install from unknown sources and try again</string>
+    <string name="apk_open_error">Failed to open APK for installation: %s</string>
+    <string name="qr_login_confirmed">QR login confirmed</string>
+    <string name="qr_confirmation_error">Confirmation error: %s</string>
+    <string name="qr_not_recognized">QR code not recognized</string>
+    <string name="login_telegram_first">Please log in via Telegram first</string>
+    <string name="subscription_renewed">Subscription renewed</string>
+    <string name="error_with_message">Error: %s</string>
+    <string name="network_error_msg">Network error: %s</string>
+    <string name="profile_processing_error">Profile processing error: %s</string>
+    <string name="profile_retrieval_failed">Failed to retrieve profile: %d</string>
+    <string name="logged_out">You have logged out</string>
+    <string name="select_server">Select a server</string>
+    <string name="subscription_inactive_msg">Subscription inactive</string>
+    <string name="config_already_added">Config already added</string>
+    <string name="tunnel_added">Tunnel added</string>
+    <string name="tunnel_creation_error">Tunnel creation error: %s</string>
+    <string name="qr_generation_error">QR code generation error</string>
+    <string name="unable_open_telegram">Unable to open Telegram</string>
+    <string name="login_successful">Login successful</string>
+    <string name="telegram_login_successful">Telegram login successful!</string>
+    <string name="invalid_response">Invalid response</string>
+    <string name="code_invalid_or_expired">Code invalid or expired</string>
+    <string name="choose_plan">Choose plan</string>
+    <string name="location_label">Location</string>
+    <string name="duration_label">Duration</string>
+    <string name="pay">Pay</string>
+    <string name="price_template">Price: %1$d₽</string>
+    <string name="duration_1_month">1 month</string>
+    <string name="duration_3_months">3 months</string>
+    <string name="duration_1_year">1 year</string>
+    <string name="connection_error">Connection error: %1$s</string>
     <string name="import_disclaimer">Ensure that you obtained the configuration file from a trusted source.
 
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>
 </string>
+    <string name="connect">Connect</string>
+    <string name="active">active</string>
+    <string name="inactive">inactive</string>
+    <string name="no_configs">Нет доступных конфигов</string>
+    <string-array name="onboarding_emojis">
+        <item>🔒</item>
+        <item>📡</item>
+        <item>📱</item>
+        <item>📺</item>
+        <item>🚦</item>
+        <item>💸</item>
+    </string-array>
+    <string-array name="onboarding_titles">
+        <item>True Anonymity</item>
+        <item>Global Fast Servers</item>
+        <item>Auto Configs</item>
+        <item>Android TV ready</item>
+        <item>Split Tunneling</item>
+        <item>Transparent tariffs</item>
+    </string-array>
+    <string-array name="onboarding_descriptions">
+        <item>Your real IP and actions are hidden. No logs. No tracking. Your privacy, your rules.</item>
+        <item>Locations: Germany, Sweden, Bulgaria, Spain and more. Switch countries in one tap.</item>
+        <item>Instant connection. Configs and keys are saved in-app — nothing gets lost.</item>
+        <item>Dedicated TV app — link by code, launch in one click. Pure comfort.</item>
+        <item>Pick apps for VPN in tunnel settings — only their traffic goes via VPN, the rest goes direct.</item>
+        <item>Plans from 250₽/month. No hidden fees, pay by card or crypto, whatever suits you.</item>
+    </string-array>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_start">Start</string>
+    <string name="onboarding_error">Onboarding failed to load. Please update the app or contact support.</string>
 </resources>
+

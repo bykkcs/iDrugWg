@@ -1,23 +1,33 @@
 package pw.idrug.connections.activity
 
+import android.Manifest
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import kotlinx.coroutines.runBlocking
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.messaging.FirebaseMessaging
 import android.util.Log
+import pw.idrug.connections.Application
 import pw.idrug.connections.R
 import pw.idrug.connections.fragment.TunnelDetailFragment
 import pw.idrug.connections.fragment.TunnelEditorFragment
 import pw.idrug.connections.fragment.TunnelListFragment
+import pw.idrug.connections.activity.OnboardingActivity
 import pw.idrug.connections.fragment.AccountFragment
 import pw.idrug.connections.model.ObservableTunnel
 
@@ -30,6 +40,8 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
     private var actionBar: ActionBar? = null
     private var isTwoPaneLayout = false
     private var backPressedCallback: OnBackPressedCallback? = null
+    private val notificationPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {}
 
     private fun handleBackPressed() {
         val backStackEntries = supportFragmentManager.backStackEntryCount
@@ -58,6 +70,15 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val prefs = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        val onboardingShown = prefs.getBoolean("onboarding_shown", false)
+        val prefsAuth = getSharedPreferences("auth", Context.MODE_PRIVATE)
+        val tokenEmpty = prefsAuth.getString("token", null).isNullOrEmpty()
+        if (!onboardingShown && tokenEmpty) {
+            startActivity(Intent(this, OnboardingActivity::class.java))
+            finish()
+            return
+        }
         setContentView(R.layout.main_activity)
         actionBar = supportActionBar
         isTwoPaneLayout = findViewById<View?>(R.id.master_detail_wrapper) != null
@@ -65,55 +86,73 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         backPressedCallback = onBackPressedDispatcher.addCallback(this) { handleBackPressed() }
         onBackStackChanged()
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val notifPrefs = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+            if (!notifPrefs.getBoolean("notification_permission_requested", false)) {
+                if (ContextCompat.checkSelfPermission(
+                        this,
+                        Manifest.permission.POST_NOTIFICATIONS
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                }
+                notifPrefs.edit().putBoolean("notification_permission_requested", true).apply()
+            }
+        }
+
         // --- BottomNavigationView setup ---
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation?.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_vpn -> {
                     supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, TunnelListFragment())
-                        .commit()
+                    safeReplaceFragment(TunnelListFragment())
                     true
                 }
                 R.id.nav_account -> {
                     supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, AccountFragment())
-                        .commit()
+                    safeReplaceFragment(AccountFragment())
                     true
                 }
                 else -> false
             }
         }
 
-        // Open VPN tab by default
+        // Open initial tab
         if (savedInstanceState == null) {
-            val fragment = TunnelListFragment()
             val data = intent?.data
-            if (intent?.action == Intent.ACTION_VIEW && data?.scheme == "idrug" && data.host == "apps") {
-                fragment.arguments = Bundle().apply {
-                    putString(TunnelListFragment.ARG_OPEN_TUNNEL_FOR_APPS, data.lastPathSegment)
+            val openedViaDeepLink = intent?.action == Intent.ACTION_VIEW && data != null
+            val openAccountByIntent = intent?.getBooleanExtra(EXTRA_OPEN_ACCOUNT, false) == true ||
+                (openedViaDeepLink && data?.host == "auth")
+            val openAccountByTunnels = runBlocking {
+                try {
+                    Application.getTunnelManager().getTunnels().isEmpty()
+                } catch (e: Exception) {
+                    Log.w("MainActivity", "Unable to check tunnels", e)
+                    false
                 }
             }
+            val openAccount = openAccountByIntent || openAccountByTunnels
+
+            val fragment: Fragment = if (openAccount) {
+                AccountFragment()
+            } else {
+                val def = TunnelListFragment()
+                if (openedViaDeepLink && data?.scheme == "idrug" && data.host == "apps") {
+                    def.arguments = Bundle().apply {
+                        putString(TunnelListFragment.ARG_OPEN_TUNNEL_FOR_APPS, data.lastPathSegment)
+                    }
+                }
+                def
+            }
+
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
                 .commit()
-            bottomNavigation?.selectedItemId = R.id.nav_vpn
+            bottomNavigation?.selectedItemId = if (openAccount) R.id.nav_account else R.id.nav_vpn
         }
 
-        // --- Получить FCM token (опционально, если вдруг надо где-то показать или залогать) ---
-        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                Log.w("FCM", "Fetching FCM registration token failed", task.exception)
-                return@addOnCompleteListener
-            }
-            val token = task.result
-            Log.d("FCM", "Current FCM token: $token")
-        }
-
-        // --- Подписать на глобальный топик для всех пушей ---
-        subscribeToGlobalNotifications()
+        registerForFcm()
     }
 
     private fun subscribeToGlobalNotifications() {
@@ -125,6 +164,23 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                     Log.e("FCM", "❌ Ошибка подписки на топик", task.exception)
                 }
             }
+    }
+
+    private fun registerForFcm() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("FCM", "Fetching FCM registration token failed", task.exception)
+                return@addOnCompleteListener
+            }
+            val token = task.result
+            Log.d("FCM", "Current FCM token: $token")
+        }
+        subscribeToGlobalNotifications()
+        val prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
+        val tgId = prefs.getString("telegram_id", null)
+        if (!tgId.isNullOrEmpty()) {
+            FirebaseMessaging.getInstance().subscribeToTopic("user_$tgId")
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -188,4 +244,16 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         return true
     }
 
+    private fun safeReplaceFragment(fragment: Fragment) {
+        val fm = supportFragmentManager
+        if (!fm.isStateSaved) {
+            fm.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .commit()
+        }
+    }
+
+    companion object {
+        const val EXTRA_OPEN_ACCOUNT = "open_account"
+    }
 }

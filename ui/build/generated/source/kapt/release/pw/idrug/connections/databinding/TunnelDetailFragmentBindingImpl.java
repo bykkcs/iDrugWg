@@ -19,7 +19,7 @@ public class TunnelDetailFragmentBindingImpl extends TunnelDetailFragmentBinding
         sViewsWithIds.put(R.id.interface_name_label, 36);
         sViewsWithIds.put(R.id.public_key_label, 37);
         sViewsWithIds.put(R.id.listen_port_mtu_barrier, 38);
-        sViewsWithIds.put(R.id.amnezia_barrier, 39);
+        sViewsWithIds.put(R.id.idrugconnections_barrier, 39);
         sViewsWithIds.put(R.id.applications_label, 40);
     }
     // views
@@ -41,13 +41,13 @@ public class TunnelDetailFragmentBindingImpl extends TunnelDetailFragmentBinding
         super(bindingComponent, root, 1
             , (android.widget.TextView) bindings[4]
             , (android.widget.TextView) bindings[5]
-            , (androidx.constraintlayout.widget.Barrier) bindings[39]
             , (android.widget.TextView) bindings[40]
             , (android.widget.TextView) bindings[32]
             , (android.widget.TextView) bindings[8]
             , (android.widget.TextView) bindings[9]
             , (android.widget.TextView) bindings[6]
             , (android.widget.TextView) bindings[7]
+            , (androidx.constraintlayout.widget.Barrier) bindings[39]
             , (android.widget.TextView) bindings[20]
             , (android.widget.TextView) bindings[21]
             , (android.widget.TextView) bindings[24]

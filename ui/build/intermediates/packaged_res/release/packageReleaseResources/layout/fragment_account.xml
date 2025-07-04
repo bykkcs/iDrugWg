@@ -61,6 +61,31 @@
                 android:layout_height="wrap_content"
                 android:text="@string/login_via_telegram" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/btn_link_device"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="@string/link_device" />
+
+                <Button
+                    android:id="@+id/btn_logout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/logout"
+                    android:visibility="gone" />
+            </LinearLayout>
+
 
             <ImageView
                 android:id="@+id/qr_code_image"
@@ -104,12 +129,13 @@
                 android:visibility="gone" />
 
             <Button
-                android:id="@+id/btn_logout"
+                android:id="@+id/btn_referral"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/logout"
+                android:text="@string/referral_link"
                 android:layout_marginTop="8dp"
                 android:visibility="gone" />
+
 
             <TextView
                 android:id="@+id/status_text"
