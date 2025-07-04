@@ -1,42 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="@dimen/tv_padding">
 
     <TextView
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/code_login_title"
-        android:textSize="18sp"
+        android:textSize="@dimen/tv_medium_text"
         android:textStyle="bold"
-        android:paddingBottom="16dp" />
+        android:paddingBottom="@dimen/tv_card_spacing" />
 
-    <EditText
-        android:id="@+id/edit_code"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="@string/enter_code"
-        android:maxLength="6"
-        android:gravity="center"
-        android:textSize="24sp" />
+        android:hint="@string/enter_code">
 
-    <Button
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="6"
+            android:gravity="center"
+            android:textSize="@dimen/tv_medium_text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_submit_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/submit_code"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="@dimen/tv_card_spacing" />
 
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/tv_card_spacing"
         android:visibility="gone" />
 
 </LinearLayout>
