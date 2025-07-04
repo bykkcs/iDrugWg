@@ -360,5 +360,9 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="onboarding_next">Next</string>
     <string name="onboarding_start">Start</string>
     <string name="onboarding_error">Onboarding failed to load. Please update the app or contact support.</string>
+
+    <!-- TV server list strings -->
+    <string name="no_servers_found">No servers found</string>
+    <string name="error_loading_servers">Error loading servers</string>
 </resources>
 

@@ -7,4 +7,13 @@
     <dimen name="bottom_sheet_top_padding">8dp</dimen>
     <dimen name="bottom_sheet_icon_padding">16dp</dimen>
     <dimen name="tunnel_list_placeholder_margin">16dp</dimen>
+
+    <!-- TV specific dimensions -->
+    <dimen name="tv_header_text_size">32sp</dimen>
+    <dimen name="server_name_text_size">24sp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
+    <dimen name="large_padding">32dp</dimen>
+    <dimen name="large_margin">32dp</dimen>
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="focus_stroke_width">2dp</dimen>
 </resources>

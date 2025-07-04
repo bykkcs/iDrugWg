@@ -372,5 +372,9 @@
     <string name="onboarding_next">Далее</string>
     <string name="onboarding_start">Начать</string>
     <string name="onboarding_error">Ошибка загрузки обучения. Пожалуйста, обновите приложение или свяжитесь с поддержкой.</string>
+
+    <!-- TV server list strings -->
+    <string name="no_servers_found">Серверы не найдены</string>
+    <string name="error_loading_servers">Ошибка загрузки списка серверов</string>
 </resources>
 

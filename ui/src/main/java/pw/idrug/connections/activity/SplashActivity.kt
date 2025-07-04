@@ -11,7 +11,8 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (DeviceUtils.isTv(this)) {
-            val tvIntent = Intent(this, TvEntryActivity::class.java).apply {
+            val target = if (isLoggedIn()) ConfigListActivity::class.java else TvEntryActivity::class.java
+            val tvIntent = Intent(this, target).apply {
                 action = intent?.action
                 data = intent?.data
             }
