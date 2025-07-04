@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -28,13 +27,13 @@ class ConfigListActivity : AppCompatActivity() {
             pendingTunnel = null
         }
 
-    private lateinit var emptyView: TextView
+    private lateinit var emptyView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tv_config_list)
         val list = findViewById<RecyclerView>(R.id.config_list)
-        emptyView = findViewById(R.id.empty_view)
+        emptyView = findViewById(R.id.empty_state)
         adapter = TunnelAdapter()
         list.layoutManager = LinearLayoutManager(this)
         list.adapter = adapter
@@ -97,14 +96,11 @@ class ConfigListActivity : AppCompatActivity() {
 
     private inner class TunnelViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val name: TextView = view.findViewById(R.id.config_name)
-        private val status: TextView = view.findViewById(R.id.config_status)
-        private val button: Button = view.findViewById(R.id.btn_connect)
         private lateinit var tunnel: ObservableTunnel
         fun bind(t: ObservableTunnel) {
             tunnel = t
             name.text = t.name.removePrefix("idrug_")
-            status.text = if (t.state == Tunnel.State.UP) getString(R.string.active) else getString(R.string.inactive)
-            button.setOnClickListener { requestToggle(tunnel) }
+            itemView.setOnClickListener { requestToggle(tunnel) }
         }
     }
 }

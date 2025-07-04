@@ -1,26 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="12dp">
+    android:layout_marginVertical="8dp"
+    android:focusable="true"
+    android:clickable="true"
+    app:cardBackgroundColor="@color/tv_white"
+    app:strokeColor="@color/tv_card_stroke_color"
+    app:strokeWidth="@dimen/tv_card_border_width">
 
-    <TextView
-        android:id="@+id/config_name"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textAppearance="?attr/textAppearanceHeadlineSmall" />
+        android:orientation="horizontal"
+        android:padding="@dimen/tv_card_padding"
+        android:gravity="center_vertical">
 
-    <TextView
-        android:id="@+id/config_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp" />
+        <TextView
+            android:id="@+id/config_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/tv_black"
+            android:textSize="@dimen/tv_item_text_size"
+            android:maxLines="1"
+            android:ellipsize="end" />
 
-    <Button
-        android:id="@+id/btn_connect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/connect" />
-</LinearLayout>
+        <Button
+            android:id="@+id/btn_connect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:focusable="false"
+            android:clickable="false"
+            android:text="@string/connect" />
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

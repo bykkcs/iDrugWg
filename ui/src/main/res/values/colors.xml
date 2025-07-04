@@ -82,4 +82,8 @@
     <color name="md_theme_dark_outlineVariant">#00FF00</color>
     <color name="md_theme_dark_scrim">#000000</color>
 
+    <!-- Simple palette for Android TV UI -->
+    <color name="tv_white">#FFFFFF</color>
+    <color name="tv_black">#000000</color>
+
 </resources>

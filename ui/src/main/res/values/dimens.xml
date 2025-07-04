@@ -7,4 +7,12 @@
     <dimen name="bottom_sheet_top_padding">8dp</dimen>
     <dimen name="bottom_sheet_icon_padding">16dp</dimen>
     <dimen name="tunnel_list_placeholder_margin">16dp</dimen>
+
+    <!-- Dimensions for Android TV screens -->
+    <dimen name="tv_card_padding">32dp</dimen>
+    <dimen name="tv_card_border_width">2dp</dimen>
+    <dimen name="tv_item_text_size">24sp</dimen>
+    <dimen name="tv_header_text_size">28sp</dimen>
+    <dimen name="tv_empty_icon_size">96dp</dimen>
+    <dimen name="tv_empty_text_margin">16dp</dimen>
 </resources>

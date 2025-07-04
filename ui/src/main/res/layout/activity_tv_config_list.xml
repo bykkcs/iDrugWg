@@ -3,18 +3,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/tv_white">
 
     <TextView
-        android:id="@+id/empty_view"
-        android:layout_width="wrap_content"
+        android:id="@+id/header_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/no_configs"
-        android:visibility="gone"
-        android:layout_gravity="center_horizontal" />
+        android:gravity="center"
+        android:text="@string/tv_header_title"
+        android:textColor="@color/tv_black"
+        android:textSize="@dimen/tv_header_text_size"
+        android:paddingTop="@dimen/tv_card_padding"
+        android:paddingBottom="@dimen/tv_card_padding" />
+
+    <LinearLayout
+        android:id="@+id/empty_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="@dimen/tv_empty_icon_size"
+            android:layout_height="@dimen/tv_empty_icon_size"
+            android:src="@drawable/ic_account_circle"
+            android:tint="@color/tv_black" />
+
+        <TextView
+            android:id="@+id/empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tv_empty_text_margin"
+            android:text="@string/no_configs"
+            android:textColor="@color/tv_black"
+            android:textSize="@dimen/tv_item_text_size" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/config_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 </LinearLayout>
