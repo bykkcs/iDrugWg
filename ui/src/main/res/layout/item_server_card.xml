@@ -10,7 +10,7 @@
     android:background="@drawable/card_focus_outline"
     app:cardElevation="@dimen/card_elevation"
     app:cardUseCompatPadding="true"
-    app:stateListAnimator="@animator/card_focus_animator">
+    android:stateListAnimator="@animator/card_focus_animator">
 
     <LinearLayout
         android:layout_width="match_parent"
