@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputEditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -22,7 +22,7 @@ import pw.idrug.connections.config.Config
 import java.io.File
 
 class TvEntryActivity : AppCompatActivity() {
-    private lateinit var codeInput: EditText
+    private lateinit var codeInput: TextInputEditText
     private lateinit var progress: ProgressBar
     private lateinit var errorText: TextView
 
@@ -43,7 +43,7 @@ class TvEntryActivity : AppCompatActivity() {
         codeInput = findViewById(R.id.edit_code)
         progress = findViewById(R.id.progress)
         errorText = findViewById(R.id.error_text)
-        findViewById<Button>(R.id.btn_submit_code).setOnClickListener { submitCode() }
+        findViewById<MaterialButton>(R.id.btn_submit_code).setOnClickListener { submitCode() }
     }
 
     private fun submitCode() {

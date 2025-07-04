@@ -47,11 +47,13 @@
                 android:text="@string/ping_template" />
         </LinearLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_connect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/connect"
+            android:background="@drawable/bg_tv_button"
+            android:stateListAnimator="@animator/focus_scale"
             android:textSize="@dimen/tv_medium_text" />
 
     </LinearLayout>
