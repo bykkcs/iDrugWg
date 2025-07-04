@@ -39,6 +39,8 @@ import pw.idrug.connections.model.ObservableTunnel
 class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener {
     private var actionBar: ActionBar? = null
     private var isTwoPaneLayout = false
+    private val contentContainerId: Int
+        get() = if (isTwoPaneLayout) R.id.detail_container else R.id.fragment_container
     private var backPressedCallback: OnBackPressedCallback? = null
     private val notificationPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {}
@@ -147,7 +149,7 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
             }
 
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, fragment)
+                .replace(contentContainerId, fragment)
                 .commit()
             bottomNavigation?.selectedItemId = if (openAccount) R.id.nav_account else R.id.nav_vpn
         }
@@ -198,7 +200,7 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
 
             R.id.menu_action_edit -> {
                 supportFragmentManager.commit {
-                    replace(R.id.fragment_container, TunnelEditorFragment())
+                    replace(contentContainerId, TunnelEditorFragment())
                     setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                     addToBackStack(null)
                 }
@@ -236,7 +238,7 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         } else if (backStackEntries == 0) {
             // Show detail fragment
             fragmentManager.commit {
-                add(R.id.fragment_container, TunnelDetailFragment())
+                add(contentContainerId, TunnelDetailFragment())
                 setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 addToBackStack(null)
             }
@@ -248,7 +250,7 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         val fm = supportFragmentManager
         if (!fm.isStateSaved) {
             fm.beginTransaction()
-                .replace(R.id.fragment_container, fragment)
+                .replace(contentContainerId, fragment)
                 .commit()
         }
     }

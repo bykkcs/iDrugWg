@@ -16,6 +16,7 @@ import com.google.zxing.qrcode.QRCodeWriter
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import androidx.lifecycle.lifecycleScope
 import okhttp3.*
 import com.google.firebase.messaging.FirebaseMessaging
 import pw.idrug.connections.R
@@ -453,12 +454,11 @@ class AccountFragment : Fragment() {
             }
             downloadConfig(token, serverId) { success, configOrError ->
                 safeUi {
-                    setLoading(false)
                     if (success) {
-                        val file = File(requireContext().filesDir, "wg_$tunnelName.conf")
-                        file.writeText(configOrError ?: "")
-                        MainScope().launch {
+                        lifecycleScope.launch {
                             try {
+                                val file = File(requireContext().filesDir, "wg_$tunnelName.conf")
+                                file.writeText(configOrError ?: "")
                                 val config = Config.parse(file.bufferedReader())
                                 tunnelManager.create(tunnelName, config)
                                 file.delete()
@@ -466,10 +466,13 @@ class AccountFragment : Fragment() {
                                 loadProfileAndSetupUI(requireView())
                             } catch (e: Exception) {
                                 Toast.makeText(requireContext(), getString(R.string.tunnel_creation_error, e.message), Toast.LENGTH_LONG).show()
+                            } finally {
+                                setLoading(false)
                             }
                         }
                     } else {
                         Toast.makeText(requireContext(), getString(R.string.error_with_message, configOrError), Toast.LENGTH_LONG).show()
+                        setLoading(false)
                     }
                 }
             }
@@ -675,7 +678,7 @@ class AccountFragment : Fragment() {
                         for (server in toAdd) {
                             downloadConfig(token, server) { success, config ->
                                 if (success && config != null) {
-                                    MainScope().launch {
+                                    lifecycleScope.launch {
                                         try {
                                             val file = File(requireContext().filesDir, "wg_idrug_${server}.conf")
                                             file.writeText(config)
