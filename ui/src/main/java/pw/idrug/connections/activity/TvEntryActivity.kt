@@ -19,7 +19,8 @@ import org.json.JSONObject
 import pw.idrug.connections.R
 import pw.idrug.connections.Application
 import pw.idrug.connections.config.Config
-import java.io.File
+import java.io.ByteArrayInputStream
+import java.nio.charset.StandardCharsets
 
 class TvEntryActivity : AppCompatActivity() {
     private lateinit var codeInput: EditText
@@ -111,14 +112,12 @@ class TvEntryActivity : AppCompatActivity() {
                 if (name !in existing) {
                     val config = downloadConfig(token, server)
                     if (!config.isNullOrEmpty()) {
-                        val file = File(filesDir, "wg_$name.conf")
-                        withContext(Dispatchers.IO) { file.writeText(config) }
+                        val parsed = Config.parse(
+                            ByteArrayInputStream(config.toByteArray(StandardCharsets.UTF_8))
+                        )
                         try {
-                            val parsed = Config.parse(file.bufferedReader())
                             tm.create(name, parsed)
                         } catch (_: Exception) {
-                        } finally {
-                            file.delete()
                         }
                     }
                 }
