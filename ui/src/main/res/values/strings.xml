@@ -265,7 +265,7 @@
     <string name="login_via_telegram">Login via Telegram</string>
     <string name="choose_server">Choose server</string>
     <string name="download_config">Download config</string>
-    <string name="renew_subscription">Renew subscription</string>
+    <string name="renew_subscription">Buy/Renew</string>
     <string name="referral_link">Referral link</string>
     <string name="link_device">Link device</string>
     <string name="login_with_code">Login with code</string>
@@ -316,6 +316,15 @@
     <string name="telegram_login_successful">Telegram login successful!</string>
     <string name="invalid_response">Invalid response</string>
     <string name="code_invalid_or_expired">Code invalid or expired</string>
+    <string name="choose_plan">Choose plan</string>
+    <string name="location_label">Location</string>
+    <string name="duration_label">Duration</string>
+    <string name="pay">Pay</string>
+    <string name="price_template">Price: %1$d₽</string>
+    <string name="duration_1_month">1 month</string>
+    <string name="duration_3_months">3 months</string>
+    <string name="duration_1_year">1 year</string>
+    <string name="connection_error">Connection error: %1$s</string>
     <string name="import_disclaimer">Ensure that you obtained the configuration file from a trusted source.
 
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>

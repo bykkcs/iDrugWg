@@ -20,6 +20,7 @@ import okhttp3.*
 import com.google.firebase.messaging.FirebaseMessaging
 import pw.idrug.connections.R
 import pw.idrug.connections.dialog.CodeInputDialogFragment
+import pw.idrug.connections.dialog.SubscriptionDialogFragment
 import androidx.fragment.app.DialogFragment
 import pw.idrug.connections.Application
 import pw.idrug.connections.config.Config
@@ -97,6 +98,9 @@ class AccountFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         handleDeepLink(requireActivity().intent)
+        if (isLoggedIn()) {
+            loadProfileAndSetupUI(requireView())
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -129,15 +133,7 @@ class AccountFragment : Fragment() {
             }
         }
         view.findViewById<Button>(R.id.btn_renew).setOnClickListener {
-            setLoading(true)
-            val token = prefs.getString("token", null)
-            if (token == null) {
-                Toast.makeText(requireContext(), getString(R.string.login_telegram_first), Toast.LENGTH_SHORT).show()
-                setLoading(false)
-                return@setOnClickListener
-            }
-            setLoading(false)
-            renewSubscription()
+            SubscriptionDialogFragment().show(parentFragmentManager, "subscription")
         }
 
         view.findViewById<Button>(R.id.btn_referral).setOnClickListener {
@@ -667,12 +663,30 @@ class AccountFragment : Fragment() {
                     MainScope().launch {
                         val tunnelManager = Application.getTunnelManager()
                         val tunnels = tunnelManager.getTunnels().toList()
+                        val existing = tunnels.map { it.name }.toSet()
                         val toRemove = tunnels.filter {
                             it.name.startsWith("idrug_") &&
                                 it.name.removePrefix("idrug_") !in activeServers
                         }
                         for (tunnel in toRemove) {
                             tunnelManager.delete(tunnel)
+                        }
+                        val toAdd = activeServers.filter { "idrug_$it" !in existing }
+                        for (server in toAdd) {
+                            downloadConfig(token, server) { success, config ->
+                                if (success && config != null) {
+                                    MainScope().launch {
+                                        try {
+                                            val file = File(requireContext().filesDir, "wg_idrug_${server}.conf")
+                                            file.writeText(config)
+                                            val parsed = Config.parse(file.bufferedReader())
+                                            tunnelManager.create("idrug_$server", parsed)
+                                            file.delete()
+                                        } catch (_: Exception) {
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 } catch (_: Exception) {}
