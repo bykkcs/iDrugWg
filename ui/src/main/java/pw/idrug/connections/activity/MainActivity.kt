@@ -134,7 +134,7 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                     false
                 }
             }
-            val openAccount = openAccountByIntent || openAccountByTunnels
+            val openAccount = openAccountByIntent || openAccountByTunnels || isTwoPaneLayout
 
             val fragment: Fragment = if (openAccount) {
                 AccountFragment()
