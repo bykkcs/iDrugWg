@@ -18,34 +18,14 @@
         android:gravity="center_vertical"
         android:padding="@dimen/tv_padding">
 
-        <ImageView
-            android:id="@+id/server_icon"
-            android:layout_width="@dimen/tv_flag_size"
-            android:layout_height="@dimen/tv_flag_size"
-            android:contentDescription="@null" />
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/server_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="@dimen/tv_card_spacing">
-
-            <TextView
-                android:id="@+id/server_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/tv_medium_text"
-                android:textColor="?attr/colorOnSurface"
-                android:text="Server" />
-
-            <TextView
-                android:id="@+id/server_ping"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/tv_small_text"
-                android:text="@string/ping_template" />
-        </LinearLayout>
+            android:textSize="@dimen/tv_medium_text"
+            android:textColor="@color/tv_black_text"
+            android:text="Server" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_connect"
@@ -54,7 +34,9 @@
             android:text="@string/connect"
             android:background="@drawable/bg_tv_button"
             android:stateListAnimator="@animator/focus_scale"
-            android:textSize="@dimen/tv_medium_text" />
+            android:textSize="@dimen/tv_medium_text"
+            android:focusable="false"
+            android:clickable="false" />
 
     </LinearLayout>
 

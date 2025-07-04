@@ -2,18 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/tv_white_bg">
 
-    <ImageView
-        android:id="@+id/bg_image"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg_tv_server_gradient"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/app_logo"
@@ -30,10 +21,10 @@
         android:id="@+id/header_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/select_server"
+        android:text="@string/app_name"
         android:textSize="@dimen/tv_header_text"
         android:textStyle="bold"
-        android:textColor="?attr/colorOnBackground"
+        android:textColor="@color/tv_black_text"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,30 +42,60 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="@dimen/tv_padding" />
 
-    <TextView
+    <LinearLayout
         android:id="@+id/empty_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/no_servers"
-        android:textSize="@dimen/tv_medium_text"
-        android:visibility="gone"
+        android:orientation="vertical"
         android:gravity="center"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/header_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_vpn"
+            android:tint="@color/tv_black_text" />
+
+        <TextView
+            android:id="@+id/empty_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_servers"
+            android:textColor="@color/tv_black_text"
+            android:textSize="@dimen/tv_medium_text"
+            android:layout_marginTop="@dimen/tv_card_spacing" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/error_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/error_loading_servers"
-        android:textSize="@dimen/tv_medium_text"
-        android:visibility="gone"
+        android:orientation="vertical"
         android:gravity="center"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/header_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_action_delete"
+            android:tint="@color/tv_black_text" />
+
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_loading_servers"
+            android:textColor="@color/tv_black_text"
+            android:textSize="@dimen/tv_medium_text"
+            android:layout_marginTop="@dimen/tv_card_spacing" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

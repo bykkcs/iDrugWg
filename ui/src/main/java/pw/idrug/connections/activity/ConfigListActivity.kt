@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.material.button.MaterialButton
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -105,24 +104,11 @@ class ConfigListActivity : AppCompatActivity() {
 
     private inner class TunnelViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val name: TextView = view.findViewById(R.id.server_name)
-        private val ping: TextView = view.findViewById(R.id.server_ping)
-        private val button: MaterialButton = view.findViewById(R.id.btn_connect)
         private lateinit var tunnel: ObservableTunnel
         fun bind(t: ObservableTunnel) {
             tunnel = t
             name.text = t.name.removePrefix("idrug_")
-            ping.text = getString(R.string.ping_template, 0)
-            lifecycleScope.launch {
-                try {
-                    val stats = t.getStatisticsAsync()
-                    val peer = stats.peers().firstOrNull()
-                    val time = peer?.let { stats.peer(it)?.latestHandshakeEpochMillis } ?: 0L
-                    val v = if (time > 0) (System.currentTimeMillis() - time) else 0L
-                    ping.text = getString(R.string.ping_template, v)
-                } catch (_: Throwable) {
-                }
-            }
-            button.setOnClickListener { requestToggle(tunnel) }
+            itemView.setOnClickListener { requestToggle(tunnel) }
         }
     }
 }

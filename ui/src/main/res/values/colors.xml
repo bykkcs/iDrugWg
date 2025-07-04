@@ -84,4 +84,9 @@
 
     <color name="tv_bg_start">#1C1C1C</color>
     <color name="tv_bg_end">#000000</color>
+
+    <!-- TV light theme colors -->
+    <color name="tv_white_bg">#FFFFFF</color>
+    <color name="tv_black_text">#000000</color>
+    <color name="tv_card_focus">#EEEEEE</color>
 </resources>
