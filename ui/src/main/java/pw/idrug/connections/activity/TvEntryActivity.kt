@@ -28,6 +28,17 @@ class TvEntryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
+        val token = prefs.getString("token", null)
+        if (!token.isNullOrEmpty()) {
+            lifecycleScope.launch {
+                autoImportConfigs()
+                startActivity(Intent(this@TvEntryActivity, ConfigListActivity::class.java))
+                finish()
+            }
+            return
+        }
+
         setContentView(R.layout.activity_tv_entry)
         codeInput = findViewById(R.id.edit_code)
         progress = findViewById(R.id.progress)
@@ -106,6 +117,16 @@ class TvEntryActivity : AppCompatActivity() {
             val tm = Application.getTunnelManager()
             val tunnels = tm.getTunnels().toList()
             val existing = tunnels.map { it.name }.toSet()
+
+            // Remove tunnels that were revoked on the server
+            for (tunnel in tunnels) {
+                val server = tunnel.name.removePrefix("idrug_")
+                if (tunnel.name.startsWith("idrug_") && server !in active) {
+                    tm.delete(tunnel)
+                }
+            }
+
+            // Add missing tunnels for active subscriptions
             for (server in active) {
                 val name = "idrug_$server"
                 if (name !in existing) {
