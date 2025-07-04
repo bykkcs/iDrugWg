@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/server_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/tv_card_spacing"
+    android:focusable="true"
+    android:clickable="true"
+    android:background="@drawable/bg_server_card"
+    android:stateListAnimator="@animator/focus_scale"
+    app:cardElevation="@dimen/tv_card_elevation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="@dimen/tv_padding">
+
+        <ImageView
+            android:id="@+id/server_icon"
+            android:layout_width="@dimen/tv_flag_size"
+            android:layout_height="@dimen/tv_flag_size"
+            android:contentDescription="@null" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/tv_card_spacing">
+
+            <TextView
+                android:id="@+id/server_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/tv_medium_text"
+                android:textColor="?attr/colorOnSurface"
+                android:text="Server" />
+
+            <TextView
+                android:id="@+id/server_ping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/tv_small_text"
+                android:text="@string/ping_template" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_connect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/connect"
+            android:textSize="@dimen/tv_medium_text" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

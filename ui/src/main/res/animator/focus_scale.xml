@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true">
+        <set>
+            <objectAnimator
+                android:propertyName="scaleX"
+                android:duration="@integer/tv_focus_anim_duration"
+                android:valueTo="1.08"/>
+            <objectAnimator
+                android:propertyName="scaleY"
+                android:duration="@integer/tv_focus_anim_duration"
+                android:valueTo="1.08"/>
+        </set>
+    </item>
+    <item>
+        <set>
+            <objectAnimator
+                android:propertyName="scaleX"
+                android:duration="@integer/tv_focus_anim_duration"
+                android:valueTo="1"/>
+            <objectAnimator
+                android:propertyName="scaleY"
+                android:duration="@integer/tv_focus_anim_duration"
+                android:valueTo="1"/>
+        </set>
+    </item>
+</selector>
