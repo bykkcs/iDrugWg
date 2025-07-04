@@ -152,18 +152,7 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
             bottomNavigation?.selectedItemId = if (openAccount) R.id.nav_account else R.id.nav_vpn
         }
 
-        // --- Получить FCM token (опционально, если вдруг надо где-то показать или залогать) ---
-        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                Log.w("FCM", "Fetching FCM registration token failed", task.exception)
-                return@addOnCompleteListener
-            }
-            val token = task.result
-            Log.d("FCM", "Current FCM token: $token")
-        }
-
-        // --- Подписать на глобальный топик для всех пушей ---
-        subscribeToGlobalNotifications()
+        registerForFcm()
     }
 
     private fun subscribeToGlobalNotifications() {
@@ -175,6 +164,23 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                     Log.e("FCM", "❌ Ошибка подписки на топик", task.exception)
                 }
             }
+    }
+
+    private fun registerForFcm() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("FCM", "Fetching FCM registration token failed", task.exception)
+                return@addOnCompleteListener
+            }
+            val token = task.result
+            Log.d("FCM", "Current FCM token: $token")
+        }
+        subscribeToGlobalNotifications()
+        val prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
+        val tgId = prefs.getString("telegram_id", null)
+        if (!tgId.isNullOrEmpty()) {
+            FirebaseMessaging.getInstance().subscribeToTopic("user_$tgId")
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
