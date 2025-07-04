@@ -26,7 +26,8 @@ import pw.idrug.connections.Application
 import pw.idrug.connections.config.Config
 import org.json.JSONArray
 import org.json.JSONObject
-import java.io.File
+import java.io.ByteArrayInputStream
+import java.nio.charset.StandardCharsets
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -455,13 +456,12 @@ class AccountFragment : Fragment() {
                 safeUi {
                     setLoading(false)
                     if (success) {
-                        val file = File(requireContext().filesDir, "wg_$tunnelName.conf")
-                        file.writeText(configOrError ?: "")
                         MainScope().launch {
                             try {
-                                val config = Config.parse(file.bufferedReader())
+                                val config = Config.parse(
+                                    ByteArrayInputStream((configOrError ?: "").toByteArray(StandardCharsets.UTF_8))
+                                )
                                 tunnelManager.create(tunnelName, config)
-                                file.delete()
                                 Toast.makeText(requireContext(), getString(R.string.tunnel_added), Toast.LENGTH_SHORT).show()
                                 loadProfileAndSetupUI(requireView())
                             } catch (e: Exception) {
@@ -677,11 +677,10 @@ class AccountFragment : Fragment() {
                                 if (success && config != null) {
                                     MainScope().launch {
                                         try {
-                                            val file = File(requireContext().filesDir, "wg_idrug_${server}.conf")
-                                            file.writeText(config)
-                                            val parsed = Config.parse(file.bufferedReader())
+                                            val parsed = Config.parse(
+                                                ByteArrayInputStream(config.toByteArray(StandardCharsets.UTF_8))
+                                            )
                                             tunnelManager.create("idrug_$server", parsed)
-                                            file.delete()
                                         } catch (_: Exception) {
                                         }
                                     }
