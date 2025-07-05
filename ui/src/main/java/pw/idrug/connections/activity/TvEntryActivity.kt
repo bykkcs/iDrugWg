@@ -84,7 +84,7 @@ class TvEntryActivity : AppCompatActivity() {
                 val jwt = obj.optString("jwt")
                 val username = obj.optString("username")
                 if (jwt.isNotEmpty() && username.isNotEmpty()) {
-                    return@try Pair(jwt, username)
+                    return Pair(jwt, username)
                 }
             }
             null
