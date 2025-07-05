@@ -15,6 +15,7 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import pw.idrug.connections.TunnelSyncManager
 import okhttp3.*
 import com.google.firebase.messaging.FirebaseMessaging
@@ -410,24 +411,28 @@ class AccountFragment : Fragment() {
         setLoading(true)
         prefs.edit().clear().apply()
         try {
-            val tunnelManager = Application.getTunnelManager()
-            val tunnels = tunnelManager.getTunnels()
-            tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
-                try {
-                    tunnelManager.delete(tunnel)
-                    Log.i("AccountFragment", "Tunnel deleted: ${'$'}{tunnel.name}")
-                } catch (te: Exception) {
-                    Log.e("AccountFragment", "Tunnel delete error: ${'$'}{tunnel.name}", te)
+            runBlocking {
+                val tunnelManager = Application.getTunnelManager()
+                val tunnels = tunnelManager.getTunnels()
+                tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
+                    try {
+                        tunnelManager.delete(tunnel)
+                        Log.i("AccountFragment", "Tunnel deleted: ${'$'}{tunnel.name}")
+                    } catch (te: Exception) {
+                        Log.e("AccountFragment", "Tunnel delete error: ${'$'}{tunnel.name}", te)
+                    }
                 }
             }
         } catch (e: Exception) {
             Log.e("AccountFragment", "Global logout error", e)
         }
         TunnelSyncManager.cancelAll()
-        showLoginScreen(view)
-        Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
-        setLoading(false)
-        isLogoutRunning = false
+        safeUi {
+            showLoginScreen(view)
+            Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
+            setLoading(false)
+            isLogoutRunning = false
+        }
     }
 
     private fun handleDownloadConfig() {
