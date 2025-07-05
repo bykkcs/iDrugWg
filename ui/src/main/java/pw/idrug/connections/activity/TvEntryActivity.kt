@@ -71,36 +71,40 @@ class TvEntryActivity : AppCompatActivity() {
     }
 
     private suspend fun linkAccountWithCode(code: String): Pair<String, String>? {
-        val client = OkHttpClient()
-        val body = FormBody.Builder().add("code", code).build()
-        val request = Request.Builder()
-            .url("https://idrug.pw/api/linking/consume")
-            .post(body)
-            .build()
-        val response = withContext(Dispatchers.IO) { client.newCall(request).execute() }
-        if (response.isSuccessful) {
-            val obj = JSONObject(response.body?.string() ?: "{}")
-            val jwt = obj.optString("jwt")
-            val username = obj.optString("username")
-            if (jwt.isNotEmpty() && username.isNotEmpty()) {
-                return Pair(jwt, username)
+        return try {
+            val client = OkHttpClient()
+            val body = FormBody.Builder().add("code", code).build()
+            val request = Request.Builder()
+                .url("https://idrug.pw/api/linking/consume")
+                .post(body)
+                .build()
+            val response = withContext(Dispatchers.IO) { client.newCall(request).execute() }
+            if (response.isSuccessful) {
+                val obj = JSONObject(response.body?.string() ?: "{}")
+                val jwt = obj.optString("jwt")
+                val username = obj.optString("username")
+                if (jwt.isNotEmpty() && username.isNotEmpty()) {
+                    return@try Pair(jwt, username)
+                }
             }
+            null
+        } catch (_: Exception) {
+            null
         }
-        return null
     }
 
     private suspend fun autoImportConfigs() {
         val prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
         val token = prefs.getString("token", null) ?: return
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url("https://idrug.pw/api/profile")
-            .addHeader("Authorization", "Bearer $token")
-            .build()
-        val response = withContext(Dispatchers.IO) { client.newCall(request).execute() }
-        if (!response.isSuccessful) return
-        val resp = response.body?.string() ?: return
         try {
+            val client = OkHttpClient()
+            val request = Request.Builder()
+                .url("https://idrug.pw/api/profile")
+                .addHeader("Authorization", "Bearer $token")
+                .build()
+            val response = withContext(Dispatchers.IO) { client.newCall(request).execute() }
+            if (!response.isSuccessful) return
+            val resp = response.body?.string() ?: return
             val obj = JSONObject(resp)
             val subs = obj.optJSONArray("subscriptions") ?: return
             val active = mutableListOf<String>()
@@ -133,13 +137,17 @@ class TvEntryActivity : AppCompatActivity() {
     }
 
     private suspend fun downloadConfig(token: String, serverId: String): String? {
-        val client = OkHttpClient()
-        val url = "https://idrug.pw/api/profile/download?server=$serverId"
-        val request = Request.Builder()
-            .url(url)
-            .addHeader("Authorization", "Bearer $token")
-            .build()
-        val response = withContext(Dispatchers.IO) { client.newCall(request).execute() }
-        return if (response.isSuccessful) response.body?.string() else null
+        return try {
+            val client = OkHttpClient()
+            val url = "https://idrug.pw/api/profile/download?server=$serverId"
+            val request = Request.Builder()
+                .url(url)
+                .addHeader("Authorization", "Bearer $token")
+                .build()
+            val response = withContext(Dispatchers.IO) { client.newCall(request).execute() }
+            if (response.isSuccessful) response.body?.string() else null
+        } catch (_: Exception) {
+            null
+        }
     }
 }
