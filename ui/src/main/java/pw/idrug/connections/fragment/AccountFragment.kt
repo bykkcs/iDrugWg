@@ -409,29 +409,25 @@ class AccountFragment : Fragment() {
         isLogoutRunning = true
         setLoading(true)
         prefs.edit().clear().apply()
-        TunnelSyncManager.cancelAll()
-        TunnelSyncManager.scope.launch {
-            try {
-                val tunnelManager = Application.getTunnelManager()
-                val tunnels = tunnelManager.getTunnels()
-                tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
-                    try {
-                        tunnelManager.delete(tunnel)
-                        Log.i("AccountFragment", "Tunnel deleted: ${'$'}{tunnel.name}")
-                    } catch (te: Exception) {
-                        Log.e("AccountFragment", "Tunnel delete error: ${'$'}{tunnel.name}", te)
-                    }
+        try {
+            val tunnelManager = Application.getTunnelManager()
+            val tunnels = tunnelManager.getTunnels()
+            tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
+                try {
+                    tunnelManager.delete(tunnel)
+                    Log.i("AccountFragment", "Tunnel deleted: ${'$'}{tunnel.name}")
+                } catch (te: Exception) {
+                    Log.e("AccountFragment", "Tunnel delete error: ${'$'}{tunnel.name}", te)
                 }
-            } catch (e: Exception) {
-                Log.e("AccountFragment", "Global logout error", e)
             }
-            safeUi {
-                showLoginScreen(view)
-                Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
-                setLoading(false)
-                isLogoutRunning = false
-            }
+        } catch (e: Exception) {
+            Log.e("AccountFragment", "Global logout error", e)
         }
+        TunnelSyncManager.cancelAll()
+        showLoginScreen(view)
+        Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
+        setLoading(false)
+        isLogoutRunning = false
     }
 
     private fun handleDownloadConfig() {
