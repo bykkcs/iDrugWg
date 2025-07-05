@@ -51,6 +51,7 @@ class AccountFragment : Fragment() {
     private var selectedServerName: String? = null
     private var serverList: List<Pair<String, String>> = listOf()
     private var qrPollingTimer: Timer? = null
+    private var isLogoutRunning = false
 
     // Subscription model. Only the active field matters.
     private data class Subscription(
@@ -404,20 +405,30 @@ class AccountFragment : Fragment() {
     }
 
     private fun afterLogout(view: View) {
+        if (isLogoutRunning) return
+        isLogoutRunning = true
+        setLoading(true)
         prefs.edit().clear().apply()
         MainScope().launch {
             try {
                 val tunnelManager = Application.getTunnelManager()
                 val tunnels = tunnelManager.getTunnels()
-                tunnels
-                    .filter { it.name.startsWith("idrug_") }
-                    .forEach { tunnel ->
+                tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
+                    try {
                         tunnelManager.delete(tunnel)
+                        Log.i("AccountFragment", "Tunnel deleted: ${'$'}{tunnel.name}")
+                    } catch (te: Exception) {
+                        Log.e("AccountFragment", "Tunnel delete error: ${'$'}{tunnel.name}", te)
                     }
-            } catch (e: Exception) {}
+                }
+            } catch (e: Exception) {
+                Log.e("AccountFragment", "Global logout error", e)
+            }
             safeUi {
                 showLoginScreen(view)
                 Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
+                setLoading(false)
+                isLogoutRunning = false
             }
         }
     }
