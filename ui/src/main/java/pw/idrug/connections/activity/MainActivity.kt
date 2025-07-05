@@ -120,36 +120,38 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
 
         // Open initial tab
         if (savedInstanceState == null) {
-            val data = intent?.data
-            val openedViaDeepLink = intent?.action == Intent.ACTION_VIEW && data != null
-            val openAccountByIntent = intent?.getBooleanExtra(EXTRA_OPEN_ACCOUNT, false) == true ||
-                (openedViaDeepLink && data?.host == "auth")
-            val openAccountByTunnels = runBlocking {
-                try {
-                    Application.getTunnelManager().getTunnels().isEmpty()
-                } catch (e: Exception) {
-                    Log.w("MainActivity", "Unable to check tunnels", e)
-                    false
-                }
-            }
-            val openAccount = openAccountByIntent || openAccountByTunnels
-
-            val fragment: Fragment = if (openAccount) {
-                AccountFragment()
-            } else {
-                val def = TunnelListFragment()
-                if (openedViaDeepLink && data?.scheme == "idrug" && data.host == "apps") {
-                    def.arguments = Bundle().apply {
-                        putString(TunnelListFragment.ARG_OPEN_TUNNEL_FOR_APPS, data.lastPathSegment)
+            if (!isTwoPaneLayout) {
+                val data = intent?.data
+                val openedViaDeepLink = intent?.action == Intent.ACTION_VIEW && data != null
+                val openAccountByIntent = intent?.getBooleanExtra(EXTRA_OPEN_ACCOUNT, false) == true ||
+                    (openedViaDeepLink && data?.host == "auth")
+                val openAccountByTunnels = runBlocking {
+                    try {
+                        Application.getTunnelManager().getTunnels().isEmpty()
+                    } catch (e: Exception) {
+                        Log.w("MainActivity", "Unable to check tunnels", e)
+                        false
                     }
                 }
-                def
-            }
+                val openAccount = openAccountByIntent || openAccountByTunnels
 
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .commit()
-            bottomNavigation?.selectedItemId = if (openAccount) R.id.nav_account else R.id.nav_vpn
+                val fragment: Fragment = if (openAccount) {
+                    AccountFragment()
+                } else {
+                    val def = TunnelListFragment()
+                    if (openedViaDeepLink && data?.scheme == "idrug" && data.host == "apps") {
+                        def.arguments = Bundle().apply {
+                            putString(TunnelListFragment.ARG_OPEN_TUNNEL_FOR_APPS, data.lastPathSegment)
+                        }
+                    }
+                    def
+                }
+
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit()
+                bottomNavigation?.selectedItemId = if (openAccount) R.id.nav_account else R.id.nav_vpn
+            }
         }
 
         registerForFcm()
