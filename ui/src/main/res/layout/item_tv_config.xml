@@ -8,7 +8,7 @@
     android:focusable="true"
     android:clickable="true"
     android:background="@drawable/tv_card_bg"
-    app:stateListAnimator="@animator/focus_scale"
+    android:stateListAnimator="@animator/focus_scale"
     app:cardStrokeWidth="@dimen/tv_card_stroke"
     app:cardStrokeColor="@color/plain_black">
 
