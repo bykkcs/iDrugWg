@@ -104,6 +104,11 @@ class ConfigListActivity : AppCompatActivity() {
             tunnel = t
             name.text = t.name.removePrefix("idrug_")
             status.text = if (t.state == Tunnel.State.UP) getString(R.string.active) else getString(R.string.inactive)
+            button.text = if (t.state == Tunnel.State.UP) {
+                itemView.context.getString(R.string.disconnect)
+            } else {
+                itemView.context.getString(R.string.connect)
+            }
             button.setOnClickListener { requestToggle(tunnel) }
         }
     }

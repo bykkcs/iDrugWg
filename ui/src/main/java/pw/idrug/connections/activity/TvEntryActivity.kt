@@ -7,6 +7,7 @@ import android.view.View
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.snackbar.Snackbar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -69,6 +70,7 @@ class TvEntryActivity : AppCompatActivity() {
     private fun showError(msg: String) {
         errorText.visibility = View.VISIBLE
         errorText.text = msg
+        Snackbar.make(errorText, msg, Snackbar.LENGTH_LONG).show()
     }
 
     private suspend fun linkAccountWithCode(code: String): Pair<String, String>? {
