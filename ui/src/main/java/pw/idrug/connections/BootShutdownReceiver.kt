@@ -19,8 +19,8 @@ class BootShutdownReceiver : BroadcastReceiver() {
             if (Application.getBackend() !is AwgQuickBackend) return@launch
             val tunnelManager = Application.getTunnelManager()
             if (Intent.ACTION_BOOT_COMPLETED == action) {
-                Log.i(TAG, "Broadcast receiver restoring state (boot)")
-                tunnelManager.restoreState(false)
+                Log.i(TAG, "Boot completed; auto-restore disabled")
+                // No automatic tunnel restore on boot
             } else if (Intent.ACTION_SHUTDOWN == action) {
                 Log.i(TAG, "Broadcast receiver saving state (shutdown)")
                 tunnelManager.saveState()
