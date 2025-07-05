@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
+import com.google.android.material.button.MaterialButton
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -98,7 +98,7 @@ class ConfigListActivity : AppCompatActivity() {
     private inner class TunnelViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val name: TextView = view.findViewById(R.id.config_name)
         private val status: TextView = view.findViewById(R.id.config_status)
-        private val button: Button = view.findViewById(R.id.btn_connect)
+        private val button: MaterialButton = view.findViewById(R.id.btn_connect)
         private lateinit var tunnel: ObservableTunnel
         fun bind(t: ObservableTunnel) {
             tunnel = t
