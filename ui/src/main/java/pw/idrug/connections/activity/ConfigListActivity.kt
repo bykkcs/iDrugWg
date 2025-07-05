@@ -23,6 +23,7 @@ import pw.idrug.connections.R
 import pw.idrug.connections.Application
 import pw.idrug.connections.backend.GoBackend
 import pw.idrug.connections.backend.Tunnel
+import pw.idrug.connections.config.Config
 import pw.idrug.connections.model.ObservableTunnel
 
 class ConfigListActivity : AppCompatActivity() {
@@ -105,6 +106,9 @@ class ConfigListActivity : AppCompatActivity() {
             }
             subscriptions = list
             adapter.notifyDataSetChanged()
+            val active = list.filter { it.active }.map { it.location }
+            syncTunnels(token, active)
+            loadTunnels()
         }
     }
 
@@ -129,6 +133,46 @@ class ConfigListActivity : AppCompatActivity() {
             } catch (_: Throwable) {
             }
             adapter.notifyDataSetChanged()
+        }
+    }
+
+    private suspend fun downloadConfig(token: String, serverId: String): String? {
+        val client = OkHttpClient()
+        val url = "https://idrug.pw/api/profile/download?server=$serverId"
+        val request = Request.Builder()
+            .url(url)
+            .addHeader("Authorization", "Bearer $token")
+            .build()
+        val response = withContext(Dispatchers.IO) { client.newCall(request).execute() }
+        return if (response.isSuccessful) response.body?.string() else null
+    }
+
+    private suspend fun syncTunnels(token: String, activeServers: List<String>) {
+        val tm = Application.getTunnelManager()
+        val tunnels = tm.getTunnels().toList()
+        val existing = tunnels.map { it.name }.toSet()
+        val activeNames = activeServers.map { "idrug_$it" }.toSet()
+        for (t in tunnels) {
+            if (t.name.startsWith("idrug_") && t.name !in activeNames) {
+                tm.delete(t)
+            }
+        }
+        for (server in activeServers) {
+            val name = "idrug_$server"
+            if (name !in existing) {
+                val config = downloadConfig(token, server)
+                if (!config.isNullOrEmpty()) {
+                    val file = java.io.File(filesDir, "wg_$name.conf")
+                    withContext(Dispatchers.IO) { file.writeText(config) }
+                    try {
+                        val parsed = Config.parse(file.bufferedReader())
+                        tm.create(name, parsed)
+                    } catch (_: Exception) {
+                    } finally {
+                        file.delete()
+                    }
+                }
+            }
         }
     }
 
