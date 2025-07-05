@@ -1,40 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:gravity="center_horizontal"
+    android:padding="@dimen/tv_padding_large"
+    android:background="@color/plain_white">
 
-    <EditText
-        android:id="@+id/edit_code"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/tv_logo_size"
+        android:layout_height="@dimen/tv_logo_size"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_icon" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/code_input_layout"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="@string/enter_code"
-        android:maxLength="6"
-        android:textSize="24sp"
-        android:gravity="center" />
+        android:layout_marginTop="@dimen/tv_margin_large">
 
-    <Button
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="6"
+            android:textSize="@dimen/tv_font_large"
+            android:textColor="@color/plain_black"
+            android:hint="@string/enter_code" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_submit_code"
+        style="@style/Widget.Material3.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/submit_code"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="@dimen/tv_margin_large"
+        android:text="@string/submit_code" />
 
-    <ProgressBar
+    <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progress"
+        style="@style/Widget.Material3.CircularProgressIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="@dimen/tv_margin_large"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/error_text"
+        style="?attr/textAppearanceBodyLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/holo_red_light"
-        android:visibility="gone"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="@dimen/tv_margin_large"
+        android:textColor="@color/plain_black"
+        android:visibility="gone" />
 </LinearLayout>

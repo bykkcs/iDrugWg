@@ -7,4 +7,11 @@
     <dimen name="bottom_sheet_top_padding">8dp</dimen>
     <dimen name="bottom_sheet_icon_padding">16dp</dimen>
     <dimen name="tunnel_list_placeholder_margin">16dp</dimen>
+
+    <!-- Dimensions for TV layouts -->
+    <dimen name="tv_margin_large">32dp</dimen>
+    <dimen name="tv_padding_large">32dp</dimen>
+    <dimen name="tv_font_large">28sp</dimen>
+    <dimen name="tv_logo_size">64dp</dimen>
+    <dimen name="tv_card_stroke">2dp</dimen>
 </resources>

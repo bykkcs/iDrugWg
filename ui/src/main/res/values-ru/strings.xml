@@ -292,6 +292,8 @@
     <string name="login_with_code">Войти через код</string>
     <string name="enter_code">Введите код</string>
     <string name="submit_code">Войти</string>
+    <string name="connect">Подключиться</string>
+    <string name="disconnect">Отключить</string>
     <string name="code_login_title">Введите 6-значный код</string>
     <string name="code_expires_in">Код истекает через %1$d с</string>
     <string name="code_expired">Код истёк. Сгенерируйте новый.</string>

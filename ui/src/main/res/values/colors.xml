@@ -82,4 +82,8 @@
     <color name="md_theme_dark_outlineVariant">#00FF00</color>
     <color name="md_theme_dark_scrim">#000000</color>
 
+    <!-- Basic colors used for TV layouts -->
+    <color name="plain_white">#FFFFFF</color>
+    <color name="plain_black">#000000</color>
+
 </resources>

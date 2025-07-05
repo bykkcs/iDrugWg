@@ -80,6 +80,8 @@
     <style name="TvTheme" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:colorBackground">@color/plain_white</item>
+        <item name="colorOnBackground">@color/plain_black</item>
     </style>
 
     <style name="MonetAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">

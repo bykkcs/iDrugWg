@@ -4,10 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.TextView
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.progressindicator.CircularProgressIndicator
+import com.google.android.material.textfield.TextInputEditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -23,17 +23,23 @@ import java.io.ByteArrayInputStream
 import java.nio.charset.StandardCharsets
 
 class TvEntryActivity : AppCompatActivity() {
-    private lateinit var codeInput: EditText
-    private lateinit var progress: ProgressBar
+    private lateinit var codeInput: TextInputEditText
+    private lateinit var progress: CircularProgressIndicator
     private lateinit var errorText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
+        if (!prefs.getString("token", null).isNullOrEmpty()) {
+            startActivity(Intent(this, ConfigListActivity::class.java))
+            finish()
+            return
+        }
         setContentView(R.layout.activity_tv_entry)
         codeInput = findViewById(R.id.edit_code)
         progress = findViewById(R.id.progress)
         errorText = findViewById(R.id.error_text)
-        findViewById<Button>(R.id.btn_submit_code).setOnClickListener { submitCode() }
+        findViewById<MaterialButton>(R.id.btn_submit_code).setOnClickListener { submitCode() }
     }
 
     private fun submitCode() {
