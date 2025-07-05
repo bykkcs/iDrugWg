@@ -78,16 +78,19 @@ class TvEntryActivity : AppCompatActivity() {
                 .url("https://idrug.pw/api/linking/consume")
                 .post(body)
                 .build()
-            val response = withContext(Dispatchers.IO) { client.newCall(request).execute() }
-            if (response.isSuccessful) {
-                val obj = JSONObject(response.body?.string() ?: "{}")
-                val jwt = obj.optString("jwt")
-                val username = obj.optString("username")
-                if (jwt.isNotEmpty() && username.isNotEmpty()) {
-                    return Pair(jwt, username)
+            withContext(Dispatchers.IO) {
+                client.newCall(request).execute().use { response ->
+                    if (response.isSuccessful) {
+                        val json = JSONObject(response.body?.string() ?: "{}")
+                        val jwt = json.optString("jwt")
+                        val username = json.optString("username")
+                        if (jwt.isNotEmpty() && username.isNotEmpty()) {
+                            return@withContext Pair(jwt, username)
+                        }
+                    }
+                    null
                 }
             }
-            null
         } catch (_: Exception) {
             null
         }
@@ -102,9 +105,12 @@ class TvEntryActivity : AppCompatActivity() {
                 .url("https://idrug.pw/api/profile")
                 .addHeader("Authorization", "Bearer $token")
                 .build()
-            val response = withContext(Dispatchers.IO) { client.newCall(request).execute() }
-            if (!response.isSuccessful) return
-            val resp = response.body?.string() ?: return
+            val resp = withContext(Dispatchers.IO) {
+                client.newCall(request).execute().use { response ->
+                    if (!response.isSuccessful) return@withContext null
+                    response.body?.string()
+                }
+            } ?: return
             val obj = JSONObject(resp)
             val subs = obj.optJSONArray("subscriptions") ?: return
             val active = mutableListOf<String>()
@@ -144,8 +150,11 @@ class TvEntryActivity : AppCompatActivity() {
                 .url(url)
                 .addHeader("Authorization", "Bearer $token")
                 .build()
-            val response = withContext(Dispatchers.IO) { client.newCall(request).execute() }
-            if (response.isSuccessful) response.body?.string() else null
+            withContext(Dispatchers.IO) {
+                client.newCall(request).execute().use { resp ->
+                    if (resp.isSuccessful) resp.body?.string() else null
+                }
+            }
         } catch (_: Exception) {
             null
         }
