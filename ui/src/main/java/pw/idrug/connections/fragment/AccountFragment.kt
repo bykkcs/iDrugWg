@@ -674,7 +674,6 @@ class AccountFragment : Fragment() {
                     MainScope().launch {
                         val tunnelManager = Application.getTunnelManager()
                         val tunnels = tunnelManager.getTunnels().toList()
-                        val existing = tunnels.map { it.name }.toSet()
                         val toRemove = tunnels.filter {
                             it.name.startsWith("idrug_") &&
                                 it.name.removePrefix("idrug_") !in activeServers
@@ -682,23 +681,8 @@ class AccountFragment : Fragment() {
                         for (tunnel in toRemove) {
                             tunnelManager.delete(tunnel)
                         }
-                        val toAdd = activeServers.filter { "idrug_$it" !in existing }
-                        for (server in toAdd) {
-                            downloadConfig(token, server) { success, config ->
-                                if (success && config != null) {
-                                    MainScope().launch {
-                                        try {
-                                            val file = File(requireContext().filesDir, "wg_idrug_${server}.conf")
-                                            file.writeText(config)
-                                            val parsed = Config.parse(file.bufferedReader())
-                                            tunnelManager.create("idrug_$server", parsed)
-                                            file.delete()
-                                        } catch (_: Exception) {
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        // Automatic download and import have been disabled.
+                        // Users must download configs manually via the download button.
                     }
                 } catch (_: Exception) {}
             }
