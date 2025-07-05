@@ -14,8 +14,8 @@ import androidx.fragment.app.Fragment
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import pw.idrug.connections.TunnelSyncManager
 import okhttp3.*
 import com.google.firebase.messaging.FirebaseMessaging
 import pw.idrug.connections.R
@@ -51,6 +51,7 @@ class AccountFragment : Fragment() {
     private var selectedServerName: String? = null
     private var serverList: List<Pair<String, String>> = listOf()
     private var qrPollingTimer: Timer? = null
+    private var isLogoutRunning = false
 
     // Subscription model. Only the active field matters.
     private data class Subscription(
@@ -404,20 +405,31 @@ class AccountFragment : Fragment() {
     }
 
     private fun afterLogout(view: View) {
+        if (isLogoutRunning) return
+        isLogoutRunning = true
+        setLoading(true)
         prefs.edit().clear().apply()
-        MainScope().launch {
+        TunnelSyncManager.cancelAll()
+        TunnelSyncManager.scope.launch {
             try {
                 val tunnelManager = Application.getTunnelManager()
                 val tunnels = tunnelManager.getTunnels()
-                tunnels
-                    .filter { it.name.startsWith("idrug_") }
-                    .forEach { tunnel ->
+                tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
+                    try {
                         tunnelManager.delete(tunnel)
+                        Log.i("AccountFragment", "Tunnel deleted: ${'$'}{tunnel.name}")
+                    } catch (te: Exception) {
+                        Log.e("AccountFragment", "Tunnel delete error: ${'$'}{tunnel.name}", te)
                     }
-            } catch (e: Exception) {}
+                }
+            } catch (e: Exception) {
+                Log.e("AccountFragment", "Global logout error", e)
+            }
             safeUi {
                 showLoginScreen(view)
                 Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
+                setLoading(false)
+                isLogoutRunning = false
             }
         }
     }
@@ -440,7 +452,11 @@ class AccountFragment : Fragment() {
             setLoading(false)
             return
         }
-        MainScope().launch {
+        TunnelSyncManager.scope.launch {
+            if (prefs.getString("token", null).isNullOrEmpty()) {
+                setLoading(false)
+                return@launch
+            }
             val tunnelManager = Application.getTunnelManager()
             val tunnels = tunnelManager.getTunnels()
             val tunnel = tunnels.firstOrNull { it.name == tunnelName }
@@ -453,11 +469,15 @@ class AccountFragment : Fragment() {
             }
             downloadConfig(token, serverId) { success, configOrError ->
                 safeUi {
+                    if (prefs.getString("token", null).isNullOrEmpty()) {
+                        setLoading(false)
+                        return@safeUi
+                    }
                     setLoading(false)
                     if (success) {
                         val file = File(requireContext().filesDir, "wg_$tunnelName.conf")
                         file.writeText(configOrError ?: "")
-                        MainScope().launch {
+                        TunnelSyncManager.scope.launch {
                             try {
                                 val config = Config.parse(file.bufferedReader())
                                 tunnelManager.create(tunnelName, config)
@@ -649,6 +669,7 @@ class AccountFragment : Fragment() {
             override fun onFailure(call: Call, e: IOException) {}
             override fun onResponse(call: Call, response: Response) {
                 if (!response.isSuccessful) return
+                if (prefs.getString("token", null).isNullOrEmpty()) return
                 val resp = response.body?.string() ?: return
                 try {
                     val obj = JSONObject(resp)
@@ -660,7 +681,7 @@ class AccountFragment : Fragment() {
                             activeServers.add(sObj.optString("location"))
                         }
                     }
-                    MainScope().launch {
+                    TunnelSyncManager.scope.launch {
                         val tunnelManager = Application.getTunnelManager()
                         val tunnels = tunnelManager.getTunnels().toList()
                         val existing = tunnels.map { it.name }.toSet()
@@ -674,8 +695,9 @@ class AccountFragment : Fragment() {
                         val toAdd = activeServers.filter { "idrug_$it" !in existing }
                         for (server in toAdd) {
                             downloadConfig(token, server) { success, config ->
+                                if (prefs.getString("token", null).isNullOrEmpty()) return@downloadConfig
                                 if (success && config != null) {
-                                    MainScope().launch {
+                                    TunnelSyncManager.scope.launch {
                                         try {
                                             val file = File(requireContext().filesDir, "wg_idrug_${server}.conf")
                                             file.writeText(config)
