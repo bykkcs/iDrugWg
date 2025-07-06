@@ -4,9 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.progressindicator.CircularProgressIndicator
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.snackbar.Snackbar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -23,17 +24,25 @@ import pw.idrug.connections.config.Config
 import java.io.File
 
 class TvEntryActivity : AppCompatActivity() {
-    private lateinit var codeInput: EditText
-    private lateinit var progress: ProgressBar
+    private lateinit var codeInput: TextInputEditText
+    private lateinit var progress: CircularProgressIndicator
     private lateinit var errorText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Check for token
+        val prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
+        val token = prefs.getString("token", null)
+        if (!token.isNullOrEmpty()) {
+            startActivity(Intent(this, ConfigListActivity::class.java))
+            finish()
+            return
+        }
         setContentView(R.layout.activity_tv_entry)
         codeInput = findViewById(R.id.edit_code)
         progress = findViewById(R.id.progress)
         errorText = findViewById(R.id.error_text)
-        findViewById<Button>(R.id.btn_submit_code).setOnClickListener { submitCode() }
+        findViewById<MaterialButton>(R.id.btn_submit_code).setOnClickListener { submitCode() }
     }
 
     private fun submitCode() {
@@ -62,6 +71,7 @@ class TvEntryActivity : AppCompatActivity() {
     private fun showError(msg: String) {
         errorText.visibility = View.VISIBLE
         errorText.text = msg
+        Snackbar.make(errorText, msg, Snackbar.LENGTH_LONG).show()
     }
 
     private suspend fun linkAccountWithCode(code: String): Pair<String, String>? {
