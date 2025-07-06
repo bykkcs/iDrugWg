@@ -19,6 +19,7 @@ import okhttp3.*
 import org.json.JSONObject
 import pw.idrug.connections.R
 import pw.idrug.connections.Application
+import pw.idrug.connections.TunnelSyncManager
 import pw.idrug.connections.config.Config
 import java.io.File
 
@@ -57,7 +58,7 @@ class TvEntryActivity : AppCompatActivity() {
                 val (token, username) = result
                 val prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
                 prefs.edit().putString("token", token).putString("username", username).apply()
-                autoImportConfigs()
+                TunnelSyncManager.scope.launch { autoImportConfigs() }
                 startActivity(Intent(this@TvEntryActivity, ConfigListActivity::class.java))
                 finish()
             } else {

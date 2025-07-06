@@ -14,8 +14,9 @@ import androidx.fragment.app.Fragment
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import pw.idrug.connections.TunnelSyncManager
 import okhttp3.*
 import com.google.firebase.messaging.FirebaseMessaging
 import pw.idrug.connections.R
@@ -403,35 +404,39 @@ class AccountFragment : Fragment() {
         view?.findViewById<View>(R.id.loading_overlay)?.visibility = if (loading) View.VISIBLE else View.GONE
         activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)?.isEnabled = !loading
     }
+    
+private fun afterLogout(view: View) {
+    if (isLogoutRunning) return
+    isLogoutRunning = true
+    setLoading(true)
+    prefs.edit().clear().apply()
 
-    private fun afterLogout(view: View) {
-        if (isLogoutRunning) return
-        isLogoutRunning = true
-        setLoading(true)
-        prefs.edit().clear().apply()
-        MainScope().launch {
+    // Удаляем туннели сразу, синхронно!
+    try {
+        val tunnelManager = Application.getTunnelManager()
+        val tunnels = tunnelManager.getTunnels()
+        tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
             try {
-                val tunnelManager = Application.getTunnelManager()
-                val tunnels = tunnelManager.getTunnels()
-                tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
-                    try {
-                        tunnelManager.delete(tunnel)
-                        Log.i("AccountFragment", "Tunnel deleted: ${'$'}{tunnel.name}")
-                    } catch (te: Exception) {
-                        Log.e("AccountFragment", "Tunnel delete error: ${'$'}{tunnel.name}", te)
-                    }
-                }
-            } catch (e: Exception) {
-                Log.e("AccountFragment", "Global logout error", e)
-            }
-            safeUi {
-                showLoginScreen(view)
-                Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
-                setLoading(false)
-                isLogoutRunning = false
+                tunnelManager.delete(tunnel)
+                Log.i("AccountFragment", "Tunnel deleted: ${tunnel.name}")
+            } catch (te: Exception) {
+                Log.e("AccountFragment", "Tunnel delete error: ${tunnel.name}", te)
             }
         }
+    } catch (e: Exception) {
+        Log.e("AccountFragment", "Error while deleting tunnels during logout", e)
     }
+
+    // После логаута отменяем все операции синхронизации
+    TunnelSyncManager.cancelAll()
+
+    safeUi {
+        showLoginScreen(view)
+        Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
+        setLoading(false)
+        isLogoutRunning = false
+    }
+}
 
     private fun handleDownloadConfig() {
         if (selectedServerId == null) {
@@ -451,7 +456,11 @@ class AccountFragment : Fragment() {
             setLoading(false)
             return
         }
-        MainScope().launch {
+        TunnelSyncManager.scope.launch {
+            if (prefs.getString("token", null).isNullOrEmpty()) {
+                setLoading(false)
+                return@launch
+            }
             val tunnelManager = Application.getTunnelManager()
             val tunnels = tunnelManager.getTunnels()
             val tunnel = tunnels.firstOrNull { it.name == tunnelName }
@@ -464,11 +473,15 @@ class AccountFragment : Fragment() {
             }
             downloadConfig(token, serverId) { success, configOrError ->
                 safeUi {
+                    if (prefs.getString("token", null).isNullOrEmpty()) {
+                        setLoading(false)
+                        return@safeUi
+                    }
                     setLoading(false)
                     if (success) {
                         val file = File(requireContext().filesDir, "wg_$tunnelName.conf")
                         file.writeText(configOrError ?: "")
-                        MainScope().launch {
+                        TunnelSyncManager.scope.launch {
                             try {
                                 val config = Config.parse(file.bufferedReader())
                                 tunnelManager.create(tunnelName, config)
@@ -648,46 +661,51 @@ class AccountFragment : Fragment() {
         override fun key() = "circle"
     }
 
-    private fun syncTunnelsWithProfile() {
-        val token = prefs.getString("token", null) ?: return
-        val client = OkHttpClient()
-        val url = "https://idrug.pw/api/profile"
-        val request = Request.Builder()
-            .url(url)
-            .addHeader("Authorization", "Bearer $token")
-            .build()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {}
-            override fun onResponse(call: Call, response: Response) {
-                if (!response.isSuccessful) return
-                val resp = response.body?.string() ?: return
-                try {
-                    val obj = JSONObject(resp)
-                    val subscriptionsArr = obj.optJSONArray("subscriptions") ?: return
-                    val activeServers = mutableSetOf<String>()
-                    for (i in 0 until subscriptionsArr.length()) {
-                        val sObj = subscriptionsArr.getJSONObject(i)
-                        if (sObj.optBoolean("active", false)) {
-                            activeServers.add(sObj.optString("location"))
-                        }
+   private fun syncTunnelsWithProfile() {
+    val token = prefs.getString("token", null) ?: return
+    val client = OkHttpClient()
+    val url = "https://idrug.pw/api/profile"
+    val request = Request.Builder()
+        .url(url)
+        .addHeader("Authorization", "Bearer $token")
+        .build()
+    client.newCall(request).enqueue(object : Callback {
+        override fun onFailure(call: Call, e: IOException) {}
+        override fun onResponse(call: Call, response: Response) {
+            if (!response.isSuccessful) return
+            val resp = response.body?.string() ?: return
+            try {
+                val obj = JSONObject(resp)
+                val subscriptionsArr = obj.optJSONArray("subscriptions") ?: return
+                val activeServers = mutableSetOf<String>()
+                for (i in 0 until subscriptionsArr.length()) {
+                    val sObj = subscriptionsArr.getJSONObject(i)
+                    if (sObj.optBoolean("active", false)) {
+                        activeServers.add(sObj.optString("location"))
                     }
-                    MainScope().launch {
-                        val tunnelManager = Application.getTunnelManager()
-                        val tunnels = tunnelManager.getTunnels().toList()
-                        val toRemove = tunnels.filter {
-                            it.name.startsWith("idrug_") &&
-                                it.name.removePrefix("idrug_") !in activeServers
-                        }
-                        for (tunnel in toRemove) {
+                }
+                MainScope().launch {
+                    val tunnelManager = Application.getTunnelManager()
+                    val tunnels = tunnelManager.getTunnels().toList()
+
+                    // Только удаляем туннели, которые неактивны
+                    val toRemove = tunnels.filter {
+                        it.name.startsWith("idrug_") &&
+                            it.name.removePrefix("idrug_") !in activeServers
+                    }
+                    for (tunnel in toRemove) {
+                        try {
                             tunnelManager.delete(tunnel)
+                            Log.i("AccountFragment", "Tunnel deleted: ${tunnel.name}")
+                        } catch (te: Exception) {
+                            Log.e("AccountFragment", "Tunnel delete error: ${tunnel.name}", te)
                         }
-                        // Automatic download and import have been disabled.
-                        // Users must download configs manually via the download button.
                     }
-                } catch (_: Exception) {}
-            }
-        })
-    }
+                }
+            } catch (_: Exception) {}
+        }
+    })
+}
 
     private fun safeUi(block: () -> Unit) {
         if (destroyed || !isAdded || activity == null) return
