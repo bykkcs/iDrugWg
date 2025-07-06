@@ -173,6 +173,7 @@ class AccountFragment : Fragment() {
         client.newCall(Request.Builder().url(url).build()).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 safeUi {
+                    if (!isLoggedIn()) return@safeUi
                     serverList = listOf(
                         "germany" to getServerName("germany"),
                         "multihop" to getServerName("multihop"),
@@ -185,6 +186,7 @@ class AccountFragment : Fragment() {
             }
             override fun onResponse(call: Call, response: Response) {
                 safeUi {
+                    if (!isLoggedIn()) return@safeUi
                     if (response.isSuccessful) {
                         val arr = JSONArray(response.body?.string() ?: "[]")
                         serverList = List(arr.length()) {
@@ -252,6 +254,7 @@ class AccountFragment : Fragment() {
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 safeUi {
+                    if (prefs.getString("token", null) != token) return@safeUi
                     setLoading(false)
                     Toast.makeText(requireContext(), getString(R.string.network_error_msg, e.message), Toast.LENGTH_SHORT).show()
                 }
@@ -259,6 +262,7 @@ class AccountFragment : Fragment() {
             override fun onResponse(call: Call, response: Response) {
                 val resp = response.body?.string() ?: ""
                 safeUi {
+                    if (prefs.getString("token", null) != token) return@safeUi
                     setLoading(false)
                     if (response.code == 401) {
                         showLoginScreen(view)
@@ -410,6 +414,8 @@ private fun afterLogout(view: View) {
     isLogoutRunning = true
     setLoading(true)
     prefs.edit().clear().apply()
+    qrPollingTimer?.cancel()
+    qrPollingTimer = null
 
     // Удаляем туннели сразу, синхронно!
     try {
@@ -433,6 +439,11 @@ private fun afterLogout(view: View) {
     TunnelSyncManager.cancelAll()
 
     safeUi {
+        if (isLoggedIn()) {
+            setLoading(false)
+            isLogoutRunning = false
+            return@safeUi
+        }
         showLoginScreen(view)
         Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
         setLoading(false)
