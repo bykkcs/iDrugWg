@@ -49,7 +49,7 @@
                 android:id="@+id/text_current_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login_via_telegram_or_qr"
+                android:text="@string/login_via_telegram"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:paddingBottom="16dp"
