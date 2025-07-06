@@ -77,7 +77,7 @@
         <item name="android:textColor">?attr/colorOnSurface</item>
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
     </style>
-    <style name="TvTheme" parent="Theme.Idrug">
+    <style name="TvTheme" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
