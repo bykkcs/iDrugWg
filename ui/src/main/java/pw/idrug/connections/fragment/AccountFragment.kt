@@ -413,14 +413,16 @@ private fun afterLogout(view: View) {
 
     // Удаляем туннели сразу, синхронно!
     try {
-        val tunnelManager = Application.getTunnelManager()
-        val tunnels = tunnelManager.getTunnels()
-        tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
-            try {
-                tunnelManager.delete(tunnel)
-                Log.i("AccountFragment", "Tunnel deleted: ${tunnel.name}")
-            } catch (te: Exception) {
-                Log.e("AccountFragment", "Tunnel delete error: ${tunnel.name}", te)
+        runBlocking {
+            val tunnelManager = Application.getTunnelManager()
+            val tunnels = tunnelManager.getTunnels()
+            tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
+                try {
+                    tunnelManager.delete(tunnel)
+                    Log.i("AccountFragment", "Tunnel deleted: ${tunnel.name}")
+                } catch (te: Exception) {
+                    Log.e("AccountFragment", "Tunnel delete error: ${tunnel.name}", te)
+                }
             }
         }
     } catch (e: Exception) {
@@ -684,7 +686,7 @@ private fun afterLogout(view: View) {
                         activeServers.add(sObj.optString("location"))
                     }
                 }
-                MainScope().launch {
+                TunnelSyncManager.scope.launch {
                     val tunnelManager = Application.getTunnelManager()
                     val tunnels = tunnelManager.getTunnels().toList()
 
