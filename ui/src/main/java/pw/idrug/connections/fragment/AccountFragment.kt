@@ -404,36 +404,39 @@ class AccountFragment : Fragment() {
         view?.findViewById<View>(R.id.loading_overlay)?.visibility = if (loading) View.VISIBLE else View.GONE
         activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)?.isEnabled = !loading
     }
+    
+private fun afterLogout(view: View) {
+    if (isLogoutRunning) return
+    isLogoutRunning = true
+    setLoading(true)
+    prefs.edit().clear().apply()
 
-    private fun afterLogout(view: View) {
-        if (isLogoutRunning) return
-        isLogoutRunning = true
-        setLoading(true)
-        prefs.edit().clear().apply()
-        try {
-            runBlocking {
-                val tunnelManager = Application.getTunnelManager()
-                val tunnels = tunnelManager.getTunnels()
-                tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
-                    try {
-                        tunnelManager.delete(tunnel)
-                        Log.i("AccountFragment", "Tunnel deleted: ${'$'}{tunnel.name}")
-                    } catch (te: Exception) {
-                        Log.e("AccountFragment", "Tunnel delete error: ${'$'}{tunnel.name}", te)
-                    }
-                }
+    // Удаляем туннели сразу, синхронно!
+    try {
+        val tunnelManager = Application.getTunnelManager()
+        val tunnels = tunnelManager.getTunnels()
+        tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
+            try {
+                tunnelManager.delete(tunnel)
+                Log.i("AccountFragment", "Tunnel deleted: ${tunnel.name}")
+            } catch (te: Exception) {
+                Log.e("AccountFragment", "Tunnel delete error: ${tunnel.name}", te)
             }
-        } catch (e: Exception) {
-            Log.e("AccountFragment", "Global logout error", e)
         }
-        TunnelSyncManager.cancelAll()
-        safeUi {
-            showLoginScreen(view)
-            Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
-            setLoading(false)
-            isLogoutRunning = false
-        }
+    } catch (e: Exception) {
+        Log.e("AccountFragment", "Error while deleting tunnels during logout", e)
     }
+
+    // После логаута отменяем все операции синхронизации
+    TunnelSyncManager.cancelAll()
+
+    safeUi {
+        showLoginScreen(view)
+        Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
+        setLoading(false)
+        isLogoutRunning = false
+    }
+}
 
     private fun handleDownloadConfig() {
         if (selectedServerId == null) {
@@ -658,64 +661,51 @@ class AccountFragment : Fragment() {
         override fun key() = "circle"
     }
 
-    private fun syncTunnelsWithProfile() {
-        val token = prefs.getString("token", null) ?: return
-        val client = OkHttpClient()
-        val url = "https://idrug.pw/api/profile"
-        val request = Request.Builder()
-            .url(url)
-            .addHeader("Authorization", "Bearer $token")
-            .build()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {}
-            override fun onResponse(call: Call, response: Response) {
-                if (!response.isSuccessful) return
-                if (prefs.getString("token", null).isNullOrEmpty()) return
-                val resp = response.body?.string() ?: return
-                try {
-                    val obj = JSONObject(resp)
-                    val subscriptionsArr = obj.optJSONArray("subscriptions") ?: return
-                    val activeServers = mutableSetOf<String>()
-                    for (i in 0 until subscriptionsArr.length()) {
-                        val sObj = subscriptionsArr.getJSONObject(i)
-                        if (sObj.optBoolean("active", false)) {
-                            activeServers.add(sObj.optString("location"))
-                        }
+   private fun syncTunnelsWithProfile() {
+    val token = prefs.getString("token", null) ?: return
+    val client = OkHttpClient()
+    val url = "https://idrug.pw/api/profile"
+    val request = Request.Builder()
+        .url(url)
+        .addHeader("Authorization", "Bearer $token")
+        .build()
+    client.newCall(request).enqueue(object : Callback {
+        override fun onFailure(call: Call, e: IOException) {}
+        override fun onResponse(call: Call, response: Response) {
+            if (!response.isSuccessful) return
+            val resp = response.body?.string() ?: return
+            try {
+                val obj = JSONObject(resp)
+                val subscriptionsArr = obj.optJSONArray("subscriptions") ?: return
+                val activeServers = mutableSetOf<String>()
+                for (i in 0 until subscriptionsArr.length()) {
+                    val sObj = subscriptionsArr.getJSONObject(i)
+                    if (sObj.optBoolean("active", false)) {
+                        activeServers.add(sObj.optString("location"))
                     }
-                    TunnelSyncManager.scope.launch {
-                        val tunnelManager = Application.getTunnelManager()
-                        val tunnels = tunnelManager.getTunnels().toList()
-                        val existing = tunnels.map { it.name }.toSet()
-                        val toRemove = tunnels.filter {
-                            it.name.startsWith("idrug_") &&
-                                it.name.removePrefix("idrug_") !in activeServers
-                        }
-                        for (tunnel in toRemove) {
+                }
+                MainScope().launch {
+                    val tunnelManager = Application.getTunnelManager()
+                    val tunnels = tunnelManager.getTunnels().toList()
+
+                    // Только удаляем туннели, которые неактивны
+                    val toRemove = tunnels.filter {
+                        it.name.startsWith("idrug_") &&
+                            it.name.removePrefix("idrug_") !in activeServers
+                    }
+                    for (tunnel in toRemove) {
+                        try {
                             tunnelManager.delete(tunnel)
-                        }
-                        val toAdd = activeServers.filter { "idrug_$it" !in existing }
-                        for (server in toAdd) {
-                            downloadConfig(token, server) { success, config ->
-                                if (prefs.getString("token", null).isNullOrEmpty()) return@downloadConfig
-                                if (success && config != null) {
-                                    TunnelSyncManager.scope.launch {
-                                        try {
-                                            val file = File(requireContext().filesDir, "wg_idrug_${server}.conf")
-                                            file.writeText(config)
-                                            val parsed = Config.parse(file.bufferedReader())
-                                            tunnelManager.create("idrug_$server", parsed)
-                                            file.delete()
-                                        } catch (_: Exception) {
-                                        }
-                                    }
-                                }
-                            }
+                            Log.i("AccountFragment", "Tunnel deleted: ${tunnel.name}")
+                        } catch (te: Exception) {
+                            Log.e("AccountFragment", "Tunnel delete error: ${tunnel.name}", te)
                         }
                     }
-                } catch (_: Exception) {}
-            }
-        })
-    }
+                }
+            } catch (_: Exception) {}
+        }
+    })
+}
 
     private fun safeUi(block: () -> Unit) {
         if (destroyed || !isAdded || activity == null) return
