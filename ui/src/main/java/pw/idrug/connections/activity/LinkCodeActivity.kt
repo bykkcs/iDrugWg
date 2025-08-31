@@ -43,7 +43,7 @@ class LinkCodeActivity : AppCompatActivity() {
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 } else {
-                    Toast.makeText(this, message ?: getString(R.string.login_via_telegram), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, message ?: getString(R.string.login_via_telegram_or_qr), Toast.LENGTH_LONG).show()
                 }
             }
         }

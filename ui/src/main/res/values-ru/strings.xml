@@ -282,7 +282,7 @@
     <string name="biometric_auth_error">Ошибка аутентификации</string>
     <string name="biometric_auth_error_reason">Ошибка аутентификации: %s</string>
     <string name="account_avatar">Аватар пользователя</string>
-    <string name="login_via_telegram_or_qr">Вход через Telegram</string>
+    <string name="login_via_telegram_or_qr">Вход через Telegram или QR</string>
     <string name="login_via_telegram">Войти через Telegram</string>
     <string name="choose_server">Выберите сервер</string>
     <string name="download_config">Скачать конфиг</string>
