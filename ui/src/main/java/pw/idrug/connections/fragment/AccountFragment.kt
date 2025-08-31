@@ -125,14 +125,8 @@ class AccountFragment : Fragment() {
             handleDownloadConfig()
         }
         view.findViewById<Button>(R.id.btn_link_device).setOnClickListener {
-            if (isLoggedIn()) {
-                pw.idrug.connections.dialog.LinkCodeDialogFragment()
-                    .show(parentFragmentManager, "link_code")
-            } else {
-                CodeInputDialogFragment { code ->
-                    handleLinkCodeLogin(code)
-                }.show(parentFragmentManager, "code_input")
-            }
+            pw.idrug.connections.dialog.LinkCodeDialogFragment()
+                .show(parentFragmentManager, "link_code")
         }
         view.findViewById<Button>(R.id.btn_renew).setOnClickListener {
             SubscriptionDialogFragment().show(parentFragmentManager, "subscription")
@@ -173,6 +167,7 @@ class AccountFragment : Fragment() {
         client.newCall(Request.Builder().url(url).build()).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 safeUi {
+                    if (!isLoggedIn()) return@safeUi
                     serverList = listOf(
                         "germany" to getServerName("germany"),
                         "multihop" to getServerName("multihop"),
@@ -185,6 +180,7 @@ class AccountFragment : Fragment() {
             }
             override fun onResponse(call: Call, response: Response) {
                 safeUi {
+                    if (!isLoggedIn()) return@safeUi
                     if (response.isSuccessful) {
                         val arr = JSONArray(response.body?.string() ?: "[]")
                         serverList = List(arr.length()) {
@@ -252,6 +248,7 @@ class AccountFragment : Fragment() {
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 safeUi {
+                    if (prefs.getString("token", null) != token) return@safeUi
                     setLoading(false)
                     Toast.makeText(requireContext(), getString(R.string.network_error_msg, e.message), Toast.LENGTH_SHORT).show()
                 }
@@ -259,6 +256,7 @@ class AccountFragment : Fragment() {
             override fun onResponse(call: Call, response: Response) {
                 val resp = response.body?.string() ?: ""
                 safeUi {
+                    if (prefs.getString("token", null) != token) return@safeUi
                     setLoading(false)
                     if (response.code == 401) {
                         showLoginScreen(view)
@@ -304,8 +302,7 @@ class AccountFragment : Fragment() {
     private fun showLoginScreen(view: View) {
         view.findViewById<Button>(R.id.btn_login_telegram).visibility = View.VISIBLE
         val linkButton = view.findViewById<Button>(R.id.btn_link_device)
-        linkButton.visibility = View.VISIBLE
-        linkButton.text = getString(R.string.login_with_code)
+        linkButton.visibility = View.GONE
         view.findViewById<Button>(R.id.btn_download).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_renew).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_referral).visibility = View.GONE
@@ -313,7 +310,7 @@ class AccountFragment : Fragment() {
         view.findViewById<Spinner>(R.id.spinner_server).visibility = View.GONE
         view.findViewById<TextView>(R.id.text_server_choice).visibility = View.GONE
         view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.GONE
-        view.findViewById<TextView>(R.id.text_current_user).text = getString(R.string.login_via_telegram_or_qr)
+        view.findViewById<TextView>(R.id.text_current_user).text = getString(R.string.login_via_telegram)
         view.findViewById<TextView>(R.id.status_text).text = ""
         view.findViewById<TextView>(R.id.text_expiration).text = ""
         view.findViewById<ImageView>(R.id.avatar_image).setImageResource(R.drawable.ic_avatar_placeholder)
@@ -410,6 +407,8 @@ private fun afterLogout(view: View) {
     isLogoutRunning = true
     setLoading(true)
     prefs.edit().clear().apply()
+    qrPollingTimer?.cancel()
+    qrPollingTimer = null
 
     // Удаляем туннели сразу, синхронно!
     try {
@@ -433,6 +432,11 @@ private fun afterLogout(view: View) {
     TunnelSyncManager.cancelAll()
 
     safeUi {
+        if (isLoggedIn()) {
+            setLoading(false)
+            isLogoutRunning = false
+            return@safeUi
+        }
         showLoginScreen(view)
         Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
         setLoading(false)
@@ -454,7 +458,7 @@ private fun afterLogout(view: View) {
         setLoading(true)
         val token = prefs.getString("token", null)
         if (token == null) {
-            Toast.makeText(requireContext(), getString(R.string.login_via_telegram_or_qr), Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.login_via_telegram), Toast.LENGTH_SHORT).show()
             setLoading(false)
             return
         }
@@ -579,7 +583,7 @@ private fun afterLogout(view: View) {
                     Toast.makeText(requireContext(), getString(R.string.login_successful), Toast.LENGTH_SHORT).show()
                     showCorrectScreen(requireView())
                 } else {
-                    Toast.makeText(requireContext(), message ?: getString(R.string.login_via_telegram_or_qr), Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), message ?: getString(R.string.login_via_telegram), Toast.LENGTH_LONG).show()
                 }
             }
         }
