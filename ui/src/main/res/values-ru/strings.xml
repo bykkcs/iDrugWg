@@ -195,6 +195,7 @@
     <string name="response_packet_magic_header">Магический заголовок пакета ответа</string>
     <string name="underload_packet_magic_header">Магический заголовок underload-пакета</string>
     <string name="transport_packet_magic_header">Магический заголовок транспортного пакета</string>
+    <string name="cps">CPS</string>
     <string name="multiple_tunnels_summary_off">Включение одного туннеля отключит другие</string>
     <string name="multiple_tunnels_summary_on">Одновременно можно включить несколько туннелей</string>
     <string name="multiple_tunnels_title">Несколько туннелей</string>

@@ -54,6 +54,13 @@ class InterfaceProxy : BaseObservable, Parcelable {
         }
 
     @get:Bindable
+    var cps: String = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.cps)
+        }
+
+    @get:Bindable
     var junkPacketCount: String = ""
         set(value) {
             field = value
@@ -139,6 +146,7 @@ class InterfaceProxy : BaseObservable, Parcelable {
         parcel.readStringList(includedApplications)
         listenPort = parcel.readString() ?: ""
         mtu = parcel.readString() ?: ""
+        cps = parcel.readString() ?: ""
         junkPacketCount = parcel.readString() ?: ""
         junkPacketMinSize = parcel.readString() ?: ""
         junkPacketMaxSize = parcel.readString() ?: ""
@@ -159,6 +167,7 @@ class InterfaceProxy : BaseObservable, Parcelable {
         includedApplications.addAll(other.includedApplications)
         listenPort = other.listenPort.map { it.toString() }.orElse("")
         mtu = other.mtu.map { it.toString() }.orElse("")
+        cps = other.initPacketCps.orElse("")
         junkPacketCount = other.junkPacketCount.map { it.toString() }.orElse("")
         junkPacketMinSize = other.junkPacketMinSize.map { it.toString() }.orElse("")
         junkPacketMaxSize = other.junkPacketMaxSize.map { it.toString() }.orElse("")
@@ -192,6 +201,7 @@ class InterfaceProxy : BaseObservable, Parcelable {
         if (includedApplications.isNotEmpty()) builder.includeApplications(includedApplications)
         if (listenPort.isNotEmpty()) builder.parseListenPort(listenPort)
         if (mtu.isNotEmpty()) builder.parseMtu(mtu)
+        if (cps.isNotEmpty()) builder.parseI1(cps)
         if (junkPacketCount.isNotEmpty()) builder.parseJunkPacketCount(junkPacketCount)
         if (junkPacketMinSize.isNotEmpty()) builder.parseJunkPacketMinSize(junkPacketMinSize)
         if (junkPacketMaxSize.isNotEmpty()) builder.parseJunkPacketMaxSize(junkPacketMaxSize)
@@ -212,6 +222,7 @@ class InterfaceProxy : BaseObservable, Parcelable {
         dest.writeStringList(includedApplications)
         dest.writeString(listenPort)
         dest.writeString(mtu)
+        dest.writeString(cps)
         dest.writeString(junkPacketCount)
         dest.writeString(junkPacketMinSize)
         dest.writeString(junkPacketMaxSize)

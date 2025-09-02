@@ -16,6 +16,7 @@ import pw.idrug.connections.backend.BackendException.Reason;
 import pw.idrug.connections.backend.Tunnel.State;
 import pw.idrug.connections.util.SharedLibraryLoader;
 import pw.idrug.connections.config.Config;
+import pw.idrug.connections.config.Interface;
 import pw.idrug.connections.config.InetEndpoint;
 import pw.idrug.connections.config.InetNetwork;
 import pw.idrug.connections.config.Peer;
@@ -267,6 +268,17 @@ public final class GoBackend implements Backend {
 
             // Build config
             final String goConfig = config.toAwgUserspaceString();
+            final StringBuilder uapi = new StringBuilder();
+            final Interface iface = config.getInterface();
+            iface.getInitPacketCps().ifPresent(i1 -> uapi.append("i1=").append(i1).append(' '));
+            iface.getJunkPacketCount().ifPresent(jc -> uapi.append("jc=").append(jc).append(' '));
+            iface.getJunkPacketMinSize().ifPresent(jmin -> uapi.append("jmin=").append(jmin).append(' '));
+            iface.getJunkPacketMaxSize().ifPresent(jmax -> uapi.append("jmax=").append(jmax).append(' '));
+            iface.getInitPacketJunkSize().ifPresent(s1 -> uapi.append("s1=").append(s1).append(' '));
+            iface.getResponsePacketJunkSize().ifPresent(s2 -> uapi.append("s2=").append(s2).append(' '));
+            final String uapiString = uapi.toString().trim();
+            if (!uapiString.isEmpty())
+                Log.d(TAG, "IpcSet " + uapiString);
 
             // Create the vpn tunnel with android API
             final VpnService.Builder builder = service.getBuilder();

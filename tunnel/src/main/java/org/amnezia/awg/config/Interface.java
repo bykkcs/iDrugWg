@@ -5,6 +5,7 @@
 
 package pw.idrug.connections.config;
 
+import android.util.Log;
 import pw.idrug.connections.config.BadConfigException.Location;
 import pw.idrug.connections.config.BadConfigException.Reason;
 import pw.idrug.connections.config.BadConfigException.Section;
@@ -37,6 +38,7 @@ import androidx.annotation.Nullable;
 public final class Interface {
     private static final int MAX_UDP_PORT = 65535;
     private static final int MIN_UDP_PORT = 0;
+    private static final String TAG = "iDrugConnections/Interface";
 
     private final Set<InetNetwork> addresses;
     private final Set<InetAddress> dnsServers;
@@ -51,6 +53,7 @@ public final class Interface {
     private final Optional<Integer> junkPacketMaxSize;
     private final Optional<Integer> initPacketJunkSize;
     private final Optional<Integer> responsePacketJunkSize;
+    private final Optional<String> initPacketCps;
     private final Optional<Long> initPacketMagicHeader;
     private final Optional<Long> responsePacketMagicHeader;
     private final Optional<Long> underloadPacketMagicHeader;
@@ -71,6 +74,7 @@ public final class Interface {
         junkPacketMaxSize = builder.junkPacketMaxSize;
         initPacketJunkSize = builder.initPacketJunkSize;
         responsePacketJunkSize = builder.responsePacketJunkSize;
+        initPacketCps = builder.initPacketCps;
         initPacketMagicHeader = builder.initPacketMagicHeader;
         responsePacketMagicHeader = builder.responsePacketMagicHeader;
         underloadPacketMagicHeader = builder.underloadPacketMagicHeader;
@@ -113,6 +117,9 @@ public final class Interface {
                 case "privatekey":
                     builder.parsePrivateKey(attribute.getValue());
                     break;
+                case "i1":
+                    builder.parseI1(attribute.getValue());
+                    break;
                 case "jc":
                     builder.parseJunkPacketCount(attribute.getValue());
                     break;
@@ -141,8 +148,8 @@ public final class Interface {
                     builder.parseTransportPacketMagicHeader(attribute.getValue());
                     break;
                 default:
-                    throw new BadConfigException(Section.INTERFACE, Location.TOP_LEVEL,
-                            Reason.UNKNOWN_ATTRIBUTE, attribute.getKey());
+                    Log.w(TAG, "Unknown attribute: " + attribute.getKey());
+                    break;
             }
         }
         return builder.build();
@@ -166,6 +173,7 @@ public final class Interface {
                 && junkPacketMaxSize.equals(other.junkPacketMaxSize)
                 && initPacketJunkSize.equals(other.initPacketJunkSize)
                 && responsePacketJunkSize.equals(other.responsePacketJunkSize)
+                && initPacketCps.equals(other.initPacketCps)
                 && initPacketMagicHeader.equals(other.initPacketMagicHeader)
                 && responsePacketMagicHeader.equals(other.responsePacketMagicHeader)
                 && underloadPacketMagicHeader.equals(other.underloadPacketMagicHeader)
@@ -295,6 +303,15 @@ public final class Interface {
     }
 
     /**
+     * Returns the init packet CPS used for the AmneziaWG interface.
+     *
+     * @return the initPacketCps, or {@code Optional.empty()} if none is configured
+     */
+    public Optional<String> getInitPacketCps() {
+        return initPacketCps;
+    }
+
+    /**
      * Returns the initPacketMagicHeader used for the iDrugConnections interface.
      *
      * @return the initPacketMagicHeader, or {@code Optional.empty()} if none is configured
@@ -346,6 +363,7 @@ public final class Interface {
         hash = 31 * hash + junkPacketMaxSize.hashCode();
         hash = 31 * hash + initPacketJunkSize.hashCode();
         hash = 31 * hash + responsePacketJunkSize.hashCode();
+        hash = 31 * hash + initPacketCps.hashCode();
         hash = 31 * hash + initPacketMagicHeader.hashCode();
         hash = 31 * hash + responsePacketMagicHeader.hashCode();
         hash = 31 * hash + underloadPacketMagicHeader.hashCode();
@@ -389,11 +407,12 @@ public final class Interface {
             sb.append("IncludedApplications = ").append(Attribute.join(includedApplications)).append('\n');
         listenPort.ifPresent(lp -> sb.append("ListenPort = ").append(lp).append('\n'));
         mtu.ifPresent(m -> sb.append("MTU = ").append(m).append('\n'));
-        junkPacketCount.ifPresent(jc -> sb.append("Jc = ").append(jc).append('\n'));
-        junkPacketMinSize.ifPresent(jmin -> sb.append("Jmin = ").append(jmin).append('\n'));
-        junkPacketMaxSize.ifPresent(jmax -> sb.append("Jmax = ").append(jmax).append('\n'));
-        initPacketJunkSize.ifPresent(s1 -> sb.append("S1 = ").append(s1).append('\n'));
-        responsePacketJunkSize.ifPresent(s2 -> sb.append("S2 = ").append(s2).append('\n'));
+        initPacketCps.ifPresent(i1 -> sb.append("i1 = ").append(i1).append('\n'));
+        junkPacketCount.ifPresent(jc -> sb.append("jc = ").append(jc).append('\n'));
+        junkPacketMinSize.ifPresent(jmin -> sb.append("jmin = ").append(jmin).append('\n'));
+        junkPacketMaxSize.ifPresent(jmax -> sb.append("jmax = ").append(jmax).append('\n'));
+        initPacketJunkSize.ifPresent(s1 -> sb.append("s1 = ").append(s1).append('\n'));
+        responsePacketJunkSize.ifPresent(s2 -> sb.append("s2 = ").append(s2).append('\n'));
         initPacketMagicHeader.ifPresent(h1 -> sb.append("H1 = ").append(h1).append('\n'));
         responsePacketMagicHeader.ifPresent(h2 -> sb.append("H2 = ").append(h2).append('\n'));
         underloadPacketMagicHeader.ifPresent(h3 -> sb.append("H3 = ").append(h3).append('\n'));
@@ -412,6 +431,7 @@ public final class Interface {
         final StringBuilder sb = new StringBuilder();
         sb.append("private_key=").append(keyPair.getPrivateKey().toHex()).append('\n');
         listenPort.ifPresent(lp -> sb.append("listen_port=").append(lp).append('\n'));
+        initPacketCps.ifPresent(i1 -> sb.append("i1=").append(i1).append('\n'));
         junkPacketCount.ifPresent(jc -> sb.append("jc=").append(jc).append('\n'));
         junkPacketMinSize.ifPresent(jmin -> sb.append("jmin=").append(jmin).append('\n'));
         junkPacketMaxSize.ifPresent(jmax -> sb.append("jmax=").append(jmax).append('\n'));
@@ -452,6 +472,8 @@ public final class Interface {
         private Optional<Integer> initPacketJunkSize = Optional.empty();
         // Defaults to not present.
         private Optional<Integer> responsePacketJunkSize = Optional.empty();
+        // Defaults to not present.
+        private Optional<String> initPacketCps = Optional.empty();
         // Defaults to not present.
         private Optional<Long> initPacketMagicHeader = Optional.empty();
         // Defaults to not present.
@@ -597,6 +619,10 @@ public final class Interface {
             }
         }
 
+        public Builder parseI1(final String initPacketCps) throws BadConfigException {
+            return setInitPacketCps(initPacketCps);
+        }
+
         public Builder parseInitPacketJunkSize(final String initPacketJunkSize) throws BadConfigException {
             try {
                 return setInitPacketJunkSize(Integer.parseInt(initPacketJunkSize));
@@ -696,6 +722,12 @@ public final class Interface {
                 throw new BadConfigException(Section.INTERFACE, Location.JUNK_PACKET_MAX_SIZE,
                         Reason.INVALID_VALUE, String.valueOf(junkPacketMaxSize));
             this.junkPacketMaxSize = junkPacketMaxSize == 0 ? Optional.empty() : Optional.of(junkPacketMaxSize);
+            return this;
+        }
+
+        public Builder setInitPacketCps(final String initPacketCps) {
+            this.initPacketCps = initPacketCps == null || initPacketCps.isEmpty()
+                    ? Optional.empty() : Optional.of(initPacketCps);
             return this;
         }
 

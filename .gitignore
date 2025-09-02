@@ -23,6 +23,15 @@ gradle.properties
 .DS_Store
 *.DS_Store
 
+.gradle/
+*/build/
+app/build/
+*.apk
+*.aab
+**/*.so
+**/*.aar
+**/*.jar
+
 # Large binary files (optional, uncomment to exclude)
 # app/src/main/res/raw/*
 # app/src/main/assets/*
