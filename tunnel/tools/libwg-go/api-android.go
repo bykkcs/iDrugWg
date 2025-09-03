@@ -72,18 +72,6 @@ func init() {
 	}()
 }
 
-//export awgIpcSet
-func awgIpcSet(tunnelHandle int32, settings string) int32 {
-        handle, ok := tunnelHandles[tunnelHandle]
-        if !ok {
-                return -1
-        }
-        if err := handle.device.IpcSet(settings); err != nil {
-                return -1
-        }
-        return 0
-}
-
 //export awgTurnOn
 func awgTurnOn(interfaceName string, tunFd int32, settings string) int32 {
 	tag := cstring("AmneziaWG/" + interfaceName)

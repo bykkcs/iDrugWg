@@ -37,6 +37,7 @@ import androidx.annotation.Nullable;
 import androidx.collection.ArraySet;
 
 import static org.amnezia.awg.GoBackend.*;
+import awgmobile.Backend;
 
 /**
  * Implementation of {@link Backend} that uses the amneziawg-go userspace implementation to provide
@@ -340,7 +341,8 @@ public final class GoBackend implements Backend {
             service.protect(awgGetSocketV4(currentTunnelHandle));
             service.protect(awgGetSocketV6(currentTunnelHandle));
             if (!extras.isEmpty()) {
-                final int rc = awgIpcSet(currentTunnelHandle, extras);
+                Backend awg = new Backend();
+                int rc = awg.IpcSet(tunnel.getName(), extras);
                 Log.d(TAG, "IpcSet rc=" + rc + " payload:\n" + extras);
             }
         } else {

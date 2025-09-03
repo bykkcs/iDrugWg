@@ -54,6 +54,7 @@ android {
 }
 
 dependencies {
+    implementation(files("libs/awgmobile.aar"))
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.collection)
     compileOnly(libs.jsr305)
