@@ -9,6 +9,9 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - run: |
+          sdkmanager --install "platform-tools" "platforms;android-34" "build-tools;34.0.0"
       - name: Gradle build
         run: ./gradlew clean assembleDebug
       - name: Upload APK

@@ -268,17 +268,20 @@ public final class GoBackend implements Backend {
 
             // Build config
             final String goConfig = config.toAwgUserspaceString();
-            final StringBuilder uapi = new StringBuilder();
             final Interface iface = config.getInterface();
-            iface.getInitPacketCps().ifPresent(i1 -> uapi.append("i1=").append(i1).append(' '));
-            iface.getJunkPacketCount().ifPresent(jc -> uapi.append("jc=").append(jc).append(' '));
-            iface.getJunkPacketMinSize().ifPresent(jmin -> uapi.append("jmin=").append(jmin).append(' '));
-            iface.getJunkPacketMaxSize().ifPresent(jmax -> uapi.append("jmax=").append(jmax).append(' '));
-            iface.getInitPacketJunkSize().ifPresent(s1 -> uapi.append("s1=").append(s1).append(' '));
-            iface.getResponsePacketJunkSize().ifPresent(s2 -> uapi.append("s2=").append(s2).append(' '));
-            final String uapiString = uapi.toString().trim();
-            if (!uapiString.isEmpty())
-                Log.d(TAG, "IpcSet " + uapiString);
+            final StringBuilder extrasBuilder = new StringBuilder();
+            iface.getInitPacketCps().ifPresent(i1 -> {
+                if (i1.startsWith("<b 0x") && i1.endsWith(">"))
+                    extrasBuilder.append("i1=").append(i1).append('\n');
+                else
+                    Log.w(TAG, "Invalid i1 format: " + i1);
+            });
+            iface.getJunkPacketCount().ifPresent(jc -> extrasBuilder.append("jc=").append(jc).append('\n'));
+            iface.getJunkPacketMinSize().ifPresent(jmin -> extrasBuilder.append("jmin=").append(jmin).append('\n'));
+            iface.getJunkPacketMaxSize().ifPresent(jmax -> extrasBuilder.append("jmax=").append(jmax).append('\n'));
+            iface.getInitPacketJunkSize().ifPresent(s1 -> extrasBuilder.append("s1=").append(s1).append('\n'));
+            iface.getResponsePacketJunkSize().ifPresent(s2 -> extrasBuilder.append("s2=").append(s2).append('\n'));
+            final String extras = extrasBuilder.toString();
 
             // Create the vpn tunnel with android API
             final VpnService.Builder builder = service.getBuilder();
@@ -336,6 +339,10 @@ public final class GoBackend implements Backend {
 
             service.protect(awgGetSocketV4(currentTunnelHandle));
             service.protect(awgGetSocketV6(currentTunnelHandle));
+            if (!extras.isEmpty()) {
+                final int rc = awgIpcSet(currentTunnelHandle, extras);
+                Log.d(TAG, "IpcSet rc=" + rc + " payload:\n" + extras);
+            }
         } else {
             if (currentTunnelHandle == -1) {
                 Log.w(TAG, "Tunnel already down");

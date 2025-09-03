@@ -413,10 +413,10 @@ public final class Interface {
         junkPacketMaxSize.ifPresent(jmax -> sb.append("jmax = ").append(jmax).append('\n'));
         initPacketJunkSize.ifPresent(s1 -> sb.append("s1 = ").append(s1).append('\n'));
         responsePacketJunkSize.ifPresent(s2 -> sb.append("s2 = ").append(s2).append('\n'));
-        initPacketMagicHeader.ifPresent(h1 -> sb.append("H1 = ").append(h1).append('\n'));
-        responsePacketMagicHeader.ifPresent(h2 -> sb.append("H2 = ").append(h2).append('\n'));
-        underloadPacketMagicHeader.ifPresent(h3 -> sb.append("H3 = ").append(h3).append('\n'));
-        transportPacketMagicHeader.ifPresent(h4 -> sb.append("H4 = ").append(h4).append('\n'));
+        initPacketMagicHeader.ifPresent(h1 -> sb.append("h1 = ").append(h1).append('\n'));
+        responsePacketMagicHeader.ifPresent(h2 -> sb.append("h2 = ").append(h2).append('\n'));
+        underloadPacketMagicHeader.ifPresent(h3 -> sb.append("h3 = ").append(h3).append('\n'));
+        transportPacketMagicHeader.ifPresent(h4 -> sb.append("h4 = ").append(h4).append('\n'));
         sb.append("PrivateKey = ").append(keyPair.getPrivateKey().toBase64()).append('\n');
         return sb.toString();
     }
@@ -431,12 +431,6 @@ public final class Interface {
         final StringBuilder sb = new StringBuilder();
         sb.append("private_key=").append(keyPair.getPrivateKey().toHex()).append('\n');
         listenPort.ifPresent(lp -> sb.append("listen_port=").append(lp).append('\n'));
-        initPacketCps.ifPresent(i1 -> sb.append("i1=").append(i1).append('\n'));
-        junkPacketCount.ifPresent(jc -> sb.append("jc=").append(jc).append('\n'));
-        junkPacketMinSize.ifPresent(jmin -> sb.append("jmin=").append(jmin).append('\n'));
-        junkPacketMaxSize.ifPresent(jmax -> sb.append("jmax=").append(jmax).append('\n'));
-        initPacketJunkSize.ifPresent(s1 -> sb.append("s1=").append(s1).append('\n'));
-        responsePacketJunkSize.ifPresent(s2 -> sb.append("s2=").append(s2).append('\n'));
         initPacketMagicHeader.ifPresent(h1 -> sb.append("h1=").append(h1).append('\n'));
         responsePacketMagicHeader.ifPresent(h2 -> sb.append("h2=").append(h2).append('\n'));
         underloadPacketMagicHeader.ifPresent(h3 -> sb.append("h3=").append(h3).append('\n'));
