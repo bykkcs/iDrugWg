@@ -9,6 +9,7 @@ attr state_isUp
 attr state_multiselected
 bool light_navigation_bar
 bool light_status_bar
+color background
 color debug_tag_color
 color error_tag_color
 color ic_launcher_background
@@ -37,8 +38,14 @@ color md_theme_dark_primaryContainer
 color md_theme_dark_scrim
 color md_theme_dark_secondary
 color md_theme_dark_secondaryContainer
-color md_theme_dark_shadow
 color md_theme_dark_surface
+color md_theme_dark_surfaceBright
+color md_theme_dark_surfaceContainer
+color md_theme_dark_surfaceContainerHigh
+color md_theme_dark_surfaceContainerHighest
+color md_theme_dark_surfaceContainerLow
+color md_theme_dark_surfaceContainerLowest
+color md_theme_dark_surfaceDim
 color md_theme_dark_surfaceTint
 color md_theme_dark_surfaceVariant
 color md_theme_dark_tertiary
@@ -67,13 +74,23 @@ color md_theme_light_primaryContainer
 color md_theme_light_scrim
 color md_theme_light_secondary
 color md_theme_light_secondaryContainer
-color md_theme_light_shadow
 color md_theme_light_surface
+color md_theme_light_surfaceBright
+color md_theme_light_surfaceContainer
+color md_theme_light_surfaceContainerHigh
+color md_theme_light_surfaceContainerHighest
+color md_theme_light_surfaceContainerLow
+color md_theme_light_surfaceContainerLowest
+color md_theme_light_surfaceDim
 color md_theme_light_surfaceTint
 color md_theme_light_surfaceVariant
 color md_theme_light_tertiary
 color md_theme_light_tertiaryContainer
-color seed
+color onPrimary
+color onSecondary
+color primary
+color primaryDark
+color secondary
 color tv_list_item_tint
 color warning_tag_color
 dimen bottom_sheet_icon_padding
@@ -104,7 +121,9 @@ drawable ic_arrow_back
 drawable ic_avatar_default
 drawable ic_avatar_placeholder
 drawable ic_icon
+drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_launcher_monochrome
 drawable ic_notification
 drawable ic_settings
 drawable ic_tile
@@ -148,6 +167,7 @@ id btn_renew
 id btn_submit_code
 id code_label
 id code_text
+id config_expiration
 id config_list
 id config_name
 id config_status
@@ -158,7 +178,6 @@ id create_from_file
 id create_from_qrcode
 id delete
 id delimiter
-id detail_container
 id disclaimer
 id dns_search_domain_text
 id dns_search_domains_label
@@ -220,6 +239,7 @@ id mtu_label_layout
 id mtu_text
 id nav_account
 id nav_vpn
+id pay_button
 id peer_title
 id peers_layout
 id persistent_keepalive_label
@@ -258,6 +278,8 @@ id scrollView
 id selected_checkbox
 id set_excluded_applications
 id share_fab
+id spinner_duration
+id spinner_location
 id spinner_server
 id status_text
 id tabs
@@ -265,6 +287,7 @@ id text_current_user
 id text_desc
 id text_emoji
 id text_expiration
+id text_price
 id text_server_choice
 id text_title
 id timer_text
@@ -294,6 +317,7 @@ layout app_list_item
 layout bottomsheet_code_input
 layout config_naming_dialog_fragment
 layout dialog_link_code
+layout dialog_subscription
 layout fragment_account
 layout item_onboarding_card
 layout item_tv_config
@@ -316,6 +340,9 @@ mipmap banner
 mipmap ic_launcher
 mipmap ic_launcher_adaptive_back
 mipmap ic_launcher_adaptive_fore
+mipmap ic_launcher_background
+mipmap ic_launcher_foreground
+mipmap ic_launcher_monochrome
 mipmap ic_launcher_round
 plurals delete_error
 plurals delete_success
@@ -365,6 +392,7 @@ string biometric_auth_error_reason
 string biometric_prompt_private_key_title
 string biometric_prompt_zip_exporter_title
 string cancel
+string choose_plan
 string choose_server
 string code_expired
 string code_expires_in
@@ -381,6 +409,7 @@ string config_rename_error
 string config_save_error
 string config_save_success
 string connect
+string connection_error
 string copied_to_clipboard
 string create_activity_title
 string create_bin_dir_error
@@ -397,9 +426,14 @@ string dark_theme_title
 string delete
 string disable_config_export_description
 string disable_config_export_title
+string disconnect
 string dns_search_domains
 string dns_servers
 string download_config
+string duration_1_month
+string duration_1_year
+string duration_3_months
+string duration_label
 string edit
 string endpoint
 string enter_code
@@ -413,6 +447,7 @@ string error_up
 string error_with_message
 string exclude_from_tunnel
 string exclude_private_ips
+string expires_on
 string gcm_defaultSenderId
 string generate_new_private_key
 string generic_error
@@ -448,6 +483,7 @@ string latest_handshake
 string latest_handshake_ago
 string link_device
 string listen_port
+string location_label
 string log_export_error
 string log_export_subject
 string log_export_success
@@ -494,6 +530,7 @@ string parse_error_inet_endpoint
 string parse_error_inet_network
 string parse_error_integer
 string parse_error_reason
+string pay
 string peer
 string permission_description
 string permission_label
@@ -501,6 +538,7 @@ string permission_unknown_sources
 string persistent_keepalive
 string pre_shared_key
 string pre_shared_key_enabled
+string price_template
 string private_key
 string profile_processing_error
 string profile_retrieval_failed
@@ -538,6 +576,7 @@ string subscription_active_days
 string subscription_forever
 string subscription_inactive
 string subscription_inactive_msg
+string subscription_lifetime
 string subscription_renewed
 string success_application_will_restart
 string telegram_login_successful
@@ -612,6 +651,7 @@ style KeypadButton
 style MonetAlertDialog
 style NoBackgroundTheme
 style PinCell
+style Theme_Idrug
 style TvTheme
 style iDrugConnectionsTheme
 style iDrugConnectionsTheme_BottomSheetDialog

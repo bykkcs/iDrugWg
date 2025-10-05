@@ -1,53 +1,53 @@
 -- Merging decision tree log ---
 permission#pw.idrug.connections.permission.CONTROL_TUNNELS
-INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:32:5-37:47
+INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:31:5-36:47
 	android:label
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:36:9-49
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:35:9-49
 	android:protectionLevel
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:37:9-44
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:36:9-44
 	android:icon
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:35:9-43
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:34:9-43
 	android:description
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:34:9-61
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:33:9-61
 	android:name
 		INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:33:9-67
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:32:9-67
 provider#androidx.core.content.FileProvider
-INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:89:9-97:12
+INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:88:9-96:12
 	android:grantUriPermissions
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:93:5-39
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:92:5-39
 	android:authorities
 		INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:91:5-52
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:90:5-52
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:92:5-29
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:91:5-29
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:90:5-54
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:89:5-54
 provider#pw.idrug.connections.activity.LogViewerActivity$ExportedLogContentProvider
-INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:145:9-149:50
+INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:144:9-148:50
 	android:grantUriPermissions
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:149:13-47
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:148:13-47
 	android:authorities
 		INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:147:13-64
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:146:13-64
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:148:13-37
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:147:13-37
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:146:13-82
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:145:13-82
 receiver#pw.idrug.connections.model.TunnelManager$IntentReceiver
-INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:160:9-169:20
+INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:159:9-168:20
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:162:13-36
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:161:13-36
 	android:permission
 		INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:163:13-77
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:162:13-77
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:161:13-63
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:160:13-63
 manifest
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-215:12
-INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-215:12
-INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-215:12
-INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-215:12
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-214:12
+INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-214:12
+INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-214:12
+INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:2:1-214:12
 MERGED from [androidx.databinding:databinding-adapters:8.3.0] /home/bykk/.gradle/caches/transforms-3/d93304cf9b496e0ad473de1ad5b70017/transformed/databinding-adapters-8.3.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-ktx:8.3.0] /home/bykk/.gradle/caches/transforms-3/16c7daa8d2336910d214832b522c6808/transformed/databinding-ktx-8.3.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-runtime:8.3.0] /home/bykk/.gradle/caches/transforms-3/8510bf3d26524cb6bd27861db64020a8/transformed/databinding-runtime-8.3.0/AndroidManifest.xml:2:1-7:12
@@ -191,48 +191,46 @@ MERGED from [com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/c
 	android:name
 		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:10:22-74
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:11:5-13:38
-	android:minSdkVersion
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:13:9-35
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:11:1-74
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:12:9-62
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:11:18-71
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:14:5-17:40
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:13:5-16:40
 	android:maxSdkVersion
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:16:9-35
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:15:9-35
 	tools:ignore
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:17:9-37
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:16:9-37
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:15:9-65
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:14:9-65
 uses-feature#android.hardware.touchscreen
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:19:5-21:36
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:18:5-20:36
 	android:required
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:21:9-33
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:20:9-33
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:20:9-52
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:19:9-52
 uses-feature#android.software.leanback
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:22:5-24:36
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:21:5-23:36
 	android:required
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:24:9-33
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:23:9-33
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:23:9-49
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:22:9-49
 uses-feature#android.hardware.camera.any
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:25:5-27:36
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:24:5-26:36
 	android:required
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:27:9-33
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:26:9-33
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:26:9-51
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:25:9-51
 uses-feature#android.hardware.camera
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:28:5-30:36
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:27:5-29:36
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:25:5-27:36
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:25:5-27:36
 	android:required
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:30:9-33
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:29:9-33
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:29:9-47
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:28:9-47
 application
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:39:5-207:19
-INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:39:5-207:19
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:38:5-206:19
+INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:38:5-206:19
 MERGED from [com.google.android.material:material:1.11.0] /home/bykk/.gradle/caches/transforms-3/af004dc4121ccd483931efbeabcba0e1/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] /home/bykk/.gradle/caches/transforms-3/af004dc4121ccd483931efbeabcba0e1/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/transforms-3/51bd3b40f926c8214acb4cd5776d1e10/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -304,135 +302,135 @@ MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/ca
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/35aa65555e6b1ba201d5a99875848d04/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:47:9-35
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:46:9-35
 	android:label
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:45:9-41
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:44:9-41
 	android:roundIcon
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:46:9-54
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:45:9-54
 	android:icon
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:44:9-43
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:43:9-43
 	android:allowBackup
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:41:9-36
-	android:banner
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:42:9-40
-	android:theme
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:48:9-40
-	android:enableOnBackInvokedCallback
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:43:9-51
-	android:name
 		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:40:9-36
+	android:banner
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:41:9-40
+	android:theme
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:47:9-40
+	android:enableOnBackInvokedCallback
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:42:9-51
+	android:name
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:39:9-36
 activity#pw.idrug.connections.activity.TunnelToggleActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:50:9-53:56
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:49:9-52:56
 	android:excludeFromRecents
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:52:13-46
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:51:13-46
 	android:theme
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:53:13-53
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:52:13-53
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:51:13-58
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:50:13-58
 activity#pw.idrug.connections.activity.OnboardingActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:55:9-57:40
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:54:9-56:40
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:57:13-37
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:56:13-37
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:56:13-56
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:55:13-56
 activity#pw.idrug.connections.activity.SplashActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:58:9-66:20
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:57:9-65:20
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:60:13-36
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:59:13-36
 	android:theme
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:61:13-53
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:60:13-53
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:59:13-52
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:58:13-52
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:62:13-65:29
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:61:13-64:29
 action#android.intent.action.MAIN
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:17-69
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:62:17-69
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:25-66
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:62:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:64:17-77
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:17-77
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:64:27-74
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:27-74
 activity#pw.idrug.connections.activity.MainActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:68:9-87:20
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:67:9-86:20
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:70:13-36
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:69:13-36
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:69:13-50
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:68:13-50
 intent-filter#action:name:android.service.quicksettings.action.QS_TILE_PREFERENCES
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:72:13-74:29
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:71:13-73:29
 action#android.service.quicksettings.action.QS_TILE_PREFERENCES
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:73:17-99
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:72:17-99
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:73:25-96
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:72:25-96
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:auth+data:scheme:idrug
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:75:13-80:17
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:74:13-79:17
 action#android.intent.action.VIEW
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:76:5-57
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:75:5-57
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:76:13-54
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:75:13-54
 category#android.intent.category.DEFAULT
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:77:5-64
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:76:5-64
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:77:15-61
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:76:15-61
 category#android.intent.category.BROWSABLE
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:5-66
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:77:5-66
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:15-63
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:77:15-63
 data
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:79:5-55
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:5-55
 	android:host
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:79:34-53
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:34-53
 	android:scheme
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:79:11-33
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:11-33
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:apps+data:scheme:idrug
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:81:13-86:29
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:80:13-85:29
 activity#pw.idrug.connections.activity.TvEntryActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:100:9-108:20
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:99:9-107:20
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:102:13-36
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:101:13-36
 	android:theme
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:103:13-43
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:102:13-43
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:101:13-53
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:100:13-53
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LEANBACK_LAUNCHER
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:104:13-107:29
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:103:13-106:29
 category#android.intent.category.LEANBACK_LAUNCHER
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:106:17-86
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:105:17-86
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:106:27-83
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:105:27-83
 activity#pw.idrug.connections.activity.ConfigListActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:110:9-113:46
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:109:9-112:46
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:112:13-37
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:111:13-37
 	android:theme
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:113:13-43
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:112:13-43
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:111:13-56
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:110:13-56
 activity#pw.idrug.connections.activity.SettingsActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:115:9-118:67
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:114:9-117:67
 	android:parentActivityName
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:118:13-64
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:117:13-64
 	android:label
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:117:13-45
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:116:13-45
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:116:13-54
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:115:13-54
 activity#pw.idrug.connections.activity.TunnelCreatorActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:120:9-123:67
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:119:9-122:67
 	android:parentActivityName
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:123:13-64
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:122:13-64
 	android:label
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:122:13-58
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:121:13-58
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:121:13-59
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:120:13-59
 activity#com.journeyapps.barcodescanner.CaptureActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:125:9-128:49
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:124:9-127:49
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
 	android:clearTaskOnLaunch
 		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
 	android:screenOrientation
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:127:13-51
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:126:13-51
 		REJECTED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:50:13-56
 	android:stateNotNeeded
 		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
@@ -441,127 +439,127 @@ MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/ca
 	android:theme
 		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
 	tools:replace
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:128:13-46
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:127:13-46
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:126:13-74
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:125:13-74
 activity#pw.idrug.connections.activity.LogViewerActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:130:9-137:20
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:129:9-136:20
 	android:label
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:133:13-53
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:132:13-53
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:132:13-37
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:131:13-37
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:131:13-55
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:130:13-55
 intent-filter#action:name:android.intent.action.MAIN
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:134:13-136:29
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:133:13-135:29
 activity#pw.idrug.connections.activity.LinkCodeActivity
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:139:9-143:67
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:138:9-142:67
 	android:parentActivityName
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:143:13-64
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:142:13-64
 	android:label
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:142:13-48
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:141:13-48
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:141:13-37
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:140:13-37
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:140:13-54
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:139:13-54
 receiver#pw.idrug.connections.BootShutdownReceiver
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:151:9-158:20
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:150:9-157:20
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:153:13-36
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:152:13-36
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:152:13-49
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:151:13-49
 intent-filter#action:name:android.intent.action.ACTION_SHUTDOWN+action:name:android.intent.action.BOOT_COMPLETED
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:154:13-157:29
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:153:13-156:29
 action#android.intent.action.ACTION_SHUTDOWN
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:155:17-80
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:154:17-80
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:155:25-77
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:154:25-77
 action#android.intent.action.BOOT_COMPLETED
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:156:17-79
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:155:17-79
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:156:25-76
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:155:25-76
 service#pw.idrug.connections.QuickTileService
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:171:9-188:19
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:170:9-187:19
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:173:13-36
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:172:13-36
 	android:permission
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:175:13-77
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:174:13-77
 	android:icon
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:174:13-45
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:173:13-45
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:172:13-45
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:171:13-45
 intent-filter#action:name:android.service.quicksettings.action.QS_TILE
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:177:13-179:29
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:176:13-178:29
 action#android.service.quicksettings.action.QS_TILE
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:178:17-87
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:177:17-87
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:178:25-84
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:177:25-84
 meta-data#android.service.quicksettings.ACTIVE_TILE
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:181:13-183:41
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:180:13-182:41
 	android:value
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:183:17-38
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:182:17-38
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:182:17-73
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:181:17-73
 meta-data#android.service.quicksettings.TOGGLEABLE_TILE
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:185:13-187:40
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:184:13-186:40
 	android:value
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:187:17-37
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:186:17-37
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:186:17-77
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:185:17-77
 service#pw.idrug.connections.MyFirebaseMessagingService
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:190:9-196:19
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:189:9-195:19
 	android:exported
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:192:13-37
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:191:13-37
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:191:13-55
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:190:13-55
 intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:193:13-195:29
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:192:13-194:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:194:17-78
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:193:17-78
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:194:25-75
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:193:25-75
 meta-data#com.google.firebase.messaging.default_notification_icon
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:197:9-199:60
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:196:9-198:60
 	android:resource
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:199:13-57
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:198:13-57
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:198:13-83
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:197:13-83
 meta-data#com.google.firebase.messaging.default_notification_channel_id
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:200:9-202:51
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:199:9-201:51
 	android:value
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:202:13-48
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:201:13-48
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:201:13-89
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:200:13-89
 meta-data#android.content.APP_RESTRICTIONS
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:204:9-206:56
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:203:9-205:56
 	android:resource
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:206:13-53
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:205:13-53
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:205:13-60
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:204:13-60
 queries
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:209:5-214:15
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:208:5-213:15
 intent#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:210:9-213:18
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:209:9-212:18
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:94:5-96:46
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:93:5-95:46
 	android:resource
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:96:9-43
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:95:9-43
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:95:9-59
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:94:9-59
 intent-filter#action:name:pw.idrug.connections.action.REFRESH_TUNNEL_STATES+action:name:pw.idrug.connections.action.SET_TUNNEL_DOWN+action:name:pw.idrug.connections.action.SET_TUNNEL_UP
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:164:13-168:29
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:163:13-167:29
 action#pw.idrug.connections.action.REFRESH_TUNNEL_STATES
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:165:17-92
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:164:17-92
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:165:25-89
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:164:25-89
 action#pw.idrug.connections.action.SET_TUNNEL_UP
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:166:17-84
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:165:17-84
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:166:25-81
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:165:25-81
 action#pw.idrug.connections.action.SET_TUNNEL_DOWN
-ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:167:17-86
+ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:166:17-86
 	android:name
-		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:167:25-83
+		ADDED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:166:25-83
 uses-sdk
 INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml

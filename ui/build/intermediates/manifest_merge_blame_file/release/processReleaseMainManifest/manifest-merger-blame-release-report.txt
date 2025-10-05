@@ -24,762 +24,759 @@
 16    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 16-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:10:5-77
 16-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:10:22-74
-17    <uses-permission
-17-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:11:5-13:38
-18        android:name="android.permission.SYSTEM_ALERT_WINDOW"
-18-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:12:9-62
-19        android:minSdkVersion="34" />
-19-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:13:9-35
-20    <uses-permission
-20-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:14:5-17:40
-21        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-21-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:15:9-65
-22        android:maxSdkVersion="28" />
-22-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:16:9-35
-23
-24    <uses-feature
-24-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:19:5-21:36
-25        android:name="android.hardware.touchscreen"
-25-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:20:9-52
-26        android:required="false" />
-26-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:21:9-33
-27    <uses-feature
-27-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:22:5-24:36
-28        android:name="android.software.leanback"
-28-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:23:9-49
-29        android:required="false" />
-29-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:24:9-33
-30    <uses-feature
-30-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:25:5-27:36
-31        android:name="android.hardware.camera.any"
-31-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:26:9-51
-32        android:required="false" />
-32-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:27:9-33
-33    <uses-feature
-33-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:28:5-30:36
-34        android:name="android.hardware.camera"
-34-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:29:9-47
-35        android:required="false" />
-35-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:30:9-33
-36
-37    <permission
-38        android:name="pw.idrug.connections.permission.CONTROL_TUNNELS"
-38-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:33:9-67
-39        android:description="@string/permission_description"
-39-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:34:9-61
-40        android:icon="@mipmap/ic_launcher"
-40-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:35:9-43
-41        android:label="@string/permission_label"
-41-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:36:9-49
-42        android:protectionLevel="dangerous" />
-42-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:37:9-44
-43
-44    <queries>
-44-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:209:5-214:15
-45        <intent>
-45-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:210:9-213:18
-46            <action android:name="android.intent.action.MAIN" />
-46-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:17-69
-46-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:25-66
-47
-48            <category android:name="android.intent.category.LAUNCHER" />
-48-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:64:17-77
-48-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:64:27-74
-49        </intent>
-50    </queries>
-51
-52    <uses-permission android:name="android.permission.USE_BIOMETRIC" /> <!-- suppress DeprecatedClassUsageInspection -->
-52-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/99d3fe86df082b13064c7f96069cf6ce/transformed/biometric-1.1.0/AndroidManifest.xml:24:5-72
-52-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/99d3fe86df082b13064c7f96069cf6ce/transformed/biometric-1.1.0/AndroidManifest.xml:24:22-69
-53    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-53-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/99d3fe86df082b13064c7f96069cf6ce/transformed/biometric-1.1.0/AndroidManifest.xml:27:5-74
-53-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/99d3fe86df082b13064c7f96069cf6ce/transformed/biometric-1.1.0/AndroidManifest.xml:27:22-71
-54    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-54-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:22:5-79
-54-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:22:22-76
-55    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-55-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:24:5-68
-55-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:24:22-65
-56    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-56-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:26:5-82
-56-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:26:22-79
-57    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-57-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:26:5-110
-57-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:26:22-107
-58    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
-58-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:25:5-79
-58-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:25:22-76
-59    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
-59-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:26:5-88
-59-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:26:22-85
-60    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
-60-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:27:5-82
-60-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:27:22-79
-61
-62    <permission
-62-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/35aa65555e6b1ba201d5a99875848d04/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
-63        android:name="pw.idrug.connections.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-63-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/35aa65555e6b1ba201d5a99875848d04/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
-64        android:protectionLevel="signature" />
-64-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/35aa65555e6b1ba201d5a99875848d04/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+17    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+17-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:11:1-74
+17-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:11:18-71
+18    <uses-permission
+18-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:13:5-16:40
+19        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+19-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:14:9-65
+20        android:maxSdkVersion="28" />
+20-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:15:9-35
+21
+22    <uses-feature
+22-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:18:5-20:36
+23        android:name="android.hardware.touchscreen"
+23-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:19:9-52
+24        android:required="false" />
+24-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:20:9-33
+25    <uses-feature
+25-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:21:5-23:36
+26        android:name="android.software.leanback"
+26-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:22:9-49
+27        android:required="false" />
+27-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:23:9-33
+28    <uses-feature
+28-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:24:5-26:36
+29        android:name="android.hardware.camera.any"
+29-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:25:9-51
+30        android:required="false" />
+30-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:26:9-33
+31    <uses-feature
+31-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:27:5-29:36
+32        android:name="android.hardware.camera"
+32-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:28:9-47
+33        android:required="false" />
+33-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:29:9-33
+34
+35    <permission
+36        android:name="pw.idrug.connections.permission.CONTROL_TUNNELS"
+36-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:32:9-67
+37        android:description="@string/permission_description"
+37-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:33:9-61
+38        android:icon="@mipmap/ic_launcher"
+38-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:34:9-43
+39        android:label="@string/permission_label"
+39-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:35:9-49
+40        android:protectionLevel="dangerous" />
+40-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:36:9-44
+41
+42    <queries>
+42-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:208:5-213:15
+43        <intent>
+43-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:209:9-212:18
+44            <action android:name="android.intent.action.MAIN" />
+44-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:62:17-69
+44-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:62:25-66
+45
+46            <category android:name="android.intent.category.LAUNCHER" />
+46-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:17-77
+46-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:27-74
+47        </intent>
+48    </queries>
+49
+50    <uses-permission android:name="android.permission.USE_BIOMETRIC" /> <!-- suppress DeprecatedClassUsageInspection -->
+50-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/99d3fe86df082b13064c7f96069cf6ce/transformed/biometric-1.1.0/AndroidManifest.xml:24:5-72
+50-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/99d3fe86df082b13064c7f96069cf6ce/transformed/biometric-1.1.0/AndroidManifest.xml:24:22-69
+51    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+51-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/99d3fe86df082b13064c7f96069cf6ce/transformed/biometric-1.1.0/AndroidManifest.xml:27:5-74
+51-->[androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/transforms-3/99d3fe86df082b13064c7f96069cf6ce/transformed/biometric-1.1.0/AndroidManifest.xml:27:22-71
+52    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+52-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:22:5-79
+52-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:22:22-76
+53    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+53-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:24:5-68
+53-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:24:22-65
+54    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+54-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:26:5-82
+54-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:26:22-79
+55    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+55-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:26:5-110
+55-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:26:22-107
+56    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+56-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:25:5-79
+56-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:25:22-76
+57    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
+57-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:26:5-88
+57-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:26:22-85
+58    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
+58-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:27:5-82
+58-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:27:22-79
+59
+60    <permission
+60-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/35aa65555e6b1ba201d5a99875848d04/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+61        android:name="pw.idrug.connections.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+61-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/35aa65555e6b1ba201d5a99875848d04/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+62        android:protectionLevel="signature" />
+62-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/35aa65555e6b1ba201d5a99875848d04/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+63
+64    <uses-permission android:name="pw.idrug.connections.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+64-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/35aa65555e6b1ba201d5a99875848d04/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+64-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/35aa65555e6b1ba201d5a99875848d04/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
 65
-66    <uses-permission android:name="pw.idrug.connections.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-66-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/35aa65555e6b1ba201d5a99875848d04/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
-66-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/35aa65555e6b1ba201d5a99875848d04/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
-67
-68    <uses-feature
-68-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:28:5-30:36
-69        android:name="android.hardware.camera.front"
-69-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:29:9-53
-70        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
-70-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:30:9-33
-71    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
-72    <uses-feature
-72-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:33:5-35:36
-73        android:name="android.hardware.camera.autofocus"
-73-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:34:9-57
-74        android:required="false" />
-74-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:35:9-33
-75    <uses-feature
-75-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:36:5-38:36
-76        android:name="android.hardware.camera.flash"
-76-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:37:9-53
-77        android:required="false" />
-77-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:38:9-33
-78    <uses-feature
-78-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:39:5-41:36
-79        android:name="android.hardware.screen.landscape"
-79-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:40:9-57
-80        android:required="false" />
-80-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:41:9-33
-81    <uses-feature
-81-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:42:5-44:36
-82        android:name="android.hardware.wifi"
-82-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:43:9-45
-83        android:required="false" />
-83-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:44:9-33
-84
-85    <application
-85-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:39:5-207:19
-86        android:name="pw.idrug.connections.Application"
-86-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:40:9-36
-87        android:allowBackup="false"
-87-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:41:9-36
-88        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-88-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/35aa65555e6b1ba201d5a99875848d04/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
-89        android:banner="@mipmap/banner"
-89-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:42:9-40
-90        android:enableOnBackInvokedCallback="true"
-90-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:43:9-51
-91        android:extractNativeLibs="false"
-92        android:icon="@mipmap/ic_launcher"
-92-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:44:9-43
-93        android:label="@string/app_name"
-93-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:45:9-41
-94        android:localeConfig="@xml/_generated_res_locale_config"
-95        android:roundIcon="@mipmap/ic_launcher_round"
-95-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:46:9-54
-96        android:supportsRtl="true"
-96-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:47:9-35
-97        android:theme="@style/AppTheme" >
-97-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:48:9-40
-98        <activity
-98-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:50:9-53:56
-99            android:name="pw.idrug.connections.activity.TunnelToggleActivity"
-99-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:51:13-58
-100            android:excludeFromRecents="true"
-100-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:52:13-46
-101            android:theme="@style/NoBackgroundTheme" />
-101-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:53:13-53
-102        <activity
-102-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:55:9-57:40
-103            android:name="pw.idrug.connections.activity.OnboardingActivity"
-103-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:56:13-56
-104            android:exported="false" />
-104-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:57:13-37
-105        <activity
-105-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:58:9-66:20
-106            android:name="pw.idrug.connections.activity.SplashActivity"
-106-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:59:13-52
-107            android:exported="true"
-107-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:60:13-36
-108            android:theme="@style/NoBackgroundTheme" >
-108-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:61:13-53
-109            <intent-filter>
-109-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:62:13-65:29
-110                <action android:name="android.intent.action.MAIN" />
-110-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:17-69
-110-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:25-66
-111
-112                <category android:name="android.intent.category.LAUNCHER" />
-112-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:64:17-77
-112-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:64:27-74
-113            </intent-filter>
-114        </activity>
-115        <activity
-115-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:68:9-87:20
-116            android:name="pw.idrug.connections.activity.MainActivity"
-116-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:69:13-50
-117            android:exported="true" >
-117-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:70:13-36
-118            <intent-filter>
-118-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:72:13-74:29
-119                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
-119-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:73:17-99
-119-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:73:25-96
-120            </intent-filter>
-121            <intent-filter>
-121-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:75:13-80:17
-122                <action android:name="android.intent.action.VIEW" />
-122-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:76:5-57
-122-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:76:13-54
-123
-124                <category android:name="android.intent.category.DEFAULT" />
-124-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:77:5-64
-124-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:77:15-61
-125                <category android:name="android.intent.category.BROWSABLE" />
-125-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:5-66
-125-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:15-63
-126
-127                <data
-127-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:79:5-55
-128                    android:host="auth"
-128-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:79:34-53
-129                    android:scheme="idrug" />
-129-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:79:11-33
-130            </intent-filter>
-131            <intent-filter>
-131-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:81:13-86:29
-132                <action android:name="android.intent.action.VIEW" />
-132-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:76:5-57
-132-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:76:13-54
-133
-134                <category android:name="android.intent.category.DEFAULT" />
-134-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:77:5-64
-134-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:77:15-61
-135                <category android:name="android.intent.category.BROWSABLE" />
-135-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:5-66
-135-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:15-63
-136
-137                <data
-137-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:79:5-55
-138                    android:host="apps"
-138-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:79:34-53
-139                    android:scheme="idrug" />
-139-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:79:11-33
-140            </intent-filter>
-141        </activity>
-142
-143        <provider
-144            android:name="androidx.core.content.FileProvider"
-144-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:90:5-54
-145            android:authorities="pw.idrug.connections.provider"
-145-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:91:5-52
-146            android:exported="false"
-146-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:92:5-29
-147            android:grantUriPermissions="true" >
-147-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:93:5-39
-148            <meta-data
-148-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:94:5-96:46
-149                android:name="android.support.FILE_PROVIDER_PATHS"
-149-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:95:9-59
-150                android:resource="@xml/file_paths" />
-150-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:96:9-43
-151        </provider>
-152
-153        <activity
-153-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:100:9-108:20
-154            android:name="pw.idrug.connections.activity.TvEntryActivity"
-154-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:101:13-53
-155            android:exported="true"
-155-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:102:13-36
-156            android:theme="@style/TvTheme" >
-156-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:103:13-43
-157            <intent-filter>
-157-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:104:13-107:29
-158                <action android:name="android.intent.action.MAIN" />
-158-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:17-69
-158-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:25-66
-159
-160                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-160-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:106:17-86
-160-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:106:27-83
-161            </intent-filter>
-162        </activity>
-163        <activity
-163-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:110:9-113:46
-164            android:name="pw.idrug.connections.activity.ConfigListActivity"
-164-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:111:13-56
-165            android:exported="false"
-165-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:112:13-37
-166            android:theme="@style/TvTheme" />
-166-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:113:13-43
-167        <activity
-167-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:115:9-118:67
-168            android:name="pw.idrug.connections.activity.SettingsActivity"
-168-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:116:13-54
-169            android:label="@string/settings"
-169-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:117:13-45
-170            android:parentActivityName="pw.idrug.connections.activity.MainActivity" />
-170-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:118:13-64
-171        <activity
-171-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:120:9-123:67
-172            android:name="pw.idrug.connections.activity.TunnelCreatorActivity"
-172-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:121:13-59
-173            android:label="@string/create_activity_title"
-173-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:122:13-58
-174            android:parentActivityName="pw.idrug.connections.activity.MainActivity" />
-174-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:123:13-64
-175        <activity
-175-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:125:9-128:49
-176            android:name="com.journeyapps.barcodescanner.CaptureActivity"
-176-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:126:13-74
-177            android:clearTaskOnLaunch="true"
-177-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
-178            android:screenOrientation="fullSensor"
-178-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:127:13-51
-179            android:stateNotNeeded="true"
-179-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
-180            android:theme="@style/zxing_CaptureTheme"
-180-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
-181            android:windowSoftInputMode="stateAlwaysHidden" />
-181-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
-182        <activity
-182-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:130:9-137:20
-183            android:name="pw.idrug.connections.activity.LogViewerActivity"
-183-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:131:13-55
-184            android:exported="false"
-184-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:132:13-37
-185            android:label="@string/log_viewer_title" >
-185-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:133:13-53
-186            <intent-filter>
-186-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:134:13-136:29
-187                <action android:name="android.intent.action.MAIN" />
-187-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:17-69
-187-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:25-66
-188            </intent-filter>
-189        </activity>
-190        <activity
-190-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:139:9-143:67
-191            android:name="pw.idrug.connections.activity.LinkCodeActivity"
-191-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:140:13-54
-192            android:exported="false"
-192-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:141:13-37
-193            android:label="@string/link_device"
-193-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:142:13-48
-194            android:parentActivityName="pw.idrug.connections.activity.MainActivity" />
-194-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:143:13-64
-195
-196        <provider
-197            android:name="pw.idrug.connections.activity.LogViewerActivity$ExportedLogContentProvider"
-197-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:146:13-82
-198            android:authorities="pw.idrug.connections.exported-log"
-198-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:147:13-64
-199            android:exported="false"
-199-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:148:13-37
-200            android:grantUriPermissions="true" />
-200-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:149:13-47
-201
-202        <receiver
-202-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:151:9-158:20
-203            android:name="pw.idrug.connections.BootShutdownReceiver"
-203-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:152:13-49
-204            android:exported="true" >
-204-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:153:13-36
-205            <intent-filter>
-205-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:154:13-157:29
-206                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
-206-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:155:17-80
-206-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:155:25-77
-207                <action android:name="android.intent.action.BOOT_COMPLETED" />
-207-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:156:17-79
-207-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:156:25-76
-208            </intent-filter>
-209        </receiver>
-210        <receiver
-211            android:name="pw.idrug.connections.model.TunnelManager$IntentReceiver"
-211-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:161:13-63
-212            android:exported="true"
-212-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:162:13-36
-213            android:permission="pw.idrug.connections.permission.CONTROL_TUNNELS" >
-213-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:163:13-77
-214            <intent-filter>
-214-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:164:13-168:29
-215                <action android:name="pw.idrug.connections.action.REFRESH_TUNNEL_STATES" />
-215-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:165:17-92
-215-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:165:25-89
-216                <action android:name="pw.idrug.connections.action.SET_TUNNEL_UP" />
-216-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:166:17-84
-216-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:166:25-81
-217                <action android:name="pw.idrug.connections.action.SET_TUNNEL_DOWN" />
-217-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:167:17-86
-217-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:167:25-83
-218            </intent-filter>
-219        </receiver>
-220
-221        <service
-221-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:171:9-188:19
-222            android:name="pw.idrug.connections.QuickTileService"
-222-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:172:13-45
-223            android:exported="true"
-223-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:173:13-36
-224            android:icon="@drawable/ic_tile"
-224-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:174:13-45
-225            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" >
-225-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:175:13-77
-226            <intent-filter>
-226-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:177:13-179:29
-227                <action android:name="android.service.quicksettings.action.QS_TILE" />
-227-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:178:17-87
-227-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:178:25-84
-228            </intent-filter>
-229
-230            <meta-data
-230-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:181:13-183:41
-231                android:name="android.service.quicksettings.ACTIVE_TILE"
-231-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:182:17-73
-232                android:value="false" />
-232-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:183:17-38
-233            <meta-data
-233-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:185:13-187:40
-234                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
-234-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:186:17-77
-235                android:value="true" />
-235-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:187:17-37
-236        </service>
-237        <service
-237-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:190:9-196:19
-238            android:name="pw.idrug.connections.MyFirebaseMessagingService"
-238-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:191:13-55
-239            android:exported="false" >
-239-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:192:13-37
-240            <intent-filter>
-240-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:193:13-195:29
-241                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-241-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:194:17-78
-241-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:194:25-75
-242            </intent-filter>
-243        </service>
-244
-245        <meta-data
-245-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:197:9-199:60
-246            android:name="com.google.firebase.messaging.default_notification_icon"
-246-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:198:13-83
-247            android:resource="@drawable/ic_notification" />
-247-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:199:13-57
-248        <meta-data
-248-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:200:9-202:51
-249            android:name="com.google.firebase.messaging.default_notification_channel_id"
-249-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:201:13-89
-250            android:value="fcm_default_channel" />
-250-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:202:13-48
-251        <meta-data
-251-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:204:9-206:56
-252            android:name="android.content.APP_RESTRICTIONS"
-252-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:205:13-60
-253            android:resource="@xml/app_restrictions" />
-253-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:206:13-53
-254
-255        <receiver
-255-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:29:9-40:20
-256            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-256-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:30:13-78
-257            android:exported="true"
-257-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:31:13-36
-258            android:permission="com.google.android.c2dm.permission.SEND" >
-258-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:32:13-73
-259            <intent-filter>
-259-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:33:13-35:29
-260                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-260-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:34:17-81
-260-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:34:25-78
-261            </intent-filter>
-262
-263            <meta-data
-263-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:37:13-39:40
-264                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
-264-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:38:17-92
-265                android:value="true" />
-265-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:39:17-37
-266        </receiver>
-267        <!--
-268             FirebaseMessagingService performs security checks at runtime,
-269             but set to not exported to explicitly avoid allowing another app to call it.
-270        -->
-271        <service
-271-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:46:9-53:19
-272            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-272-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:47:13-82
-273            android:directBootAware="true"
-273-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:48:13-43
-274            android:exported="false" >
-274-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:49:13-37
-275            <intent-filter android:priority="-500" >
-275-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:193:13-195:29
-276                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-276-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:194:17-78
-276-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:194:25-75
-277            </intent-filter>
-278        </service>
-279        <service
-279-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:54:9-63:19
-280            android:name="com.google.firebase.components.ComponentDiscoveryService"
-280-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:55:13-84
-281            android:directBootAware="true"
-281-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:32:13-43
-282            android:exported="false" >
-282-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:56:13-37
-283            <meta-data
-283-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:57:13-59:85
-284                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
-284-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:58:17-122
-285                android:value="com.google.firebase.components.ComponentRegistrar" />
-285-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:59:17-82
-286            <meta-data
-286-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:60:13-62:85
-287                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-287-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:61:17-119
-288                android:value="com.google.firebase.components.ComponentRegistrar" />
-288-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:62:17-82
-289            <meta-data
-289-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:37:13-39:85
-290                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-290-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:38:17-139
-291                android:value="com.google.firebase.components.ComponentRegistrar" />
-291-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:39:17-82
-292            <meta-data
-292-->[com.google.firebase:firebase-installations:17.2.0] /home/bykk/.gradle/caches/transforms-3/9ac122142fae09f185b85de3b9af9028/transformed/firebase-installations-17.2.0/AndroidManifest.xml:15:13-17:85
-293                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
-293-->[com.google.firebase:firebase-installations:17.2.0] /home/bykk/.gradle/caches/transforms-3/9ac122142fae09f185b85de3b9af9028/transformed/firebase-installations-17.2.0/AndroidManifest.xml:16:17-130
-294                android:value="com.google.firebase.components.ComponentRegistrar" />
-294-->[com.google.firebase:firebase-installations:17.2.0] /home/bykk/.gradle/caches/transforms-3/9ac122142fae09f185b85de3b9af9028/transformed/firebase-installations-17.2.0/AndroidManifest.xml:17:17-82
-295            <meta-data
-295-->[com.google.firebase:firebase-installations:17.2.0] /home/bykk/.gradle/caches/transforms-3/9ac122142fae09f185b85de3b9af9028/transformed/firebase-installations-17.2.0/AndroidManifest.xml:18:13-20:85
-296                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-296-->[com.google.firebase:firebase-installations:17.2.0] /home/bykk/.gradle/caches/transforms-3/9ac122142fae09f185b85de3b9af9028/transformed/firebase-installations-17.2.0/AndroidManifest.xml:19:17-127
-297                android:value="com.google.firebase.components.ComponentRegistrar" />
-297-->[com.google.firebase:firebase-installations:17.2.0] /home/bykk/.gradle/caches/transforms-3/9ac122142fae09f185b85de3b9af9028/transformed/firebase-installations-17.2.0/AndroidManifest.xml:20:17-82
-298            <meta-data
-298-->[com.google.firebase:firebase-common-ktx:20.4.2] /home/bykk/.gradle/caches/transforms-3/ee8377e7069d2378c7c11d3f72d88cc8/transformed/firebase-common-ktx-20.4.2/AndroidManifest.xml:12:13-14:85
-299                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
-299-->[com.google.firebase:firebase-common-ktx:20.4.2] /home/bykk/.gradle/caches/transforms-3/ee8377e7069d2378c7c11d3f72d88cc8/transformed/firebase-common-ktx-20.4.2/AndroidManifest.xml:13:17-116
-300                android:value="com.google.firebase.components.ComponentRegistrar" />
-300-->[com.google.firebase:firebase-common-ktx:20.4.2] /home/bykk/.gradle/caches/transforms-3/ee8377e7069d2378c7c11d3f72d88cc8/transformed/firebase-common-ktx-20.4.2/AndroidManifest.xml:14:17-82
-301            <meta-data
-301-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:35:13-37:85
-302                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
-302-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:36:17-109
-303                android:value="com.google.firebase.components.ComponentRegistrar" />
-303-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:37:17-82
-304            <meta-data
-304-->[com.google.firebase:firebase-datatransport:18.1.7] /home/bykk/.gradle/caches/transforms-3/3a15a5754dc77031fe5aae733f1ea6b8/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:27:13-29:85
-305                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-305-->[com.google.firebase:firebase-datatransport:18.1.7] /home/bykk/.gradle/caches/transforms-3/3a15a5754dc77031fe5aae733f1ea6b8/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:28:17-115
-306                android:value="com.google.firebase.components.ComponentRegistrar" />
-306-->[com.google.firebase:firebase-datatransport:18.1.7] /home/bykk/.gradle/caches/transforms-3/3a15a5754dc77031fe5aae733f1ea6b8/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:29:17-82
-307        </service>
-308
-309        <receiver
-309-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:29:9-33:20
-310            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-310-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:30:13-85
-311            android:enabled="true"
-311-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:31:13-35
-312            android:exported="false" >
-312-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:32:13-37
-313        </receiver>
-314
-315        <service
-315-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:35:9-38:40
-316            android:name="com.google.android.gms.measurement.AppMeasurementService"
-316-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:36:13-84
-317            android:enabled="true"
-317-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:37:13-35
-318            android:exported="false" />
-318-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:38:13-37
-319        <service
-319-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:39:9-43:72
-320            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-320-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:40:13-87
-321            android:enabled="true"
-321-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:41:13-35
-322            android:exported="false"
-322-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:42:13-37
-323            android:permission="android.permission.BIND_JOB_SERVICE" />
-323-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:43:13-69
-324
-325        <property
-325-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:30:9-32:61
-326            android:name="android.adservices.AD_SERVICES_CONFIG"
-326-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:31:13-65
-327            android:resource="@xml/ga_ad_services_config" />
-327-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:32:13-58
-328
-329        <activity
-329-->[com.google.android.gms:play-services-base:18.0.1] /home/bykk/.gradle/caches/transforms-3/60f9a8bada43ee97c16bc444e19e749f/transformed/play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
-330            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-330-->[com.google.android.gms:play-services-base:18.0.1] /home/bykk/.gradle/caches/transforms-3/60f9a8bada43ee97c16bc444e19e749f/transformed/play-services-base-18.0.1/AndroidManifest.xml:20:19-85
-331            android:exported="false"
-331-->[com.google.android.gms:play-services-base:18.0.1] /home/bykk/.gradle/caches/transforms-3/60f9a8bada43ee97c16bc444e19e749f/transformed/play-services-base-18.0.1/AndroidManifest.xml:22:19-43
-332            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-332-->[com.google.android.gms:play-services-base:18.0.1] /home/bykk/.gradle/caches/transforms-3/60f9a8bada43ee97c16bc444e19e749f/transformed/play-services-base-18.0.1/AndroidManifest.xml:21:19-78
-333
-334        <provider
-334-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:23:9-28:39
-335            android:name="com.google.firebase.provider.FirebaseInitProvider"
-335-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:24:13-77
-336            android:authorities="pw.idrug.connections.firebaseinitprovider"
-336-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:25:13-72
-337            android:directBootAware="true"
-337-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:26:13-43
-338            android:exported="false"
-338-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:27:13-37
-339            android:initOrder="100" />
-339-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:28:13-36
-340        <provider
-340-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/76907a32fc94f45195c4f4d3d7751449/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
-341            android:name="androidx.startup.InitializationProvider"
-341-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/76907a32fc94f45195c4f4d3d7751449/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
-342            android:authorities="pw.idrug.connections.androidx-startup"
-342-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/76907a32fc94f45195c4f4d3d7751449/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
-343            android:exported="false" >
-343-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/76907a32fc94f45195c4f4d3d7751449/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
-344            <meta-data
-344-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/76907a32fc94f45195c4f4d3d7751449/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
-345                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-345-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/76907a32fc94f45195c4f4d3d7751449/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
-346                android:value="androidx.startup" />
-346-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/76907a32fc94f45195c4f4d3d7751449/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
-347            <meta-data
-347-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/b003a3d42b0b7965807ca0dd4c92e995/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
-348                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-348-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/b003a3d42b0b7965807ca0dd4c92e995/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
-349                android:value="androidx.startup" />
-349-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/b003a3d42b0b7965807ca0dd4c92e995/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
-350            <meta-data
-350-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
-351                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-351-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
-352                android:value="androidx.startup" />
-352-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
-353        </provider>
-354
-355        <uses-library
-355-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/transforms-3/280a02e600f3717819713903af7c9908/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:23:9-25:40
-356            android:name="android.ext.adservices"
-356-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/transforms-3/280a02e600f3717819713903af7c9908/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:24:13-50
-357            android:required="false" />
-357-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/transforms-3/280a02e600f3717819713903af7c9908/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:25:13-37
-358        <uses-library
-358-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/7d9d7db3dfaaf9dfd4731a0de8ad7fa8/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
-359            android:name="androidx.window.extensions"
-359-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/7d9d7db3dfaaf9dfd4731a0de8ad7fa8/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
-360            android:required="false" />
-360-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/7d9d7db3dfaaf9dfd4731a0de8ad7fa8/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
-361        <uses-library
-361-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/7d9d7db3dfaaf9dfd4731a0de8ad7fa8/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
-362            android:name="androidx.window.sidecar"
-362-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/7d9d7db3dfaaf9dfd4731a0de8ad7fa8/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
-363            android:required="false" />
-363-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/7d9d7db3dfaaf9dfd4731a0de8ad7fa8/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
-364
-365        <meta-data
-365-->[com.google.android.gms:play-services-basement:18.1.0] /home/bykk/.gradle/caches/transforms-3/57d426f35d3d6b03688e8912e46f7617/transformed/play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
-366            android:name="com.google.android.gms.version"
-366-->[com.google.android.gms:play-services-basement:18.1.0] /home/bykk/.gradle/caches/transforms-3/57d426f35d3d6b03688e8912e46f7617/transformed/play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
-367            android:value="@integer/google_play_services_version" />
-367-->[com.google.android.gms:play-services-basement:18.1.0] /home/bykk/.gradle/caches/transforms-3/57d426f35d3d6b03688e8912e46f7617/transformed/play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
-368
-369        <provider
-369-->[com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/transforms-3/120d86a2633191e4487df4f833a35b8d/transformed/picasso-2.71828/AndroidManifest.xml:8:9-11:40
-370            android:name="com.squareup.picasso.PicassoProvider"
-370-->[com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/transforms-3/120d86a2633191e4487df4f833a35b8d/transformed/picasso-2.71828/AndroidManifest.xml:9:13-64
-371            android:authorities="pw.idrug.connections.com.squareup.picasso"
-371-->[com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/transforms-3/120d86a2633191e4487df4f833a35b8d/transformed/picasso-2.71828/AndroidManifest.xml:10:13-72
-372            android:exported="false" />
-372-->[com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/transforms-3/120d86a2633191e4487df4f833a35b8d/transformed/picasso-2.71828/AndroidManifest.xml:11:13-37
-373
-374        <service
-374-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:12:9-19:19
-375            android:name="pw.idrug.connections.backend.GoBackend$VpnService"
-375-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:13:13-77
-376            android:exported="false"
-376-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:14:13-37
-377            android:permission="android.permission.BIND_VPN_SERVICE" >
-377-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:15:13-69
-378            <intent-filter>
-378-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:16:13-18:29
-379                <action android:name="android.net.VpnService" />
-379-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:17:17-65
-379-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:17:25-62
-380            </intent-filter>
-381        </service>
-382        <service
-382-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/transforms-3/63b55d22aebbe05753ae30941aac1092/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
-383            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-383-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/transforms-3/63b55d22aebbe05753ae30941aac1092/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
-384            android:exported="false" >
-384-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/transforms-3/63b55d22aebbe05753ae30941aac1092/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
-385            <meta-data
-385-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/transforms-3/63b55d22aebbe05753ae30941aac1092/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
-386                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-386-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/transforms-3/63b55d22aebbe05753ae30941aac1092/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
-387                android:value="cct" />
-387-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/transforms-3/63b55d22aebbe05753ae30941aac1092/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
-388        </service>
-389        <service
-389-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/transforms-3/b3cfa307a90a6f62fa2bc4399fc5bc38/transformed/transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
-390            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-390-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/transforms-3/b3cfa307a90a6f62fa2bc4399fc5bc38/transformed/transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
-391            android:exported="false"
-391-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/transforms-3/b3cfa307a90a6f62fa2bc4399fc5bc38/transformed/transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
-392            android:permission="android.permission.BIND_JOB_SERVICE" >
-392-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/transforms-3/b3cfa307a90a6f62fa2bc4399fc5bc38/transformed/transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
-393        </service>
-394
-395        <receiver
-395-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/transforms-3/b3cfa307a90a6f62fa2bc4399fc5bc38/transformed/transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
-396            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-396-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/transforms-3/b3cfa307a90a6f62fa2bc4399fc5bc38/transformed/transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
-397            android:exported="false" />
-397-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/transforms-3/b3cfa307a90a6f62fa2bc4399fc5bc38/transformed/transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
-398        <receiver
-398-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
-399            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-399-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
-400            android:directBootAware="false"
-400-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
-401            android:enabled="true"
-401-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
-402            android:exported="true"
-402-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
-403            android:permission="android.permission.DUMP" >
-403-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
-404            <intent-filter>
-404-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
-405                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-405-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
-405-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
-406            </intent-filter>
-407            <intent-filter>
-407-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
-408                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-408-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
-408-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
-409            </intent-filter>
-410            <intent-filter>
-410-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
-411                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-411-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
-411-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
-412            </intent-filter>
-413            <intent-filter>
-413-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
-414                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-414-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
-414-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
-415            </intent-filter>
-416        </receiver>
-417    </application>
-418
-419</manifest>
+66    <uses-feature
+66-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:28:5-30:36
+67        android:name="android.hardware.camera.front"
+67-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:29:9-53
+68        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
+68-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:30:9-33
+69    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+70    <uses-feature
+70-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:33:5-35:36
+71        android:name="android.hardware.camera.autofocus"
+71-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:34:9-57
+72        android:required="false" />
+72-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:35:9-33
+73    <uses-feature
+73-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:36:5-38:36
+74        android:name="android.hardware.camera.flash"
+74-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:37:9-53
+75        android:required="false" />
+75-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:38:9-33
+76    <uses-feature
+76-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:39:5-41:36
+77        android:name="android.hardware.screen.landscape"
+77-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:40:9-57
+78        android:required="false" />
+78-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:41:9-33
+79    <uses-feature
+79-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:42:5-44:36
+80        android:name="android.hardware.wifi"
+80-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:43:9-45
+81        android:required="false" />
+81-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:44:9-33
+82
+83    <application
+83-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:38:5-206:19
+84        android:name="pw.idrug.connections.Application"
+84-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:39:9-36
+85        android:allowBackup="false"
+85-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:40:9-36
+86        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+86-->[androidx.core:core:1.12.0] /home/bykk/.gradle/caches/transforms-3/35aa65555e6b1ba201d5a99875848d04/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+87        android:banner="@mipmap/banner"
+87-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:41:9-40
+88        android:enableOnBackInvokedCallback="true"
+88-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:42:9-51
+89        android:extractNativeLibs="false"
+90        android:icon="@mipmap/ic_launcher"
+90-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:43:9-43
+91        android:label="@string/app_name"
+91-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:44:9-41
+92        android:localeConfig="@xml/_generated_res_locale_config"
+93        android:roundIcon="@mipmap/ic_launcher_round"
+93-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:45:9-54
+94        android:supportsRtl="true"
+94-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:46:9-35
+95        android:theme="@style/AppTheme" >
+95-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:47:9-40
+96        <activity
+96-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:49:9-52:56
+97            android:name="pw.idrug.connections.activity.TunnelToggleActivity"
+97-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:50:13-58
+98            android:excludeFromRecents="true"
+98-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:51:13-46
+99            android:theme="@style/NoBackgroundTheme" />
+99-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:52:13-53
+100        <activity
+100-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:54:9-56:40
+101            android:name="pw.idrug.connections.activity.OnboardingActivity"
+101-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:55:13-56
+102            android:exported="false" />
+102-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:56:13-37
+103        <activity
+103-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:57:9-65:20
+104            android:name="pw.idrug.connections.activity.SplashActivity"
+104-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:58:13-52
+105            android:exported="true"
+105-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:59:13-36
+106            android:theme="@style/NoBackgroundTheme" >
+106-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:60:13-53
+107            <intent-filter>
+107-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:61:13-64:29
+108                <action android:name="android.intent.action.MAIN" />
+108-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:62:17-69
+108-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:62:25-66
+109
+110                <category android:name="android.intent.category.LAUNCHER" />
+110-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:17-77
+110-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:63:27-74
+111            </intent-filter>
+112        </activity>
+113        <activity
+113-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:67:9-86:20
+114            android:name="pw.idrug.connections.activity.MainActivity"
+114-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:68:13-50
+115            android:exported="true" >
+115-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:69:13-36
+116            <intent-filter>
+116-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:71:13-73:29
+117                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+117-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:72:17-99
+117-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:72:25-96
+118            </intent-filter>
+119            <intent-filter>
+119-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:74:13-79:17
+120                <action android:name="android.intent.action.VIEW" />
+120-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:75:5-57
+120-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:75:13-54
+121
+122                <category android:name="android.intent.category.DEFAULT" />
+122-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:76:5-64
+122-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:76:15-61
+123                <category android:name="android.intent.category.BROWSABLE" />
+123-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:77:5-66
+123-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:77:15-63
+124
+125                <data
+125-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:5-55
+126                    android:host="auth"
+126-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:34-53
+127                    android:scheme="idrug" />
+127-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:11-33
+128            </intent-filter>
+129            <intent-filter>
+129-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:80:13-85:29
+130                <action android:name="android.intent.action.VIEW" />
+130-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:75:5-57
+130-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:75:13-54
+131
+132                <category android:name="android.intent.category.DEFAULT" />
+132-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:76:5-64
+132-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:76:15-61
+133                <category android:name="android.intent.category.BROWSABLE" />
+133-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:77:5-66
+133-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:77:15-63
+134
+135                <data
+135-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:5-55
+136                    android:host="apps"
+136-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:34-53
+137                    android:scheme="idrug" />
+137-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:78:11-33
+138            </intent-filter>
+139        </activity>
+140
+141        <provider
+142            android:name="androidx.core.content.FileProvider"
+142-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:89:5-54
+143            android:authorities="pw.idrug.connections.provider"
+143-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:90:5-52
+144            android:exported="false"
+144-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:91:5-29
+145            android:grantUriPermissions="true" >
+145-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:92:5-39
+146            <meta-data
+146-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:93:5-95:46
+147                android:name="android.support.FILE_PROVIDER_PATHS"
+147-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:94:9-59
+148                android:resource="@xml/file_paths" />
+148-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:95:9-43
+149        </provider>
+150
+151        <activity
+151-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:99:9-107:20
+152            android:name="pw.idrug.connections.activity.TvEntryActivity"
+152-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:100:13-53
+153            android:exported="true"
+153-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:101:13-36
+154            android:theme="@style/TvTheme" >
+154-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:102:13-43
+155            <intent-filter>
+155-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:103:13-106:29
+156                <action android:name="android.intent.action.MAIN" />
+156-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:62:17-69
+156-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:62:25-66
+157
+158                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+158-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:105:17-86
+158-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:105:27-83
+159            </intent-filter>
+160        </activity>
+161        <activity
+161-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:109:9-112:46
+162            android:name="pw.idrug.connections.activity.ConfigListActivity"
+162-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:110:13-56
+163            android:exported="false"
+163-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:111:13-37
+164            android:theme="@style/TvTheme" />
+164-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:112:13-43
+165        <activity
+165-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:114:9-117:67
+166            android:name="pw.idrug.connections.activity.SettingsActivity"
+166-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:115:13-54
+167            android:label="@string/settings"
+167-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:116:13-45
+168            android:parentActivityName="pw.idrug.connections.activity.MainActivity" />
+168-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:117:13-64
+169        <activity
+169-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:119:9-122:67
+170            android:name="pw.idrug.connections.activity.TunnelCreatorActivity"
+170-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:120:13-59
+171            android:label="@string/create_activity_title"
+171-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:121:13-58
+172            android:parentActivityName="pw.idrug.connections.activity.MainActivity" />
+172-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:122:13-64
+173        <activity
+173-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:124:9-127:49
+174            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+174-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:125:13-74
+175            android:clearTaskOnLaunch="true"
+175-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
+176            android:screenOrientation="fullSensor"
+176-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:126:13-51
+177            android:stateNotNeeded="true"
+177-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
+178            android:theme="@style/zxing_CaptureTheme"
+178-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
+179            android:windowSoftInputMode="stateAlwaysHidden" />
+179-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/transforms-3/2ab4d23421db408e8b713c5643c7bd2e/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
+180        <activity
+180-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:129:9-136:20
+181            android:name="pw.idrug.connections.activity.LogViewerActivity"
+181-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:130:13-55
+182            android:exported="false"
+182-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:131:13-37
+183            android:label="@string/log_viewer_title" >
+183-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:132:13-53
+184            <intent-filter>
+184-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:133:13-135:29
+185                <action android:name="android.intent.action.MAIN" />
+185-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:62:17-69
+185-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:62:25-66
+186            </intent-filter>
+187        </activity>
+188        <activity
+188-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:138:9-142:67
+189            android:name="pw.idrug.connections.activity.LinkCodeActivity"
+189-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:139:13-54
+190            android:exported="false"
+190-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:140:13-37
+191            android:label="@string/link_device"
+191-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:141:13-48
+192            android:parentActivityName="pw.idrug.connections.activity.MainActivity" />
+192-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:142:13-64
+193
+194        <provider
+195            android:name="pw.idrug.connections.activity.LogViewerActivity$ExportedLogContentProvider"
+195-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:145:13-82
+196            android:authorities="pw.idrug.connections.exported-log"
+196-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:146:13-64
+197            android:exported="false"
+197-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:147:13-37
+198            android:grantUriPermissions="true" />
+198-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:148:13-47
+199
+200        <receiver
+200-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:150:9-157:20
+201            android:name="pw.idrug.connections.BootShutdownReceiver"
+201-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:151:13-49
+202            android:exported="true" >
+202-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:152:13-36
+203            <intent-filter>
+203-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:153:13-156:29
+204                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+204-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:154:17-80
+204-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:154:25-77
+205                <action android:name="android.intent.action.BOOT_COMPLETED" />
+205-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:155:17-79
+205-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:155:25-76
+206            </intent-filter>
+207        </receiver>
+208        <receiver
+209            android:name="pw.idrug.connections.model.TunnelManager$IntentReceiver"
+209-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:160:13-63
+210            android:exported="true"
+210-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:161:13-36
+211            android:permission="pw.idrug.connections.permission.CONTROL_TUNNELS" >
+211-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:162:13-77
+212            <intent-filter>
+212-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:163:13-167:29
+213                <action android:name="pw.idrug.connections.action.REFRESH_TUNNEL_STATES" />
+213-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:164:17-92
+213-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:164:25-89
+214                <action android:name="pw.idrug.connections.action.SET_TUNNEL_UP" />
+214-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:165:17-84
+214-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:165:25-81
+215                <action android:name="pw.idrug.connections.action.SET_TUNNEL_DOWN" />
+215-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:166:17-86
+215-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:166:25-83
+216            </intent-filter>
+217        </receiver>
+218
+219        <service
+219-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:170:9-187:19
+220            android:name="pw.idrug.connections.QuickTileService"
+220-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:171:13-45
+221            android:exported="true"
+221-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:172:13-36
+222            android:icon="@drawable/ic_tile"
+222-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:173:13-45
+223            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" >
+223-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:174:13-77
+224            <intent-filter>
+224-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:176:13-178:29
+225                <action android:name="android.service.quicksettings.action.QS_TILE" />
+225-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:177:17-87
+225-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:177:25-84
+226            </intent-filter>
+227
+228            <meta-data
+228-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:180:13-182:41
+229                android:name="android.service.quicksettings.ACTIVE_TILE"
+229-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:181:17-73
+230                android:value="false" />
+230-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:182:17-38
+231            <meta-data
+231-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:184:13-186:40
+232                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+232-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:185:17-77
+233                android:value="true" />
+233-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:186:17-37
+234        </service>
+235        <service
+235-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:189:9-195:19
+236            android:name="pw.idrug.connections.MyFirebaseMessagingService"
+236-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:190:13-55
+237            android:exported="false" >
+237-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:191:13-37
+238            <intent-filter>
+238-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:192:13-194:29
+239                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+239-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:193:17-78
+239-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:193:25-75
+240            </intent-filter>
+241        </service>
+242
+243        <meta-data
+243-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:196:9-198:60
+244            android:name="com.google.firebase.messaging.default_notification_icon"
+244-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:197:13-83
+245            android:resource="@drawable/ic_notification" />
+245-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:198:13-57
+246        <meta-data
+246-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:199:9-201:51
+247            android:name="com.google.firebase.messaging.default_notification_channel_id"
+247-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:200:13-89
+248            android:value="fcm_default_channel" />
+248-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:201:13-48
+249        <meta-data
+249-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:203:9-205:56
+250            android:name="android.content.APP_RESTRICTIONS"
+250-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:204:13-60
+251            android:resource="@xml/app_restrictions" />
+251-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:205:13-53
+252
+253        <receiver
+253-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:29:9-40:20
+254            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+254-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:30:13-78
+255            android:exported="true"
+255-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:31:13-36
+256            android:permission="com.google.android.c2dm.permission.SEND" >
+256-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:32:13-73
+257            <intent-filter>
+257-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:33:13-35:29
+258                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+258-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:34:17-81
+258-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:34:25-78
+259            </intent-filter>
+260
+261            <meta-data
+261-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:37:13-39:40
+262                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+262-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:38:17-92
+263                android:value="true" />
+263-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:39:17-37
+264        </receiver>
+265        <!--
+266             FirebaseMessagingService performs security checks at runtime,
+267             but set to not exported to explicitly avoid allowing another app to call it.
+268        -->
+269        <service
+269-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:46:9-53:19
+270            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+270-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:47:13-82
+271            android:directBootAware="true"
+271-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:48:13-43
+272            android:exported="false" >
+272-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:49:13-37
+273            <intent-filter android:priority="-500" >
+273-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:192:13-194:29
+274                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+274-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:193:17-78
+274-->/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/AndroidManifest.xml:193:25-75
+275            </intent-filter>
+276        </service>
+277        <service
+277-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:54:9-63:19
+278            android:name="com.google.firebase.components.ComponentDiscoveryService"
+278-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:55:13-84
+279            android:directBootAware="true"
+279-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:32:13-43
+280            android:exported="false" >
+280-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:56:13-37
+281            <meta-data
+281-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:57:13-59:85
+282                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+282-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:58:17-122
+283                android:value="com.google.firebase.components.ComponentRegistrar" />
+283-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:59:17-82
+284            <meta-data
+284-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:60:13-62:85
+285                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+285-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:61:17-119
+286                android:value="com.google.firebase.components.ComponentRegistrar" />
+286-->[com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/transforms-3/48013d2bde664f85403eb46bb2fc6cec/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:62:17-82
+287            <meta-data
+287-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:37:13-39:85
+288                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+288-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:38:17-139
+289                android:value="com.google.firebase.components.ComponentRegistrar" />
+289-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:39:17-82
+290            <meta-data
+290-->[com.google.firebase:firebase-installations:17.2.0] /home/bykk/.gradle/caches/transforms-3/9ac122142fae09f185b85de3b9af9028/transformed/firebase-installations-17.2.0/AndroidManifest.xml:15:13-17:85
+291                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+291-->[com.google.firebase:firebase-installations:17.2.0] /home/bykk/.gradle/caches/transforms-3/9ac122142fae09f185b85de3b9af9028/transformed/firebase-installations-17.2.0/AndroidManifest.xml:16:17-130
+292                android:value="com.google.firebase.components.ComponentRegistrar" />
+292-->[com.google.firebase:firebase-installations:17.2.0] /home/bykk/.gradle/caches/transforms-3/9ac122142fae09f185b85de3b9af9028/transformed/firebase-installations-17.2.0/AndroidManifest.xml:17:17-82
+293            <meta-data
+293-->[com.google.firebase:firebase-installations:17.2.0] /home/bykk/.gradle/caches/transforms-3/9ac122142fae09f185b85de3b9af9028/transformed/firebase-installations-17.2.0/AndroidManifest.xml:18:13-20:85
+294                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+294-->[com.google.firebase:firebase-installations:17.2.0] /home/bykk/.gradle/caches/transforms-3/9ac122142fae09f185b85de3b9af9028/transformed/firebase-installations-17.2.0/AndroidManifest.xml:19:17-127
+295                android:value="com.google.firebase.components.ComponentRegistrar" />
+295-->[com.google.firebase:firebase-installations:17.2.0] /home/bykk/.gradle/caches/transforms-3/9ac122142fae09f185b85de3b9af9028/transformed/firebase-installations-17.2.0/AndroidManifest.xml:20:17-82
+296            <meta-data
+296-->[com.google.firebase:firebase-common-ktx:20.4.2] /home/bykk/.gradle/caches/transforms-3/ee8377e7069d2378c7c11d3f72d88cc8/transformed/firebase-common-ktx-20.4.2/AndroidManifest.xml:12:13-14:85
+297                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+297-->[com.google.firebase:firebase-common-ktx:20.4.2] /home/bykk/.gradle/caches/transforms-3/ee8377e7069d2378c7c11d3f72d88cc8/transformed/firebase-common-ktx-20.4.2/AndroidManifest.xml:13:17-116
+298                android:value="com.google.firebase.components.ComponentRegistrar" />
+298-->[com.google.firebase:firebase-common-ktx:20.4.2] /home/bykk/.gradle/caches/transforms-3/ee8377e7069d2378c7c11d3f72d88cc8/transformed/firebase-common-ktx-20.4.2/AndroidManifest.xml:14:17-82
+299            <meta-data
+299-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:35:13-37:85
+300                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+300-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:36:17-109
+301                android:value="com.google.firebase.components.ComponentRegistrar" />
+301-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:37:17-82
+302            <meta-data
+302-->[com.google.firebase:firebase-datatransport:18.1.7] /home/bykk/.gradle/caches/transforms-3/3a15a5754dc77031fe5aae733f1ea6b8/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:27:13-29:85
+303                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+303-->[com.google.firebase:firebase-datatransport:18.1.7] /home/bykk/.gradle/caches/transforms-3/3a15a5754dc77031fe5aae733f1ea6b8/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:28:17-115
+304                android:value="com.google.firebase.components.ComponentRegistrar" />
+304-->[com.google.firebase:firebase-datatransport:18.1.7] /home/bykk/.gradle/caches/transforms-3/3a15a5754dc77031fe5aae733f1ea6b8/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:29:17-82
+305        </service>
+306
+307        <receiver
+307-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:29:9-33:20
+308            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+308-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:30:13-85
+309            android:enabled="true"
+309-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:31:13-35
+310            android:exported="false" >
+310-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:32:13-37
+311        </receiver>
+312
+313        <service
+313-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:35:9-38:40
+314            android:name="com.google.android.gms.measurement.AppMeasurementService"
+314-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:36:13-84
+315            android:enabled="true"
+315-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:37:13-35
+316            android:exported="false" />
+316-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:38:13-37
+317        <service
+317-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:39:9-43:72
+318            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+318-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:40:13-87
+319            android:enabled="true"
+319-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:41:13-35
+320            android:exported="false"
+320-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:42:13-37
+321            android:permission="android.permission.BIND_JOB_SERVICE" />
+321-->[com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/transforms-3/572f7d4b310727b63a3059af6ba6eeda/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:43:13-69
+322
+323        <property
+323-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:30:9-32:61
+324            android:name="android.adservices.AD_SERVICES_CONFIG"
+324-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:31:13-65
+325            android:resource="@xml/ga_ad_services_config" />
+325-->[com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/transforms-3/3a4a048871e5d2fd3f2f76e3f8520377/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:32:13-58
+326
+327        <activity
+327-->[com.google.android.gms:play-services-base:18.0.1] /home/bykk/.gradle/caches/transforms-3/60f9a8bada43ee97c16bc444e19e749f/transformed/play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+328            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+328-->[com.google.android.gms:play-services-base:18.0.1] /home/bykk/.gradle/caches/transforms-3/60f9a8bada43ee97c16bc444e19e749f/transformed/play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+329            android:exported="false"
+329-->[com.google.android.gms:play-services-base:18.0.1] /home/bykk/.gradle/caches/transforms-3/60f9a8bada43ee97c16bc444e19e749f/transformed/play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+330            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+330-->[com.google.android.gms:play-services-base:18.0.1] /home/bykk/.gradle/caches/transforms-3/60f9a8bada43ee97c16bc444e19e749f/transformed/play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+331
+332        <provider
+332-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:23:9-28:39
+333            android:name="com.google.firebase.provider.FirebaseInitProvider"
+333-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:24:13-77
+334            android:authorities="pw.idrug.connections.firebaseinitprovider"
+334-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:25:13-72
+335            android:directBootAware="true"
+335-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:26:13-43
+336            android:exported="false"
+336-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:27:13-37
+337            android:initOrder="100" />
+337-->[com.google.firebase:firebase-common:20.4.2] /home/bykk/.gradle/caches/transforms-3/79cea1237c27cd7bd0d40d5a5726f238/transformed/firebase-common-20.4.2/AndroidManifest.xml:28:13-36
+338        <provider
+338-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/76907a32fc94f45195c4f4d3d7751449/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+339            android:name="androidx.startup.InitializationProvider"
+339-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/76907a32fc94f45195c4f4d3d7751449/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+340            android:authorities="pw.idrug.connections.androidx-startup"
+340-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/76907a32fc94f45195c4f4d3d7751449/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+341            android:exported="false" >
+341-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/76907a32fc94f45195c4f4d3d7751449/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+342            <meta-data
+342-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/76907a32fc94f45195c4f4d3d7751449/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+343                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+343-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/76907a32fc94f45195c4f4d3d7751449/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+344                android:value="androidx.startup" />
+344-->[androidx.emoji2:emoji2:1.2.0] /home/bykk/.gradle/caches/transforms-3/76907a32fc94f45195c4f4d3d7751449/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+345            <meta-data
+345-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/b003a3d42b0b7965807ca0dd4c92e995/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+346                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+346-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/b003a3d42b0b7965807ca0dd4c92e995/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+347                android:value="androidx.startup" />
+347-->[androidx.lifecycle:lifecycle-process:2.7.0] /home/bykk/.gradle/caches/transforms-3/b003a3d42b0b7965807ca0dd4c92e995/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+348            <meta-data
+348-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+349                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+349-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+350                android:value="androidx.startup" />
+350-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+351        </provider>
+352
+353        <uses-library
+353-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/transforms-3/280a02e600f3717819713903af7c9908/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:23:9-25:40
+354            android:name="android.ext.adservices"
+354-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/transforms-3/280a02e600f3717819713903af7c9908/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:24:13-50
+355            android:required="false" />
+355-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/transforms-3/280a02e600f3717819713903af7c9908/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:25:13-37
+356        <uses-library
+356-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/7d9d7db3dfaaf9dfd4731a0de8ad7fa8/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
+357            android:name="androidx.window.extensions"
+357-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/7d9d7db3dfaaf9dfd4731a0de8ad7fa8/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
+358            android:required="false" />
+358-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/7d9d7db3dfaaf9dfd4731a0de8ad7fa8/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
+359        <uses-library
+359-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/7d9d7db3dfaaf9dfd4731a0de8ad7fa8/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
+360            android:name="androidx.window.sidecar"
+360-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/7d9d7db3dfaaf9dfd4731a0de8ad7fa8/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
+361            android:required="false" />
+361-->[androidx.window:window:1.0.0] /home/bykk/.gradle/caches/transforms-3/7d9d7db3dfaaf9dfd4731a0de8ad7fa8/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
+362
+363        <meta-data
+363-->[com.google.android.gms:play-services-basement:18.1.0] /home/bykk/.gradle/caches/transforms-3/57d426f35d3d6b03688e8912e46f7617/transformed/play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+364            android:name="com.google.android.gms.version"
+364-->[com.google.android.gms:play-services-basement:18.1.0] /home/bykk/.gradle/caches/transforms-3/57d426f35d3d6b03688e8912e46f7617/transformed/play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+365            android:value="@integer/google_play_services_version" />
+365-->[com.google.android.gms:play-services-basement:18.1.0] /home/bykk/.gradle/caches/transforms-3/57d426f35d3d6b03688e8912e46f7617/transformed/play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+366
+367        <provider
+367-->[com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/transforms-3/120d86a2633191e4487df4f833a35b8d/transformed/picasso-2.71828/AndroidManifest.xml:8:9-11:40
+368            android:name="com.squareup.picasso.PicassoProvider"
+368-->[com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/transforms-3/120d86a2633191e4487df4f833a35b8d/transformed/picasso-2.71828/AndroidManifest.xml:9:13-64
+369            android:authorities="pw.idrug.connections.com.squareup.picasso"
+369-->[com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/transforms-3/120d86a2633191e4487df4f833a35b8d/transformed/picasso-2.71828/AndroidManifest.xml:10:13-72
+370            android:exported="false" />
+370-->[com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/transforms-3/120d86a2633191e4487df4f833a35b8d/transformed/picasso-2.71828/AndroidManifest.xml:11:13-37
+371
+372        <service
+372-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:12:9-19:19
+373            android:name="pw.idrug.connections.backend.GoBackend$VpnService"
+373-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:13:13-77
+374            android:exported="false"
+374-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:14:13-37
+375            android:permission="android.permission.BIND_VPN_SERVICE" >
+375-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:15:13-69
+376            <intent-filter>
+376-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:16:13-18:29
+377                <action android:name="android.net.VpnService" />
+377-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:17:17-65
+377-->[:tunnel] /home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:17:25-62
+378            </intent-filter>
+379        </service>
+380        <service
+380-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/transforms-3/63b55d22aebbe05753ae30941aac1092/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
+381            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+381-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/transforms-3/63b55d22aebbe05753ae30941aac1092/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
+382            android:exported="false" >
+382-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/transforms-3/63b55d22aebbe05753ae30941aac1092/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
+383            <meta-data
+383-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/transforms-3/63b55d22aebbe05753ae30941aac1092/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
+384                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+384-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/transforms-3/63b55d22aebbe05753ae30941aac1092/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
+385                android:value="cct" />
+385-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/transforms-3/63b55d22aebbe05753ae30941aac1092/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
+386        </service>
+387        <service
+387-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/transforms-3/b3cfa307a90a6f62fa2bc4399fc5bc38/transformed/transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
+388            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+388-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/transforms-3/b3cfa307a90a6f62fa2bc4399fc5bc38/transformed/transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
+389            android:exported="false"
+389-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/transforms-3/b3cfa307a90a6f62fa2bc4399fc5bc38/transformed/transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
+390            android:permission="android.permission.BIND_JOB_SERVICE" >
+390-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/transforms-3/b3cfa307a90a6f62fa2bc4399fc5bc38/transformed/transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
+391        </service>
+392
+393        <receiver
+393-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/transforms-3/b3cfa307a90a6f62fa2bc4399fc5bc38/transformed/transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
+394            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+394-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/transforms-3/b3cfa307a90a6f62fa2bc4399fc5bc38/transformed/transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
+395            android:exported="false" />
+395-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/transforms-3/b3cfa307a90a6f62fa2bc4399fc5bc38/transformed/transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
+396        <receiver
+396-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+397            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+397-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+398            android:directBootAware="false"
+398-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+399            android:enabled="true"
+399-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+400            android:exported="true"
+400-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+401            android:permission="android.permission.DUMP" >
+401-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+402            <intent-filter>
+402-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+403                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+403-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+403-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+404            </intent-filter>
+405            <intent-filter>
+405-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+406                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+406-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+406-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+407            </intent-filter>
+408            <intent-filter>
+408-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+409                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+409-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+409-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+410            </intent-filter>
+411            <intent-filter>
+411-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+412                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+412-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+412-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/bykk/.gradle/caches/transforms-3/3eaa0b1d38434fa9502adc469625b0aa/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+413            </intent-filter>
+414        </receiver>
+415    </application>
+416
+417</manifest>
