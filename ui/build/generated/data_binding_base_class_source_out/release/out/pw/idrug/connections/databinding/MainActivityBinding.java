@@ -4,7 +4,6 @@ package pw.idrug.connections.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,7 +11,9 @@ import androidx.fragment.app.FragmentContainerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import java.lang.NullPointerException;
 import java.lang.Override;
+import java.lang.String;
 import pw.idrug.connections.R;
 
 public final class MainActivityBinding implements ViewBinding {
@@ -35,37 +36,8 @@ public final class MainActivityBinding implements ViewBinding {
   @Nullable
   public final BottomNavigationView bottomNavigation;
 
-  /**
-   * This binding is not available in all configurations.
-   * <p>
-   * Present:
-   * <ul>
-   *   <li>layout-sw600dp/</li>
-   * </ul>
-   *
-   * Absent:
-   * <ul>
-   *   <li>layout/</li>
-   * </ul>
-   */
-  @Nullable
-  public final FragmentContainerView detailContainer;
-
-  /**
-   * This binding is not available in all configurations.
-   * <p>
-   * Present:
-   * <ul>
-   *   <li>layout/</li>
-   * </ul>
-   *
-   * Absent:
-   * <ul>
-   *   <li>layout-sw600dp/</li>
-   * </ul>
-   */
-  @Nullable
-  public final FrameLayout fragmentContainer;
+  @NonNull
+  public final View fragmentContainer;
 
   /**
    * This binding is not available in all configurations.
@@ -103,13 +75,11 @@ public final class MainActivityBinding implements ViewBinding {
   public final LinearLayout masterDetailWrapper;
 
   private MainActivityBinding(@NonNull View rootView,
-      @Nullable BottomNavigationView bottomNavigation,
-      @Nullable FragmentContainerView detailContainer, @Nullable FrameLayout fragmentContainer,
+      @Nullable BottomNavigationView bottomNavigation, @NonNull View fragmentContainer,
       @Nullable FragmentContainerView listFragment, @NonNull View mainActivityContainer,
       @Nullable LinearLayout masterDetailWrapper) {
     this.rootView = rootView;
     this.bottomNavigation = bottomNavigation;
-    this.detailContainer = detailContainer;
     this.fragmentContainer = fragmentContainer;
     this.listFragment = listFragment;
     this.mainActivityContainer = mainActivityContainer;
@@ -139,19 +109,31 @@ public final class MainActivityBinding implements ViewBinding {
 
   @NonNull
   public static MainActivityBinding bind(@NonNull View rootView) {
-    BottomNavigationView bottomNavigation = ViewBindings.findChildViewById(rootView, R.id.bottom_navigation);
+    // The body of this method is generated in a way you would not otherwise write.
+    // This is done to optimize the compiled bytecode for size and performance.
+    int id;
+    missingId: {
+      id = R.id.bottom_navigation;
+      BottomNavigationView bottomNavigation = ViewBindings.findChildViewById(rootView, id);
 
-    FragmentContainerView detailContainer = ViewBindings.findChildViewById(rootView, R.id.detail_container);
+      id = R.id.fragment_container;
+      View fragmentContainer = ViewBindings.findChildViewById(rootView, id);
+      if (fragmentContainer == null) {
+        break missingId;
+      }
 
-    FrameLayout fragmentContainer = ViewBindings.findChildViewById(rootView, R.id.fragment_container);
+      id = R.id.list_fragment;
+      FragmentContainerView listFragment = ViewBindings.findChildViewById(rootView, id);
 
-    FragmentContainerView listFragment = ViewBindings.findChildViewById(rootView, R.id.list_fragment);
+      View mainActivityContainer = rootView;
 
-    View mainActivityContainer = rootView;
+      id = R.id.master_detail_wrapper;
+      LinearLayout masterDetailWrapper = ViewBindings.findChildViewById(rootView, id);
 
-    LinearLayout masterDetailWrapper = ViewBindings.findChildViewById(rootView, R.id.master_detail_wrapper);
-
-    return new MainActivityBinding(rootView, bottomNavigation, detailContainer, fragmentContainer,
-        listFragment, mainActivityContainer, masterDetailWrapper);
+      return new MainActivityBinding(rootView, bottomNavigation, fragmentContainer, listFragment,
+          mainActivityContainer, masterDetailWrapper);
+    }
+    String missingId = rootView.getResources().getResourceName(id);
+    throw new NullPointerException("Missing required view with ID: ".concat(missingId));
   }
 }
