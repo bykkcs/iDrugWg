@@ -26,6 +26,7 @@ import pw.idrug.connections.util.RootShell
 import pw.idrug.connections.util.ToolsInstaller
 import pw.idrug.connections.util.UserKnobs
 import pw.idrug.connections.util.applicationScope
+import pw.idrug.connections.di.UpdateModules
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -115,6 +116,8 @@ class Application : android.app.Application() {
                 Log.e(TAG, Log.getStackTraceString(e))
             }
         }
+
+        UpdateModules.schedulePeriodicWork(this)
 
         if (BuildConfig.DEBUG) {
             StrictMode.setVmPolicy(VmPolicy.Builder().detectAll().penaltyLog().build())

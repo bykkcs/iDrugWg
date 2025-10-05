@@ -6,10 +6,14 @@ package pw.idrug.connections
 
 object TunnelSyncManager {
     private var job = kotlinx.coroutines.SupervisorJob()
-    val scope = kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Main + job)
+    private var _scope = kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Main + job)
+
+    val scope: kotlinx.coroutines.CoroutineScope
+        get() = _scope
 
     fun cancelAll() {
         job.cancel()
         job = kotlinx.coroutines.SupervisorJob()
+        _scope = kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Main + job)
     }
 }

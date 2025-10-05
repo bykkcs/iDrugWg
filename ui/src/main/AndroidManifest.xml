@@ -117,6 +117,12 @@
             android:parentActivityName=".activity.MainActivity" />
 
         <activity
+            android:name=".ui.settings.UpdateSettingsActivity"
+            android:exported="false"
+            android:label="@string/update_settings_title"
+            android:parentActivityName=".activity.SettingsActivity" />
+
+        <activity
             android:name=".activity.TunnelCreatorActivity"
             android:label="@string/create_activity_title"
             android:parentActivityName=".activity.MainActivity" />
@@ -193,6 +199,21 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+        <receiver
+            android:name=".receiver.DownloadCompleteReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".receiver.UpdateActionReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="pw.idrug.connections.action.UPDATE_DOWNLOAD" />
+                <action android:name="pw.idrug.connections.action.UPDATE_IGNORE" />
+            </intent-filter>
+        </receiver>
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_notification" />
