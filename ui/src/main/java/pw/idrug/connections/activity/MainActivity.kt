@@ -8,7 +8,6 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.coroutines.runBlocking
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
@@ -19,9 +18,13 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.messaging.FirebaseMessaging
 import android.util.Log
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import pw.idrug.connections.Application
 import pw.idrug.connections.R
 import pw.idrug.connections.fragment.TunnelDetailFragment
@@ -30,6 +33,11 @@ import pw.idrug.connections.fragment.TunnelListFragment
 import pw.idrug.connections.activity.OnboardingActivity
 import pw.idrug.connections.fragment.AccountFragment
 import pw.idrug.connections.model.ObservableTunnel
+import pw.idrug.connections.BuildConfig
+import pw.idrug.connections.data.UpdateMeta
+import pw.idrug.connections.di.UpdateModules
+import pw.idrug.connections.domain.UpdateState
+import pw.idrug.connections.ui.dialogs.UpdateDialogFragment
 
 /**
  * CRUD interface for iDrugConnections tunnels. This activity serves as the main entry point to the
@@ -42,6 +50,7 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
     private var backPressedCallback: OnBackPressedCallback? = null
     private val notificationPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {}
+    private var updateDialogVersionShown: Int? = null
 
     private fun handleBackPressed() {
         val backStackEntries = supportFragmentManager.backStackEntryCount
@@ -155,6 +164,12 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         }
 
         registerForFcm()
+
+        if (savedInstanceState == null) {
+            lifecycleScope.launch { checkForUpdates() }
+        } else {
+            lifecycleScope.launch { showCachedUpdateIfNeeded() }
+        }
     }
 
     private fun subscribeToGlobalNotifications() {
@@ -253,6 +268,51 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                 .replace(R.id.fragment_container, fragment)
                 .commit()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showPostInstallSnackbarIfNeeded()
+    }
+
+    private suspend fun checkForUpdates() {
+        val updateManager = UpdateModules.provideUpdateManager(applicationContext)
+        when (val state = updateManager.check()) {
+            is UpdateState.Available -> maybeShowUpdateDialog(state.meta)
+            is UpdateState.Error -> Log.w("MainActivity", "Failed to check updates: ${state.message}")
+            UpdateState.NoUpdate -> Unit
+        }
+    }
+
+    private suspend fun showCachedUpdateIfNeeded() {
+        val updateManager = UpdateModules.provideUpdateManager(applicationContext)
+        val meta = updateManager.getPendingUpdate()
+        if (meta != null && meta.versionCode > BuildConfig.VERSION_CODE && !updateManager.isIgnored(meta.versionCode)) {
+            maybeShowUpdateDialog(meta)
+        }
+    }
+
+    private fun maybeShowUpdateDialog(meta: UpdateMeta) {
+        if (updateDialogVersionShown == meta.versionCode) return
+        if (supportFragmentManager.isStateSaved) return
+        if (supportFragmentManager.findFragmentByTag("update_dialog") != null) return
+        updateDialogVersionShown = meta.versionCode
+        UpdateDialogFragment.show(supportFragmentManager, meta)
+    }
+
+    private fun showPostInstallSnackbarIfNeeded() {
+        val updateManager = UpdateModules.provideUpdateManager(applicationContext)
+        if (!updateManager.consumePostInstallSnackbar()) return
+        val container = findViewById<View>(R.id.main_activity_container)
+        val snackbar = Snackbar.make(
+            container,
+            getString(R.string.update_installed_snackbar),
+            Snackbar.LENGTH_LONG
+        )
+        snackbar.setAction(R.string.update_snackbar_open) {
+            packageManager.getLaunchIntentForPackage(packageName)?.let { startActivity(it) }
+        }
+        snackbar.show()
     }
 
     companion object {
