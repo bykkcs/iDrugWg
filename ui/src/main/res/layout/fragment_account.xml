@@ -109,21 +109,22 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/server_dropdown_layout"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                app:endIconMode="dropdown"
+                app:boxBackgroundMode="filled"
+                app:endIconMode="dropdown_menu"
                 app:hintEnabled="false">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/spinner_server"
-                    style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+                    style="@style/Widget.MaterialComponents.AutoCompleteTextView.FilledBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:ellipsize="end"
-                    android:focusable="false"
+                    android:focusable="true"
                     android:importantForAutofill="no"
                     android:inputType="none"
                     android:maxLines="1"
