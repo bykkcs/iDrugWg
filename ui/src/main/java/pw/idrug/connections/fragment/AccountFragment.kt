@@ -428,6 +428,8 @@ private fun afterLogout(view: View) {
         Log.e("AccountFragment", "Error while deleting tunnels during logout", e)
     }
 
+    deleteDownloadedConfigs()
+
     // После логаута отменяем все операции синхронизации
     TunnelSyncManager.cancelAll()
 
@@ -443,6 +445,20 @@ private fun afterLogout(view: View) {
         isLogoutRunning = false
     }
 }
+
+    private fun deleteDownloadedConfigs() {
+        val filesDir = context?.filesDir ?: return
+        filesDir.listFiles()?.forEach { file ->
+            if (file.isFile && file.name.startsWith("wg_idrug_") && file.name.endsWith(".conf")) {
+                val deleted = file.delete()
+                if (!deleted) {
+                    Log.w("AccountFragment", "Failed to delete config file: ${file.absolutePath}")
+                } else {
+                    Log.i("AccountFragment", "Config file deleted: ${file.name}")
+                }
+            }
+        }
+    }
 
     private fun handleDownloadConfig() {
         if (selectedServerId == null) {
