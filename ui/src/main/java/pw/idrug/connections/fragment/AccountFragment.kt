@@ -42,6 +42,8 @@ import android.graphics.Typeface
 import android.graphics.Color
 import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
+import com.google.android.material.textfield.TextInputLayout
 
 // + корутины и жизненный цикл
 import androidx.lifecycle.lifecycleScope
@@ -221,28 +223,37 @@ view.findViewById<Button>(R.id.btn_download).setOnClickListener {
     }
 
     private fun setupServerSpinner(view: View) {
-        val spinner = view.findViewById<Spinner>(R.id.spinner_server)
+        val dropdownLayout = view.findViewById<TextInputLayout>(R.id.server_dropdown_layout)
+        val dropdown = view.findViewById<MaterialAutoCompleteTextView>(R.id.spinner_server)
         val btnDownload = view.findViewById<Button>(R.id.btn_download)
         val serverNames = serverList.map { it.second }
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, serverNames)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = adapter
+        val adapter = ArrayAdapter(
+            requireContext(),
+            com.google.android.material.R.layout.m3_auto_complete_simple_item,
+            serverNames
+        )
+        dropdown.setAdapter(adapter)
+        dropdown.setText("", false)
         selectedServerId = null
         selectedServerName = null
         btnDownload.isEnabled = false
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, v: View?, position: Int, id: Long) {
-                selectedServerId = serverList[position].first
-                selectedServerName = serverList[position].second
-                updateDownloadButtonState(view)
-            }
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                selectedServerId = null
-                selectedServerName = null
-                updateDownloadButtonState(view)
+        dropdown.setOnItemClickListener { _, _, position, _ ->
+            selectedServerId = serverList.getOrNull(position)?.first
+            selectedServerName = serverList.getOrNull(position)?.second
+            updateDownloadButtonState(view)
+        }
+        dropdown.setOnClickListener {
+            if (!dropdown.isPopupShowing) {
+                dropdown.showDropDown()
             }
         }
-        spinner.visibility = View.VISIBLE
+        dropdown.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus && !dropdown.isPopupShowing) {
+                dropdown.showDropDown()
+            }
+        }
+        dropdownLayout.visibility = View.VISIBLE
+        dropdown.visibility = View.VISIBLE
         view.findViewById<TextView>(R.id.text_server_choice).visibility = View.VISIBLE
         btnDownload.visibility = View.VISIBLE
     }
@@ -324,7 +335,11 @@ view.findViewById<Button>(R.id.btn_download).setOnClickListener {
         view.findViewById<Button>(R.id.btn_renew).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_referral).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout).visibility = View.GONE
-        view.findViewById<Spinner>(R.id.spinner_server).visibility = View.GONE
+        view.findViewById<TextInputLayout>(R.id.server_dropdown_layout).visibility = View.GONE
+        view.findViewById<MaterialAutoCompleteTextView>(R.id.spinner_server).apply {
+            setText("", false)
+            visibility = View.GONE
+        }
         view.findViewById<TextView>(R.id.text_server_choice).visibility = View.GONE
         view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.GONE
         view.findViewById<TextView>(R.id.text_current_user).text = getString(R.string.login_via_telegram)
@@ -344,7 +359,8 @@ view.findViewById<Button>(R.id.btn_download).setOnClickListener {
         linkButton.text = getString(R.string.link_device)
         view.findViewById<Button>(R.id.btn_logout).visibility = View.VISIBLE
         view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.GONE
-        view.findViewById<Spinner>(R.id.spinner_server).visibility = View.VISIBLE
+        view.findViewById<TextInputLayout>(R.id.server_dropdown_layout).visibility = View.VISIBLE
+        view.findViewById<MaterialAutoCompleteTextView>(R.id.spinner_server).visibility = View.VISIBLE
         view.findViewById<TextView>(R.id.text_server_choice).visibility = View.VISIBLE
         val avatarImage = view.findViewById<ImageView>(R.id.avatar_image)
         if (!photoUrl.isNullOrEmpty()) {

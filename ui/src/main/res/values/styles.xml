@@ -9,7 +9,11 @@
         <item name="materialCardViewStyle">@style/iDrugConnectionsTheme.MaterialCardView</item>
         <item name="toolbarStyle">@style/iDrugConnectionsTheme.Toolbar</item>
         <item name="bottomSheetDialogTheme">@style/iDrugConnectionsTheme.BottomSheetDialog</item>
-        <item name="android:statusBarColor">@null</item>
+        <item name="android:statusBarColor">?attr/colorSurface</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
+        <item name="materialSwitchStyle">@style/Widget.Material3.CompoundButton.MaterialSwitch</item>
+        <item name="switchPreferenceCompatStyle">@style/Widget.iDrugConnections.Preference.SwitchCompat</item>
+        <item name="preferenceTheme">@style/ThemeOverlay.iDrug.Preference</item>
     </style>
 
     <!-- Various additional API-specific features in values-v*/styles.xml -->
@@ -23,6 +27,16 @@
     <style name="iDrugConnectionsTheme.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
         <item name="android:windowIsFloating">false</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Widget.iDrugConnections.Preference.SwitchCompat" parent="@style/Preference.SwitchPreferenceCompat.Material">
+        <item name="widgetLayout">@layout/preference_widget_material_switch</item>
+    </style>
+
+    <style name="ThemeOverlay.iDrug.Preference" parent="@style/PreferenceThemeOverlay.v14.Material">
+        <item name="android:colorBackground">?attr/colorSurface</item>
+        <item name="colorBackground">?attr/colorSurface</item>
+        <item name="colorOnSurface">?attr/colorOnSurface</item>
     </style>
     
     <style name="NoBackgroundTheme" parent="AppTheme">

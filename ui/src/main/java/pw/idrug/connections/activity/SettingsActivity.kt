@@ -4,11 +4,18 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.updatePadding
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.google.android.material.color.MaterialColors
 import pw.idrug.connections.Application
 import pw.idrug.connections.QuickTileService
 import pw.idrug.connections.R
@@ -95,6 +102,35 @@ class SettingsActivity : AppCompatActivity() {
                 UpdateDialogFragment.show(parentFragmentManager)
                 true
             }
+        }
+
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
+            val activity = requireActivity()
+            val window = activity.window
+            WindowCompat.setDecorFitsSystemWindows(window, false)
+            val surfaceColor = MaterialColors.getColor(view, com.google.android.material.R.attr.colorSurface)
+            window.statusBarColor = surfaceColor
+            window.navigationBarColor = surfaceColor
+            val insetsController = WindowInsetsControllerCompat(window, window.decorView)
+            val lightSurface = MaterialColors.isColorLight(surfaceColor)
+            insetsController.isAppearanceLightStatusBars = lightSurface
+            insetsController.isAppearanceLightNavigationBars = lightSurface
+            view.setBackgroundColor(surfaceColor)
+            ViewCompat.requestApplyInsets(view)
+            val preferenceList = listView
+            preferenceList.setBackgroundColor(surfaceColor)
+            ViewCompat.setOnApplyWindowInsetsListener(preferenceList) { v, insets ->
+                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                v.updatePadding(
+                    left = systemBars.left,
+                    top = systemBars.top,
+                    right = systemBars.right,
+                    bottom = systemBars.bottom
+                )
+                insets
+            }
+            ViewCompat.requestApplyInsets(preferenceList)
         }
     }
 }
