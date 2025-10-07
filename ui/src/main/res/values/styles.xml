@@ -35,7 +35,6 @@
 
     <style name="ThemeOverlay.iDrug.Preference" parent="@style/PreferenceThemeOverlay.v14.Material">
         <item name="android:colorBackground">?attr/colorSurface</item>
-        <item name="colorBackground">?attr/colorSurface</item>
         <item name="colorOnSurface">?attr/colorOnSurface</item>
     </style>
     
