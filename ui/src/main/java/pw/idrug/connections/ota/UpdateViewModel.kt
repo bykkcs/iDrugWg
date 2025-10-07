@@ -102,6 +102,40 @@ class UpdateViewModel(application: Application) : AndroidViewModel(application) 
                 val manager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
                 currentDownloadId = manager.enqueue(request)
                 _events.emit(UpdateEvent.DownloadStarted(currentDownloadId!!))
+                val query = DownloadManager.Query().setFilterById(currentDownloadId!!)
+                var completed = false
+                while (!completed) {
+                    val cursor = manager.query(query)
+                    cursor?.use {
+                        if (it.moveToFirst()) {
+                            when (it.getInt(it.getColumnIndexOrThrow(DownloadManager.COLUMN_STATUS))) {
+                                DownloadManager.STATUS_SUCCESSFUL -> {
+                                    completed = true
+                                    val apkFile = destination
+                                    val apkUri = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                                        androidx.core.content.FileProvider.getUriForFile(context, "${context.packageName}.provider", apkFile)
+                                    } else {
+                                        android.net.Uri.fromFile(apkFile)
+                                    }
+                                    val installIntent = android.content.Intent(android.content.Intent.ACTION_VIEW).apply {
+                                        setDataAndType(apkUri, APK_MIME_TYPE)
+                                        addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+                                        addFlags(android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                    }
+                                    context.startActivity(installIntent)
+                                }
+                                DownloadManager.STATUS_FAILED -> {
+                                    completed = true
+                                    val message = context.getString(R.string.update_error_generic)
+                                    _events.emit(UpdateEvent.Error(message))
+                                }
+                            }
+                        }
+                    }
+                    if (!completed) {
+                        kotlinx.coroutines.delay(500)
+                    }
+                }
             }.onFailure { throwable ->
                 val message = throwable.localizedMessage
                     ?: context.getString(R.string.update_error_generic)
