@@ -10,14 +10,14 @@ public final class TunnelCreatorActivity extends pw.idrug.connections.activity.B
         super();
     }
     
-    @java.lang.Override
-    protected void onCreate(@org.jetbrains.annotations.Nullable
+    @java.lang.Override()
+    protected void onCreate(@org.jetbrains.annotations.Nullable()
     android.os.Bundle savedInstanceState) {
     }
     
-    @java.lang.Override
-    protected boolean onSelectedTunnelChanged(@org.jetbrains.annotations.Nullable
-    pw.idrug.connections.model.ObservableTunnel oldTunnel, @org.jetbrains.annotations.Nullable
+    @java.lang.Override()
+    protected boolean onSelectedTunnelChanged(@org.jetbrains.annotations.Nullable()
+    pw.idrug.connections.model.ObservableTunnel oldTunnel, @org.jetbrains.annotations.Nullable()
     pw.idrug.connections.model.ObservableTunnel newTunnel) {
         return false;
     }

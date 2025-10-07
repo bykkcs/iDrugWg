@@ -2,30 +2,30 @@ package pw.idrug.connections;
 
 @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000H\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0006\u0018\u0000 \u001a2\u00020\u0001:\u0001\u001aB\u0005\u00a2\u0006\u0002\u0010\u0002J\u0010\u0010\u0012\u001a\u00020\u00132\u0006\u0010\u0014\u001a\u00020\u0015H\u0014J\u000e\u0010\u0016\u001a\u00020\u0004H\u0082@\u00a2\u0006\u0002\u0010\u0017J\b\u0010\u0018\u001a\u00020\u0013H\u0016J\b\u0010\u0019\u001a\u00020\u0013H\u0016R\u0010\u0010\u0003\u001a\u0004\u0018\u00010\u0004X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0006X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0014\u0010\u0007\u001a\b\u0012\u0004\u0012\u00020\u00040\bX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0014\u0010\t\u001a\b\u0012\u0004\u0012\u00020\u000b0\nX\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\f\u001a\u00020\rX\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000e\u001a\u00020\u000fX\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0010\u001a\u00020\u0011X\u0082.\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u001b"}, d2 = {"Lpw/idrug/connections/Application;", "Landroid/app/Application;", "()V", "backend", "Lpw/idrug/connections/backend/Backend;", "coroutineScope", "Lkotlinx/coroutines/CoroutineScope;", "futureBackend", "Lkotlinx/coroutines/CompletableDeferred;", "preferencesDataStore", "Landroidx/datastore/core/DataStore;", "Landroidx/datastore/preferences/core/Preferences;", "rootShell", "Lpw/idrug/connections/util/RootShell;", "toolsInstaller", "Lpw/idrug/connections/util/ToolsInstaller;", "tunnelManager", "Lpw/idrug/connections/model/TunnelManager;", "attachBaseContext", "", "context", "Landroid/content/Context;", "determineBackend", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "onCreate", "onTerminate", "Companion", "ui_release"})
 public final class Application extends android.app.Application {
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final kotlinx.coroutines.CompletableDeferred<pw.idrug.connections.backend.Backend> futureBackend = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final kotlinx.coroutines.CoroutineScope coroutineScope = null;
-    @org.jetbrains.annotations.Nullable
+    @org.jetbrains.annotations.Nullable()
     private pw.idrug.connections.backend.Backend backend;
     private pw.idrug.connections.util.RootShell rootShell;
     private androidx.datastore.core.DataStore<androidx.datastore.preferences.core.Preferences> preferencesDataStore;
     private pw.idrug.connections.util.ToolsInstaller toolsInstaller;
     private pw.idrug.connections.model.TunnelManager tunnelManager;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private static final java.lang.String USER_AGENT = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private static final java.lang.String TAG = "iDrugConnections/Application";
     private static java.lang.ref.WeakReference<pw.idrug.connections.Application> weakSelf;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public static final pw.idrug.connections.Application.Companion Companion = null;
     
     public Application() {
         super();
     }
     
-    @java.lang.Override
-    protected void attachBaseContext(@org.jetbrains.annotations.NotNull
+    @java.lang.Override()
+    protected void attachBaseContext(@org.jetbrains.annotations.NotNull()
     android.content.Context context) {
     }
     
@@ -33,11 +33,11 @@ public final class Application extends android.app.Application {
         return null;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public void onCreate() {
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public void onTerminate() {
     }
     
@@ -48,43 +48,43 @@ public final class Application extends android.app.Application {
             super();
         }
         
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         public final java.lang.String getUSER_AGENT() {
             return null;
         }
         
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         public final pw.idrug.connections.Application get() {
             return null;
         }
         
-        @org.jetbrains.annotations.Nullable
-        public final java.lang.Object getBackend(@org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.Nullable()
+        public final java.lang.Object getBackend(@org.jetbrains.annotations.NotNull()
         kotlin.coroutines.Continuation<? super pw.idrug.connections.backend.Backend> $completion) {
             return null;
         }
         
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         public final pw.idrug.connections.util.RootShell getRootShell() {
             return null;
         }
         
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         public final androidx.datastore.core.DataStore<androidx.datastore.preferences.core.Preferences> getPreferencesDataStore() {
             return null;
         }
         
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         public final pw.idrug.connections.util.ToolsInstaller getToolsInstaller() {
             return null;
         }
         
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         public final pw.idrug.connections.model.TunnelManager getTunnelManager() {
             return null;
         }
         
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         public final kotlinx.coroutines.CoroutineScope getCoroutineScope() {
             return null;
         }

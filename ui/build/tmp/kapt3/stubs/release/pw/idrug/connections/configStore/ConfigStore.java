@@ -15,9 +15,9 @@ public abstract interface ConfigStore {
      * @return The configuration that was actually saved to persistent storage.
      */
     @kotlin.jvm.Throws(exceptionClasses = {java.lang.Exception.class})
-    @org.jetbrains.annotations.NotNull
-    public abstract pw.idrug.connections.config.Config create(@org.jetbrains.annotations.NotNull
-    java.lang.String name, @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
+    public abstract pw.idrug.connections.config.Config create(@org.jetbrains.annotations.NotNull()
+    java.lang.String name, @org.jetbrains.annotations.NotNull()
     pw.idrug.connections.config.Config config) throws java.lang.Exception;
     
     /**
@@ -26,7 +26,7 @@ public abstract interface ConfigStore {
      * @param name The name of the tunnel to delete.
      */
     @kotlin.jvm.Throws(exceptionClasses = {java.lang.Exception.class})
-    public abstract void delete(@org.jetbrains.annotations.NotNull
+    public abstract void delete(@org.jetbrains.annotations.NotNull()
     java.lang.String name) throws java.lang.Exception;
     
     /**
@@ -34,7 +34,7 @@ public abstract interface ConfigStore {
      *
      * @return The set of present tunnel names.
      */
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public abstract java.util.Set<java.lang.String> enumerate();
     
     /**
@@ -45,8 +45,8 @@ public abstract interface ConfigStore {
      * @return An in-memory representation of the configuration loaded from persistent storage.
      */
     @kotlin.jvm.Throws(exceptionClasses = {java.lang.Exception.class})
-    @org.jetbrains.annotations.NotNull
-    public abstract pw.idrug.connections.config.Config load(@org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
+    public abstract pw.idrug.connections.config.Config load(@org.jetbrains.annotations.NotNull()
     java.lang.String name) throws java.lang.Exception;
     
     /**
@@ -56,8 +56,8 @@ public abstract interface ConfigStore {
      * @param replacement The new identifier for the configuration in persistent storage.
      */
     @kotlin.jvm.Throws(exceptionClasses = {java.lang.Exception.class})
-    public abstract void rename(@org.jetbrains.annotations.NotNull
-    java.lang.String name, @org.jetbrains.annotations.NotNull
+    public abstract void rename(@org.jetbrains.annotations.NotNull()
+    java.lang.String name, @org.jetbrains.annotations.NotNull()
     java.lang.String replacement) throws java.lang.Exception;
     
     /**
@@ -69,8 +69,8 @@ public abstract interface ConfigStore {
      * @return The configuration that was actually saved to persistent storage.
      */
     @kotlin.jvm.Throws(exceptionClasses = {java.lang.Exception.class})
-    @org.jetbrains.annotations.NotNull
-    public abstract pw.idrug.connections.config.Config save(@org.jetbrains.annotations.NotNull
-    java.lang.String name, @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
+    public abstract pw.idrug.connections.config.Config save(@org.jetbrains.annotations.NotNull()
+    java.lang.String name, @org.jetbrains.annotations.NotNull()
     pw.idrug.connections.config.Config config) throws java.lang.Exception;
 }

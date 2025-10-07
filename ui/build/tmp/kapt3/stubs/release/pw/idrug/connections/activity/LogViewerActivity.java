@@ -4,29 +4,29 @@ package pw.idrug.connections.activity;
 public final class LogViewerActivity extends androidx.appcompat.app.AppCompatActivity {
     private pw.idrug.connections.databinding.LogViewerActivityBinding binding;
     private pw.idrug.connections.activity.LogViewerActivity.LogEntryAdapter logAdapter;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private androidx.collection.CircularArray<pw.idrug.connections.activity.LogViewerActivity.LogLine> logLines;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private androidx.collection.CircularArray<java.lang.String> rawLogLines;
-    @org.jetbrains.annotations.Nullable
+    @org.jetbrains.annotations.Nullable()
     private androidx.recyclerview.widget.RecyclerView recyclerView;
-    @org.jetbrains.annotations.Nullable
+    @org.jetbrains.annotations.Nullable()
     private android.view.MenuItem saveButton;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final kotlin.Lazy year$delegate = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final kotlin.Lazy defaultColor$delegate = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final kotlin.Lazy debugColor$delegate = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final kotlin.Lazy errorColor$delegate = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final kotlin.Lazy infoColor$delegate = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final kotlin.Lazy warningColor$delegate = null;
-    @org.jetbrains.annotations.Nullable
+    @org.jetbrains.annotations.Nullable()
     private android.net.Uri lastUri;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final pw.idrug.connections.util.DownloadsFileSaver downloadsFileSaver = null;
     
     /**
@@ -34,13 +34,13 @@ public final class LogViewerActivity extends androidx.appcompat.app.AppCompatAct
      *
      * <pre>05-26 11:02:36.886 5689 5689 D AndroidRuntime: CheckJNI is OFF.</pre>
      */
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private static final java.util.regex.Pattern THREADTIME_LINE = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private static final java.util.Map<java.lang.String, byte[]> LOGS = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private static final java.lang.String TAG = "iDrugConnections/LogViewerActivity";
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public static final pw.idrug.connections.activity.LogViewerActivity.Companion Companion = null;
     
     public LogViewerActivity() {
@@ -74,19 +74,19 @@ public final class LogViewerActivity extends androidx.appcompat.app.AppCompatAct
     private final void revokeLastUri() {
     }
     
-    @java.lang.Override
-    protected void onCreate(@org.jetbrains.annotations.Nullable
+    @java.lang.Override()
+    protected void onCreate(@org.jetbrains.annotations.Nullable()
     android.os.Bundle savedInstanceState) {
     }
     
-    @java.lang.Override
-    public boolean onCreateOptionsMenu(@org.jetbrains.annotations.NotNull
+    @java.lang.Override()
+    public boolean onCreateOptionsMenu(@org.jetbrains.annotations.NotNull()
     android.view.Menu menu) {
         return false;
     }
     
-    @java.lang.Override
-    public boolean onOptionsItemSelected(@org.jetbrains.annotations.NotNull
+    @java.lang.Override()
+    public boolean onOptionsItemSelected(@org.jetbrains.annotations.NotNull()
     android.view.MenuItem item) {
         return false;
     }
@@ -130,66 +130,66 @@ public final class LogViewerActivity extends androidx.appcompat.app.AppCompatAct
             return null;
         }
         
-        @java.lang.Override
-        @org.jetbrains.annotations.Nullable
-        public android.net.Uri insert(@org.jetbrains.annotations.NotNull
-        android.net.Uri uri, @org.jetbrains.annotations.Nullable
+        @java.lang.Override()
+        @org.jetbrains.annotations.Nullable()
+        public android.net.Uri insert(@org.jetbrains.annotations.NotNull()
+        android.net.Uri uri, @org.jetbrains.annotations.Nullable()
         android.content.ContentValues values) {
             return null;
         }
         
-        @java.lang.Override
-        @org.jetbrains.annotations.Nullable
-        public android.database.Cursor query(@org.jetbrains.annotations.NotNull
-        android.net.Uri uri, @org.jetbrains.annotations.Nullable
-        java.lang.String[] projection, @org.jetbrains.annotations.Nullable
-        java.lang.String selection, @org.jetbrains.annotations.Nullable
-        java.lang.String[] selectionArgs, @org.jetbrains.annotations.Nullable
+        @java.lang.Override()
+        @org.jetbrains.annotations.Nullable()
+        public android.database.Cursor query(@org.jetbrains.annotations.NotNull()
+        android.net.Uri uri, @org.jetbrains.annotations.Nullable()
+        java.lang.String[] projection, @org.jetbrains.annotations.Nullable()
+        java.lang.String selection, @org.jetbrains.annotations.Nullable()
+        java.lang.String[] selectionArgs, @org.jetbrains.annotations.Nullable()
         java.lang.String sortOrder) {
             return null;
         }
         
-        @java.lang.Override
+        @java.lang.Override()
         public boolean onCreate() {
             return false;
         }
         
-        @java.lang.Override
-        public int update(@org.jetbrains.annotations.NotNull
-        android.net.Uri uri, @org.jetbrains.annotations.Nullable
-        android.content.ContentValues values, @org.jetbrains.annotations.Nullable
-        java.lang.String selection, @org.jetbrains.annotations.Nullable
+        @java.lang.Override()
+        public int update(@org.jetbrains.annotations.NotNull()
+        android.net.Uri uri, @org.jetbrains.annotations.Nullable()
+        android.content.ContentValues values, @org.jetbrains.annotations.Nullable()
+        java.lang.String selection, @org.jetbrains.annotations.Nullable()
         java.lang.String[] selectionArgs) {
             return 0;
         }
         
-        @java.lang.Override
-        public int delete(@org.jetbrains.annotations.NotNull
-        android.net.Uri uri, @org.jetbrains.annotations.Nullable
-        java.lang.String selection, @org.jetbrains.annotations.Nullable
+        @java.lang.Override()
+        public int delete(@org.jetbrains.annotations.NotNull()
+        android.net.Uri uri, @org.jetbrains.annotations.Nullable()
+        java.lang.String selection, @org.jetbrains.annotations.Nullable()
         java.lang.String[] selectionArgs) {
             return 0;
         }
         
-        @java.lang.Override
-        @org.jetbrains.annotations.Nullable
-        public java.lang.String getType(@org.jetbrains.annotations.NotNull
+        @java.lang.Override()
+        @org.jetbrains.annotations.Nullable()
+        public java.lang.String getType(@org.jetbrains.annotations.NotNull()
         android.net.Uri uri) {
             return null;
         }
         
-        @java.lang.Override
-        @org.jetbrains.annotations.Nullable
-        public java.lang.String[] getStreamTypes(@org.jetbrains.annotations.NotNull
-        android.net.Uri uri, @org.jetbrains.annotations.NotNull
+        @java.lang.Override()
+        @org.jetbrains.annotations.Nullable()
+        public java.lang.String[] getStreamTypes(@org.jetbrains.annotations.NotNull()
+        android.net.Uri uri, @org.jetbrains.annotations.NotNull()
         java.lang.String mimeTypeFilter) {
             return null;
         }
         
-        @java.lang.Override
-        @org.jetbrains.annotations.Nullable
-        public android.os.ParcelFileDescriptor openFile(@org.jetbrains.annotations.NotNull
-        android.net.Uri uri, @org.jetbrains.annotations.NotNull
+        @java.lang.Override()
+        @org.jetbrains.annotations.Nullable()
+        public android.os.ParcelFileDescriptor openFile(@org.jetbrains.annotations.NotNull()
+        android.net.Uri uri, @org.jetbrains.annotations.NotNull()
         java.lang.String mode) {
             return null;
         }
@@ -206,35 +206,35 @@ public final class LogViewerActivity extends androidx.appcompat.app.AppCompatAct
             return 0;
         }
         
-        @java.lang.Override
+        @java.lang.Override()
         public int getItemCount() {
             return 0;
         }
         
-        @java.lang.Override
-        @org.jetbrains.annotations.NotNull
-        public pw.idrug.connections.activity.LogViewerActivity.LogEntryAdapter.ViewHolder onCreateViewHolder(@org.jetbrains.annotations.NotNull
+        @java.lang.Override()
+        @org.jetbrains.annotations.NotNull()
+        public pw.idrug.connections.activity.LogViewerActivity.LogEntryAdapter.ViewHolder onCreateViewHolder(@org.jetbrains.annotations.NotNull()
         android.view.ViewGroup parent, int viewType) {
             return null;
         }
         
-        @java.lang.Override
-        public void onBindViewHolder(@org.jetbrains.annotations.NotNull
+        @java.lang.Override()
+        public void onBindViewHolder(@org.jetbrains.annotations.NotNull()
         pw.idrug.connections.activity.LogViewerActivity.LogEntryAdapter.ViewHolder holder, int position) {
         }
         
         @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000\u0018\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0002\b\u0007\b\u0082\u0004\u0018\u00002\u00020\u0001B\u0017\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\b\b\u0002\u0010\u0004\u001a\u00020\u0005\u00a2\u0006\u0002\u0010\u0006R\u001a\u0010\u0004\u001a\u00020\u0005X\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u0004\u0010\u0007\"\u0004\b\b\u0010\tR\u0011\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\n\u0010\u000b\u00a8\u0006\f"}, d2 = {"Lpw/idrug/connections/activity/LogViewerActivity$LogEntryAdapter$ViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "layout", "Landroid/view/View;", "isSingleLine", "", "(Lpw/idrug/connections/activity/LogViewerActivity$LogEntryAdapter;Landroid/view/View;Z)V", "()Z", "setSingleLine", "(Z)V", "getLayout", "()Landroid/view/View;", "ui_release"})
         final class ViewHolder extends androidx.recyclerview.widget.RecyclerView.ViewHolder {
-            @org.jetbrains.annotations.NotNull
+            @org.jetbrains.annotations.NotNull()
             private final android.view.View layout = null;
             private boolean isSingleLine;
             
-            public ViewHolder(@org.jetbrains.annotations.NotNull
+            public ViewHolder(@org.jetbrains.annotations.NotNull()
             android.view.View layout, boolean isSingleLine) {
                 super(null);
             }
             
-            @org.jetbrains.annotations.NotNull
+            @org.jetbrains.annotations.NotNull()
             public final android.view.View getLayout() {
                 return null;
             }
@@ -252,19 +252,19 @@ public final class LogViewerActivity extends androidx.appcompat.app.AppCompatAct
     static final class LogLine {
         private final int pid = 0;
         private final int tid = 0;
-        @org.jetbrains.annotations.Nullable
+        @org.jetbrains.annotations.Nullable()
         private final java.util.Date time = null;
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         private final java.lang.String level = null;
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         private final java.lang.String tag = null;
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         private java.lang.String msg;
         
-        public LogLine(int pid, int tid, @org.jetbrains.annotations.Nullable
-        java.util.Date time, @org.jetbrains.annotations.NotNull
-        java.lang.String level, @org.jetbrains.annotations.NotNull
-        java.lang.String tag, @org.jetbrains.annotations.NotNull
+        public LogLine(int pid, int tid, @org.jetbrains.annotations.Nullable()
+        java.util.Date time, @org.jetbrains.annotations.NotNull()
+        java.lang.String level, @org.jetbrains.annotations.NotNull()
+        java.lang.String tag, @org.jetbrains.annotations.NotNull()
         java.lang.String msg) {
             super();
         }
@@ -277,27 +277,27 @@ public final class LogViewerActivity extends androidx.appcompat.app.AppCompatAct
             return 0;
         }
         
-        @org.jetbrains.annotations.Nullable
+        @org.jetbrains.annotations.Nullable()
         public final java.util.Date getTime() {
             return null;
         }
         
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         public final java.lang.String getLevel() {
             return null;
         }
         
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         public final java.lang.String getTag() {
             return null;
         }
         
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         public final java.lang.String getMsg() {
             return null;
         }
         
-        public final void setMsg(@org.jetbrains.annotations.NotNull
+        public final void setMsg(@org.jetbrains.annotations.NotNull()
         java.lang.String p0) {
         }
         
@@ -309,48 +309,48 @@ public final class LogViewerActivity extends androidx.appcompat.app.AppCompatAct
             return 0;
         }
         
-        @org.jetbrains.annotations.Nullable
+        @org.jetbrains.annotations.Nullable()
         public final java.util.Date component3() {
             return null;
         }
         
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         public final java.lang.String component4() {
             return null;
         }
         
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         public final java.lang.String component5() {
             return null;
         }
         
-        @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
         public final java.lang.String component6() {
             return null;
         }
         
-        @org.jetbrains.annotations.NotNull
-        public final pw.idrug.connections.activity.LogViewerActivity.LogLine copy(int pid, int tid, @org.jetbrains.annotations.Nullable
-        java.util.Date time, @org.jetbrains.annotations.NotNull
-        java.lang.String level, @org.jetbrains.annotations.NotNull
-        java.lang.String tag, @org.jetbrains.annotations.NotNull
+        @org.jetbrains.annotations.NotNull()
+        public final pw.idrug.connections.activity.LogViewerActivity.LogLine copy(int pid, int tid, @org.jetbrains.annotations.Nullable()
+        java.util.Date time, @org.jetbrains.annotations.NotNull()
+        java.lang.String level, @org.jetbrains.annotations.NotNull()
+        java.lang.String tag, @org.jetbrains.annotations.NotNull()
         java.lang.String msg) {
             return null;
         }
         
-        @java.lang.Override
-        public boolean equals(@org.jetbrains.annotations.Nullable
+        @java.lang.Override()
+        public boolean equals(@org.jetbrains.annotations.Nullable()
         java.lang.Object other) {
             return false;
         }
         
-        @java.lang.Override
+        @java.lang.Override()
         public int hashCode() {
             return 0;
         }
         
-        @java.lang.Override
-        @org.jetbrains.annotations.NotNull
+        @java.lang.Override()
+        @org.jetbrains.annotations.NotNull()
         public java.lang.String toString() {
             return null;
         }

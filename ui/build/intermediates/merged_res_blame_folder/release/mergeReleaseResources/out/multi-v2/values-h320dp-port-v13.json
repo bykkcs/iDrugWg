@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-56:/values-h320dp-port-v13/values-h320dp-port-v13.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-62:/values-h320dp-port-v13/values-h320dp-port-v13.xml",
             "map": [
                 {
-                    "source": "/home/bykk/.gradle/caches/transforms-3/af004dc4121ccd483931efbeabcba0e1/transformed/material-1.11.0/res/values-h320dp-port-v13/values-h320dp-port-v13.xml",
+                    "source": "/home/bykk/.gradle/caches/transforms-3/2786ce5c66ca4db1962a4ced1637d1f7/transformed/material-1.12.0/res/values-h320dp-port-v13/values-h320dp-port-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

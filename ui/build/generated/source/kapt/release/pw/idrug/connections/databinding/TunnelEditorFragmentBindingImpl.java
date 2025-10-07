@@ -35,7 +35,7 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
     // views
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback2;
+    private final android.view.View.OnClickListener mCallback1;
     // values
     private androidx.databinding.ObservableList<pw.idrug.connections.viewmodel.PeerProxy> mOldConfigPeers;
     private int mOldAndroidLayoutTunnelEditorPeer;
@@ -649,7 +649,7 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
         this.underloadPacketMagicHeaderText.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback2 = new pw.idrug.connections.generated.callback.OnClickListener(this, 1);
+        mCallback1 = new pw.idrug.connections.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -1142,7 +1142,7 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
         if ((dirtyFlags & 0x400000L) != 0) {
             // api target 1
 
-            this.addPeerButton.setOnClickListener(mCallback2);
+            this.addPeerButton.setOnClickListener(mCallback1);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.addressesLabelText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, addressesLabelTextandroidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.dnsServersText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, dnsServersTextandroidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.initPacketJunkSizeText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, initPacketJunkSizeTextandroidTextAttrChanged);

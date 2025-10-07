@@ -17,7 +17,7 @@ public class ObservableKeyedArrayList<K extends java.lang.Object, E extends pw.i
         return false;
     }
     
-    @org.jetbrains.annotations.Nullable
+    @org.jetbrains.annotations.Nullable()
     public final E get(K key) {
         return null;
     }
@@ -26,37 +26,37 @@ public class ObservableKeyedArrayList<K extends java.lang.Object, E extends pw.i
         return 0;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public final boolean contains(java.lang.Object element) {
         return false;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public boolean contains(pw.idrug.connections.databinding.Keyed<?> element) {
         return false;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public int getSize() {
         return 0;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public final int indexOf(java.lang.Object element) {
         return 0;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public int indexOf(pw.idrug.connections.databinding.Keyed<?> element) {
         return 0;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public final int lastIndexOf(java.lang.Object element) {
         return 0;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public int lastIndexOf(pw.idrug.connections.databinding.Keyed<?> element) {
         return 0;
     }
@@ -65,22 +65,22 @@ public class ObservableKeyedArrayList<K extends java.lang.Object, E extends pw.i
         return null;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public final boolean remove(java.lang.Object element) {
         return false;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public boolean remove(pw.idrug.connections.databinding.Keyed<?> element) {
         return false;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public pw.idrug.connections.databinding.Keyed<?> removeAt(int p0) {
         return null;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public final int size() {
         return 0;
     }

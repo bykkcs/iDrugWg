@@ -7,13 +7,13 @@ public final class MyFirebaseMessagingService extends com.google.firebase.messag
         super();
     }
     
-    @java.lang.Override
-    public void onNewToken(@org.jetbrains.annotations.NotNull
+    @java.lang.Override()
+    public void onNewToken(@org.jetbrains.annotations.NotNull()
     java.lang.String token) {
     }
     
-    @java.lang.Override
-    public void onMessageReceived(@org.jetbrains.annotations.NotNull
+    @java.lang.Override()
+    public void onMessageReceived(@org.jetbrains.annotations.NotNull()
     com.google.firebase.messaging.RemoteMessage remoteMessage) {
     }
     

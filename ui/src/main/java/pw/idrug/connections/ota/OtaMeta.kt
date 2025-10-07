@@ -1,8 +1,11 @@
 package pw.idrug.connections.ota
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class OtaMeta(
     val versionCode: Int,
-    val versionName: String?,
     val apkUrl: String,
-    val changelog: String?
+    val versionName: String? = null,
+    val changelog: String? = null
 )

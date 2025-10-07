@@ -3,13 +3,13 @@ package pw.idrug.connections.widget;
 @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000b\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0000\n\u0002\u0010\u0007\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0002\b\t\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\t\n\u0002\u0018\u0002\n\u0002\b\u0007\b\u0007\u0018\u0000 72\u00020\u0001:\u00017B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0001\u00a2\u0006\u0002\u0010\u0003J\u0010\u0010\u0010\u001a\u00020\u00112\u0006\u0010\u0012\u001a\u00020\u0013H\u0016J\b\u0010\u0014\u001a\u00020\u0015H\u0016J\b\u0010\u0016\u001a\u00020\u0015H\u0016J\b\u0010\u0017\u001a\u00020\u0015H\u0016J\u0010\u0010\u0018\u001a\u00020\u00112\u0006\u0010\u0019\u001a\u00020\u001aH\u0014J\u0018\u0010\u001b\u001a\u00020\u00072\u0006\u0010\u001c\u001a\u00020\u00072\u0006\u0010\u001d\u001a\u00020\u0015H\u0002J\u0012\u0010\u001e\u001a\u00020\u00112\b\b\u0001\u0010\u001f\u001a\u00020\u0015H\u0016J\u000e\u0010 \u001a\u00020\u00112\u0006\u0010!\u001a\u00020\u0005J\u0012\u0010\"\u001a\u00020\u00112\b\u0010#\u001a\u0004\u0018\u00010$H\u0016J\u0012\u0010%\u001a\u00020\u00112\b\u0010&\u001a\u0004\u0018\u00010\'H\u0002J\u000e\u0010(\u001a\u00020\u00112\u0006\u0010)\u001a\u00020\u0007J\u000e\u0010*\u001a\u00020\u00112\u0006\u0010+\u001a\u00020\u0005J\u0012\u0010,\u001a\u00020\u00112\b\b\u0001\u0010-\u001a\u00020\u0015H\u0016J\u0012\u0010.\u001a\u00020\u00112\b\u0010&\u001a\u0004\u0018\u00010\'H\u0016J\u0012\u0010/\u001a\u00020\u00112\b\u00100\u001a\u0004\u0018\u000101H\u0016J(\u00102\u001a\u00020\u00112\u0006\u00103\u001a\u00020\u00072\u0006\u00104\u001a\u00020\u00072\u0006\u00105\u001a\u00020\u00072\u0006\u00106\u001a\u00020\u0007H\u0002R\u000e\u0010\u0004\u001a\u00020\u0005X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0007X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0002\u001a\u00020\u0001X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\b\u001a\u00020\tX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u000bX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\f\u001a\u00020\u0007X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\r\u001a\u00020\u000eX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000f\u001a\u00020\u0005X\u0082\u000e\u00a2\u0006\u0002\n\u0000\u00a8\u00068"}, d2 = {"Lpw/idrug/connections/widget/SlashDrawable;", "Landroid/graphics/drawable/Drawable;", "mDrawable", "(Landroid/graphics/drawable/Drawable;)V", "mAnimationEnabled", "", "mCurrentSlashLength", "", "mPaint", "Landroid/graphics/Paint;", "mPath", "Landroid/graphics/Path;", "mRotation", "mSlashRect", "Landroid/graphics/RectF;", "mSlashed", "draw", "", "canvas", "Landroid/graphics/Canvas;", "getIntrinsicHeight", "", "getIntrinsicWidth", "getOpacity", "onBoundsChange", "bounds", "Landroid/graphics/Rect;", "scale", "frac", "width", "setAlpha", "alpha", "setAnimationEnabled", "enabled", "setColorFilter", "colorFilter", "Landroid/graphics/ColorFilter;", "setDrawableTintList", "tint", "Landroid/content/res/ColorStateList;", "setRotation", "rotation", "setSlashed", "slashed", "setTint", "tintColor", "setTintList", "setTintMode", "tintMode", "Landroid/graphics/PorterDuff$Mode;", "updateRect", "left", "top", "right", "bottom", "Companion", "ui_release"})
 @androidx.annotation.RequiresApi(value = android.os.Build.VERSION_CODES.N)
 public final class SlashDrawable extends android.graphics.drawable.Drawable {
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final android.graphics.drawable.Drawable mDrawable = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final android.graphics.Paint mPaint = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final android.graphics.Path mPath = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final android.graphics.RectF mSlashRect = null;
     private boolean mAnimationEnabled = true;
     private float mCurrentSlashLength = 0.0F;
@@ -26,38 +26,38 @@ public final class SlashDrawable extends android.graphics.drawable.Drawable {
     private static final float LEFT = 0.40544835F;
     private static final float RIGHT = 0.4820516F;
     private static final float TOP = -0.088781714F;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private static final android.util.FloatProperty<pw.idrug.connections.widget.SlashDrawable> mSlashLengthProp = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public static final pw.idrug.connections.widget.SlashDrawable.Companion Companion = null;
     
-    public SlashDrawable(@org.jetbrains.annotations.NotNull
+    public SlashDrawable(@org.jetbrains.annotations.NotNull()
     android.graphics.drawable.Drawable mDrawable) {
         super();
     }
     
-    @java.lang.Override
-    public void draw(@org.jetbrains.annotations.NotNull
+    @java.lang.Override()
+    public void draw(@org.jetbrains.annotations.NotNull()
     android.graphics.Canvas canvas) {
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public int getIntrinsicHeight() {
         return 0;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public int getIntrinsicWidth() {
         return 0;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public int getOpacity() {
         return 0;
     }
     
-    @java.lang.Override
-    protected void onBoundsChange(@org.jetbrains.annotations.NotNull
+    @java.lang.Override()
+    protected void onBoundsChange(@org.jetbrains.annotations.NotNull()
     android.graphics.Rect bounds) {
     }
     
@@ -65,7 +65,7 @@ public final class SlashDrawable extends android.graphics.drawable.Drawable {
         return 0.0F;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public void setAlpha(@androidx.annotation.IntRange(from = 0L, to = 255L)
     int alpha) {
     }
@@ -73,8 +73,8 @@ public final class SlashDrawable extends android.graphics.drawable.Drawable {
     public final void setAnimationEnabled(boolean enabled) {
     }
     
-    @java.lang.Override
-    public void setColorFilter(@org.jetbrains.annotations.Nullable
+    @java.lang.Override()
+    public void setColorFilter(@org.jetbrains.annotations.Nullable()
     android.graphics.ColorFilter colorFilter) {
     }
     
@@ -87,18 +87,18 @@ public final class SlashDrawable extends android.graphics.drawable.Drawable {
     public final void setSlashed(boolean slashed) {
     }
     
-    @java.lang.Override
-    public void setTint(@androidx.annotation.ColorInt
+    @java.lang.Override()
+    public void setTint(@androidx.annotation.ColorInt()
     int tintColor) {
     }
     
-    @java.lang.Override
-    public void setTintList(@org.jetbrains.annotations.Nullable
+    @java.lang.Override()
+    public void setTintList(@org.jetbrains.annotations.Nullable()
     android.content.res.ColorStateList tint) {
     }
     
-    @java.lang.Override
-    public void setTintMode(@org.jetbrains.annotations.Nullable
+    @java.lang.Override()
+    public void setTintMode(@org.jetbrains.annotations.Nullable()
     android.graphics.PorterDuff.Mode tintMode) {
     }
     

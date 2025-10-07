@@ -20,7 +20,7 @@ public class AppListItemBindingImpl extends AppListItemBinding implements pw.idr
     private final android.widget.LinearLayout mboundView0;
     // variables
     @Nullable
-    private final android.view.View.OnClickListener mCallback1;
+    private final android.view.View.OnClickListener mCallback2;
     // values
     // listeners
     // Inverse Binding Event Handlers
@@ -67,7 +67,7 @@ public class AppListItemBindingImpl extends AppListItemBinding implements pw.idr
         this.selectedCheckbox.setTag(null);
         setRootTag(root);
         // listeners
-        mCallback1 = new pw.idrug.connections.generated.callback.OnClickListener(this, 1);
+        mCallback2 = new pw.idrug.connections.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
 
@@ -207,7 +207,7 @@ public class AppListItemBindingImpl extends AppListItemBinding implements pw.idr
         if ((dirtyFlags & 0x10L) != 0) {
             // api target 1
 
-            this.mboundView0.setOnClickListener(mCallback1);
+            this.mboundView0.setOnClickListener(mCallback2);
             androidx.databinding.adapters.CompoundButtonBindingAdapter.setListeners(this.selectedCheckbox, (android.widget.CompoundButton.OnCheckedChangeListener)null, selectedCheckboxandroidCheckedAttrChanged);
         }
         if ((dirtyFlags & 0x19L) != 0) {

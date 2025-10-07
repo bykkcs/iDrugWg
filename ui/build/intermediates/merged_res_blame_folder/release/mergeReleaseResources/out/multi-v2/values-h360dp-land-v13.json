@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-56:/values-h360dp-land-v13/values-h360dp-land-v13.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-62:/values-h360dp-land-v13/values-h360dp-land-v13.xml",
             "map": [
                 {
-                    "source": "/home/bykk/.gradle/caches/transforms-3/af004dc4121ccd483931efbeabcba0e1/transformed/material-1.11.0/res/values-h360dp-land-v13/values-h360dp-land-v13.xml",
+                    "source": "/home/bykk/.gradle/caches/transforms-3/2786ce5c66ca4db1962a4ced1637d1f7/transformed/material-1.12.0/res/values-h360dp-land-v13/values-h360dp-land-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

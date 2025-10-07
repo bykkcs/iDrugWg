@@ -18,6 +18,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import pw.idrug.connections.TunnelSyncManager
 import okhttp3.*
+import kotlinx.coroutines.delay
 import com.google.firebase.messaging.FirebaseMessaging
 import pw.idrug.connections.R
 import pw.idrug.connections.dialog.CodeInputDialogFragment
@@ -42,6 +43,13 @@ import android.graphics.Color
 import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+// + корутины и жизненный цикл
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.CancellationException
+
 class AccountFragment : Fragment() {
 
     private lateinit var prefs: SharedPreferences
@@ -52,7 +60,7 @@ class AccountFragment : Fragment() {
     private var selectedServerName: String? = null
     private var serverList: List<Pair<String, String>> = listOf()
     private var qrPollingTimer: Timer? = null
-    private var isLogoutRunning = false
+    @Volatile private var isLogoutRunning = false
 
     // Subscription model. Only the active field matters.
     private data class Subscription(
@@ -117,13 +125,22 @@ class AccountFragment : Fragment() {
             startActivity(intent)
         }
         view.findViewById<Button>(R.id.btn_logout).setOnClickListener {
-            setLoading(true)
-            afterLogout(view)
-            setLoading(false)
+            // НЕ блокируем main — уводим логаут в корутину
+            if (isLogoutRunning) return@setOnClickListener
+            viewLifecycleOwner.lifecycleScope.launch {
+                setLoading(true)
+                try {
+                    performLogoutSafely(view)
+                } finally {
+                    setLoading(false)
+                }
+            }
         }
-        view.findViewById<Button>(R.id.btn_download).setOnClickListener {
-            handleDownloadConfig()
-        }
+view.findViewById<Button>(R.id.btn_download).setOnClickListener {
+    viewLifecycleOwner.lifecycleScope.launch {
+        handleDownloadConfig()   // suspend
+    }
+}
         view.findViewById<Button>(R.id.btn_link_device).setOnClickListener {
             pw.idrug.connections.dialog.LinkCodeDialogFragment()
                 .show(parentFragmentManager, "link_code")
@@ -401,112 +418,268 @@ class AccountFragment : Fragment() {
         view?.findViewById<View>(R.id.loading_overlay)?.visibility = if (loading) View.VISIBLE else View.GONE
         activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)?.isEnabled = !loading
     }
-    
-private fun afterLogout(view: View) {
-    if (isLogoutRunning) return
-    isLogoutRunning = true
-    setLoading(true)
-    prefs.edit().clear().apply()
-    qrPollingTimer?.cancel()
-    qrPollingTimer = null
 
-    // Удаляем туннели сразу, синхронно!
-    try {
-        runBlocking {
-            val tunnelManager = Application.getTunnelManager()
-            val tunnels = tunnelManager.getTunnels()
-            tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
+    /**
+     * Новый безопасный логаут: не блокирует UI, удаляет туннели и конфиги, чистит prefs.
+     */
+    private suspend fun performLogoutSafely(view: View) {
+        if (isLogoutRunning) return
+        isLogoutRunning = true
+
+        try {
+            // 1) остановить таймеры/текущие операции
+            qrPollingTimer?.cancel()
+            qrPollingTimer = null
+            cancelOngoingConfigOpsSafely()
+
+            // 2) IO-блок: удалить туннели и конфиги, отменить синхронизации
+            withContext(Dispatchers.IO) {
+                // удалить туннели idrug_*
                 try {
-                    tunnelManager.delete(tunnel)
-                    Log.i("AccountFragment", "Tunnel deleted: ${tunnel.name}")
-                } catch (te: Exception) {
-                    Log.e("AccountFragment", "Tunnel delete error: ${tunnel.name}", te)
+                    val tunnelManager = Application.getTunnelManager()
+                    val tunnels = tunnelManager.getTunnels()
+                    tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
+                        try {
+                            tunnelManager.delete(tunnel)
+                            Log.i("AccountFragment", "Tunnel deleted: ${tunnel.name}")
+                        } catch (te: Exception) {
+                            Log.e("AccountFragment", "Tunnel delete error: ${tunnel.name}", te)
+                        }
+                    }
+                } catch (e: Exception) {
+                    Log.e("AccountFragment", "Error while deleting tunnels during logout", e)
+                }
+
+                // удалить сохранённые/временные конфиги
+                deleteDownloadedConfigsIO()
+
+                // отменить любые воркеры/синки
+                try {
+                    TunnelSyncManager.cancelAll()
+                } catch (e: Exception) {
+                    Log.e("AccountFragment", "TunnelSyncManager.cancelAll() error", e)
+                }
+            }
+
+            // 3) Unsubscribe от FCM темы (если был подписан)
+            val tgId = prefs.getString("telegram_id", null)
+            if (!tgId.isNullOrEmpty()) {
+                try {
+                    // FCM позволяет unsubscribe без await — не блокируем UI
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("user_$tgId")
+                } catch (_: Exception) { /* не критично */ }
+            }
+
+            // 4) Очистить prefs (после того, как закончили все операции)
+            prefs.edit().clear().apply()
+
+            // 5) UI: показать экран логина и тост
+            safeUi {
+                showLoginScreen(view)
+                Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
+            }
+        } catch (ce: CancellationException) {
+            throw ce
+        } catch (e: Exception) {
+            Log.e("AccountFragment", "performLogoutSafely fatal", e)
+            safeUi {
+                Toast.makeText(requireContext(), getString(R.string.error_with_message, e.message), Toast.LENGTH_LONG).show()
+            }
+        } finally {
+            isLogoutRunning = false
+        }
+    }
+
+    /**
+     * Удаляет config-файлы из internal storage.
+     * Ищем варианты: "wg_idrug_*.conf" и "wg_*.conf" — под твои текущие соглашения.
+     */
+    private suspend fun deleteDownloadedConfigsIO() {
+        withContext(Dispatchers.IO) {
+            val dir = context?.filesDir ?: return@withContext
+            val files = dir.listFiles() ?: return@withContext
+            files.forEach { f ->
+                if (f.isFile && f.name.endsWith(".conf") &&
+                    (f.name.startsWith("wg_idrug_") || f.name.startsWith("wg_"))
+                ) {
+                    val ok = try { f.delete() } catch (_: Exception) { false }
+                    if (ok) Log.i("AccountFragment", "Deleted config: ${f.name}")
+                    else Log.w("AccountFragment", "Failed to delete config: ${f.absolutePath}")
                 }
             }
         }
-    } catch (e: Exception) {
-        Log.e("AccountFragment", "Error while deleting tunnels during logout", e)
     }
 
-    // После логаута отменяем все операции синхронизации
-    TunnelSyncManager.cancelAll()
+    /**
+     * Если где-то у тебя висит активная загрузка/шаринг .conf — гаси тут.
+     * Например, отмена Job/WorkManager, закрытие InputStream/SAF, закрытие диалогов.
+     */
+    private fun cancelOngoingConfigOpsSafely() {
+        // заглушка под твои реальные операции, если они есть
+        // например: currentShareIntent?.let{ ... }; activeJobs.forEach{ it.cancel() } и т.д.
+    }
 
-    safeUi {
-        if (isLoggedIn()) {
-            setLoading(false)
-            isLogoutRunning = false
-            return@safeUi
+private suspend fun handleDownloadConfig() {
+    val serverId = selectedServerId
+    if (serverId == null) {
+        withContext(Dispatchers.Main) {
+            Toast.makeText(requireContext(), getString(R.string.select_server), Toast.LENGTH_SHORT).show()
         }
-        showLoginScreen(view)
-        Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
-        setLoading(false)
-        isLogoutRunning = false
+        return
+    }
+
+    withContext(Dispatchers.Main) { setLoading(true) }
+
+    try {
+        val token = prefs.getString("token", null)
+        if (token.isNullOrEmpty()) {
+            withContext(Dispatchers.Main) {
+                setLoading(false)
+                Toast.makeText(requireContext(), getString(R.string.login_via_telegram), Toast.LENGTH_SHORT).show()
+            }
+            return
+        }
+
+        // 1) Насильно обновим профиль, чтобы после logout->login subscriptions были свежими
+        val activeForServer: Boolean = withContext(Dispatchers.IO) {
+            try {
+                val client = OkHttpClient()
+                val req = Request.Builder()
+                    .url("https://idrug.pw/api/profile")
+                    .addHeader("Authorization", "Bearer $token")
+                    .build()
+                client.newCall(req).execute().use { resp ->
+                    if (!resp.isSuccessful) return@use false
+                    val body = resp.body?.string().orEmpty()
+                    val obj = JSONObject(body)
+                    val subsArr = obj.optJSONArray("subscriptions") ?: JSONArray()
+
+                    val freshSubs = mutableListOf<Subscription>()
+                    for (i in 0 until subsArr.length()) {
+                        val o = subsArr.getJSONObject(i)
+                        val id = o.optString("location", o.optString("id", ""))
+                        val name = getServerName(id)
+                        val expires = o.optString("expires")
+                        val forever = o.optBoolean("forever", false)
+                        val active = o.optBoolean("active", false)
+                        freshSubs.add(Subscription(id, name, expires, forever, active))
+                    }
+                    withContext(Dispatchers.Main) {
+                        subscriptions = freshSubs
+                        updateDownloadButtonState(requireView())
+                    }
+                    freshSubs.any { it.location == serverId && it.active }
+                }
+            } catch (e: Exception) {
+                Log.e("AccountFragment", "Profile refresh error", e)
+                false
+            }
+        }
+
+        if (!activeForServer) {
+            withContext(Dispatchers.Main) {
+                setLoading(false)
+                Toast.makeText(requireContext(), getString(R.string.subscription_inactive_msg), Toast.LENGTH_SHORT).show()
+            }
+            return
+        }
+
+        val tunnelName = "idrug_$serverId"
+        val tunnelManager = Application.getTunnelManager()
+
+        // 2) Проверка наличия туннеля (suspend)
+        val exists = withContext(Dispatchers.IO) {
+            try {
+                val list = tunnelManager.getTunnels()   // suspend
+                list.any { it.name == tunnelName }
+            } catch (e: Exception) {
+                Log.e("AccountFragment", "getTunnels() check failed", e)
+                false
+            }
+        }
+        if (exists) {
+            withContext(Dispatchers.Main) {
+                setLoading(false)
+                Toast.makeText(requireContext(), getString(R.string.config_already_added), Toast.LENGTH_SHORT).show()
+            }
+            return
+        }
+
+        // 3) Скачиваем конфиг (IO)
+        val confText = withContext(Dispatchers.IO) {
+            try {
+                val client = OkHttpClient()
+                val url = "https://idrug.pw/api/profile/download?server=$serverId"
+                val req = Request.Builder()
+                    .url(url)
+                    .addHeader("Authorization", "Bearer $token")
+                    .build()
+                client.newCall(req).execute().use { resp ->
+                    if (!resp.isSuccessful) throw IOException("download http ${resp.code}")
+                    resp.body?.string() ?: throw IOException("empty body")
+                }
+            } catch (e: Exception) {
+                Log.e("AccountFragment", "downloadConfig error", e)
+                null
+            }
+        }
+        if (confText.isNullOrEmpty()) {
+            withContext(Dispatchers.Main) {
+                setLoading(false)
+                Toast.makeText(requireContext(), getString(R.string.error_with_message, "Download failed"), Toast.LENGTH_LONG).show()
+            }
+            return
+        }
+
+// 4) Записываем временный файл и создаём туннель (оба – в IO, suspend), с одноразовым ретраем
+val created = withContext(Dispatchers.IO) {
+    // берём applicationContext, чтобы не дёргать requireContext() лишний раз
+    val appCtx = requireContext().applicationContext
+    val file = File(appCtx.filesDir, "wg_$tunnelName.conf")
+    try {
+        file.writeText(confText)
+
+        // ВАЖНО: suspend, иначе нельзя вызывать suspend create(...)
+        suspend fun createOnce(): Boolean = try {
+            val cfg = Config.parse(file.bufferedReader())
+            tunnelManager.create(tunnelName, cfg)   // suspend — теперь ОК
+            true
+        } catch (e: Exception) {
+            Log.e("AccountFragment", "tunnel create failed", e)
+            false
+        }
+
+        if (createOnce()) {
+            true
+        } else {
+            // короткий ретрай без блокировки потока
+            delay(200)
+            createOnce()
+        }
+    } finally {
+        try { file.delete() } catch (_: Exception) {}
     }
 }
 
-    private fun handleDownloadConfig() {
-        if (selectedServerId == null) {
-            Toast.makeText(requireContext(), getString(R.string.select_server), Toast.LENGTH_SHORT).show()
-            return
-        }
-        val serverId = selectedServerId ?: return
-        if (!subscriptions.any { it.location == serverId && it.active }) {
-            Toast.makeText(requireContext(), getString(R.string.subscription_inactive_msg), Toast.LENGTH_SHORT).show()
-            return
-        }
-        val tunnelName = "idrug_$serverId"
-        setLoading(true)
-        val token = prefs.getString("token", null)
-        if (token == null) {
-            Toast.makeText(requireContext(), getString(R.string.login_via_telegram), Toast.LENGTH_SHORT).show()
+        withContext(Dispatchers.Main) {
             setLoading(false)
-            return
+            if (created) {
+                Toast.makeText(requireContext(), getString(R.string.tunnel_added), Toast.LENGTH_SHORT).show()
+                loadProfileAndSetupUI(requireView())
+            } else {
+                Toast.makeText(requireContext(), getString(R.string.tunnel_creation_error, "create failed"), Toast.LENGTH_LONG).show()
+            }
         }
-        TunnelSyncManager.scope.launch {
-            if (prefs.getString("token", null).isNullOrEmpty()) {
-                setLoading(false)
-                return@launch
-            }
-            val tunnelManager = Application.getTunnelManager()
-            val tunnels = tunnelManager.getTunnels()
-            val tunnel = tunnels.firstOrNull { it.name == tunnelName }
-            if (tunnel != null) {
-                safeUi {
-                    Toast.makeText(requireContext(), getString(R.string.config_already_added), Toast.LENGTH_SHORT).show()
-                    setLoading(false)
-                }
-                return@launch
-            }
-            downloadConfig(token, serverId) { success, configOrError ->
-                safeUi {
-                    if (prefs.getString("token", null).isNullOrEmpty()) {
-                        setLoading(false)
-                        return@safeUi
-                    }
-                    setLoading(false)
-                    if (success) {
-                        val file = File(requireContext().filesDir, "wg_$tunnelName.conf")
-                        file.writeText(configOrError ?: "")
-                        TunnelSyncManager.scope.launch {
-                            try {
-                                val config = Config.parse(file.bufferedReader())
-                                tunnelManager.create(tunnelName, config)
-                                file.delete()
-                                Toast.makeText(requireContext(), getString(R.string.tunnel_added), Toast.LENGTH_SHORT).show()
-                                loadProfileAndSetupUI(requireView())
-                            } catch (e: Exception) {
-                                Toast.makeText(requireContext(), getString(R.string.tunnel_creation_error, e.message), Toast.LENGTH_LONG).show()
-                            }
-                        }
-                    } else {
-                        Toast.makeText(requireContext(), getString(R.string.error_with_message, configOrError), Toast.LENGTH_LONG).show()
-                    }
-                }
-            }
+    } catch (e: CancellationException) {
+        withContext(Dispatchers.Main) { setLoading(false) }
+        throw e
+    } catch (e: Exception) {
+        withContext(Dispatchers.Main) {
+            setLoading(false)
+            Toast.makeText(requireContext(), getString(R.string.error_with_message, e.message), Toast.LENGTH_LONG).show()
         }
     }
-
-
+}
 
 
     private fun getProfileFromJwt(jwt: String, callback: (Boolean, String?, String?) -> Unit) {
@@ -570,7 +743,6 @@ private fun afterLogout(view: View) {
             Toast.makeText(requireContext(), getString(R.string.unable_open_telegram), Toast.LENGTH_SHORT).show()
         }
     }
-
 
     private fun handleLinkCodeLogin(code: String) {
         linkAccountWithCode(code) { success, token, username, message ->
@@ -666,8 +838,7 @@ private fun afterLogout(view: View) {
         }
         override fun key() = "circle"
     }
-
-   private fun syncTunnelsWithProfile() {
+private fun syncTunnelsWithProfile() {
     val token = prefs.getString("token", null) ?: return
     val client = OkHttpClient()
     val url = "https://idrug.pw/api/profile"
@@ -675,11 +846,14 @@ private fun afterLogout(view: View) {
         .url(url)
         .addHeader("Authorization", "Bearer $token")
         .build()
+
     client.newCall(request).enqueue(object : Callback {
-        override fun onFailure(call: Call, e: IOException) {}
+        override fun onFailure(call: Call, e: IOException) { /* noop */ }
+
         override fun onResponse(call: Call, response: Response) {
             if (!response.isSuccessful) return
             val resp = response.body?.string() ?: return
+
             try {
                 val obj = JSONObject(resp)
                 val subscriptionsArr = obj.optJSONArray("subscriptions") ?: return
@@ -690,28 +864,43 @@ private fun afterLogout(view: View) {
                         activeServers.add(sObj.optString("location"))
                     }
                 }
-                TunnelSyncManager.scope.launch {
-                    val tunnelManager = Application.getTunnelManager()
-                    val tunnels = tunnelManager.getTunnels().toList()
 
-                    // Только удаляем туннели, которые неактивны
-                    val toRemove = tunnels.filter {
-                        it.name.startsWith("idrug_") &&
-                            it.name.removePrefix("idrug_") !in activeServers
-                    }
-                    for (tunnel in toRemove) {
-                        try {
-                            tunnelManager.delete(tunnel)
-                            Log.i("AccountFragment", "Tunnel deleted: ${tunnel.name}")
-                        } catch (te: Exception) {
-                            Log.e("AccountFragment", "Tunnel delete error: ${tunnel.name}", te)
+                // ВАЖНО: все suspend-вызовы внутри корутины И внутри withContext(IO)
+                TunnelSyncManager.scope.launch {
+                    try {
+                        val tunnelManager = Application.getTunnelManager()
+
+                        // getTunnels() — suspend → вызываем прямо в корутине
+                        val tunnels = withContext(Dispatchers.IO) {
+                            tunnelManager.getTunnels()
                         }
+
+                        val toRemove = tunnels.filter {
+                            it.name.startsWith("idrug_") &&
+                                    it.name.removePrefix("idrug_") !in activeServers
+                        }
+
+                        // delete(...) — тоже suspend
+                        withContext(Dispatchers.IO) {
+                            for (tunnel in toRemove) {
+                                try {
+                                    tunnelManager.delete(tunnel)
+                                    Log.i("AccountFragment", "Tunnel deleted: ${tunnel.name}")
+                                } catch (te: Exception) {
+                                    Log.e("AccountFragment", "Tunnel delete error: ${tunnel.name}", te)
+                                }
+                            }
+                        }
+                    } catch (e: Exception) {
+                        Log.e("AccountFragment", "syncTunnelsWithProfile coroutine error", e)
                     }
                 }
-            } catch (_: Exception) {}
+            } catch (_: Exception) { /* ignore */ }
         }
     })
 }
+
+
 
     private fun safeUi(block: () -> Unit) {
         if (destroyed || !isAdded || activity == null) return
