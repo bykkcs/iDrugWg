@@ -297,6 +297,7 @@
     <string name="update_download_description">Downloading the latest iDrug Connections APK</string>
     <string name="update_download_started">Update download started</string>
     <string name="update_download_failed">Update download failed</string>
+    <string name="update_download_progress">Downloading update… %1$d%%</string>
     <string name="update_error_generic">Unable to check updates. Try again later.</string>
     <string name="update_install_permission">Allow installation from unknown sources to continue.</string>
     <string name="update_install_started">Opening installer…</string>

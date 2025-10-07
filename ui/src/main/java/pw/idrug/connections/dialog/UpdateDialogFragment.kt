@@ -11,7 +11,6 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.LayoutInflater
-import android.widget.ProgressBar
 import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
@@ -23,6 +22,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import pw.idrug.connections.BuildConfig
@@ -73,7 +73,8 @@ class UpdateDialogFragment : DialogFragment() {
         val errorText = view.findViewById<TextView>(R.id.update_error)
         val changelogContainer = view.findViewById<ScrollView>(R.id.update_changelog_container)
         val changelog = view.findViewById<TextView>(R.id.update_changelog)
-        val progressBar = view.findViewById<ProgressBar>(R.id.update_progress)
+        val progressIndicator = view.findViewById<LinearProgressIndicator>(R.id.update_progress)
+        val progressText = view.findViewById<TextView>(R.id.update_progress_text)
         val installButton = view.findViewById<MaterialButton>(R.id.update_install)
         val laterButton = view.findViewById<MaterialButton>(R.id.update_later)
 
@@ -83,11 +84,31 @@ class UpdateDialogFragment : DialogFragment() {
         // состояние UI
         lifecycleScope.launch {
             viewModel.state.collectLatest { state ->
-                progressBar.isVisible = state.loading
-                title.isVisible = !state.loading
-                changelogContainer.isVisible = state.updateAvailable && !state.loading
-                installButton.isVisible = state.updateAvailable && state.error == null && !state.loading
-                laterButton.isVisible = !state.loading
+                val showLoading = state.loading
+                val showDownloading = state.downloading
+
+                progressIndicator.isVisible = showLoading || showDownloading
+                if (showDownloading) {
+                    progressIndicator.isIndeterminate = false
+                    progressIndicator.setProgressCompat(state.downloadProgress, true)
+                } else if (showLoading) {
+                    progressIndicator.isIndeterminate = true
+                } else {
+                    progressIndicator.isIndeterminate = false
+                    progressIndicator.setProgressCompat(0, false)
+                }
+
+                progressText.isVisible = showDownloading
+                progressText.text = if (showDownloading) {
+                    getString(R.string.update_download_progress, state.downloadProgress)
+                } else {
+                    ""
+                }
+
+                title.isVisible = !showLoading
+                changelogContainer.isVisible = state.updateAvailable && !showLoading && !showDownloading
+                installButton.isVisible = state.updateAvailable && state.error == null && !showLoading && !showDownloading
+                laterButton.isVisible = !showLoading && !showDownloading
 
                 val label = when {
                     !state.versionName.isNullOrBlank() -> state.versionName

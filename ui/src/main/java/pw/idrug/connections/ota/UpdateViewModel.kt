@@ -101,6 +101,7 @@ class UpdateViewModel(application: Application) : AndroidViewModel(application) 
                 request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, APK_FILE_NAME)
                 val manager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
                 currentDownloadId = manager.enqueue(request)
+                _state.value = _state.value.copy(downloading = true, downloadProgress = 0, error = null)
                 _events.emit(UpdateEvent.DownloadStarted(currentDownloadId!!))
                 val query = DownloadManager.Query().setFilterById(currentDownloadId!!)
                 var completed = false
@@ -108,14 +109,25 @@ class UpdateViewModel(application: Application) : AndroidViewModel(application) 
                     val cursor = manager.query(query)
                     cursor?.use {
                         if (it.moveToFirst()) {
-                            when (it.getInt(it.getColumnIndexOrThrow(DownloadManager.COLUMN_STATUS))) {
+                            val status = it.getInt(it.getColumnIndexOrThrow(DownloadManager.COLUMN_STATUS))
+                            val totalBytes = it.getLong(it.getColumnIndexOrThrow(DownloadManager.COLUMN_TOTAL_SIZE_BYTES))
+                            val downloadedBytes = it.getLong(it.getColumnIndexOrThrow(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR))
+                            val progress = if (totalBytes > 0 && downloadedBytes >= 0) {
+                                ((downloadedBytes * 100L) / totalBytes).toInt().coerceIn(0, 100)
+                            } else {
+                                _state.value.downloadProgress
+                            }
+                            _state.value = _state.value.copy(downloadProgress = progress)
+                            when (status) {
                                 DownloadManager.STATUS_SUCCESSFUL -> {
                                     completed = true
-                                    val apkFile = destination
-                                    val apkUri = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                                        androidx.core.content.FileProvider.getUriForFile(context, "${context.packageName}.provider", apkFile)
+                                    _state.value = _state.value.copy(downloadProgress = 100, downloading = false)
+                                    val downloadId = currentDownloadId!!
+                                    val apkUriFromManager = manager.getUriForDownloadedFile(downloadId)
+                                    val apkUri = apkUriFromManager ?: if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                                        androidx.core.content.FileProvider.getUriForFile(context, "${context.packageName}.provider", destination)
                                     } else {
-                                        android.net.Uri.fromFile(apkFile)
+                                        android.net.Uri.fromFile(destination)
                                     }
                                     val installIntent = android.content.Intent(android.content.Intent.ACTION_VIEW).apply {
                                         setDataAndType(apkUri, APK_MIME_TYPE)
@@ -126,6 +138,7 @@ class UpdateViewModel(application: Application) : AndroidViewModel(application) 
                                 }
                                 DownloadManager.STATUS_FAILED -> {
                                     completed = true
+                                    _state.value = _state.value.copy(downloading = false, downloadProgress = 0)
                                     val message = context.getString(R.string.update_error_generic)
                                     _events.emit(UpdateEvent.Error(message))
                                 }
@@ -136,7 +149,9 @@ class UpdateViewModel(application: Application) : AndroidViewModel(application) 
                         kotlinx.coroutines.delay(500)
                     }
                 }
+                _state.value = _state.value.copy(downloading = false)
             }.onFailure { throwable ->
+                _state.value = _state.value.copy(downloading = false, downloadProgress = 0)
                 val message = throwable.localizedMessage
                     ?: context.getString(R.string.update_error_generic)
                 _events.emit(UpdateEvent.Error(message))
