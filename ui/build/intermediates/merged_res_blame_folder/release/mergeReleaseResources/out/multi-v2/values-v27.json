@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-56:/values-v27/values-v27.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-62:/values-v27/values-v27.xml",
             "map": [
                 {
                     "source": "/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/res/values-v27/styles.xml",

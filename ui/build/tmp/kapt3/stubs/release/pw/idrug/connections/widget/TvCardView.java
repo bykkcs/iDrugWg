@@ -4,15 +4,15 @@ package pw.idrug.connections.widget;
 public final class TvCardView extends com.google.android.material.card.MaterialCardView {
     private boolean isUp = false;
     private boolean isDeleting = false;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private static final int[] STATE_IS_UP = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private static final int[] STATE_IS_DELETING = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public static final pw.idrug.connections.widget.TvCardView.Companion Companion = null;
     
-    public TvCardView(@org.jetbrains.annotations.Nullable
-    android.content.Context context, @org.jetbrains.annotations.Nullable
+    public TvCardView(@org.jetbrains.annotations.Nullable()
+    android.content.Context context, @org.jetbrains.annotations.Nullable()
     android.util.AttributeSet attrs) {
         super(null);
     }
@@ -31,8 +31,8 @@ public final class TvCardView extends com.google.android.material.card.MaterialC
     public final void setDeleting(boolean value) {
     }
     
-    @java.lang.Override
-    @org.jetbrains.annotations.NotNull
+    @java.lang.Override()
+    @org.jetbrains.annotations.NotNull()
     protected int[] onCreateDrawableState(int extraSpace) {
         return null;
     }

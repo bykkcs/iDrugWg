@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-56:/values-v24/values-v24.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-62:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "/home/bykk/.gradle/caches/transforms-3/af004dc4121ccd483931efbeabcba0e1/transformed/material-1.11.0/res/values-v24/values-v24.xml",
+                    "source": "/home/bykk/.gradle/caches/transforms-3/2786ce5c66ca4db1962a4ced1637d1f7/transformed/material-1.12.0/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,9,12,15",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/bykk/.gradle/caches/transforms-3/031193c7c036034c82e0710c84c1426f/transformed/appcompat-1.6.1/res/values-v24/values-v24.xml",
+                    "source": "/home/bykk/.gradle/caches/transforms-3/202de3dbedd09f51727d792197f108cf/transformed/appcompat-1.6.1/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

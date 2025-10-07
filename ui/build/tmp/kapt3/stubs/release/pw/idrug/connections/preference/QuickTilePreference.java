@@ -4,25 +4,25 @@ package pw.idrug.connections.preference;
 @androidx.annotation.RequiresApi(value = android.os.Build.VERSION_CODES.TIRAMISU)
 public final class QuickTilePreference extends androidx.preference.Preference {
     
-    public QuickTilePreference(@org.jetbrains.annotations.NotNull
-    android.content.Context context, @org.jetbrains.annotations.Nullable
+    public QuickTilePreference(@org.jetbrains.annotations.NotNull()
+    android.content.Context context, @org.jetbrains.annotations.Nullable()
     android.util.AttributeSet attrs) {
         super(null, null, 0, 0);
     }
     
-    @java.lang.Override
-    @org.jetbrains.annotations.NotNull
+    @java.lang.Override()
+    @org.jetbrains.annotations.NotNull()
     public java.lang.String getSummary() {
         return null;
     }
     
-    @java.lang.Override
-    @org.jetbrains.annotations.NotNull
+    @java.lang.Override()
+    @org.jetbrains.annotations.NotNull()
     public java.lang.String getTitle() {
         return null;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     protected void onClick() {
     }
 }

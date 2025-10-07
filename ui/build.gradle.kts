@@ -8,7 +8,7 @@ val pkg: String = providers.gradleProperty("idrugconnectionsPackageName").get()
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlin.kapt) // ✅ kapt уже есть — отлично
     id("com.google.gms.google-services")
 }
 
@@ -33,7 +33,6 @@ android {
     }
     buildTypes {
         release {
-            // Enable code shrinking and resource shrinking for production
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
@@ -62,11 +61,11 @@ android {
         warning += "MissingTranslation"
         warning += "ImpliedQuantity"
     }
-
 }
 
 dependencies {
     implementation(project(":tunnel"))
+
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.appcompat)
@@ -81,17 +80,23 @@ dependencies {
     implementation(libs.google.material)
     implementation(libs.zxing.android.embedded)
     implementation(libs.kotlinx.coroutines.android)
+
+    // --- OTA network stack ---
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
+
+    // --- Moshi с codegen ---
+    implementation("com.squareup.moshi:moshi:1.15.1")
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.15.1") // ✅ добавь вот это!
+
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("com.google.zxing:core:3.5.1")
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation(libs.viewpager2)
-    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0") // опционально
-
     implementation("androidx.work:work-runtime-ktx:2.9.1")
-    implementation("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
-    implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
 
     implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
     implementation("com.google.firebase:firebase-messaging")

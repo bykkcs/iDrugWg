@@ -2,13 +2,13 @@ package pw.idrug.connections.fragment;
 
 @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000.\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\u0018\u0000 \u000e2\u00020\u0001:\u0001\u000eB\u0005\u00a2\u0006\u0002\u0010\u0002J\b\u0010\u0007\u001a\u00020\bH\u0002J\u0012\u0010\t\u001a\u00020\b2\b\u0010\n\u001a\u0004\u0018\u00010\u000bH\u0016J\u0012\u0010\f\u001a\u00020\r2\b\u0010\n\u001a\u0004\u0018\u00010\u000bH\u0016R\u0010\u0010\u0003\u001a\u0004\u0018\u00010\u0004X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u0010\u0010\u0005\u001a\u0004\u0018\u00010\u0006X\u0082\u000e\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u000f"}, d2 = {"Lpw/idrug/connections/fragment/ConfigNamingDialogFragment;", "Landroidx/fragment/app/DialogFragment;", "()V", "binding", "Lpw/idrug/connections/databinding/ConfigNamingDialogFragmentBinding;", "config", "Lpw/idrug/connections/config/Config;", "createTunnelAndDismiss", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateDialog", "Landroid/app/Dialog;", "Companion", "ui_release"})
 public final class ConfigNamingDialogFragment extends androidx.fragment.app.DialogFragment {
-    @org.jetbrains.annotations.Nullable
+    @org.jetbrains.annotations.Nullable()
     private pw.idrug.connections.databinding.ConfigNamingDialogFragmentBinding binding;
-    @org.jetbrains.annotations.Nullable
+    @org.jetbrains.annotations.Nullable()
     private pw.idrug.connections.config.Config config;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private static final java.lang.String KEY_CONFIG_TEXT = "config_text";
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public static final pw.idrug.connections.fragment.ConfigNamingDialogFragment.Companion Companion = null;
     
     public ConfigNamingDialogFragment() {
@@ -18,14 +18,14 @@ public final class ConfigNamingDialogFragment extends androidx.fragment.app.Dial
     private final void createTunnelAndDismiss() {
     }
     
-    @java.lang.Override
-    public void onCreate(@org.jetbrains.annotations.Nullable
+    @java.lang.Override()
+    public void onCreate(@org.jetbrains.annotations.Nullable()
     android.os.Bundle savedInstanceState) {
     }
     
-    @java.lang.Override
-    @org.jetbrains.annotations.NotNull
-    public android.app.Dialog onCreateDialog(@org.jetbrains.annotations.Nullable
+    @java.lang.Override()
+    @org.jetbrains.annotations.NotNull()
+    public android.app.Dialog onCreateDialog(@org.jetbrains.annotations.Nullable()
     android.os.Bundle savedInstanceState) {
         return null;
     }
@@ -37,8 +37,8 @@ public final class ConfigNamingDialogFragment extends androidx.fragment.app.Dial
             super();
         }
         
-        @org.jetbrains.annotations.NotNull
-        public final pw.idrug.connections.fragment.ConfigNamingDialogFragment newInstance(@org.jetbrains.annotations.Nullable
+        @org.jetbrains.annotations.NotNull()
+        public final pw.idrug.connections.fragment.ConfigNamingDialogFragment newInstance(@org.jetbrains.annotations.Nullable()
         java.lang.String configText) {
             return null;
         }

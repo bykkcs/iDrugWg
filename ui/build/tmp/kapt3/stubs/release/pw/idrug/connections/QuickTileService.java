@@ -8,58 +8,58 @@ package pw.idrug.connections;
 @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000:\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u000b\b\u0007\u0018\u0000 \u00192\u00020\u0001:\u0003\u0019\u001a\u001bB\u0005\u00a2\u0006\u0002\u0010\u0002J\u0012\u0010\f\u001a\u0004\u0018\u00010\r2\u0006\u0010\u000e\u001a\u00020\u000fH\u0016J\b\u0010\u0010\u001a\u00020\u0011H\u0016J\b\u0010\u0012\u001a\u00020\u0011H\u0016J\b\u0010\u0013\u001a\u00020\u0011H\u0016J\b\u0010\u0014\u001a\u00020\u0011H\u0016J\b\u0010\u0015\u001a\u00020\u0011H\u0016J\b\u0010\u0016\u001a\u00020\u0011H\u0016J\b\u0010\u0017\u001a\u00020\u0011H\u0016J\b\u0010\u0018\u001a\u00020\u0011H\u0002R\u0010\u0010\u0003\u001a\u0004\u0018\u00010\u0004X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u0010\u0010\u0005\u001a\u0004\u0018\u00010\u0004X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u0012\u0010\u0006\u001a\u00060\u0007R\u00020\u0000X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0012\u0010\b\u001a\u00060\tR\u00020\u0000X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0010\u0010\n\u001a\u0004\u0018\u00010\u000bX\u0082\u000e\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u001c"}, d2 = {"Lpw/idrug/connections/QuickTileService;", "Landroid/service/quicksettings/TileService;", "()V", "iconOff", "Landroid/graphics/drawable/Icon;", "iconOn", "onStateChangedCallback", "Lpw/idrug/connections/QuickTileService$OnStateChangedCallback;", "onTunnelChangedCallback", "Lpw/idrug/connections/QuickTileService$OnTunnelChangedCallback;", "tunnel", "Lpw/idrug/connections/model/ObservableTunnel;", "onBind", "Landroid/os/IBinder;", "intent", "Landroid/content/Intent;", "onClick", "", "onCreate", "onDestroy", "onStartListening", "onStopListening", "onTileAdded", "onTileRemoved", "updateTile", "Companion", "OnStateChangedCallback", "OnTunnelChangedCallback", "ui_release"})
 @androidx.annotation.RequiresApi(value = android.os.Build.VERSION_CODES.N)
 public final class QuickTileService extends android.service.quicksettings.TileService {
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final pw.idrug.connections.QuickTileService.OnStateChangedCallback onStateChangedCallback = null;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private final pw.idrug.connections.QuickTileService.OnTunnelChangedCallback onTunnelChangedCallback = null;
-    @org.jetbrains.annotations.Nullable
+    @org.jetbrains.annotations.Nullable()
     private android.graphics.drawable.Icon iconOff;
-    @org.jetbrains.annotations.Nullable
+    @org.jetbrains.annotations.Nullable()
     private android.graphics.drawable.Icon iconOn;
-    @org.jetbrains.annotations.Nullable
+    @org.jetbrains.annotations.Nullable()
     private pw.idrug.connections.model.ObservableTunnel tunnel;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     private static final java.lang.String TAG = "iDrugConnections/QuickTileService";
     private static boolean isAdded = false;
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.NotNull()
     public static final pw.idrug.connections.QuickTileService.Companion Companion = null;
     
     public QuickTileService() {
         super();
     }
     
-    @java.lang.Override
-    @org.jetbrains.annotations.Nullable
-    public android.os.IBinder onBind(@org.jetbrains.annotations.NotNull
+    @java.lang.Override()
+    @org.jetbrains.annotations.Nullable()
+    public android.os.IBinder onBind(@org.jetbrains.annotations.NotNull()
     android.content.Intent intent) {
         return null;
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public void onClick() {
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public void onCreate() {
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public void onDestroy() {
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public void onStartListening() {
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public void onStopListening() {
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public void onTileAdded() {
     }
     
-    @java.lang.Override
+    @java.lang.Override()
     public void onTileRemoved() {
     }
     
@@ -85,8 +85,8 @@ public final class QuickTileService extends android.service.quicksettings.TileSe
             super();
         }
         
-        @java.lang.Override
-        public void onPropertyChanged(@org.jetbrains.annotations.NotNull
+        @java.lang.Override()
+        public void onPropertyChanged(@org.jetbrains.annotations.NotNull()
         androidx.databinding.Observable sender, int propertyId) {
         }
     }
@@ -98,8 +98,8 @@ public final class QuickTileService extends android.service.quicksettings.TileSe
             super();
         }
         
-        @java.lang.Override
-        public void onPropertyChanged(@org.jetbrains.annotations.NotNull
+        @java.lang.Override()
+        public void onPropertyChanged(@org.jetbrains.annotations.NotNull()
         androidx.databinding.Observable sender, int propertyId) {
         }
     }

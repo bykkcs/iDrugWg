@@ -32,20 +32,33 @@ import pw.idrug.connections.ota.UpdateEvent
 import pw.idrug.connections.ota.UpdateViewModel
 
 class UpdateDialogFragment : DialogFragment() {
-    private val viewModel: UpdateViewModel by activityViewModels()
 
+    private val viewModel: UpdateViewModel by activityViewModels()
     private var downloadReceiver: BroadcastReceiver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         val autoCheck = arguments?.getBoolean(ARG_AUTO_CHECK) ?: false
+
         if (savedInstanceState == null) {
             val versionCode = arguments?.getInt(ARG_VERSION_CODE)
             val apkUrl = arguments?.getString(ARG_APK_URL)
+
             if (versionCode != null && apkUrl != null) {
-                val versionName = arguments?.getString(ARG_VERSION_NAME)
-                val changelog = arguments?.getString(ARG_CHANGELOG)
-                viewModel.setMeta(OtaMeta(versionCode, versionName, apkUrl, changelog))
+                // эти два могут быть null в Bundle — приводим к non-null для модели
+                val versionName = arguments?.getString(ARG_VERSION_NAME) ?: ""
+                val changelog   = arguments?.getString(ARG_CHANGELOG) ?: ""
+
+                // apkUrl уже проверили на null выше
+                viewModel.setMeta(
+                    OtaMeta(
+                        versionCode = versionCode,
+                        versionName = versionName,
+                        apkUrl = apkUrl,
+                        changelog = changelog
+                    )
+                )
             } else {
                 viewModel.checkUpdate(auto = autoCheck)
             }
@@ -55,6 +68,7 @@ class UpdateDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val context = requireContext()
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_update, null)
+
         val title = view.findViewById<TextView>(R.id.update_title)
         val errorText = view.findViewById<TextView>(R.id.update_error)
         val changelogContainer = view.findViewById<ScrollView>(R.id.update_changelog_container)
@@ -66,6 +80,7 @@ class UpdateDialogFragment : DialogFragment() {
         installButton.setOnClickListener { viewModel.downloadAndInstall() }
         laterButton.setOnClickListener { dismissAllowingStateLoss() }
 
+        // состояние UI
         lifecycleScope.launch {
             viewModel.state.collectLatest { state ->
                 progressBar.isVisible = state.loading
@@ -98,6 +113,7 @@ class UpdateDialogFragment : DialogFragment() {
             }
         }
 
+        // события (тосты/инсталляция/регистрация ресивера)
         lifecycleScope.launch {
             viewModel.events.collectLatest { event ->
                 when (event) {
@@ -126,16 +142,21 @@ class UpdateDialogFragment : DialogFragment() {
         super.onDestroy()
     }
 
+    // --- Download receiver ---
+
     private fun registerDownloadReceiver() {
         if (downloadReceiver != null) return
+
         val receiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
                 if (intent?.action != DownloadManager.ACTION_DOWNLOAD_COMPLETE) return
                 val downloadId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
+                if (downloadId == -1L) return
                 handleDownloadComplete(downloadId)
             }
         }
         downloadReceiver = receiver
+
         ContextCompat.registerReceiver(
             requireContext(),
             receiver,
@@ -153,10 +174,13 @@ class UpdateDialogFragment : DialogFragment() {
     private fun handleDownloadComplete(downloadId: Long) {
         val expectedId = viewModel.getCurrentDownloadId() ?: return
         if (downloadId != expectedId) return
+
         unregisterDownloadReceiver()
+
         val context = requireContext()
         val manager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         val cursor = manager.query(DownloadManager.Query().setFilterById(downloadId))
+
         cursor?.use {
             if (!it.moveToFirst()) {
                 showDownloadError()
@@ -176,6 +200,8 @@ class UpdateDialogFragment : DialogFragment() {
         } ?: showDownloadError()
     }
 
+    // --- Install ---
+
     private fun installDownloadedApk() {
         val context = requireContext()
         val file = viewModel.getDownloadedFile()
@@ -183,6 +209,7 @@ class UpdateDialogFragment : DialogFragment() {
             showDownloadError()
             return
         }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
             !context.packageManager.canRequestPackageInstalls()
         ) {
@@ -194,6 +221,7 @@ class UpdateDialogFragment : DialogFragment() {
             Toast.makeText(context, R.string.update_install_permission, Toast.LENGTH_LONG).show()
             return
         }
+
         val apkUri = FileProvider.getUriForFile(
             context,
             "${BuildConfig.APPLICATION_ID}.provider",
@@ -203,6 +231,7 @@ class UpdateDialogFragment : DialogFragment() {
             setDataAndType(apkUri, APK_MIME_TYPE)
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_ACTIVITY_NEW_TASK)
         }
+
         runCatching { startActivity(intent) }
             .onSuccess {
                 Toast.makeText(context, R.string.update_install_started, Toast.LENGTH_SHORT).show()
@@ -224,6 +253,7 @@ class UpdateDialogFragment : DialogFragment() {
         private const val ARG_APK_URL = "apk_url"
         private const val ARG_CHANGELOG = "changelog"
         private const val APK_MIME_TYPE = "application/vnd.android.package-archive"
+        private const val TAG = "update_dialog"
 
         fun show(
             fragmentManager: androidx.fragment.app.FragmentManager,
@@ -235,15 +265,13 @@ class UpdateDialogFragment : DialogFragment() {
                     putBoolean(ARG_AUTO_CHECK, auto)
                     if (meta != null) {
                         putInt(ARG_VERSION_CODE, meta.versionCode)
-                        putString(ARG_VERSION_NAME, meta.versionName)
-                        putString(ARG_APK_URL, meta.apkUrl)
-                        putString(ARG_CHANGELOG, meta.changelog)
+                        putString(ARG_VERSION_NAME, meta.versionName)   // null допустим — в onCreate приведём к ""
+                        putString(ARG_APK_URL, meta.apkUrl)              // non-null
+                        putString(ARG_CHANGELOG, meta.changelog)         // null допустим — в onCreate приведём к ""
                     }
                 }
             }
             fragment.show(fragmentManager, TAG)
         }
-
-        private const val TAG = "update_dialog"
     }
 }
