@@ -88,4 +88,16 @@ object UserKnobs {
                 it[RUNNING_TUNNELS] = runningTunnels
         }
     }
+
+    private val UPDATES_AUTO_CHECK_ENABLED = booleanPreferencesKey("updates_auto_check_enabled")
+    val updatesAutoCheckEnabled: Flow<Boolean>
+        get() = Application.getPreferencesDataStore().data.map {
+            it[UPDATES_AUTO_CHECK_ENABLED] ?: true
+        }
+
+    suspend fun setUpdatesAutoCheckEnabled(enabled: Boolean) {
+        Application.getPreferencesDataStore().edit {
+            it[UPDATES_AUTO_CHECK_ENABLED] = enabled
+        }
+    }
 }

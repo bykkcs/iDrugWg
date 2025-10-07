@@ -16,6 +16,12 @@
         android:title="@string/update_application_title"
         android:summary="@string/update_application_summary" />
 
+    <androidx.preference.SwitchPreferenceCompat
+        android:key="updates_auto_check_enabled"
+        android:title="@string/update_auto_check_title"
+        android:summary="@string/update_auto_check_summary"
+        android:defaultValue="true" />
+
     <!--
     <CheckBoxPreference
         android:defaultValue="false"

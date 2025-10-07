@@ -19,12 +19,16 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.messaging.FirebaseMessaging
 import android.util.Log
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.first
 import pw.idrug.connections.Application
 import pw.idrug.connections.R
 import pw.idrug.connections.fragment.TunnelDetailFragment
@@ -34,10 +38,12 @@ import pw.idrug.connections.activity.OnboardingActivity
 import pw.idrug.connections.fragment.AccountFragment
 import pw.idrug.connections.model.ObservableTunnel
 import pw.idrug.connections.BuildConfig
-import pw.idrug.connections.data.UpdateMeta
+import pw.idrug.connections.dialog.UpdateDialogFragment
 import pw.idrug.connections.di.UpdateModules
-import pw.idrug.connections.domain.UpdateState
-import pw.idrug.connections.ui.dialogs.UpdateDialogFragment
+import pw.idrug.connections.ota.OtaMeta
+import pw.idrug.connections.ota.UpdateState
+import pw.idrug.connections.ota.UpdateViewModel
+import pw.idrug.connections.util.UserKnobs
 
 /**
  * CRUD interface for iDrugConnections tunnels. This activity serves as the main entry point to the
@@ -51,6 +57,7 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
     private val notificationPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {}
     private var updateDialogVersionShown: Int? = null
+    private val updateViewModel: UpdateViewModel by viewModels()
 
     private fun handleBackPressed() {
         val backStackEntries = supportFragmentManager.backStackEntryCount
@@ -165,10 +172,16 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
 
         registerForFcm()
 
+        lifecycleScope.launch {
+            updateViewModel.state.collectLatest { state ->
+                if (state.updateAvailable && !state.loading) {
+                    maybeShowUpdateDialog(state)
+                }
+            }
+        }
+
         if (savedInstanceState == null) {
-            lifecycleScope.launch { checkForUpdates() }
-        } else {
-            lifecycleScope.launch { showCachedUpdateIfNeeded() }
+            lifecycleScope.launch { performAutoUpdateCheck() }
         }
     }
 
@@ -270,52 +283,41 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        showPostInstallSnackbarIfNeeded()
-    }
-
-    private suspend fun checkForUpdates() {
-        val updateManager = UpdateModules.provideUpdateManager(applicationContext)
-        when (val state = updateManager.check()) {
-            is UpdateState.Available -> maybeShowUpdateDialog(state.meta)
-            is UpdateState.Error -> Log.w("MainActivity", "Failed to check updates: ${state.message}")
-            UpdateState.NoUpdate -> Unit
+    private suspend fun performAutoUpdateCheck() {
+        val autoCheckEnabled = withContext(Dispatchers.IO) {
+            UserKnobs.updatesAutoCheckEnabled.first()
+        }
+        if (!autoCheckEnabled) return
+        val result = withContext(Dispatchers.IO) { UpdateModules.repository.getMeta() }
+        result.onSuccess { meta ->
+            if (meta.versionCode > BuildConfig.VERSION_CODE && updateDialogVersionShown != meta.versionCode) {
+                updateViewModel.setMeta(meta)
+            }
+        }.onFailure { throwable ->
+            Log.w("MainActivity", "Failed to fetch OTA metadata", throwable)
         }
     }
 
-    private suspend fun showCachedUpdateIfNeeded() {
-        val updateManager = UpdateModules.provideUpdateManager(applicationContext)
-        val meta = updateManager.getPendingUpdate()
-        if (meta != null && meta.versionCode > BuildConfig.VERSION_CODE && !updateManager.isIgnored(meta.versionCode)) {
-            maybeShowUpdateDialog(meta)
-        }
-    }
-
-    private fun maybeShowUpdateDialog(meta: UpdateMeta) {
-        if (updateDialogVersionShown == meta.versionCode) return
+    private fun maybeShowUpdateDialog(state: UpdateState) {
+        if (!state.updateAvailable || state.loading) return
+        val versionCode = state.versionCode ?: return
+        val apkUrl = state.apkUrl ?: return
+        if (state.error != null) return
+        if (updateDialogVersionShown == versionCode) return
         if (supportFragmentManager.isStateSaved) return
-        if (supportFragmentManager.findFragmentByTag("update_dialog") != null) return
-        updateDialogVersionShown = meta.versionCode
-        UpdateDialogFragment.show(supportFragmentManager, meta)
-    }
-
-    private fun showPostInstallSnackbarIfNeeded() {
-        val updateManager = UpdateModules.provideUpdateManager(applicationContext)
-        if (!updateManager.consumePostInstallSnackbar()) return
-        val container = findViewById<View>(R.id.main_activity_container)
-        val snackbar = Snackbar.make(
-            container,
-            getString(R.string.update_installed_snackbar),
-            Snackbar.LENGTH_LONG
+        if (supportFragmentManager.findFragmentByTag(UPDATE_DIALOG_TAG) != null) return
+        updateDialogVersionShown = versionCode
+        val meta = OtaMeta(
+            versionCode = versionCode,
+            versionName = state.versionName,
+            apkUrl = apkUrl,
+            changelog = state.changelog
         )
-        snackbar.setAction(R.string.update_snackbar_open) {
-            packageManager.getLaunchIntentForPackage(packageName)?.let { startActivity(it) }
-        }
-        snackbar.show()
+        UpdateDialogFragment.show(supportFragmentManager, meta, auto = true)
     }
 
     companion object {
         const val EXTRA_OPEN_ACCOUNT = "open_account"
+        private const val UPDATE_DIALOG_TAG = "update_dialog"
     }
 }
