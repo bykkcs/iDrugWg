@@ -18,7 +18,7 @@ import pw.idrug.connections.util.AdminKnobs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import pw.idrug.connections.ui.settings.UpdateSettingsActivity
+import pw.idrug.connections.dialog.UpdateDialogFragment
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -92,7 +92,7 @@ class SettingsActivity : AppCompatActivity() {
             }
 
             preferenceManager.findPreference<Preference>("ota_update")?.setOnPreferenceClickListener {
-                startActivity(Intent(requireContext(), UpdateSettingsActivity::class.java))
+                UpdateDialogFragment.show(parentFragmentManager)
                 true
             }
         }
