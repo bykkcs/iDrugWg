@@ -124,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:ellipsize="end"
-                    android:focusable="true"
+                    android:focusable="false"
                     android:importantForAutofill="no"
                     android:inputType="none"
                     android:maxLines="1"

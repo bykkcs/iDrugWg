@@ -233,13 +233,28 @@ view.findViewById<Button>(R.id.btn_download).setOnClickListener {
             serverNames
         )
         dropdown.setAdapter(adapter)
-        dropdown.setText("", false)
-        selectedServerId = null
-        selectedServerName = null
+        val savedServerId = prefs.getString(PREF_SELECTED_SERVER, null)
+        val defaultServerId = savedServerId ?: DEFAULT_SERVER_ID
+        val defaultIndex = serverList.indexOfFirst { it.first == defaultServerId }
+        val fallbackIndex = if (defaultIndex == -1) serverList.indexOfFirst { it.first == DEFAULT_SERVER_ID } else defaultIndex
+        val resolvedIndex = if (fallbackIndex != -1) fallbackIndex else if (serverList.isNotEmpty()) 0 else -1
+        if (resolvedIndex != -1) {
+            val server = serverList[resolvedIndex]
+            selectedServerId = server.first
+            selectedServerName = server.second
+            dropdown.setText(server.second, false)
+            prefs.edit().putString(PREF_SELECTED_SERVER, server.first).apply()
+        } else {
+            dropdown.setText("", false)
+            selectedServerId = null
+            selectedServerName = null
+        }
         btnDownload.isEnabled = false
+        updateDownloadButtonState(view)
         dropdown.setOnItemClickListener { _, _, position, _ ->
             selectedServerId = serverList.getOrNull(position)?.first
             selectedServerName = serverList.getOrNull(position)?.second
+            selectedServerId?.let { prefs.edit().putString(PREF_SELECTED_SERVER, it).apply() }
             updateDownloadButtonState(view)
         }
         dropdown.setOnClickListener {
@@ -675,7 +690,6 @@ val created = withContext(Dispatchers.IO) {
     } finally {
         try { file.delete() } catch (_: Exception) {}
     }
-}
 
         withContext(Dispatchers.Main) {
             setLoading(false)
@@ -923,5 +937,10 @@ private fun syncTunnelsWithProfile() {
         handler.post {
             if (!destroyed && isAdded && activity != null) block()
         }
+    }
+
+    companion object {
+        private const val PREF_SELECTED_SERVER = "server_selected"
+        private const val DEFAULT_SERVER_ID = "germany"
     }
 }

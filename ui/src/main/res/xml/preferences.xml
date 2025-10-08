@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:key="settings">
 
     <!-- iDrug Connections for Android (you can add a GitHub link in the summary) -->
     <pw.idrug.connections.preference.VersionPreference
         android:icon="@drawable/ic_icon"
-        android:key="version" />
+        android:key="version"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
 
     <!-- Add tile to quick settings -->
-    <pw.idrug.connections.preference.QuickTilePreference android:key="quick_tile" />
+    <pw.idrug.connections.preference.QuickTilePreference
+        android:key="quick_tile"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
     
     <!-- BUTTON FOR APP UPDATE -->
     <Preference
         android:key="ota_update"
         android:title="@string/update_application_title"
-        android:summary="@string/update_application_summary" />
+        android:summary="@string/update_application_summary"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
 
     <androidx.preference.SwitchPreferenceCompat
         android:key="updates_auto_check_enabled"
         android:title="@string/update_auto_check_title"
         android:summary="@string/update_auto_check_summary"
-        android:defaultValue="true" />
+        android:defaultValue="true"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
 
     <!--
     <CheckBoxPreference

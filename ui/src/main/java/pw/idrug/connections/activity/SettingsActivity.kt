@@ -15,6 +15,7 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
 import com.google.android.material.color.MaterialColors
 import pw.idrug.connections.Application
 import pw.idrug.connections.QuickTileService
@@ -22,10 +23,12 @@ import pw.idrug.connections.R
 import pw.idrug.connections.backend.AwgQuickBackend
 import pw.idrug.connections.preference.PreferencesPreferenceDataStore
 import pw.idrug.connections.util.AdminKnobs
+import pw.idrug.connections.util.UserKnobs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import pw.idrug.connections.dialog.UpdateDialogFragment
+import kotlinx.coroutines.flow.first
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,6 +104,17 @@ class SettingsActivity : AppCompatActivity() {
             preferenceManager.findPreference<Preference>("ota_update")?.setOnPreferenceClickListener {
                 UpdateDialogFragment.show(parentFragmentManager)
                 true
+            }
+
+            preferenceManager.findPreference<SwitchPreferenceCompat>("updates_auto_check_enabled")?.let { pref ->
+                lifecycleScope.launch {
+                    pref.isChecked = UserKnobs.updatesAutoCheckEnabled.first()
+                }
+                pref.setOnPreferenceChangeListener { _, newValue ->
+                    val enabled = (newValue as? Boolean) ?: return@setOnPreferenceChangeListener false
+                    lifecycleScope.launch { UserKnobs.setUpdatesAutoCheckEnabled(enabled) }
+                    true
+                }
             }
         }
 

@@ -14,6 +14,7 @@ import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBar
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
@@ -44,6 +45,7 @@ import pw.idrug.connections.ota.OtaMeta
 import pw.idrug.connections.ota.UpdateState
 import pw.idrug.connections.ota.UpdateViewModel
 import pw.idrug.connections.util.UserKnobs
+import com.google.android.material.color.MaterialColors
 
 /**
  * CRUD interface for iDrugConnections tunnels. This activity serves as the main entry point to the
@@ -96,6 +98,13 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
             return
         }
         setContentView(R.layout.main_activity)
+        findViewById<View?>(R.id.main_activity_container)?.let { root ->
+            val surfaceColor = MaterialColors.getColor(root, com.google.android.material.R.attr.colorSurface)
+            window.navigationBarColor = surfaceColor
+            WindowCompat.getInsetsController(window, window.decorView)?.let { controller ->
+                controller.isAppearanceLightNavigationBars = MaterialColors.isColorLight(surfaceColor)
+            }
+        }
         actionBar = supportActionBar
         isTwoPaneLayout = findViewById<View?>(R.id.master_detail_wrapper) != null
         supportFragmentManager.addOnBackStackChangedListener(this)
