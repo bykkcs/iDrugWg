@@ -62,12 +62,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:minHeight="48dp"
+                        android:minWidth="48dp"
                         android:nextFocusDown="@id/interface_name_text"
                         android:nextFocusForward="@id/interface_name_text"
                         app:checked="@{tunnel.state == State.UP}"
                         app:layout_constraintBaseline_toBottomOf="@+id/interface_title"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:onBeforeCheckedChanged="@{fragment::setTunnelState}" />
+                        app:onBeforeCheckedChanged="@{fragment::setTunnelState}"
+                        app:useMaterialThemeColors="true" />
 
                     <TextView
                         android:id="@+id/interface_name_label"

@@ -78,9 +78,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:gravity="center_vertical"
         android:clickable="false"
         android:focusable="false"
+        android:foreground="@null"
+        android:gravity="center_vertical"
+        android:minHeight="48dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -113,6 +115,8 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
+            android:minHeight="48dp"
+            android:minWidth="48dp"
             app:useMaterialThemeColors="true" />
     </LinearLayout>
 

@@ -5,55 +5,52 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.children
 import com.google.android.material.color.MaterialColors
+import com.google.android.material.materialswitch.MaterialSwitch
+import com.google.android.material.switchmaterial.SwitchMaterial
 
-fun View.applyVpnSwitchStyle() {
+fun View.applyM3SwitchStyle() {
     when (this) {
-        is com.google.android.material.materialswitch.MaterialSwitch -> {
-            val ok = try {
+        is MaterialSwitch -> {
+            val applied = try {
                 javaClass.getMethod("setUseMaterialThemeColors", Boolean::class.javaPrimitiveType)
-                    .invoke(this, true); true
-            } catch (_: Throwable) { false }
-            if (!ok) applyFallbackTintForMaterialSwitch()
+                    .invoke(this, true)
+                true
+            } catch (_: Throwable) {
+                false
+            }
+            if (!applied) tintLikeM3For(this)
         }
-        is com.google.android.material.switchmaterial.SwitchMaterial -> {
-            val ok = try {
+
+        is SwitchMaterial -> {
+            val applied = try {
                 javaClass.getMethod("setUseMaterialThemeColors", Boolean::class.javaPrimitiveType)
-                    .invoke(this, true); true
-            } catch (_: Throwable) { false }
-            if (!ok) applyFallbackTintForSwitchMaterial()
+                    .invoke(this, true)
+                true
+            } catch (_: Throwable) {
+                false
+            }
+            if (!applied) tintLikeM3For(this)
         }
     }
 }
 
-private fun com.google.android.material.materialswitch.MaterialSwitch.applyFallbackTintForMaterialSwitch() {
-    val primary = MaterialColors.getColor(this, com.google.android.material.R.attr.colorPrimary)
-    val onSurface = MaterialColors.getColor(this, com.google.android.material.R.attr.colorOnSurface)
-    val onSurfaceVariant = MaterialColors.getColor(this, com.google.android.material.R.attr.colorOnSurfaceVariant)
+private fun tintLikeM3For(view: android.widget.CompoundButton) {
+    val primary = MaterialColors.getColor(view, com.google.android.material.R.attr.colorPrimary)
+    val onSurface = MaterialColors.getColor(view, com.google.android.material.R.attr.colorOnSurface)
+    val onSurfaceVariant = MaterialColors.getColor(view, com.google.android.material.R.attr.colorOnSurfaceVariant)
     val states = arrayOf(
-        intArrayOf(android.R.attr.state_checked),
+        intArrayOf(android.R.attr.state_checked, android.R.attr.state_enabled),
         intArrayOf(-android.R.attr.state_enabled),
         intArrayOf()
     )
-    thumbTintList = ColorStateList(states, intArrayOf(primary, onSurfaceVariant, onSurface))
-    trackTintList = ColorStateList(states, intArrayOf(primary, onSurfaceVariant, onSurface))
-}
-
-private fun com.google.android.material.switchmaterial.SwitchMaterial.applyFallbackTintForSwitchMaterial() {
-    val primary = MaterialColors.getColor(this, com.google.android.material.R.attr.colorPrimary)
-    val onSurface = MaterialColors.getColor(this, com.google.android.material.R.attr.colorOnSurface)
-    val onSurfaceVariant = MaterialColors.getColor(this, com.google.android.material.R.attr.colorOnSurfaceVariant)
-    val states = arrayOf(
-        intArrayOf(android.R.attr.state_checked),
-        intArrayOf(-android.R.attr.state_enabled),
-        intArrayOf()
-    )
-    thumbTintList = ColorStateList(states, intArrayOf(primary, onSurfaceVariant, onSurface))
-    trackTintList = ColorStateList(states, intArrayOf(primary, onSurfaceVariant, onSurface))
+    val colors = intArrayOf(primary, onSurfaceVariant, onSurface)
+    view.thumbTintList = ColorStateList(states, colors)
+    view.trackTintList = ColorStateList(states, colors)
 }
 
 fun ViewGroup.styleAllSwitchesRecursively() {
-    for (c in children) {
-        if (c is ViewGroup) c.styleAllSwitchesRecursively()
-        c.applyVpnSwitchStyle()
+    for (child in children) {
+        if (child is ViewGroup) child.styleAllSwitchesRecursively()
+        child.applyM3SwitchStyle()
     }
 }
