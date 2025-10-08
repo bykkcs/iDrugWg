@@ -42,7 +42,6 @@ import android.graphics.Typeface
 import android.graphics.Color
 import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
 
 // + корутины и жизненный цикл
@@ -224,7 +223,7 @@ view.findViewById<Button>(R.id.btn_download).setOnClickListener {
 
     private fun setupServerSpinner(view: View) {
         val dropdownLayout = view.findViewById<TextInputLayout>(R.id.server_dropdown_layout)
-        val dropdown = view.findViewById<MaterialAutoCompleteTextView>(R.id.spinner_server)
+        val dropdown = view.findViewById<AutoCompleteTextView>(R.id.spinner_server)
         val btnDownload = view.findViewById<Button>(R.id.btn_download)
         val serverNames = serverList.map { it.second }
         val adapter = ArrayAdapter(
@@ -351,7 +350,7 @@ view.findViewById<Button>(R.id.btn_download).setOnClickListener {
         view.findViewById<Button>(R.id.btn_referral).visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout).visibility = View.GONE
         view.findViewById<TextInputLayout>(R.id.server_dropdown_layout).visibility = View.GONE
-        view.findViewById<MaterialAutoCompleteTextView>(R.id.spinner_server).apply {
+        view.findViewById<AutoCompleteTextView>(R.id.spinner_server).apply {
             setText("", false)
             visibility = View.GONE
         }
@@ -375,7 +374,7 @@ view.findViewById<Button>(R.id.btn_download).setOnClickListener {
         view.findViewById<Button>(R.id.btn_logout).visibility = View.VISIBLE
         view.findViewById<ImageView>(R.id.qr_code_image).visibility = View.GONE
         view.findViewById<TextInputLayout>(R.id.server_dropdown_layout).visibility = View.VISIBLE
-        view.findViewById<MaterialAutoCompleteTextView>(R.id.spinner_server).visibility = View.VISIBLE
+        view.findViewById<AutoCompleteTextView>(R.id.spinner_server).visibility = View.VISIBLE
         view.findViewById<TextView>(R.id.text_server_choice).visibility = View.VISIBLE
         val avatarImage = view.findViewById<ImageView>(R.id.avatar_image)
         if (!photoUrl.isNullOrEmpty()) {
@@ -550,166 +549,168 @@ view.findViewById<Button>(R.id.btn_download).setOnClickListener {
         // например: currentShareIntent?.let{ ... }; activeJobs.forEach{ it.cancel() } и т.д.
     }
 
-private suspend fun handleDownloadConfig() {
-    val serverId = selectedServerId
-    if (serverId == null) {
-        withContext(Dispatchers.Main) {
-            Toast.makeText(requireContext(), getString(R.string.select_server), Toast.LENGTH_SHORT).show()
-        }
-        return
-    }
-
-    withContext(Dispatchers.Main) { setLoading(true) }
-
-    try {
-        val token = prefs.getString("token", null)
-        if (token.isNullOrEmpty()) {
+    private suspend fun handleDownloadConfig() {
+        val serverId = selectedServerId
+        if (serverId == null) {
             withContext(Dispatchers.Main) {
-                setLoading(false)
-                Toast.makeText(requireContext(), getString(R.string.login_via_telegram), Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.select_server), Toast.LENGTH_SHORT).show()
             }
             return
         }
 
-        // 1) Насильно обновим профиль, чтобы после logout->login subscriptions были свежими
-        val activeForServer: Boolean = withContext(Dispatchers.IO) {
-            try {
-                val client = OkHttpClient()
-                val req = Request.Builder()
-                    .url("https://idrug.pw/api/profile")
-                    .addHeader("Authorization", "Bearer $token")
-                    .build()
-                client.newCall(req).execute().use { resp ->
-                    if (!resp.isSuccessful) return@use false
-                    val body = resp.body?.string().orEmpty()
-                    val obj = JSONObject(body)
-                    val subsArr = obj.optJSONArray("subscriptions") ?: JSONArray()
+        withContext(Dispatchers.Main) { setLoading(true) }
 
-                    val freshSubs = mutableListOf<Subscription>()
-                    for (i in 0 until subsArr.length()) {
-                        val o = subsArr.getJSONObject(i)
-                        val id = o.optString("location", o.optString("id", ""))
-                        val name = getServerName(id)
-                        val expires = o.optString("expires")
-                        val forever = o.optBoolean("forever", false)
-                        val active = o.optBoolean("active", false)
-                        freshSubs.add(Subscription(id, name, expires, forever, active))
-                    }
-                    withContext(Dispatchers.Main) {
-                        subscriptions = freshSubs
-                        updateDownloadButtonState(requireView())
-                    }
-                    freshSubs.any { it.location == serverId && it.active }
+        try {
+            val token = prefs.getString("token", null)
+            if (token.isNullOrEmpty()) {
+                withContext(Dispatchers.Main) {
+                    setLoading(false)
+                    Toast.makeText(requireContext(), getString(R.string.login_via_telegram), Toast.LENGTH_SHORT).show()
                 }
-            } catch (e: Exception) {
-                Log.e("AccountFragment", "Profile refresh error", e)
-                false
+                return
             }
-        }
 
-        if (!activeForServer) {
-            withContext(Dispatchers.Main) {
-                setLoading(false)
-                Toast.makeText(requireContext(), getString(R.string.subscription_inactive_msg), Toast.LENGTH_SHORT).show()
-            }
-            return
-        }
+            // 1) Насильно обновим профиль, чтобы после logout->login subscriptions были свежими
+            val activeForServer: Boolean = withContext(Dispatchers.IO) {
+                try {
+                    val client = OkHttpClient()
+                    val req = Request.Builder()
+                        .url("https://idrug.pw/api/profile")
+                        .addHeader("Authorization", "Bearer $token")
+                        .build()
+                    client.newCall(req).execute().use { resp ->
+                        if (!resp.isSuccessful) return@use false
+                        val body = resp.body?.string().orEmpty()
+                        val obj = JSONObject(body)
+                        val subsArr = obj.optJSONArray("subscriptions") ?: JSONArray()
 
-        val tunnelName = "idrug_$serverId"
-        val tunnelManager = Application.getTunnelManager()
-
-        // 2) Проверка наличия туннеля (suspend)
-        val exists = withContext(Dispatchers.IO) {
-            try {
-                val list = tunnelManager.getTunnels()   // suspend
-                list.any { it.name == tunnelName }
-            } catch (e: Exception) {
-                Log.e("AccountFragment", "getTunnels() check failed", e)
-                false
-            }
-        }
-        if (exists) {
-            withContext(Dispatchers.Main) {
-                setLoading(false)
-                Toast.makeText(requireContext(), getString(R.string.config_already_added), Toast.LENGTH_SHORT).show()
-            }
-            return
-        }
-
-        // 3) Скачиваем конфиг (IO)
-        val confText = withContext(Dispatchers.IO) {
-            try {
-                val client = OkHttpClient()
-                val url = "https://idrug.pw/api/profile/download?server=$serverId"
-                val req = Request.Builder()
-                    .url(url)
-                    .addHeader("Authorization", "Bearer $token")
-                    .build()
-                client.newCall(req).execute().use { resp ->
-                    if (!resp.isSuccessful) throw IOException("download http ${resp.code}")
-                    resp.body?.string() ?: throw IOException("empty body")
+                        val freshSubs = mutableListOf<Subscription>()
+                        for (i in 0 until subsArr.length()) {
+                            val o = subsArr.getJSONObject(i)
+                            val id = o.optString("location", o.optString("id", ""))
+                            val name = getServerName(id)
+                            val expires = o.optString("expires")
+                            val forever = o.optBoolean("forever", false)
+                            val active = o.optBoolean("active", false)
+                            freshSubs.add(Subscription(id, name, expires, forever, active))
+                        }
+                        withContext(Dispatchers.Main) {
+                            subscriptions = freshSubs
+                            updateDownloadButtonState(requireView())
+                        }
+                        freshSubs.any { it.location == serverId && it.active }
+                    }
+                } catch (e: Exception) {
+                    Log.e("AccountFragment", "Profile refresh error", e)
+                    false
                 }
-            } catch (e: Exception) {
-                Log.e("AccountFragment", "downloadConfig error", e)
-                null
             }
-        }
-        if (confText.isNullOrEmpty()) {
+
+            if (!activeForServer) {
+                withContext(Dispatchers.Main) {
+                    setLoading(false)
+                    Toast.makeText(requireContext(), getString(R.string.subscription_inactive_msg), Toast.LENGTH_SHORT).show()
+                }
+                return
+            }
+
+            val tunnelName = "idrug_$serverId"
+            val tunnelManager = Application.getTunnelManager()
+
+            // 2) Проверка наличия туннеля (suspend)
+            val exists = withContext(Dispatchers.IO) {
+                try {
+                    val list = tunnelManager.getTunnels()   // suspend
+                    list.any { it.name == tunnelName }
+                } catch (e: Exception) {
+                    Log.e("AccountFragment", "getTunnels() check failed", e)
+                    false
+                }
+            }
+            if (exists) {
+                withContext(Dispatchers.Main) {
+                    setLoading(false)
+                    Toast.makeText(requireContext(), getString(R.string.config_already_added), Toast.LENGTH_SHORT).show()
+                }
+                return
+            }
+
+            // 3) Скачиваем конфиг (IO)
+            val confText = withContext(Dispatchers.IO) {
+                try {
+                    val client = OkHttpClient()
+                    val url = "https://idrug.pw/api/profile/download?server=$serverId"
+                    val req = Request.Builder()
+                        .url(url)
+                        .addHeader("Authorization", "Bearer $token")
+                        .build()
+                    client.newCall(req).execute().use { resp ->
+                        if (!resp.isSuccessful) throw IOException("download http ${resp.code}")
+                        resp.body?.string() ?: throw IOException("empty body")
+                    }
+                } catch (e: Exception) {
+                    Log.e("AccountFragment", "downloadConfig error", e)
+                    null
+                }
+            }
+            if (confText.isNullOrEmpty()) {
+                withContext(Dispatchers.Main) {
+                    setLoading(false)
+                    Toast.makeText(requireContext(), getString(R.string.error_with_message, "Download failed"), Toast.LENGTH_LONG).show()
+                }
+                return
+            }
+
+            // 4) Записываем временный файл и создаём туннель (оба – в IO, suspend), с одноразовым ретраем
+            val created = withContext(Dispatchers.IO) {
+                val appCtx = requireContext().applicationContext
+                val file = File(appCtx.filesDir, "wg_$tunnelName.conf")
+                try {
+                    file.writeText(confText)
+
+                    suspend fun createOnce(): Boolean = try {
+                        val cfg = Config.parse(file.bufferedReader())
+                        tunnelManager.create(tunnelName, cfg)
+                        true
+                    } catch (e: Exception) {
+                        Log.e("AccountFragment", "tunnel create failed", e)
+                        false
+                    }
+
+                    if (createOnce()) {
+                        true
+                    } else {
+                        delay(200)
+                        createOnce()
+                    }
+                } finally {
+                    try {
+                        file.delete()
+                    } catch (_: Exception) {
+                        // ignore
+                    }
+                }
+            }
+
             withContext(Dispatchers.Main) {
                 setLoading(false)
-                Toast.makeText(requireContext(), getString(R.string.error_with_message, "Download failed"), Toast.LENGTH_LONG).show()
+                if (created) {
+                    Toast.makeText(requireContext(), getString(R.string.tunnel_added), Toast.LENGTH_SHORT).show()
+                    loadProfileAndSetupUI(requireView())
+                } else {
+                    Toast.makeText(requireContext(), getString(R.string.tunnel_creation_error, "create failed"), Toast.LENGTH_LONG).show()
+                }
             }
-            return
-        }
-
-// 4) Записываем временный файл и создаём туннель (оба – в IO, suspend), с одноразовым ретраем
-val created = withContext(Dispatchers.IO) {
-    // берём applicationContext, чтобы не дёргать requireContext() лишний раз
-    val appCtx = requireContext().applicationContext
-    val file = File(appCtx.filesDir, "wg_$tunnelName.conf")
-    try {
-        file.writeText(confText)
-
-        // ВАЖНО: suspend, иначе нельзя вызывать suspend create(...)
-        suspend fun createOnce(): Boolean = try {
-            val cfg = Config.parse(file.bufferedReader())
-            tunnelManager.create(tunnelName, cfg)   // suspend — теперь ОК
-            true
+        } catch (e: CancellationException) {
+            withContext(Dispatchers.Main) { setLoading(false) }
+            throw e
         } catch (e: Exception) {
-            Log.e("AccountFragment", "tunnel create failed", e)
-            false
-        }
-
-        if (createOnce()) {
-            true
-        } else {
-            // короткий ретрай без блокировки потока
-            delay(200)
-            createOnce()
-        }
-    } finally {
-        try { file.delete() } catch (_: Exception) {}
-    }
-
-        withContext(Dispatchers.Main) {
-            setLoading(false)
-            if (created) {
-                Toast.makeText(requireContext(), getString(R.string.tunnel_added), Toast.LENGTH_SHORT).show()
-                loadProfileAndSetupUI(requireView())
-            } else {
-                Toast.makeText(requireContext(), getString(R.string.tunnel_creation_error, "create failed"), Toast.LENGTH_LONG).show()
+            withContext(Dispatchers.Main) {
+                setLoading(false)
+                Toast.makeText(requireContext(), getString(R.string.error_with_message, e.message), Toast.LENGTH_LONG).show()
             }
         }
-    } catch (e: CancellationException) {
-        withContext(Dispatchers.Main) { setLoading(false) }
-        throw e
-    } catch (e: Exception) {
-        withContext(Dispatchers.Main) {
-            setLoading(false)
-            Toast.makeText(requireContext(), getString(R.string.error_with_message, e.message), Toast.LENGTH_LONG).show()
-        }
     }
-}
 
 
     private fun getProfileFromJwt(jwt: String, callback: (Boolean, String?, String?) -> Unit) {
