@@ -107,7 +107,10 @@ class UpdateDialogFragment : DialogFragment() {
 
                 title.isVisible = !showLoading
                 changelogContainer.isVisible = state.updateAvailable && !showLoading && !showDownloading
-                installButton.isVisible = state.updateAvailable && state.error == null && !showLoading && !showDownloading
+                installButton.isVisible = !showLoading
+                val canInstall = state.updateAvailable && state.error == null && !showDownloading
+                installButton.isEnabled = canInstall
+                installButton.alpha = if (canInstall) 1f else 0.6f
                 laterButton.isVisible = !showLoading && !showDownloading
 
                 val label = when {
