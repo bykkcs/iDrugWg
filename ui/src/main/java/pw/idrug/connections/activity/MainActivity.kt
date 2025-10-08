@@ -14,6 +14,7 @@ import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBar
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -101,8 +102,9 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         findViewById<View?>(R.id.main_activity_container)?.let { root ->
             val surfaceColor = MaterialColors.getColor(root, com.google.android.material.R.attr.colorSurface)
             window.navigationBarColor = surfaceColor
+            val lightNavigation = ColorUtils.calculateLuminance(surfaceColor) >= 0.5
             WindowCompat.getInsetsController(window, window.decorView)?.let { controller ->
-                controller.isAppearanceLightNavigationBars = MaterialColors.isColorLight(surfaceColor)
+                controller.isAppearanceLightNavigationBars = lightNavigation
             }
         }
         actionBar = supportActionBar

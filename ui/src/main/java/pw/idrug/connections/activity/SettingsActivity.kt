@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.ColorUtils
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -127,7 +128,7 @@ class SettingsActivity : AppCompatActivity() {
             window.statusBarColor = surfaceColor
             window.navigationBarColor = surfaceColor
             val insetsController = WindowInsetsControllerCompat(window, window.decorView)
-            val lightSurface = MaterialColors.isColorLight(surfaceColor)
+            val lightSurface = ColorUtils.calculateLuminance(surfaceColor) >= 0.5
             insetsController.isAppearanceLightStatusBars = lightSurface
             insetsController.isAppearanceLightNavigationBars = lightSurface
             view.setBackgroundColor(surfaceColor)
