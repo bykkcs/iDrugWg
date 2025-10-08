@@ -18,11 +18,14 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import pw.idrug.connections.BuildConfig
 import pw.idrug.connections.R
 import pw.idrug.connections.di.UpdateModules
+import pw.idrug.connections.util.UserKnobs
 
 class UpdateViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = UpdateModules.repository
@@ -34,6 +37,17 @@ class UpdateViewModel(application: Application) : AndroidViewModel(application) 
     val events: SharedFlow<UpdateEvent> = _events.asSharedFlow()
 
     private var currentDownloadId: Long? = null
+    private val _autoCheckEnabled = MutableStateFlow(true)
+    val autoCheckEnabled: StateFlow<Boolean> = _autoCheckEnabled.asStateFlow()
+
+    init {
+        viewModelScope.launch(Dispatchers.IO) {
+            _autoCheckEnabled.value = UserKnobs.updatesAutoCheckEnabled.first()
+            UserKnobs.updatesAutoCheckEnabled.collect { enabled ->
+                _autoCheckEnabled.value = enabled
+            }
+        }
+    }
 
     fun checkUpdate(auto: Boolean = false) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -75,6 +89,12 @@ class UpdateViewModel(application: Application) : AndroidViewModel(application) 
             changelog = meta.changelog?.trim().orEmpty(),
             apkUrl = meta.apkUrl
         )
+    }
+
+    fun setAutoCheckEnabled(enabled: Boolean) {
+        viewModelScope.launch(Dispatchers.IO) {
+            UserKnobs.setUpdatesAutoCheckEnabled(enabled)
+        }
     }
 
     fun downloadAndInstall() {

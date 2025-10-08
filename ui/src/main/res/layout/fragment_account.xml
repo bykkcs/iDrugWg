@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -96,21 +97,39 @@
                 android:contentDescription="QR code for login"
                 android:scaleType="fitCenter"
                 android:background="@android:color/transparent" />
-<TextView
-    android:id="@+id/text_server_choice"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/choose_server"
-    android:textStyle="bold"
-    android:textSize="16sp"
-    android:gravity="center"
-    android:layout_marginBottom="8dp" />
+            <TextView
+                android:id="@+id/text_server_choice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/choose_server"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-<Spinner
-    android:id="@+id/spinner_server"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/serverDropdownLayout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/choose_server"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:endIconMode="dropdown">
+
+                <AutoCompleteTextView
+                    android:id="@+id/serverDropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:dropDownWidth="match_parent"
+                    android:focusable="false"
+                    android:importantForAutofill="no"
+                    android:inputType="none"
+                    android:overScrollMode="ifContentScrolls"
+                    android:padding="12dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btn_download"

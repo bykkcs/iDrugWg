@@ -14,6 +14,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import kotlinx.coroutines.flow.collectLatest
@@ -71,9 +72,21 @@ class UpdateDialogFragment : DialogFragment() {
         val loadingIndicator = view.findViewById<CircularProgressIndicator>(R.id.update_loading)
         val installButton = view.findViewById<MaterialButton>(R.id.update_install)
         val laterButton = view.findViewById<MaterialButton>(R.id.update_later)
+        val autoCheckRow = view.findViewById<View>(R.id.auto_check_row)
+        val autoCheckSwitch = view.findViewById<MaterialSwitch>(R.id.autoCheckSwitch)
 
         installButton.setOnClickListener { viewModel.downloadAndInstall() }
         laterButton.setOnClickListener { dismissAllowingStateLoss() }
+        autoCheckRow.setOnClickListener { autoCheckSwitch.toggle() }
+
+        var updatingSwitch = false
+        updatingSwitch = true
+        autoCheckSwitch.isChecked = viewModel.autoCheckEnabled.value
+        updatingSwitch = false
+        autoCheckSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (updatingSwitch) return@setOnCheckedChangeListener
+            viewModel.setAutoCheckEnabled(isChecked)
+        }
 
         // состояние UI
         lifecycleScope.launch {
@@ -123,6 +136,14 @@ class UpdateDialogFragment : DialogFragment() {
                 if (!state.error.isNullOrBlank()) {
                     errorText.text = state.error
                 }
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.autoCheckEnabled.collectLatest { enabled ->
+                updatingSwitch = true
+                autoCheckSwitch.isChecked = enabled
+                updatingSwitch = false
             }
         }
 
