@@ -102,6 +102,42 @@ class UpdateViewModel(application: Application) : AndroidViewModel(application) 
                 val manager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
                 currentDownloadId = manager.enqueue(request)
                 _events.emit(UpdateEvent.DownloadStarted(currentDownloadId!!))
+                val query = DownloadManager.Query().setFilterById(currentDownloadId!!)
+                var downloadSuccessful = false
+                while (true) {
+                    val cursor = manager.query(query)
+                    if (cursor != null && cursor.moveToFirst()) {
+                        when (cursor.getInt(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_STATUS))) {
+                            DownloadManager.STATUS_SUCCESSFUL -> {
+                                downloadSuccessful = true
+                                cursor.close()
+                                break
+                            }
+                            DownloadManager.STATUS_FAILED -> {
+                                cursor.close()
+                                break
+                            }
+                        }
+                    }
+                    cursor?.close()
+                    kotlinx.coroutines.delay(1000)
+                }
+                if (downloadSuccessful) {
+                    val apkFile = destination
+                    val uri = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                        androidx.core.content.FileProvider.getUriForFile(context, "${context.packageName}.provider", apkFile)
+                    } else {
+                        Uri.fromFile(apkFile)
+                    }
+                    val installIntent = android.content.Intent(android.content.Intent.ACTION_VIEW).apply {
+                        setDataAndType(uri, APK_MIME_TYPE)
+                        addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+                        addFlags(android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    }
+                    context.startActivity(installIntent)
+                } else {
+                    _events.emit(UpdateEvent.Error(context.getString(R.string.update_error_generic)))
+                }
             }.onFailure { throwable ->
                 val message = throwable.localizedMessage
                     ?: context.getString(R.string.update_error_generic)
