@@ -1,41 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="32dp"
-    android:gravity="center_horizontal"
-    android:background="@drawable/bg_rounded_code_dialog">
+    android:padding="24dp"
+    android:gravity="center_horizontal">
 
-    <ProgressBar
-        android:id="@+id/update_progress"
-        style="@android:style/Widget.Material.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/update_loading"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        android:indeterminate="true"
+        app:indicatorSize="48dp" />
 
     <TextView
         android:id="@+id/update_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="4dp"
+        android:textAppearance="?attr/textAppearanceHeadlineSmall"
         android:textColor="?attr/colorOnSurface"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textAlignment="center" />
 
     <TextView
         android:id="@+id/update_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
         android:textColor="?attr/colorError"
+        android:textAlignment="center"
         android:visibility="gone" />
 
     <ScrollView
         android:id="@+id/update_changelog_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:maxHeight="240dp"
         android:fadeScrollbars="false"
         android:overScrollMode="ifContentScrolls">
@@ -44,34 +50,53 @@
             android:id="@+id/update_changelog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="14sp"
             android:lineSpacingExtra="4dp"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurface"
             android:textIsSelectable="true" />
     </ScrollView>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/update_install"
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/update_progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:visibility="gone"
+        app:trackThickness="8dp" />
+
+    <TextView
+        android:id="@+id/update_progress_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAppearance="?attr/textAppearanceBodySmall"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:visibility="gone" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/update_install"
+        style="@style/Widget.Material3.Button.FilledTonalButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="@string/update_download_cta" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/update_later"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:text="@string/update_later_cta" />
 
     <TextView
         android:id="@+id/update_source"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="@string/update_source"
+        android:textAppearance="?attr/textAppearanceLabelMedium"
         android:textColor="?attr/colorOnSurfaceVariant"
-        android:textSize="12sp" />
+        android:textAlignment="center" />
 
 </LinearLayout>

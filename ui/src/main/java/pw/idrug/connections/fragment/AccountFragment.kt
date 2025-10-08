@@ -42,6 +42,7 @@ import android.graphics.Typeface
 import android.graphics.Color
 import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import pw.idrug.connections.util.styleAllSwitchesRecursively
 
 // + корутины и жизненный цикл
 import androidx.lifecycle.lifecycleScope
@@ -114,6 +115,7 @@ class AccountFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        (view as? ViewGroup)?.styleAllSwitchesRecursively()
         prefs = requireContext().getSharedPreferences("auth", Context.MODE_PRIVATE)
         setupListeners(view)
         showCorrectScreen(view)

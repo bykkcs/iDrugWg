@@ -5,6 +5,7 @@
 package pw.idrug.connections.activity
 
 import android.os.Bundle
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.CallbackRegistry
 import androidx.databinding.CallbackRegistry.NotifierCallback
@@ -12,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import pw.idrug.connections.Application
 import pw.idrug.connections.model.ObservableTunnel
 import kotlinx.coroutines.launch
+import pw.idrug.connections.util.styleAllSwitchesRecursively
 
 /**
  * Base class for activities that need to remember the currently-selected tunnel.
@@ -57,6 +59,13 @@ abstract class BaseActivity : AppCompatActivity() {
         } else {
             created = true
         }
+    }
+
+    override fun onContentChanged() {
+        super.onContentChanged()
+        val content = findViewById<ViewGroup?>(android.R.id.content)
+        val rootView = content?.getChildAt(0) as? ViewGroup
+        rootView?.styleAllSwitchesRecursively()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

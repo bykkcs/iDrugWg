@@ -21,6 +21,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import pw.idrug.connections.R
 import pw.idrug.connections.util.resolveAttribute
+import pw.idrug.connections.util.styleAllSwitchesRecursively
 
 class AddTunnelsSheet : BottomSheetDialogFragment() {
 
@@ -39,6 +40,7 @@ class AddTunnelsSheet : BottomSheetDialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (savedInstanceState != null) dismiss()
         val view = inflater.inflate(R.layout.add_tunnels_bottom_sheet, container, false)
+        (view as? ViewGroup)?.styleAllSwitchesRecursively()
         if (activity?.packageManager?.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY) != true) {
             val qrcode = view.findViewById<View>(R.id.create_from_qrcode)
             qrcode.isEnabled = false

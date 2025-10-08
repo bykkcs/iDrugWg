@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 import java.io.ByteArrayInputStream
 import java.io.IOException
 import java.nio.charset.StandardCharsets
+import pw.idrug.connections.util.styleAllSwitchesRecursively
 
 class ConfigNamingDialogFragment : DialogFragment() {
     private var binding: ConfigNamingDialogFragmentBinding? = null
@@ -59,6 +60,7 @@ class ConfigNamingDialogFragment : DialogFragment() {
         binding = ConfigNamingDialogFragmentBinding.inflate(activity.layoutInflater, null, false)
         binding?.apply {
             executePendingBindings()
+            (root as? android.view.ViewGroup)?.styleAllSwitchesRecursively()
             alertDialogBuilder.setView(root)
         }
         alertDialogBuilder.setPositiveButton(R.string.create_tunnel) { _, _ -> createTunnelAndDismiss() }

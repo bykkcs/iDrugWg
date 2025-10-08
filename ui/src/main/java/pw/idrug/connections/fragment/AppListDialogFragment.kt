@@ -11,8 +11,9 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PackageInfoFlags
 import android.os.Build
 import android.os.Bundle
-import android.widget.Button
 import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import android.content.DialogInterface
 import androidx.appcompat.app.AlertDialog
@@ -29,6 +30,7 @@ import pw.idrug.connections.databinding.AppListDialogFragmentBinding
 import pw.idrug.connections.databinding.ObservableKeyedArrayList
 import pw.idrug.connections.model.ApplicationData
 import pw.idrug.connections.util.ErrorMessages
+import pw.idrug.connections.util.styleAllSwitchesRecursively
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -108,10 +110,11 @@ class AppListDialogFragment : DialogFragment() {
         }
     }
 
-     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val alertDialogBuilder = MaterialAlertDialogBuilder(requireActivity(), R.style.MonetAlertDialog)
         val binding = AppListDialogFragmentBinding.inflate(requireActivity().layoutInflater, null, false)
         binding.executePendingBindings()
+        (binding.root as? ViewGroup)?.styleAllSwitchesRecursively()
         alertDialogBuilder.setView(binding.root)
         tabs = binding.tabs
         tabs?.apply {

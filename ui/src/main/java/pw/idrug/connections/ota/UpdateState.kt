@@ -7,5 +7,7 @@ data class UpdateState(
     val versionCode: Int? = null,
     val versionName: String? = null,
     val changelog: String = "",
-    val apkUrl: String? = null
+    val apkUrl: String? = null,
+    val downloading: Boolean = false,
+    val downloadProgress: Int? = null
 )
