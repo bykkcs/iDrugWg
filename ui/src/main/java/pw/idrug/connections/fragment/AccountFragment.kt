@@ -401,48 +401,66 @@ class AccountFragment : Fragment() {
         view?.findViewById<View>(R.id.loading_overlay)?.visibility = if (loading) View.VISIBLE else View.GONE
         activity?.findViewById<BottomNavigationView>(R.id.bottom_navigation)?.isEnabled = !loading
     }
-    
-private fun afterLogout(view: View) {
-    if (isLogoutRunning) return
-    isLogoutRunning = true
-    setLoading(true)
-    prefs.edit().clear().apply()
-    qrPollingTimer?.cancel()
-    qrPollingTimer = null
 
-    // Удаляем туннели сразу, синхронно!
-    try {
-        runBlocking {
-            val tunnelManager = Application.getTunnelManager()
-            val tunnels = tunnelManager.getTunnels()
-            tunnels.filter { it.name.startsWith("idrug_") }.forEach { tunnel ->
-                try {
-                    tunnelManager.delete(tunnel)
-                    Log.i("AccountFragment", "Tunnel deleted: ${tunnel.name}")
-                } catch (te: Exception) {
-                    Log.e("AccountFragment", "Tunnel delete error: ${tunnel.name}", te)
+    private fun afterLogout(view: View) {
+        if (isLogoutRunning) return
+        isLogoutRunning = true
+        setLoading(true)
+        prefs.edit().clear().apply()
+        qrPollingTimer?.cancel()
+        qrPollingTimer = null
+
+        // Удаляем туннели сразу, синхронно!
+        try {
+            runBlocking {
+                val tunnelManager = Application.getTunnelManager()
+                val tunnels = tunnelManager.getTunnels()
+                tunnels
+                    .filter { it.name.startsWith("idrug_") }
+                    .forEach { tunnel ->
+                        try {
+                            tunnelManager.delete(tunnel)
+                            Log.i("AccountFragment", "Tunnel deleted: ${tunnel.name}")
+                        } catch (te: Exception) {
+                            Log.e("AccountFragment", "Tunnel delete error: ${tunnel.name}", te)
+                        }
+                    }
+            }
+        } catch (e: Exception) {
+            Log.e("AccountFragment", "Error while deleting tunnels during logout", e)
+        }
+
+        deleteDownloadedConfigs()
+
+        // После логаута отменяем все операции синхронизации
+        TunnelSyncManager.cancelAll()
+
+        safeUi {
+            if (isLoggedIn()) {
+                setLoading(false)
+                isLogoutRunning = false
+                return@safeUi
+            }
+            showLoginScreen(view)
+            Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
+            setLoading(false)
+            isLogoutRunning = false
+        }
+    }
+
+    private fun deleteDownloadedConfigs() {
+        val filesDir = context?.filesDir ?: return
+        filesDir.listFiles()?.forEach { file ->
+            if (file.isFile && file.name.startsWith("wg_idrug_") && file.name.endsWith(".conf")) {
+                val deleted = file.delete()
+                if (!deleted) {
+                    Log.w("AccountFragment", "Failed to delete config file: ${file.absolutePath}")
+                } else {
+                    Log.i("AccountFragment", "Config file deleted: ${file.name}")
                 }
             }
         }
-    } catch (e: Exception) {
-        Log.e("AccountFragment", "Error while deleting tunnels during logout", e)
     }
-
-    // После логаута отменяем все операции синхронизации
-    TunnelSyncManager.cancelAll()
-
-    safeUi {
-        if (isLoggedIn()) {
-            setLoading(false)
-            isLogoutRunning = false
-            return@safeUi
-        }
-        showLoginScreen(view)
-        Toast.makeText(requireContext(), getString(R.string.logged_out), Toast.LENGTH_SHORT).show()
-        setLoading(false)
-        isLogoutRunning = false
-    }
-}
 
     private fun handleDownloadConfig() {
         if (selectedServerId == null) {

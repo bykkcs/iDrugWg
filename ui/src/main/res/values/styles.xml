@@ -15,6 +15,8 @@
     <!-- Various additional API-specific features in values-v*/styles.xml -->
     <style name="AppTheme" parent="AppThemeBase" />
 
+    <style name="App.SwitchPreference" parent="Preference.SwitchPreferenceCompat.Material3" />
+
     <style name="iDrugConnectionsTheme.MaterialCardView" parent="Widget.Material3.CardView.Elevated">
         <item name="cornerRadius">4dp</item>
         <item name="contentPadding">8dp</item>
@@ -82,8 +84,20 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="ShapeAppearanceOverlay" />
+
+    <style name="ShapeAppearanceOverlay.Monet" />
+
+    <style name="ShapeAppearanceOverlay.Monet.Dialog" parent="ShapeAppearanceOverlay.Monet" />
+
+    <style name="ShapeAppearanceOverlay.Monet.Dialog.CornerXL" parent="ShapeAppearanceOverlay.Monet.Dialog">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">28dp</item>
+    </style>
+
     <style name="MonetAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="backgroundTint">?attr/colorSurface</item>
         <item name="android:textColorPrimary">?attr/colorOnSurface</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Monet.Dialog.CornerXL</item>
     </style>
 </resources>

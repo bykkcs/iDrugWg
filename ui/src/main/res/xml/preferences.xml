@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:key="settings">
 
     <!-- iDrug Connections for Android (you can add a GitHub link in the summary) -->
@@ -15,6 +16,14 @@
         android:key="ota_update"
         android:title="@string/update_application_title"
         android:summary="@string/update_application_summary" />
+
+    <SwitchPreferenceCompat
+        android:key="auto_update_enabled"
+        android:title="@string/auto_update_title"
+        android:summary="@string/auto_update_summary"
+        android:defaultValue="true"
+        app:iconSpaceReserved="false"
+        style="@style/App.SwitchPreference" />
 
     <!--
     <CheckBoxPreference

@@ -262,7 +262,11 @@
     <string name="account_avatar">User avatar</string>
     <string name="biometric_auth_error_reason">Authentication failure: %s</string>
     <string name="login_via_telegram_or_qr">Login via Telegram</string>
-    <string name="login_via_telegram">Login via Telegram</string>
+    <string name="login_via_telegram">Войдите через Telegram, чтобы продолжить</string>
+    <string name="auto_update_title">Автообновления</string>
+    <string name="auto_update_summary">Загружать и предлагать обновления автоматически</string>
+    <string name="auto_update_disable">Отключить автообновления</string>
+    <string name="auto_update_disabled_toast">Автообновления выключены</string>
     <string name="choose_server">Choose server</string>
     <string name="download_config">Download config</string>
     <string name="renew_subscription">Buy/Renew</string>
@@ -304,9 +308,9 @@
     <string name="network_error_msg">Network error: %s</string>
     <string name="profile_processing_error">Profile processing error: %s</string>
     <string name="profile_retrieval_failed">Failed to retrieve profile: %d</string>
-    <string name="logged_out">You have logged out</string>
-    <string name="select_server">Select a server</string>
-    <string name="subscription_inactive_msg">Subscription inactive</string>
+    <string name="logged_out">Вы вышли из аккаунта</string>
+    <string name="select_server">Выберите сервер</string>
+    <string name="subscription_inactive_msg">Подписка не активна для выбранного сервера</string>
     <string name="config_already_added">Config already added</string>
     <string name="tunnel_added">Tunnel added</string>
     <string name="tunnel_creation_error">Tunnel creation error: %s</string>

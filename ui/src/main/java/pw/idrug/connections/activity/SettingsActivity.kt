@@ -19,10 +19,13 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceManager
+import androidx.preference.SwitchPreferenceCompat
 import pw.idrug.connections.Application
 import pw.idrug.connections.QuickTileService
 import pw.idrug.connections.R
 import pw.idrug.connections.backend.AwgQuickBackend
+import pw.idrug.connections.dialog.UpdateAutoDialog
 import pw.idrug.connections.preference.PreferencesPreferenceDataStore
 import pw.idrug.connections.util.AdminKnobs
 import kotlinx.coroutines.Dispatchers
@@ -65,6 +68,18 @@ class SettingsActivity : AppCompatActivity() {
             preferenceManager.preferenceDataStore = PreferencesPreferenceDataStore(lifecycleScope, Application.getPreferencesDataStore())
             addPreferencesFromResource(R.xml.preferences)
             preferenceScreen.initialExpandedChildrenCount = 5
+
+            val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+            val auto = preferenceManager.findPreference<SwitchPreferenceCompat>("auto_update_enabled")
+            auto?.isChecked = prefs.getBoolean("auto_update_enabled", true)
+            auto?.setOnPreferenceChangeListener { _, newValue ->
+                val enabled = (newValue as? Boolean) ?: true
+                prefs.edit().putBoolean("auto_update_enabled", enabled).apply()
+                if (!enabled) {
+                    UpdateAutoDialog.show(childFragmentManager)
+                }
+                true
+            }
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || QuickTileService.isAdded) {
                 val quickTile = preferenceManager.findPreference<Preference>("quick_tile")
