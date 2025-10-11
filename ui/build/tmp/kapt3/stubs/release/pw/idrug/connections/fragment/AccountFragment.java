@@ -1,6 +1,6 @@
 package pw.idrug.connections.fragment;
 
-@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000\u0086\u0001\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0000\n\u0002\u0010 \n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\r\n\u0000\n\u0002\u0010\b\n\u0002\b\u000f\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0007\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\b\n\u0002\u0018\u0002\n\u0002\b\u0013\u0018\u00002\u00020\u0001:\u0002VWB\u0005\u00a2\u0006\u0002\u0010\u0002J\u0010\u0010\u0014\u001a\u00020\u00152\u0006\u0010\u0016\u001a\u00020\u0017H\u0002J\u0016\u0010\u0018\u001a\u00020\r2\f\u0010\u0019\u001a\b\u0012\u0004\u0012\u00020\u00130\u000fH\u0002J\u0016\u0010\u001a\u001a\u00020\u001b2\f\u0010\u0019\u001a\b\u0012\u0004\u0012\u00020\u00130\u000fH\u0002J\u0019\u0010\u001c\u001a\u0004\u0018\u00010\u001d2\b\u0010\u001e\u001a\u0004\u0018\u00010\rH\u0002\u00a2\u0006\u0002\u0010\u001fJ \u0010 \u001a\u0004\u0018\u00010\r2\u0006\u0010!\u001a\u00020\r2\u0006\u0010\"\u001a\u00020\rH\u0082@\u00a2\u0006\u0002\u0010#J\u0012\u0010$\u001a\u00020\r2\b\u0010\u001e\u001a\u0004\u0018\u00010\rH\u0002J\u0018\u0010%\u001a\u00020\u001b2\u0006\u0010&\u001a\u00020\r2\u0006\u0010\'\u001a\u00020\rH\u0002J\u0012\u0010(\u001a\u00020\r2\b\u0010)\u001a\u0004\u0018\u00010\rH\u0002J\u0012\u0010*\u001a\u00020\r2\b\u0010)\u001a\u0004\u0018\u00010\rH\u0002J\u0010\u0010+\u001a\u00020\u00152\u0006\u0010,\u001a\u00020-H\u0002J\u0012\u0010.\u001a\u00020\u00152\b\u0010/\u001a\u0004\u0018\u000100H\u0002J\u000e\u00101\u001a\u00020\u0015H\u0082@\u00a2\u0006\u0002\u00102J\b\u00103\u001a\u00020\u0004H\u0002J\u0010\u00104\u001a\u00020\u00152\u0006\u0010\u0016\u001a\u00020\u0017H\u0002J\u0010\u00105\u001a\u00020\u00152\u0006\u0010\u0016\u001a\u00020\u0017H\u0002J$\u00106\u001a\u00020\u00172\u0006\u00107\u001a\u0002082\b\u00109\u001a\u0004\u0018\u00010:2\b\u0010;\u001a\u0004\u0018\u00010<H\u0016J\b\u0010=\u001a\u00020\u0015H\u0016J\b\u0010>\u001a\u00020\u0015H\u0016J\u001a\u0010?\u001a\u00020\u00152\u0006\u0010\u0016\u001a\u00020\u00172\b\u0010;\u001a\u0004\u0018\u00010<H\u0016J\u0016\u0010@\u001a\u00020\u00152\u0006\u0010\u0016\u001a\u00020\u0017H\u0082@\u00a2\u0006\u0002\u0010AJ\u000e\u0010B\u001a\u00020\u0015H\u0082@\u00a2\u0006\u0002\u00102J\u0016\u0010C\u001a\u00020\u00152\f\u0010D\u001a\b\u0012\u0004\u0012\u00020\u00150EH\u0002J\u0010\u0010F\u001a\u00020\u00152\u0006\u0010G\u001a\u00020\u0004H\u0002J\u0010\u0010H\u001a\u00020\u00152\u0006\u0010\u0016\u001a\u00020\u0017H\u0002J\u0010\u0010I\u001a\u00020\u00152\u0006\u0010\u0016\u001a\u00020\u0017H\u0002J0\u0010J\u001a\u00020\u00152\u0006\u0010\u0016\u001a\u00020\u00172\u0006\u0010K\u001a\u00020\r2\b\u0010L\u001a\u0004\u0018\u00010\r2\f\u0010\u0019\u001a\b\u0012\u0004\u0012\u00020\u00130\u000fH\u0002J\u0010\u0010M\u001a\u00020\u00152\u0006\u0010\u0016\u001a\u00020\u0017H\u0002J\u0010\u0010N\u001a\u00020\u00152\u0006\u0010\u0016\u001a\u00020\u0017H\u0002J\b\u0010O\u001a\u00020\u0015H\u0002J$\u0010P\u001a\u00020\u00152\u0006\u0010!\u001a\u00020\r2\f\u0010Q\u001a\b\u0012\u0004\u0012\u00020\r0\u000fH\u0082@\u00a2\u0006\u0002\u0010RJ\u0010\u0010S\u001a\u00020\u00152\u0006\u0010\u0016\u001a\u00020\u0017H\u0002J\u0010\u0010T\u001a\u00020\u00152\u0006\u0010\u0016\u001a\u00020\u0017H\u0002J\b\u0010U\u001a\u00020\u0015H\u0002R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0006X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0007\u001a\u00020\u0004X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\b\u001a\u00020\tX\u0082.\u00a2\u0006\u0002\n\u0000R\u0010\u0010\n\u001a\u0004\u0018\u00010\u000bX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u0010\u0010\f\u001a\u0004\u0018\u00010\rX\u0082\u000e\u00a2\u0006\u0002\n\u0000R \u0010\u000e\u001a\u0014\u0012\u0010\u0012\u000e\u0012\u0004\u0012\u00020\r\u0012\u0004\u0012\u00020\r0\u00100\u000fX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u0014\u0010\u0011\u001a\b\u0012\u0004\u0012\u00020\r0\u000fX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0014\u0010\u0012\u001a\b\u0012\u0004\u0012\u00020\u00130\u000fX\u0082\u000e\u00a2\u0006\u0002\n\u0000\u00a8\u0006X"}, d2 = {"Lpw/idrug/connections/fragment/AccountFragment;", "Landroidx/fragment/app/Fragment;", "()V", "destroyed", "", "handler", "Landroid/os/Handler;", "isLogoutRunning", "prefs", "Landroid/content/SharedPreferences;", "qrPollingTimer", "Ljava/util/Timer;", "selectedServerId", "", "serverList", "", "Lkotlin/Pair;", "serverOrder", "subscriptions", "Lpw/idrug/connections/fragment/AccountFragment$Subscription;", "applyLoadingState", "", "view", "Landroid/view/View;", "buildStatusMessage", "subs", "buildSubscriptionSummary", "", "computeDaysLeft", "", "raw", "(Ljava/lang/String;)Ljava/lang/Integer;", "downloadConfig", "token", "serverId", "(Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "formatExpirationDate", "formatServerDisplayName", "id", "name", "getServerFlag", "location", "getServerName", "handleAuthDeepLink", "uri", "Landroid/net/Uri;", "handleDeepLink", "intent", "Landroid/content/Intent;", "handleDownloadConfig", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "isLoggedIn", "loadProfileAndSetupUI", "loadServersAndProfileUI", "onCreateView", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "savedInstanceState", "Landroid/os/Bundle;", "onDestroyView", "onResume", "onViewCreated", "performLogoutSafely", "(Landroid/view/View;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "removeSubscriptionTunnelsAndConfigs", "safeUi", "block", "Lkotlin/Function0;", "setLoading", "isLoading", "setupListeners", "setupServerDropdown", "showAccountScreen", "username", "photoUrl", "showCorrectScreen", "showLoginScreen", "syncTunnelsWithProfile", "synchronizeTunnels", "activeServers", "(Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "updateDownloadButtonState", "updateDropdownItems", "updateServerListFromSubscriptions", "CircleTransformation", "Subscription", "ui_release"})
+@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000\u00c0\u0001\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\t\n\u0000\n\u0002\u0010\u000b\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010$\n\u0002\u0010\u000e\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010 \n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010%\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u0005\n\u0002\u0010\r\n\u0002\b\n\n\u0002\u0018\u0002\n\u0002\b\b\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\n\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u000f\n\u0002\u0018\u0002\n\u0002\b\u001a\u0018\u0000 y2\u00020\u0001:\u0007xyz{|}~B\u0005\u00a2\u0006\u0002\u0010\u0002J\u0010\u0010$\u001a\u00020%2\u0006\u0010&\u001a\u00020\'H\u0002J&\u0010(\u001a\u000e\u0012\u0004\u0012\u00020\u000e\u0012\u0004\u0012\u00020)0\u001d2\u0006\u0010*\u001a\u00020\u000e2\b\u0010+\u001a\u0004\u0018\u00010#H\u0002J\u0016\u0010,\u001a\u00020\u000e2\f\u0010-\u001a\b\u0012\u0004\u0012\u00020#0\u001cH\u0002J\u0016\u0010.\u001a\u00020/2\f\u0010-\u001a\b\u0012\u0004\u0012\u00020#0\u001cH\u0002J\b\u00100\u001a\u00020%H\u0002J\u0019\u00101\u001a\u0004\u0018\u00010)2\b\u00102\u001a\u0004\u0018\u00010\u000eH\u0002\u00a2\u0006\u0002\u00103J \u00104\u001a\u0004\u0018\u00010\u000e2\u0006\u00105\u001a\u00020\u000e2\u0006\u00106\u001a\u00020\u000eH\u0082@\u00a2\u0006\u0002\u00107J\"\u00108\u001a\u00020!2\u0006\u00109\u001a\u00020:2\b\u00105\u001a\u0004\u0018\u00010\u000e2\u0006\u00106\u001a\u00020\u000eH\u0002J\u0012\u0010;\u001a\u00020\u000e2\b\u00102\u001a\u0004\u0018\u00010\u000eH\u0002J\u0018\u0010<\u001a\u00020/2\u0006\u0010*\u001a\u00020\u000e2\u0006\u0010=\u001a\u00020\u000eH\u0002J\u0012\u0010>\u001a\u00020\u000e2\b\u0010?\u001a\u0004\u0018\u00010\u000eH\u0002J\u0012\u0010@\u001a\u00020\u000e2\b\u0010?\u001a\u0004\u0018\u00010\u000eH\u0002J\u0010\u0010A\u001a\u00020%2\u0006\u0010B\u001a\u00020CH\u0002J\u0012\u0010D\u001a\u00020%2\b\u0010E\u001a\u0004\u0018\u00010FH\u0002J\u000e\u0010G\u001a\u00020%H\u0082@\u00a2\u0006\u0002\u0010HJ\b\u0010I\u001a\u00020\bH\u0002J\u001a\u0010J\u001a\u00020%2\u0006\u0010&\u001a\u00020\'2\b\b\u0002\u0010K\u001a\u00020\bH\u0002J\u0010\u0010L\u001a\u00020%2\u0006\u0010&\u001a\u00020\'H\u0002J\u0010\u0010M\u001a\u00020!2\u0006\u0010N\u001a\u00020\u000fH\u0002J$\u0010O\u001a\u00020\'2\u0006\u0010P\u001a\u00020Q2\b\u0010R\u001a\u0004\u0018\u00010S2\b\u0010T\u001a\u0004\u0018\u00010UH\u0016J\b\u0010V\u001a\u00020%H\u0016J\b\u0010W\u001a\u00020%H\u0016J\u001a\u0010X\u001a\u00020%2\u0006\u0010&\u001a\u00020\'2\b\u0010T\u001a\u0004\u0018\u00010UH\u0016J\u0019\u0010Y\u001a\u0004\u0018\u00010)2\b\u0010Z\u001a\u0004\u0018\u00010\u000eH\u0002\u00a2\u0006\u0002\u00103J\u0016\u0010[\u001a\u00020%2\u0006\u0010&\u001a\u00020\'H\u0082@\u00a2\u0006\u0002\u0010\\J\u0010\u0010]\u001a\u00020%2\u0006\u0010^\u001a\u00020\'H\u0002J\u000e\u0010_\u001a\u00020%H\u0082@\u00a2\u0006\u0002\u0010HJ(\u0010`\u001a\u00020!2\u0006\u00109\u001a\u00020:2\b\u00105\u001a\u0004\u0018\u00010\u000e2\u0006\u00106\u001a\u00020\u000eH\u0082@\u00a2\u0006\u0002\u0010aJ\b\u0010b\u001a\u00020%H\u0002J\u0016\u0010c\u001a\u00020%2\f\u0010d\u001a\b\u0012\u0004\u0012\u00020%0eH\u0002J\u0010\u0010f\u001a\u00020%2\u0006\u0010g\u001a\u00020\bH\u0002J\u0010\u0010h\u001a\u00020%2\u0006\u0010&\u001a\u00020\'H\u0002J\u0010\u0010i\u001a\u00020%2\u0006\u0010&\u001a\u00020\'H\u0002J@\u0010j\u001a\u00020%2\u0006\u0010&\u001a\u00020\'2\u0006\u0010k\u001a\u00020\u000e2\b\u0010l\u001a\u0004\u0018\u00010\u000e2\f\u0010-\u001a\b\u0012\u0004\u0012\u00020#0\u001c2\u0006\u0010m\u001a\u00020\b2\u0006\u0010n\u001a\u00020\bH\u0002J\u0010\u0010o\u001a\u00020%2\u0006\u0010&\u001a\u00020\'H\u0002J\u0010\u0010p\u001a\u00020%2\u0006\u0010&\u001a\u00020\'H\u0002J\b\u0010q\u001a\u00020%H\u0002J$\u0010r\u001a\u00020%2\u0006\u00105\u001a\u00020\u000e2\f\u0010s\u001a\b\u0012\u0004\u0012\u00020\u000e0\u001cH\u0082@\u00a2\u0006\u0002\u0010tJ\u0010\u0010u\u001a\u00020%2\u0006\u0010&\u001a\u00020\'H\u0002J\u0010\u0010v\u001a\u00020%2\u0006\u0010&\u001a\u00020\'H\u0002J\b\u0010w\u001a\u00020%H\u0002R\u0010\u0010\u0003\u001a\u0004\u0018\u00010\u0004X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0006X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0007\u001a\u00020\bX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\t\u001a\u00020\nX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000b\u001a\u00020\bX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u001a\u0010\f\u001a\u000e\u0012\u0004\u0012\u00020\u000e\u0012\u0004\u0012\u00020\u000f0\rX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0010\u0010\u0010\u001a\u0004\u0018\u00010\u0011X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0012\u001a\u00020\u0013X\u0082.\u00a2\u0006\u0002\n\u0000R\u0010\u0010\u0014\u001a\u0004\u0018\u00010\u0015X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u0010\u0010\u0016\u001a\u0004\u0018\u00010\u0017X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u0010\u0010\u0018\u001a\u0004\u0018\u00010\u0019X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u0010\u0010\u001a\u001a\u0004\u0018\u00010\u000eX\u0082\u000e\u00a2\u0006\u0002\n\u0000R \u0010\u001b\u001a\u0014\u0012\u0010\u0012\u000e\u0012\u0004\u0012\u00020\u000e\u0012\u0004\u0012\u00020\u000e0\u001d0\u001cX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u0014\u0010\u001e\u001a\b\u0012\u0004\u0012\u00020\u000e0\u001cX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u001a\u0010\u001f\u001a\u000e\u0012\u0004\u0012\u00020\u000e\u0012\u0004\u0012\u00020!0 X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0014\u0010\"\u001a\b\u0012\u0004\u0012\u00020#0\u001cX\u0082\u000e\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u007f"}, d2 = {"Lpw/idrug/connections/fragment/AccountFragment;", "Landroidx/fragment/app/Fragment;", "()V", "cachedProfile", "Lpw/idrug/connections/fragment/AccountFragment$ProfileSnapshot;", "cachedProfileTimestamp", "", "destroyed", "", "handler", "Landroid/os/Handler;", "isLogoutRunning", "pingEndpoints", "", "", "Lpw/idrug/connections/fragment/AccountFragment$TcpEndpoint;", "pingJob", "Lkotlinx/coroutines/Job;", "prefs", "Landroid/content/SharedPreferences;", "profileCall", "Lokhttp3/Call;", "profileTimeoutRunnable", "Ljava/lang/Runnable;", "qrPollingTimer", "Ljava/util/Timer;", "selectedServerId", "serverList", "", "Lkotlin/Pair;", "serverOrder", "serverPings", "", "Lpw/idrug/connections/fragment/AccountFragment$PingResult;", "subscriptions", "Lpw/idrug/connections/fragment/AccountFragment$Subscription;", "applyLoadingState", "", "view", "Landroid/view/View;", "buildPingStatus", "", "id", "subscription", "buildStatusMessage", "subs", "buildSubscriptionSummary", "", "cancelProfileCall", "computeDaysLeft", "raw", "(Ljava/lang/String;)Ljava/lang/Integer;", "downloadConfig", "token", "serverId", "(Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "fetchPingViaApi", "client", "Lokhttp3/OkHttpClient;", "formatExpirationDate", "formatServerDisplayName", "name", "getServerFlag", "location", "getServerName", "handleAuthDeepLink", "uri", "Landroid/net/Uri;", "handleDeepLink", "intent", "Landroid/content/Intent;", "handleDownloadConfig", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "isLoggedIn", "loadProfileAndSetupUI", "showLoading", "loadServersAndProfileUI", "measureTcpPing", "endpoint", "onCreateView", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "savedInstanceState", "Landroid/os/Bundle;", "onDestroyView", "onResume", "onViewCreated", "parsePingMs", "body", "performLogoutSafely", "(Landroid/view/View;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "refreshServerPings", "root", "removeSubscriptionTunnelsAndConfigs", "requestPing", "(Lokhttp3/OkHttpClient;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "resetPingState", "safeUi", "block", "Lkotlin/Function0;", "setLoading", "isLoading", "setupListeners", "setupServerDropdown", "showAccountScreen", "username", "photoUrl", "cacheResult", "refreshPings", "showCorrectScreen", "showLoginScreen", "syncTunnelsWithProfile", "synchronizeTunnels", "activeServers", "(Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "updateDownloadButtonState", "updateDropdownItems", "updateServerListFromSubscriptions", "CircleTransformation", "Companion", "PingResult", "PingState", "ProfileSnapshot", "Subscription", "TcpEndpoint", "ui_release"})
 public final class AccountFragment extends androidx.fragment.app.Fragment {
     private android.content.SharedPreferences prefs;
     @org.jetbrains.annotations.NotNull()
@@ -14,13 +14,35 @@ public final class AccountFragment extends androidx.fragment.app.Fragment {
     private java.util.Timer qrPollingTimer;
     @kotlin.jvm.Volatile()
     private volatile boolean isLogoutRunning = false;
+    @org.jetbrains.annotations.Nullable()
+    private kotlinx.coroutines.Job pingJob;
+    @org.jetbrains.annotations.NotNull()
+    private final java.util.Map<java.lang.String, pw.idrug.connections.fragment.AccountFragment.PingResult> serverPings = null;
+    @org.jetbrains.annotations.Nullable()
+    private pw.idrug.connections.fragment.AccountFragment.ProfileSnapshot cachedProfile;
+    private long cachedProfileTimestamp = 0L;
+    @org.jetbrains.annotations.Nullable()
+    private okhttp3.Call profileCall;
+    @org.jetbrains.annotations.Nullable()
+    private java.lang.Runnable profileTimeoutRunnable;
     @org.jetbrains.annotations.NotNull()
     private final java.util.List<java.lang.String> serverOrder = null;
     @org.jetbrains.annotations.NotNull()
     private java.util.List<pw.idrug.connections.fragment.AccountFragment.Subscription> subscriptions;
+    @org.jetbrains.annotations.NotNull()
+    private final java.util.Map<java.lang.String, pw.idrug.connections.fragment.AccountFragment.TcpEndpoint> pingEndpoints = null;
+    private static final int PING_CONNECT_TIMEOUT_MS = 2000;
+    private static final int PING_SOCKET_TIMEOUT_MS = 2000;
+    private static final long PROFILE_CACHE_VALIDITY_MS = 15000L;
+    private static final long PROFILE_TIMEOUT_MS = 5000L;
+    @org.jetbrains.annotations.NotNull()
+    public static final pw.idrug.connections.fragment.AccountFragment.Companion Companion = null;
     
     public AccountFragment() {
         super();
+    }
+    
+    private final void resetPingState() {
     }
     
     private final java.lang.String getServerName(java.lang.String location) {
@@ -76,7 +98,7 @@ public final class AccountFragment extends androidx.fragment.app.Fragment {
     private final void showLoginScreen(android.view.View view) {
     }
     
-    private final void showAccountScreen(android.view.View view, java.lang.String username, java.lang.String photoUrl, java.util.List<pw.idrug.connections.fragment.AccountFragment.Subscription> subs) {
+    private final void showAccountScreen(android.view.View view, java.lang.String username, java.lang.String photoUrl, java.util.List<pw.idrug.connections.fragment.AccountFragment.Subscription> subs, boolean cacheResult, boolean refreshPings) {
     }
     
     private final void applyLoadingState(android.view.View view) {
@@ -91,6 +113,29 @@ public final class AccountFragment extends androidx.fragment.app.Fragment {
     }
     
     private final void updateServerListFromSubscriptions() {
+    }
+    
+    private final void refreshServerPings(android.view.View root) {
+    }
+    
+    private final java.lang.Object requestPing(okhttp3.OkHttpClient client, java.lang.String token, java.lang.String serverId, kotlin.coroutines.Continuation<? super pw.idrug.connections.fragment.AccountFragment.PingResult> $completion) {
+        return null;
+    }
+    
+    private final pw.idrug.connections.fragment.AccountFragment.PingResult measureTcpPing(pw.idrug.connections.fragment.AccountFragment.TcpEndpoint endpoint) {
+        return null;
+    }
+    
+    private final pw.idrug.connections.fragment.AccountFragment.PingResult fetchPingViaApi(okhttp3.OkHttpClient client, java.lang.String token, java.lang.String serverId) {
+        return null;
+    }
+    
+    private final java.lang.Integer parsePingMs(java.lang.String body) {
+        return null;
+    }
+    
+    private final kotlin.Pair<java.lang.String, java.lang.Integer> buildPingStatus(java.lang.String id, pw.idrug.connections.fragment.AccountFragment.Subscription subscription) {
+        return null;
     }
     
     private final java.lang.String formatExpirationDate(java.lang.String raw) {
@@ -143,7 +188,10 @@ public final class AccountFragment extends androidx.fragment.app.Fragment {
     private final void setupServerDropdown(android.view.View view) {
     }
     
-    private final void loadProfileAndSetupUI(android.view.View view) {
+    private final void loadProfileAndSetupUI(android.view.View view, boolean showLoading) {
+    }
+    
+    private final void cancelProfileCall() {
     }
     
     @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000\u001a\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\b\u0002\u0018\u00002\u00020\u0001B\u0005\u00a2\u0006\u0002\u0010\u0002J\b\u0010\u0003\u001a\u00020\u0004H\u0016J\u0010\u0010\u0005\u001a\u00020\u00062\u0006\u0010\u0007\u001a\u00020\u0006H\u0016\u00a8\u0006\b"}, d2 = {"Lpw/idrug/connections/fragment/AccountFragment$CircleTransformation;", "Lcom/squareup/picasso/Transformation;", "()V", "key", "", "transform", "Landroid/graphics/Bitmap;", "source", "ui_release"})
@@ -163,6 +211,159 @@ public final class AccountFragment extends androidx.fragment.app.Fragment {
         @java.lang.Override()
         @org.jetbrains.annotations.NotNull()
         public java.lang.String key() {
+            return null;
+        }
+    }
+    
+    @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000\u001c\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0010\t\n\u0002\b\u0002\b\u0086\u0003\u0018\u00002\u00020\u0001B\u0007\b\u0002\u00a2\u0006\u0002\u0010\u0002R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0004X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0007X\u0082T\u00a2\u0006\u0002\n\u0000R\u000e\u0010\b\u001a\u00020\u0007X\u0082T\u00a2\u0006\u0002\n\u0000\u00a8\u0006\t"}, d2 = {"Lpw/idrug/connections/fragment/AccountFragment$Companion;", "", "()V", "PING_CONNECT_TIMEOUT_MS", "", "PING_SOCKET_TIMEOUT_MS", "PROFILE_CACHE_VALIDITY_MS", "", "PROFILE_TIMEOUT_MS", "ui_release"})
+    public static final class Companion {
+        
+        private Companion() {
+            super();
+        }
+    }
+    
+    @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000&\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u000b\n\u0002\u0010\u000b\n\u0002\b\u0003\n\u0002\u0010\u000e\n\u0000\b\u0082\b\u0018\u00002\u00020\u0001B\u0019\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\n\b\u0002\u0010\u0004\u001a\u0004\u0018\u00010\u0005\u00a2\u0006\u0002\u0010\u0006J\t\u0010\f\u001a\u00020\u0003H\u00c6\u0003J\u0010\u0010\r\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003\u00a2\u0006\u0002\u0010\bJ$\u0010\u000e\u001a\u00020\u00002\b\b\u0002\u0010\u0002\u001a\u00020\u00032\n\b\u0002\u0010\u0004\u001a\u0004\u0018\u00010\u0005H\u00c6\u0001\u00a2\u0006\u0002\u0010\u000fJ\u0013\u0010\u0010\u001a\u00020\u00112\b\u0010\u0012\u001a\u0004\u0018\u00010\u0001H\u00d6\u0003J\t\u0010\u0013\u001a\u00020\u0005H\u00d6\u0001J\t\u0010\u0014\u001a\u00020\u0015H\u00d6\u0001R\u0015\u0010\u0004\u001a\u0004\u0018\u00010\u0005\u00a2\u0006\n\n\u0002\u0010\t\u001a\u0004\b\u0007\u0010\bR\u0011\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\n\u0010\u000b\u00a8\u0006\u0016"}, d2 = {"Lpw/idrug/connections/fragment/AccountFragment$PingResult;", "", "state", "Lpw/idrug/connections/fragment/AccountFragment$PingState;", "latencyMs", "", "(Lpw/idrug/connections/fragment/AccountFragment$PingState;Ljava/lang/Integer;)V", "getLatencyMs", "()Ljava/lang/Integer;", "Ljava/lang/Integer;", "getState", "()Lpw/idrug/connections/fragment/AccountFragment$PingState;", "component1", "component2", "copy", "(Lpw/idrug/connections/fragment/AccountFragment$PingState;Ljava/lang/Integer;)Lpw/idrug/connections/fragment/AccountFragment$PingResult;", "equals", "", "other", "hashCode", "toString", "", "ui_release"})
+    static final class PingResult {
+        @org.jetbrains.annotations.NotNull()
+        private final pw.idrug.connections.fragment.AccountFragment.PingState state = null;
+        @org.jetbrains.annotations.Nullable()
+        private final java.lang.Integer latencyMs = null;
+        
+        public PingResult(@org.jetbrains.annotations.NotNull()
+        pw.idrug.connections.fragment.AccountFragment.PingState state, @org.jetbrains.annotations.Nullable()
+        java.lang.Integer latencyMs) {
+            super();
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public final pw.idrug.connections.fragment.AccountFragment.PingState getState() {
+            return null;
+        }
+        
+        @org.jetbrains.annotations.Nullable()
+        public final java.lang.Integer getLatencyMs() {
+            return null;
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public final pw.idrug.connections.fragment.AccountFragment.PingState component1() {
+            return null;
+        }
+        
+        @org.jetbrains.annotations.Nullable()
+        public final java.lang.Integer component2() {
+            return null;
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public final pw.idrug.connections.fragment.AccountFragment.PingResult copy(@org.jetbrains.annotations.NotNull()
+        pw.idrug.connections.fragment.AccountFragment.PingState state, @org.jetbrains.annotations.Nullable()
+        java.lang.Integer latencyMs) {
+            return null;
+        }
+        
+        @java.lang.Override()
+        public boolean equals(@org.jetbrains.annotations.Nullable()
+        java.lang.Object other) {
+            return false;
+        }
+        
+        @java.lang.Override()
+        public int hashCode() {
+            return 0;
+        }
+        
+        @java.lang.Override()
+        @org.jetbrains.annotations.NotNull()
+        public java.lang.String toString() {
+            return null;
+        }
+    }
+    
+    @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000\f\n\u0002\u0018\u0002\n\u0002\u0010\u0010\n\u0002\b\u0005\b\u0082\u0081\u0002\u0018\u00002\b\u0012\u0004\u0012\u00020\u00000\u0001B\u0007\b\u0002\u00a2\u0006\u0002\u0010\u0002j\u0002\b\u0003j\u0002\b\u0004j\u0002\b\u0005\u00a8\u0006\u0006"}, d2 = {"Lpw/idrug/connections/fragment/AccountFragment$PingState;", "", "(Ljava/lang/String;I)V", "LOADING", "SUCCESS", "ERROR", "ui_release"})
+    static enum PingState {
+        /*public static final*/ LOADING /* = new LOADING() */,
+        /*public static final*/ SUCCESS /* = new SUCCESS() */,
+        /*public static final*/ ERROR /* = new ERROR() */;
+        
+        PingState() {
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public static kotlin.enums.EnumEntries<pw.idrug.connections.fragment.AccountFragment.PingState> getEntries() {
+            return null;
+        }
+    }
+    
+    @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000.\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0002\n\u0002\u0010 \n\u0002\u0018\u0002\n\u0002\b\u000b\n\u0002\u0010\u000b\n\u0002\b\u0002\n\u0002\u0010\b\n\u0002\b\u0002\b\u0082\b\u0018\u00002\u00020\u0001B%\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\b\u0010\u0004\u001a\u0004\u0018\u00010\u0003\u0012\f\u0010\u0005\u001a\b\u0012\u0004\u0012\u00020\u00070\u0006\u00a2\u0006\u0002\u0010\bJ\t\u0010\u000e\u001a\u00020\u0003H\u00c6\u0003J\u000b\u0010\u000f\u001a\u0004\u0018\u00010\u0003H\u00c6\u0003J\u000f\u0010\u0010\u001a\b\u0012\u0004\u0012\u00020\u00070\u0006H\u00c6\u0003J/\u0010\u0011\u001a\u00020\u00002\b\b\u0002\u0010\u0002\u001a\u00020\u00032\n\b\u0002\u0010\u0004\u001a\u0004\u0018\u00010\u00032\u000e\b\u0002\u0010\u0005\u001a\b\u0012\u0004\u0012\u00020\u00070\u0006H\u00c6\u0001J\u0013\u0010\u0012\u001a\u00020\u00132\b\u0010\u0014\u001a\u0004\u0018\u00010\u0001H\u00d6\u0003J\t\u0010\u0015\u001a\u00020\u0016H\u00d6\u0001J\t\u0010\u0017\u001a\u00020\u0003H\u00d6\u0001R\u0013\u0010\u0004\u001a\u0004\u0018\u00010\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\t\u0010\nR\u0017\u0010\u0005\u001a\b\u0012\u0004\u0012\u00020\u00070\u0006\u00a2\u0006\b\n\u0000\u001a\u0004\b\u000b\u0010\fR\u0011\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\r\u0010\n\u00a8\u0006\u0018"}, d2 = {"Lpw/idrug/connections/fragment/AccountFragment$ProfileSnapshot;", "", "username", "", "photoUrl", "subscriptions", "", "Lpw/idrug/connections/fragment/AccountFragment$Subscription;", "(Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V", "getPhotoUrl", "()Ljava/lang/String;", "getSubscriptions", "()Ljava/util/List;", "getUsername", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "ui_release"})
+    static final class ProfileSnapshot {
+        @org.jetbrains.annotations.NotNull()
+        private final java.lang.String username = null;
+        @org.jetbrains.annotations.Nullable()
+        private final java.lang.String photoUrl = null;
+        @org.jetbrains.annotations.NotNull()
+        private final java.util.List<pw.idrug.connections.fragment.AccountFragment.Subscription> subscriptions = null;
+        
+        public ProfileSnapshot(@org.jetbrains.annotations.NotNull()
+        java.lang.String username, @org.jetbrains.annotations.Nullable()
+        java.lang.String photoUrl, @org.jetbrains.annotations.NotNull()
+        java.util.List<pw.idrug.connections.fragment.AccountFragment.Subscription> subscriptions) {
+            super();
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public final java.lang.String getUsername() {
+            return null;
+        }
+        
+        @org.jetbrains.annotations.Nullable()
+        public final java.lang.String getPhotoUrl() {
+            return null;
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public final java.util.List<pw.idrug.connections.fragment.AccountFragment.Subscription> getSubscriptions() {
+            return null;
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public final java.lang.String component1() {
+            return null;
+        }
+        
+        @org.jetbrains.annotations.Nullable()
+        public final java.lang.String component2() {
+            return null;
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public final java.util.List<pw.idrug.connections.fragment.AccountFragment.Subscription> component3() {
+            return null;
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public final pw.idrug.connections.fragment.AccountFragment.ProfileSnapshot copy(@org.jetbrains.annotations.NotNull()
+        java.lang.String username, @org.jetbrains.annotations.Nullable()
+        java.lang.String photoUrl, @org.jetbrains.annotations.NotNull()
+        java.util.List<pw.idrug.connections.fragment.AccountFragment.Subscription> subscriptions) {
+            return null;
+        }
+        
+        @java.lang.Override()
+        public boolean equals(@org.jetbrains.annotations.Nullable()
+        java.lang.Object other) {
+            return false;
+        }
+        
+        @java.lang.Override()
+        public int hashCode() {
+            return 0;
+        }
+        
+        @java.lang.Override()
+        @org.jetbrains.annotations.NotNull()
+        public java.lang.String toString() {
             return null;
         }
     }
@@ -236,6 +437,59 @@ public final class AccountFragment extends androidx.fragment.app.Fragment {
         java.lang.String location, @org.jetbrains.annotations.NotNull()
         java.lang.String name, @org.jetbrains.annotations.Nullable()
         java.lang.String expires, boolean forever, boolean active) {
+            return null;
+        }
+        
+        @java.lang.Override()
+        public boolean equals(@org.jetbrains.annotations.Nullable()
+        java.lang.Object other) {
+            return false;
+        }
+        
+        @java.lang.Override()
+        public int hashCode() {
+            return 0;
+        }
+        
+        @java.lang.Override()
+        @org.jetbrains.annotations.NotNull()
+        public java.lang.String toString() {
+            return null;
+        }
+    }
+    
+    @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000 \n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u000e\n\u0000\n\u0002\u0010\b\n\u0002\b\t\n\u0002\u0010\u000b\n\u0002\b\u0004\b\u0082\b\u0018\u00002\u00020\u0001B\u0015\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u00a2\u0006\u0002\u0010\u0006J\t\u0010\u000b\u001a\u00020\u0003H\u00c6\u0003J\t\u0010\f\u001a\u00020\u0005H\u00c6\u0003J\u001d\u0010\r\u001a\u00020\u00002\b\b\u0002\u0010\u0002\u001a\u00020\u00032\b\b\u0002\u0010\u0004\u001a\u00020\u0005H\u00c6\u0001J\u0013\u0010\u000e\u001a\u00020\u000f2\b\u0010\u0010\u001a\u0004\u0018\u00010\u0001H\u00d6\u0003J\t\u0010\u0011\u001a\u00020\u0005H\u00d6\u0001J\t\u0010\u0012\u001a\u00020\u0003H\u00d6\u0001R\u0011\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0007\u0010\bR\u0011\u0010\u0004\u001a\u00020\u0005\u00a2\u0006\b\n\u0000\u001a\u0004\b\t\u0010\n\u00a8\u0006\u0013"}, d2 = {"Lpw/idrug/connections/fragment/AccountFragment$TcpEndpoint;", "", "host", "", "port", "", "(Ljava/lang/String;I)V", "getHost", "()Ljava/lang/String;", "getPort", "()I", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "ui_release"})
+    static final class TcpEndpoint {
+        @org.jetbrains.annotations.NotNull()
+        private final java.lang.String host = null;
+        private final int port = 0;
+        
+        public TcpEndpoint(@org.jetbrains.annotations.NotNull()
+        java.lang.String host, int port) {
+            super();
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public final java.lang.String getHost() {
+            return null;
+        }
+        
+        public final int getPort() {
+            return 0;
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public final java.lang.String component1() {
+            return null;
+        }
+        
+        public final int component2() {
+            return 0;
+        }
+        
+        @org.jetbrains.annotations.NotNull()
+        public final pw.idrug.connections.fragment.AccountFragment.TcpEndpoint copy(@org.jetbrains.annotations.NotNull()
+        java.lang.String host, int port) {
             return null;
         }
         

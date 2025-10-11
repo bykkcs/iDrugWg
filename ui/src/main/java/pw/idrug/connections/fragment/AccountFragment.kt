@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +38,7 @@ import com.squareup.picasso.Picasso
 import com.squareup.picasso.Transformation
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -51,12 +53,16 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 import java.io.IOException
+import java.net.InetSocketAddress
+import java.net.Socket
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.Timer
 import java.util.LinkedHashSet
+import java.util.concurrent.TimeUnit
 import kotlin.math.min
+import kotlin.math.roundToInt
 import pw.idrug.connections.R
 import pw.idrug.connections.TunnelSyncManager
 import pw.idrug.connections.dialog.SubscriptionDialogFragment
@@ -76,6 +82,12 @@ class AccountFragment : Fragment() {
     private var serverList: List<Pair<String, String>> = listOf()
     private var qrPollingTimer: Timer? = null
     @Volatile private var isLogoutRunning = false
+    private var pingJob: Job? = null
+    private val serverPings = mutableMapOf<String, PingResult>()
+    private var cachedProfile: ProfileSnapshot? = null
+    private var cachedProfileTimestamp: Long = 0L
+    private var profileCall: Call? = null
+    private var profileTimeoutRunnable: Runnable? = null
 
     private val serverOrder = listOf("germany", "multihop", "bulgaria", "madrid")
 
@@ -88,6 +100,33 @@ class AccountFragment : Fragment() {
         val active: Boolean
     )
     private var subscriptions: List<Subscription> = emptyList()
+
+    private enum class PingState { LOADING, SUCCESS, ERROR }
+
+    private data class PingResult(
+        val state: PingState,
+        val latencyMs: Int? = null
+    )
+
+    private data class TcpEndpoint(val host: String, val port: Int)
+
+    private data class ProfileSnapshot(
+        val username: String,
+        val photoUrl: String?,
+        val subscriptions: List<Subscription>
+    )
+
+    private val pingEndpoints = mapOf(
+        "germany" to TcpEndpoint("194.113.233.251", 51821),
+        "madrid" to TcpEndpoint("159.255.34.41", 51821),
+        "bulgaria" to TcpEndpoint("185.232.170.117", 51821)
+    )
+
+    private fun resetPingState() {
+        pingJob?.cancel()
+        pingJob = null
+        serverPings.clear()
+    }
 
     // --- Локализация названия сервера ---
     private fun getServerName(location: String?): String {
@@ -121,6 +160,8 @@ class AccountFragment : Fragment() {
         super.onDestroyView()
         destroyed = true
         qrPollingTimer?.cancel()
+        resetPingState()
+        cancelProfileCall()
         (parentFragmentManager.findFragmentByTag("code_input") as? DialogFragment)?.dismissAllowingStateLoss()
         (parentFragmentManager.findFragmentByTag("link_code") as? DialogFragment)?.dismissAllowingStateLoss()
         LoadingDialogFragment.dismiss(parentFragmentManager)
@@ -135,7 +176,7 @@ class AccountFragment : Fragment() {
         super.onResume()
         handleDeepLink(requireActivity().intent)
         if (isLoggedIn()) {
-            loadProfileAndSetupUI(requireView())
+            loadServersAndProfileUI(requireView())
         }
     }
 
@@ -197,9 +238,18 @@ class AccountFragment : Fragment() {
     }
 
     private fun loadServersAndProfileUI(view: View) {
-        setLoading(true)
-        applyLoadingState(view)
-        loadProfileAndSetupUI(view)
+        val snapshot = cachedProfile
+        val now = SystemClock.elapsedRealtime()
+        val useCache = snapshot != null && now - cachedProfileTimestamp <= PROFILE_CACHE_VALIDITY_MS
+        if (useCache) {
+            val cached = snapshot!!
+            showAccountScreen(view, cached.username, cached.photoUrl, cached.subscriptions, cacheResult = false, refreshPings = false)
+            loadProfileAndSetupUI(view, showLoading = false)
+        } else {
+            setLoading(true)
+            applyLoadingState(view)
+            loadProfileAndSetupUI(view, showLoading = true)
+        }
     }
 
     private fun safeUi(block: () -> Unit) {
@@ -233,6 +283,10 @@ class AccountFragment : Fragment() {
         qrPollingTimer?.cancel()
         selectedServerId = null
         subscriptions = emptyList()
+        resetPingState()
+        cachedProfile = null
+        cachedProfileTimestamp = 0L
+        cancelProfileCall()
 
         view.findViewById<Button>(R.id.btn_login_telegram).apply {
             visibility = View.VISIBLE
@@ -261,7 +315,20 @@ class AccountFragment : Fragment() {
         }
     }
 
-    private fun showAccountScreen(view: View, username: String, photoUrl: String?, subs: List<Subscription>) {
+    private fun showAccountScreen(
+        view: View,
+        username: String,
+        photoUrl: String?,
+        subs: List<Subscription>,
+        cacheResult: Boolean,
+        refreshPings: Boolean
+    ) {
+        if (cacheResult) {
+            val cachedSubs = subs.map { it.copy() }
+            cachedProfile = ProfileSnapshot(username, photoUrl, cachedSubs)
+            cachedProfileTimestamp = SystemClock.elapsedRealtime()
+        }
+
         subscriptions = subs
         updateServerListFromSubscriptions()
 
@@ -309,13 +376,18 @@ class AccountFragment : Fragment() {
                 .into(avatarView)
         }
 
-        updateDropdownItems(view)
+        if (refreshPings) {
+            refreshServerPings(view)
+        } else {
+            updateDropdownItems(view)
+        }
         updateDownloadButtonState(view)
     }
 
     private fun applyLoadingState(view: View) {
         val username = prefs.getString("username", "") ?: ""
         val photoUrl = prefs.getString("photo_url", null)
+        resetPingState()
 
         view.findViewById<Button>(R.id.btn_login_telegram)?.visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout)?.visibility = View.VISIBLE
@@ -414,6 +486,145 @@ class AccountFragment : Fragment() {
         }
     }
 
+    private fun refreshServerPings(root: View) {
+        val ids = serverList.map { it.first }
+        if (ids.isEmpty()) {
+            resetPingState()
+            updateDropdownItems(root)
+            return
+        }
+        pingJob?.cancel()
+        val idSet = ids.toSet()
+        serverPings.keys.retainAll(idSet)
+        ids.forEach { id ->
+            serverPings[id] = PingResult(PingState.LOADING)
+        }
+        updateDropdownItems(root)
+
+        pingJob = viewLifecycleOwner.lifecycleScope.launch {
+            val token = prefs.getString("token", null)
+            val client = OkHttpClient()
+            for (id in ids) {
+                val result = requestPing(client, token, id)
+                serverPings[id] = result
+                safeUi {
+                    this@AccountFragment.view?.let { updateDropdownItems(it) }
+                }
+            }
+        }
+    }
+
+    private suspend fun requestPing(client: OkHttpClient, token: String?, serverId: String): PingResult =
+        withContext(Dispatchers.IO) {
+            val endpoint = pingEndpoints[serverId]
+            if (endpoint != null) {
+                measureTcpPing(endpoint)
+            } else {
+                fetchPingViaApi(client, token, serverId)
+            }
+        }
+
+    private fun measureTcpPing(endpoint: TcpEndpoint): PingResult {
+        return try {
+            Socket().use { socket ->
+                val start = SystemClock.elapsedRealtimeNanos()
+                socket.soTimeout = PING_SOCKET_TIMEOUT_MS
+                socket.connect(InetSocketAddress(endpoint.host, endpoint.port), PING_CONNECT_TIMEOUT_MS)
+                val end = SystemClock.elapsedRealtimeNanos()
+                val latency = ((end - start) / 1_000_000.0).roundToInt().coerceAtLeast(0)
+                PingResult(PingState.SUCCESS, latency)
+            }
+        } catch (e: IOException) {
+            Log.w("AccountFragment", "TCP ping to ${endpoint.host}:${endpoint.port} failed", e)
+            PingResult(PingState.ERROR)
+        }
+    }
+
+    private fun fetchPingViaApi(client: OkHttpClient, token: String?, serverId: String): PingResult {
+        val requestBuilder = Request.Builder()
+            .url("https://idrug.pw/api/ping?location=$serverId")
+        if (!token.isNullOrBlank()) {
+            requestBuilder.addHeader("Authorization", "Bearer $token")
+        }
+        val request = requestBuilder.build()
+        return try {
+            client.newCall(request).execute().use { response ->
+                if (!response.isSuccessful) {
+                    PingResult(PingState.ERROR)
+                } else {
+                    val latency = parsePingMs(response.body?.string())
+                    if (latency != null) {
+                        PingResult(PingState.SUCCESS, latency)
+                    } else {
+                        PingResult(PingState.ERROR)
+                    }
+                }
+            }
+        } catch (e: IOException) {
+            Log.w("AccountFragment", "Failed to fetch ping for $serverId via API", e)
+            PingResult(PingState.ERROR)
+        }
+    }
+
+    private fun parsePingMs(body: String?): Int? {
+        if (body.isNullOrBlank()) return null
+        val text = body.trim()
+        if (text.startsWith("{") && text.endsWith("}")) {
+            try {
+                val json = JSONObject(text)
+                val keys = listOf("rtt", "latency", "latency_ms", "ping", "ping_ms", "ms")
+                for (key in keys) {
+                    if (!json.has(key)) continue
+                    val value = json.get(key)
+                    val number = when (value) {
+                        is Number -> value.toDouble()
+                        is String -> value.toDoubleOrNull()
+                        else -> null
+                    }
+                    if (number != null) {
+                        return number.roundToInt()
+                    }
+                }
+            } catch (_: Exception) {
+                // Fallback to non-JSON parsing below
+            }
+        }
+        val match = Regex("([0-9]+(?:\\.[0-9]+)?)").find(text)
+        val value = match?.groupValues?.getOrNull(1)?.toDoubleOrNull()
+        return value?.roundToInt()
+    }
+
+    private fun buildPingStatus(id: String, subscription: Subscription?): Pair<String, Int> {
+        if (subscription != null && !subscription.active && !subscription.forever) {
+            val inactiveText = getString(R.string.inactive)
+            val inactiveColor = Color.parseColor("#D32F2F")
+            return inactiveText to inactiveColor
+        }
+
+        val result = serverPings[id]
+        if (result == null) {
+            return getString(R.string.ping_loading) to Color.parseColor("#616161")
+        }
+        return when (result.state) {
+            PingState.SUCCESS -> {
+                val latency = result.latencyMs ?: return getString(R.string.ping_unavailable) to Color.parseColor("#D32F2F")
+                val text = getString(R.string.ping_value_ms, latency)
+                val color = when {
+                    latency <= 80 -> Color.parseColor("#388E3C")
+                    latency <= 160 -> Color.parseColor("#F9A825")
+                    else -> Color.parseColor("#D32F2F")
+                }
+                text to color
+            }
+            PingState.LOADING -> {
+                getString(R.string.ping_loading) to Color.parseColor("#616161")
+            }
+            PingState.ERROR -> {
+                getString(R.string.ping_unavailable) to Color.parseColor("#D32F2F")
+            }
+        }
+    }
+
     private fun formatExpirationDate(raw: String?): String {
         if (raw.isNullOrBlank()) return ""
         return try {
@@ -479,20 +690,13 @@ class AccountFragment : Fragment() {
     }
 
     private fun formatServerDisplayName(id: String, name: String): CharSequence {
-        val sub = subscriptions.firstOrNull { it.location == id }
         val flag = getServerFlag(id)
         val prefix = if (flag.isNotBlank()) "$flag $name" else name
-        if (sub == null) return prefix
-        val statusText = when {
-            sub.forever -> getString(R.string.subscription_lifetime)
-            !sub.active -> getString(R.string.inactive)
-            !sub.expires.isNullOrBlank() -> getString(R.string.expires_on, formatExpirationDate(sub.expires))
-            else -> getString(R.string.active)
-        }
+        val subscription = subscriptions.firstOrNull { it.location == id }
+        val (statusText, color) = buildPingStatus(id, subscription)
         val display = "$prefix — $statusText"
         return SpannableString(display).apply {
             setSpan(StyleSpan(Typeface.BOLD), 0, prefix.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            val color = if (sub.active || sub.forever) Color.parseColor("#388E3C") else Color.parseColor("#D32F2F")
             setSpan(ForegroundColorSpan(color), prefix.length + 3, display.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         }
     }
@@ -766,34 +970,60 @@ class AccountFragment : Fragment() {
         override fun key(): String = "circle"
     }
 
-    private fun loadProfileAndSetupUI(view: View) {
+    private fun loadProfileAndSetupUI(view: View, showLoading: Boolean = true) {
         val token = prefs.getString("token", null)
         if (token == null) {
             safeUi {
                 showLoginScreen(view)
-                setLoading(false)
+                if (showLoading) setLoading(false)
             }
             return
         }
-        val client = OkHttpClient()
+        val client = OkHttpClient.Builder()
+            .connectTimeout(PROFILE_TIMEOUT_MS, TimeUnit.MILLISECONDS)
+            .readTimeout(PROFILE_TIMEOUT_MS, TimeUnit.MILLISECONDS)
+            .writeTimeout(PROFILE_TIMEOUT_MS, TimeUnit.MILLISECONDS)
+            .callTimeout(PROFILE_TIMEOUT_MS, TimeUnit.MILLISECONDS)
+            .build()
         val url = "https://idrug.pw/api/profile"
         val request = Request.Builder()
             .url(url)
             .addHeader("Authorization", "Bearer $token")
             .build()
-        client.newCall(request).enqueue(object : Callback {
+        cancelProfileCall()
+        val call = client.newCall(request)
+        profileCall = call
+        val timeoutRunnable = Runnable {
+            if (profileCall == call && !call.isCanceled()) {
+                call.cancel()
+            }
+        }
+        profileTimeoutRunnable = timeoutRunnable
+        handler.postDelayed(timeoutRunnable, PROFILE_TIMEOUT_MS)
+
+        call.enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
+                if (profileCall == call) cancelProfileCall()
                 safeUi {
                     if (prefs.getString("token", null) != token) return@safeUi
-                    setLoading(false)
-                    // Toast.makeText(requireContext(), getString(R.string.network_error_msg, e.message), Toast.LENGTH_SHORT).show()
+                    if (showLoading) setLoading(false)
+                    if (cachedProfile != null) {
+                        showAccountScreen(view, cachedProfile!!.username, cachedProfile!!.photoUrl, cachedProfile!!.subscriptions, cacheResult = false, refreshPings = false)
+                    } else {
+                        view.findViewById<TextView>(R.id.status_text)?.text = getString(
+                            R.string.network_error_msg,
+                            e.message ?: getString(R.string.generic_error)
+                        )
+                        setLoading(false)
+                    }
                 }
             }
             override fun onResponse(call: Call, response: Response) {
+                if (profileCall == call) cancelProfileCall()
                 val resp = response.body?.string() ?: ""
                 safeUi {
                     if (prefs.getString("token", null) != token) return@safeUi
-                    setLoading(false)
+                    if (showLoading) setLoading(false)
                     if (response.code == 401) {
                         showLoginScreen(view)
                     } else if (response.isSuccessful) {
@@ -820,18 +1050,40 @@ class AccountFragment : Fragment() {
                                 prefs.edit().putString("telegram_id", telegramId).apply()
                                 FirebaseMessaging.getInstance().subscribeToTopic("user_$telegramId")
                             }
-                            showAccountScreen(view, username, photoUrl, subsList)
+                            showAccountScreen(view, username, photoUrl, subsList, cacheResult = true, refreshPings = true)
                             syncTunnelsWithProfile()
                         } catch (e: Exception) {
                             Toast.makeText(requireContext(), getString(R.string.profile_processing_error, e.message), Toast.LENGTH_SHORT).show()
                             subscriptions = emptyList()
-                            showAccountScreen(view, prefs.getString("username", "") ?: "", prefs.getString("photo_url", null), emptyList())
+                            val cachedUsername = prefs.getString("username", "") ?: ""
+                            val cachedPhoto = prefs.getString("photo_url", null)
+                            showAccountScreen(view, cachedUsername, cachedPhoto, emptyList(), cacheResult = true, refreshPings = true)
                         }
                     } else {
-                        Toast.makeText(requireContext(), getString(R.string.profile_retrieval_failed, response.code), Toast.LENGTH_SHORT).show()
+                        view.findViewById<TextView>(R.id.status_text)?.text = getString(
+                            R.string.profile_retrieval_failed,
+                            response.code
+                        )
+                        cachedProfile?.let {
+                            showAccountScreen(view, it.username, it.photoUrl, it.subscriptions, cacheResult = false, refreshPings = false)
+                        }
                     }
                 }
             }
         })
+    }
+
+    companion object {
+        private const val PING_CONNECT_TIMEOUT_MS = 2000
+        private const val PING_SOCKET_TIMEOUT_MS = 2000
+        private const val PROFILE_CACHE_VALIDITY_MS = 15_000L
+        private const val PROFILE_TIMEOUT_MS = 5_000L
+    }
+
+    private fun cancelProfileCall() {
+        profileTimeoutRunnable?.let { handler.removeCallbacks(it) }
+        profileTimeoutRunnable = null
+        profileCall?.cancel()
+        profileCall = null
     }
 }

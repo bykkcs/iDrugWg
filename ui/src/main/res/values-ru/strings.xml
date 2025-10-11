@@ -362,8 +362,36 @@
     <string name="connection_error">Ошибка подключения: %1$s</string>
     <string name="expires_on">Действует до %1$s</string>
     <string name="subscription_lifetime">Навсегда</string>
+    <string name="nav_speed_test_title">Тест скорости</string>
+    <string name="speed_test_status_idle">Готов к тесту скорости</string>
+    <string name="speed_test_ping_label">Пинг</string>
+    <string name="speed_test_download_label">Скачивание</string>
+    <string name="speed_test_upload_label">Загрузка</string>
+    <string name="speed_test_download_presets">Профиль скачивания</string>
+    <string name="speed_test_upload_presets">Профиль загрузки</string>
+    <string name="speed_test_preset_quick">Быстрый</string>
+    <string name="speed_test_preset_standard">Стандарт</string>
+    <string name="speed_test_preset_extended">Расширенный</string>
+    <string name="speed_test_preset_full">Максимальный</string>
+    <string name="speed_test_start">Запустить тест</string>
+    <string name="speed_test_cancel">Отмена</string>
+    <string name="speed_test_status_pinging">Измеряем ping…</string>
+    <string name="speed_test_status_ping_done">Ping завершён</string>
+    <string name="speed_test_status_download_running">Тест скачивания…</string>
+    <string name="speed_test_status_download_done">Скачивание завершено</string>
+    <string name="speed_test_status_upload_running">Тест загрузки…</string>
+    <string name="speed_test_status_finished">Тест скорости завершён</string>
+    <string name="speed_test_status_cancelled">Тест скорости отменён</string>
+    <string name="speed_test_status_error">Ошибка во время теста скорости</string>
+    <string name="speed_test_ping_format">%1$s</string>
+    <string name="speed_test_error_format">%1$s</string>
+    <string name="speed_test_last_updated_format">Обновлено %1$d с назад</string>
+    <string name="ping_loading">Измеряем...</string>
+    <string name="ping_unavailable">Недоступен</string>
+    <string name="ping_value_ms">%1$d мс</string>
     <string name="connect">Подключить</string>
     <string name="disconnect">Отключить</string>
+    <string name="inactive">Неактивно</string>
     <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
     <string-array name="onboarding_emojis">
         <item>🔒</item>
