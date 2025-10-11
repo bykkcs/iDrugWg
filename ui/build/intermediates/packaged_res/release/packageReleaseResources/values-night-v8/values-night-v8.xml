@@ -5,6 +5,7 @@
     <color name="debug_tag_color">#aaaaaa</color>
     <color name="error_tag_color">#ff0000</color>
     <color name="info_tag_color">#00ff00</color>
+    <color name="loading_overlay_scrim">#B3000000</color>
     <color name="md_theme_dark_background">#0F1413</color>
     <color name="md_theme_dark_error">#FFB4AB</color>
     <color name="md_theme_dark_errorContainer">#93000A</color>

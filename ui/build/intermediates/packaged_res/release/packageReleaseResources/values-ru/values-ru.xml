@@ -102,6 +102,8 @@
         <item quantity="many">%d включенных приложений</item>
         <item quantity="other">%d включенных приложений</item>
     </plurals>
+    <string name="account_auto_import_summary">Автоматически добавлять конфигурации активных подписок в приложение</string>
+    <string name="account_auto_import_title">Автоимпорт конфигов</string>
     <string name="account_avatar">Аватар пользователя</string>
     <string name="add_peer">Добавить пир</string>
     <string name="addresses">Адреса</string>
@@ -234,6 +236,7 @@
     <string name="login_telegram_first">Сначала войдите через Telegram</string>
     <string name="login_via_telegram">Войти через Telegram</string>
     <string name="login_via_telegram_or_qr">Вход через Telegram</string>
+    <string name="login_via_telegram_title">Вход в iDrug Connections</string>
     <string name="login_with_code">Войти через код</string>
     <string name="logout">Выйти</string>
     <string name="module_enabler_disabled_summary">Экспериментальный модуль ядра может улучшить производительность</string>
@@ -366,6 +369,8 @@
     <string name="update_download_cta">Скачать и установить</string>
     <string name="update_download_description">Скачиваем APK iDrug Connections</string>
     <string name="update_download_failed">Не удалось загрузить обновление</string>
+    <string name="update_download_pending">Подготовка загрузки…</string>
+    <string name="update_download_percent">%1$d%%</string>
     <string name="update_download_started">Началась загрузка обновления</string>
     <string name="update_download_title">Загрузка обновления</string>
     <string name="update_error_generic">Не удалось проверить обновление. Повторите позже.</string>

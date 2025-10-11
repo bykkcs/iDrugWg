@@ -31,6 +31,7 @@
     <color name="error_tag_color">#aa0000</color>
     <color name="ic_launcher_background">#15181B</color>
     <color name="info_tag_color">#00aa00</color>
+    <color name="loading_overlay_scrim">#66000000</color>
     <color name="md_theme_dark_background">#0F1413</color>
     <color name="md_theme_dark_error">#FFB4AB</color>
     <color name="md_theme_dark_errorContainer">#93000A</color>
@@ -169,6 +170,8 @@
         <item quantity="one">%d Included Application</item>
         <item quantity="other">%d Included Applications</item>
     </plurals>
+    <string name="account_auto_import_summary">Automatically add active subscription configurations to the app</string>
+    <string name="account_auto_import_title">Auto import configs</string>
     <string name="account_avatar">User avatar</string>
     <string name="active">active</string>
     <string name="add_peer">Add peer</string>
@@ -312,6 +315,7 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="login_telegram_first">Please log in via Telegram first</string>
     <string name="login_via_telegram">Login via Telegram</string>
     <string name="login_via_telegram_or_qr">Login via Telegram</string>
+    <string name="login_via_telegram_title">Login into iDrug Connections</string>
     <string name="login_with_code">Login with code</string>
     <string name="logout">Logout</string>
     <string name="module_enabler_disabled_summary">The experimental kernel module can improve performance</string>
@@ -446,6 +450,8 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="update_download_cta">Download and install</string>
     <string name="update_download_description">Downloading the latest iDrug Connections APK</string>
     <string name="update_download_failed">Update download failed</string>
+    <string name="update_download_pending">Preparing download…</string>
+    <string name="update_download_percent">%1$d%%</string>
     <string name="update_download_started">Update download started</string>
     <string name="update_download_title">Downloading update</string>
     <string name="update_error_generic">Unable to check updates. Try again later.</string>
@@ -472,6 +478,7 @@ Official iDrug Connections services are available only at <a href="https://idrug
         <item name="toolbarStyle">@style/iDrugConnectionsTheme.Toolbar</item>
         <item name="bottomSheetDialogTheme">@style/iDrugConnectionsTheme.BottomSheetDialog</item>
         <item name="android:statusBarColor">@null</item>
+        <item name="android:enforceNavigationBarContrast">false</item>
     </style>
     <style name="CodeInput">
         <item name="android:layout_width">40dp</item>

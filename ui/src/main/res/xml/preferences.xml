@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:key="settings">
 
     <!-- iDrug Connections for Android (you can add a GitHub link in the summary) -->
@@ -8,19 +10,29 @@
         android:key="version" />
 
     <!-- Add tile to quick settings -->
-    <pw.idrug.connections.preference.QuickTilePreference android:key="quick_tile" />
-    
+    <pw.idrug.connections.preference.QuickTilePreference
+        android:key="quick_tile" />
+
     <!-- BUTTON FOR APP UPDATE -->
     <Preference
         android:key="ota_update"
         android:title="@string/update_application_title"
         android:summary="@string/update_application_summary" />
 
+    <!-- M3 switch via widgetLayout -->
     <androidx.preference.SwitchPreferenceCompat
         android:key="updates_auto_check_enabled"
         android:title="@string/update_auto_check_title"
         android:summary="@string/update_auto_check_summary"
-        android:defaultValue="true" />
+        android:defaultValue="true"
+        app:widgetLayout="@layout/preference_widget_material_switch" />
+
+    <androidx.preference.SwitchPreferenceCompat
+        android:key="account_auto_import"
+        android:title="@string/account_auto_import_title"
+        android:summary="@string/account_auto_import_summary"
+        android:defaultValue="false"
+        app:widgetLayout="@layout/preference_widget_material_switch" />
 
     <!--
     <CheckBoxPreference

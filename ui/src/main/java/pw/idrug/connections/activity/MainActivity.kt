@@ -12,16 +12,22 @@ import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import androidx.core.content.ContextCompat
+import android.content.res.ColorStateList
+import androidx.core.graphics.ColorUtils
+import androidx.core.view.WindowCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.color.MaterialColors
+import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.firebase.messaging.FirebaseMessaging
+import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -84,6 +90,11 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         actionBar!!.setDisplayHomeAsUpEnabled(backStackEntries >= minBackStackEntries)
     }
 
+    override fun onResume() {
+        super.onResume()
+        syncSystemNavigationBarColor(findViewById(R.id.bottom_navigation))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val prefs = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
@@ -118,19 +129,34 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
 
         // --- BottomNavigationView setup ---
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigation?.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_vpn -> {
-                    supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-                    safeReplaceFragment(TunnelListFragment())
-                    true
+        bottomNavigation?.let { nav ->
+            val navColor = MaterialColors.getColor(
+                nav,
+                com.google.android.material.R.attr.colorSurfaceContainer
+            )
+            val shapeBackground = MaterialShapeDrawable.createWithElevationOverlay(nav.context).apply {
+                fillColor = ColorStateList.valueOf(navColor)
+                elevation = nav.elevation
+            }
+            nav.background = shapeBackground
+            syncSystemNavigationBarColor(nav)
+            nav.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+                syncSystemNavigationBarColor(nav)
+            }
+            nav.setOnItemSelectedListener { item ->
+                when (item.itemId) {
+                    R.id.nav_vpn -> {
+                        supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                        safeReplaceFragment(TunnelListFragment())
+                        true
+                    }
+                    R.id.nav_account -> {
+                        supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                        safeReplaceFragment(AccountFragment())
+                        true
+                    }
+                    else -> false
                 }
-                R.id.nav_account -> {
-                    supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-                    safeReplaceFragment(AccountFragment())
-                    true
-                }
-                else -> false
             }
         }
 
@@ -183,6 +209,42 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         if (savedInstanceState == null) {
             lifecycleScope.launch { performAutoUpdateCheck() }
         }
+
+        supportFragmentManager.addOnBackStackChangedListener {
+            syncSystemNavigationBarColor(findViewById(R.id.bottom_navigation))
+        }
+    }
+
+    private fun syncSystemNavigationBarColor(bottomNavigation: BottomNavigationView?) {
+        val window = window
+        val baseView = bottomNavigation ?: window.decorView
+        val background = bottomNavigation?.background
+        val surface = MaterialColors.getColor(
+            baseView,
+            com.google.android.material.R.attr.colorSurface
+        )
+        val surfaceVariant = MaterialColors.getColor(
+            baseView,
+            com.google.android.material.R.attr.colorSurfaceVariant,
+            surface
+        )
+
+        val color = when {
+            bottomNavigation?.backgroundTintList?.defaultColor != null ->
+                bottomNavigation.backgroundTintList!!.defaultColor
+            background is MaterialShapeDrawable ->
+                background.fillColor?.defaultColor
+            background is ColorDrawable -> background.color
+            else -> null
+        } ?: surfaceVariant
+
+        window.navigationBarColor = color
+        val isLight = ColorUtils.calculateLuminance(color) > 0.5
+        WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightNavigationBars = isLight
+    }
+
+    fun refreshSystemNavigationBarColor() {
+        syncSystemNavigationBarColor(findViewById(R.id.bottom_navigation))
     }
 
     private fun subscribeToGlobalNotifications() {

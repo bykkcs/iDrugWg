@@ -100,4 +100,16 @@ object UserKnobs {
             it[UPDATES_AUTO_CHECK_ENABLED] = enabled
         }
     }
+
+    private val ACCOUNT_AUTO_IMPORT = booleanPreferencesKey("account_auto_import")
+    val accountAutoImport: Flow<Boolean>
+        get() = Application.getPreferencesDataStore().data.map {
+            it[ACCOUNT_AUTO_IMPORT] ?: false
+        }
+
+    suspend fun setAccountAutoImport(enabled: Boolean) {
+        Application.getPreferencesDataStore().edit {
+            it[ACCOUNT_AUTO_IMPORT] = enabled
+        }
+    }
 }

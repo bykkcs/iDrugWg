@@ -89,4 +89,6 @@
   <color name="md_theme_dark_surfaceBright">#1A1F1E</color>
   <color name="md_theme_dark_surfaceDim">#0B100E</color>
 
+  <color name="loading_overlay_scrim">#66000000</color>
+
 </resources>

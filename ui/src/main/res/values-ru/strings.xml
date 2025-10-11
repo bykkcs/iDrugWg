@@ -283,6 +283,7 @@
     <string name="biometric_auth_error_reason">Ошибка аутентификации: %s</string>
     <string name="account_avatar">Аватар пользователя</string>
     <string name="login_via_telegram_or_qr">Вход через Telegram</string>
+    <string name="login_via_telegram_title">Вход в iDrug Connections</string>
     <string name="login_via_telegram">Войти через Telegram</string>
     <string name="choose_server">Выберите сервер</string>
     <string name="download_config">Скачать конфиг</string>
@@ -318,12 +319,16 @@
     <string name="update_download_description">Скачиваем APK iDrug Connections</string>
     <string name="update_download_started">Началась загрузка обновления</string>
     <string name="update_download_failed">Не удалось загрузить обновление</string>
+    <string name="update_download_pending">Подготовка загрузки…</string>
+    <string name="update_download_percent">%1$d%%</string>
     <string name="update_error_generic">Не удалось проверить обновление. Повторите позже.</string>
     <string name="update_install_permission">Разрешите установку из неизвестных источников, чтобы продолжить.</string>
     <string name="update_install_started">Открываем установщик…</string>
     <string name="update_latest_message">Вы используете последнюю версию</string>
     <string name="update_auto_check_title">Автопроверка при запуске</string>
     <string name="update_auto_check_summary">Проверять обновления автоматически при запуске приложения</string>
+    <string name="account_auto_import_title">Автоимпорт конфигов</string>
+    <string name="account_auto_import_summary">Автоматически добавлять конфигурации активных подписок в приложение</string>
     <string name="back">Назад</string>
     <string name="qr_login_confirmed">Вход по QR подтверждён</string>
     <string name="qr_confirmation_error">Ошибка подтверждения: %s</string>
@@ -388,4 +393,3 @@
     <string name="onboarding_start">Начать</string>
     <string name="onboarding_error">Ошибка загрузки обучения. Пожалуйста, обновите приложение или свяжитесь с поддержкой.</string>
 </resources>
-

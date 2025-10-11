@@ -10,6 +10,7 @@
         <item name="toolbarStyle">@style/iDrugConnectionsTheme.Toolbar</item>
         <item name="bottomSheetDialogTheme">@style/iDrugConnectionsTheme.BottomSheetDialog</item>
         <item name="android:statusBarColor">@null</item>
+        <item name="android:enforceNavigationBarContrast">false</item>
     </style>
 
     <!-- Various additional API-specific features in values-v*/styles.xml -->

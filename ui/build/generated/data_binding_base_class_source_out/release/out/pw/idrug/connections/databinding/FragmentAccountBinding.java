@@ -5,18 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
+import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -51,10 +50,7 @@ public final class FragmentAccountBinding implements ViewBinding {
   public final CoordinatorLayout coordinator;
 
   @NonNull
-  public final FrameLayout loadingOverlay;
-
-  @NonNull
-  public final ProgressBar progressLoading;
+  public final MaterialAutoCompleteTextView dropdownServer;
 
   @NonNull
   public final ImageView qrCodeImage;
@@ -66,7 +62,7 @@ public final class FragmentAccountBinding implements ViewBinding {
   public final ScrollView scrollView;
 
   @NonNull
-  public final Spinner spinnerServer;
+  public final TextInputLayout serverDropdownContainer;
 
   @NonNull
   public final TextView statusText;
@@ -77,18 +73,14 @@ public final class FragmentAccountBinding implements ViewBinding {
   @NonNull
   public final TextView textExpiration;
 
-  @NonNull
-  public final TextView textServerChoice;
-
   private FragmentAccountBinding(@NonNull CoordinatorLayout rootView,
       @NonNull ImageView avatarImage, @NonNull Button btnDownload, @NonNull Button btnLinkDevice,
       @NonNull Button btnLoginTelegram, @NonNull Button btnLogout, @NonNull Button btnReferral,
       @NonNull Button btnRenew, @NonNull CoordinatorLayout coordinator,
-      @NonNull FrameLayout loadingOverlay, @NonNull ProgressBar progressLoading,
-      @NonNull ImageView qrCodeImage, @NonNull LinearLayout rootLayout,
-      @NonNull ScrollView scrollView, @NonNull Spinner spinnerServer, @NonNull TextView statusText,
-      @NonNull TextView textCurrentUser, @NonNull TextView textExpiration,
-      @NonNull TextView textServerChoice) {
+      @NonNull MaterialAutoCompleteTextView dropdownServer, @NonNull ImageView qrCodeImage,
+      @NonNull LinearLayout rootLayout, @NonNull ScrollView scrollView,
+      @NonNull TextInputLayout serverDropdownContainer, @NonNull TextView statusText,
+      @NonNull TextView textCurrentUser, @NonNull TextView textExpiration) {
     this.rootView = rootView;
     this.avatarImage = avatarImage;
     this.btnDownload = btnDownload;
@@ -98,16 +90,14 @@ public final class FragmentAccountBinding implements ViewBinding {
     this.btnReferral = btnReferral;
     this.btnRenew = btnRenew;
     this.coordinator = coordinator;
-    this.loadingOverlay = loadingOverlay;
-    this.progressLoading = progressLoading;
+    this.dropdownServer = dropdownServer;
     this.qrCodeImage = qrCodeImage;
     this.rootLayout = rootLayout;
     this.scrollView = scrollView;
-    this.spinnerServer = spinnerServer;
+    this.serverDropdownContainer = serverDropdownContainer;
     this.statusText = statusText;
     this.textCurrentUser = textCurrentUser;
     this.textExpiration = textExpiration;
-    this.textServerChoice = textServerChoice;
   }
 
   @Override
@@ -181,15 +171,9 @@ public final class FragmentAccountBinding implements ViewBinding {
 
       CoordinatorLayout coordinator = (CoordinatorLayout) rootView;
 
-      id = R.id.loading_overlay;
-      FrameLayout loadingOverlay = ViewBindings.findChildViewById(rootView, id);
-      if (loadingOverlay == null) {
-        break missingId;
-      }
-
-      id = R.id.progress_loading;
-      ProgressBar progressLoading = ViewBindings.findChildViewById(rootView, id);
-      if (progressLoading == null) {
+      id = R.id.dropdown_server;
+      MaterialAutoCompleteTextView dropdownServer = ViewBindings.findChildViewById(rootView, id);
+      if (dropdownServer == null) {
         break missingId;
       }
 
@@ -211,9 +195,9 @@ public final class FragmentAccountBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.spinner_server;
-      Spinner spinnerServer = ViewBindings.findChildViewById(rootView, id);
-      if (spinnerServer == null) {
+      id = R.id.server_dropdown_container;
+      TextInputLayout serverDropdownContainer = ViewBindings.findChildViewById(rootView, id);
+      if (serverDropdownContainer == null) {
         break missingId;
       }
 
@@ -235,16 +219,10 @@ public final class FragmentAccountBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.text_server_choice;
-      TextView textServerChoice = ViewBindings.findChildViewById(rootView, id);
-      if (textServerChoice == null) {
-        break missingId;
-      }
-
       return new FragmentAccountBinding((CoordinatorLayout) rootView, avatarImage, btnDownload,
           btnLinkDevice, btnLoginTelegram, btnLogout, btnReferral, btnRenew, coordinator,
-          loadingOverlay, progressLoading, qrCodeImage, rootLayout, scrollView, spinnerServer,
-          statusText, textCurrentUser, textExpiration, textServerChoice);
+          dropdownServer, qrCodeImage, rootLayout, scrollView, serverDropdownContainer, statusText,
+          textCurrentUser, textExpiration);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
