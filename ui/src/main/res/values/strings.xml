@@ -262,6 +262,7 @@
     <string name="account_avatar">User avatar</string>
     <string name="biometric_auth_error_reason">Authentication failure: %s</string>
     <string name="login_via_telegram_or_qr">Login via Telegram</string>
+    <string name="login_via_telegram_title">Login into iDrug Connections</string>
     <string name="login_via_telegram">Login via Telegram</string>
     <string name="choose_server">Choose server</string>
     <string name="download_config">Download config</string>
@@ -297,12 +298,16 @@
     <string name="update_download_description">Downloading the latest iDrug Connections APK</string>
     <string name="update_download_started">Update download started</string>
     <string name="update_download_failed">Update download failed</string>
+    <string name="update_download_pending">Preparing download…</string>
+    <string name="update_download_percent">%1$d%%</string>
     <string name="update_error_generic">Unable to check updates. Try again later.</string>
     <string name="update_install_permission">Allow installation from unknown sources to continue.</string>
     <string name="update_install_started">Opening installer…</string>
     <string name="update_latest_message">You are using the latest version</string>
     <string name="update_auto_check_title">Auto-check on launch</string>
     <string name="update_auto_check_summary">Automatically check for updates when the app starts</string>
+    <string name="account_auto_import_title">Auto import configs</string>
+    <string name="account_auto_import_summary">Automatically add active subscription configurations to the app</string>
     <string name="back">Back</string>
     <string name="qr_login_confirmed">QR login confirmed</string>
     <string name="qr_confirmation_error">Confirmation error: %s</string>
@@ -373,4 +378,3 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="onboarding_start">Start</string>
     <string name="onboarding_error">Onboarding failed to load. Please update the app or contact support.</string>
 </resources>
-

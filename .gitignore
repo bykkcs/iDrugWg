@@ -1,28 +1,19 @@
-# Build artifacts
-*.apk
-*.aab
-build/
-*.log
-
-# Local settings
-local.properties
-*.keystore
-
-# Gradle temporary files
+# Gradle / Android build
 .gradle/
-gradle.properties
-
-# IDE files
+**/build/
+**/.cxx/
+**/intermediates/
+**/generated/
+**/outputs/
+# Studio
 .idea/
 *.iml
-
-# Cache and temporary files
-*.tmp
-*.bak
-*.swp
-.DS_Store
-*.DS_Store
-
-# Large binary files (optional, uncomment to exclude)
-# app/src/main/res/raw/*
-# app/src/main/assets/*
+# Artifacts
+*.apk
+*.aab
+*.keystore
+*.dm
+*.bin
+*.jar
+*.arsc.flat
+/iDrugWg.git/

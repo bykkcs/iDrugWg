@@ -1,25 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <!-- Overlay for progress bar -->
-    <FrameLayout
-        android:id="@+id/loading_overlay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/transparent"
-        android:visibility="gone">
-
-        <ProgressBar
-            android:id="@+id/progress_loading"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_gravity="center"
-            android:layout_width="64dp"
-            android:layout_height="64dp" />
-    </FrameLayout>
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -49,7 +34,7 @@
                 android:id="@+id/text_current_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login_via_telegram"
+                android:text="@string/login_via_telegram_title"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:paddingBottom="16dp"
@@ -86,7 +71,6 @@
                     android:visibility="gone" />
             </LinearLayout>
 
-
             <ImageView
                 android:id="@+id/qr_code_image"
                 android:layout_width="220dp"
@@ -96,21 +80,33 @@
                 android:contentDescription="QR code for login"
                 android:scaleType="fitCenter"
                 android:background="@android:color/transparent" />
-<TextView
-    android:id="@+id/text_server_choice"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/choose_server"
-    android:textStyle="bold"
-    android:textSize="16sp"
-    android:gravity="center"
-    android:layout_marginBottom="8dp" />
 
-<Spinner
-    android:id="@+id/spinner_server"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"/>
+            <!-- ====== REPLACED SPINNER WITH MATERIAL 3 EXPOSED DROPDOWN ====== -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/server_dropdown_container"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:boxCornerRadiusTopStart="28dp"
+                app:boxCornerRadiusTopEnd="28dp"
+                app:boxCornerRadiusBottomStart="28dp"
+                app:boxCornerRadiusBottomEnd="28dp"
+                app:hintEnabled="true">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/dropdown_server"
+                    style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/choose_server"
+                    android:inputType="none"
+                    android:imeOptions="flagNoExtractUi"
+                    android:importantForAutofill="no"
+                    android:focusable="true"
+                    android:clickable="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!-- ============================================================ -->
 
             <Button
                 android:id="@+id/btn_download"
@@ -136,7 +132,6 @@
                 android:layout_marginTop="8dp"
                 android:visibility="gone" />
 
-
             <TextView
                 android:id="@+id/status_text"
                 android:layout_width="match_parent"
@@ -158,6 +153,5 @@
                 android:paddingBottom="6dp" />
         </LinearLayout>
     </ScrollView>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

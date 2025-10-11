@@ -43,4 +43,6 @@
   <color name="md_theme_dark_surfaceContainerHighest">#171C1B</color>
   <color name="md_theme_dark_surfaceBright">#1A1F1E</color>
   <color name="md_theme_dark_surfaceDim">#0B100E</color>
+
+  <color name="loading_overlay_scrim">#B3000000</color>
 </resources>

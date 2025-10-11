@@ -9,6 +9,30 @@
                         "startLines": "3",
                         "startColumns": "4",
                         "startOffsets": "115",
+                        "endLines": "9",
+                        "endColumns": "12",
+                        "endOffsets": "568"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "8",
+                        "endColumns": "12",
+                        "endOffsets": "508"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-62:/values-v27/values-v27.xml",
+            "map": [
+                {
+                    "source": "/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/res/values-v27/styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "115",
                         "endLines": "8",
                         "endColumns": "12",
                         "endOffsets": "497"

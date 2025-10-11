@@ -39,19 +39,19 @@ Landroidx/activity/result/ActivityResultCallback;
 Landroidx/activity/result/ActivityResultLauncher;
 Landroidx/fragment/app/Fragment$10;
 Landroidx/activity/result/ActivityResultRegistry$CallbackAndContract;
-HSPLandroidx/activity/result/ActivityResultRegistry$CallbackAndContract;-><init>(Landroidx/activity/result/ActivityResultCallback;L_COROUTINE/_BOUNDARY;)V
+HSPLandroidx/activity/result/ActivityResultRegistry$CallbackAndContract;-><init>(Landroidx/activity/result/ActivityResultCallback;Lkotlin/ExceptionsKt;)V
 Landroidx/activity/result/ActivityResultRegistry;
 HSPLandroidx/activity/result/ActivityResultRegistry;-><init>()V
-HSPLandroidx/activity/result/ActivityResultRegistry;->register(Ljava/lang/String;L_COROUTINE/_BOUNDARY;Landroidx/biometric/BiometricPrompt;)Landroidx/fragment/app/Fragment$10;
+HSPLandroidx/activity/result/ActivityResultRegistry;->register(Ljava/lang/String;Lkotlin/ExceptionsKt;Landroidx/biometric/BiometricPrompt;)Landroidx/fragment/app/Fragment$10;
 PLandroidx/activity/result/ActivityResultRegistry;->unregister(Ljava/lang/String;)V
 Landroidx/activity/result/ActivityResultRegistryOwner;
-L_COROUTINE/_BOUNDARY;
+Lkotlin/ExceptionsKt;
 Landroidx/activity/result/contract/ActivityResultContracts$RequestMultiplePermissions;
 Landroidx/activity/result/contract/ActivityResultContracts$StartActivityForResult;
 Landroidx/appcompat/R$styleable;
 HSPLandroidx/appcompat/R$styleable;-><clinit>()V
 Landroidx/appcompat/app/ActionBar$LayoutParams;
-Landroidx/work/WorkManager;
+Lkotlin/LazyKt__LazyKt;
 Landroidx/appcompat/app/AppCompatActivity$1;
 Landroidx/appcompat/app/AppCompatActivity$2;
 HSPLandroidx/appcompat/app/AppCompatActivity$2;-><init>(Landroidx/appcompat/app/AppCompatActivity;)V
@@ -131,7 +131,7 @@ HSPLandroidx/appcompat/app/WindowDecorActionBar;->init(Landroid/view/View;)V
 HSPLandroidx/appcompat/app/WindowDecorActionBar;->setDefaultDisplayHomeAsUpEnabled(Z)V
 HSPLandroidx/appcompat/app/WindowDecorActionBar;->setDisplayHomeAsUpEnabled(Z)V
 HSPLandroidx/appcompat/app/WindowDecorActionBar;->setHasEmbeddedTabs(Z)V
-Lkotlin/time/DurationKt;
+Landroidx/work/WorkInfo;
 Landroidx/appcompat/view/ActionBarPolicy;
 HSPLandroidx/appcompat/view/ActionBarPolicy;-><init>(Landroid/content/Context;)V
 Landroidx/appcompat/view/ContextThemeWrapper;
@@ -393,8 +393,8 @@ HSPLandroidx/appcompat/widget/Toolbar;->setTitle(Ljava/lang/CharSequence;)V
 HSPLandroidx/appcompat/widget/Toolbar;->shouldLayout(Landroid/view/View;)Z
 Landroidx/appcompat/widget/ActionBarContextView$1;
 HSPLandroidx/appcompat/widget/ToolbarWidgetWrapper;->setDisplayOptions(I)V
-Lkotlinx/coroutines/JobKt;
-HSPLkotlinx/coroutines/JobKt;->setTooltipText(Landroid/view/View;Ljava/lang/CharSequence;)V
+Lkotlin/ResultKt;
+HSPLkotlin/ResultKt;->setTooltipText(Landroid/view/View;Ljava/lang/CharSequence;)V
 Landroidx/appcompat/widget/VectorEnabledTintResources;
 Landroidx/appcompat/widget/ViewUtils;
 HSPLandroidx/appcompat/widget/ViewUtils;-><clinit>()V
@@ -418,7 +418,7 @@ Landroidx/fragment/app/Fragment$AnimationInfo;
 Landroidx/fragment/app/Fragment;
 HSPLandroidx/fragment/app/Fragment;-><clinit>()V
 HSPLandroidx/fragment/app/Fragment;-><init>()V
-HSPLandroidx/fragment/app/Fragment;->createFragmentContainer()Lkotlin/TuplesKt;
+HSPLandroidx/fragment/app/Fragment;->createFragmentContainer()Landroidx/work/WorkManager;
 HSPLandroidx/fragment/app/Fragment;->ensureAnimationInfo()Landroidx/fragment/app/Fragment$AnimationInfo;
 HSPLandroidx/fragment/app/Fragment;->equals(Ljava/lang/Object;)Z
 HSPLandroidx/fragment/app/Fragment;->getActivity()Landroidx/fragment/app/FragmentActivity;
@@ -472,7 +472,7 @@ HSPLandroidx/fragment/app/FragmentActivity;->onResume()V
 HSPLandroidx/fragment/app/FragmentActivity;->onStart()V
 HSPLandroidx/fragment/app/FragmentActivity;->onStateNotSaved()V
 PLandroidx/fragment/app/FragmentActivity;->onStop()V
-Lkotlin/TuplesKt;
+Landroidx/work/WorkManager;
 Landroidx/fragment/app/FragmentContainerView;
 PLandroidx/fragment/app/FragmentContainerView;->addDisappearingFragmentView(Landroid/view/View;)V
 HSPLandroidx/fragment/app/FragmentContainerView;->addView(Landroid/view/View;ILandroid/view/ViewGroup$LayoutParams;)V
@@ -512,7 +512,7 @@ Landroidx/fragment/app/FragmentManager$6;
 Landroidx/fragment/app/FragmentManager$7;
 Lcom/journeyapps/barcodescanner/ScanContract;
 HSPLcom/journeyapps/barcodescanner/ScanContract;-><init>(I)V
-Lkotlin/text/RegexKt;
+Landroidx/core/os/BundleKt;
 Landroidx/fragment/app/FragmentManager$OpGenerator;
 Landroidx/fragment/app/FragmentManagerImpl;
 HSPLandroidx/fragment/app/FragmentManagerImpl;->dispatchCreateOptionsMenu$androidx$fragment$app$FragmentManager()Z
@@ -560,7 +560,6 @@ HSPLandroidx/fragment/app/FragmentViewLifecycleOwner;->getLifecycle()Landroidx/l
 HSPLandroidx/fragment/app/FragmentViewLifecycleOwner;->getSavedStateRegistry()Landroidx/savedstate/SavedStateRegistry;
 HSPLandroidx/fragment/app/FragmentViewLifecycleOwner;->handleLifecycleEvent(Landroidx/lifecycle/Lifecycle$Event;)V
 HSPLandroidx/fragment/app/FragmentViewLifecycleOwner;->initialize()V
-Landroidx/tracing/Trace;
 Landroidx/fragment/app/SpecialEffectsController$FragmentStateManagerOperation;
 HSPLandroidx/fragment/app/SpecialEffectsController$FragmentStateManagerOperation;-><init>(IILandroidx/fragment/app/FragmentStateManager;Landroidx/core/os/CancellationSignal;)V
 HSPLandroidx/fragment/app/SpecialEffectsController$FragmentStateManagerOperation;->complete()V
@@ -696,7 +695,7 @@ HSPLandroidx/fragment/app/DefaultSpecialEffectsController;->forceCompleteAllOper
 HSPLandroidx/fragment/app/DefaultSpecialEffectsController;->markPostponedState()V
 HSPLandroidx/fragment/app/DefaultSpecialEffectsController;->updateFinalState()V
 HSPLandroidx/fragment/app/FragmentManagerImpl;->addFragment(Landroidx/fragment/app/Fragment;)Landroidx/fragment/app/FragmentStateManager;
-HSPLandroidx/fragment/app/FragmentManagerImpl;->attachController(Landroidx/fragment/app/FragmentActivity$HostCallbacks;Lkotlin/TuplesKt;Landroidx/fragment/app/Fragment;)V
+HSPLandroidx/fragment/app/FragmentManagerImpl;->attachController(Landroidx/fragment/app/FragmentActivity$HostCallbacks;Landroidx/work/WorkManager;Landroidx/fragment/app/Fragment;)V
 HSPLandroidx/fragment/app/FragmentManagerImpl;->cleanupExec()V
 HSPLandroidx/fragment/app/FragmentManagerImpl;->collectAllSpecialEffectsController()Ljava/util/HashSet;
 HSPLandroidx/fragment/app/FragmentManagerImpl;->createOrGetFragmentStateManager(Landroidx/fragment/app/Fragment;)Landroidx/fragment/app/FragmentStateManager;
