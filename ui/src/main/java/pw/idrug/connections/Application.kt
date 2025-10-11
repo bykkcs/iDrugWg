@@ -45,6 +45,7 @@ class Application : android.app.Application() {
     private var backend: Backend? = null
     private lateinit var rootShell: RootShell
     private lateinit var preferencesDataStore: DataStore<Preferences>
+    private lateinit var initialPreferencesSnapshot: Preferences
     private lateinit var toolsInstaller: ToolsInstaller
     private lateinit var tunnelManager: TunnelManager
 
@@ -88,6 +89,7 @@ class Application : android.app.Application() {
         rootShell = RootShell(applicationContext)
         toolsInstaller = ToolsInstaller(applicationContext, rootShell)
         preferencesDataStore = PreferenceDataStoreFactory.create { applicationContext.preferencesDataStoreFile("settings") }
+        initialPreferencesSnapshot = runBlocking(Dispatchers.IO) { preferencesDataStore.data.first() }
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             runBlocking {
                 AppCompatDelegate.setDefaultNightMode(if (UserKnobs.darkTheme.first()) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)
@@ -141,6 +143,7 @@ class Application : android.app.Application() {
         fun getRootShell() = get().rootShell
 
         fun getPreferencesDataStore() = get().preferencesDataStore
+        fun getInitialPreferencesSnapshot() = get().initialPreferencesSnapshot
 
         fun getToolsInstaller() = get().toolsInstaller
 

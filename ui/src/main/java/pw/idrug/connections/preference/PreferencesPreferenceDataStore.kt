@@ -16,12 +16,15 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.preference.PreferenceDataStore
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import pw.idrug.connections.Application
 
 class PreferencesPreferenceDataStore(private val coroutineScope: CoroutineScope, private val dataStore: DataStore<Preferences>) : PreferenceDataStore() {
+    private val initialSnapshot = Application.getInitialPreferencesSnapshot()
+    private val prefsState = dataStore.data.stateIn(coroutineScope, SharingStarted.Eagerly, initialSnapshot)
+
     override fun putString(key: String?, value: String?) {
         if (key == null) return
         val pk = stringPreferencesKey(key)
@@ -88,48 +91,42 @@ class PreferencesPreferenceDataStore(private val coroutineScope: CoroutineScope,
     override fun getString(key: String?, defValue: String?): String? {
         if (key == null) return defValue
         val pk = stringPreferencesKey(key)
-        return runBlocking {
-            dataStore.data.map { it[pk] ?: defValue }.first()
-        }
+        val prefs = prefsState.value
+        return prefs[pk] ?: defValue
     }
 
     override fun getStringSet(key: String?, defValues: Set<String?>?): Set<String?>? {
         if (key == null) return defValues
         val pk = stringSetPreferencesKey(key)
-        return runBlocking {
-            dataStore.data.map { it[pk] ?: defValues }.first()
-        }
+        val prefs = prefsState.value
+        return prefs[pk] ?: defValues
     }
 
     override fun getInt(key: String?, defValue: Int): Int {
         if (key == null) return defValue
         val pk = intPreferencesKey(key)
-        return runBlocking {
-            dataStore.data.map { it[pk] ?: defValue }.first()
-        }
+        val prefs = prefsState.value
+        return prefs[pk] ?: defValue
     }
 
     override fun getLong(key: String?, defValue: Long): Long {
         if (key == null) return defValue
         val pk = longPreferencesKey(key)
-        return runBlocking {
-            dataStore.data.map { it[pk] ?: defValue }.first()
-        }
+        val prefs = prefsState.value
+        return prefs[pk] ?: defValue
     }
 
     override fun getFloat(key: String?, defValue: Float): Float {
         if (key == null) return defValue
         val pk = floatPreferencesKey(key)
-        return runBlocking {
-            dataStore.data.map { it[pk] ?: defValue }.first()
-        }
+        val prefs = prefsState.value
+        return prefs[pk] ?: defValue
     }
 
     override fun getBoolean(key: String?, defValue: Boolean): Boolean {
         if (key == null) return defValue
         val pk = booleanPreferencesKey(key)
-        return runBlocking {
-            dataStore.data.map { it[pk] ?: defValue }.first()
-        }
+        val prefs = prefsState.value
+        return prefs[pk] ?: defValue
     }
 }

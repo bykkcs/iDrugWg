@@ -40,6 +40,7 @@ import pw.idrug.connections.R
 import pw.idrug.connections.fragment.TunnelDetailFragment
 import pw.idrug.connections.fragment.TunnelEditorFragment
 import pw.idrug.connections.fragment.TunnelListFragment
+import pw.idrug.connections.fragment.SpeedTestFragment
 import pw.idrug.connections.activity.OnboardingActivity
 import pw.idrug.connections.fragment.AccountFragment
 import pw.idrug.connections.model.ObservableTunnel
@@ -153,6 +154,11 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                     R.id.nav_account -> {
                         supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                         safeReplaceFragment(AccountFragment())
+                        true
+                    }
+                    R.id.nav_speed_test -> {
+                        supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                        safeReplaceFragment(SpeedTestFragment())
                         true
                     }
                     else -> false
