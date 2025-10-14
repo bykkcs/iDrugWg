@@ -34,6 +34,10 @@ class FileConfigStore(private val context: Context) : ConfigStore {
     override fun delete(name: String) {
         Log.d(TAG, "Deleting configuration for tunnel $name")
         val file = fileFor(name)
+        if (!file.exists()) {
+            Log.w(TAG, "Configuration file ${file.name} already missing when deleting $name")
+            return
+        }
         if (!file.delete())
             throw IOException(context.getString(R.string.config_delete_error, file.name))
     }

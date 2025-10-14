@@ -318,6 +318,7 @@
     <string name="network_error_msg">Network error: %s</string>
     <string name="profile_processing_error">Profile processing error: %s</string>
     <string name="profile_retrieval_failed">Failed to retrieve profile: %d</string>
+    <string name="profile_timeout_error">Failed to load profile: request timed out. Check your connection and try again.</string>
     <string name="logged_out">You have logged out</string>
     <string name="select_server">Select a server</string>
     <string name="subscription_inactive_msg">Subscription inactive</string>

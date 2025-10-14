@@ -733,8 +733,21 @@ class AccountFragment : Fragment() {
             }
             val tunnelName = "idrug_$serverId"
             val tunnelManager = Application.getTunnelManager()
-            val existing = tunnelManager.getTunnels().firstOrNull { it.name == tunnelName }
+            val tunnels = tunnelManager.getTunnels()
+            val configFile = File(requireContext().filesDir, "$tunnelName.conf")
+
+            val existing = tunnels.firstOrNull { it.name == tunnelName }
             if (existing != null) {
+                val existsOnDisk = withContext(Dispatchers.IO) { configFile.exists() }
+                if (!existsOnDisk) {
+                    try {
+                        existing.deleteAsync()
+                    } catch (e: Exception) {
+                        Log.w("AccountFragment", "Failed to remove stale tunnel $tunnelName", e)
+                    }
+                }
+            }
+            if (tunnels.any { it.name == tunnelName }) {
                 safeUi { Toast.makeText(requireContext(), R.string.config_already_added, Toast.LENGTH_SHORT).show() }
                 return
             }
@@ -996,6 +1009,16 @@ class AccountFragment : Fragment() {
         val timeoutRunnable = Runnable {
             if (profileCall == call && !call.isCanceled()) {
                 call.cancel()
+                safeUi {
+                    if (prefs.getString("token", null) != token) return@safeUi
+                    if (showLoading) setLoading(false)
+                    val cached = cachedProfile
+                    if (cached != null) {
+                        showAccountScreen(view, cached.username, cached.photoUrl, cached.subscriptions, cacheResult = false, refreshPings = false)
+                    } else {
+                        view.findViewById<TextView>(R.id.status_text)?.text = getString(R.string.profile_timeout_error)
+                    }
+                }
             }
         }
         profileTimeoutRunnable = timeoutRunnable

@@ -339,6 +339,7 @@
     <string name="network_error_msg">Сетевая ошибка: %s</string>
     <string name="profile_processing_error">Ошибка обработки профиля: %s</string>
     <string name="profile_retrieval_failed">Не удалось получить профиль: %d</string>
+    <string name="profile_timeout_error">Не удалось загрузить профиль: истекло время ожидания. Проверьте подключение и попробуйте снова.</string>
     <string name="logged_out">Вы вышли из аккаунта</string>
     <string name="select_server">Выберите сервер</string>
     <string name="subscription_inactive_msg">Подписка не активна</string>
