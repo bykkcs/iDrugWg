@@ -88,6 +88,7 @@ class AccountFragment : Fragment() {
     private var cachedProfileTimestamp: Long = 0L
     private var profileCall: Call? = null
     private var profileTimeoutRunnable: Runnable? = null
+    @Volatile private var profileTimedOut = false
 
     private val serverOrder = listOf("germany", "multihop", "bulgaria", "madrid")
 
@@ -992,6 +993,8 @@ class AccountFragment : Fragment() {
             }
             return
         }
+        profileTimedOut = false
+
         val client = OkHttpClient.Builder()
             .connectTimeout(PROFILE_TIMEOUT_MS, TimeUnit.MILLISECONDS)
             .readTimeout(PROFILE_TIMEOUT_MS, TimeUnit.MILLISECONDS)
@@ -1008,10 +1011,11 @@ class AccountFragment : Fragment() {
         profileCall = call
         val timeoutRunnable = Runnable {
             if (profileCall == call && !call.isCanceled()) {
-                call.cancel()
+                profileTimedOut = true
+                cancelProfileCall()
                 safeUi {
+                    if (showLoading) setLoading(false) else LoadingDialogFragment.dismiss(parentFragmentManager)
                     if (prefs.getString("token", null) != token) return@safeUi
-                    if (showLoading) setLoading(false)
                     val cached = cachedProfile
                     if (cached != null) {
                         showAccountScreen(view, cached.username, cached.photoUrl, cached.subscriptions, cacheResult = false, refreshPings = false)
@@ -1028,6 +1032,7 @@ class AccountFragment : Fragment() {
             override fun onFailure(call: Call, e: IOException) {
                 if (profileCall == call) cancelProfileCall()
                 safeUi {
+                    if (profileTimedOut) return@safeUi
                     if (prefs.getString("token", null) != token) return@safeUi
                     if (showLoading) setLoading(false)
                     if (cachedProfile != null) {
@@ -1046,6 +1051,7 @@ class AccountFragment : Fragment() {
                 val resp = response.body?.string() ?: ""
                 safeUi {
                     if (prefs.getString("token", null) != token) return@safeUi
+                    if (profileTimedOut) return@safeUi
                     if (showLoading) setLoading(false)
                     if (response.code == 401) {
                         showLoginScreen(view)
