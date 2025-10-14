@@ -2,6 +2,8 @@ package pw.idrug.connections.dialog
 
 import android.app.Dialog
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.WindowCompat
@@ -45,15 +47,28 @@ class LoadingDialogFragment : DialogFragment() {
 
     companion object {
         private const val TAG = "loading_dialog"
+        private const val AUTO_DISMISS_MS = 5_000L
+        private val handler = Handler(Looper.getMainLooper())
+        private var pendingDismiss: Runnable? = null
 
         fun show(manager: androidx.fragment.app.FragmentManager) {
             if (manager.findFragmentByTag(TAG) == null) {
                 LoadingDialogFragment().show(manager, TAG)
             }
+            scheduleAutoDismiss(manager)
         }
 
         fun dismiss(manager: androidx.fragment.app.FragmentManager) {
+            pendingDismiss?.let { handler.removeCallbacks(it) }
+            pendingDismiss = null
             (manager.findFragmentByTag(TAG) as? LoadingDialogFragment)?.dismissAllowingStateLoss()
+        }
+
+        private fun scheduleAutoDismiss(manager: androidx.fragment.app.FragmentManager) {
+            pendingDismiss?.let { handler.removeCallbacks(it) }
+            val runnable = Runnable { dismiss(manager) }
+            pendingDismiss = runnable
+            handler.postDelayed(runnable, AUTO_DISMISS_MS)
         }
     }
 
