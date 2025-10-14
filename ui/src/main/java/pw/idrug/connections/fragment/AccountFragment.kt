@@ -734,21 +734,29 @@ class AccountFragment : Fragment() {
             }
             val tunnelName = "idrug_$serverId"
             val tunnelManager = Application.getTunnelManager()
-            val tunnels = tunnelManager.getTunnels()
             val configFile = File(requireContext().filesDir, "$tunnelName.conf")
 
+            val tunnels = tunnelManager.getTunnels()
             val existing = tunnels.firstOrNull { it.name == tunnelName }
-            if (existing != null) {
-                val existsOnDisk = withContext(Dispatchers.IO) { configFile.exists() }
-                if (!existsOnDisk) {
-                    try {
-                        existing.deleteAsync()
-                    } catch (e: Exception) {
-                        Log.w("AccountFragment", "Failed to remove stale tunnel $tunnelName", e)
+            val configExistsOnDisk = withContext(Dispatchers.IO) { configFile.exists() }
+            if (existing != null && !configExistsOnDisk) {
+                try {
+                    existing.deleteAsync()
+                } catch (e: Exception) {
+                    Log.w("AccountFragment", "Failed to remove stale tunnel $tunnelName", e)
+                }
+            }
+            if (existing == null && configExistsOnDisk) {
+                withContext(Dispatchers.IO) {
+                    if (!configFile.delete()) {
+                        Log.w("AccountFragment", "Unable to delete orphaned config file ${'$'}{configFile.name}")
                     }
                 }
             }
-            if (tunnels.any { it.name == tunnelName }) {
+            val tunnelStillRegistered = withContext(Dispatchers.Main) {
+                tunnelManager.getTunnels().any { it.name == tunnelName }
+            }
+            if (tunnelStillRegistered) {
                 safeUi { Toast.makeText(requireContext(), R.string.config_already_added, Toast.LENGTH_SHORT).show() }
                 return
             }
