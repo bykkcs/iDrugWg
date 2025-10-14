@@ -184,6 +184,7 @@ class AccountFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         prefs = requireContext().getSharedPreferences("auth", Context.MODE_PRIVATE)
         setupListeners(view)
+        setupServerDropdown(view)
         showCorrectScreen(view)
     }
 
@@ -332,6 +333,7 @@ class AccountFragment : Fragment() {
 
         subscriptions = subs
         updateServerListFromSubscriptions()
+        setupServerDropdown(view)
 
         view.findViewById<Button>(R.id.btn_login_telegram)?.visibility = View.GONE
         view.findViewById<Button>(R.id.btn_logout)?.visibility = View.VISIBLE
@@ -346,7 +348,6 @@ class AccountFragment : Fragment() {
         view.findViewById<Button>(R.id.btn_download)?.visibility =
             if (dropdownVisible) View.VISIBLE else View.GONE
 
-        view.findViewById<Button>(R.id.btn_download)?.isEnabled = serverList.isNotEmpty()
         view.findViewById<Button>(R.id.btn_link_device)?.isEnabled = true
         view.findViewById<Button>(R.id.btn_renew)?.isEnabled = true
         view.findViewById<Button>(R.id.btn_referral)?.isEnabled = true
@@ -727,6 +728,7 @@ class AccountFragment : Fragment() {
         }
         try {
             setLoading(true)
+            Log.d("AccountFragment", "Downloading config for serverId=$selectedServerId")
             val configText = downloadConfig(token, serverId)
             if (configText.isNullOrBlank()) {
                 safeUi { Toast.makeText(requireContext(), R.string.generic_error, Toast.LENGTH_SHORT).show() }
@@ -738,24 +740,19 @@ class AccountFragment : Fragment() {
 
             val tunnels = tunnelManager.getTunnels()
             val existing = tunnels.firstOrNull { it.name == tunnelName }
-            val configExistsOnDisk = withContext(Dispatchers.IO) { configFile.exists() }
-            if (existing != null && !configExistsOnDisk) {
+            if (existing != null) {
                 try {
-                    existing.deleteAsync()
+                    tunnelManager.delete(existing)
                 } catch (e: Exception) {
-                    Log.w("AccountFragment", "Failed to remove stale tunnel $tunnelName", e)
+                    Log.w("AccountFragment", "Failed to delete existing tunnel $tunnelName", e)
                 }
             }
-            if (existing == null && configExistsOnDisk) {
-                withContext(Dispatchers.IO) {
-                    if (!configFile.delete()) {
-                        Log.w("AccountFragment", "Unable to delete orphaned config file ${'$'}{configFile.name}")
-                    }
+            withContext(Dispatchers.IO) {
+                if (configFile.exists() && !configFile.delete()) {
+                    Log.w("AccountFragment", "Unable to delete config file ${'$'}{configFile.name}")
                 }
             }
-            val tunnelStillRegistered = withContext(Dispatchers.Main) {
-                tunnelManager.getTunnels().any { it.name == tunnelName }
-            }
+            val tunnelStillRegistered = tunnelManager.getTunnels().any { it.name == tunnelName }
             if (tunnelStillRegistered) {
                 safeUi { Toast.makeText(requireContext(), R.string.config_already_added, Toast.LENGTH_SHORT).show() }
                 return
@@ -945,25 +942,25 @@ class AccountFragment : Fragment() {
             ?: error("MaterialAutoCompleteTextView not found")
         val btnDownload = view.findViewById<Button>(R.id.btn_download)
 
-        selectedServerId = null
-        btnDownload.isEnabled = false
-        dropdown.setText("", false)
-
-        dropdown.setOnItemClickListener { _, _, position, _ ->
-            if (position in serverList.indices) {
-                selectedServerId = serverList[position].first
-            } else {
-                selectedServerId = null
+        if (dropdown.tag != true) {
+            dropdown.setOnItemClickListener { _, _, position, _ ->
+                if (position in serverList.indices) {
+                    selectedServerId = serverList[position].first
+                } else {
+                    selectedServerId = null
+                }
+                updateDownloadButtonState(view)
             }
-            updateDownloadButtonState(view)
-        }
 
-        dropdown.setOnClickListener { dropdown.showDropDown() }
-        dropdown.setOnFocusChangeListener { v, hasFocus ->
-            if (hasFocus) (v as? MaterialAutoCompleteTextView)?.showDropDown()
+            dropdown.setOnClickListener { dropdown.showDropDown() }
+            dropdown.setOnFocusChangeListener { v, hasFocus ->
+                if (hasFocus) (v as? MaterialAutoCompleteTextView)?.showDropDown()
+            }
+            dropdown.tag = true
         }
 
         updateDropdownItems(view)
+        updateDownloadButtonState(view)
         container.visibility = if (serverList.isNotEmpty()) View.VISIBLE else View.GONE
         btnDownload.visibility = if (serverList.isNotEmpty()) View.VISIBLE else View.GONE
     }
