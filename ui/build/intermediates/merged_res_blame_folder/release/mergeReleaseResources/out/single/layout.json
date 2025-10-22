@@ -1,118 +1,118 @@
 [
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/tunnel_editor_fragment.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/tunnel_editor_fragment.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/tunnel_detail_peer.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/tunnel_detail_peer.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/log_viewer_entry.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/log_viewer_entry.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/fragment_account.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/fragment_account.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/dialog_link_code.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/dialog_link_code.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/dialog_update.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/dialog_update.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/log_viewer_activity.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/log_viewer_activity.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/app_list_dialog_fragment.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/app_list_dialog_fragment.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/dialog_loading_indicator.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/dialog_loading_indicator.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/item_server_dropdown.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/item_server_dropdown.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/activity_onboarding.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/activity_onboarding.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/tunnel_list_fragment.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/tunnel_list_fragment.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/fragment_speed_test.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/fragment_speed_test.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/activity_link_code.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/activity_link_code.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/item_onboarding_card.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/item_onboarding_card.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/config_naming_dialog_fragment.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/config_naming_dialog_fragment.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/config_naming_dialog_fragment.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/config_naming_dialog_fragment.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/dialog_subscription.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/dialog_subscription.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/tunnel_detail_fragment.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/tunnel_detail_fragment.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/dialog_link_code.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/dialog_link_code.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/activity_link_code.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/activity_link_code.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/bottomsheet_code_input.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/bottomsheet_code_input.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/tunnel_list_fragment.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/tunnel_list_fragment.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/activity_tv_entry.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/activity_tv_entry.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/dialog_subscription.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/dialog_subscription.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/log_viewer_entry.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/log_viewer_entry.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/main_activity.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/main_activity.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/tunnel_editor_fragment.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/tunnel_editor_fragment.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/activity_tv_config_list.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/activity_tv_config_list.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/item_onboarding_card.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/item_onboarding_card.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/add_tunnels_bottom_sheet.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/add_tunnels_bottom_sheet.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/tunnel_detail_fragment.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/tunnel_detail_fragment.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/bottomsheet_code_input.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/bottomsheet_code_input.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/main_activity.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/main_activity.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/app_list_dialog_fragment.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/app_list_dialog_fragment.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/activity_tv_config_list.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/activity_tv_config_list.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/activity_tv_entry.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/activity_tv_entry.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/activity_onboarding.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/activity_onboarding.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/tunnel_list_item.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/tunnel_list_item.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/item_tv_config.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/item_tv_config.xml"
     },
     {
-        "merged": "pw.idrug.connections.ui-mergeReleaseResources-63:/layout/fragment_speed_test.xml",
-        "source": "pw.idrug.connections.ui-main-66:/layout/fragment_speed_test.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/fragment_speed_test.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/fragment_speed_test.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/dialog_update.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/dialog_update.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/add_tunnels_bottom_sheet.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/add_tunnels_bottom_sheet.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/item_tv_config.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/item_tv_config.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/dialog_loading_indicator.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/dialog_loading_indicator.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/preference_widget_material_switch.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/preference_widget_material_switch.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/tunnel_editor_peer.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/tunnel_editor_peer.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/tunnel_detail_peer.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/tunnel_detail_peer.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/tunnel_list_item.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/tunnel_list_item.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/app_list_item.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/app_list_item.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/app_list_item.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/app_list_item.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/tunnel_editor_peer.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/tunnel_editor_peer.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/preference_widget_material_switch.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/preference_widget_material_switch.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/item_server_dropdown.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/item_server_dropdown.xml"
+        "merged": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-mergeReleaseResources-65:/layout/log_viewer_activity.xml",
+        "source": "/home/bykk/.gradle/daemon/8.11.1/pw.idrug.connections.ui-main-68:/layout/log_viewer_activity.xml"
     },
     {
-        "merged": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-63:/layout/fragment_account.xml",
-        "source": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-main-66:/layout/fragment_account.xml"
+        "merged": "pw.idrug.connections.ui-mergeReleaseResources-65:/layout/main_activity.xml",
+        "source": "pw.idrug.connections.ui-main-68:/layout/main_activity.xml"
     }
 ]

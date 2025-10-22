@@ -16,6 +16,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
+import androidx.core.content.ContextCompat
 import com.google.android.material.color.DynamicColors
 import pw.idrug.connections.backend.Backend
 import pw.idrug.connections.backend.GoBackend
@@ -31,11 +32,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import java.lang.ref.WeakReference
 import java.util.Locale
 
@@ -43,6 +46,8 @@ class Application : android.app.Application() {
     private val futureBackend = CompletableDeferred<Backend>()
     private val coroutineScope = CoroutineScope(Job() + Dispatchers.Main.immediate)
     private var backend: Backend? = null
+    private var isConnectionStatusServiceStarted = false
+    private var isServiceMonitoringActive = true
     private lateinit var rootShell: RootShell
     private lateinit var preferencesDataStore: DataStore<Preferences>
     private lateinit var initialPreferencesSnapshot: Preferences
@@ -82,6 +87,26 @@ class Application : android.app.Application() {
         return backend
     }
 
+    private suspend fun processNotification() {
+        val intent = Intent(this@Application, ConnectionStatusService::class.java)
+        while (isServiceMonitoringActive) {
+            if (UserKnobs.enableNotification.first()) {
+                val hasRunningTunnels = withContext(Dispatchers.IO) { futureBackend.await().runningTunnelNames }.isNotEmpty()
+                if (isConnectionStatusServiceStarted && !hasRunningTunnels) {
+                    isConnectionStatusServiceStarted = false
+                    stopService(intent)
+                } else if (!isConnectionStatusServiceStarted && hasRunningTunnels) {
+                    isConnectionStatusServiceStarted = true
+                    ContextCompat.startForegroundService(this@Application, intent)
+                }
+            } else if (isConnectionStatusServiceStarted) {
+                isConnectionStatusServiceStarted = false
+                stopService(intent)
+            }
+            delay(100)
+        }
+    }
+
     override fun onCreate() {
         Log.i(TAG, USER_AGENT)
         super.onCreate()
@@ -118,6 +143,10 @@ class Application : android.app.Application() {
             }
         }
 
+        applicationScope.launch {
+            processNotification()
+        }
+
         if (BuildConfig.DEBUG) {
             StrictMode.setVmPolicy(VmPolicy.Builder().detectAll().penaltyLog().build())
             StrictMode.setThreadPolicy(ThreadPolicy.Builder().detectAll().penaltyLog().build())
@@ -125,6 +154,9 @@ class Application : android.app.Application() {
     }
 
     override fun onTerminate() {
+        isServiceMonitoringActive = false
+        isConnectionStatusServiceStarted = false
+        stopService(Intent(this, ConnectionStatusService::class.java))
         coroutineScope.cancel()
         super.onTerminate()
     }

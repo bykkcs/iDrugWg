@@ -13,7 +13,8 @@ public class AppListItemBindingImpl extends AppListItemBinding implements pw.idr
     private static final android.util.SparseIntArray sViewsWithIds;
     static {
         sIncludes = null;
-        sViewsWithIds = null;
+        sViewsWithIds = new android.util.SparseIntArray();
+        sViewsWithIds.put(R.id.section_header, 5);
     }
     // views
     @NonNull
@@ -52,16 +53,19 @@ public class AppListItemBindingImpl extends AppListItemBinding implements pw.idr
     };
 
     public AppListItemBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 4, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 6, sIncludes, sViewsWithIds));
     }
     private AppListItemBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 2
-            , (android.widget.ImageView) bindings[1]
-            , (android.widget.TextView) bindings[2]
-            , (android.widget.CheckBox) bindings[3]
+            , (android.widget.ImageView) bindings[2]
+            , (android.widget.TextView) bindings[3]
+            , (android.widget.LinearLayout) bindings[1]
+            , (android.widget.TextView) bindings[5]
+            , (android.widget.CheckBox) bindings[4]
             );
         this.appIcon.setTag(null);
         this.appName.setTag(null);
+        this.appRow.setTag(null);
         this.mboundView0 = (android.widget.LinearLayout) bindings[0];
         this.mboundView0.setTag(null);
         this.selectedCheckbox.setTag(null);
@@ -207,7 +211,7 @@ public class AppListItemBindingImpl extends AppListItemBinding implements pw.idr
         if ((dirtyFlags & 0x10L) != 0) {
             // api target 1
 
-            this.mboundView0.setOnClickListener(mCallback2);
+            this.appRow.setOnClickListener(mCallback2);
             androidx.databinding.adapters.CompoundButtonBindingAdapter.setListeners(this.selectedCheckbox, (android.widget.CompoundButton.OnCheckedChangeListener)null, selectedCheckboxandroidCheckedAttrChanged);
         }
         if ((dirtyFlags & 0x19L) != 0) {

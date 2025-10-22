@@ -61,6 +61,7 @@
                 android:layout_height="match_parent"
                 app:items="@{appData}"
                 app:layout="@{@layout/app_list_item}"
+                app:configurationHandler="@{fragment.rowConfigurationHandler}"
                 tools:itemCount="10"
                 tools:listitem="@layout/app_list_item" />
         </FrameLayout>

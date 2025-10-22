@@ -37,6 +37,8 @@
         <item quantity="other">%d included</item>
     </plurals>
     <string name="all_applications">All Applications</string>
+    <string name="apps_header_popular">Popular applications</string>
+    <string name="apps_header_all">All applications</string>
     <string name="exclude_from_tunnel">Exclude</string>
     <string name="include_in_tunnel">Include</string>
     <plurals name="include_n_applications">
@@ -63,6 +65,16 @@
     <string name="allow_remote_control_intents_summary_on">External apps may toggle tunnels (advanced)</string>
     <string name="allow_remote_control_intents_title">Allow remote control apps</string>
     <string name="allowed_ips">Allowed IPs</string>
+    <string name="login_via_telegram_description">Link your Telegram account to access subscriptions and configs.</string>
+    <string name="qr_code_content_description">QR code for Telegram login</string>
+    <string name="account_connection_section_title">Connection</string>
+    <string name="tv_entry_subtitle">Enter the 6-digit code from your account to link this TV</string>
+    <string name="tv_entry_hint">Code will expire in a few minutes</string>
+    <string name="tv_config_subtitle">Use the remote to choose a server and press OK to connect</string>
+    <string name="tv_config_title">Select VPN tunnel</string>
+    <string name="tv_auto_connect">Auto-connect on boot</string>
+    <string name="tv_route_youtube">Only route YouTube app</string>
+    <string name="tv_route_label_youtube">Apps: YouTube only</string>
     <!-- Application name updated as required -->
     <string name="app_name" translatable="false">iDrug Connections</string>
     <string name="bad_config_context">%1$s\'s %2$s</string>
@@ -168,10 +180,21 @@
     <string name="junk_packet_max_size">Junk packet maximum size</string>
     <string name="init_packet_junk_size">Init packet junk size</string>
     <string name="response_packet_junk_size">Response packet junk size</string>
+    <string name="cookie_reply_packet_junk_size">Cookie reply packet junk size</string>
+    <string name="transport_packet_junk_size">Transport packet junk size</string>
     <string name="init_packet_magic_header">Init packet magic header</string>
     <string name="response_packet_magic_header">Response packet magic header</string>
     <string name="underload_packet_magic_header">Underload packet magic header</string>
     <string name="transport_packet_magic_header">Transport packet magic header</string>
+    <string name="special_junk_packet_1">Special junk packet I1</string>
+    <string name="special_junk_packet_2">Special junk packet I2</string>
+    <string name="special_junk_packet_3">Special junk packet I3</string>
+    <string name="special_junk_packet_4">Special junk packet I4</string>
+    <string name="special_junk_packet_5">Special junk packet I5</string>
+    <string name="controlled_junk_packet_1">Controlled junk packet J1</string>
+    <string name="controlled_junk_packet_2">Controlled junk packet J2</string>
+    <string name="controlled_junk_packet_3">Controlled junk packet J3</string>
+    <string name="itime_seconds">Handshake interval (ITime)</string>
     <string name="multiple_tunnels_summary_off">Turning on one tunnel will turn off others</string>
     <string name="multiple_tunnels_summary_on">Multiple tunnels may be turned on simultaneously</string>
     <string name="multiple_tunnels_title">Allow multiple simultaneous tunnels</string>
@@ -284,6 +307,7 @@
     <string name="subscription_active_days">%1$s: until %2$s (%3$d d)</string>
     <string name="subscription_forever">%1$s: lifetime</string>
     <string name="subscription_inactive">%1$s: inactive</string>
+    <string name="subscription_placeholder_entry">• %1$s — …</string>
     <string name="server_germany">Germany</string>
 <string name="server_multihop_germany">Multihop Germany</string>
 <string name="server_bulgaria">Bulgaria</string>
@@ -405,4 +429,26 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="onboarding_next">Next</string>
     <string name="onboarding_start">Start</string>
     <string name="onboarding_error">Onboarding failed to load. Please update the app or contact support.</string>
+    <string name="notification_channel_name">Connection status</string>
+    <string name="notification_title_connecting">Connecting…</string>
+    <string name="notification_title_connected">Connected</string>
+    <string name="notification_title_connected_to">Connected to %s</string>
+    <string name="notification_title_disconnecting">Disconnecting…</string>
+    <string name="notification_title_disconnected">Disconnected</string>
+    <string name="notification_text_connected_default">Secure connection active</string>
+    <string name="notification_text_tunnels_count">Active tunnels count: %d</string>
+    <string name="notification_text_speed">↑ %1$s • ↓ %2$s</string>
+    <string name="notification_action_disconnect">Disconnect</string>
+    <string name="notification_status_chip_online">Online</string>
+    <string name="notification_status_chip_connecting">Conn</string>
+    <string name="notification_status_chip_disconnecting">Stop</string>
+    <string name="notification_status_chip_disconnected">Off</string>
+    <string name="notification_status_chip_multiple">%d VPN</string>
+    <string name="transfer_rate_bytes">%1$.0f B/s</string>
+    <string name="transfer_rate_kib">%1$.1f KiB/s</string>
+    <string name="transfer_rate_mib">%1$.2f MiB/s</string>
+    <string name="transfer_rate_gib">%1$.2f GiB/s</string>
+    <string name="enable_notification_title">Notification</string>
+    <string name="enable_notification_summary_off">Connection status notification is disabled</string>
+    <string name="enable_notification_summary_on">Connection status notification is enabled</string>
 </resources>

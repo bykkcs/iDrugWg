@@ -101,9 +101,12 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
     fun onCreate() {
         applicationScope.launch {
             try {
-                onTunnelsLoaded(withContext(Dispatchers.IO) { configStore.enumerate() }, withContext(Dispatchers.IO) { getBackend().runningTunnelNames })
+                val present = withContext(Dispatchers.IO) { configStore.enumerate() }
+                val running = withContext(Dispatchers.IO) { getBackend().runningTunnelNames }
+                onTunnelsLoaded(present, running)
             } catch (e: Throwable) {
                 Log.e(TAG, Log.getStackTraceString(e))
+                completeTunnelsDeferred()
             }
         }
     }
@@ -111,13 +114,17 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
     private fun onTunnelsLoaded(present: Iterable<String>, running: Collection<String>) {
         for (name in present)
             addToList(name, null, if (running.contains(name)) Tunnel.State.UP else Tunnel.State.DOWN)
+        completeTunnelsDeferred()
         applicationScope.launch {
-            val lastUsedName = UserKnobs.lastUsedTunnel.first()
-            if (lastUsedName != null)
-                lastUsedTunnel = tunnelMap[lastUsedName]
+            try {
+                val lastUsedName = UserKnobs.lastUsedTunnel.first()
+                if (lastUsedName != null)
+                    lastUsedTunnel = tunnelMap[lastUsedName]
+            } catch (e: Throwable) {
+                Log.e(TAG, "Failed to restore last used tunnel", e)
+            }
             haveLoaded = true
             restoreState(true)
-            tunnels.complete(tunnelMap)
         }
     }
 
@@ -136,15 +143,34 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
     suspend fun restoreState(force: Boolean) {
         if (!haveLoaded || (!force && !UserKnobs.restoreOnBoot.first()))
             return
-        val previouslyRunning = UserKnobs.runningTunnels.first()
+        val previouslyRunning = try {
+            UserKnobs.runningTunnels.first()
+        } catch (e: Throwable) {
+            Log.e(TAG, "Failed to read running tunnels", e)
+            emptySet()
+        }
         if (previouslyRunning.isEmpty()) return
-        withContext(Dispatchers.IO) {
-            try {
-                tunnelMap.filter { previouslyRunning.contains(it.name) }.map { async(Dispatchers.IO + SupervisorJob()) { setTunnelState(it, Tunnel.State.UP) } }
-                    .awaitAll()
-            } catch (e: Throwable) {
-                Log.e(TAG, Log.getStackTraceString(e))
-            }
+        // Если конфиги повреждены, запускаем их выборочно и снимаем флаг автозапуска, чтобы не зациклиться при следующих стартах.
+        val failed = withContext(Dispatchers.IO) {
+            tunnelMap
+                .filter { previouslyRunning.contains(it.name) }
+                .map { tunnel ->
+                    async(Dispatchers.IO + SupervisorJob()) {
+                        try {
+                            setTunnelState(tunnel, Tunnel.State.UP)
+                            null
+                        } catch (e: Throwable) {
+                            Log.e(TAG, "Failed to auto-restore tunnel ${tunnel.name}", e)
+                            tunnel.name
+                        }
+                    }
+                }
+                .awaitAll()
+                .filterNotNull()
+                .toSet()
+        }
+        if (failed.isNotEmpty()) {
+            UserKnobs.setRunningTunnels(previouslyRunning - failed)
         }
     }
 
@@ -251,5 +277,12 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
 
     companion object {
         private const val TAG = "iDrugConnections/TunnelManager"
+    }
+
+    private fun completeTunnelsDeferred() {
+        if (!tunnels.isCompleted && !tunnels.isCancelled) {
+            // Завершаем отложенную инициализацию как можно раньше, чтобы UI не зависал в ожидании.
+            tunnels.complete(tunnelMap)
+        }
     }
 }

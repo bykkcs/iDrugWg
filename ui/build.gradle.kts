@@ -8,11 +8,13 @@ val pkg: String = providers.gradleProperty("idrugconnectionsPackageName").get()
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.kapt) // ✅ kapt уже есть — отлично
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.ksp)
     id("com.google.gms.google-services")
 }
 
 android {
+    compileSdk = 36
     buildFeatures {
         buildConfig = true
         dataBinding = true
@@ -21,7 +23,7 @@ android {
     namespace = pkg
     defaultConfig {
         applicationId = pkg
-        targetSdk = 34
+        targetSdk = 36
         versionCode = providers.gradleProperty("idrugconnectionsVersionCode").get().toInt()
         versionName = providers.gradleProperty("idrugconnectionsVersionName").get()
         buildConfigField("int", "MIN_SDK_VERSION", minSdk.toString())
@@ -90,7 +92,7 @@ dependencies {
     // --- Moshi с codegen ---
     implementation("com.squareup.moshi:moshi:1.15.1")
     implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.15.1") // ✅ добавь вот это!
+    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.1")
 
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("com.google.zxing:core:3.5.1")

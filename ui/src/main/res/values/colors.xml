@@ -91,4 +91,13 @@
 
   <color name="loading_overlay_scrim">#66000000</color>
 
+  <!-- TV specific palette -->
+  <color name="tv_background">#0E1417</color>
+  <color name="tv_card_surface">#182127</color>
+  <color name="tv_card_highlight">#24323A</color>
+  <color name="tv_focus_stroke">#51DBC9</color>
+  <color name="tv_text_primary">#FFFFFF</color>
+  <color name="tv_text_secondary">#A4B0B6</color>
+  <color name="tv_text_hint">#7A8489</color>
+
 </resources>

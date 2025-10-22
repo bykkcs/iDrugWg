@@ -61,6 +61,7 @@
                 android:layout_height="match_parent"
                                       
                 android:tag="binding_2"              
+                                                                              
                 tools:itemCount="10"
                 tools:listitem="@layout/app_list_item" />
         </FrameLayout>

@@ -14,6 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import pw.idrug.connections.R
 import pw.idrug.connections.activity.MainActivity
+import pw.idrug.connections.util.applyNavigationBarAndImePadding
+import pw.idrug.connections.util.applyStatusBarInsetToActionBar
+import pw.idrug.connections.util.applyStatusBarPadding
 
 class OnboardingActivity : AppCompatActivity() {
 
@@ -32,10 +35,15 @@ class OnboardingActivity : AppCompatActivity() {
             return
         }
         setContentView(R.layout.activity_onboarding)
+        applyStatusBarInsetToActionBar()
         try {
             viewPager = findViewById(R.id.view_pager)
             errorText = findViewById(R.id.error_text)
             nextButton = findViewById(R.id.btn_next)
+            findViewById<View>(R.id.onboarding_content)?.applyStatusBarPadding()
+            findViewById<View>(R.id.onboarding_button_container)?.applyNavigationBarAndImePadding(
+                extraBottom = resources.getDimensionPixelSize(R.dimen.bottom_inset_extra_padding)
+            )
         } catch (e: Exception) {
             Log.e(TAG, "Unable to find onboarding views", e)
         }

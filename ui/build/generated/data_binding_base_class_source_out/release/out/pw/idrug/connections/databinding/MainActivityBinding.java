@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentContainerView;
@@ -74,16 +75,33 @@ public final class MainActivityBinding implements ViewBinding {
   @Nullable
   public final LinearLayout masterDetailWrapper;
 
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-sw600dp/</li>
+   * </ul>
+   */
+  @Nullable
+  public final TextView vpnStatusText;
+
   private MainActivityBinding(@NonNull View rootView,
       @Nullable BottomNavigationView bottomNavigation, @NonNull View fragmentContainer,
       @Nullable FragmentContainerView listFragment, @NonNull View mainActivityContainer,
-      @Nullable LinearLayout masterDetailWrapper) {
+      @Nullable LinearLayout masterDetailWrapper, @Nullable TextView vpnStatusText) {
     this.rootView = rootView;
     this.bottomNavigation = bottomNavigation;
     this.fragmentContainer = fragmentContainer;
     this.listFragment = listFragment;
     this.mainActivityContainer = mainActivityContainer;
     this.masterDetailWrapper = masterDetailWrapper;
+    this.vpnStatusText = vpnStatusText;
   }
 
   @Override
@@ -130,8 +148,11 @@ public final class MainActivityBinding implements ViewBinding {
       id = R.id.master_detail_wrapper;
       LinearLayout masterDetailWrapper = ViewBindings.findChildViewById(rootView, id);
 
+      id = R.id.vpnStatusText;
+      TextView vpnStatusText = ViewBindings.findChildViewById(rootView, id);
+
       return new MainActivityBinding(rootView, bottomNavigation, fragmentContainer, listFragment,
-          mainActivityContainer, masterDetailWrapper);
+          mainActivityContainer, masterDetailWrapper, vpnStatusText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

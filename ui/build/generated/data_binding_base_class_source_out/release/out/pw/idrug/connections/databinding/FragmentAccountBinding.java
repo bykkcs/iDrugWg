@@ -4,7 +4,6 @@ package pw.idrug.connections.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -14,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
@@ -29,28 +30,40 @@ public final class FragmentAccountBinding implements ViewBinding {
   public final ImageView avatarImage;
 
   @NonNull
-  public final Button btnDownload;
+  public final MaterialButton btnDownload;
 
   @NonNull
-  public final Button btnLinkDevice;
+  public final MaterialButton btnLinkDevice;
 
   @NonNull
-  public final Button btnLoginTelegram;
+  public final MaterialButton btnLoginTelegram;
 
   @NonNull
-  public final Button btnLogout;
+  public final MaterialButton btnLogout;
 
   @NonNull
-  public final Button btnReferral;
+  public final MaterialButton btnReferral;
 
   @NonNull
-  public final Button btnRenew;
+  public final MaterialButton btnRenew;
+
+  @NonNull
+  public final MaterialCardView cardConnection;
+
+  @NonNull
+  public final MaterialCardView cardLogin;
+
+  @NonNull
+  public final MaterialCardView cardProfile;
 
   @NonNull
   public final CoordinatorLayout coordinator;
 
   @NonNull
   public final MaterialAutoCompleteTextView dropdownServer;
+
+  @NonNull
+  public final ImageView loginIllustration;
 
   @NonNull
   public final ImageView qrCodeImage;
@@ -68,19 +81,33 @@ public final class FragmentAccountBinding implements ViewBinding {
   public final TextView statusText;
 
   @NonNull
+  public final TextView textConnectionTitle;
+
+  @NonNull
   public final TextView textCurrentUser;
 
   @NonNull
   public final TextView textExpiration;
 
+  @NonNull
+  public final TextView textLoginDescription;
+
+  @NonNull
+  public final TextView textLoginTitle;
+
   private FragmentAccountBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull ImageView avatarImage, @NonNull Button btnDownload, @NonNull Button btnLinkDevice,
-      @NonNull Button btnLoginTelegram, @NonNull Button btnLogout, @NonNull Button btnReferral,
-      @NonNull Button btnRenew, @NonNull CoordinatorLayout coordinator,
-      @NonNull MaterialAutoCompleteTextView dropdownServer, @NonNull ImageView qrCodeImage,
+      @NonNull ImageView avatarImage, @NonNull MaterialButton btnDownload,
+      @NonNull MaterialButton btnLinkDevice, @NonNull MaterialButton btnLoginTelegram,
+      @NonNull MaterialButton btnLogout, @NonNull MaterialButton btnReferral,
+      @NonNull MaterialButton btnRenew, @NonNull MaterialCardView cardConnection,
+      @NonNull MaterialCardView cardLogin, @NonNull MaterialCardView cardProfile,
+      @NonNull CoordinatorLayout coordinator, @NonNull MaterialAutoCompleteTextView dropdownServer,
+      @NonNull ImageView loginIllustration, @NonNull ImageView qrCodeImage,
       @NonNull LinearLayout rootLayout, @NonNull ScrollView scrollView,
       @NonNull TextInputLayout serverDropdownContainer, @NonNull TextView statusText,
-      @NonNull TextView textCurrentUser, @NonNull TextView textExpiration) {
+      @NonNull TextView textConnectionTitle, @NonNull TextView textCurrentUser,
+      @NonNull TextView textExpiration, @NonNull TextView textLoginDescription,
+      @NonNull TextView textLoginTitle) {
     this.rootView = rootView;
     this.avatarImage = avatarImage;
     this.btnDownload = btnDownload;
@@ -89,15 +116,22 @@ public final class FragmentAccountBinding implements ViewBinding {
     this.btnLogout = btnLogout;
     this.btnReferral = btnReferral;
     this.btnRenew = btnRenew;
+    this.cardConnection = cardConnection;
+    this.cardLogin = cardLogin;
+    this.cardProfile = cardProfile;
     this.coordinator = coordinator;
     this.dropdownServer = dropdownServer;
+    this.loginIllustration = loginIllustration;
     this.qrCodeImage = qrCodeImage;
     this.rootLayout = rootLayout;
     this.scrollView = scrollView;
     this.serverDropdownContainer = serverDropdownContainer;
     this.statusText = statusText;
+    this.textConnectionTitle = textConnectionTitle;
     this.textCurrentUser = textCurrentUser;
     this.textExpiration = textExpiration;
+    this.textLoginDescription = textLoginDescription;
+    this.textLoginTitle = textLoginTitle;
   }
 
   @Override
@@ -134,38 +168,56 @@ public final class FragmentAccountBinding implements ViewBinding {
       }
 
       id = R.id.btn_download;
-      Button btnDownload = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnDownload = ViewBindings.findChildViewById(rootView, id);
       if (btnDownload == null) {
         break missingId;
       }
 
       id = R.id.btn_link_device;
-      Button btnLinkDevice = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnLinkDevice = ViewBindings.findChildViewById(rootView, id);
       if (btnLinkDevice == null) {
         break missingId;
       }
 
       id = R.id.btn_login_telegram;
-      Button btnLoginTelegram = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnLoginTelegram = ViewBindings.findChildViewById(rootView, id);
       if (btnLoginTelegram == null) {
         break missingId;
       }
 
       id = R.id.btn_logout;
-      Button btnLogout = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnLogout = ViewBindings.findChildViewById(rootView, id);
       if (btnLogout == null) {
         break missingId;
       }
 
       id = R.id.btn_referral;
-      Button btnReferral = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnReferral = ViewBindings.findChildViewById(rootView, id);
       if (btnReferral == null) {
         break missingId;
       }
 
       id = R.id.btn_renew;
-      Button btnRenew = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnRenew = ViewBindings.findChildViewById(rootView, id);
       if (btnRenew == null) {
+        break missingId;
+      }
+
+      id = R.id.card_connection;
+      MaterialCardView cardConnection = ViewBindings.findChildViewById(rootView, id);
+      if (cardConnection == null) {
+        break missingId;
+      }
+
+      id = R.id.card_login;
+      MaterialCardView cardLogin = ViewBindings.findChildViewById(rootView, id);
+      if (cardLogin == null) {
+        break missingId;
+      }
+
+      id = R.id.card_profile;
+      MaterialCardView cardProfile = ViewBindings.findChildViewById(rootView, id);
+      if (cardProfile == null) {
         break missingId;
       }
 
@@ -174,6 +226,12 @@ public final class FragmentAccountBinding implements ViewBinding {
       id = R.id.dropdown_server;
       MaterialAutoCompleteTextView dropdownServer = ViewBindings.findChildViewById(rootView, id);
       if (dropdownServer == null) {
+        break missingId;
+      }
+
+      id = R.id.login_illustration;
+      ImageView loginIllustration = ViewBindings.findChildViewById(rootView, id);
+      if (loginIllustration == null) {
         break missingId;
       }
 
@@ -207,6 +265,12 @@ public final class FragmentAccountBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.text_connection_title;
+      TextView textConnectionTitle = ViewBindings.findChildViewById(rootView, id);
+      if (textConnectionTitle == null) {
+        break missingId;
+      }
+
       id = R.id.text_current_user;
       TextView textCurrentUser = ViewBindings.findChildViewById(rootView, id);
       if (textCurrentUser == null) {
@@ -219,10 +283,23 @@ public final class FragmentAccountBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.text_login_description;
+      TextView textLoginDescription = ViewBindings.findChildViewById(rootView, id);
+      if (textLoginDescription == null) {
+        break missingId;
+      }
+
+      id = R.id.text_login_title;
+      TextView textLoginTitle = ViewBindings.findChildViewById(rootView, id);
+      if (textLoginTitle == null) {
+        break missingId;
+      }
+
       return new FragmentAccountBinding((CoordinatorLayout) rootView, avatarImage, btnDownload,
-          btnLinkDevice, btnLoginTelegram, btnLogout, btnReferral, btnRenew, coordinator,
-          dropdownServer, qrCodeImage, rootLayout, scrollView, serverDropdownContainer, statusText,
-          textCurrentUser, textExpiration);
+          btnLinkDevice, btnLoginTelegram, btnLogout, btnReferral, btnRenew, cardConnection,
+          cardLogin, cardProfile, coordinator, dropdownServer, loginIllustration, qrCodeImage,
+          rootLayout, scrollView, serverDropdownContainer, statusText, textConnectionTitle,
+          textCurrentUser, textExpiration, textLoginDescription, textLoginTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -2,18 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pw.idrug.connections"
     android:installLocation="internalOnly"
-    android:versionCode="10"
-    android:versionName="1.41" >
+    android:versionCode="11"
+    android:versionName="1.5" >
 
     <uses-sdk
         android:minSdkVersion="24"
-        android:targetSdkVersion="34" />
+        android:targetSdkVersion="36" />
 
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.POST_PROMOTED_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -56,7 +59,6 @@
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
     <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
     <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <permission
         android:name="pw.idrug.connections.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
@@ -216,6 +218,14 @@
                 <action android:name="pw.idrug.connections.action.SET_TUNNEL_DOWN" />
             </intent-filter>
         </receiver>
+        <receiver
+            android:name="pw.idrug.connections.DisconnectTunnelsReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="pw.idrug.connections.action.SET_ALL_TUNNELS_DOWN" />
+            </intent-filter>
+        </receiver>
 
         <service
             android:name="pw.idrug.connections.QuickTileService"
@@ -231,6 +241,13 @@
                 android:value="false" />
             <meta-data
                 android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
+        <service
+            android:name="pw.idrug.connections.ConnectionStatusService"
+            android:foregroundServiceType="specialUse" >
+            <meta-data
+                android:name="android.app.background_running"
                 android:value="true" />
         </service>
         <service
@@ -463,13 +480,13 @@
         </receiver>
 
         <uses-library
+            android:name="android.ext.adservices"
+            android:required="false" />
+        <uses-library
             android:name="androidx.window.extensions"
             android:required="false" />
         <uses-library
             android:name="androidx.window.sidecar"
-            android:required="false" />
-        <uses-library
-            android:name="android.ext.adservices"
             android:required="false" />
 
         <meta-data

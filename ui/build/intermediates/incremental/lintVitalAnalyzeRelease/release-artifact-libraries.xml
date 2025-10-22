@@ -1,9 +1,9 @@
 <libraries>
   <library
-      name="androidx.databinding:databinding-runtime:8.3.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/bf0b01b30045644328fd0cd288785782/transformed/databinding-runtime-8.3.0/jars/classes.jar"
-      resolved="androidx.databinding:databinding-runtime:8.3.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/bf0b01b30045644328fd0cd288785782/transformed/databinding-runtime-8.3.0"
+      name="androidx.databinding:databinding-runtime:8.9.1@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/7151d49a4c4474f6ff1ad0749976ec81/transformed/databinding-runtime-8.9.1/jars/classes.jar"
+      resolved="androidx.databinding:databinding-runtime:8.9.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/7151d49a4c4474f6ff1ad0749976ec81/transformed/databinding-runtime-8.9.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -13,10 +13,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.databinding:viewbinding:8.3.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/b5403a7865256f850e16c758f3c26325/transformed/viewbinding-8.3.0/jars/classes.jar"
-      resolved="androidx.databinding:viewbinding:8.3.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/b5403a7865256f850e16c758f3c26325/transformed/viewbinding-8.3.0"
+      name="androidx.databinding:viewbinding:8.9.1@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/89eef3f91dffdcf99ad89d95788f7525/transformed/viewbinding-8.9.1/jars/classes.jar"
+      resolved="androidx.databinding:viewbinding:8.9.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/89eef3f91dffdcf99ad89d95788f7525/transformed/viewbinding-8.9.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -26,10 +26,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.databinding:databinding-adapters:8.3.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/7f4b9701a28d44d7dfa65505818c3ae4/transformed/databinding-adapters-8.3.0/jars/classes.jar"
-      resolved="androidx.databinding:databinding-adapters:8.3.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/7f4b9701a28d44d7dfa65505818c3ae4/transformed/databinding-adapters-8.3.0"
+      name="androidx.databinding:databinding-adapters:8.9.1@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/24348bc98fdacfbd8a8f136a6e7f2a6e/transformed/databinding-adapters-8.9.1/jars/classes.jar"
+      resolved="androidx.databinding:databinding-adapters:8.9.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/24348bc98fdacfbd8a8f136a6e7f2a6e/transformed/databinding-adapters-8.9.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -39,14 +39,14 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.databinding:databinding-common:8.3.0@jar"
-      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/androidx.databinding/databinding-common/8.3.0/2be3530b78477835e69dce953b17adc1dbc5c6fa/databinding-common-8.3.0.jar"
-      resolved="androidx.databinding:databinding-common:8.3.0"/>
+      name="androidx.databinding:databinding-common:8.9.1@jar"
+      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/androidx.databinding/databinding-common/8.9.1/2be3530b78477835e69dce953b17adc1dbc5c6fa/databinding-common-8.9.1.jar"
+      resolved="androidx.databinding:databinding-common:8.9.1"/>
   <library
-      name="androidx.databinding:databinding-ktx:8.3.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/329e6a7b39128181d31c4bbcf7dee44b/transformed/databinding-ktx-8.3.0/jars/classes.jar"
-      resolved="androidx.databinding:databinding-ktx:8.3.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/329e6a7b39128181d31c4bbcf7dee44b/transformed/databinding-ktx-8.3.0"
+      name="androidx.databinding:databinding-ktx:8.9.1@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/03d740a8a9dec030d8818d17551a94e1/transformed/databinding-ktx-8.9.1/jars/classes.jar"
+      resolved="androidx.databinding:databinding-ktx:8.9.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/03d740a8a9dec030d8818d17551a94e1/transformed/databinding-ktx-8.9.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -57,9 +57,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.preference:preference-ktx:1.2.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/9f44ae7a6bb748fa00b271a0eaf3f8ef/transformed/preference-ktx-1.2.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/f08461ff803c06f269d3a99280e4b610/transformed/preference-ktx-1.2.1/jars/classes.jar"
       resolved="androidx.preference:preference-ktx:1.2.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/9f44ae7a6bb748fa00b271a0eaf3f8ef/transformed/preference-ktx-1.2.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/f08461ff803c06f269d3a99280e4b610/transformed/preference-ktx-1.2.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -70,9 +70,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.android.material:material:1.12.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/2786ce5c66ca4db1962a4ced1637d1f7/transformed/material-1.12.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/15f87dfbd1c9ddccb8a06a70445258a7/transformed/material-1.12.0/jars/classes.jar"
       resolved="com.google.android.material:material:1.12.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/2786ce5c66ca4db1962a4ced1637d1f7/transformed/material-1.12.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/15f87dfbd1c9ddccb8a06a70445258a7/transformed/material-1.12.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -83,9 +83,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.preference:preference:1.2.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/7c753aab7116943004aa89ed5091cdf7/transformed/preference-1.2.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/891360c59c31c39e1fff9411b6dc8a89/transformed/preference-1.2.1/jars/classes.jar"
       resolved="androidx.preference:preference:1.2.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/7c753aab7116943004aa89ed5091cdf7/transformed/preference-1.2.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/891360c59c31c39e1fff9411b6dc8a89/transformed/preference-1.2.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -96,9 +96,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.appcompat:appcompat:1.6.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/202de3dbedd09f51727d792197f108cf/transformed/appcompat-1.6.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/437effbb0b007a85c7a396b0dfebe74f/transformed/appcompat-1.6.1/jars/classes.jar"
       resolved="androidx.appcompat:appcompat:1.6.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/202de3dbedd09f51727d792197f108cf/transformed/appcompat-1.6.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/437effbb0b007a85c7a396b0dfebe74f/transformed/appcompat-1.6.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -109,9 +109,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.biometric:biometric:1.1.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/173349487250fe9664a3b7da534528c9/transformed/biometric-1.1.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/8b4c5aa65444223e22044e009eefd9d8/transformed/biometric-1.1.0/jars/classes.jar"
       resolved="androidx.biometric:biometric:1.1.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/173349487250fe9664a3b7da534528c9/transformed/biometric-1.1.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/8b4c5aa65444223e22044e009eefd9d8/transformed/biometric-1.1.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -122,9 +122,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.viewpager2:viewpager2:1.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/8c18ce6b2a419d56328115a4f5470292/transformed/viewpager2-1.0.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/a3816b1d955c30fff7fc2bd50722f373/transformed/viewpager2-1.0.0/jars/classes.jar"
       resolved="androidx.viewpager2:viewpager2:1.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/8c18ce6b2a419d56328115a4f5470292/transformed/viewpager2-1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/a3816b1d955c30fff7fc2bd50722f373/transformed/viewpager2-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -135,9 +135,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.firebase:firebase-messaging:23.4.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/fa93c51494cd10e103d3490988f83ec2/transformed/firebase-messaging-23.4.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/fea3eb230ae8248a35443de36042f898/transformed/firebase-messaging-23.4.1/jars/classes.jar"
       resolved="com.google.firebase:firebase-messaging:23.4.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/fa93c51494cd10e103d3490988f83ec2/transformed/firebase-messaging-23.4.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/fea3eb230ae8248a35443de36042f898/transformed/firebase-messaging-23.4.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -148,9 +148,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.firebase:firebase-analytics:21.5.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/9101419b53ca1f260213679867eeea0b/transformed/firebase-analytics-21.5.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/0742a819a84c670041be844e20a388f3/transformed/firebase-analytics-21.5.1/jars/classes.jar"
       resolved="com.google.firebase:firebase-analytics:21.5.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/9101419b53ca1f260213679867eeea0b/transformed/firebase-analytics-21.5.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/0742a819a84c670041be844e20a388f3/transformed/firebase-analytics-21.5.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -161,9 +161,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.android.gms:play-services-measurement-api:21.5.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/8bc6cb7ab046374aca59c95db7221b12/transformed/play-services-measurement-api-21.5.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/654583e69ba7f291e171afc891fe5b61/transformed/play-services-measurement-api-21.5.1/jars/classes.jar"
       resolved="com.google.android.gms:play-services-measurement-api:21.5.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/8bc6cb7ab046374aca59c95db7221b12/transformed/play-services-measurement-api-21.5.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/654583e69ba7f291e171afc891fe5b61/transformed/play-services-measurement-api-21.5.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -174,9 +174,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.firebase:firebase-installations:17.2.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/5a83522e38d8857879627c57d38ec923/transformed/firebase-installations-17.2.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/a44703951aff0be204453e0bad93bdb8/transformed/firebase-installations-17.2.0/jars/classes.jar"
       resolved="com.google.firebase:firebase-installations:17.2.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/5a83522e38d8857879627c57d38ec923/transformed/firebase-installations-17.2.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/a44703951aff0be204453e0bad93bdb8/transformed/firebase-installations-17.2.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -187,9 +187,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.firebase:firebase-common-ktx:20.4.2@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/24de2dffdbddb1674cee92db0453c993/transformed/firebase-common-ktx-20.4.2/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/15daa4d4ced74257effa3792a752e223/transformed/firebase-common-ktx-20.4.2/jars/classes.jar"
       resolved="com.google.firebase:firebase-common-ktx:20.4.2"
-      folder="/home/bykk/.gradle/caches/transforms-3/24de2dffdbddb1674cee92db0453c993/transformed/firebase-common-ktx-20.4.2"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/15daa4d4ced74257effa3792a752e223/transformed/firebase-common-ktx-20.4.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -200,9 +200,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.firebase:firebase-common:20.4.2@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/7a156523ffce533245a5697e7f41b1d7/transformed/firebase-common-20.4.2/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/da260f5c97e6bcbf9a0137520b543842/transformed/firebase-common-20.4.2/jars/classes.jar"
       resolved="com.google.firebase:firebase-common:20.4.2"
-      folder="/home/bykk/.gradle/caches/transforms-3/7a156523ffce533245a5697e7f41b1d7/transformed/firebase-common-20.4.2"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/da260f5c97e6bcbf9a0137520b543842/transformed/firebase-common-20.4.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -213,9 +213,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.firebase:firebase-iid-interop:17.1.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/f28718c5977e77fc1baf0f815f6ec4b5/transformed/firebase-iid-interop-17.1.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/8195e7031748b9b2e07e985b3460ad76/transformed/firebase-iid-interop-17.1.0/jars/classes.jar"
       resolved="com.google.firebase:firebase-iid-interop:17.1.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/f28718c5977e77fc1baf0f815f6ec4b5/transformed/firebase-iid-interop-17.1.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/8195e7031748b9b2e07e985b3460ad76/transformed/firebase-iid-interop-17.1.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -226,9 +226,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.android.gms:play-services-base:18.0.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/60a193987f3973eb9ddffd163d0116ba/transformed/play-services-base-18.0.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/defdde6477d80444b403ac663404fdc3/transformed/play-services-base-18.0.1/jars/classes.jar"
       resolved="com.google.android.gms:play-services-base:18.0.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/60a193987f3973eb9ddffd163d0116ba/transformed/play-services-base-18.0.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/defdde6477d80444b403ac663404fdc3/transformed/play-services-base-18.0.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -239,9 +239,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.android.gms:play-services-cloud-messaging:17.1.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/06fddb2d8c92a70c444cc36ec1515443/transformed/play-services-cloud-messaging-17.1.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/2fa8975d13042ae43b2618262e82cab7/transformed/play-services-cloud-messaging-17.1.0/jars/classes.jar"
       resolved="com.google.android.gms:play-services-cloud-messaging:17.1.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/06fddb2d8c92a70c444cc36ec1515443/transformed/play-services-cloud-messaging-17.1.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/2fa8975d13042ae43b2618262e82cab7/transformed/play-services-cloud-messaging-17.1.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -252,9 +252,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.firebase:firebase-installations-interop:17.1.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/26087caef65c4499a73a37fc3563b140/transformed/firebase-installations-interop-17.1.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/228e8418180355e8297a44a511366012/transformed/firebase-installations-interop-17.1.1/jars/classes.jar"
       resolved="com.google.firebase:firebase-installations-interop:17.1.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/26087caef65c4499a73a37fc3563b140/transformed/firebase-installations-interop-17.1.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/228e8418180355e8297a44a511366012/transformed/firebase-installations-interop-17.1.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -265,9 +265,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.activity:activity:1.8.2@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/a9539ac3b51541ca74500bd72b1d3868/transformed/activity-1.8.2/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/466bea1614a1c59822b89b4027c3ee65/transformed/activity-1.8.2/jars/classes.jar"
       resolved="androidx.activity:activity:1.8.2"
-      folder="/home/bykk/.gradle/caches/transforms-3/a9539ac3b51541ca74500bd72b1d3868/transformed/activity-1.8.2"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/466bea1614a1c59822b89b4027c3ee65/transformed/activity-1.8.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -277,10 +277,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/2be46102b44152cd88e2658f191558ce/transformed/lifecycle-viewmodel-savedstate-2.7.0/jars/classes.jar"
-      resolved="androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/2be46102b44152cd88e2658f191558ce/transformed/lifecycle-viewmodel-savedstate-2.7.0"
+      name="androidx.coordinatorlayout:coordinatorlayout:1.2.0@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/13da66605691ba8ca9610d935335f6e2/transformed/coordinatorlayout-1.2.0/jars/classes.jar"
+      resolved="androidx.coordinatorlayout:coordinatorlayout:1.2.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/13da66605691ba8ca9610d935335f6e2/transformed/coordinatorlayout-1.2.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -291,9 +291,269 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.lifecycle:lifecycle-livedata-core:2.7.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/ca1037cdc30a268c9cfdb09b32c6de28/transformed/lifecycle-livedata-core-2.7.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/244204d81444d6e073d606b4a0ba587b/transformed/lifecycle-livedata-core-2.7.0/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-livedata-core:2.7.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/ca1037cdc30a268c9cfdb09b32c6de28/transformed/lifecycle-livedata-core-2.7.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/244204d81444d6e073d606b4a0ba587b/transformed/lifecycle-livedata-core-2.7.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/457e8579671511460f2cb5e59eb3f0f7/transformed/lifecycle-viewmodel-savedstate-2.7.0/jars/classes.jar"
+      resolved="androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/457e8579671511460f2cb5e59eb3f0f7/transformed/lifecycle-viewmodel-savedstate-2.7.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.core:core-ktx:1.17.0-alpha01@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/eb7730c17945becd2f2ee36cb4a19269/transformed/core-ktx-1.17.0-alpha01/jars/classes.jar"
+      resolved="androidx.core:core-ktx:1.17.0-alpha01"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/eb7730c17945becd2f2ee36cb4a19269/transformed/core-ktx-1.17.0-alpha01"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.swiperefreshlayout:swiperefreshlayout:1.1.0@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/53b19894b09ec418667b5f03cd960782/transformed/swiperefreshlayout-1.1.0/jars/classes.jar"
+      resolved="androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/53b19894b09ec418667b5f03cd960782/transformed/swiperefreshlayout-1.1.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.appcompat:appcompat-resources:1.6.1@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/2e4cb0653c9bd92dfb049d90a03b5fab/transformed/appcompat-resources-1.6.1/jars/classes.jar"
+      resolved="androidx.appcompat:appcompat-resources:1.6.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/2e4cb0653c9bd92dfb049d90a03b5fab/transformed/appcompat-resources-1.6.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.drawerlayout:drawerlayout:1.1.1@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/8893c751b8cead077604cdbb81bf3513/transformed/drawerlayout-1.1.1/jars/classes.jar"
+      resolved="androidx.drawerlayout:drawerlayout:1.1.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/8893c751b8cead077604cdbb81bf3513/transformed/drawerlayout-1.1.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.recyclerview:recyclerview:1.1.0@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/9b87f5ea5d4348eb4bc2789c63b14859/transformed/recyclerview-1.1.0/jars/classes.jar"
+      resolved="androidx.recyclerview:recyclerview:1.1.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/9b87f5ea5d4348eb4bc2789c63b14859/transformed/recyclerview-1.1.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.viewpager:viewpager:1.0.0@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/b031447ce456f49e6ba1852f6a748933/transformed/viewpager-1.0.0/jars/classes.jar"
+      resolved="androidx.viewpager:viewpager:1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/b031447ce456f49e6ba1852f6a748933/transformed/viewpager-1.0.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.slidingpanelayout:slidingpanelayout:1.2.0@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/ac5d24c7f3ca566d26daf4c476c6d308/transformed/slidingpanelayout-1.2.0/jars/classes.jar"
+      resolved="androidx.slidingpanelayout:slidingpanelayout:1.2.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/ac5d24c7f3ca566d26daf4c476c6d308/transformed/slidingpanelayout-1.2.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.customview:customview:1.1.0@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/85a14ad690b8e1386592a129aa806d71/transformed/customview-1.1.0/jars/classes.jar"
+      resolved="androidx.customview:customview:1.1.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/85a14ad690b8e1386592a129aa806d71/transformed/customview-1.1.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.dynamicanimation:dynamicanimation:1.0.0@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/afeb043f6131d9f1a9a1e63eecb04676/transformed/dynamicanimation-1.0.0/jars/classes.jar"
+      resolved="androidx.dynamicanimation:dynamicanimation:1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/afeb043f6131d9f1a9a1e63eecb04676/transformed/dynamicanimation-1.0.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.transition:transition:1.5.0@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/9d821061c7f83477f0e739009d2e76b8/transformed/transition-1.5.0/jars/classes.jar"
+      resolved="androidx.transition:transition:1.5.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/9d821061c7f83477f0e739009d2e76b8/transformed/transition-1.5.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.vectordrawable:vectordrawable-animated:1.1.0@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/f342d38e74b7f670e2b45494ea49cbce/transformed/vectordrawable-animated-1.1.0/jars/classes.jar"
+      resolved="androidx.vectordrawable:vectordrawable-animated:1.1.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/f342d38e74b7f670e2b45494ea49cbce/transformed/vectordrawable-animated-1.1.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.vectordrawable:vectordrawable:1.1.0@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/d8c0c560e33d263f700c10cfb9d18b4b/transformed/vectordrawable-1.1.0/jars/classes.jar"
+      resolved="androidx.vectordrawable:vectordrawable:1.1.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/d8c0c560e33d263f700c10cfb9d18b4b/transformed/vectordrawable-1.1.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.gms:play-services-measurement:21.5.1@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/93a54670ec4a2e8d3de4688537bad855/transformed/play-services-measurement-21.5.1/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-measurement:21.5.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/93a54670ec4a2e8d3de4688537bad855/transformed/play-services-measurement-21.5.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.gms:play-services-measurement-sdk:21.5.1@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/54f4d6767ddb026d88d616eca9301b05/transformed/play-services-measurement-sdk-21.5.1/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-measurement-sdk:21.5.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/54f4d6767ddb026d88d616eca9301b05/transformed/play-services-measurement-sdk-21.5.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.gms:play-services-measurement-impl:21.5.1@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/67e03d7759ef4a4bcf59c1de7bf12878/transformed/play-services-measurement-impl-21.5.1/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-measurement-impl:21.5.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/67e03d7759ef4a4bcf59c1de7bf12878/transformed/play-services-measurement-impl-21.5.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.gms:play-services-stats:17.0.2@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/3cbdbafadae053255c35c3f5c2e6d44e/transformed/play-services-stats-17.0.2/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-stats:17.0.2"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/3cbdbafadae053255c35c3f5c2e6d44e/transformed/play-services-stats-17.0.2"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.legacy:legacy-support-core-utils:1.0.0@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/63e50ea3e7a824f439083e5e218ba13e/transformed/legacy-support-core-utils-1.0.0/jars/classes.jar"
+      resolved="androidx.legacy:legacy-support-core-utils:1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/63e50ea3e7a824f439083e5e218ba13e/transformed/legacy-support-core-utils-1.0.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.loader:loader:1.0.0@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/8b08d256f5661e9aec097dad7e190b71/transformed/loader-1.0.0/jars/classes.jar"
+      resolved="androidx.loader:loader:1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/8b08d256f5661e9aec097dad7e190b71/transformed/loader-1.0.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.core:core:1.17.0-alpha01@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/be604ed2e21f1b8b863ab270197d244b/transformed/core-1.17.0-alpha01/jars/classes.jar"
+      resolved="androidx.core:core:1.17.0-alpha01"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/be604ed2e21f1b8b863ab270197d244b/transformed/core-1.17.0-alpha01"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -308,9 +568,9 @@
       resolved="androidx.lifecycle:lifecycle-common:2.7.0"/>
   <library
       name="androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/26d91bc6c471638315c1a8a5ef91e7a5/transformed/lifecycle-livedata-core-ktx-2.7.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/af1944da444d5d4269f29d73779cc105/transformed/lifecycle-livedata-core-ktx-2.7.0/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/26d91bc6c471638315c1a8a5ef91e7a5/transformed/lifecycle-livedata-core-ktx-2.7.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/af1944da444d5d4269f29d73779cc105/transformed/lifecycle-livedata-core-ktx-2.7.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -321,100 +581,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/a5308857547d04045c1c4aa04d54c3f9/transformed/lifecycle-viewmodel-ktx-2.7.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/04e37e429add752b8c54cc6712e8493b/transformed/lifecycle-viewmodel-ktx-2.7.0/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/a5308857547d04045c1c4aa04d54c3f9/transformed/lifecycle-viewmodel-ktx-2.7.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.dynamicanimation:dynamicanimation:1.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/952e041e444b18876d029f35e1739a3c/transformed/dynamicanimation-1.0.0/jars/classes.jar"
-      resolved="androidx.dynamicanimation:dynamicanimation:1.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/952e041e444b18876d029f35e1739a3c/transformed/dynamicanimation-1.0.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="com.google.android.gms:play-services-measurement:21.5.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/b8c22ce6920c420698756cd107be5074/transformed/play-services-measurement-21.5.1/jars/classes.jar"
-      resolved="com.google.android.gms:play-services-measurement:21.5.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/b8c22ce6920c420698756cd107be5074/transformed/play-services-measurement-21.5.1"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="com.google.android.gms:play-services-measurement-sdk:21.5.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/b4f43f4bd66d0566d4a74ff676ea0205/transformed/play-services-measurement-sdk-21.5.1/jars/classes.jar"
-      resolved="com.google.android.gms:play-services-measurement-sdk:21.5.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/b4f43f4bd66d0566d4a74ff676ea0205/transformed/play-services-measurement-sdk-21.5.1"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="com.google.android.gms:play-services-measurement-impl:21.5.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/399a06e7c11577dad9932633402b4f29/transformed/play-services-measurement-impl-21.5.1/jars/classes.jar"
-      resolved="com.google.android.gms:play-services-measurement-impl:21.5.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/399a06e7c11577dad9932633402b4f29/transformed/play-services-measurement-impl-21.5.1"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="com.google.android.gms:play-services-stats:17.0.2@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/ef461d6f563a975e96b2d9e182d05d26/transformed/play-services-stats-17.0.2/jars/classes.jar"
-      resolved="com.google.android.gms:play-services-stats:17.0.2"
-      folder="/home/bykk/.gradle/caches/transforms-3/ef461d6f563a975e96b2d9e182d05d26/transformed/play-services-stats-17.0.2"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.legacy:legacy-support-core-utils:1.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/171dd05643523b2cc43ce1fa034a79d6/transformed/legacy-support-core-utils-1.0.0/jars/classes.jar"
-      resolved="androidx.legacy:legacy-support-core-utils:1.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/171dd05643523b2cc43ce1fa034a79d6/transformed/legacy-support-core-utils-1.0.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.loader:loader:1.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/ff1bf5c581936a8ae88108c06acdb41e/transformed/loader-1.0.0/jars/classes.jar"
-      resolved="androidx.loader:loader:1.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/ff1bf5c581936a8ae88108c06acdb41e/transformed/loader-1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/04e37e429add752b8c54cc6712e8493b/transformed/lifecycle-viewmodel-ktx-2.7.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -425,9 +594,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.lifecycle:lifecycle-viewmodel:2.7.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/71ce8debff076e8f08d0dc32585c3554/transformed/lifecycle-viewmodel-2.7.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/66aba8bc7f333ae3bc1cbcb70ccc80d2/transformed/lifecycle-viewmodel-2.7.0/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-viewmodel:2.7.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/71ce8debff076e8f08d0dc32585c3554/transformed/lifecycle-viewmodel-2.7.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/66aba8bc7f333ae3bc1cbcb70ccc80d2/transformed/lifecycle-viewmodel-2.7.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -438,9 +607,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.lifecycle:lifecycle-service:2.7.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/66b8af80ddd68ccf51b7b08e67aa1fe8/transformed/lifecycle-service-2.7.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/1c08e9e0de989284c02b313f228955b0/transformed/lifecycle-service-2.7.0/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-service:2.7.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/66b8af80ddd68ccf51b7b08e67aa1fe8/transformed/lifecycle-service-2.7.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/1c08e9e0de989284c02b313f228955b0/transformed/lifecycle-service-2.7.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -451,9 +620,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.lifecycle:lifecycle-process:2.7.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/3e43a8486734d69f105fad1ea9ca2f1f/transformed/lifecycle-process-2.7.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/e5dabdb522c65db2fc7e0eed7573a1ac/transformed/lifecycle-process-2.7.0/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-process:2.7.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/3e43a8486734d69f105fad1ea9ca2f1f/transformed/lifecycle-process-2.7.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/e5dabdb522c65db2fc7e0eed7573a1ac/transformed/lifecycle-process-2.7.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -464,9 +633,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.work:work-runtime-ktx:2.9.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/b2c92bdf1599b24cb39f775213d624e2/transformed/work-runtime-ktx-2.9.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/8976ea779a7462d47b384724c85af3fc/transformed/work-runtime-ktx-2.9.1/jars/classes.jar"
       resolved="androidx.work:work-runtime-ktx:2.9.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/b2c92bdf1599b24cb39f775213d624e2/transformed/work-runtime-ktx-2.9.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/8976ea779a7462d47b384724c85af3fc/transformed/work-runtime-ktx-2.9.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -477,9 +646,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.work:work-runtime:2.9.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/ab30916148b11525064ccb68dca3df8f/transformed/work-runtime-2.9.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/5a4b28b87eca89bb5de2eecef563dcb0/transformed/work-runtime-2.9.1/jars/classes.jar"
       resolved="androidx.work:work-runtime:2.9.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/ab30916148b11525064ccb68dca3df8f/transformed/work-runtime-2.9.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/5a4b28b87eca89bb5de2eecef563dcb0/transformed/work-runtime-2.9.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -490,178 +659,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.lifecycle:lifecycle-livedata:2.7.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/33ff4b35a05be2d38d53aee96c5f6716/transformed/lifecycle-livedata-2.7.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/1d7c8ed38b713e0f9deac2ccebf51a93/transformed/lifecycle-livedata-2.7.0/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-livedata:2.7.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/33ff4b35a05be2d38d53aee96c5f6716/transformed/lifecycle-livedata-2.7.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.coordinatorlayout:coordinatorlayout:1.2.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/dc2ca60a93530357ca403b4d07d39e22/transformed/coordinatorlayout-1.2.0/jars/classes.jar"
-      resolved="androidx.coordinatorlayout:coordinatorlayout:1.2.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/dc2ca60a93530357ca403b4d07d39e22/transformed/coordinatorlayout-1.2.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.core:core-ktx:1.13.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/a04726c2fceae02478e1757e860b4f69/transformed/core-ktx-1.13.0/jars/classes.jar"
-      resolved="androidx.core:core-ktx:1.13.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/a04726c2fceae02478e1757e860b4f69/transformed/core-ktx-1.13.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.swiperefreshlayout:swiperefreshlayout:1.1.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/3c66850168a702f42698e843cf4a43ee/transformed/swiperefreshlayout-1.1.0/jars/classes.jar"
-      resolved="androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/3c66850168a702f42698e843cf4a43ee/transformed/swiperefreshlayout-1.1.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.appcompat:appcompat-resources:1.6.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/f8641e6771edb55c6a7cc36557588284/transformed/appcompat-resources-1.6.1/jars/classes.jar"
-      resolved="androidx.appcompat:appcompat-resources:1.6.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/f8641e6771edb55c6a7cc36557588284/transformed/appcompat-resources-1.6.1"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.drawerlayout:drawerlayout:1.1.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/e0fdbab2c7e28f7894d899cbd27226b3/transformed/drawerlayout-1.1.1/jars/classes.jar"
-      resolved="androidx.drawerlayout:drawerlayout:1.1.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/e0fdbab2c7e28f7894d899cbd27226b3/transformed/drawerlayout-1.1.1"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.recyclerview:recyclerview:1.1.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/39f79ff816c744ee53bfe3641967e69d/transformed/recyclerview-1.1.0/jars/classes.jar"
-      resolved="androidx.recyclerview:recyclerview:1.1.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/39f79ff816c744ee53bfe3641967e69d/transformed/recyclerview-1.1.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.viewpager:viewpager:1.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/33def31862b2a4bca1ca7b921cc02b87/transformed/viewpager-1.0.0/jars/classes.jar"
-      resolved="androidx.viewpager:viewpager:1.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/33def31862b2a4bca1ca7b921cc02b87/transformed/viewpager-1.0.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.slidingpanelayout:slidingpanelayout:1.2.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/970a4180a4ae1e5592f3cfb9c6416f35/transformed/slidingpanelayout-1.2.0/jars/classes.jar"
-      resolved="androidx.slidingpanelayout:slidingpanelayout:1.2.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/970a4180a4ae1e5592f3cfb9c6416f35/transformed/slidingpanelayout-1.2.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.customview:customview:1.1.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/d4c8ed31b06aac1737235525a4778f7d/transformed/customview-1.1.0/jars/classes.jar"
-      resolved="androidx.customview:customview:1.1.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/d4c8ed31b06aac1737235525a4778f7d/transformed/customview-1.1.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.transition:transition:1.5.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/e99f0b9e0b59839a972accc7148d9620/transformed/transition-1.5.0/jars/classes.jar"
-      resolved="androidx.transition:transition:1.5.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/e99f0b9e0b59839a972accc7148d9620/transformed/transition-1.5.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.vectordrawable:vectordrawable-animated:1.1.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/4b7be728c46bdba55e0f6fe87e00911e/transformed/vectordrawable-animated-1.1.0/jars/classes.jar"
-      resolved="androidx.vectordrawable:vectordrawable-animated:1.1.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/4b7be728c46bdba55e0f6fe87e00911e/transformed/vectordrawable-animated-1.1.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.vectordrawable:vectordrawable:1.1.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/5c36a407f9e605466771611beca372ea/transformed/vectordrawable-1.1.0/jars/classes.jar"
-      resolved="androidx.vectordrawable:vectordrawable:1.1.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/5c36a407f9e605466771611beca372ea/transformed/vectordrawable-1.1.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.core:core:1.13.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/0db31fde680476d879e3926ad1d53c0b/transformed/core-1.13.0/jars/classes.jar"
-      resolved="androidx.core:core:1.13.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/0db31fde680476d879e3926ad1d53c0b/transformed/core-1.13.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/1d7c8ed38b713e0f9deac2ccebf51a93/transformed/lifecycle-livedata-2.7.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -672,9 +672,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.lifecycle:lifecycle-runtime:2.7.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/f24813a84de2cf441b5a7a72dd0903da/transformed/lifecycle-runtime-2.7.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/8b96cc0ad971be7f07e9c550cd45d354/transformed/lifecycle-runtime-2.7.0/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-runtime:2.7.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/f24813a84de2cf441b5a7a72dd0903da/transformed/lifecycle-runtime-2.7.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/8b96cc0ad971be7f07e9c550cd45d354/transformed/lifecycle-runtime-2.7.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -685,9 +685,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.lifecycle:lifecycle-runtime-ktx:2.7.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/11047c9491d11a95276b7ebcab9abea2/transformed/lifecycle-runtime-ktx-2.7.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/9e044e1dfacc00263851bc765c10884b/transformed/lifecycle-runtime-ktx-2.7.0/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-runtime-ktx:2.7.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/11047c9491d11a95276b7ebcab9abea2/transformed/lifecycle-runtime-ktx-2.7.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/9e044e1dfacc00263851bc765c10884b/transformed/lifecycle-runtime-ktx-2.7.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -697,14 +697,14 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3@jar"
-      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-android/1.7.3/38d9cad3a0b03a10453b56577984bdeb48edeed5/kotlinx-coroutines-android-1.7.3.jar"
-      resolved="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"/>
+      name="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1@jar"
+      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-android/1.8.1/73e2acdd18df99dd4849d99f188dff529fc0afe0/kotlinx-coroutines-android-1.8.1.jar"
+      resolved="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1"/>
   <library
       name="androidx.datastore:datastore-preferences:1.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/e9967023e0548374d0d8da8e484a55ba/transformed/datastore-preferences-1.0.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/44993ca7bb7e2e71042bd3a260c4188c/transformed/datastore-preferences-1.0.0/jars/classes.jar"
       resolved="androidx.datastore:datastore-preferences:1.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/e9967023e0548374d0d8da8e484a55ba/transformed/datastore-preferences-1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/44993ca7bb7e2e71042bd3a260c4188c/transformed/datastore-preferences-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -715,9 +715,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.datastore:datastore:1.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/405a5c17c46ffec0b8be383881ba2ea8/transformed/datastore-1.0.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/467dca2264a0dda5d9cddab5930e796f/transformed/datastore-1.0.0/jars/classes.jar"
       resolved="androidx.datastore:datastore:1.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/405a5c17c46ffec0b8be383881ba2ea8/transformed/datastore-1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/467dca2264a0dda5d9cddab5930e796f/transformed/datastore-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -736,9 +736,9 @@
       resolved="androidx.datastore:datastore-core:1.0.0"/>
   <library
       name="androidx.privacysandbox.ads:ads-adservices-java:1.0.0-beta05@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/0388f50c3ae6d7078e65586bcf0dd435/transformed/ads-adservices-java-1.0.0-beta05/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/b783cdabdd05b28d570f2796d402c189/transformed/ads-adservices-java-1.0.0-beta05/jars/classes.jar"
       resolved="androidx.privacysandbox.ads:ads-adservices-java:1.0.0-beta05"
-      folder="/home/bykk/.gradle/caches/transforms-3/0388f50c3ae6d7078e65586bcf0dd435/transformed/ads-adservices-java-1.0.0-beta05"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/b783cdabdd05b28d570f2796d402c189/transformed/ads-adservices-java-1.0.0-beta05"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -749,9 +749,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/d7d8fdab682b2e918f157d6cce1ab869/transformed/ads-adservices-1.0.0-beta05/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/c08e81e635467d5ced4151b607511862/transformed/ads-adservices-1.0.0-beta05/jars/classes.jar"
       resolved="androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05"
-      folder="/home/bykk/.gradle/caches/transforms-3/d7d8fdab682b2e918f157d6cce1ab869/transformed/ads-adservices-1.0.0-beta05"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/c08e81e635467d5ced4151b607511862/transformed/ads-adservices-1.0.0-beta05"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -761,18 +761,18 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3@jar"
-      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.7.3/2b09627576f0989a436a00a4a54b55fa5026fb86/kotlinx-coroutines-core-jvm-1.7.3.jar"
-      resolved="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3"/>
+      name="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.8.1@jar"
+      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.8.1/bb0e192bd7c2b6b8217440d36e9758e377e450/kotlinx-coroutines-core-jvm-1.8.1.jar"
+      resolved="org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.8.1"/>
   <library
-      name="org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3@jar"
-      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-play-services/1.7.3/7087d47913cfb0062c9909dacbfc78fe44c5ecff/kotlinx-coroutines-play-services-1.7.3.jar"
-      resolved="org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3"/>
+      name="org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1@jar"
+      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-play-services/1.8.1/71eb0cace3aaa93591a613a32c92853c464d2a53/kotlinx-coroutines-play-services-1.8.1.jar"
+      resolved="org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1"/>
   <library
       name="com.google.android.gms:play-services-tasks:18.0.2@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/f4f4e29ed169cce39c6d8546f64de6c8/transformed/play-services-tasks-18.0.2/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/c7e3d441492caee19d9c400d6c5965f5/transformed/play-services-tasks-18.0.2/jars/classes.jar"
       resolved="com.google.android.gms:play-services-tasks:18.0.2"
-      folder="/home/bykk/.gradle/caches/transforms-3/f4f4e29ed169cce39c6d8546f64de6c8/transformed/play-services-tasks-18.0.2"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/c7e3d441492caee19d9c400d6c5965f5/transformed/play-services-tasks-18.0.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -783,9 +783,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.firebase:firebase-measurement-connector:19.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/02d9b5ea820cad5643d73e853e0a1d87/transformed/firebase-measurement-connector-19.0.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/4addb1b0f9f7c7fe1f95cf9e7adaefa2/transformed/firebase-measurement-connector-19.0.0/jars/classes.jar"
       resolved="com.google.firebase:firebase-measurement-connector:19.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/02d9b5ea820cad5643d73e853e0a1d87/transformed/firebase-measurement-connector-19.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/4addb1b0f9f7c7fe1f95cf9e7adaefa2/transformed/firebase-measurement-connector-19.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -796,9 +796,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.android.gms:play-services-ads-identifier:18.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/0cfbb4e40c047f7e982a9c671cde8efd/transformed/play-services-ads-identifier-18.0.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/076599f994c838b34c44c094e41588ae/transformed/play-services-ads-identifier-18.0.0/jars/classes.jar"
       resolved="com.google.android.gms:play-services-ads-identifier:18.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/0cfbb4e40c047f7e982a9c671cde8efd/transformed/play-services-ads-identifier-18.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/076599f994c838b34c44c094e41588ae/transformed/play-services-ads-identifier-18.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -809,9 +809,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.android.gms:play-services-measurement-sdk-api:21.5.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/41a75abf078f323eb843d8199b438488/transformed/play-services-measurement-sdk-api-21.5.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/21e76e8269725ac6c0177392ebdfb402/transformed/play-services-measurement-sdk-api-21.5.1/jars/classes.jar"
       resolved="com.google.android.gms:play-services-measurement-sdk-api:21.5.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/41a75abf078f323eb843d8199b438488/transformed/play-services-measurement-sdk-api-21.5.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/21e76e8269725ac6c0177392ebdfb402/transformed/play-services-measurement-sdk-api-21.5.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -822,9 +822,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.android.gms:play-services-measurement-base:21.5.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/3c27051b48672e89de467a8efd06617b/transformed/play-services-measurement-base-21.5.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/6fdbafc2eb0f096a42d62e1176736844/transformed/play-services-measurement-base-21.5.1/jars/classes.jar"
       resolved="com.google.android.gms:play-services-measurement-base:21.5.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/3c27051b48672e89de467a8efd06617b/transformed/play-services-measurement-base-21.5.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/6fdbafc2eb0f096a42d62e1176736844/transformed/play-services-measurement-base-21.5.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -835,9 +835,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.android.gms:play-services-basement:18.1.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/f99f55729c0bea360f0fae68053a60d4/transformed/play-services-basement-18.1.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/7b870a86b6228dd55e9d857f27f862e7/transformed/play-services-basement-18.1.0/jars/classes.jar"
       resolved="com.google.android.gms:play-services-basement:18.1.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/f99f55729c0bea360f0fae68053a60d4/transformed/play-services-basement-18.1.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/7b870a86b6228dd55e9d857f27f862e7/transformed/play-services-basement-18.1.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -848,9 +848,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.fragment:fragment:1.6.2@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/7e085fca30da0937c34d67d56a6e2a7f/transformed/fragment-1.6.2/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/0162b1923674490486f7a62613380cf7/transformed/fragment-1.6.2/jars/classes.jar"
       resolved="androidx.fragment:fragment:1.6.2"
-      folder="/home/bykk/.gradle/caches/transforms-3/7e085fca30da0937c34d67d56a6e2a7f/transformed/fragment-1.6.2"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/0162b1923674490486f7a62613380cf7/transformed/fragment-1.6.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -861,9 +861,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.fragment:fragment-ktx:1.6.2@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/9f019b5c6b800628facc55a264f85dc3/transformed/fragment-ktx-1.6.2/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/e2f602993fe4d496c2457d65abbf79ae/transformed/fragment-ktx-1.6.2/jars/classes.jar"
       resolved="androidx.fragment:fragment-ktx:1.6.2"
-      folder="/home/bykk/.gradle/caches/transforms-3/9f019b5c6b800628facc55a264f85dc3/transformed/fragment-ktx-1.6.2"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/e2f602993fe4d496c2457d65abbf79ae/transformed/fragment-ktx-1.6.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -874,9 +874,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.activity:activity-ktx:1.8.2@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/5bf77fa11664c5705e13f66f06c49ede/transformed/activity-ktx-1.8.2/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/81e2088cb863d17da9ff9a1f7d73726f/transformed/activity-ktx-1.8.2/jars/classes.jar"
       resolved="androidx.activity:activity-ktx:1.8.2"
-      folder="/home/bykk/.gradle/caches/transforms-3/5bf77fa11664c5705e13f66f06c49ede/transformed/activity-ktx-1.8.2"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/81e2088cb863d17da9ff9a1f7d73726f/transformed/activity-ktx-1.8.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -887,9 +887,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.savedstate:savedstate:1.2.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/c31ae244cc52b7ad88ed60505fac81dd/transformed/savedstate-1.2.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/6e7c8b7118ebcd6de6a002ecf5e9b05d/transformed/savedstate-1.2.1/jars/classes.jar"
       resolved="androidx.savedstate:savedstate:1.2.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/c31ae244cc52b7ad88ed60505fac81dd/transformed/savedstate-1.2.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/6e7c8b7118ebcd6de6a002ecf5e9b05d/transformed/savedstate-1.2.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -900,9 +900,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.savedstate:savedstate-ktx:1.2.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/122cc3fec64790ed66e560b6e0698555/transformed/savedstate-ktx-1.2.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/bbae594abb67a56d017a58ce5e5bce6d/transformed/savedstate-ktx-1.2.1/jars/classes.jar"
       resolved="androidx.savedstate:savedstate-ktx:1.2.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/122cc3fec64790ed66e560b6e0698555/transformed/savedstate-ktx-1.2.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/bbae594abb67a56d017a58ce5e5bce6d/transformed/savedstate-ktx-1.2.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -913,9 +913,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.cursoradapter:cursoradapter:1.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/631279bf34ca0e35dc45490c875b8fad/transformed/cursoradapter-1.0.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/cf234b06eba6a34b4b8c4dbe4357b257/transformed/cursoradapter-1.0.0/jars/classes.jar"
       resolved="androidx.cursoradapter:cursoradapter:1.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/631279bf34ca0e35dc45490c875b8fad/transformed/cursoradapter-1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/cf234b06eba6a34b4b8c4dbe4357b257/transformed/cursoradapter-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -926,9 +926,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.cardview:cardview:1.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/c6e29519cced0ce959cb00bd166edc8e/transformed/cardview-1.0.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/877bee868fe29089ac4d5b477a7cc297/transformed/cardview-1.0.0/jars/classes.jar"
       resolved="androidx.cardview:cardview:1.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/c6e29519cced0ce959cb00bd166edc8e/transformed/cardview-1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/877bee868fe29089ac4d5b477a7cc297/transformed/cardview-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -939,9 +939,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.interpolator:interpolator:1.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/faf8f45f5a0ff556c73ebe9e82c9a113/transformed/interpolator-1.0.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/ef32773c628c61069007a32c98dba969/transformed/interpolator-1.0.0/jars/classes.jar"
       resolved="androidx.interpolator:interpolator:1.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/faf8f45f5a0ff556c73ebe9e82c9a113/transformed/interpolator-1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/ef32773c628c61069007a32c98dba969/transformed/interpolator-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -952,9 +952,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.firebase:firebase-datatransport:18.1.7@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/69eae679d99ab3bf1f1fad59624723df/transformed/firebase-datatransport-18.1.7/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/464b5bba4ed0d2994c4fc20799169617/transformed/firebase-datatransport-18.1.7/jars/classes.jar"
       resolved="com.google.firebase:firebase-datatransport:18.1.7"
-      folder="/home/bykk/.gradle/caches/transforms-3/69eae679d99ab3bf1f1fad59624723df/transformed/firebase-datatransport-18.1.7"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/464b5bba4ed0d2994c4fc20799169617/transformed/firebase-datatransport-18.1.7"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -965,9 +965,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.android.datatransport:transport-backend-cct:3.1.8@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/13b8d085bb280404dce6dbf1d118c7fb/transformed/transport-backend-cct-3.1.8/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/823fa58c9be3481130b76abab133592f/transformed/transport-backend-cct-3.1.8/jars/classes.jar"
       resolved="com.google.android.datatransport:transport-backend-cct:3.1.8"
-      folder="/home/bykk/.gradle/caches/transforms-3/13b8d085bb280404dce6dbf1d118c7fb/transformed/transport-backend-cct-3.1.8"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/823fa58c9be3481130b76abab133592f/transformed/transport-backend-cct-3.1.8"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -978,9 +978,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.android.datatransport:transport-runtime:3.1.8@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/e1a7f0f2b4964494d09858f13716eca0/transformed/transport-runtime-3.1.8/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/e57e42a9203fe1010b1094c73ed49a54/transformed/transport-runtime-3.1.8/jars/classes.jar"
       resolved="com.google.android.datatransport:transport-runtime:3.1.8"
-      folder="/home/bykk/.gradle/caches/transforms-3/e1a7f0f2b4964494d09858f13716eca0/transformed/transport-runtime-3.1.8"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/e57e42a9203fe1010b1094c73ed49a54/transformed/transport-runtime-3.1.8"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -995,9 +995,9 @@
       resolved="com.google.firebase:firebase-encoders-proto:16.0.0"/>
   <library
       name="com.google.firebase:firebase-encoders-json:18.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/19cfa2914b6a44e346dca64a527c4036/transformed/firebase-encoders-json-18.0.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/45698a4c10a6e1503ddbf5b4d39510ee/transformed/firebase-encoders-json-18.0.0/jars/classes.jar"
       resolved="com.google.firebase:firebase-encoders-json:18.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/19cfa2914b6a44e346dca64a527c4036/transformed/firebase-encoders-json-18.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/45698a4c10a6e1503ddbf5b4d39510ee/transformed/firebase-encoders-json-18.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1012,9 +1012,9 @@
       resolved="com.google.firebase:firebase-encoders:17.0.0"/>
   <library
       name="com.google.android.datatransport:transport-api:3.1.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/5d1cc7976818f847fb76fa48ba818b33/transformed/transport-api-3.1.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/101639fcee2209ffb436cd88eb28124d/transformed/transport-api-3.1.0/jars/classes.jar"
       resolved="com.google.android.datatransport:transport-api:3.1.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/5d1cc7976818f847fb76fa48ba818b33/transformed/transport-api-3.1.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/101639fcee2209ffb436cd88eb28124d/transformed/transport-api-3.1.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1025,9 +1025,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.google.firebase:firebase-components:17.1.5@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/25b50c1aa8e53cc24a3cf9d5058b97f7/transformed/firebase-components-17.1.5/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/f8787eff37851cab161964036d1576a5/transformed/firebase-components-17.1.5/jars/classes.jar"
       resolved="com.google.firebase:firebase-components:17.1.5"
-      folder="/home/bykk/.gradle/caches/transforms-3/25b50c1aa8e53cc24a3cf9d5058b97f7/transformed/firebase-components-17.1.5"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/f8787eff37851cab161964036d1576a5/transformed/firebase-components-17.1.5"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1038,9 +1038,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.arch.core:core-runtime:2.2.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/14c567e3ab89c84eba31b242ecd88ef3/transformed/core-runtime-2.2.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/ff769268ad3ced95b86f3aee69a85334/transformed/core-runtime-2.2.0/jars/classes.jar"
       resolved="androidx.arch.core:core-runtime:2.2.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/14c567e3ab89c84eba31b242ecd88ef3/transformed/core-runtime-2.2.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/ff769268ad3ced95b86f3aee69a85334/transformed/core-runtime-2.2.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1055,9 +1055,9 @@
       resolved="androidx.arch.core:core-common:2.2.0"/>
   <library
       name="androidx.versionedparcelable:versionedparcelable:1.1.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/c91c5f451779b4203d712c02da2e5ae1/transformed/versionedparcelable-1.1.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/ed23ba124930a260f5a073d3ba97d33c/transformed/versionedparcelable-1.1.1/jars/classes.jar"
       resolved="androidx.versionedparcelable:versionedparcelable:1.1.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/c91c5f451779b4203d712c02da2e5ae1/transformed/versionedparcelable-1.1.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/ed23ba124930a260f5a073d3ba97d33c/transformed/versionedparcelable-1.1.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1067,22 +1067,22 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.collection:collection-ktx:1.4.0@jar"
-      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/androidx.collection/collection-ktx/1.4.0/2ad14aed781c4a73ed4dbb421966d408a0a06686/collection-ktx-1.4.0.jar"
-      resolved="androidx.collection:collection-ktx:1.4.0"/>
+      name="androidx.collection:collection-ktx:1.4.2@jar"
+      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/androidx.collection/collection-ktx/1.4.2/2ad14aed781c4a73ed4dbb421966d408a0a06686/collection-ktx-1.4.2.jar"
+      resolved="androidx.collection:collection-ktx:1.4.2"/>
   <library
-      name="androidx.collection:collection-jvm:1.4.0@jar"
-      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/androidx.collection/collection-jvm/1.4.0/e209fb7bd1183032f55a0408121c6251a81acb49/collection-jvm-1.4.0.jar"
-      resolved="androidx.collection:collection-jvm:1.4.0"/>
+      name="androidx.collection:collection-jvm:1.4.2@jar"
+      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/androidx.collection/collection-jvm/1.4.2/bc60b5568a66d765a9fe8e266fd0c6c727e0b50b/collection-jvm-1.4.2.jar"
+      resolved="androidx.collection:collection-jvm:1.4.2"/>
   <library
       name="androidx.concurrent:concurrent-futures:1.1.0@jar"
       jars="/home/bykk/.gradle/caches/modules-2/files-2.1/androidx.concurrent/concurrent-futures/1.1.0/50b7fb98350d5f42a4e49704b03278542293ba48/concurrent-futures-1.1.0.jar"
       resolved="androidx.concurrent:concurrent-futures:1.1.0"/>
   <library
       name="androidx.documentfile:documentfile:1.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/624dbbec32c24a333e9bafea879dc708/transformed/documentfile-1.0.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/575b51f2d1a1b909d329b30668da663b/transformed/documentfile-1.0.0/jars/classes.jar"
       resolved="androidx.documentfile:documentfile:1.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/624dbbec32c24a333e9bafea879dc708/transformed/documentfile-1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/575b51f2d1a1b909d329b30668da663b/transformed/documentfile-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1093,9 +1093,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.localbroadcastmanager:localbroadcastmanager:1.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/7226fd5a5c49d7c4bd816ced1083079d/transformed/localbroadcastmanager-1.0.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/fce2f179a8604952086c48db8bb56fae/transformed/localbroadcastmanager-1.0.0/jars/classes.jar"
       resolved="androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/7226fd5a5c49d7c4bd816ced1083079d/transformed/localbroadcastmanager-1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/fce2f179a8604952086c48db8bb56fae/transformed/localbroadcastmanager-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1106,9 +1106,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.print:print:1.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/5dacf69f176be285b1899fdc0b0b2a65/transformed/print-1.0.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/5da5e77df58a35d40b4b0b109c62122d/transformed/print-1.0.0/jars/classes.jar"
       resolved="androidx.print:print:1.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/5dacf69f176be285b1899fdc0b0b2a65/transformed/print-1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/5da5e77df58a35d40b4b0b109c62122d/transformed/print-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1118,14 +1118,14 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.annotation:annotation-jvm:1.7.1@jar"
-      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/androidx.annotation/annotation-jvm/1.7.1/920472d40adcdef5e18708976b3e314f9a636fcd/annotation-jvm-1.7.1.jar"
-      resolved="androidx.annotation:annotation-jvm:1.7.1"/>
+      name="androidx.annotation:annotation-jvm:1.8.1@jar"
+      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/androidx.annotation/annotation-jvm/1.8.1/b8a16fe526014b7941c1debaccaf9c5153692dbb/annotation-jvm-1.8.1.jar"
+      resolved="androidx.annotation:annotation-jvm:1.8.1"/>
   <library
-      name="androidx.annotation:annotation-experimental:1.4.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/d0e2c7c775ac1eba6d89cf544343b346/transformed/annotation-experimental-1.4.0/jars/classes.jar"
-      resolved="androidx.annotation:annotation-experimental:1.4.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/d0e2c7c775ac1eba6d89cf544343b346/transformed/annotation-experimental-1.4.0"
+      name="androidx.annotation:annotation-experimental:1.4.1@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/b29ff9cb69d833e7a0418675f2ab2ad7/transformed/annotation-experimental-1.4.1/jars/classes.jar"
+      resolved="androidx.annotation:annotation-experimental:1.4.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/b29ff9cb69d833e7a0418675f2ab2ad7/transformed/annotation-experimental-1.4.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1148,9 +1148,9 @@
       resolved="com.squareup.retrofit2:retrofit:2.11.0"/>
   <library
       name="com.squareup.picasso:picasso:2.71828@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/4d917cdb00dc3cd3e7e9da7a44cd7978/transformed/picasso-2.71828/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/ed11419d7fe46b8de968ed4995907a9d/transformed/picasso-2.71828/jars/classes.jar"
       resolved="com.squareup.picasso:picasso:2.71828"
-      folder="/home/bykk/.gradle/caches/transforms-3/4d917cdb00dc3cd3e7e9da7a44cd7978/transformed/picasso-2.71828"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/ed11419d7fe46b8de968ed4995907a9d/transformed/picasso-2.71828"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1172,31 +1172,44 @@
       jars="/home/bykk/.gradle/caches/modules-2/files-2.1/com.squareup.moshi/moshi/1.15.1/753fe8158eae76508bf251afd645101f871680c4/moshi-1.15.1.jar"
       resolved="com.squareup.moshi:moshi:1.15.1"/>
   <library
-      name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.20@jar"
-      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.9.20/e2b4d1f475ae0606d063a84fce4dccdb45c7e12a/kotlin-stdlib-jdk8-1.9.20.jar"
-      resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.20"/>
+      name="org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.0@jar"
+      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/2.1.0/c4a51be16c840b969ed706bc25d5836b099d188a/kotlin-stdlib-jdk8-2.1.0.jar"
+      resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.0"/>
   <library
       name="org.jetbrains.kotlin:kotlin-reflect:1.8.22@jar"
       jars="/home/bykk/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.8.22/b52be44bc57cb6fd2169a29aefa4507c4e49c858/kotlin-reflect-1.8.22.jar"
       resolved="org.jetbrains.kotlin:kotlin-reflect:1.8.22"/>
   <library
-      name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.20@jar"
-      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.9.20/8b4b73f4e08efaae93fc01d8c6eaab58a72d2ab3/kotlin-stdlib-jdk7-1.9.20.jar"
-      resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.20"/>
+      name="androidx.core:core-viewtree:1.0.0@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/accc31beea52fec7679dd8c0166c0e7e/transformed/core-viewtree-1.0.0/jars/classes.jar"
+      resolved="androidx.core:core-viewtree:1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/accc31beea52fec7679dd8c0166c0e7e/transformed/core-viewtree-1.0.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
   <library
       name="com.squareup.okio:okio-jvm:3.7.0@jar"
       jars="/home/bykk/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio-jvm/3.7.0/276b999b41f7dcde00054848fc53af338d86b349/okio-jvm-3.7.0.jar"
       resolved="com.squareup.okio:okio-jvm:3.7.0"/>
   <library
-      name="org.jetbrains.kotlin:kotlin-stdlib:1.9.24@jar"
-      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.9.24/9928532f12c66ad816a625b3f9984f8368ca6d2b/kotlin-stdlib-1.9.24.jar"
-      resolved="org.jetbrains.kotlin:kotlin-stdlib:1.9.24"/>
+      name="org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.0@jar"
+      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/2.1.0/d77bee6c7bc849e7b9bf4b83e94e8fd1dfc0ea8a/kotlin-stdlib-jdk7-2.1.0.jar"
+      resolved="org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.0"/>
+  <library
+      name="org.jetbrains.kotlin:kotlin-stdlib:2.1.0@jar"
+      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.1.0/85f8b81009cda5890e54ba67d64b5e599c645020/kotlin-stdlib-2.1.0.jar"
+      resolved="org.jetbrains.kotlin:kotlin-stdlib:2.1.0"/>
   <library
       name=":@@:tunnel::release"
-      jars="/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/.transforms/0640b8362ec0810ddb4426c65dd1852b/transformed/out/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/30575bf2bd5df4d90515a8c2e265834f/transformed/out/jars/classes.jar"
       resolved="idrugconnections-android:tunnel:unspecified"
       partialResultsDir="/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/intermediates/lint_vital_partial_results/release/lintVitalAnalyzeRelease/out"
-      folder="/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/build/.transforms/0640b8362ec0810ddb4426c65dd1852b/transformed/out"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/30575bf2bd5df4d90515a8c2e265834f/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1207,9 +1220,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.constraintlayout:constraintlayout:2.1.4@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/07634f7ff88d162a4cad96c70e507a1f/transformed/constraintlayout-2.1.4/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/a21eabe35f173917550a154836b210dc/transformed/constraintlayout-2.1.4/jars/classes.jar"
       resolved="androidx.constraintlayout:constraintlayout:2.1.4"
-      folder="/home/bykk/.gradle/caches/transforms-3/07634f7ff88d162a4cad96c70e507a1f/transformed/constraintlayout-2.1.4"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/a21eabe35f173917550a154836b210dc/transformed/constraintlayout-2.1.4"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1220,9 +1233,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="com.journeyapps:zxing-android-embedded:4.3.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/4c6a65e5b26eaeb9b1d2043eb32727d5/transformed/zxing-android-embedded-4.3.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/b83f4ab115de32d9552e0356b6b6d3e7/transformed/zxing-android-embedded-4.3.0/jars/classes.jar"
       resolved="com.journeyapps:zxing-android-embedded:4.3.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/4c6a65e5b26eaeb9b1d2043eb32727d5/transformed/zxing-android-embedded-4.3.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/b83f4ab115de32d9552e0356b6b6d3e7/transformed/zxing-android-embedded-4.3.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1248,10 +1261,14 @@
       jars="/home/bykk/.gradle/caches/modules-2/files-2.1/com.google.guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/b421526c5f297295adef1c886e5246c39d4ac629/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar"
       resolved="com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava"/>
   <library
+      name="org.jspecify:jspecify:1.0.0@jar"
+      jars="/home/bykk/.gradle/caches/modules-2/files-2.1/org.jspecify/jspecify/1.0.0/7425a601c1c7ec76645a78d22b8c6a627edee507/jspecify-1.0.0.jar"
+      resolved="org.jspecify:jspecify:1.0.0"/>
+  <library
       name="androidx.startup:startup-runtime:1.1.1@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/5d74fbea29e26774936dffc643d2146e/transformed/startup-runtime-1.1.1/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/ae307b7081afde2fbd3af3d473c26191/transformed/startup-runtime-1.1.1/jars/classes.jar"
       resolved="androidx.startup:startup-runtime:1.1.1"
-      folder="/home/bykk/.gradle/caches/transforms-3/5d74fbea29e26774936dffc643d2146e/transformed/startup-runtime-1.1.1"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/ae307b7081afde2fbd3af3d473c26191/transformed/startup-runtime-1.1.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1270,9 +1287,9 @@
       resolved="com.google.errorprone:error_prone_annotations:2.15.0"/>
   <library
       name="com.android.support:exifinterface:27.1.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/694ec03ab9f881a84579bbf2b67e345a/transformed/exifinterface-27.1.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/d833022b6a48ba939b3e90097d2714e9/transformed/exifinterface-27.1.0/jars/classes.jar"
       resolved="com.android.support:exifinterface:27.1.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/694ec03ab9f881a84579bbf2b67e345a/transformed/exifinterface-27.1.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/d833022b6a48ba939b3e90097d2714e9/transformed/exifinterface-27.1.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1311,9 +1328,9 @@
       resolved="javax.inject:javax.inject:1"/>
   <library
       name="androidx.emoji2:emoji2-views-helper:1.2.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/94c831fd20309e0c1071872b1681afb6/transformed/emoji2-views-helper-1.2.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/4d414c5dbf2c4b08ef7c301705a15096/transformed/emoji2-views-helper-1.2.0/jars/classes.jar"
       resolved="androidx.emoji2:emoji2-views-helper:1.2.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/94c831fd20309e0c1071872b1681afb6/transformed/emoji2-views-helper-1.2.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/4d414c5dbf2c4b08ef7c301705a15096/transformed/emoji2-views-helper-1.2.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1324,9 +1341,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.emoji2:emoji2:1.2.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/7fe6a987bdbc7d318e3ed87ee6881e39/transformed/emoji2-1.2.0/jars/classes.jar:/home/bykk/.gradle/caches/transforms-3/7fe6a987bdbc7d318e3ed87ee6881e39/transformed/emoji2-1.2.0/jars/libs/repackaged.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/c3c17a7cbc016b583f21b3632207e5c6/transformed/emoji2-1.2.0/jars/classes.jar:/home/bykk/.gradle/caches/8.11.1/transforms/c3c17a7cbc016b583f21b3632207e5c6/transformed/emoji2-1.2.0/jars/libs/repackaged.jar"
       resolved="androidx.emoji2:emoji2:1.2.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/7fe6a987bdbc7d318e3ed87ee6881e39/transformed/emoji2-1.2.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/c3c17a7cbc016b583f21b3632207e5c6/transformed/emoji2-1.2.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1337,9 +1354,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.window:window:1.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/e43f35a0eae800fce8648908efb8c00b/transformed/window-1.0.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/734c9dea4fd000948ba52e94ba9052ff/transformed/window-1.0.0/jars/classes.jar"
       resolved="androidx.window:window:1.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/e43f35a0eae800fce8648908efb8c00b/transformed/window-1.0.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/734c9dea4fd000948ba52e94ba9052ff/transformed/window-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1350,9 +1367,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.room:room-ktx:2.5.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/aaabdecbbf11c25e1f3bfda1fa066e6a/transformed/room-ktx-2.5.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/fd6638ffc122af74ed3a908b91bd0120/transformed/room-ktx-2.5.0/jars/classes.jar"
       resolved="androidx.room:room-ktx:2.5.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/aaabdecbbf11c25e1f3bfda1fa066e6a/transformed/room-ktx-2.5.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/fd6638ffc122af74ed3a908b91bd0120/transformed/room-ktx-2.5.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1363,9 +1380,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.room:room-runtime:2.5.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/7c9afda80b13ad0e80a8e8ab8ba5177c/transformed/room-runtime-2.5.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/f5175db88515af826315c3a9ff3b8f0f/transformed/room-runtime-2.5.0/jars/classes.jar"
       resolved="androidx.room:room-runtime:2.5.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/7c9afda80b13ad0e80a8e8ab8ba5177c/transformed/room-runtime-2.5.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/f5175db88515af826315c3a9ff3b8f0f/transformed/room-runtime-2.5.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1380,9 +1397,9 @@
       resolved="androidx.room:room-common:2.5.0"/>
   <library
       name="androidx.profileinstaller:profileinstaller:1.3.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/126d831a9bbfaeb548241b0c57b4f74a/transformed/profileinstaller-1.3.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/c9b83f023a95cd16aafdd5f1f665008d/transformed/profileinstaller-1.3.0/jars/classes.jar"
       resolved="androidx.profileinstaller:profileinstaller:1.3.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/126d831a9bbfaeb548241b0c57b4f74a/transformed/profileinstaller-1.3.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/c9b83f023a95cd16aafdd5f1f665008d/transformed/profileinstaller-1.3.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1392,10 +1409,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.tracing:tracing:1.0.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/00ddf801de6dcd4e8a58708a5dd339b7/transformed/tracing-1.0.0/jars/classes.jar"
-      resolved="androidx.tracing:tracing:1.0.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/00ddf801de6dcd4e8a58708a5dd339b7/transformed/tracing-1.0.0"
+      name="androidx.tracing:tracing:1.2.0@aar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/230e5fb435471dd9f6f4ca8bd41005cf/transformed/tracing-1.2.0/jars/classes.jar"
+      resolved="androidx.tracing:tracing:1.2.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/230e5fb435471dd9f6f4ca8bd41005cf/transformed/tracing-1.2.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1406,9 +1423,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.sqlite:sqlite-framework:2.3.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/661f33729bc0594d0dad167563e1c849/transformed/sqlite-framework-2.3.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/2f2eee8abc5f10dedab659c10d301a8a/transformed/sqlite-framework-2.3.0/jars/classes.jar"
       resolved="androidx.sqlite:sqlite-framework:2.3.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/661f33729bc0594d0dad167563e1c849/transformed/sqlite-framework-2.3.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/2f2eee8abc5f10dedab659c10d301a8a/transformed/sqlite-framework-2.3.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1419,9 +1436,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.sqlite:sqlite:2.3.0@aar"
-      jars="/home/bykk/.gradle/caches/transforms-3/880eb1ffc1a52676598c7876849acfd1/transformed/sqlite-2.3.0/jars/classes.jar"
+      jars="/home/bykk/.gradle/caches/8.11.1/transforms/b70642c4760b8c79e4a4d580061147eb/transformed/sqlite-2.3.0/jars/classes.jar"
       resolved="androidx.sqlite:sqlite:2.3.0"
-      folder="/home/bykk/.gradle/caches/transforms-3/880eb1ffc1a52676598c7876849acfd1/transformed/sqlite-2.3.0"
+      folder="/home/bykk/.gradle/caches/8.11.1/transforms/b70642c4760b8c79e4a4d580061147eb/transformed/sqlite-2.3.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

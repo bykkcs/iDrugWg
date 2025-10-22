@@ -19,10 +19,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import pw.idrug.connections.dialog.UpdateDialogFragment
+import pw.idrug.connections.util.applyStatusBarInsetToActionBar
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        applyStatusBarInsetToActionBar()
         if (supportFragmentManager.findFragmentById(android.R.id.content) == null) {
             supportFragmentManager.commit {
                 add(android.R.id.content, SettingsFragment())

@@ -23,6 +23,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
+import android.graphics.Color
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.shape.MaterialShapeDrawable
@@ -31,7 +32,6 @@ import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.first
@@ -51,6 +51,8 @@ import pw.idrug.connections.ota.OtaMeta
 import pw.idrug.connections.ota.UpdateState
 import pw.idrug.connections.ota.UpdateViewModel
 import pw.idrug.connections.util.UserKnobs
+import pw.idrug.connections.util.applyNavigationBarAndImePadding
+import pw.idrug.connections.util.applyStatusBarInsetToActionBar
 
 /**
  * CRUD interface for iDrugConnections tunnels. This activity serves as the main entry point to the
@@ -98,6 +100,9 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        @Suppress("DEPRECATION")
+        window.statusBarColor = Color.TRANSPARENT
         val prefs = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
         val onboardingShown = prefs.getBoolean("onboarding_shown", false)
         val prefsAuth = getSharedPreferences("auth", Context.MODE_PRIVATE)
@@ -108,6 +113,8 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
             return
         }
         setContentView(R.layout.main_activity)
+        applyStatusBarInsetToActionBar()
+
         actionBar = supportActionBar
         isTwoPaneLayout = findViewById<View?>(R.id.master_detail_wrapper) != null
         supportFragmentManager.addOnBackStackChangedListener(this)
@@ -131,6 +138,8 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         // --- BottomNavigationView setup ---
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation?.let { nav ->
+            nav.clipToPadding = false
+            nav.applyNavigationBarAndImePadding(dispatchIme = false)
             val navColor = MaterialColors.getColor(
                 nav,
                 com.google.android.material.R.attr.colorSurfaceContainer
@@ -167,13 +176,14 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         }
 
         // Open initial tab
-        if (savedInstanceState == null) {
-            if (!isTwoPaneLayout) {
-                val data = intent?.data
-                val openedViaDeepLink = intent?.action == Intent.ACTION_VIEW && data != null
-                val openAccountByIntent = intent?.getBooleanExtra(EXTRA_OPEN_ACCOUNT, false) == true ||
-                    (openedViaDeepLink && data?.host == "auth")
-                val openAccountByTunnels = runBlocking {
+        if (savedInstanceState == null && !isTwoPaneLayout) {
+            val data = intent?.data
+            val openedViaDeepLink = intent?.action == Intent.ACTION_VIEW && data != null
+            val openAccountByIntent = intent?.getBooleanExtra(EXTRA_OPEN_ACCOUNT, false) == true ||
+                (openedViaDeepLink && data?.host == "auth")
+            lifecycleScope.launch {
+                // Не блокируем главный поток: раньше здесь был runBlocking, теперь ждём менеджер туннелей асинхронно.
+                val openAccountByTunnels = withContext(Dispatchers.IO) {
                     try {
                         Application.getTunnelManager().getTunnels().isEmpty()
                     } catch (e: Exception) {
@@ -195,10 +205,12 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                     def
                 }
 
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
-                    .commit()
-                bottomNavigation?.selectedItemId = if (openAccount) R.id.nav_account else R.id.nav_vpn
+                if (!isFinishing) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, fragment)
+                        .commit()
+                    bottomNavigation?.selectedItemId = if (openAccount) R.id.nav_account else R.id.nav_vpn
+                }
             }
         }
 
@@ -244,6 +256,7 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
             else -> null
         } ?: surfaceVariant
 
+        @Suppress("DEPRECATION")
         window.navigationBarColor = color
         val isLight = ColorUtils.calculateLuminance(color) > 0.5
         WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightNavigationBars = isLight

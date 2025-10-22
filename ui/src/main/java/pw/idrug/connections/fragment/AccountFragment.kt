@@ -31,6 +31,7 @@ import android.text.style.StyleSpan
 import android.graphics.Color
 import android.graphics.Typeface
 import android.util.Log
+import com.google.android.material.color.MaterialColors
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.messaging.FirebaseMessaging
@@ -183,6 +184,7 @@ class AccountFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         prefs = requireContext().getSharedPreferences("auth", Context.MODE_PRIVATE)
         setupListeners(view)
+        setupServerDropdown(view)
         showCorrectScreen(view)
     }
 
@@ -288,31 +290,20 @@ class AccountFragment : Fragment() {
         cachedProfileTimestamp = 0L
         cancelProfileCall()
 
-        view.findViewById<Button>(R.id.btn_login_telegram).apply {
+        view.findViewById<View>(R.id.card_login)?.visibility = View.VISIBLE
+        view.findViewById<View>(R.id.card_profile)?.visibility = View.GONE
+        view.findViewById<View>(R.id.card_connection)?.visibility = View.GONE
+
+        view.findViewById<Button>(R.id.btn_login_telegram)?.apply {
             visibility = View.VISIBLE
             isEnabled = true
         }
-        view.findViewById<Button>(R.id.btn_logout)?.visibility = View.GONE
-        view.findViewById<Button>(R.id.btn_link_device)?.visibility = View.GONE
-        view.findViewById<Button>(R.id.btn_download)?.apply {
-            visibility = View.GONE
-            isEnabled = false
-        }
-        view.findViewById<Button>(R.id.btn_renew)?.visibility = View.GONE
-        view.findViewById<Button>(R.id.btn_referral)?.visibility = View.GONE
-
-        view.findViewById<TextView>(R.id.text_current_user)?.setText(R.string.login_via_telegram_title)
-        view.findViewById<TextView>(R.id.text_expiration)?.text = ""
-        view.findViewById<TextView>(R.id.status_text)?.text = ""
-        view.findViewById<ImageView>(R.id.avatar_image)?.setImageResource(R.drawable.ic_avatar_placeholder)
         view.findViewById<ImageView>(R.id.qr_code_image)?.visibility = View.GONE
-
-        view.findViewById<TextInputLayout>(R.id.server_dropdown_container)?.visibility = View.GONE
-        view.findViewById<MaterialAutoCompleteTextView>(R.id.dropdown_server)?.apply {
-            isEnabled = false
-            setAdapter(null)
-            setText("", false)
-        }
+        view.findViewById<TextView>(R.id.text_current_user)?.setText(R.string.login_via_telegram_title)
+        updateSubscriptionSummary(view, emptyList())
+        view.findViewById<ImageView>(R.id.avatar_image)?.setImageResource(R.drawable.ic_avatar_placeholder)
+        setStatusMessage(view, null, false)
+        // Ping indicator lives inside dropdown entries, nothing extra under the field
     }
 
     private fun showAccountScreen(
@@ -332,11 +323,9 @@ class AccountFragment : Fragment() {
         subscriptions = subs
         updateServerListFromSubscriptions()
 
-        view.findViewById<Button>(R.id.btn_login_telegram)?.visibility = View.GONE
-        view.findViewById<Button>(R.id.btn_logout)?.visibility = View.VISIBLE
-        view.findViewById<Button>(R.id.btn_link_device)?.visibility = View.VISIBLE
-        view.findViewById<Button>(R.id.btn_renew)?.visibility = View.VISIBLE
-        view.findViewById<Button>(R.id.btn_referral)?.visibility = View.VISIBLE
+        view.findViewById<View>(R.id.card_login)?.visibility = View.GONE
+        view.findViewById<View>(R.id.card_profile)?.visibility = View.VISIBLE
+        view.findViewById<View>(R.id.card_connection)?.visibility = View.VISIBLE
         view.findViewById<ImageView>(R.id.qr_code_image)?.visibility = View.GONE
 
         val dropdownVisible = serverList.isNotEmpty()
@@ -346,10 +335,20 @@ class AccountFragment : Fragment() {
             if (dropdownVisible) View.VISIBLE else View.GONE
 
         view.findViewById<Button>(R.id.btn_download)?.isEnabled = serverList.isNotEmpty()
-        view.findViewById<Button>(R.id.btn_link_device)?.isEnabled = true
+        view.findViewById<Button>(R.id.btn_link_device)?.apply {
+            visibility = View.VISIBLE
+            isEnabled = true
+        }
+        view.findViewById<Button>(R.id.btn_referral)?.apply {
+            visibility = View.VISIBLE
+            isEnabled = true
+        }
+        view.findViewById<Button>(R.id.btn_logout)?.apply {
+            visibility = View.VISIBLE
+            isEnabled = true
+        }
         view.findViewById<Button>(R.id.btn_renew)?.isEnabled = true
-        view.findViewById<Button>(R.id.btn_referral)?.isEnabled = true
-        view.findViewById<Button>(R.id.btn_logout)?.isEnabled = true
+        view.findViewById<Button>(R.id.btn_renew)?.visibility = View.VISIBLE
         view.findViewById<MaterialAutoCompleteTextView>(R.id.dropdown_server)?.isEnabled = serverList.isNotEmpty()
 
         val titleView = view.findViewById<TextView>(R.id.text_current_user)
@@ -359,8 +358,9 @@ class AccountFragment : Fragment() {
             getString(R.string.your_username, username)
         }
 
-        view.findViewById<TextView>(R.id.text_expiration)?.text = buildSubscriptionSummary(subs)
-        view.findViewById<TextView>(R.id.status_text)?.text = buildStatusMessage(subs)
+        updateSubscriptionSummary(view, subs)
+        val statusMessage = buildStatusMessage(subs)
+        setStatusMessage(view, statusMessage, !statusMessage.isNullOrBlank())
 
         val avatarView = view.findViewById<ImageView>(R.id.avatar_image)
         if (avatarView != null) {
@@ -379,6 +379,7 @@ class AccountFragment : Fragment() {
         if (refreshPings) {
             refreshServerPings(view)
         } else {
+            setupServerDropdown(view)   // <-- listeners
             updateDropdownItems(view)
         }
         updateDownloadButtonState(view)
@@ -389,17 +390,27 @@ class AccountFragment : Fragment() {
         val photoUrl = prefs.getString("photo_url", null)
         resetPingState()
 
-        view.findViewById<Button>(R.id.btn_login_telegram)?.visibility = View.GONE
-        view.findViewById<Button>(R.id.btn_logout)?.visibility = View.VISIBLE
-        view.findViewById<Button>(R.id.btn_link_device)?.visibility = View.VISIBLE
-        view.findViewById<Button>(R.id.btn_renew)?.visibility = View.VISIBLE
-        view.findViewById<Button>(R.id.btn_referral)?.visibility = View.VISIBLE
+        view.findViewById<View>(R.id.card_login)?.visibility = View.GONE
+        view.findViewById<View>(R.id.card_profile)?.visibility = View.VISIBLE
+        view.findViewById<View>(R.id.card_connection)?.visibility = View.VISIBLE
         view.findViewById<ImageView>(R.id.qr_code_image)?.visibility = View.GONE
 
-        view.findViewById<Button>(R.id.btn_link_device)?.isEnabled = false
-        view.findViewById<Button>(R.id.btn_renew)?.isEnabled = false
-        view.findViewById<Button>(R.id.btn_referral)?.isEnabled = false
-        view.findViewById<Button>(R.id.btn_logout)?.isEnabled = false
+        view.findViewById<Button>(R.id.btn_link_device)?.apply {
+            visibility = View.VISIBLE
+            isEnabled = false
+        }
+        view.findViewById<Button>(R.id.btn_renew)?.apply {
+            visibility = View.VISIBLE
+            isEnabled = false
+        }
+        view.findViewById<Button>(R.id.btn_referral)?.apply {
+            visibility = View.VISIBLE
+            isEnabled = false
+        }
+        view.findViewById<Button>(R.id.btn_logout)?.apply {
+            visibility = View.VISIBLE
+            isEnabled = false
+        }
         view.findViewById<Button>(R.id.btn_download)?.apply {
             visibility = View.VISIBLE
             isEnabled = false
@@ -420,7 +431,7 @@ class AccountFragment : Fragment() {
         }
 
         view.findViewById<TextView>(R.id.text_expiration)?.text = ""
-        view.findViewById<TextView>(R.id.status_text)?.text = ""
+        setStatusMessage(view, null, false)
 
         val avatarView = view.findViewById<ImageView>(R.id.avatar_image)
         if (avatarView != null) {
@@ -437,26 +448,65 @@ class AccountFragment : Fragment() {
         }
     }
 
-    private fun buildSubscriptionSummary(subs: List<Subscription>): CharSequence {
-        if (subs.isEmpty()) return ""
-        val parts = subs.map { sub ->
-            when {
-                sub.forever -> getString(R.string.subscription_forever, sub.name)
-                !sub.active -> getString(R.string.subscription_inactive, sub.name)
-                !sub.expires.isNullOrBlank() -> {
-                    val formatted = formatExpirationDate(sub.expires)
-                    val daysLeft = computeDaysLeft(sub.expires)
-                    if (daysLeft != null) {
-                        getString(R.string.subscription_active_days, sub.name, formatted, daysLeft)
-                    } else {
-                        getString(R.string.expires_on, formatted)
-                    }
-                }
-                else -> getString(R.string.subscription_inactive, sub.name)
+    private fun updateSubscriptionSummary(view: View, subs: List<Subscription>) {
+        val summaryView = view.findViewById<TextView>(R.id.text_expiration) ?: return
+        val orderedSubs = mutableListOf<Subscription>()
+        val seenIds = mutableSetOf<String>()
+        serverOrder.forEach { id ->
+            val sub = subs.firstOrNull { it.location == id }
+            if (sub != null) {
+                orderedSubs += sub
+                sub.location?.let { seenIds += it }
             }
         }
-        return parts.joinToString(separator = "\n")
+        subs.forEach { sub ->
+            val location = sub.location
+            if (location.isNullOrBlank()) {
+                if (sub !in orderedSubs) orderedSubs += sub
+            } else if (seenIds.add(location)) {
+                orderedSubs += sub
+            }
+        }
+
+        if (orderedSubs.isEmpty()) {
+            summaryView.text = ""
+            summaryView.visibility = View.INVISIBLE
+            summaryView.setTextColor(
+                MaterialColors.getColor(
+                    summaryView,
+                    com.google.android.material.R.attr.colorOnSurfaceVariant,
+                    summaryView.currentTextColor
+                )
+            )
+            return
+        }
+
+        summaryView.visibility = View.VISIBLE
+        summaryView.text = orderedSubs.joinToString("\n") { subscriptionLine(it) }
+        summaryView.setTextColor(
+            MaterialColors.getColor(
+                summaryView,
+                com.google.android.material.R.attr.colorOnSurface,
+                summaryView.currentTextColor
+            )
+        )
     }
+
+    private fun subscriptionLine(sub: Subscription): String =
+        when {
+            sub.forever -> getString(R.string.subscription_forever, sub.name)
+            !sub.active -> getString(R.string.subscription_inactive, sub.name)
+            !sub.expires.isNullOrBlank() -> {
+                val formatted = formatExpirationDate(sub.expires)
+                val daysLeft = computeDaysLeft(sub.expires)
+                if (daysLeft != null) {
+                    getString(R.string.subscription_active_days, sub.name, formatted, daysLeft)
+                } else {
+                    getString(R.string.expires_on, formatted)
+                }
+            }
+            else -> getString(R.string.subscription_inactive, sub.name)
+        }
 
     private fun buildStatusMessage(subs: List<Subscription>): String {
         if (subs.isEmpty()) return ""
@@ -525,17 +575,32 @@ class AccountFragment : Fragment() {
         }
 
     private fun measureTcpPing(endpoint: TcpEndpoint): PingResult {
-        return try {
-            Socket().use { socket ->
-                val start = SystemClock.elapsedRealtimeNanos()
-                socket.soTimeout = PING_SOCKET_TIMEOUT_MS
-                socket.connect(InetSocketAddress(endpoint.host, endpoint.port), PING_CONNECT_TIMEOUT_MS)
-                val end = SystemClock.elapsedRealtimeNanos()
-                val latency = ((end - start) / 1_000_000.0).roundToInt().coerceAtLeast(0)
-                PingResult(PingState.SUCCESS, latency)
+        val samples = mutableListOf<Int>()
+        repeat(3) {
+            val latency = try {
+                Socket().use { socket ->
+                    val address = InetSocketAddress(endpoint.host, endpoint.port)
+                    socket.soTimeout = PING_SOCKET_TIMEOUT_MS
+                    val start = SystemClock.elapsedRealtimeNanos()
+                    socket.connect(address, PING_CONNECT_TIMEOUT_MS)
+                    val output = socket.getOutputStream()
+                    output.write(byteArrayOf(0))
+                    output.flush()
+                    val end = SystemClock.elapsedRealtimeNanos()
+                    val latencyMs = ((end - start) / 1_000_000.0).roundToInt().coerceAtLeast(0)
+                    Log.d("Ping", "Accurate ping ${endpoint.host}:${endpoint.port} = ${latencyMs} ms")
+                    latencyMs
+                }
+            } catch (_: Exception) {
+                null
             }
-        } catch (e: IOException) {
-            Log.w("AccountFragment", "TCP ping to ${endpoint.host}:${endpoint.port} failed", e)
+            if (latency != null && latency > 0) {
+                samples += latency
+            }
+        }
+        return if (samples.isNotEmpty()) {
+            PingResult(PingState.SUCCESS, samples.min())
+        } else {
             PingResult(PingState.ERROR)
         }
     }
@@ -565,6 +630,26 @@ class AccountFragment : Fragment() {
             PingResult(PingState.ERROR)
         }
     }
+
+// Добавь внутрь класса AccountFragment (например, рядом с другими private suspend функциями)
+private suspend fun downloadConfig(token: String, serverId: String): String? =
+    withContext(Dispatchers.IO) {
+        try {
+            val client = OkHttpClient()
+            val request = Request.Builder()
+                .url("https://idrug.pw/api/profile/download?server=$serverId")
+                .addHeader("Authorization", "Bearer $token")
+                .build()
+
+            client.newCall(request).execute().use { resp ->
+                if (resp.isSuccessful) resp.body?.string() else null
+            }
+        } catch (e: IOException) {
+            Log.w("AccountFragment", "Failed to download config for $serverId", e)
+            null
+        }
+    }
+
 
     private fun parsePingMs(body: String?): Int? {
         if (body.isNullOrBlank()) return null
@@ -712,85 +797,107 @@ class AccountFragment : Fragment() {
         button.isEnabled = sub?.active == true || sub?.forever == true
     }
 
-    private suspend fun handleDownloadConfig() {
-        if (view == null) return
-        val serverId = selectedServerId
-        if (serverId.isNullOrBlank()) {
-            Toast.makeText(requireContext(), R.string.select_server, Toast.LENGTH_SHORT).show()
+    private fun setStatusMessage(view: View, message: String?, isError: Boolean) {
+        val statusView = view.findViewById<TextView>(R.id.status_text) ?: return
+        if (message.isNullOrBlank()) {
+            statusView.text = ""
+            statusView.visibility = View.GONE
             return
         }
-        val token = prefs.getString("token", null)
-        if (token.isNullOrBlank()) {
-            Toast.makeText(requireContext(), R.string.login_telegram_first, Toast.LENGTH_SHORT).show()
-            return
-        }
-        try {
-            setLoading(true)
-            val configText = downloadConfig(token, serverId)
-            if (configText.isNullOrBlank()) {
-                safeUi { Toast.makeText(requireContext(), R.string.generic_error, Toast.LENGTH_SHORT).show() }
-                return
-            }
-            val tunnelName = "idrug_$serverId"
-            val tunnelManager = Application.getTunnelManager()
-            val tunnels = tunnelManager.getTunnels()
-            val configFile = File(requireContext().filesDir, "$tunnelName.conf")
+        statusView.visibility = View.VISIBLE
+        statusView.text = message
+        val attr = if (isError) com.google.android.material.R.attr.colorError else com.google.android.material.R.attr.colorOnSurfaceVariant
+        val color = MaterialColors.getColor(statusView, attr)
+        statusView.setTextColor(color)
+    }
 
-            val existing = tunnels.firstOrNull { it.name == tunnelName }
-            if (existing != null) {
-                val existsOnDisk = withContext(Dispatchers.IO) { configFile.exists() }
-                if (!existsOnDisk) {
-                    try {
-                        existing.deleteAsync()
-                    } catch (e: Exception) {
-                        Log.w("AccountFragment", "Failed to remove stale tunnel $tunnelName", e)
-                    }
+private suspend fun handleDownloadConfig() {
+    if (view == null) return
+    val serverId = selectedServerId
+    if (serverId.isNullOrBlank()) {
+        Toast.makeText(requireContext(), R.string.select_server, Toast.LENGTH_SHORT).show()
+        return
+    }
+    val token = prefs.getString("token", null)
+    if (token.isNullOrBlank()) {
+        Toast.makeText(requireContext(), R.string.login_telegram_first, Toast.LENGTH_SHORT).show()
+        return
+    }
+
+    Log.d("AccountFragment", "Downloading config for serverId=$serverId")
+
+    try {
+        setLoading(true)
+
+        // 1) качаем конфиг
+        val configText = downloadConfig(token, serverId)
+        if (configText.isNullOrBlank()) {
+            safeUi { Toast.makeText(requireContext(), R.string.generic_error, Toast.LENGTH_SHORT).show() }
+            return
+        }
+
+        val tunnelName = "idrug_$serverId"
+        val tunnelManager = Application.getTunnelManager()
+        val configFile = File(requireContext().filesDir, "$tunnelName.conf")
+
+        // 2) если такой туннель уже есть — УДАЛЯЕМ СИНХРОННО
+        withContext(Dispatchers.Main) {
+            tunnelManager.getTunnels()
+                .firstOrNull { it.name == tunnelName }
+                ?.let { existing ->
+                    runCatching { tunnelManager.delete(existing) }
+                        .onFailure { e -> Log.w("AccountFragment", "Failed to delete existing tunnel $tunnelName", e) }
                 }
+        }
+
+        // 3) подчищаем старый файл (если вдруг остался)
+        withContext(Dispatchers.IO) {
+            if (configFile.exists() && !configFile.delete()) {
+                Log.w("AccountFragment", "Failed to delete old config file ${configFile.name}")
             }
-            if (tunnels.any { it.name == tunnelName }) {
-                safeUi { Toast.makeText(requireContext(), R.string.config_already_added, Toast.LENGTH_SHORT).show() }
-                return
+        }
+
+        // 4) перечитываем список — убеждаемся, что туннель реально исчез
+        val tunnelsAfterDelete = withContext(Dispatchers.Main) { tunnelManager.getTunnels() }
+        if (tunnelsAfterDelete.any { it.name == tunnelName }) {
+            safeUi { Toast.makeText(requireContext(), R.string.config_already_added, Toast.LENGTH_SHORT).show() }
+            return
+        }
+
+        // 5) создаём из временного файла
+        val temp = File(requireContext().filesDir, "tmp_$tunnelName.conf")
+        withContext(Dispatchers.IO) { temp.writeText(configText) }
+
+        try {
+            val parsed = withContext(Dispatchers.IO) {
+                temp.inputStream().bufferedReader().use { Config.parse(it) }
             }
-            val temp = File(requireContext().filesDir, "tmp_$tunnelName.conf")
-            withContext(Dispatchers.IO) { temp.writeText(configText) }
-            try {
-                val parsed = withContext(Dispatchers.IO) {
-                    temp.inputStream().bufferedReader().use { Config.parse(it) }
-                }
+            // Создание ТОЛЬКО после успешного парса
+            withContext(Dispatchers.Main) {
                 tunnelManager.create(tunnelName, parsed)
-                safeUi {
-                    Toast.makeText(requireContext(), R.string.tunnel_added, Toast.LENGTH_SHORT).show()
-                }
-            } catch (e: Exception) {
-                safeUi {
-                    Toast.makeText(requireContext(), getString(R.string.tunnel_creation_error, e.message ?: ""), Toast.LENGTH_SHORT).show()
-                }
-            } finally {
-                withContext(Dispatchers.IO) {
-                    if (temp.exists()) temp.delete()
-                }
             }
-            syncTunnelsWithProfile()
+            safeUi { Toast.makeText(requireContext(), R.string.tunnel_added, Toast.LENGTH_SHORT).show() }
+        } catch (e: Exception) {
+            safeUi {
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.tunnel_creation_error, e.message ?: ""),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         } finally {
-            setLoading(false)
-        }
-    }
-
-    private suspend fun downloadConfig(token: String, serverId: String): String? = withContext(Dispatchers.IO) {
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url("https://idrug.pw/api/profile/download?server=$serverId")
-            .addHeader("Authorization", "Bearer $token")
-            .build()
-        try {
-            client.newCall(request).execute().use { response ->
-                if (response.isSuccessful) response.body?.string() else null
+            withContext(Dispatchers.IO) {
+                if (temp.exists()) temp.delete()
             }
-        } catch (e: IOException) {
-            Log.w("AccountFragment", "Failed to download config", e)
-            null
         }
+
+        // 6) синхронизация как и раньше
+        syncTunnelsWithProfile()
+    } finally {
+        setLoading(false)
     }
+}
+
 
     private fun syncTunnelsWithProfile() {
         val token = prefs.getString("token", null) ?: return
@@ -929,35 +1036,46 @@ class AccountFragment : Fragment() {
             Toast.makeText(requireContext(), R.string.login_successful, Toast.LENGTH_SHORT).show()
         }
     }
-    private fun setupServerDropdown(view: View) {
-        val container = view.findViewById<TextInputLayout>(R.id.server_dropdown_container)
-            ?: error("TextInputLayout not found")
-        val dropdown = view.findViewById<MaterialAutoCompleteTextView>(R.id.dropdown_server)
-            ?: error("MaterialAutoCompleteTextView not found")
-        val btnDownload = view.findViewById<Button>(R.id.btn_download)
+private fun setupServerDropdown(view: View) {
+    val container = view.findViewById<TextInputLayout>(R.id.server_dropdown_container)
+        ?: error("TextInputLayout not found")
+    val dropdown = view.findViewById<MaterialAutoCompleteTextView>(R.id.dropdown_server)
+        ?: error("MaterialAutoCompleteTextView not found")
+    val btnDownload = view.findViewById<Button>(R.id.btn_download)
 
-        selectedServerId = null
-        btnDownload.isEnabled = false
-        dropdown.setText("", false)
-
-        dropdown.setOnItemClickListener { _, _, position, _ ->
-            if (position in serverList.indices) {
-                selectedServerId = serverList[position].first
-            } else {
-                selectedServerId = null
-            }
-            updateDownloadButtonState(view)
-        }
-
-        dropdown.setOnClickListener { dropdown.showDropDown() }
-        dropdown.setOnFocusChangeListener { v, hasFocus ->
-            if (hasFocus) (v as? MaterialAutoCompleteTextView)?.showDropDown()
-        }
-
-        updateDropdownItems(view)
-        container.visibility = if (serverList.isNotEmpty()) View.VISIBLE else View.GONE
-        btnDownload.visibility = if (serverList.isNotEmpty()) View.VISIBLE else View.GONE
+    // НЕ сбрасываем выбор, если уже был
+    if (selectedServerId.isNullOrBlank() || serverList.none { it.first == selectedServerId }) {
+        selectedServerId = serverList.firstOrNull()?.first
     }
+
+    val displayItems = serverList.map { formatServerDisplayName(it.first, it.second) }
+    val adapter = object : ArrayAdapter<CharSequence>(
+        requireContext(),
+        R.layout.item_server_dropdown,
+        displayItems
+    ) {}
+    dropdown.setAdapter(adapter)
+
+    // отрисовка текущего текста
+    val idx = serverList.indexOfFirst { it.first == selectedServerId }
+    if (idx in displayItems.indices) {
+        dropdown.setText(displayItems[idx], false)
+    } else {
+        dropdown.setText("", false)
+    }
+
+    dropdown.setOnItemClickListener { _, _, position, _ ->
+        selectedServerId = serverList.getOrNull(position)?.first
+        updateDownloadButtonState(view)
+    }
+    dropdown.setOnClickListener { dropdown.showDropDown() }
+    dropdown.setOnFocusChangeListener { v, hasFocus -> if (hasFocus) (v as? MaterialAutoCompleteTextView)?.showDropDown() }
+
+    container.visibility = if (serverList.isNotEmpty()) View.VISIBLE else View.GONE
+    btnDownload.visibility = if (serverList.isNotEmpty()) View.VISIBLE else View.GONE
+    btnDownload.isEnabled = !selectedServerId.isNullOrBlank()
+}
+
 
     private class CircleTransformation : Transformation {
         override fun transform(source: Bitmap): Bitmap {
@@ -1016,7 +1134,7 @@ class AccountFragment : Fragment() {
                     if (cached != null) {
                         showAccountScreen(view, cached.username, cached.photoUrl, cached.subscriptions, cacheResult = false, refreshPings = false)
                     } else {
-                        view.findViewById<TextView>(R.id.status_text)?.text = getString(R.string.profile_timeout_error)
+                        setStatusMessage(view, getString(R.string.profile_timeout_error), true)
                     }
                 }
             }
@@ -1033,10 +1151,14 @@ class AccountFragment : Fragment() {
                     if (cachedProfile != null) {
                         showAccountScreen(view, cachedProfile!!.username, cachedProfile!!.photoUrl, cachedProfile!!.subscriptions, cacheResult = false, refreshPings = false)
                     } else {
-                        view.findViewById<TextView>(R.id.status_text)?.text = getString(
+                        if (call.isCanceled() || e.message?.equals("Canceled", ignoreCase = true) == true) {
+                            return@safeUi
+                        }
+                        val message = getString(
                             R.string.network_error_msg,
                             e.message ?: getString(R.string.generic_error)
                         )
+                        setStatusMessage(view, message, true)
                         setLoading(false)
                     }
                 }
@@ -1083,9 +1205,10 @@ class AccountFragment : Fragment() {
                             showAccountScreen(view, cachedUsername, cachedPhoto, emptyList(), cacheResult = true, refreshPings = true)
                         }
                     } else {
-                        view.findViewById<TextView>(R.id.status_text)?.text = getString(
-                            R.string.profile_retrieval_failed,
-                            response.code
+                        setStatusMessage(
+                            view,
+                            getString(R.string.profile_retrieval_failed, response.code),
+                            true
                         )
                         cachedProfile?.let {
                             showAccountScreen(view, it.username, it.photoUrl, it.subscriptions, cacheResult = false, refreshPings = false)

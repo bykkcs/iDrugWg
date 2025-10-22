@@ -23,6 +23,7 @@ public class AppListDialogFragmentBindingImpl extends AppListDialogFragmentBindi
     // values
     private pw.idrug.connections.databinding.ObservableKeyedArrayList<java.lang.String,pw.idrug.connections.model.ApplicationData> mOldAppData;
     private int mOldAndroidLayoutAppListItem;
+    private pw.idrug.connections.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler<pw.idrug.connections.databinding.AppListItemBinding,pw.idrug.connections.model.ApplicationData> mOldFragmentRowConfigurationHandler;
     // listeners
     // Inverse Binding Event Handlers
 
@@ -79,6 +80,11 @@ public class AppListDialogFragmentBindingImpl extends AppListDialogFragmentBindi
 
     public void setFragment(@Nullable pw.idrug.connections.fragment.AppListDialogFragment Fragment) {
         this.mFragment = Fragment;
+        synchronized(this) {
+            mDirtyFlags |= 0x2L;
+        }
+        notifyPropertyChanged(BR.fragment);
+        super.requestRebind();
     }
     public void setAppData(@Nullable pw.idrug.connections.databinding.ObservableKeyedArrayList<java.lang.String,pw.idrug.connections.model.ApplicationData> AppData) {
         updateRegistration(0, AppData);
@@ -116,40 +122,54 @@ public class AppListDialogFragmentBindingImpl extends AppListDialogFragmentBindi
             mDirtyFlags = 0;
         }
         int appDataIsEmptyViewVISIBLEViewGONE = 0;
+        pw.idrug.connections.fragment.AppListDialogFragment fragment = mFragment;
         boolean appDataIsEmpty = false;
         pw.idrug.connections.databinding.ObservableKeyedArrayList<java.lang.String,pw.idrug.connections.model.ApplicationData> appData = mAppData;
+        pw.idrug.connections.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler<pw.idrug.connections.databinding.AppListItemBinding,pw.idrug.connections.model.ApplicationData> fragmentRowConfigurationHandler = null;
 
-        if ((dirtyFlags & 0x5L) != 0) {
+        if ((dirtyFlags & 0x7L) != 0) {
 
 
 
-                if (appData != null) {
-                    // read appData.isEmpty()
-                    appDataIsEmpty = appData.isEmpty();
+                if (fragment != null) {
+                    // read fragment.rowConfigurationHandler
+                    fragmentRowConfigurationHandler = fragment.getRowConfigurationHandler();
                 }
-            if((dirtyFlags & 0x5L) != 0) {
-                if(appDataIsEmpty) {
-                        dirtyFlags |= 0x10L;
+            if ((dirtyFlags & 0x5L) != 0) {
+
+                    if (appData != null) {
+                        // read appData.isEmpty()
+                        appDataIsEmpty = appData.isEmpty();
+                    }
+                if((dirtyFlags & 0x5L) != 0) {
+                    if(appDataIsEmpty) {
+                            dirtyFlags |= 0x10L;
+                    }
+                    else {
+                            dirtyFlags |= 0x8L;
+                    }
                 }
-                else {
-                        dirtyFlags |= 0x8L;
-                }
+
+
+                    // read appData.isEmpty() ? View.VISIBLE : View.GONE
+                    appDataIsEmptyViewVISIBLEViewGONE = ((appDataIsEmpty) ? (android.view.View.VISIBLE) : (android.view.View.GONE));
             }
-
-
-                // read appData.isEmpty() ? View.VISIBLE : View.GONE
-                appDataIsEmptyViewVISIBLEViewGONE = ((appDataIsEmpty) ? (android.view.View.VISIBLE) : (android.view.View.GONE));
         }
         // batch finished
+        if ((dirtyFlags & 0x7L) != 0) {
+            // api target 1
+
+            pw.idrug.connections.databinding.BindingAdapters.setItems(this.appList, this.mOldAppData, this.mOldAndroidLayoutAppListItem, this.mOldFragmentRowConfigurationHandler, appData, R.layout.app_list_item, fragmentRowConfigurationHandler);
+        }
         if ((dirtyFlags & 0x5L) != 0) {
             // api target 1
 
-            pw.idrug.connections.databinding.BindingAdapters.setItems(this.appList, this.mOldAppData, this.mOldAndroidLayoutAppListItem, (pw.idrug.connections.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler)null, appData, R.layout.app_list_item, (pw.idrug.connections.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler)null);
             this.progressBar.setVisibility(appDataIsEmptyViewVISIBLEViewGONE);
         }
-        if ((dirtyFlags & 0x5L) != 0) {
+        if ((dirtyFlags & 0x7L) != 0) {
             this.mOldAppData = appData;
             this.mOldAndroidLayoutAppListItem = R.layout.app_list_item;
+            this.mOldFragmentRowConfigurationHandler = fragmentRowConfigurationHandler;
         }
     }
     // Listener Stub Implementations

@@ -36,6 +36,30 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
   public final TextView applicationsText;
 
   @NonNull
+  public final TextView controlledJunkPacket1Label;
+
+  @NonNull
+  public final TextView controlledJunkPacket1Text;
+
+  @NonNull
+  public final TextView controlledJunkPacket2Label;
+
+  @NonNull
+  public final TextView controlledJunkPacket2Text;
+
+  @NonNull
+  public final TextView controlledJunkPacket3Label;
+
+  @NonNull
+  public final TextView controlledJunkPacket3Text;
+
+  @NonNull
+  public final TextView cookieReplyPacketJunkSizeLabel;
+
+  @NonNull
+  public final TextView cookieReplyPacketJunkSizeText;
+
+  @NonNull
   public final TextView dnsSearchDomainsLabel;
 
   @NonNull
@@ -70,6 +94,12 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
 
   @NonNull
   public final MaterialTextView interfaceTitle;
+
+  @NonNull
+  public final TextView itimeLabel;
+
+  @NonNull
+  public final TextView itimeText;
 
   @NonNull
   public final TextView junkPacketCountLabel;
@@ -126,6 +156,42 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
   public final TextView responsePacketMagicHeaderText;
 
   @NonNull
+  public final TextView specialJunkPacket1Label;
+
+  @NonNull
+  public final TextView specialJunkPacket1Text;
+
+  @NonNull
+  public final TextView specialJunkPacket2Label;
+
+  @NonNull
+  public final TextView specialJunkPacket2Text;
+
+  @NonNull
+  public final TextView specialJunkPacket3Label;
+
+  @NonNull
+  public final TextView specialJunkPacket3Text;
+
+  @NonNull
+  public final TextView specialJunkPacket4Label;
+
+  @NonNull
+  public final TextView specialJunkPacket4Text;
+
+  @NonNull
+  public final TextView specialJunkPacket5Label;
+
+  @NonNull
+  public final TextView specialJunkPacket5Text;
+
+  @NonNull
+  public final TextView transportPacketJunkSizeLabel;
+
+  @NonNull
+  public final TextView transportPacketJunkSizeText;
+
+  @NonNull
   public final TextView transportPacketMagicHeaderLabel;
 
   @NonNull
@@ -154,18 +220,29 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
 
   protected TunnelDetailFragmentBinding(Object _bindingComponent, View _root, int _localFieldCount,
       TextView addressesLabel, TextView addressesText, TextView applicationsLabel,
-      TextView applicationsText, TextView dnsSearchDomainsLabel, TextView dnsSearchDomainsText,
-      TextView dnsServersLabel, TextView dnsServersText, Barrier idrugconnectionsBarrier,
-      TextView initPacketJunkSizeLabel, TextView initPacketJunkSizeText,
-      TextView initPacketMagicHeaderLabel, TextView initPacketMagicHeaderText,
-      TextView interfaceNameLabel, TextView interfaceNameText, MaterialTextView interfaceTitle,
+      TextView applicationsText, TextView controlledJunkPacket1Label,
+      TextView controlledJunkPacket1Text, TextView controlledJunkPacket2Label,
+      TextView controlledJunkPacket2Text, TextView controlledJunkPacket3Label,
+      TextView controlledJunkPacket3Text, TextView cookieReplyPacketJunkSizeLabel,
+      TextView cookieReplyPacketJunkSizeText, TextView dnsSearchDomainsLabel,
+      TextView dnsSearchDomainsText, TextView dnsServersLabel, TextView dnsServersText,
+      Barrier idrugconnectionsBarrier, TextView initPacketJunkSizeLabel,
+      TextView initPacketJunkSizeText, TextView initPacketMagicHeaderLabel,
+      TextView initPacketMagicHeaderText, TextView interfaceNameLabel, TextView interfaceNameText,
+      MaterialTextView interfaceTitle, TextView itimeLabel, TextView itimeText,
       TextView junkPacketCountLabel, TextView junkPacketCountText, TextView junkPacketMaxSizeLabel,
       TextView junkPacketMaxSizeText, TextView junkPacketMinSizeLabel,
       TextView junkPacketMinSizeText, TextView listenPortLabel, Barrier listenPortMtuBarrier,
       TextView listenPortText, TextView mtuLabel, TextView mtuText, LinearLayout peersLayout,
       TextView publicKeyLabel, TextView publicKeyText, TextView responsePacketJunkSizeLabel,
       TextView responsePacketJunkSizeText, TextView responsePacketMagicHeaderLabel,
-      TextView responsePacketMagicHeaderText, TextView transportPacketMagicHeaderLabel,
+      TextView responsePacketMagicHeaderText, TextView specialJunkPacket1Label,
+      TextView specialJunkPacket1Text, TextView specialJunkPacket2Label,
+      TextView specialJunkPacket2Text, TextView specialJunkPacket3Label,
+      TextView specialJunkPacket3Text, TextView specialJunkPacket4Label,
+      TextView specialJunkPacket4Text, TextView specialJunkPacket5Label,
+      TextView specialJunkPacket5Text, TextView transportPacketJunkSizeLabel,
+      TextView transportPacketJunkSizeText, TextView transportPacketMagicHeaderLabel,
       TextView transportPacketMagicHeaderText, MaterialCardView tunnelDetailCard,
       ToggleSwitch tunnelSwitch, TextView underloadPacketMagicHeaderLabel,
       TextView underloadPacketMagicHeaderText) {
@@ -174,6 +251,14 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
     this.addressesText = addressesText;
     this.applicationsLabel = applicationsLabel;
     this.applicationsText = applicationsText;
+    this.controlledJunkPacket1Label = controlledJunkPacket1Label;
+    this.controlledJunkPacket1Text = controlledJunkPacket1Text;
+    this.controlledJunkPacket2Label = controlledJunkPacket2Label;
+    this.controlledJunkPacket2Text = controlledJunkPacket2Text;
+    this.controlledJunkPacket3Label = controlledJunkPacket3Label;
+    this.controlledJunkPacket3Text = controlledJunkPacket3Text;
+    this.cookieReplyPacketJunkSizeLabel = cookieReplyPacketJunkSizeLabel;
+    this.cookieReplyPacketJunkSizeText = cookieReplyPacketJunkSizeText;
     this.dnsSearchDomainsLabel = dnsSearchDomainsLabel;
     this.dnsSearchDomainsText = dnsSearchDomainsText;
     this.dnsServersLabel = dnsServersLabel;
@@ -186,6 +271,8 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
     this.interfaceNameLabel = interfaceNameLabel;
     this.interfaceNameText = interfaceNameText;
     this.interfaceTitle = interfaceTitle;
+    this.itimeLabel = itimeLabel;
+    this.itimeText = itimeText;
     this.junkPacketCountLabel = junkPacketCountLabel;
     this.junkPacketCountText = junkPacketCountText;
     this.junkPacketMaxSizeLabel = junkPacketMaxSizeLabel;
@@ -204,6 +291,18 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
     this.responsePacketJunkSizeText = responsePacketJunkSizeText;
     this.responsePacketMagicHeaderLabel = responsePacketMagicHeaderLabel;
     this.responsePacketMagicHeaderText = responsePacketMagicHeaderText;
+    this.specialJunkPacket1Label = specialJunkPacket1Label;
+    this.specialJunkPacket1Text = specialJunkPacket1Text;
+    this.specialJunkPacket2Label = specialJunkPacket2Label;
+    this.specialJunkPacket2Text = specialJunkPacket2Text;
+    this.specialJunkPacket3Label = specialJunkPacket3Label;
+    this.specialJunkPacket3Text = specialJunkPacket3Text;
+    this.specialJunkPacket4Label = specialJunkPacket4Label;
+    this.specialJunkPacket4Text = specialJunkPacket4Text;
+    this.specialJunkPacket5Label = specialJunkPacket5Label;
+    this.specialJunkPacket5Text = specialJunkPacket5Text;
+    this.transportPacketJunkSizeLabel = transportPacketJunkSizeLabel;
+    this.transportPacketJunkSizeText = transportPacketJunkSizeText;
     this.transportPacketMagicHeaderLabel = transportPacketMagicHeaderLabel;
     this.transportPacketMagicHeaderText = transportPacketMagicHeaderText;
     this.tunnelDetailCard = tunnelDetailCard;

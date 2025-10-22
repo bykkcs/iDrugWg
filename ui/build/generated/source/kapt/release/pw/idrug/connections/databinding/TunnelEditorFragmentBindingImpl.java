@@ -14,23 +14,34 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.interface_title, 20);
-        sViewsWithIds.put(R.id.interface_name_layout, 21);
-        sViewsWithIds.put(R.id.private_key_text_layout, 22);
-        sViewsWithIds.put(R.id.public_key_label_layout, 23);
-        sViewsWithIds.put(R.id.addresses_label_layout, 24);
-        sViewsWithIds.put(R.id.listen_port_label_layout, 25);
-        sViewsWithIds.put(R.id.dns_servers_label_layout, 26);
-        sViewsWithIds.put(R.id.mtu_label_layout, 27);
-        sViewsWithIds.put(R.id.junk_packet_count_layout, 28);
-        sViewsWithIds.put(R.id.junk_packet_min_size_layout, 29);
-        sViewsWithIds.put(R.id.junk_packet_max_size_layout, 30);
-        sViewsWithIds.put(R.id.init_packet_junk_size_layout, 31);
-        sViewsWithIds.put(R.id.response_packet_junk_size_layout, 32);
-        sViewsWithIds.put(R.id.init_packet_magic_header_layout, 33);
-        sViewsWithIds.put(R.id.response_packet_magic_header_layout, 34);
-        sViewsWithIds.put(R.id.underload_packet_magic_header_layout, 35);
-        sViewsWithIds.put(R.id.transport_packet_magic_header_layout, 36);
+        sViewsWithIds.put(R.id.interface_title, 31);
+        sViewsWithIds.put(R.id.interface_name_layout, 32);
+        sViewsWithIds.put(R.id.private_key_text_layout, 33);
+        sViewsWithIds.put(R.id.public_key_label_layout, 34);
+        sViewsWithIds.put(R.id.addresses_label_layout, 35);
+        sViewsWithIds.put(R.id.listen_port_label_layout, 36);
+        sViewsWithIds.put(R.id.dns_servers_label_layout, 37);
+        sViewsWithIds.put(R.id.mtu_label_layout, 38);
+        sViewsWithIds.put(R.id.junk_packet_count_layout, 39);
+        sViewsWithIds.put(R.id.junk_packet_min_size_layout, 40);
+        sViewsWithIds.put(R.id.junk_packet_max_size_layout, 41);
+        sViewsWithIds.put(R.id.init_packet_junk_size_layout, 42);
+        sViewsWithIds.put(R.id.response_packet_junk_size_layout, 43);
+        sViewsWithIds.put(R.id.cookie_reply_packet_junk_size_layout, 44);
+        sViewsWithIds.put(R.id.transport_packet_junk_size_layout, 45);
+        sViewsWithIds.put(R.id.init_packet_magic_header_layout, 46);
+        sViewsWithIds.put(R.id.response_packet_magic_header_layout, 47);
+        sViewsWithIds.put(R.id.underload_packet_magic_header_layout, 48);
+        sViewsWithIds.put(R.id.transport_packet_magic_header_layout, 49);
+        sViewsWithIds.put(R.id.special_junk_packet_1_layout, 50);
+        sViewsWithIds.put(R.id.special_junk_packet_2_layout, 51);
+        sViewsWithIds.put(R.id.special_junk_packet_3_layout, 52);
+        sViewsWithIds.put(R.id.special_junk_packet_4_layout, 53);
+        sViewsWithIds.put(R.id.special_junk_packet_5_layout, 54);
+        sViewsWithIds.put(R.id.controlled_junk_packet_1_layout, 55);
+        sViewsWithIds.put(R.id.controlled_junk_packet_2_layout, 56);
+        sViewsWithIds.put(R.id.controlled_junk_packet_3_layout, 57);
+        sViewsWithIds.put(R.id.itime_layout, 58);
     }
     // views
     // variables
@@ -79,6 +90,154 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
 
 
                     configInterface.setAddresses(((java.lang.String) (callbackArg_0)));
+                }
+            }
+        }
+    };
+    private androidx.databinding.InverseBindingListener controlledJunkPacket1TextandroidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
+        @Override
+        public void onChange() {
+            // Inverse of config.interface.controlledJunkPacket1
+            //         is config.interface.setControlledJunkPacket1((java.lang.String) callbackArg_0)
+            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(controlledJunkPacket1Text);
+            // localize variables for thread safety
+            // config.interface.controlledJunkPacket1
+            java.lang.String configInterfaceControlledJunkPacket1 = null;
+            // config != null
+            boolean configJavaLangObjectNull = false;
+            // config.interface
+            pw.idrug.connections.viewmodel.InterfaceProxy configInterface = null;
+            // config.interface != null
+            boolean configInterfaceJavaLangObjectNull = false;
+            // config
+            pw.idrug.connections.viewmodel.ConfigProxy config = mConfig;
+
+
+
+            configJavaLangObjectNull = (config) != (null);
+            if (configJavaLangObjectNull) {
+
+
+                configInterface = config.getInterface();
+
+                configInterfaceJavaLangObjectNull = (configInterface) != (null);
+                if (configInterfaceJavaLangObjectNull) {
+
+
+
+
+                    configInterface.setControlledJunkPacket1(((java.lang.String) (callbackArg_0)));
+                }
+            }
+        }
+    };
+    private androidx.databinding.InverseBindingListener controlledJunkPacket2TextandroidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
+        @Override
+        public void onChange() {
+            // Inverse of config.interface.controlledJunkPacket2
+            //         is config.interface.setControlledJunkPacket2((java.lang.String) callbackArg_0)
+            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(controlledJunkPacket2Text);
+            // localize variables for thread safety
+            // config.interface.controlledJunkPacket2
+            java.lang.String configInterfaceControlledJunkPacket2 = null;
+            // config != null
+            boolean configJavaLangObjectNull = false;
+            // config.interface
+            pw.idrug.connections.viewmodel.InterfaceProxy configInterface = null;
+            // config.interface != null
+            boolean configInterfaceJavaLangObjectNull = false;
+            // config
+            pw.idrug.connections.viewmodel.ConfigProxy config = mConfig;
+
+
+
+            configJavaLangObjectNull = (config) != (null);
+            if (configJavaLangObjectNull) {
+
+
+                configInterface = config.getInterface();
+
+                configInterfaceJavaLangObjectNull = (configInterface) != (null);
+                if (configInterfaceJavaLangObjectNull) {
+
+
+
+
+                    configInterface.setControlledJunkPacket2(((java.lang.String) (callbackArg_0)));
+                }
+            }
+        }
+    };
+    private androidx.databinding.InverseBindingListener controlledJunkPacket3TextandroidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
+        @Override
+        public void onChange() {
+            // Inverse of config.interface.controlledJunkPacket3
+            //         is config.interface.setControlledJunkPacket3((java.lang.String) callbackArg_0)
+            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(controlledJunkPacket3Text);
+            // localize variables for thread safety
+            // config.interface.controlledJunkPacket3
+            java.lang.String configInterfaceControlledJunkPacket3 = null;
+            // config != null
+            boolean configJavaLangObjectNull = false;
+            // config.interface
+            pw.idrug.connections.viewmodel.InterfaceProxy configInterface = null;
+            // config.interface != null
+            boolean configInterfaceJavaLangObjectNull = false;
+            // config
+            pw.idrug.connections.viewmodel.ConfigProxy config = mConfig;
+
+
+
+            configJavaLangObjectNull = (config) != (null);
+            if (configJavaLangObjectNull) {
+
+
+                configInterface = config.getInterface();
+
+                configInterfaceJavaLangObjectNull = (configInterface) != (null);
+                if (configInterfaceJavaLangObjectNull) {
+
+
+
+
+                    configInterface.setControlledJunkPacket3(((java.lang.String) (callbackArg_0)));
+                }
+            }
+        }
+    };
+    private androidx.databinding.InverseBindingListener cookieReplyPacketJunkSizeTextandroidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
+        @Override
+        public void onChange() {
+            // Inverse of config.interface.cookieReplyPacketJunkSize
+            //         is config.interface.setCookieReplyPacketJunkSize((java.lang.String) callbackArg_0)
+            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(cookieReplyPacketJunkSizeText);
+            // localize variables for thread safety
+            // config != null
+            boolean configJavaLangObjectNull = false;
+            // config.interface
+            pw.idrug.connections.viewmodel.InterfaceProxy configInterface = null;
+            // config.interface.cookieReplyPacketJunkSize
+            java.lang.String configInterfaceCookieReplyPacketJunkSize = null;
+            // config.interface != null
+            boolean configInterfaceJavaLangObjectNull = false;
+            // config
+            pw.idrug.connections.viewmodel.ConfigProxy config = mConfig;
+
+
+
+            configJavaLangObjectNull = (config) != (null);
+            if (configJavaLangObjectNull) {
+
+
+                configInterface = config.getInterface();
+
+                configInterfaceJavaLangObjectNull = (configInterface) != (null);
+                if (configInterfaceJavaLangObjectNull) {
+
+
+
+
+                    configInterface.setCookieReplyPacketJunkSize(((java.lang.String) (callbackArg_0)));
                 }
             }
         }
@@ -210,6 +369,43 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
 
 
                 pw.idrug.connections.databinding.TunnelEditorFragmentBindingImpl.this.setName(callbackArg_0);
+            }
+        }
+    };
+    private androidx.databinding.InverseBindingListener itimeTextandroidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
+        @Override
+        public void onChange() {
+            // Inverse of config.interface.itimeSeconds
+            //         is config.interface.setItimeSeconds((java.lang.String) callbackArg_0)
+            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(itimeText);
+            // localize variables for thread safety
+            // config != null
+            boolean configJavaLangObjectNull = false;
+            // config.interface
+            pw.idrug.connections.viewmodel.InterfaceProxy configInterface = null;
+            // config.interface.itimeSeconds
+            java.lang.String configInterfaceItimeSeconds = null;
+            // config.interface != null
+            boolean configInterfaceJavaLangObjectNull = false;
+            // config
+            pw.idrug.connections.viewmodel.ConfigProxy config = mConfig;
+
+
+
+            configJavaLangObjectNull = (config) != (null);
+            if (configJavaLangObjectNull) {
+
+
+                configInterface = config.getInterface();
+
+                configInterfaceJavaLangObjectNull = (configInterface) != (null);
+                if (configInterfaceJavaLangObjectNull) {
+
+
+
+
+                    configInterface.setItimeSeconds(((java.lang.String) (callbackArg_0)));
+                }
             }
         }
     };
@@ -509,6 +705,228 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
             }
         }
     };
+    private androidx.databinding.InverseBindingListener specialJunkPacket1TextandroidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
+        @Override
+        public void onChange() {
+            // Inverse of config.interface.specialJunkPacket1
+            //         is config.interface.setSpecialJunkPacket1((java.lang.String) callbackArg_0)
+            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(specialJunkPacket1Text);
+            // localize variables for thread safety
+            // config != null
+            boolean configJavaLangObjectNull = false;
+            // config.interface
+            pw.idrug.connections.viewmodel.InterfaceProxy configInterface = null;
+            // config.interface.specialJunkPacket1
+            java.lang.String configInterfaceSpecialJunkPacket1 = null;
+            // config.interface != null
+            boolean configInterfaceJavaLangObjectNull = false;
+            // config
+            pw.idrug.connections.viewmodel.ConfigProxy config = mConfig;
+
+
+
+            configJavaLangObjectNull = (config) != (null);
+            if (configJavaLangObjectNull) {
+
+
+                configInterface = config.getInterface();
+
+                configInterfaceJavaLangObjectNull = (configInterface) != (null);
+                if (configInterfaceJavaLangObjectNull) {
+
+
+
+
+                    configInterface.setSpecialJunkPacket1(((java.lang.String) (callbackArg_0)));
+                }
+            }
+        }
+    };
+    private androidx.databinding.InverseBindingListener specialJunkPacket2TextandroidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
+        @Override
+        public void onChange() {
+            // Inverse of config.interface.specialJunkPacket2
+            //         is config.interface.setSpecialJunkPacket2((java.lang.String) callbackArg_0)
+            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(specialJunkPacket2Text);
+            // localize variables for thread safety
+            // config != null
+            boolean configJavaLangObjectNull = false;
+            // config.interface
+            pw.idrug.connections.viewmodel.InterfaceProxy configInterface = null;
+            // config.interface.specialJunkPacket2
+            java.lang.String configInterfaceSpecialJunkPacket2 = null;
+            // config.interface != null
+            boolean configInterfaceJavaLangObjectNull = false;
+            // config
+            pw.idrug.connections.viewmodel.ConfigProxy config = mConfig;
+
+
+
+            configJavaLangObjectNull = (config) != (null);
+            if (configJavaLangObjectNull) {
+
+
+                configInterface = config.getInterface();
+
+                configInterfaceJavaLangObjectNull = (configInterface) != (null);
+                if (configInterfaceJavaLangObjectNull) {
+
+
+
+
+                    configInterface.setSpecialJunkPacket2(((java.lang.String) (callbackArg_0)));
+                }
+            }
+        }
+    };
+    private androidx.databinding.InverseBindingListener specialJunkPacket3TextandroidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
+        @Override
+        public void onChange() {
+            // Inverse of config.interface.specialJunkPacket3
+            //         is config.interface.setSpecialJunkPacket3((java.lang.String) callbackArg_0)
+            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(specialJunkPacket3Text);
+            // localize variables for thread safety
+            // config != null
+            boolean configJavaLangObjectNull = false;
+            // config.interface
+            pw.idrug.connections.viewmodel.InterfaceProxy configInterface = null;
+            // config.interface != null
+            boolean configInterfaceJavaLangObjectNull = false;
+            // config
+            pw.idrug.connections.viewmodel.ConfigProxy config = mConfig;
+            // config.interface.specialJunkPacket3
+            java.lang.String configInterfaceSpecialJunkPacket3 = null;
+
+
+
+            configJavaLangObjectNull = (config) != (null);
+            if (configJavaLangObjectNull) {
+
+
+                configInterface = config.getInterface();
+
+                configInterfaceJavaLangObjectNull = (configInterface) != (null);
+                if (configInterfaceJavaLangObjectNull) {
+
+
+
+
+                    configInterface.setSpecialJunkPacket3(((java.lang.String) (callbackArg_0)));
+                }
+            }
+        }
+    };
+    private androidx.databinding.InverseBindingListener specialJunkPacket4TextandroidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
+        @Override
+        public void onChange() {
+            // Inverse of config.interface.specialJunkPacket4
+            //         is config.interface.setSpecialJunkPacket4((java.lang.String) callbackArg_0)
+            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(specialJunkPacket4Text);
+            // localize variables for thread safety
+            // config != null
+            boolean configJavaLangObjectNull = false;
+            // config.interface
+            pw.idrug.connections.viewmodel.InterfaceProxy configInterface = null;
+            // config.interface != null
+            boolean configInterfaceJavaLangObjectNull = false;
+            // config
+            pw.idrug.connections.viewmodel.ConfigProxy config = mConfig;
+            // config.interface.specialJunkPacket4
+            java.lang.String configInterfaceSpecialJunkPacket4 = null;
+
+
+
+            configJavaLangObjectNull = (config) != (null);
+            if (configJavaLangObjectNull) {
+
+
+                configInterface = config.getInterface();
+
+                configInterfaceJavaLangObjectNull = (configInterface) != (null);
+                if (configInterfaceJavaLangObjectNull) {
+
+
+
+
+                    configInterface.setSpecialJunkPacket4(((java.lang.String) (callbackArg_0)));
+                }
+            }
+        }
+    };
+    private androidx.databinding.InverseBindingListener specialJunkPacket5TextandroidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
+        @Override
+        public void onChange() {
+            // Inverse of config.interface.specialJunkPacket5
+            //         is config.interface.setSpecialJunkPacket5((java.lang.String) callbackArg_0)
+            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(specialJunkPacket5Text);
+            // localize variables for thread safety
+            // config != null
+            boolean configJavaLangObjectNull = false;
+            // config.interface
+            pw.idrug.connections.viewmodel.InterfaceProxy configInterface = null;
+            // config.interface != null
+            boolean configInterfaceJavaLangObjectNull = false;
+            // config.interface.specialJunkPacket5
+            java.lang.String configInterfaceSpecialJunkPacket5 = null;
+            // config
+            pw.idrug.connections.viewmodel.ConfigProxy config = mConfig;
+
+
+
+            configJavaLangObjectNull = (config) != (null);
+            if (configJavaLangObjectNull) {
+
+
+                configInterface = config.getInterface();
+
+                configInterfaceJavaLangObjectNull = (configInterface) != (null);
+                if (configInterfaceJavaLangObjectNull) {
+
+
+
+
+                    configInterface.setSpecialJunkPacket5(((java.lang.String) (callbackArg_0)));
+                }
+            }
+        }
+    };
+    private androidx.databinding.InverseBindingListener transportPacketJunkSizeTextandroidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
+        @Override
+        public void onChange() {
+            // Inverse of config.interface.transportPacketJunkSize
+            //         is config.interface.setTransportPacketJunkSize((java.lang.String) callbackArg_0)
+            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(transportPacketJunkSizeText);
+            // localize variables for thread safety
+            // config != null
+            boolean configJavaLangObjectNull = false;
+            // config.interface
+            pw.idrug.connections.viewmodel.InterfaceProxy configInterface = null;
+            // config.interface.transportPacketJunkSize
+            java.lang.String configInterfaceTransportPacketJunkSize = null;
+            // config.interface != null
+            boolean configInterfaceJavaLangObjectNull = false;
+            // config
+            pw.idrug.connections.viewmodel.ConfigProxy config = mConfig;
+
+
+
+            configJavaLangObjectNull = (config) != (null);
+            if (configJavaLangObjectNull) {
+
+
+                configInterface = config.getInterface();
+
+                configInterfaceJavaLangObjectNull = (configInterface) != (null);
+                if (configInterfaceJavaLangObjectNull) {
+
+
+
+
+                    configInterface.setTransportPacketJunkSize(((java.lang.String) (callbackArg_0)));
+                }
+            }
+        }
+    };
     private androidx.databinding.InverseBindingListener transportPacketMagicHeaderTextandroidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
         @Override
         public void onChange() {
@@ -585,54 +1003,81 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
     };
 
     public TunnelEditorFragmentBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 37, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 59, sIncludes, sViewsWithIds));
     }
     private TunnelEditorFragmentBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 4
-            , (com.google.android.material.button.MaterialButton) bindings[19]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[24]
+            , (com.google.android.material.button.MaterialButton) bindings[30]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[35]
             , (com.google.android.material.textfield.TextInputEditText) bindings[4]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[26]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[6]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[31]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[11]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[33]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[55]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[24]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[56]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[25]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[57]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[26]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[44]
             , (com.google.android.material.textfield.TextInputEditText) bindings[13]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[21]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[37]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[6]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[42]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[11]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[46]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[15]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[32]
             , (com.google.android.material.textfield.TextInputEditText) bindings[1]
-            , (com.google.android.material.textview.MaterialTextView) bindings[20]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[28]
+            , (com.google.android.material.textview.MaterialTextView) bindings[31]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[58]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[27]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[39]
             , (com.google.android.material.textfield.TextInputEditText) bindings[8]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[30]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[41]
             , (com.google.android.material.textfield.TextInputEditText) bindings[10]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[29]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[40]
             , (com.google.android.material.textfield.TextInputEditText) bindings[9]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[25]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[36]
             , (com.google.android.material.textfield.TextInputEditText) bindings[5]
             , (androidx.coordinatorlayout.widget.CoordinatorLayout) bindings[0]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[27]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[38]
             , (com.google.android.material.textfield.TextInputEditText) bindings[7]
-            , (android.widget.LinearLayout) bindings[18]
+            , (android.widget.LinearLayout) bindings[29]
             , (com.google.android.material.textfield.TextInputEditText) bindings[2]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[22]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[23]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[3]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[32]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[12]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[33]
             , (com.google.android.material.textfield.TextInputLayout) bindings[34]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[14]
-            , (com.google.android.material.button.MaterialButton) bindings[17]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[36]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[3]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[43]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[12]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[47]
             , (com.google.android.material.textfield.TextInputEditText) bindings[16]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[35]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[15]
+            , (com.google.android.material.button.MaterialButton) bindings[28]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[50]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[19]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[51]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[20]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[52]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[21]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[53]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[22]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[54]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[23]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[45]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[14]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[49]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[18]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[48]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[17]
             );
         this.addPeerButton.setTag(null);
         this.addressesLabelText.setTag(null);
+        this.controlledJunkPacket1Text.setTag(null);
+        this.controlledJunkPacket2Text.setTag(null);
+        this.controlledJunkPacket3Text.setTag(null);
+        this.cookieReplyPacketJunkSizeText.setTag(null);
         this.dnsServersText.setTag(null);
         this.initPacketJunkSizeText.setTag(null);
         this.initPacketMagicHeaderText.setTag(null);
         this.interfaceNameText.setTag(null);
+        this.itimeText.setTag(null);
         this.junkPacketCountText.setTag(null);
         this.junkPacketMaxSizeText.setTag(null);
         this.junkPacketMinSizeText.setTag(null);
@@ -645,6 +1090,12 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
         this.responsePacketJunkSizeText.setTag(null);
         this.responsePacketMagicHeaderText.setTag(null);
         this.setExcludedApplications.setTag(null);
+        this.specialJunkPacket1Text.setTag(null);
+        this.specialJunkPacket2Text.setTag(null);
+        this.specialJunkPacket3Text.setTag(null);
+        this.specialJunkPacket4Text.setTag(null);
+        this.specialJunkPacket5Text.setTag(null);
+        this.transportPacketJunkSizeText.setTag(null);
         this.transportPacketMagicHeaderText.setTag(null);
         this.underloadPacketMagicHeaderText.setTag(null);
         setRootTag(root);
@@ -656,7 +1107,7 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
     @Override
     public void invalidateAll() {
         synchronized(this) {
-                mDirtyFlags = 0x400000L;
+                mDirtyFlags = 0x200000000L;
         }
         requestRebind();
     }
@@ -810,27 +1261,93 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
             }
             return true;
         }
-        else if (fieldId == BR.initPacketMagicHeader) {
+        else if (fieldId == BR.cookieReplyPacketJunkSize) {
             synchronized(this) {
                     mDirtyFlags |= 0x40000L;
             }
             return true;
         }
-        else if (fieldId == BR.responsePacketMagicHeader) {
+        else if (fieldId == BR.transportPacketJunkSize) {
             synchronized(this) {
                     mDirtyFlags |= 0x80000L;
             }
             return true;
         }
-        else if (fieldId == BR.underloadPacketMagicHeader) {
+        else if (fieldId == BR.initPacketMagicHeader) {
             synchronized(this) {
                     mDirtyFlags |= 0x100000L;
             }
             return true;
         }
-        else if (fieldId == BR.transportPacketMagicHeader) {
+        else if (fieldId == BR.responsePacketMagicHeader) {
             synchronized(this) {
                     mDirtyFlags |= 0x200000L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.underloadPacketMagicHeader) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x400000L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.transportPacketMagicHeader) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x800000L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.specialJunkPacket1) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x1000000L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.specialJunkPacket2) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x2000000L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.specialJunkPacket3) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x4000000L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.specialJunkPacket4) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x8000000L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.specialJunkPacket5) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x10000000L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.controlledJunkPacket1) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x20000000L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.controlledJunkPacket2) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x40000000L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.controlledJunkPacket3) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x80000000L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.itimeSeconds) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x100000000L;
             }
             return true;
         }
@@ -876,25 +1393,35 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
         }
         androidx.databinding.ObservableList<java.lang.String> configInterfaceExcludedApplications = null;
         java.lang.String configInterfaceJunkPacketMaxSize = null;
+        java.lang.String configInterfaceSpecialJunkPacket3 = null;
         java.lang.String configInterfaceUnderloadPacketMagicHeader = null;
         pw.idrug.connections.viewmodel.ConfigProxy config = mConfig;
+        java.lang.String configInterfaceControlledJunkPacket1 = null;
         java.lang.String configInterfacePrivateKey = null;
         boolean configInterfaceIncludedApplicationsSizeInt0 = false;
         pw.idrug.connections.viewmodel.InterfaceProxy configInterface = null;
         java.lang.String configInterfaceIncludedApplicationsSizeInt0SetExcludedApplicationsAndroidPluralsSetIncludedApplicationsConfigInterfaceIncludedApplicationsSizeConfigInterfaceIncludedApplicationsSizeConfigInterfaceExcludedApplicationsSizeInt0SetExcludedApplicationsAndroidPluralsSetExcludedApplicationsConfigInterfaceExcludedApplicationsSizeConfigInterfaceExcludedApplicationsSizeSetExcludedApplicationsAndroidStringAllApplications = null;
+        java.lang.String configInterfaceSpecialJunkPacket4 = null;
         android.view.View.OnClickListener fragmentOnRequestSetExcludedIncludedApplicationsAndroidViewViewOnClickListener = null;
         androidx.databinding.ObservableList<pw.idrug.connections.viewmodel.PeerProxy> configPeers = null;
         androidx.databinding.ObservableList<java.lang.String> configInterfaceIncludedApplications = null;
         java.lang.String configInterfaceDnsServers = null;
+        java.lang.String configInterfaceCookieReplyPacketJunkSize = null;
         java.lang.String configInterfaceInitPacketMagicHeader = null;
+        java.lang.String configInterfaceTransportPacketJunkSize = null;
         java.lang.String configInterfaceTransportPacketMagicHeader = null;
         pw.idrug.connections.fragment.TunnelEditorFragment fragment = mFragment;
+        java.lang.String configInterfaceSpecialJunkPacket1 = null;
+        java.lang.String configInterfaceSpecialJunkPacket5 = null;
         java.lang.String configInterfaceMtu = null;
+        java.lang.String configInterfaceItimeSeconds = null;
+        java.lang.String configInterfaceControlledJunkPacket3 = null;
         java.lang.String configInterfaceResponsePacketJunkSize = null;
         java.lang.String configInterfaceResponsePacketMagicHeader = null;
         android.view.View.OnFocusChangeListener fragmentOnKeyFocusChangeAndroidViewViewOnFocusChangeListener = null;
         java.lang.String setExcludedApplicationsAndroidPluralsSetExcludedApplicationsConfigInterfaceExcludedApplicationsSizeConfigInterfaceExcludedApplicationsSize = null;
         java.lang.String name = mName;
+        java.lang.String configInterfaceSpecialJunkPacket2 = null;
         int configInterfaceExcludedApplicationsSize = 0;
         java.lang.String configInterfaceExcludedApplicationsSizeInt0SetExcludedApplicationsAndroidPluralsSetExcludedApplicationsConfigInterfaceExcludedApplicationsSizeConfigInterfaceExcludedApplicationsSizeSetExcludedApplicationsAndroidStringAllApplications = null;
         java.lang.String configInterfaceJunkPacketCount = null;
@@ -902,16 +1429,17 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
         int configInterfaceIncludedApplicationsSize = 0;
         boolean configInterfaceExcludedApplicationsSizeInt0 = false;
         java.lang.String configInterfaceJunkPacketMinSize = null;
+        java.lang.String configInterfaceControlledJunkPacket2 = null;
         java.lang.String setExcludedApplicationsAndroidPluralsSetIncludedApplicationsConfigInterfaceIncludedApplicationsSizeConfigInterfaceIncludedApplicationsSize = null;
         android.view.View.OnClickListener fragmentOnKeyClickAndroidViewViewOnClickListener = null;
         java.lang.String configInterfaceListenPort = null;
         java.lang.String configInterfaceAddresses = null;
         java.lang.String configInterfaceInitPacketJunkSize = null;
 
-        if ((dirtyFlags & 0x7fffbfL) != 0) {
+        if ((dirtyFlags & 0x3ffffffbfL) != 0) {
 
 
-            if ((dirtyFlags & 0x7fff9bL) != 0) {
+            if ((dirtyFlags & 0x3ffffff9bL) != 0) {
 
                     if (config != null) {
                         // read config.interface
@@ -919,28 +1447,49 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
                     }
                     updateRegistration(1, configInterface);
 
-                if ((dirtyFlags & 0x408012L) != 0) {
+                if ((dirtyFlags & 0x200008012L) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.junkPacketMaxSize
                             configInterfaceJunkPacketMaxSize = configInterface.getJunkPacketMaxSize();
                         }
                 }
-                if ((dirtyFlags & 0x500012L) != 0) {
+                if ((dirtyFlags & 0x204000012L) != 0) {
+
+                        if (configInterface != null) {
+                            // read config.interface.specialJunkPacket3
+                            configInterfaceSpecialJunkPacket3 = configInterface.getSpecialJunkPacket3();
+                        }
+                }
+                if ((dirtyFlags & 0x200400012L) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.underloadPacketMagicHeader
                             configInterfaceUnderloadPacketMagicHeader = configInterface.getUnderloadPacketMagicHeader();
                         }
                 }
-                if ((dirtyFlags & 0x400092L) != 0) {
+                if ((dirtyFlags & 0x220000012L) != 0) {
+
+                        if (configInterface != null) {
+                            // read config.interface.controlledJunkPacket1
+                            configInterfaceControlledJunkPacket1 = configInterface.getControlledJunkPacket1();
+                        }
+                }
+                if ((dirtyFlags & 0x200000092L) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.privateKey
                             configInterfacePrivateKey = configInterface.getPrivateKey();
                         }
                 }
-                if ((dirtyFlags & 0x40001bL) != 0) {
+                if ((dirtyFlags & 0x208000012L) != 0) {
+
+                        if (configInterface != null) {
+                            // read config.interface.specialJunkPacket4
+                            configInterfaceSpecialJunkPacket4 = configInterface.getSpecialJunkPacket4();
+                        }
+                }
+                if ((dirtyFlags & 0x20000001bL) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.includedApplications
@@ -957,93 +1506,149 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
 
                         // read config.interface.includedApplications.size > 0
                         configInterfaceIncludedApplicationsSizeInt0 = (configInterfaceIncludedApplicationsSize) > (0);
-                    if((dirtyFlags & 0x40001bL) != 0) {
+                    if((dirtyFlags & 0x20000001bL) != 0) {
                         if(configInterfaceIncludedApplicationsSizeInt0) {
-                                dirtyFlags |= 0x1000000L;
+                                dirtyFlags |= 0x800000000L;
                         }
                         else {
-                                dirtyFlags |= 0x800000L;
+                                dirtyFlags |= 0x400000000L;
                         }
                     }
                 }
-                if ((dirtyFlags & 0x400812L) != 0) {
+                if ((dirtyFlags & 0x200000812L) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.dnsServers
                             configInterfaceDnsServers = configInterface.getDnsServers();
                         }
                 }
-                if ((dirtyFlags & 0x440012L) != 0) {
+                if ((dirtyFlags & 0x200040012L) != 0) {
+
+                        if (configInterface != null) {
+                            // read config.interface.cookieReplyPacketJunkSize
+                            configInterfaceCookieReplyPacketJunkSize = configInterface.getCookieReplyPacketJunkSize();
+                        }
+                }
+                if ((dirtyFlags & 0x200100012L) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.initPacketMagicHeader
                             configInterfaceInitPacketMagicHeader = configInterface.getInitPacketMagicHeader();
                         }
                 }
-                if ((dirtyFlags & 0x600012L) != 0) {
+                if ((dirtyFlags & 0x200080012L) != 0) {
+
+                        if (configInterface != null) {
+                            // read config.interface.transportPacketJunkSize
+                            configInterfaceTransportPacketJunkSize = configInterface.getTransportPacketJunkSize();
+                        }
+                }
+                if ((dirtyFlags & 0x200800012L) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.transportPacketMagicHeader
                             configInterfaceTransportPacketMagicHeader = configInterface.getTransportPacketMagicHeader();
                         }
                 }
-                if ((dirtyFlags & 0x401012L) != 0) {
+                if ((dirtyFlags & 0x201000012L) != 0) {
+
+                        if (configInterface != null) {
+                            // read config.interface.specialJunkPacket1
+                            configInterfaceSpecialJunkPacket1 = configInterface.getSpecialJunkPacket1();
+                        }
+                }
+                if ((dirtyFlags & 0x210000012L) != 0) {
+
+                        if (configInterface != null) {
+                            // read config.interface.specialJunkPacket5
+                            configInterfaceSpecialJunkPacket5 = configInterface.getSpecialJunkPacket5();
+                        }
+                }
+                if ((dirtyFlags & 0x200001012L) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.mtu
                             configInterfaceMtu = configInterface.getMtu();
                         }
                 }
-                if ((dirtyFlags & 0x420012L) != 0) {
+                if ((dirtyFlags & 0x300000012L) != 0) {
+
+                        if (configInterface != null) {
+                            // read config.interface.itimeSeconds
+                            configInterfaceItimeSeconds = configInterface.getItimeSeconds();
+                        }
+                }
+                if ((dirtyFlags & 0x280000012L) != 0) {
+
+                        if (configInterface != null) {
+                            // read config.interface.controlledJunkPacket3
+                            configInterfaceControlledJunkPacket3 = configInterface.getControlledJunkPacket3();
+                        }
+                }
+                if ((dirtyFlags & 0x200020012L) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.responsePacketJunkSize
                             configInterfaceResponsePacketJunkSize = configInterface.getResponsePacketJunkSize();
                         }
                 }
-                if ((dirtyFlags & 0x480012L) != 0) {
+                if ((dirtyFlags & 0x200200012L) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.responsePacketMagicHeader
                             configInterfaceResponsePacketMagicHeader = configInterface.getResponsePacketMagicHeader();
                         }
                 }
-                if ((dirtyFlags & 0x402012L) != 0) {
+                if ((dirtyFlags & 0x202000012L) != 0) {
+
+                        if (configInterface != null) {
+                            // read config.interface.specialJunkPacket2
+                            configInterfaceSpecialJunkPacket2 = configInterface.getSpecialJunkPacket2();
+                        }
+                }
+                if ((dirtyFlags & 0x200002012L) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.junkPacketCount
                             configInterfaceJunkPacketCount = configInterface.getJunkPacketCount();
                         }
                 }
-                if ((dirtyFlags & 0x400112L) != 0) {
+                if ((dirtyFlags & 0x200000112L) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.publicKey
                             configInterfacePublicKey = configInterface.getPublicKey();
                         }
                 }
-                if ((dirtyFlags & 0x404012L) != 0) {
+                if ((dirtyFlags & 0x200004012L) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.junkPacketMinSize
                             configInterfaceJunkPacketMinSize = configInterface.getJunkPacketMinSize();
                         }
                 }
-                if ((dirtyFlags & 0x400412L) != 0) {
+                if ((dirtyFlags & 0x240000012L) != 0) {
+
+                        if (configInterface != null) {
+                            // read config.interface.controlledJunkPacket2
+                            configInterfaceControlledJunkPacket2 = configInterface.getControlledJunkPacket2();
+                        }
+                }
+                if ((dirtyFlags & 0x200000412L) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.listenPort
                             configInterfaceListenPort = configInterface.getListenPort();
                         }
                 }
-                if ((dirtyFlags & 0x400212L) != 0) {
+                if ((dirtyFlags & 0x200000212L) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.addresses
                             configInterfaceAddresses = configInterface.getAddresses();
                         }
                 }
-                if ((dirtyFlags & 0x410012L) != 0) {
+                if ((dirtyFlags & 0x200010012L) != 0) {
 
                         if (configInterface != null) {
                             // read config.interface.initPacketJunkSize
@@ -1051,7 +1656,7 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
                         }
                 }
             }
-            if ((dirtyFlags & 0x400034L) != 0) {
+            if ((dirtyFlags & 0x200000034L) != 0) {
 
                     if (config != null) {
                         // read config.peers
@@ -1060,10 +1665,10 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
                     updateRegistration(2, configPeers);
             }
         }
-        if ((dirtyFlags & 0x400034L) != 0) {
+        if ((dirtyFlags & 0x200000034L) != 0) {
 
 
-            if ((dirtyFlags & 0x400020L) != 0) {
+            if ((dirtyFlags & 0x200000020L) != 0) {
 
                     if (fragment != null) {
                         // read fragment::onRequestSetExcludedIncludedApplications
@@ -1075,11 +1680,11 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
                     }
             }
         }
-        if ((dirtyFlags & 0x400040L) != 0) {
+        if ((dirtyFlags & 0x200000040L) != 0) {
         }
         // batch finished
 
-        if ((dirtyFlags & 0x800000L) != 0) {
+        if ((dirtyFlags & 0x400000000L) != 0) {
 
 
 
@@ -1105,50 +1710,55 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
 
                 // read config.interface.excludedApplications.size > 0
                 configInterfaceExcludedApplicationsSizeInt0 = (configInterfaceExcludedApplicationsSize) > (0);
-            if((dirtyFlags & 0x800000L) != 0) {
+            if((dirtyFlags & 0x400000000L) != 0) {
                 if(configInterfaceExcludedApplicationsSizeInt0) {
-                        dirtyFlags |= 0x4000000L;
+                        dirtyFlags |= 0x2000000000L;
                 }
                 else {
-                        dirtyFlags |= 0x2000000L;
+                        dirtyFlags |= 0x1000000000L;
                 }
             }
         }
-        if ((dirtyFlags & 0x1000000L) != 0) {
+        if ((dirtyFlags & 0x800000000L) != 0) {
 
                 // read @android:plurals/set_included_applications
                 setExcludedApplicationsAndroidPluralsSetIncludedApplicationsConfigInterfaceIncludedApplicationsSizeConfigInterfaceIncludedApplicationsSize = setExcludedApplications.getResources().getQuantityString(R.plurals.set_included_applications, configInterfaceIncludedApplicationsSize, configInterfaceIncludedApplicationsSize);
         }
         // batch finished
 
-        if ((dirtyFlags & 0x4000000L) != 0) {
+        if ((dirtyFlags & 0x2000000000L) != 0) {
 
                 // read @android:plurals/set_excluded_applications
                 setExcludedApplicationsAndroidPluralsSetExcludedApplicationsConfigInterfaceExcludedApplicationsSizeConfigInterfaceExcludedApplicationsSize = setExcludedApplications.getResources().getQuantityString(R.plurals.set_excluded_applications, configInterfaceExcludedApplicationsSize, configInterfaceExcludedApplicationsSize);
         }
 
-        if ((dirtyFlags & 0x800000L) != 0) {
+        if ((dirtyFlags & 0x400000000L) != 0) {
 
                 // read config.interface.excludedApplications.size > 0 ? @android:plurals/set_excluded_applications : @android:string/all_applications
                 configInterfaceExcludedApplicationsSizeInt0SetExcludedApplicationsAndroidPluralsSetExcludedApplicationsConfigInterfaceExcludedApplicationsSizeConfigInterfaceExcludedApplicationsSizeSetExcludedApplicationsAndroidStringAllApplications = ((configInterfaceExcludedApplicationsSizeInt0) ? (setExcludedApplicationsAndroidPluralsSetExcludedApplicationsConfigInterfaceExcludedApplicationsSizeConfigInterfaceExcludedApplicationsSize) : (setExcludedApplications.getResources().getString(R.string.all_applications)));
         }
 
-        if ((dirtyFlags & 0x40001bL) != 0) {
+        if ((dirtyFlags & 0x20000001bL) != 0) {
 
                 // read config.interface.includedApplications.size > 0 ? @android:plurals/set_included_applications : config.interface.excludedApplications.size > 0 ? @android:plurals/set_excluded_applications : @android:string/all_applications
                 configInterfaceIncludedApplicationsSizeInt0SetExcludedApplicationsAndroidPluralsSetIncludedApplicationsConfigInterfaceIncludedApplicationsSizeConfigInterfaceIncludedApplicationsSizeConfigInterfaceExcludedApplicationsSizeInt0SetExcludedApplicationsAndroidPluralsSetExcludedApplicationsConfigInterfaceExcludedApplicationsSizeConfigInterfaceExcludedApplicationsSizeSetExcludedApplicationsAndroidStringAllApplications = ((configInterfaceIncludedApplicationsSizeInt0) ? (setExcludedApplicationsAndroidPluralsSetIncludedApplicationsConfigInterfaceIncludedApplicationsSizeConfigInterfaceIncludedApplicationsSize) : (configInterfaceExcludedApplicationsSizeInt0SetExcludedApplicationsAndroidPluralsSetExcludedApplicationsConfigInterfaceExcludedApplicationsSizeConfigInterfaceExcludedApplicationsSizeSetExcludedApplicationsAndroidStringAllApplications));
         }
         // batch finished
-        if ((dirtyFlags & 0x400000L) != 0) {
+        if ((dirtyFlags & 0x200000000L) != 0) {
             // api target 1
 
             this.addPeerButton.setOnClickListener(mCallback1);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.addressesLabelText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, addressesLabelTextandroidTextAttrChanged);
+            androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.controlledJunkPacket1Text, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, controlledJunkPacket1TextandroidTextAttrChanged);
+            androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.controlledJunkPacket2Text, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, controlledJunkPacket2TextandroidTextAttrChanged);
+            androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.controlledJunkPacket3Text, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, controlledJunkPacket3TextandroidTextAttrChanged);
+            androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.cookieReplyPacketJunkSizeText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, cookieReplyPacketJunkSizeTextandroidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.dnsServersText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, dnsServersTextandroidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.initPacketJunkSizeText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, initPacketJunkSizeTextandroidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.initPacketMagicHeaderText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, initPacketMagicHeaderTextandroidTextAttrChanged);
             pw.idrug.connections.databinding.BindingAdapters.setFilter(this.interfaceNameText, pw.idrug.connections.widget.NameInputFilter.newInstance());
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.interfaceNameText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, interfaceNameTextandroidTextAttrChanged);
+            androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.itimeText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, itimeTextandroidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.junkPacketCountText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, junkPacketCountTextandroidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.junkPacketMaxSizeText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, junkPacketMaxSizeTextandroidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.junkPacketMinSizeText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, junkPacketMinSizeTextandroidTextAttrChanged);
@@ -1159,107 +1769,168 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
             this.publicKeyText.setOnClickListener((((mClipboardUtilsCopyTextViewAndroidViewViewOnClickListener == null) ? (mClipboardUtilsCopyTextViewAndroidViewViewOnClickListener = new OnClickListenerImpl()) : mClipboardUtilsCopyTextViewAndroidViewViewOnClickListener)));
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.responsePacketJunkSizeText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, responsePacketJunkSizeTextandroidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.responsePacketMagicHeaderText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, responsePacketMagicHeaderTextandroidTextAttrChanged);
+            androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.specialJunkPacket1Text, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, specialJunkPacket1TextandroidTextAttrChanged);
+            androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.specialJunkPacket2Text, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, specialJunkPacket2TextandroidTextAttrChanged);
+            androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.specialJunkPacket3Text, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, specialJunkPacket3TextandroidTextAttrChanged);
+            androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.specialJunkPacket4Text, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, specialJunkPacket4TextandroidTextAttrChanged);
+            androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.specialJunkPacket5Text, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, specialJunkPacket5TextandroidTextAttrChanged);
+            androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.transportPacketJunkSizeText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, transportPacketJunkSizeTextandroidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.transportPacketMagicHeaderText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, transportPacketMagicHeaderTextandroidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.underloadPacketMagicHeaderText, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, underloadPacketMagicHeaderTextandroidTextAttrChanged);
         }
-        if ((dirtyFlags & 0x400212L) != 0) {
+        if ((dirtyFlags & 0x200000212L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.addressesLabelText, configInterfaceAddresses);
         }
-        if ((dirtyFlags & 0x400812L) != 0) {
+        if ((dirtyFlags & 0x220000012L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.controlledJunkPacket1Text, configInterfaceControlledJunkPacket1);
+        }
+        if ((dirtyFlags & 0x240000012L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.controlledJunkPacket2Text, configInterfaceControlledJunkPacket2);
+        }
+        if ((dirtyFlags & 0x280000012L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.controlledJunkPacket3Text, configInterfaceControlledJunkPacket3);
+        }
+        if ((dirtyFlags & 0x200040012L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.cookieReplyPacketJunkSizeText, configInterfaceCookieReplyPacketJunkSize);
+        }
+        if ((dirtyFlags & 0x200000812L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.dnsServersText, configInterfaceDnsServers);
         }
-        if ((dirtyFlags & 0x410012L) != 0) {
+        if ((dirtyFlags & 0x200010012L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.initPacketJunkSizeText, configInterfaceInitPacketJunkSize);
         }
-        if ((dirtyFlags & 0x440012L) != 0) {
+        if ((dirtyFlags & 0x200100012L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.initPacketMagicHeaderText, configInterfaceInitPacketMagicHeader);
         }
-        if ((dirtyFlags & 0x400040L) != 0) {
+        if ((dirtyFlags & 0x200000040L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.interfaceNameText, name);
         }
-        if ((dirtyFlags & 0x402012L) != 0) {
+        if ((dirtyFlags & 0x300000012L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.itimeText, configInterfaceItimeSeconds);
+        }
+        if ((dirtyFlags & 0x200002012L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.junkPacketCountText, configInterfaceJunkPacketCount);
         }
-        if ((dirtyFlags & 0x408012L) != 0) {
+        if ((dirtyFlags & 0x200008012L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.junkPacketMaxSizeText, configInterfaceJunkPacketMaxSize);
         }
-        if ((dirtyFlags & 0x404012L) != 0) {
+        if ((dirtyFlags & 0x200004012L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.junkPacketMinSizeText, configInterfaceJunkPacketMinSize);
         }
-        if ((dirtyFlags & 0x400412L) != 0) {
+        if ((dirtyFlags & 0x200000412L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.listenPortText, configInterfaceListenPort);
         }
-        if ((dirtyFlags & 0x401012L) != 0) {
+        if ((dirtyFlags & 0x200001012L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.mtuText, configInterfaceMtu);
         }
-        if ((dirtyFlags & 0x400034L) != 0) {
+        if ((dirtyFlags & 0x200000034L) != 0) {
             // api target 1
 
             pw.idrug.connections.databinding.BindingAdapters.setItems(this.peersLayout, this.mOldConfigPeers, this.mOldAndroidLayoutTunnelEditorPeer, this.mOldFragment, configPeers, R.layout.tunnel_editor_peer, fragment);
         }
-        if ((dirtyFlags & 0x400020L) != 0) {
+        if ((dirtyFlags & 0x200000020L) != 0) {
             // api target 1
 
             this.privateKeyText.setOnClickListener(fragmentOnKeyClickAndroidViewViewOnClickListener);
             pw.idrug.connections.databinding.BindingAdapters.setOnFocusChange(this.privateKeyText, fragmentOnKeyFocusChangeAndroidViewViewOnFocusChangeListener);
             this.setExcludedApplications.setOnClickListener(fragmentOnRequestSetExcludedIncludedApplicationsAndroidViewViewOnClickListener);
         }
-        if ((dirtyFlags & 0x400092L) != 0) {
+        if ((dirtyFlags & 0x200000092L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.privateKeyText, configInterfacePrivateKey);
         }
-        if ((dirtyFlags & 0x400112L) != 0) {
+        if ((dirtyFlags & 0x200000112L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.publicKeyText, configInterfacePublicKey);
         }
-        if ((dirtyFlags & 0x420012L) != 0) {
+        if ((dirtyFlags & 0x200020012L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.responsePacketJunkSizeText, configInterfaceResponsePacketJunkSize);
         }
-        if ((dirtyFlags & 0x480012L) != 0) {
+        if ((dirtyFlags & 0x200200012L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.responsePacketMagicHeaderText, configInterfaceResponsePacketMagicHeader);
         }
-        if ((dirtyFlags & 0x40001bL) != 0) {
+        if ((dirtyFlags & 0x20000001bL) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.setExcludedApplications, configInterfaceIncludedApplicationsSizeInt0SetExcludedApplicationsAndroidPluralsSetIncludedApplicationsConfigInterfaceIncludedApplicationsSizeConfigInterfaceIncludedApplicationsSizeConfigInterfaceExcludedApplicationsSizeInt0SetExcludedApplicationsAndroidPluralsSetExcludedApplicationsConfigInterfaceExcludedApplicationsSizeConfigInterfaceExcludedApplicationsSizeSetExcludedApplicationsAndroidStringAllApplications);
         }
-        if ((dirtyFlags & 0x600012L) != 0) {
+        if ((dirtyFlags & 0x201000012L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.specialJunkPacket1Text, configInterfaceSpecialJunkPacket1);
+        }
+        if ((dirtyFlags & 0x202000012L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.specialJunkPacket2Text, configInterfaceSpecialJunkPacket2);
+        }
+        if ((dirtyFlags & 0x204000012L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.specialJunkPacket3Text, configInterfaceSpecialJunkPacket3);
+        }
+        if ((dirtyFlags & 0x208000012L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.specialJunkPacket4Text, configInterfaceSpecialJunkPacket4);
+        }
+        if ((dirtyFlags & 0x210000012L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.specialJunkPacket5Text, configInterfaceSpecialJunkPacket5);
+        }
+        if ((dirtyFlags & 0x200080012L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.transportPacketJunkSizeText, configInterfaceTransportPacketJunkSize);
+        }
+        if ((dirtyFlags & 0x200800012L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.transportPacketMagicHeaderText, configInterfaceTransportPacketMagicHeader);
         }
-        if ((dirtyFlags & 0x500012L) != 0) {
+        if ((dirtyFlags & 0x200400012L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.underloadPacketMagicHeaderText, configInterfaceUnderloadPacketMagicHeader);
         }
-        if ((dirtyFlags & 0x400034L) != 0) {
+        if ((dirtyFlags & 0x200000034L) != 0) {
             this.mOldConfigPeers = configPeers;
             this.mOldAndroidLayoutTunnelEditorPeer = R.layout.tunnel_editor_peer;
             this.mOldFragment = fragment;
@@ -1345,15 +2016,26 @@ public class TunnelEditorFragmentBindingImpl extends TunnelEditorFragmentBinding
         flag 15 (0x10L): config.interface.junkPacketMaxSize
         flag 16 (0x11L): config.interface.initPacketJunkSize
         flag 17 (0x12L): config.interface.responsePacketJunkSize
-        flag 18 (0x13L): config.interface.initPacketMagicHeader
-        flag 19 (0x14L): config.interface.responsePacketMagicHeader
-        flag 20 (0x15L): config.interface.underloadPacketMagicHeader
-        flag 21 (0x16L): config.interface.transportPacketMagicHeader
-        flag 22 (0x17L): null
-        flag 23 (0x18L): config.interface.includedApplications.size > 0 ? @android:plurals/set_included_applications : config.interface.excludedApplications.size > 0 ? @android:plurals/set_excluded_applications : @android:string/all_applications
-        flag 24 (0x19L): config.interface.includedApplications.size > 0 ? @android:plurals/set_included_applications : config.interface.excludedApplications.size > 0 ? @android:plurals/set_excluded_applications : @android:string/all_applications
-        flag 25 (0x1aL): config.interface.excludedApplications.size > 0 ? @android:plurals/set_excluded_applications : @android:string/all_applications
-        flag 26 (0x1bL): config.interface.excludedApplications.size > 0 ? @android:plurals/set_excluded_applications : @android:string/all_applications
+        flag 18 (0x13L): config.interface.cookieReplyPacketJunkSize
+        flag 19 (0x14L): config.interface.transportPacketJunkSize
+        flag 20 (0x15L): config.interface.initPacketMagicHeader
+        flag 21 (0x16L): config.interface.responsePacketMagicHeader
+        flag 22 (0x17L): config.interface.underloadPacketMagicHeader
+        flag 23 (0x18L): config.interface.transportPacketMagicHeader
+        flag 24 (0x19L): config.interface.specialJunkPacket1
+        flag 25 (0x1aL): config.interface.specialJunkPacket2
+        flag 26 (0x1bL): config.interface.specialJunkPacket3
+        flag 27 (0x1cL): config.interface.specialJunkPacket4
+        flag 28 (0x1dL): config.interface.specialJunkPacket5
+        flag 29 (0x1eL): config.interface.controlledJunkPacket1
+        flag 30 (0x1fL): config.interface.controlledJunkPacket2
+        flag 31 (0x20L): config.interface.controlledJunkPacket3
+        flag 32 (0x21L): config.interface.itimeSeconds
+        flag 33 (0x22L): null
+        flag 34 (0x23L): config.interface.includedApplications.size > 0 ? @android:plurals/set_included_applications : config.interface.excludedApplications.size > 0 ? @android:plurals/set_excluded_applications : @android:string/all_applications
+        flag 35 (0x24L): config.interface.includedApplications.size > 0 ? @android:plurals/set_included_applications : config.interface.excludedApplications.size > 0 ? @android:plurals/set_excluded_applications : @android:string/all_applications
+        flag 36 (0x25L): config.interface.excludedApplications.size > 0 ? @android:plurals/set_excluded_applications : @android:string/all_applications
+        flag 37 (0x26L): config.interface.excludedApplications.size > 0 ? @android:plurals/set_excluded_applications : @android:string/all_applications
     flag mapping end*/
     //end
 }

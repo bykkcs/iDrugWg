@@ -9,7 +9,8 @@
         <item name="materialCardViewStyle">@style/iDrugConnectionsTheme.MaterialCardView</item>
         <item name="toolbarStyle">@style/iDrugConnectionsTheme.Toolbar</item>
         <item name="bottomSheetDialogTheme">@style/iDrugConnectionsTheme.BottomSheetDialog</item>
-        <item name="android:statusBarColor">@null</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:enforceNavigationBarContrast">false</item>
     </style>
 
@@ -25,7 +26,7 @@
         <item name="android:windowIsFloating">false</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
-    
+
     <style name="NoBackgroundTheme" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -78,6 +79,7 @@
         <item name="android:textColor">?attr/colorOnSurface</item>
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
     </style>
+
     <style name="TvTheme" parent="Theme.Idrug">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

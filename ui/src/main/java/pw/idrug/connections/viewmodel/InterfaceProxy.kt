@@ -89,6 +89,20 @@ class InterfaceProxy : BaseObservable, Parcelable {
         }
 
     @get:Bindable
+    var cookieReplyPacketJunkSize: String = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.cookieReplyPacketJunkSize)
+        }
+
+    @get:Bindable
+    var transportPacketJunkSize: String = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.transportPacketJunkSize)
+        }
+
+    @get:Bindable
     var initPacketMagicHeader: String = ""
         set(value) {
             field = value
@@ -114,6 +128,69 @@ class InterfaceProxy : BaseObservable, Parcelable {
         set(value) {
             field = value
             notifyPropertyChanged(BR.transportPacketMagicHeader)
+        }
+
+    @get:Bindable
+    var specialJunkPacket1: String = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.specialJunkPacket1)
+        }
+
+    @get:Bindable
+    var specialJunkPacket2: String = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.specialJunkPacket2)
+        }
+
+    @get:Bindable
+    var specialJunkPacket3: String = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.specialJunkPacket3)
+        }
+
+    @get:Bindable
+    var specialJunkPacket4: String = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.specialJunkPacket4)
+        }
+
+    @get:Bindable
+    var specialJunkPacket5: String = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.specialJunkPacket5)
+        }
+
+    @get:Bindable
+    var controlledJunkPacket1: String = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.controlledJunkPacket1)
+        }
+
+    @get:Bindable
+    var controlledJunkPacket2: String = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.controlledJunkPacket2)
+        }
+
+    @get:Bindable
+    var controlledJunkPacket3: String = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.controlledJunkPacket3)
+        }
+
+    @get:Bindable
+    var itimeSeconds: String = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.itimeSeconds)
         }
 
     @get:Bindable
@@ -144,10 +221,21 @@ class InterfaceProxy : BaseObservable, Parcelable {
         junkPacketMaxSize = parcel.readString() ?: ""
         initPacketJunkSize = parcel.readString() ?: ""
         responsePacketJunkSize = parcel.readString() ?: ""
+        cookieReplyPacketJunkSize = parcel.readString() ?: ""
+        transportPacketJunkSize = parcel.readString() ?: ""
         initPacketMagicHeader = parcel.readString() ?: ""
         responsePacketMagicHeader = parcel.readString() ?: ""
         underloadPacketMagicHeader = parcel.readString() ?: ""
         transportPacketMagicHeader = parcel.readString() ?: ""
+        specialJunkPacket1 = parcel.readString() ?: ""
+        specialJunkPacket2 = parcel.readString() ?: ""
+        specialJunkPacket3 = parcel.readString() ?: ""
+        specialJunkPacket4 = parcel.readString() ?: ""
+        specialJunkPacket5 = parcel.readString() ?: ""
+        controlledJunkPacket1 = parcel.readString() ?: ""
+        controlledJunkPacket2 = parcel.readString() ?: ""
+        controlledJunkPacket3 = parcel.readString() ?: ""
+        itimeSeconds = parcel.readString() ?: ""
         privateKey = parcel.readString() ?: ""
     }
 
@@ -164,10 +252,21 @@ class InterfaceProxy : BaseObservable, Parcelable {
         junkPacketMaxSize = other.junkPacketMaxSize.map { it.toString() }.orElse("")
         initPacketJunkSize = other.initPacketJunkSize.map { it.toString() }.orElse("")
         responsePacketJunkSize = other.responsePacketJunkSize.map { it.toString() }.orElse("")
+        cookieReplyPacketJunkSize = other.cookieReplyPacketJunkSize.map { it.toString() }.orElse("")
+        transportPacketJunkSize = other.transportPacketJunkSize.map { it.toString() }.orElse("")
         initPacketMagicHeader = other.initPacketMagicHeader.map { it.toString() }.orElse("")
         responsePacketMagicHeader = other.responsePacketMagicHeader.map { it.toString() }.orElse("")
         underloadPacketMagicHeader = other.underloadPacketMagicHeader.map { it.toString() }.orElse("")
         transportPacketMagicHeader = other.transportPacketMagicHeader.map { it.toString() }.orElse("")
+        specialJunkPacket1 = other.getSpecialJunkPacket(1).orElse("")
+        specialJunkPacket2 = other.getSpecialJunkPacket(2).orElse("")
+        specialJunkPacket3 = other.getSpecialJunkPacket(3).orElse("")
+        specialJunkPacket4 = other.getSpecialJunkPacket(4).orElse("")
+        specialJunkPacket5 = other.getSpecialJunkPacket(5).orElse("")
+        controlledJunkPacket1 = other.getControlledJunkPacket(1).orElse("")
+        controlledJunkPacket2 = other.getControlledJunkPacket(2).orElse("")
+        controlledJunkPacket3 = other.getControlledJunkPacket(3).orElse("")
+        itimeSeconds = other.itimeSeconds.map { it.toString() }.orElse("")
         val keyPair = other.keyPair
         privateKey = keyPair.privateKey.toBase64()
     }
@@ -197,10 +296,29 @@ class InterfaceProxy : BaseObservable, Parcelable {
         if (junkPacketMaxSize.isNotEmpty()) builder.parseJunkPacketMaxSize(junkPacketMaxSize)
         if (initPacketJunkSize.isNotEmpty()) builder.parseInitPacketJunkSize(initPacketJunkSize)
         if (responsePacketJunkSize.isNotEmpty()) builder.parseResponsePacketJunkSize(responsePacketJunkSize)
+        val cookieTrimmed = cookieReplyPacketJunkSize.trim()
+        if (cookieTrimmed.isNotEmpty()) builder.parseCookieReplyPacketJunkSize(cookieTrimmed) else builder.setCookieReplyPacketJunkSize(0)
+        val transportTrimmed = transportPacketJunkSize.trim()
+        if (transportTrimmed.isNotEmpty()) builder.parseTransportPacketJunkSize(transportTrimmed) else builder.setTransportPacketJunkSize(0)
         if (initPacketMagicHeader.isNotEmpty()) builder.parseInitPacketMagicHeader(initPacketMagicHeader)
         if (responsePacketMagicHeader.isNotEmpty()) builder.parseResponsePacketMagicHeader(responsePacketMagicHeader)
         if (underloadPacketMagicHeader.isNotEmpty()) builder.parseUnderloadPacketMagicHeader(underloadPacketMagicHeader)
         if (transportPacketMagicHeader.isNotEmpty()) builder.parseTransportPacketMagicHeader(transportPacketMagicHeader)
+        builder.setSpecialJunkPacket(1, specialJunkPacket1.trim().takeUnless { it.isEmpty() })
+        builder.setSpecialJunkPacket(2, specialJunkPacket2.trim().takeUnless { it.isEmpty() })
+        builder.setSpecialJunkPacket(3, specialJunkPacket3.trim().takeUnless { it.isEmpty() })
+        builder.setSpecialJunkPacket(4, specialJunkPacket4.trim().takeUnless { it.isEmpty() })
+        builder.setSpecialJunkPacket(5, specialJunkPacket5.trim().takeUnless { it.isEmpty() })
+        builder.setControlledJunkPacket(1, controlledJunkPacket1.trim().takeUnless { it.isEmpty() })
+        builder.setControlledJunkPacket(2, controlledJunkPacket2.trim().takeUnless { it.isEmpty() })
+        builder.setControlledJunkPacket(3, controlledJunkPacket3.trim().takeUnless { it.isEmpty() })
+        val itimeValue = itimeSeconds.trim()
+        if (itimeValue.isNotEmpty()) {
+            builder.parseItime(itimeValue)
+        } else {
+            val noItime: Int? = null
+            builder.setItimeSeconds(noItime)
+        }
         if (privateKey.isNotEmpty()) builder.parsePrivateKey(privateKey)
         return builder.build()
     }
@@ -217,10 +335,21 @@ class InterfaceProxy : BaseObservable, Parcelable {
         dest.writeString(junkPacketMaxSize)
         dest.writeString(initPacketJunkSize)
         dest.writeString(responsePacketJunkSize)
+        dest.writeString(cookieReplyPacketJunkSize)
+        dest.writeString(transportPacketJunkSize)
         dest.writeString(initPacketMagicHeader)
         dest.writeString(responsePacketMagicHeader)
         dest.writeString(underloadPacketMagicHeader)
         dest.writeString(transportPacketMagicHeader)
+        dest.writeString(specialJunkPacket1)
+        dest.writeString(specialJunkPacket2)
+        dest.writeString(specialJunkPacket3)
+        dest.writeString(specialJunkPacket4)
+        dest.writeString(specialJunkPacket5)
+        dest.writeString(controlledJunkPacket1)
+        dest.writeString(controlledJunkPacket2)
+        dest.writeString(controlledJunkPacket3)
+        dest.writeString(itimeSeconds)
         dest.writeString(privateKey)
     }
 

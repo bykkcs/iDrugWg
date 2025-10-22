@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import com.google.android.material.card.MaterialCardView;
 import java.lang.Deprecated;
 import java.lang.Object;
 import pw.idrug.connections.R;
@@ -20,10 +21,16 @@ import pw.idrug.connections.widget.ToggleSwitch;
 
 public abstract class TunnelListItemBinding extends ViewDataBinding {
   @NonNull
-  public final MultiselectableRelativeLayout tunnelListItem;
+  public final MaterialCardView tunnelCard;
+
+  @NonNull
+  public final MultiselectableRelativeLayout tunnelContainer;
 
   @NonNull
   public final TextView tunnelName;
+
+  @NonNull
+  public final TextView tunnelPing;
 
   @NonNull
   public final ToggleSwitch tunnelSwitch;
@@ -41,11 +48,13 @@ public abstract class TunnelListItemBinding extends ViewDataBinding {
   protected TunnelListFragment mFragment;
 
   protected TunnelListItemBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      MultiselectableRelativeLayout tunnelListItem, TextView tunnelName,
-      ToggleSwitch tunnelSwitch) {
+      MaterialCardView tunnelCard, MultiselectableRelativeLayout tunnelContainer,
+      TextView tunnelName, TextView tunnelPing, ToggleSwitch tunnelSwitch) {
     super(_bindingComponent, _root, _localFieldCount);
-    this.tunnelListItem = tunnelListItem;
+    this.tunnelCard = tunnelCard;
+    this.tunnelContainer = tunnelContainer;
     this.tunnelName = tunnelName;
+    this.tunnelPing = tunnelPing;
     this.tunnelSwitch = tunnelSwitch;
   }
 

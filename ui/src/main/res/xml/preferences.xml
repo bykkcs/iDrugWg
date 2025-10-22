@@ -34,6 +34,15 @@
         android:defaultValue="false"
         app:widgetLayout="@layout/preference_widget_material_switch" />
 
+    <androidx.preference.SwitchPreferenceCompat
+        android:defaultValue="true"
+        android:key="enable_notification"
+        android:singleLineTitle="false"
+        android:summaryOff="@string/enable_notification_summary_off"
+        android:summaryOn="@string/enable_notification_summary_on"
+        android:title="@string/enable_notification_title"
+        app:widgetLayout="@layout/preference_widget_material_switch" />
+
     <!--
     <CheckBoxPreference
         android:defaultValue="false"
