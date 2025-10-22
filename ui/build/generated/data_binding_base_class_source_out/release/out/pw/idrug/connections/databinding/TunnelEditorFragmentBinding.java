@@ -32,6 +32,30 @@ public abstract class TunnelEditorFragmentBinding extends ViewDataBinding {
   public final TextInputEditText addressesLabelText;
 
   @NonNull
+  public final TextInputLayout controlledJunkPacket1Layout;
+
+  @NonNull
+  public final TextInputEditText controlledJunkPacket1Text;
+
+  @NonNull
+  public final TextInputLayout controlledJunkPacket2Layout;
+
+  @NonNull
+  public final TextInputEditText controlledJunkPacket2Text;
+
+  @NonNull
+  public final TextInputLayout controlledJunkPacket3Layout;
+
+  @NonNull
+  public final TextInputEditText controlledJunkPacket3Text;
+
+  @NonNull
+  public final TextInputLayout cookieReplyPacketJunkSizeLayout;
+
+  @NonNull
+  public final TextInputEditText cookieReplyPacketJunkSizeText;
+
+  @NonNull
   public final TextInputLayout dnsServersLabelLayout;
 
   @NonNull
@@ -57,6 +81,12 @@ public abstract class TunnelEditorFragmentBinding extends ViewDataBinding {
 
   @NonNull
   public final MaterialTextView interfaceTitle;
+
+  @NonNull
+  public final TextInputLayout itimeLayout;
+
+  @NonNull
+  public final TextInputEditText itimeText;
 
   @NonNull
   public final TextInputLayout junkPacketCountLayout;
@@ -122,6 +152,42 @@ public abstract class TunnelEditorFragmentBinding extends ViewDataBinding {
   public final MaterialButton setExcludedApplications;
 
   @NonNull
+  public final TextInputLayout specialJunkPacket1Layout;
+
+  @NonNull
+  public final TextInputEditText specialJunkPacket1Text;
+
+  @NonNull
+  public final TextInputLayout specialJunkPacket2Layout;
+
+  @NonNull
+  public final TextInputEditText specialJunkPacket2Text;
+
+  @NonNull
+  public final TextInputLayout specialJunkPacket3Layout;
+
+  @NonNull
+  public final TextInputEditText specialJunkPacket3Text;
+
+  @NonNull
+  public final TextInputLayout specialJunkPacket4Layout;
+
+  @NonNull
+  public final TextInputEditText specialJunkPacket4Text;
+
+  @NonNull
+  public final TextInputLayout specialJunkPacket5Layout;
+
+  @NonNull
+  public final TextInputEditText specialJunkPacket5Text;
+
+  @NonNull
+  public final TextInputLayout transportPacketJunkSizeLayout;
+
+  @NonNull
+  public final TextInputEditText transportPacketJunkSizeText;
+
+  @NonNull
   public final TextInputLayout transportPacketMagicHeaderLayout;
 
   @NonNull
@@ -144,11 +210,16 @@ public abstract class TunnelEditorFragmentBinding extends ViewDataBinding {
 
   protected TunnelEditorFragmentBinding(Object _bindingComponent, View _root, int _localFieldCount,
       MaterialButton addPeerButton, TextInputLayout addressesLabelLayout,
-      TextInputEditText addressesLabelText, TextInputLayout dnsServersLabelLayout,
+      TextInputEditText addressesLabelText, TextInputLayout controlledJunkPacket1Layout,
+      TextInputEditText controlledJunkPacket1Text, TextInputLayout controlledJunkPacket2Layout,
+      TextInputEditText controlledJunkPacket2Text, TextInputLayout controlledJunkPacket3Layout,
+      TextInputEditText controlledJunkPacket3Text, TextInputLayout cookieReplyPacketJunkSizeLayout,
+      TextInputEditText cookieReplyPacketJunkSizeText, TextInputLayout dnsServersLabelLayout,
       TextInputEditText dnsServersText, TextInputLayout initPacketJunkSizeLayout,
       TextInputEditText initPacketJunkSizeText, TextInputLayout initPacketMagicHeaderLayout,
       TextInputEditText initPacketMagicHeaderText, TextInputLayout interfaceNameLayout,
       TextInputEditText interfaceNameText, MaterialTextView interfaceTitle,
+      TextInputLayout itimeLayout, TextInputEditText itimeText,
       TextInputLayout junkPacketCountLayout, TextInputEditText junkPacketCountText,
       TextInputLayout junkPacketMaxSizeLayout, TextInputEditText junkPacketMaxSizeText,
       TextInputLayout junkPacketMinSizeLayout, TextInputEditText junkPacketMinSizeText,
@@ -159,6 +230,12 @@ public abstract class TunnelEditorFragmentBinding extends ViewDataBinding {
       TextInputEditText publicKeyText, TextInputLayout responsePacketJunkSizeLayout,
       TextInputEditText responsePacketJunkSizeText, TextInputLayout responsePacketMagicHeaderLayout,
       TextInputEditText responsePacketMagicHeaderText, MaterialButton setExcludedApplications,
+      TextInputLayout specialJunkPacket1Layout, TextInputEditText specialJunkPacket1Text,
+      TextInputLayout specialJunkPacket2Layout, TextInputEditText specialJunkPacket2Text,
+      TextInputLayout specialJunkPacket3Layout, TextInputEditText specialJunkPacket3Text,
+      TextInputLayout specialJunkPacket4Layout, TextInputEditText specialJunkPacket4Text,
+      TextInputLayout specialJunkPacket5Layout, TextInputEditText specialJunkPacket5Text,
+      TextInputLayout transportPacketJunkSizeLayout, TextInputEditText transportPacketJunkSizeText,
       TextInputLayout transportPacketMagicHeaderLayout,
       TextInputEditText transportPacketMagicHeaderText,
       TextInputLayout underloadPacketMagicHeaderLayout,
@@ -167,6 +244,14 @@ public abstract class TunnelEditorFragmentBinding extends ViewDataBinding {
     this.addPeerButton = addPeerButton;
     this.addressesLabelLayout = addressesLabelLayout;
     this.addressesLabelText = addressesLabelText;
+    this.controlledJunkPacket1Layout = controlledJunkPacket1Layout;
+    this.controlledJunkPacket1Text = controlledJunkPacket1Text;
+    this.controlledJunkPacket2Layout = controlledJunkPacket2Layout;
+    this.controlledJunkPacket2Text = controlledJunkPacket2Text;
+    this.controlledJunkPacket3Layout = controlledJunkPacket3Layout;
+    this.controlledJunkPacket3Text = controlledJunkPacket3Text;
+    this.cookieReplyPacketJunkSizeLayout = cookieReplyPacketJunkSizeLayout;
+    this.cookieReplyPacketJunkSizeText = cookieReplyPacketJunkSizeText;
     this.dnsServersLabelLayout = dnsServersLabelLayout;
     this.dnsServersText = dnsServersText;
     this.initPacketJunkSizeLayout = initPacketJunkSizeLayout;
@@ -176,6 +261,8 @@ public abstract class TunnelEditorFragmentBinding extends ViewDataBinding {
     this.interfaceNameLayout = interfaceNameLayout;
     this.interfaceNameText = interfaceNameText;
     this.interfaceTitle = interfaceTitle;
+    this.itimeLayout = itimeLayout;
+    this.itimeText = itimeText;
     this.junkPacketCountLayout = junkPacketCountLayout;
     this.junkPacketCountText = junkPacketCountText;
     this.junkPacketMaxSizeLayout = junkPacketMaxSizeLayout;
@@ -197,6 +284,18 @@ public abstract class TunnelEditorFragmentBinding extends ViewDataBinding {
     this.responsePacketMagicHeaderLayout = responsePacketMagicHeaderLayout;
     this.responsePacketMagicHeaderText = responsePacketMagicHeaderText;
     this.setExcludedApplications = setExcludedApplications;
+    this.specialJunkPacket1Layout = specialJunkPacket1Layout;
+    this.specialJunkPacket1Text = specialJunkPacket1Text;
+    this.specialJunkPacket2Layout = specialJunkPacket2Layout;
+    this.specialJunkPacket2Text = specialJunkPacket2Text;
+    this.specialJunkPacket3Layout = specialJunkPacket3Layout;
+    this.specialJunkPacket3Text = specialJunkPacket3Text;
+    this.specialJunkPacket4Layout = specialJunkPacket4Layout;
+    this.specialJunkPacket4Text = specialJunkPacket4Text;
+    this.specialJunkPacket5Layout = specialJunkPacket5Layout;
+    this.specialJunkPacket5Text = specialJunkPacket5Text;
+    this.transportPacketJunkSizeLayout = transportPacketJunkSizeLayout;
+    this.transportPacketJunkSizeText = transportPacketJunkSizeText;
     this.transportPacketMagicHeaderLayout = transportPacketMagicHeaderLayout;
     this.transportPacketMagicHeaderText = transportPacketMagicHeaderText;
     this.underloadPacketMagicHeaderLayout = underloadPacketMagicHeaderLayout;

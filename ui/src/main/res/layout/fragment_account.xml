@@ -10,147 +10,283 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:padding="16dp">
+        android:fillViewport="true">
 
         <LinearLayout
             android:id="@+id/root_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:padding="16dp"
+            android:gravity="center_horizontal"
+            android:dividerPadding="16dp">
 
-            <ImageView
-                android:id="@+id/avatar_image"
-                android:layout_width="84dp"
-                android:layout_height="84dp"
-                android:src="@drawable/ic_avatar_placeholder"
-                android:background="@drawable/avatar_circle_white"
-                android:layout_gravity="center"
-                android:layout_marginBottom="12dp"
-                android:scaleType="centerCrop" />
-
-            <TextView
-                android:id="@+id/text_current_user"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/login_via_telegram_title"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingBottom="16dp"
-                android:gravity="center" />
-
-            <Button
-                android:id="@+id/btn_login_telegram"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_login"
+                style="@style/Widget.Material3.CardView.Elevated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/login_via_telegram" />
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="24dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
-
-                <Button
-                    android:id="@+id/btn_link_device"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:text="@string/link_device" />
-
-                <Button
-                    android:id="@+id/btn_logout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:text="@string/logout"
-                    android:visibility="gone" />
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/qr_code_image"
-                android:layout_width="220dp"
-                android:layout_height="220dp"
-                android:layout_marginTop="12dp"
-                android:visibility="gone"
-                android:contentDescription="QR code for login"
-                android:scaleType="fitCenter"
-                android:background="@android:color/transparent" />
-
-            <!-- ====== REPLACED SPINNER WITH MATERIAL 3 EXPOSED DROPDOWN ====== -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/server_dropdown_container"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:boxCornerRadiusTopStart="28dp"
-                app:boxCornerRadiusTopEnd="28dp"
-                app:boxCornerRadiusBottomStart="28dp"
-                app:boxCornerRadiusBottomEnd="28dp"
-                app:hintEnabled="true">
-
-                <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                    android:id="@+id/dropdown_server"
-                    style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/choose_server"
-                    android:inputType="none"
-                    android:imeOptions="flagNoExtractUi"
-                    android:importantForAutofill="no"
-                    android:focusable="true"
-                    android:clickable="true" />
-            </com.google.android.material.textfield.TextInputLayout>
-            <!-- ============================================================ -->
+                    android:orientation="vertical"
+                    android:padding="24dp">
 
-            <Button
-                android:id="@+id/btn_download"
+                    <ImageView
+                        android:id="@+id/login_illustration"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_avatar_placeholder"
+                        android:background="@drawable/avatar_circle_white"
+                        android:scaleType="centerCrop"
+                        android:padding="8dp" />
+
+                    <TextView
+                        android:id="@+id/text_login_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/login_via_telegram_title"
+                        android:textAlignment="center"
+                        android:textAppearance="?attr/textAppearanceHeadlineSmall" />
+
+                    <TextView
+                        android:id="@+id/text_login_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/login_via_telegram_description"
+                        android:textAlignment="center"
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_login_telegram"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:text="@string/login_via_telegram"
+                        app:cornerRadius="28dp" />
+
+                    <ImageView
+                        android:id="@+id/qr_code_image"
+                        android:layout_width="220dp"
+                        android:layout_height="220dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="16dp"
+                        android:contentDescription="@string/qr_code_content_description"
+                        android:scaleType="fitCenter"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_profile"
+                style="@style/Widget.Material3.CardView.Filled"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/download_config"
-                android:layout_marginTop="8dp"
-                android:visibility="gone" />
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                app:cardCornerRadius="24dp">
 
-            <Button
-                android:id="@+id/btn_renew"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/avatar_image"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
+                            android:background="@drawable/avatar_circle_white"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_avatar_placeholder" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/text_current_user"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                                android:textStyle="bold"
+                                android:text="@string/login_via_telegram_title" />
+
+                            <TextView
+                            android:id="@+id/text_expiration"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="@dimen/account_subscriptions_min_height"
+                            android:layout_marginTop="4dp"
+                            android:textAppearance="?attr/textAppearanceBodyMedium"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            android:text="" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_link_device"
+                            style="@style/Widget.MaterialComponents.Button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="12dp"
+                            android:minWidth="0dp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:text="@string/link_device"
+                            app:cornerRadius="28dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_referral"
+                            style="@style/Widget.MaterialComponents.Button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:minWidth="0dp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:text="@string/referral_link"
+                            app:cornerRadius="28dp" />
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_logout"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:text="@string/logout"
+                        app:cornerRadius="28dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_connection"
+                style="@style/Widget.Material3.CardView.Filled"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/renew_subscription"
-                android:layout_marginTop="8dp"
-                android:visibility="gone" />
+                android:visibility="gone"
+                app:cardCornerRadius="24dp">
 
-            <Button
-                android:id="@+id/btn_referral"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/referral_link"
-                android:layout_marginTop="8dp"
-                android:visibility="gone" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
 
-            <TextView
-                android:id="@+id/status_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="@android:color/holo_red_dark"
-                android:textSize="15sp"
-                android:gravity="center"
-                android:paddingTop="16dp" />
+                    <TextView
+                        android:id="@+id/text_connection_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/account_connection_section_title"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/text_expiration"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="14sp"
-                android:gravity="center"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/server_dropdown_container"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:boxCornerRadiusTopStart="24dp"
+                        app:boxCornerRadiusTopEnd="24dp"
+                        app:boxCornerRadiusBottomStart="24dp"
+                        app:boxCornerRadiusBottomEnd="24dp"
+                        app:hintEnabled="true">
+
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/dropdown_server"
+                            style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/choose_server"
+                            android:inputType="none"
+                            android:imeOptions="flagNoExtractUi"
+                            android:importantForAutofill="no"
+                            android:focusable="true"
+                            android:clickable="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_download"
+                            style="@style/Widget.MaterialComponents.Button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="12dp"
+                            android:layout_weight="1"
+                            android:minWidth="0dp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:text="@string/download_config"
+                            app:cornerRadius="28dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_renew"
+                            style="@style/Widget.MaterialComponents.Button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:minWidth="0dp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:text="@string/renew_subscription"
+                            app:cornerRadius="28dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/status_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text=""
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="?attr/colorError" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </ScrollView>
 

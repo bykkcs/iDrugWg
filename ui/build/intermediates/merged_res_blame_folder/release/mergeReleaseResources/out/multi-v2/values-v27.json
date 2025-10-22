@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-62:/values-v27/values-v27.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-64:/values-v27/values-v27.xml",
             "map": [
                 {
                     "source": "/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/res/values-v27/styles.xml",
@@ -11,7 +11,7 @@
                         "startOffsets": "115",
                         "endLines": "9",
                         "endColumns": "12",
-                        "endOffsets": "568"
+                        "endOffsets": "572"
                     },
                     "to": {
                         "startLines": "2",
@@ -19,31 +19,7 @@
                         "startOffsets": "55",
                         "endLines": "8",
                         "endColumns": "12",
-                        "endOffsets": "508"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/home/bykk/.gradle/daemon/8.5/pw.idrug.connections.ui-mergeReleaseResources-62:/values-v27/values-v27.xml",
-            "map": [
-                {
-                    "source": "/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/res/values-v27/styles.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "115",
-                        "endLines": "8",
-                        "endColumns": "12",
-                        "endOffsets": "497"
-                    },
-                    "to": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "7",
-                        "endColumns": "12",
-                        "endOffsets": "437"
+                        "endOffsets": "512"
                     }
                 }
             ]

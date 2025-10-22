@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/onboarding_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
     android:orientation="vertical">
 
     <FrameLayout
+        android:id="@+id/onboarding_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingTop="16dp">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:clipToPadding="false" />
 
         <TextView
             android:id="@+id/error_text"
@@ -23,10 +29,19 @@
             android:visibility="gone" />
     </FrameLayout>
 
-    <Button
-        android:id="@+id/btn_next"
+    <FrameLayout
+        android:id="@+id/onboarding_button_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/onboarding_next" />
+        android:clipToPadding="false"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/onboarding_next" />
+    </FrameLayout>
 
 </LinearLayout>

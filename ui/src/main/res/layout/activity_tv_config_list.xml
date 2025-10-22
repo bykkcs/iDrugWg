@@ -1,20 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="32dp">
 
     <TextView
-        android:id="@+id/empty_view"
+        android:id="@+id/config_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/no_configs"
-        android:visibility="gone"
-        android:layout_gravity="center_horizontal" />
+        android:text="@string/tv_config_title"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/tv_text_primary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/config_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+    <TextView
+        android:id="@+id/config_subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/tv_config_subtitle"
+        android:textSize="18sp"
+        android:textColor="@color/tv_text_secondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/config_title" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/list_card"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="32dp"
+        app:cardCornerRadius="28dp"
+        app:cardUseCompatPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/config_subtitle"
+        app:layout_constraintWidth_percent="0.8">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="28dp">
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_auto_connect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_auto_connect"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:layout_marginBottom="12dp" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_route_youtube"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_route_youtube"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:layout_marginBottom="20dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/config_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:paddingBottom="12dp"
+                    android:overScrollMode="never" />
+
+                <LinearLayout
+                    android:id="@+id/empty_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="24dp"
+                    android:visibility="gone">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:alpha="0.25"
+                        android:src="@drawable/ic_icon" />
+
+                    <TextView
+                        android:id="@+id/empty_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/no_configs"
+                        android:textAppearance="?attr/textAppearanceBodyLarge" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,8 @@ package pw.idrug.connections.dialog
 
 import android.app.Dialog
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.WindowCompat
@@ -12,13 +14,21 @@ import pw.idrug.connections.activity.MainActivity
 
 class LoadingDialogFragment : DialogFragment() {
 
+    private val handler = Handler(Looper.getMainLooper())
+    private val autoDismissRunnable = Runnable {
+        if (isAdded && dialog?.isShowing == true) {
+            dismissAllowingStateLoss()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         isCancelable = false
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_loading_indicator, null, false)
+        val view = LayoutInflater.from(requireContext())
+            .inflate(R.layout.dialog_loading_indicator, null, false)
         return MaterialAlertDialogBuilder(requireContext(), R.style.MonetAlertDialog)
             .setView(view)
             .create().apply {
@@ -30,8 +40,17 @@ class LoadingDialogFragment : DialogFragment() {
     override fun onStart() {
         super.onStart()
         applyNavigationBarColor()
+        // Запускаем авто-закрытие через 3 секунд
+        handler.postDelayed(autoDismissRunnable, 3000)
     }
 
+    override fun onStop() {
+        super.onStop()
+        // Отменяем таймер, если диалог закрылся раньше
+        handler.removeCallbacks(autoDismissRunnable)
+    }
+
+    @Suppress("DEPRECATION")
     private fun applyNavigationBarColor() {
         val activity = activity as? MainActivity ?: return
         activity.refreshSystemNavigationBarColor()
@@ -56,5 +75,4 @@ class LoadingDialogFragment : DialogFragment() {
             (manager.findFragmentByTag(TAG) as? LoadingDialogFragment)?.dismissAllowingStateLoss()
         }
     }
-
 }

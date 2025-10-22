@@ -1,6 +1,5 @@
 -keep class j$.time.Duration {
   public static j$.time.Duration between(j$.time.temporal.Temporal,j$.time.temporal.Temporal);
-  public static j$.time.Duration ofMillis(long);
   public long toMillis();
   public long toMinutes();
 }
@@ -15,10 +14,6 @@
 }
 -keep class j$.time.OffsetDateTime {
   public j$.time.LocalDateTime toLocalDateTime();
-}
--keep class j$.time.TimeConversions {
-  public static java.time.Duration convert(j$.time.Duration);
-  public static j$.time.Duration convert(java.time.Duration);
 }
 -keep class j$.time.ZoneOffset {
   j$.time.ZoneOffset UTC;

@@ -1,11 +1,15 @@
 package pw.idrug.connections.speedtest
 
 import android.os.SystemClock
+import android.util.Log
 import java.io.IOException
+import java.net.InetSocketAddress
+import java.net.Socket
 import java.security.SecureRandom
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.round
+import kotlin.math.roundToInt
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -31,17 +35,45 @@ class SpeedTestService(
             .newRequestBuilder("speed/ping")
             .get()
             .build()
-        val start = SystemClock.elapsedRealtime()
-        return executeCall(KEY_PING, request, rateLimit = false) { _, response ->
-            val elapsed = max(0L, SystemClock.elapsedRealtime() - start)
-            val json = response.useBodyAsJson()
-            val pong = json.optBoolean("pong", false)
-            val timestamp = json.optLong("ts", 0L).takeIf { it != 0L }
-            SpeedTestPingResult(
-                rttMillis = elapsed,
-                pong = pong,
-                serverTimestamp = timestamp
-            )
+        val url = request.url
+        val host = url.host
+        val port = url.port
+
+        return withContext(Dispatchers.IO) {
+            val samples = mutableListOf<Int>()
+            repeat(3) { attempt ->
+                val latency = try {
+                    Socket().use { socket ->
+                        val address = InetSocketAddress(host, port)
+                        socket.soTimeout = PING_SOCKET_TIMEOUT_MS
+                        val start = SystemClock.elapsedRealtimeNanos()
+                        socket.connect(address, PING_CONNECT_TIMEOUT_MS)
+                        val output = socket.getOutputStream()
+                        output.write(byteArrayOf(0))
+                        output.flush()
+                        val end = SystemClock.elapsedRealtimeNanos()
+                        val latencyMs = ((end - start) / 1_000_000.0).roundToInt().coerceAtLeast(0)
+                        Log.d(PING_LOG_TAG, "Accurate ping $host:$port = ${latencyMs} ms")
+                        latencyMs
+                    }
+                } catch (ex: Exception) {
+                    Log.w(PING_LOG_TAG, "Ping attempt ${attempt + 1} failed for $host:$port", ex)
+                    null
+                }
+                if (latency != null && latency > 0) {
+                    samples += latency
+                }
+            }
+            val best = samples.minOrNull()
+            if (best != null) {
+                SpeedTestPingResult(
+                    rttMillis = best.toLong(),
+                    pong = true,
+                    serverTimestamp = null
+                )
+            } else {
+                throw SpeedTestException("TCP ping failed for $host:$port")
+            }
         }
     }
 
@@ -76,7 +108,7 @@ class SpeedTestService(
             .build()
         return executeCall(KEY_META, request, rateLimit = false) { _, response ->
             val json = response.useBodyAsJson()
-            val version = json.optString("version", null)
+            val version = json.optString("version", "").ifBlank { null }
             val limits = mutableMapOf<String, Any?>()
             json.optJSONObject("limits")?.let { limitsJson ->
                 limitsJson.keys().forEach { key ->
@@ -229,5 +261,8 @@ class SpeedTestService(
         private const val KEY_UPLOAD = "upload"
         private const val KEY_META = "meta"
         private const val KEY_HEALTH = "health"
+        private const val PING_CONNECT_TIMEOUT_MS = 2000
+        private const val PING_SOCKET_TIMEOUT_MS = 2000
+        private const val PING_LOG_TAG = "Ping"
     }
 }

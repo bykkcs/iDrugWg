@@ -69,6 +69,7 @@ class SlashDrawable(private val mDrawable: Drawable) : Drawable() {
 
     override fun getIntrinsicWidth() = mDrawable.intrinsicWidth
 
+    @Deprecated("Deprecated in Android SDK")
     override fun getOpacity() = PixelFormat.OPAQUE
 
     override fun onBoundsChange(bounds: Rect) {
@@ -87,6 +88,7 @@ class SlashDrawable(private val mDrawable: Drawable) : Drawable() {
         mAnimationEnabled = enabled
     }
 
+    @Deprecated("Deprecated in Android SDK")
     override fun setColorFilter(colorFilter: ColorFilter?) {
         mDrawable.colorFilter = colorFilter
         mPaint.colorFilter = colorFilter

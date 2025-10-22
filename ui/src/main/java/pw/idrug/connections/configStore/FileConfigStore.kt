@@ -55,7 +55,13 @@ class FileConfigStore(private val context: Context) : ConfigStore {
 
     @Throws(BadConfigException::class, IOException::class)
     override fun load(name: String): Config {
-        FileInputStream(fileFor(name)).use { stream -> return Config.parse(stream) }
+        try {
+            FileInputStream(fileFor(name)).use { stream -> return Config.parse(stream) }
+        } catch (e: BadConfigException) {
+            Log.e(TAG, "Corrupted config detected for $name", e)
+            // Логируем битый конфиг — дальше TunnelManager снимет его из автозапуска.
+            throw e
+        }
     }
 
     @Throws(IOException::class)

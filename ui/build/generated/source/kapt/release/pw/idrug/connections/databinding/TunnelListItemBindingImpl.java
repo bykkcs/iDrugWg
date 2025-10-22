@@ -13,7 +13,9 @@ public class TunnelListItemBindingImpl extends TunnelListItemBinding  {
     private static final android.util.SparseIntArray sViewsWithIds;
     static {
         sIncludes = null;
-        sViewsWithIds = null;
+        sViewsWithIds = new android.util.SparseIntArray();
+        sViewsWithIds.put(R.id.tunnel_container, 3);
+        sViewsWithIds.put(R.id.tunnel_ping, 4);
     }
     // views
     // variables
@@ -23,15 +25,17 @@ public class TunnelListItemBindingImpl extends TunnelListItemBinding  {
     // Inverse Binding Event Handlers
 
     public TunnelListItemBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 3, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 5, sIncludes, sViewsWithIds));
     }
     private TunnelListItemBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 2
-            , (pw.idrug.connections.widget.MultiselectableRelativeLayout) bindings[0]
+            , (com.google.android.material.card.MaterialCardView) bindings[0]
+            , (pw.idrug.connections.widget.MultiselectableRelativeLayout) bindings[3]
             , (android.widget.TextView) bindings[1]
+            , (android.widget.TextView) bindings[4]
             , (pw.idrug.connections.widget.ToggleSwitch) bindings[2]
             );
-        this.tunnelListItem.setTag(null);
+        this.tunnelCard.setTag(null);
         this.tunnelName.setTag(null);
         this.tunnelSwitch.setTag(null);
         setRootTag(root);

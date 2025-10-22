@@ -14,12 +14,14 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import android.widget.ProgressBar
+import android.widget.LinearLayout
 import kotlinx.coroutines.launch
 import pw.idrug.connections.R
 import pw.idrug.connections.speedtest.SpeedTestHttpClient
 import pw.idrug.connections.speedtest.SpeedTestStatus
 import pw.idrug.connections.speedtest.SpeedTestUiState
 import pw.idrug.connections.speedtest.SpeedTestViewModel
+import pw.idrug.connections.util.applyNavigationBarAndImePadding
 
 class SpeedTestFragment : Fragment() {
 
@@ -36,6 +38,7 @@ class SpeedTestFragment : Fragment() {
     private lateinit var textUploadValue: TextView
     private lateinit var textError: TextView
     private lateinit var textLastUpdated: TextView
+    private lateinit var buttonContainer: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,6 +84,9 @@ class SpeedTestFragment : Fragment() {
         textUploadValue = view.findViewById(R.id.text_upload_value)
         textError = view.findViewById(R.id.text_error)
         textLastUpdated = view.findViewById(R.id.text_last_updated)
+        buttonContainer = view.findViewById(R.id.speed_test_button_container)
+        val extraSpacing = resources.getDimensionPixelSize(R.dimen.bottom_inset_extra_padding)
+        buttonContainer.applyNavigationBarAndImePadding(extraBottom = extraSpacing)
     }
 
     private fun setupChips() {

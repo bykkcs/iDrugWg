@@ -12,6 +12,7 @@ import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.Deprecated;
 import java.lang.Object;
@@ -30,6 +31,9 @@ public abstract class TunnelListFragmentBinding extends ViewDataBinding {
   public final CoordinatorLayout mainContainer;
 
   @NonNull
+  public final MaterialCardView tunnelCardContainer;
+
+  @NonNull
   public final RecyclerView tunnelList;
 
   @Bindable
@@ -43,11 +47,13 @@ public abstract class TunnelListFragmentBinding extends ViewDataBinding {
 
   protected TunnelListFragmentBinding(Object _bindingComponent, View _root, int _localFieldCount,
       FloatingActionButton createFab, AppCompatImageView logoPlaceholder,
-      CoordinatorLayout mainContainer, RecyclerView tunnelList) {
+      CoordinatorLayout mainContainer, MaterialCardView tunnelCardContainer,
+      RecyclerView tunnelList) {
     super(_bindingComponent, _root, _localFieldCount);
     this.createFab = createFab;
     this.logoPlaceholder = logoPlaceholder;
     this.mainContainer = mainContainer;
+    this.tunnelCardContainer = tunnelCardContainer;
     this.tunnelList = tunnelList;
   }
 

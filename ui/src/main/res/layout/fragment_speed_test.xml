@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/speed_test_scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:clipToPadding="false">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -197,7 +199,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="24dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:id="@+id/speed_test_button_container"
+            android:clipToPadding="false">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_start"
@@ -205,11 +209,18 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:icon="@drawable/ic_speed"
+                android:icon="@drawable/ic_speedtest"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:text="@string/speed_test_start" />
-
+                android:minWidth="0dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="@string/speed_test_start"
+                app:cornerRadius="28dp"
+                app:iconGravity="textStart"
+                app:iconPadding="12dp"
+                app:iconTint="?attr/colorOnPrimary" />
+                
             <View
                 android:layout_width="12dp"
                 android:layout_height="0dp" />
@@ -221,7 +232,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:enabled="false"
-                android:text="@string/speed_test_cancel" />
+                android:minWidth="0dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="@string/speed_test_cancel"
+                app:cornerRadius="28dp" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -26,38 +26,69 @@
             type="pw.idrug.connections.fragment.TunnelListFragment" />
     </data>
 
-    <pw.idrug.connections.widget.MultiselectableRelativeLayout
-        android:id="@+id/tunnel_list_item"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/tunnel_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/list_item_background"
-        android:descendantFocusability="beforeDescendants"
-        android:focusable="true"
-        android:nextFocusRight="@+id/tunnel_switch"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp">
+        android:layout_marginBottom="12dp"
+        android:layout_marginHorizontal="4dp"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="?attr/colorSurface"
+        app:cardCornerRadius="24dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="false"
+        app:strokeWidth="0dp">
 
-        <TextView
-            android:id="@+id/tunnel_name"
-            android:layout_width="wrap_content"
+        <pw.idrug.connections.widget.MultiselectableRelativeLayout
+            android:id="@+id/tunnel_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="@{key}"
-            android:textAppearance="?attr/textAppearanceBodyLarge"
-            tools:text="@sample/interface_names.json/names/names/name" />
+            android:descendantFocusability="beforeDescendants"
+            android:focusable="true"
+            android:minHeight="72dp"
+            android:nextFocusRight="@+id/tunnel_switch"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="14dp">
 
-        <pw.idrug.connections.widget.ToggleSwitch
-            android:id="@+id/tunnel_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:nextFocusLeft="@+id/tunnel_list_item"
-            app:checked="@{item.state == State.UP}"
-            app:onBeforeCheckedChanged="@{fragment::setTunnelState}"
-            tools:checked="@sample/interface_names.json/names/checked/checked" />
-    </pw.idrug.connections.widget.MultiselectableRelativeLayout>
+            <TextView
+                android:id="@+id/tunnel_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_toStartOf="@id/tunnel_switch"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{key}"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textStyle="bold"
+                tools:text="@sample/interface_names.json/names/names/name" />
+
+            <TextView
+                android:id="@+id/tunnel_ping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tunnel_name"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/tunnel_switch"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:visibility="gone"
+                tools:text="45 ms" />
+
+            <pw.idrug.connections.widget.ToggleSwitch
+                android:id="@+id/tunnel_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:nextFocusLeft="@+id/tunnel_container"
+                app:checked="@{item.state == State.UP}"
+                app:onBeforeCheckedChanged="@{fragment::setTunnelState}"
+                tools:checked="@sample/interface_names.json/names/checked/checked" />
+        </pw.idrug.connections.widget.MultiselectableRelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

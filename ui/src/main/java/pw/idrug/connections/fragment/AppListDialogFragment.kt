@@ -27,6 +27,8 @@ import pw.idrug.connections.BR
 import pw.idrug.connections.R
 import pw.idrug.connections.databinding.AppListDialogFragmentBinding
 import pw.idrug.connections.databinding.ObservableKeyedArrayList
+import pw.idrug.connections.databinding.AppListItemBinding
+import pw.idrug.connections.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler
 import pw.idrug.connections.model.ApplicationData
 import pw.idrug.connections.util.ErrorMessages
 import kotlinx.coroutines.Dispatchers
@@ -39,6 +41,34 @@ class AppListDialogFragment : DialogFragment() {
     private var initiallyExcluded = false
     private var selectButton: Button? = null
     private var tabs: TabLayout? = null
+    private var popularCount = 0
+
+    private val headerRowConfigurationHandler = object : RowConfigurationHandler<AppListItemBinding, ApplicationData> {
+        override fun onConfigureRow(binding: AppListItemBinding, item: ApplicationData, position: Int) {
+            val headerView = binding.sectionHeader
+            val context = headerView.context
+            val showPopularHeader = popularCount > 0 && position == 0
+            val showAllHeader = popularCount > 0 && position == popularCount
+            when {
+                showPopularHeader -> {
+                    headerView.text = context.getString(R.string.apps_header_popular)
+                    headerView.visibility = View.VISIBLE
+                }
+                showAllHeader -> {
+                    headerView.text = context.getString(R.string.apps_header_all)
+                    headerView.visibility = View.VISIBLE
+                }
+                position == 0 -> {
+                    headerView.text = context.getString(R.string.apps_header_all)
+                    headerView.visibility = View.VISIBLE
+                }
+                else -> headerView.visibility = View.GONE
+            }
+        }
+    }
+
+    val rowConfigurationHandler: RowConfigurationHandler<AppListItemBinding, ApplicationData>
+        get() = headerRowConfigurationHandler
 
     private fun loadData() {
         val activity = activity ?: return
@@ -53,9 +83,13 @@ class AppListDialogFragment : DialogFragment() {
                         // Only show applications that have launcher activities
                         if (pm.getLaunchIntentForPackage(packageName) == null)
                             return@forEach
-                        val appInfo = it.applicationInfo
-                        val appData =
-                            ApplicationData(appInfo.loadIcon(pm), appInfo.loadLabel(pm).toString(), packageName, currentlySelectedApps.contains(packageName))
+                        val appInfo = it.applicationInfo ?: return@forEach
+                        val appData = ApplicationData(
+                            appInfo.loadIcon(pm),
+                            appInfo.loadLabel(pm).toString(),
+                            packageName,
+                            currentlySelectedApps.contains(packageName)
+                        )
                         applicationData.add(appData)
                         appData.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
                             override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
@@ -66,9 +100,11 @@ class AppListDialogFragment : DialogFragment() {
                     }
                 }
                 applicationData.sortWith(compareBy(String.CASE_INSENSITIVE_ORDER) { it.name })
+                val (ordered, popular) = prioritizePopularApps(applicationData)
                 withContext(Dispatchers.Main.immediate) {
+                    popularCount = popular
                     appData.clear()
-                    appData.addAll(applicationData)
+                    appData.addAll(ordered)
                     setButtonText()
                 }
             } catch (e: Throwable) {
@@ -176,6 +212,50 @@ class AppListDialogFragment : DialogFragment() {
         const val KEY_SELECTED_APPS = "selected_apps"
         const val KEY_IS_EXCLUDED = "is_excluded"
         const val REQUEST_SELECTION = "request_selection"
+
+        private val POPULAR_APP_ORDER = listOf(
+            "com.google.android.youtube",
+            "com.google.android.youtube.tv",
+            "com.google.android.youtube.tvmusic",
+            "com.google.android.gms",
+            "com.google.android.apps.youtube.music",
+            "com.android.chrome",
+            "org.mozilla.firefox",
+            "com.brave.browser",
+            "com.microsoft.emmx",
+            "com.vivaldi.browser",
+            "com.netflix.mediaclient",
+            "com.google.android.apps.photos",
+            "com.instagram.android",
+            "com.zhiliaoapp.musically",
+            "com.ss.android.ugc.trill",
+            "com.spotify.music",
+            "com.facebook.katana",
+            "com.twitter.android",
+            "org.telegram.messenger",
+            "org.thunderdog.challegram",
+            "com.discord"
+        )
+        private val POPULAR_ORDER_MAP = POPULAR_APP_ORDER.withIndex().associate { it.value to it.index }
+
+        private fun prioritizePopularApps(apps: List<ApplicationData>): Pair<List<ApplicationData>, Int> {
+            if (POPULAR_ORDER_MAP.isEmpty()) return apps to 0
+            val popular = ArrayList<ApplicationData>()
+            val others = ArrayList<ApplicationData>()
+            apps.forEach { app ->
+                if (POPULAR_ORDER_MAP.containsKey(app.packageName)) {
+                    popular.add(app)
+                } else {
+                    others.add(app)
+                }
+            }
+            popular.sortWith(
+                compareBy<ApplicationData> { POPULAR_ORDER_MAP[it.packageName] ?: Int.MAX_VALUE }
+                    .thenBy(String.CASE_INSENSITIVE_ORDER) { it.name }
+            )
+            others.sortWith(compareBy(String.CASE_INSENSITIVE_ORDER) { it.name })
+            return (popular + others) to popular.size
+        }
 
         fun newInstance(selectedApps: ArrayList<String?>?, isExcluded: Boolean): AppListDialogFragment {
             val extras = Bundle()

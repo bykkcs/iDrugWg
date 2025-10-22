@@ -14,8 +14,9 @@ public class TunnelListFragmentBindingImpl extends TunnelListFragmentBinding  {
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.logo_placeholder, 3);
-        sViewsWithIds.put(R.id.create_fab, 4);
+        sViewsWithIds.put(R.id.tunnel_card_container, 3);
+        sViewsWithIds.put(R.id.logo_placeholder, 4);
+        sViewsWithIds.put(R.id.create_fab, 5);
     }
     // views
     @NonNull
@@ -29,13 +30,14 @@ public class TunnelListFragmentBindingImpl extends TunnelListFragmentBinding  {
     // Inverse Binding Event Handlers
 
     public TunnelListFragmentBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 5, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 6, sIncludes, sViewsWithIds));
     }
     private TunnelListFragmentBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 1
-            , (com.google.android.material.floatingactionbutton.FloatingActionButton) bindings[4]
-            , (androidx.appcompat.widget.AppCompatImageView) bindings[3]
+            , (com.google.android.material.floatingactionbutton.FloatingActionButton) bindings[5]
+            , (androidx.appcompat.widget.AppCompatImageView) bindings[4]
             , (androidx.coordinatorlayout.widget.CoordinatorLayout) bindings[0]
+            , (com.google.android.material.card.MaterialCardView) bindings[3]
             , (androidx.recyclerview.widget.RecyclerView) bindings[1]
             );
         this.mainContainer.setTag(null);

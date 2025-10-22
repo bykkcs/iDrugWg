@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +26,12 @@ public abstract class AppListItemBinding extends ViewDataBinding {
   public final TextView appName;
 
   @NonNull
+  public final LinearLayout appRow;
+
+  @NonNull
+  public final TextView sectionHeader;
+
+  @NonNull
   public final CheckBox selectedCheckbox;
 
   @Bindable
@@ -37,10 +44,13 @@ public abstract class AppListItemBinding extends ViewDataBinding {
   protected ApplicationData mItem;
 
   protected AppListItemBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      ImageView appIcon, TextView appName, CheckBox selectedCheckbox) {
+      ImageView appIcon, TextView appName, LinearLayout appRow, TextView sectionHeader,
+      CheckBox selectedCheckbox) {
     super(_bindingComponent, _root, _localFieldCount);
     this.appIcon = appIcon;
     this.appName = appName;
+    this.appRow = appRow;
+    this.sectionHeader = sectionHeader;
     this.selectedCheckbox = selectedCheckbox;
   }
 

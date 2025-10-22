@@ -5,9 +5,11 @@
 **/intermediates/
 **/generated/
 **/outputs/
+
 # Studio
 .idea/
 *.iml
+
 # Artifacts
 *.apk
 *.aab
@@ -16,4 +18,10 @@
 *.bin
 *.jar
 *.arsc.flat
+
+# Repo metadata
 /iDrugWg.git/
+
+# Sensitive files
+idrug-release-key.jks
+google-services.json

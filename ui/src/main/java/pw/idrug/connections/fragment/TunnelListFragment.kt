@@ -4,10 +4,13 @@
  */
 package pw.idrug.connections.fragment
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
+import android.os.SystemClock
 import android.util.Log
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -21,19 +24,26 @@ import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ActionMode
+import androidx.databinding.ObservableList
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.color.MaterialColors
 import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.qrcode.QRCodeReader
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import pw.idrug.connections.Application
 import pw.idrug.connections.R
 import pw.idrug.connections.activity.TunnelCreatorActivity
 import pw.idrug.connections.databinding.ObservableKeyedRecyclerViewAdapter.RowConfigurationHandler
 import pw.idrug.connections.databinding.TunnelListFragmentBinding
 import pw.idrug.connections.databinding.TunnelListItemBinding
+import pw.idrug.connections.databinding.ObservableKeyedArrayList
 import pw.idrug.connections.model.ObservableTunnel
-import pw.idrug.connections.activity.MainActivity
 import pw.idrug.connections.viewmodel.ConfigProxy
 import pw.idrug.connections.fragment.AppListDialogFragment
 import pw.idrug.connections.util.ErrorMessages
@@ -44,6 +54,13 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import org.json.JSONObject
+import java.net.InetSocketAddress
+import java.net.Socket
+import kotlin.math.roundToInt
 
 /**
  * Fragment containing a list of known iDrugConnections tunnels. It allows creating and deleting tunnels.
@@ -53,6 +70,21 @@ class TunnelListFragment : BaseFragment() {
     private var actionMode: ActionMode? = null
     private var backPressedCallback: OnBackPressedCallback? = null
     private var binding: TunnelListFragmentBinding? = null
+    private var observedTunnels: ObservableKeyedArrayList<String, ObservableTunnel>? = null
+    private val tunnelsCallback = object : ObservableList.OnListChangedCallback<ObservableList<ObservableTunnel>>() {
+        override fun onChanged(sender: ObservableList<ObservableTunnel>) = refreshTunnelPings(sender)
+        override fun onItemRangeInserted(sender: ObservableList<ObservableTunnel>, positionStart: Int, itemCount: Int) = onChanged(sender)
+        override fun onItemRangeRemoved(sender: ObservableList<ObservableTunnel>, positionStart: Int, itemCount: Int) = onChanged(sender)
+        override fun onItemRangeMoved(sender: ObservableList<ObservableTunnel>, fromPosition: Int, toPosition: Int, itemCount: Int) = onChanged(sender)
+        override fun onItemRangeChanged(sender: ObservableList<ObservableTunnel>, positionStart: Int, itemCount: Int) = onChanged(sender)
+    }
+    private val serverPings = mutableMapOf<String, PingResult>()
+    private var pingJob: Job? = null
+    private val pingEndpoints = mapOf(
+        "germany" to TcpEndpoint("194.113.233.251", 51821),
+        "madrid" to TcpEndpoint("159.255.34.41", 51821),
+        "bulgaria" to TcpEndpoint("185.232.170.117", 51821)
+    )
     private val tunnelFileImportResultLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { data ->
         if (data == null) return@registerForActivityResult
         val activity = activity ?: return@registerForActivityResult
@@ -91,6 +123,11 @@ class TunnelListFragment : BaseFragment() {
                 for (i in checkedItems) actionModeListener.setItemChecked(i, true)
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        observedTunnels?.let { refreshTunnelPings(it) }
     }
 
     override fun onCreateView(
@@ -135,6 +172,11 @@ class TunnelListFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
+        observedTunnels?.removeOnListChangedCallback(tunnelsCallback)
+        observedTunnels = null
+        pingJob?.cancel()
+        pingJob = null
+        serverPings.clear()
         binding = null
         super.onDestroyView()
     }
@@ -173,6 +215,7 @@ class TunnelListFragment : BaseFragment() {
         lifecycleScope.launch {
             val tunnels = Application.getTunnelManager().getTunnels()
             binding!!.tunnels = tunnels
+            setTunnelsSource(tunnels)
             arguments?.getString(ARG_OPEN_TUNNEL_FOR_APPS)?.let { name ->
                 val tunnel = tunnels[name]
                 if (tunnel != null) {
@@ -184,21 +227,31 @@ class TunnelListFragment : BaseFragment() {
         binding!!.rowConfigurationHandler = object : RowConfigurationHandler<TunnelListItemBinding, ObservableTunnel> {
             override fun onConfigureRow(binding: TunnelListItemBinding, item: ObservableTunnel, position: Int) {
                 binding.fragment = this@TunnelListFragment
-                binding.root.setOnClickListener {
+                val card = binding.tunnelCard
+                val container = binding.tunnelContainer
+                val clickListener = View.OnClickListener {
                     if (actionMode == null) {
                         showAppSelectionDialog(item)
                     } else {
                         actionModeListener.toggleItemChecked(position)
                     }
                 }
-                binding.root.setOnLongClickListener {
+                card.setOnClickListener(clickListener)
+                val longClickListener = View.OnLongClickListener {
                     actionModeListener.toggleItemChecked(position)
                     true
                 }
-                if (actionMode != null)
-                    (binding.root as MultiselectableRelativeLayout).setMultiSelected(actionModeListener.checkedItems.contains(position))
-                else
-                    (binding.root as MultiselectableRelativeLayout).setSingleSelected(selectedTunnel == item)
+                card.setOnLongClickListener(longClickListener)
+
+                val isMulti = actionMode != null && actionModeListener.checkedItems.contains(position)
+                val isSingle = actionMode == null && selectedTunnel == item
+                if (actionMode != null) {
+                    container.setMultiSelected(isMulti)
+                } else {
+                    container.setSingleSelected(isSingle)
+                }
+                applySelectionVisualState(card, isMulti || isSingle)
+                bindPing(binding, item)
             }
         }
     }
@@ -214,7 +267,8 @@ class TunnelListFragment : BaseFragment() {
     }
 
     private fun viewForTunnel(tunnel: ObservableTunnel, tunnels: List<*>): MultiselectableRelativeLayout? {
-        return binding?.tunnelList?.findViewHolderForAdapterPosition(tunnels.indexOf(tunnel))?.itemView as? MultiselectableRelativeLayout
+        val holderView = binding?.tunnelList?.findViewHolderForAdapterPosition(tunnels.indexOf(tunnel))?.itemView
+        return holderView?.findViewById(R.id.tunnel_container) as? MultiselectableRelativeLayout
     }
 
     private fun showAppSelectionDialog(tunnel: ObservableTunnel) {
@@ -264,6 +318,200 @@ class TunnelListFragment : BaseFragment() {
             fragment.show(parentFragmentManager, null)
         }
     }
+
+    private fun setTunnelsSource(tunnels: ObservableKeyedArrayList<String, ObservableTunnel>) {
+        if (observedTunnels === tunnels) {
+            refreshTunnelPings(tunnels)
+            return
+        }
+        observedTunnels?.removeOnListChangedCallback(tunnelsCallback)
+        observedTunnels = tunnels
+        tunnels.addOnListChangedCallback(tunnelsCallback)
+        refreshTunnelPings(tunnels)
+    }
+
+    private fun refreshTunnelPings(tunnels: List<ObservableTunnel>) {
+        val ids = tunnels.mapNotNull { serverIdFromTunnel(it) }.distinct()
+        if (ids.isEmpty()) {
+            pingJob?.cancel()
+            pingJob = null
+            serverPings.clear()
+            binding?.tunnelList?.adapter?.notifyDataSetChanged()
+            return
+        }
+        val ctx = context
+        pingJob?.cancel()
+        if (ctx == null) {
+            serverPings.clear()
+            binding?.tunnelList?.adapter?.notifyDataSetChanged()
+            return
+        }
+        serverPings.keys.retainAll(ids)
+        ids.forEach { id ->
+            if (serverPings[id] == null) {
+                serverPings[id] = PingResult(PingState.LOADING)
+            }
+        }
+        binding?.tunnelList?.adapter?.notifyDataSetChanged()
+        val idsSnapshot = ids
+        pingJob = viewLifecycleOwner.lifecycleScope.launch {
+            val prefs = ctx.getSharedPreferences("auth", Context.MODE_PRIVATE)
+            val client = OkHttpClient()
+            while (isActive) {
+                val token = prefs.getString("token", null)
+                for (id in idsSnapshot) {
+                    val result = requestPing(client, token, id)
+                    serverPings[id] = result
+                    binding?.tunnelList?.adapter?.notifyDataSetChanged()
+                }
+                delay(PING_REFRESH_INTERVAL_MS)
+            }
+        }.also { job -> job.invokeOnCompletion { pingJob = null } }
+    }
+
+    private fun serverIdFromTunnel(tunnel: ObservableTunnel): String? {
+        val name = tunnel.name
+        return if (name.startsWith("idrug_")) name.removePrefix("idrug_") else null
+    }
+
+    private fun bindPing(binding: TunnelListItemBinding, tunnel: ObservableTunnel) {
+        val pingView = binding.tunnelPing
+        val serverId = serverIdFromTunnel(tunnel)
+        if (serverId == null) {
+            pingView.visibility = View.GONE
+            return
+        }
+        val neutralColor = Color.parseColor("#616161")
+        val result = serverPings[serverId]
+        val (label, color) = when {
+            result == null || result.state == PingState.LOADING -> {
+                getString(R.string.ping_loading) to neutralColor
+            }
+            result.state == PingState.SUCCESS && result.latencyMs != null -> {
+                val latency = result.latencyMs
+                val text = getString(R.string.ping_value_ms, latency)
+                val goodColor = Color.parseColor("#388E3C")
+                val midColor = Color.parseColor("#F9A825")
+                val badColor = Color.parseColor("#D32F2F")
+                val color = when {
+                    latency <= 80 -> goodColor
+                    latency <= 160 -> midColor
+                    else -> badColor
+                }
+                text to color
+            }
+            else -> {
+                getString(R.string.ping_unavailable) to Color.parseColor("#D32F2F")
+            }
+        }
+        pingView.visibility = View.VISIBLE
+        pingView.text = label
+        pingView.setTextColor(color)
+    }
+
+    private fun applySelectionVisualState(card: MaterialCardView, selected: Boolean) {
+        val surface = MaterialColors.getColor(card, com.google.android.material.R.attr.colorSurface)
+        val highlight = MaterialColors.getColor(card, com.google.android.material.R.attr.colorSecondaryContainer, surface)
+        val strokeColor = MaterialColors.getColor(card, com.google.android.material.R.attr.colorPrimary, highlight)
+        card.setCardBackgroundColor(if (selected) highlight else surface)
+        card.strokeWidth = if (selected) (card.resources.displayMetrics.density * 1.5f).roundToInt() else 0
+        card.strokeColor = strokeColor
+    }
+
+    private suspend fun requestPing(client: OkHttpClient, token: String?, serverId: String): PingResult =
+        withContext(Dispatchers.IO) {
+            val endpoint = pingEndpoints[serverId]
+            if (endpoint != null) {
+                measureTcpPing(endpoint)
+            } else {
+                fetchPingViaApi(client, token, serverId)
+            }
+        }
+
+    private fun measureTcpPing(endpoint: TcpEndpoint): PingResult {
+        val samples = mutableListOf<Int>()
+        repeat(3) {
+            val latency = try {
+                Socket().use { socket ->
+                    val address = InetSocketAddress(endpoint.host, endpoint.port)
+                    socket.soTimeout = PING_SOCKET_TIMEOUT_MS
+                    val start = SystemClock.elapsedRealtimeNanos()
+                    socket.connect(address, PING_CONNECT_TIMEOUT_MS)
+                    val output = socket.getOutputStream()
+                    output.write(byteArrayOf(0))
+                    output.flush()
+                    val end = SystemClock.elapsedRealtimeNanos()
+                    val latencyMs = ((end - start) / 1_000_000.0).roundToInt().coerceAtLeast(0)
+                    Log.d("Ping", "Accurate ping ${endpoint.host}:${endpoint.port} = ${latencyMs} ms")
+                    latencyMs
+                }
+            } catch (_: Exception) {
+                null
+            }
+            if (latency != null && latency > 0) {
+                samples += latency
+            }
+        }
+        return if (samples.isNotEmpty()) {
+            PingResult(PingState.SUCCESS, samples.min())
+        } else {
+            PingResult(PingState.ERROR)
+        }
+    }
+
+    private fun fetchPingViaApi(client: OkHttpClient, token: String?, serverId: String): PingResult {
+        val requestBuilder = Request.Builder()
+            .url("https://idrug.pw/api/ping?location=$serverId")
+        if (!token.isNullOrBlank()) {
+            requestBuilder.addHeader("Authorization", "Bearer $token")
+        }
+        return try {
+            client.newCall(requestBuilder.build()).execute().use { response ->
+                if (!response.isSuccessful) {
+                    PingResult(PingState.ERROR)
+                } else {
+                    val latency = parsePingMs(response.body?.string())
+                    if (latency != null) PingResult(PingState.SUCCESS, latency) else PingResult(PingState.ERROR)
+                }
+            }
+        } catch (_: Exception) {
+            PingResult(PingState.ERROR)
+        }
+    }
+
+    private fun parsePingMs(body: String?): Int? {
+        if (body.isNullOrBlank()) return null
+        val text = body.trim()
+        if (text.startsWith("{") && text.endsWith("}")) {
+            try {
+                val json = JSONObject(text)
+                val keys = listOf("rtt", "latency", "latency_ms", "ping", "ping_ms", "ms")
+                for (key in keys) {
+                    if (!json.has(key)) continue
+                    val value = json.get(key)
+                    val number = when (value) {
+                        is Number -> value.toDouble()
+                        is String -> value.toDoubleOrNull()
+                        else -> null
+                    }
+                    if (number != null) {
+                        return number.roundToInt()
+                    }
+                }
+            } catch (_: Exception) {
+                // fall through to regex parsing
+            }
+        }
+        val match = Regex("([0-9]+(?:\\.[0-9]+)?)").find(text)
+        val number = match?.groupValues?.getOrNull(1)?.toDoubleOrNull()
+        return number?.roundToInt()
+    }
+
+    private enum class PingState { LOADING, SUCCESS, ERROR }
+
+    private data class PingResult(val state: PingState, val latencyMs: Int? = null)
+
+    private data class TcpEndpoint(val host: String, val port: Int)
 
 
     private inner class ActionModeListener : ActionMode.Callback {
@@ -397,5 +645,8 @@ class TunnelListFragment : BaseFragment() {
         private const val CHECKED_ITEMS = "CHECKED_ITEMS"
         const val ARG_OPEN_TUNNEL_FOR_APPS = "open_tunnel_for_apps"
         private const val TAG = "iDrugConnections/TunnelListFragment"
+        private const val PING_CONNECT_TIMEOUT_MS = 2000
+        private const val PING_REFRESH_INTERVAL_MS = 5_000L
+        private const val PING_SOCKET_TIMEOUT_MS = 2000
     }
 }

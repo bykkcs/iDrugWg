@@ -2,7 +2,7 @@
     name="release"
     package="pw.idrug.connections"
     minSdkVersion="24"
-    targetSdkVersion="34"
+    targetSdkVersion="36"
     shrinking="true"
     mergedManifest="build/intermediates/merged_manifest/release/processReleaseMainManifest/AndroidManifest.xml"
     manifestMergeReport="build/outputs/logs/manifest-merger-release-report.txt"
@@ -24,10 +24,11 @@
   <testFixturesSourceProviders>
   </testFixturesSourceProviders>
   <artifact
-      classOutputs="build/intermediates/javac/release/compileReleaseJavaWithJavac/classes:build/tmp/kotlin-classes/release:build/tmp/kapt3/classes/release:build/kotlinToolingMetadata:build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar"
+      classOutputs="build/intermediates/javac/release/compileReleaseJavaWithJavac/classes:build/tmp/kotlin-classes/release:build/tmp/kapt3/classes/release:build/kotlinToolingMetadata:build/generated/ksp/release/resources:build/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar"
       type="MAIN"
       applicationId="pw.idrug.connections"
-      generatedSourceFolders="build/generated/source/kapt/release:build/generated/ap_generated_sources/release/out:build/generated/source/buildConfig/release:build/generated/data_binding_base_class_source_out/release/out"
-      desugaredMethodsFiles="/home/bykk/.gradle/caches/transforms-3/af6ffa9ad3a531aa26d112eac6f4d953/transformed/desugar_jdk_libs_configuration-2.0.4-desugar-lint.txt:/home/bykk/.gradle/caches/transforms-3/4e785150c130b45ab5a25df8e384f607/transformed/D8BackportedDesugaredMethods.txt">
+      generatedSourceFolders="build/generated/source/kapt/release:build/generated/ksp/release/java:build/generated/ksp/release/kotlin:build/generated/ap_generated_sources/release/out:build/generated/source/buildConfig/release:build/generated/data_binding_base_class_source_out/release/out"
+      generatedResourceFolders="build/generated/res/processReleaseGoogleServices"
+      desugaredMethodsFiles="/home/bykk/.gradle/caches/8.11.1/transforms/2bd47c7903366f01e3373a5425824ff6/transformed/desugar_jdk_libs_configuration-2.0.4-desugar-lint.txt:/home/bykk/.gradle/caches/8.11.1/transforms/2faa46dba24ac2ea41234786eeb9a7d7/transformed/D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>

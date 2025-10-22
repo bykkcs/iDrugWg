@@ -9,6 +9,6 @@
         android:title="@string/nav_account_title"/>
     <item
         android:id="@+id/nav_speed_test"
-        android:icon="@drawable/ic_speed"
+        android:icon="@drawable/ic_speedtest"
         android:title="@string/nav_speed_test_title"/>
 </menu>

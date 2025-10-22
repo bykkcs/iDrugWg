@@ -166,7 +166,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerBrLookup {
-    static final SparseArray<String> sKeys = new SparseArray<String>(38);
+    static final SparseArray<String> sKeys = new SparseArray<String>(49);
 
     static {
       sKeys.put(0, "_all");
@@ -176,37 +176,48 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put(4, "appData");
       sKeys.put(5, "collection");
       sKeys.put(6, "config");
-      sKeys.put(7, "dnsServers");
-      sKeys.put(8, "endpoint");
-      sKeys.put(9, "excludedApplications");
-      sKeys.put(10, "excludingPrivateIps");
-      sKeys.put(11, "fragment");
-      sKeys.put(12, "includedApplications");
-      sKeys.put(13, "initPacketJunkSize");
-      sKeys.put(14, "initPacketMagicHeader");
-      sKeys.put(15, "item");
-      sKeys.put(16, "junkPacketCount");
-      sKeys.put(17, "junkPacketMaxSize");
-      sKeys.put(18, "junkPacketMinSize");
-      sKeys.put(19, "key");
-      sKeys.put(20, "lastUsedTunnel");
-      sKeys.put(21, "listenPort");
-      sKeys.put(22, "mtu");
-      sKeys.put(23, "name");
-      sKeys.put(24, "persistentKeepalive");
-      sKeys.put(25, "preSharedKey");
-      sKeys.put(26, "privateKey");
-      sKeys.put(27, "publicKey");
-      sKeys.put(28, "responsePacketJunkSize");
-      sKeys.put(29, "responsePacketMagicHeader");
-      sKeys.put(30, "rowConfigurationHandler");
-      sKeys.put(31, "selected");
-      sKeys.put(32, "state");
-      sKeys.put(33, "statistics");
-      sKeys.put(34, "transportPacketMagicHeader");
-      sKeys.put(35, "tunnel");
-      sKeys.put(36, "tunnels");
-      sKeys.put(37, "underloadPacketMagicHeader");
+      sKeys.put(7, "controlledJunkPacket1");
+      sKeys.put(8, "controlledJunkPacket2");
+      sKeys.put(9, "controlledJunkPacket3");
+      sKeys.put(10, "cookieReplyPacketJunkSize");
+      sKeys.put(11, "dnsServers");
+      sKeys.put(12, "endpoint");
+      sKeys.put(13, "excludedApplications");
+      sKeys.put(14, "excludingPrivateIps");
+      sKeys.put(15, "fragment");
+      sKeys.put(16, "includedApplications");
+      sKeys.put(17, "initPacketJunkSize");
+      sKeys.put(18, "initPacketMagicHeader");
+      sKeys.put(19, "item");
+      sKeys.put(20, "itimeSeconds");
+      sKeys.put(21, "junkPacketCount");
+      sKeys.put(22, "junkPacketMaxSize");
+      sKeys.put(23, "junkPacketMinSize");
+      sKeys.put(24, "key");
+      sKeys.put(25, "lastUsedTunnel");
+      sKeys.put(26, "listenPort");
+      sKeys.put(27, "mtu");
+      sKeys.put(28, "name");
+      sKeys.put(29, "persistentKeepalive");
+      sKeys.put(30, "preSharedKey");
+      sKeys.put(31, "privateKey");
+      sKeys.put(32, "publicKey");
+      sKeys.put(33, "responsePacketJunkSize");
+      sKeys.put(34, "responsePacketMagicHeader");
+      sKeys.put(35, "rowConfigurationHandler");
+      sKeys.put(36, "selected");
+      sKeys.put(37, "specialJunkPacket1");
+      sKeys.put(38, "specialJunkPacket2");
+      sKeys.put(39, "specialJunkPacket3");
+      sKeys.put(40, "specialJunkPacket4");
+      sKeys.put(41, "specialJunkPacket5");
+      sKeys.put(42, "state");
+      sKeys.put(43, "statistics");
+      sKeys.put(44, "transportPacketJunkSize");
+      sKeys.put(45, "transportPacketMagicHeader");
+      sKeys.put(46, "tunnel");
+      sKeys.put(47, "tunnels");
+      sKeys.put(48, "underloadPacketMagicHeader");
     }
   }
 

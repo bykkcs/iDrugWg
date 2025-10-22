@@ -14,14 +14,17 @@ import pw.idrug.connections.crypto.KeyPair;
 import pw.idrug.connections.util.NonNullForAll;
 
 import java.net.InetAddress;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import androidx.annotation.Nullable;
@@ -51,10 +54,15 @@ public final class Interface {
     private final Optional<Integer> junkPacketMaxSize;
     private final Optional<Integer> initPacketJunkSize;
     private final Optional<Integer> responsePacketJunkSize;
+    private final Optional<Integer> cookieReplyPacketJunkSize;
+    private final Optional<Integer> transportPacketJunkSize;
     private final Optional<Long> initPacketMagicHeader;
     private final Optional<Long> responsePacketMagicHeader;
     private final Optional<Long> underloadPacketMagicHeader;
     private final Optional<Long> transportPacketMagicHeader;
+    private final Optional<Integer> itimeSeconds;
+    private final List<String> specialJunkPackets;
+    private final List<String> controlledJunkPackets;
 
     private Interface(final Builder builder) {
         // Defensively copy to ensure immutability even if the Builder is reused.
@@ -71,10 +79,15 @@ public final class Interface {
         junkPacketMaxSize = builder.junkPacketMaxSize;
         initPacketJunkSize = builder.initPacketJunkSize;
         responsePacketJunkSize = builder.responsePacketJunkSize;
+        cookieReplyPacketJunkSize = builder.cookieReplyPacketJunkSize;
+        transportPacketJunkSize = builder.transportPacketJunkSize;
         initPacketMagicHeader = builder.initPacketMagicHeader;
         responsePacketMagicHeader = builder.responsePacketMagicHeader;
         underloadPacketMagicHeader = builder.underloadPacketMagicHeader;
         transportPacketMagicHeader = builder.transportPacketMagicHeader;
+        itimeSeconds = builder.itimeSeconds;
+        specialJunkPackets = builder.specialJunkPacketsList;
+        controlledJunkPackets = builder.controlledJunkPacketsList;
     }
 
     /**
@@ -128,6 +141,24 @@ public final class Interface {
                 case "s2":
                     builder.parseResponsePacketJunkSize(attribute.getValue());
                     break;
+                case "s3":
+                    builder.parseCookieReplyPacketJunkSize(attribute.getValue());
+                    break;
+                case "s4":
+                    builder.parseTransportPacketJunkSize(attribute.getValue());
+                    break;
+                case "i1":
+                case "i2":
+                case "i3":
+                case "i4":
+                case "i5":
+                    builder.parseSpecialJunkPacket(attribute.getKey().toLowerCase(Locale.ENGLISH), attribute.getValue());
+                    break;
+                case "j1":
+                case "j2":
+                case "j3":
+                    builder.parseControlledJunkPacket(attribute.getKey().toLowerCase(Locale.ENGLISH), attribute.getValue());
+                    break;
                 case "h1":
                     builder.parseInitPacketMagicHeader(attribute.getValue());
                     break;
@@ -139,6 +170,9 @@ public final class Interface {
                     break;
                 case "h4":
                     builder.parseTransportPacketMagicHeader(attribute.getValue());
+                    break;
+                case "itime":
+                    builder.parseItime(attribute.getValue());
                     break;
                 default:
                     throw new BadConfigException(Section.INTERFACE, Location.TOP_LEVEL,
@@ -166,10 +200,15 @@ public final class Interface {
                 && junkPacketMaxSize.equals(other.junkPacketMaxSize)
                 && initPacketJunkSize.equals(other.initPacketJunkSize)
                 && responsePacketJunkSize.equals(other.responsePacketJunkSize)
+                && cookieReplyPacketJunkSize.equals(other.cookieReplyPacketJunkSize)
+                && transportPacketJunkSize.equals(other.transportPacketJunkSize)
                 && initPacketMagicHeader.equals(other.initPacketMagicHeader)
                 && responsePacketMagicHeader.equals(other.responsePacketMagicHeader)
                 && underloadPacketMagicHeader.equals(other.underloadPacketMagicHeader)
-                && transportPacketMagicHeader.equals(other.transportPacketMagicHeader);
+                && transportPacketMagicHeader.equals(other.transportPacketMagicHeader)
+                && itimeSeconds.equals(other.itimeSeconds)
+                && specialJunkPackets.equals(other.specialJunkPackets)
+                && controlledJunkPackets.equals(other.controlledJunkPackets);
     }
 
     /**
@@ -295,6 +334,24 @@ public final class Interface {
     }
 
     /**
+     * Returns the cookieReplyPacketJunkSize used for the iDrugConnections interface.
+     *
+     * @return the cookieReplyPacketJunkSize, or {@code Optional.empty()} if none is configured
+     */
+    public Optional<Integer> getCookieReplyPacketJunkSize() {
+        return cookieReplyPacketJunkSize;
+    }
+
+    /**
+     * Returns the transportPacketJunkSize used for the iDrugConnections interface.
+     *
+     * @return the transportPacketJunkSize, or {@code Optional.empty()} if none is configured
+     */
+    public Optional<Integer> getTransportPacketJunkSize() {
+        return transportPacketJunkSize;
+    }
+
+    /**
      * Returns the initPacketMagicHeader used for the iDrugConnections interface.
      *
      * @return the initPacketMagicHeader, or {@code Optional.empty()} if none is configured
@@ -330,6 +387,69 @@ public final class Interface {
         return transportPacketMagicHeader;
     }
 
+    /**
+     * Returns the handshake timeout (itime) in seconds.
+     *
+     * @return Optional containing the timeout value, or empty if not configured
+     */
+    public Optional<Integer> getItimeSeconds() {
+        return itimeSeconds;
+    }
+
+    public Optional<String> getSpecialJunkPacket(final int index) {
+        if (index < 1 || index > specialJunkPackets.size()) {
+            return Optional.empty();
+        }
+        return Optional.ofNullable(specialJunkPackets.get(index - 1));
+    }
+
+    public Optional<String> getControlledJunkPacket(final int index) {
+        if (index < 1 || index > controlledJunkPackets.size()) {
+            return Optional.empty();
+        }
+        return Optional.ofNullable(controlledJunkPackets.get(index - 1));
+    }
+
+    public List<String> getSpecialJunkPackets() {
+        return specialJunkPackets;
+    }
+
+    public List<String> getControlledJunkPackets() {
+        return controlledJunkPackets;
+    }
+
+    public Optional<String> getSpecialJunkPacket1() {
+        return getSpecialJunkPacket(1);
+    }
+
+    public Optional<String> getSpecialJunkPacket2() {
+        return getSpecialJunkPacket(2);
+    }
+
+    public Optional<String> getSpecialJunkPacket3() {
+        return getSpecialJunkPacket(3);
+    }
+
+    public Optional<String> getSpecialJunkPacket4() {
+        return getSpecialJunkPacket(4);
+    }
+
+    public Optional<String> getSpecialJunkPacket5() {
+        return getSpecialJunkPacket(5);
+    }
+
+    public Optional<String> getControlledJunkPacket1() {
+        return getControlledJunkPacket(1);
+    }
+
+    public Optional<String> getControlledJunkPacket2() {
+        return getControlledJunkPacket(2);
+    }
+
+    public Optional<String> getControlledJunkPacket3() {
+        return getControlledJunkPacket(3);
+    }
+
 
     @Override
     public int hashCode() {
@@ -346,10 +466,15 @@ public final class Interface {
         hash = 31 * hash + junkPacketMaxSize.hashCode();
         hash = 31 * hash + initPacketJunkSize.hashCode();
         hash = 31 * hash + responsePacketJunkSize.hashCode();
+        hash = 31 * hash + cookieReplyPacketJunkSize.hashCode();
+        hash = 31 * hash + transportPacketJunkSize.hashCode();
         hash = 31 * hash + initPacketMagicHeader.hashCode();
         hash = 31 * hash + responsePacketMagicHeader.hashCode();
         hash = 31 * hash + underloadPacketMagicHeader.hashCode();
         hash = 31 * hash + transportPacketMagicHeader.hashCode();
+        hash = 31 * hash + itimeSeconds.hashCode();
+        hash = 31 * hash + specialJunkPackets.hashCode();
+        hash = 31 * hash + controlledJunkPackets.hashCode();
         return hash;
     }
 
@@ -394,10 +519,19 @@ public final class Interface {
         junkPacketMaxSize.ifPresent(jmax -> sb.append("Jmax = ").append(jmax).append('\n'));
         initPacketJunkSize.ifPresent(s1 -> sb.append("S1 = ").append(s1).append('\n'));
         responsePacketJunkSize.ifPresent(s2 -> sb.append("S2 = ").append(s2).append('\n'));
+        cookieReplyPacketJunkSize.ifPresent(s3 -> sb.append("S3 = ").append(s3).append('\n'));
+        transportPacketJunkSize.ifPresent(s4 -> sb.append("S4 = ").append(s4).append('\n'));
         initPacketMagicHeader.ifPresent(h1 -> sb.append("H1 = ").append(h1).append('\n'));
         responsePacketMagicHeader.ifPresent(h2 -> sb.append("H2 = ").append(h2).append('\n'));
         underloadPacketMagicHeader.ifPresent(h3 -> sb.append("H3 = ").append(h3).append('\n'));
         transportPacketMagicHeader.ifPresent(h4 -> sb.append("H4 = ").append(h4).append('\n'));
+        for (int i = 0; i < specialJunkPackets.size(); i++) {
+            sb.append("I").append(i + 1).append(" = ").append(specialJunkPackets.get(i)).append('\n');
+        }
+        for (int i = 0; i < controlledJunkPackets.size(); i++) {
+            sb.append("J").append(i + 1).append(" = ").append(controlledJunkPackets.get(i)).append('\n');
+        }
+        itimeSeconds.ifPresent(it -> sb.append("ITime = ").append(it).append('\n'));
         sb.append("PrivateKey = ").append(keyPair.getPrivateKey().toBase64()).append('\n');
         return sb.toString();
     }
@@ -417,10 +551,19 @@ public final class Interface {
         junkPacketMaxSize.ifPresent(jmax -> sb.append("jmax=").append(jmax).append('\n'));
         initPacketJunkSize.ifPresent(s1 -> sb.append("s1=").append(s1).append('\n'));
         responsePacketJunkSize.ifPresent(s2 -> sb.append("s2=").append(s2).append('\n'));
+        cookieReplyPacketJunkSize.ifPresent(s3 -> sb.append("s3=").append(s3).append('\n'));
+        transportPacketJunkSize.ifPresent(s4 -> sb.append("s4=").append(s4).append('\n'));
         initPacketMagicHeader.ifPresent(h1 -> sb.append("h1=").append(h1).append('\n'));
         responsePacketMagicHeader.ifPresent(h2 -> sb.append("h2=").append(h2).append('\n'));
         underloadPacketMagicHeader.ifPresent(h3 -> sb.append("h3=").append(h3).append('\n'));
         transportPacketMagicHeader.ifPresent(h4 -> sb.append("h4=").append(h4).append('\n'));
+        for (int i = 0; i < specialJunkPackets.size(); i++) {
+            sb.append("i").append(i + 1).append('=').append(specialJunkPackets.get(i)).append('\n');
+        }
+        for (int i = 0; i < controlledJunkPackets.size(); i++) {
+            sb.append("j").append(i + 1).append('=').append(controlledJunkPackets.get(i)).append('\n');
+        }
+        itimeSeconds.ifPresent(it -> sb.append("itime=").append(it).append('\n'));
         return sb.toString();
     }
 
@@ -453,6 +596,10 @@ public final class Interface {
         // Defaults to not present.
         private Optional<Integer> responsePacketJunkSize = Optional.empty();
         // Defaults to not present.
+        private Optional<Integer> cookieReplyPacketJunkSize = Optional.empty();
+        // Defaults to not present.
+        private Optional<Integer> transportPacketJunkSize = Optional.empty();
+        // Defaults to not present.
         private Optional<Long> initPacketMagicHeader = Optional.empty();
         // Defaults to not present.
         private Optional<Long> responsePacketMagicHeader = Optional.empty();
@@ -460,6 +607,12 @@ public final class Interface {
         private Optional<Long> underloadPacketMagicHeader = Optional.empty();
         // Defaults to not present.
         private Optional<Long> transportPacketMagicHeader = Optional.empty();
+        // Defaults to not present.
+        private Optional<Integer> itimeSeconds = Optional.empty();
+        private final Map<Integer, String> specialJunkPacketMap = new LinkedHashMap<>();
+        private final Map<Integer, String> controlledJunkPacketMap = new LinkedHashMap<>();
+        private List<String> specialJunkPacketsList = Collections.emptyList();
+        private List<String> controlledJunkPacketsList = Collections.emptyList();
 
 
         public Builder addAddress(final InetNetwork address) {
@@ -499,6 +652,8 @@ public final class Interface {
             if (!includedApplications.isEmpty() && !excludedApplications.isEmpty())
                 throw new BadConfigException(Section.INTERFACE, Location.INCLUDED_APPLICATIONS,
                         Reason.INVALID_KEY, null);
+            specialJunkPacketsList = buildJunkPacketList(specialJunkPacketMap, 5, Location.SPECIAL_JUNK_PACKET, "I");
+            controlledJunkPacketsList = buildJunkPacketList(controlledJunkPacketMap, 3, Location.CONTROLLED_JUNK_PACKET, "J");
             return new Interface(this);
         }
 
@@ -613,6 +768,32 @@ public final class Interface {
             }
         }
 
+        public Builder parseCookieReplyPacketJunkSize(final String cookieReplyPacketJunkSize) throws BadConfigException {
+            try {
+                return setCookieReplyPacketJunkSize(Integer.parseInt(cookieReplyPacketJunkSize));
+            } catch (final NumberFormatException e) {
+                throw new BadConfigException(Section.INTERFACE, Location.COOKIE_REPLY_PACKET_JUNK_SIZE, cookieReplyPacketJunkSize, e);
+            }
+        }
+
+        public Builder parseTransportPacketJunkSize(final String transportPacketJunkSize) throws BadConfigException {
+            try {
+                return setTransportPacketJunkSize(Integer.parseInt(transportPacketJunkSize));
+            } catch (final NumberFormatException e) {
+                throw new BadConfigException(Section.INTERFACE, Location.TRANSPORT_PACKET_JUNK_SIZE, transportPacketJunkSize, e);
+            }
+        }
+
+        public Builder parseSpecialJunkPacket(final String key, final String value) throws BadConfigException {
+            final int index = parseIndexedKey(key, "i", 5, Location.SPECIAL_JUNK_PACKET, "I");
+            return setSpecialJunkPacket(index, value);
+        }
+
+        public Builder parseControlledJunkPacket(final String key, final String value) throws BadConfigException {
+            final int index = parseIndexedKey(key, "j", 3, Location.CONTROLLED_JUNK_PACKET, "J");
+            return setControlledJunkPacket(index, value);
+        }
+
         public Builder parseInitPacketMagicHeader(final String initPacketMagicHeader) throws BadConfigException {
             try {
                 return setInitPacketMagicHeader(Long.parseLong(initPacketMagicHeader));
@@ -643,6 +824,14 @@ public final class Interface {
                 return setTransportPacketMagicHeader(Long.parseLong(transportPacketMagicHeader));
             } catch (final NumberFormatException e) {
                 throw new BadConfigException(Section.INTERFACE, Location.TRANSPORT_PACKET_MAGIC_HEADER, transportPacketMagicHeader, e);
+            }
+        }
+
+        public Builder parseItime(final String itime) throws BadConfigException {
+            try {
+                return setItimeSeconds(Integer.parseInt(itime));
+            } catch (final NumberFormatException e) {
+                throw new BadConfigException(Section.INTERFACE, Location.ITIME, itime, e);
             }
         }
 
@@ -715,6 +904,22 @@ public final class Interface {
             return this;
         }
 
+        public Builder setCookieReplyPacketJunkSize(final int cookieReplyPacketJunkSize) throws BadConfigException {
+            if (cookieReplyPacketJunkSize < 0)
+                throw new BadConfigException(Section.INTERFACE, Location.COOKIE_REPLY_PACKET_JUNK_SIZE,
+                        Reason.INVALID_VALUE, String.valueOf(cookieReplyPacketJunkSize));
+            this.cookieReplyPacketJunkSize = cookieReplyPacketJunkSize == 0 ? Optional.empty() : Optional.of(cookieReplyPacketJunkSize);
+            return this;
+        }
+
+        public Builder setTransportPacketJunkSize(final int transportPacketJunkSize) throws BadConfigException {
+            if (transportPacketJunkSize < 0)
+                throw new BadConfigException(Section.INTERFACE, Location.TRANSPORT_PACKET_JUNK_SIZE,
+                        Reason.INVALID_VALUE, String.valueOf(transportPacketJunkSize));
+            this.transportPacketJunkSize = transportPacketJunkSize == 0 ? Optional.empty() : Optional.of(transportPacketJunkSize);
+            return this;
+        }
+
         public Builder setInitPacketMagicHeader(final long initPacketMagicHeader) throws BadConfigException {
             if (initPacketMagicHeader < 0)
                 throw new BadConfigException(Section.INTERFACE, Location.INIT_PACKET_MAGIC_HEADER,
@@ -745,6 +950,86 @@ public final class Interface {
                         Reason.INVALID_VALUE, String.valueOf(transportPacketMagicHeader));
             this.transportPacketMagicHeader = transportPacketMagicHeader == 0 ? Optional.empty() : Optional.of(transportPacketMagicHeader);
             return this;
+        }
+
+        public Builder setSpecialJunkPacket(final int index, @Nullable final String value) throws BadConfigException {
+            validateJunkPacketIndex(index, 5, Location.SPECIAL_JUNK_PACKET, "I");
+            if (value == null || value.trim().isEmpty()) {
+                specialJunkPacketMap.remove(index);
+            } else {
+                specialJunkPacketMap.put(index, value.trim());
+            }
+            return this;
+        }
+
+        public Builder setControlledJunkPacket(final int index, @Nullable final String value) throws BadConfigException {
+            validateJunkPacketIndex(index, 3, Location.CONTROLLED_JUNK_PACKET, "J");
+            if (value == null || value.trim().isEmpty()) {
+                controlledJunkPacketMap.remove(index);
+            } else {
+                controlledJunkPacketMap.put(index, value.trim());
+            }
+            return this;
+        }
+
+        public Builder setItimeSeconds(@Nullable final Integer itimeSeconds) throws BadConfigException {
+            if (itimeSeconds == null) {
+                this.itimeSeconds = Optional.empty();
+            } else {
+                if (itimeSeconds < 0)
+                    throw new BadConfigException(Section.INTERFACE, Location.ITIME,
+                            Reason.INVALID_VALUE, String.valueOf(itimeSeconds));
+                this.itimeSeconds = Optional.of(itimeSeconds);
+            }
+            return this;
+        }
+
+        private int parseIndexedKey(final String key, final String prefix, final int maxIndex, final Location location,
+                                    final String printablePrefix) throws BadConfigException {
+            if (!key.startsWith(prefix)) {
+                throw new BadConfigException(Section.INTERFACE, location, Reason.INVALID_VALUE, key);
+            }
+            try {
+                final int index = Integer.parseInt(key.substring(prefix.length()));
+                validateJunkPacketIndex(index, maxIndex, location, printablePrefix);
+                return index;
+            } catch (final NumberFormatException e) {
+                throw new BadConfigException(Section.INTERFACE, location, key, e);
+            }
+        }
+
+        private void validateJunkPacketIndex(final int index, final int maxIndex, final Location location,
+                                             final String prefix) throws BadConfigException {
+            if (index < 1 || index > maxIndex) {
+                throw new BadConfigException(Section.INTERFACE, location,
+                        Reason.INVALID_VALUE, prefix + index);
+            }
+        }
+
+        private List<String> buildJunkPacketList(final Map<Integer, String> source, final int maxIndex,
+                                                 final Location location, final String prefix) throws BadConfigException {
+            if (source.isEmpty()) {
+                return Collections.emptyList();
+            }
+            final List<Integer> orderedKeys = new ArrayList<>(source.keySet());
+            Collections.sort(orderedKeys);
+            for (int i = 0; i < orderedKeys.size(); i++) {
+                final int expected = i + 1;
+                final int actual = orderedKeys.get(i);
+                if (actual != expected) {
+                    throw new BadConfigException(Section.INTERFACE, location,
+                            Reason.INVALID_VALUE, prefix + actual);
+                }
+            }
+            if (orderedKeys.get(orderedKeys.size() - 1) > maxIndex) {
+                throw new BadConfigException(Section.INTERFACE, location,
+                        Reason.INVALID_VALUE, prefix + orderedKeys.get(orderedKeys.size() - 1));
+            }
+            final List<String> result = new ArrayList<>(orderedKeys.size());
+            for (final int key : orderedKeys) {
+                result.add(source.get(key));
+            }
+            return Collections.unmodifiableList(result);
         }
     }
 }
