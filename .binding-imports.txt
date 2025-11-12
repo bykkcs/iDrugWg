@@ -1,0 +1,16 @@
+ui/src/main/res/layout/app_list_dialog_fragment.xml|8|android.view.View
+ui/src/main/res/layout/app_list_dialog_fragment.xml|10|pw.idrug.connections.model.ApplicationData
+ui/src/main/res/layout/app_list_item.xml|7|pw.idrug.connections.model.ApplicationData
+ui/src/main/res/layout/config_naming_dialog_fragment.xml|7|pw.idrug.connections.widget.NameInputFilter
+ui/src/main/res/layout/tunnel_detail_fragment.xml|8|org.amnezia.awg.backend.Tunnel.State
+ui/src/main/res/layout/tunnel_detail_fragment.xml|10|pw.idrug.connections.util.ClipboardUtils
+ui/src/main/res/layout/tunnel_detail_peer.xml|8|pw.idrug.connections.util.ClipboardUtils
+ui/src/main/res/layout/tunnel_editor_fragment.xml|8|pw.idrug.connections.util.ClipboardUtils
+ui/src/main/res/layout/tunnel_editor_fragment.xml|10|pw.idrug.connections.widget.KeyInputFilter
+ui/src/main/res/layout/tunnel_editor_fragment.xml|12|pw.idrug.connections.widget.NameInputFilter
+ui/src/main/res/layout/tunnel_editor_peer.xml|7|android.view.View
+ui/src/main/res/layout/tunnel_editor_peer.xml|9|pw.idrug.connections.widget.KeyInputFilter
+ui/src/main/res/layout/tunnel_editor_peer.xml|11|pw.idrug.connections.databinding.BindingAdapters
+ui/src/main/res/layout/tunnel_list_fragment.xml|8|pw.idrug.connections.model.ObservableTunnel
+ui/src/main/res/layout/tunnel_list_item.xml|8|pw.idrug.connections.model.ObservableTunnel
+ui/src/main/res/layout/tunnel_list_item.xml|10|org.amnezia.awg.backend.Tunnel.State

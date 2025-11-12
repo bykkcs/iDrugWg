@@ -1,0 +1,22 @@
+app_list_dialog_fragment.xml|12|viewModel|pw.idrug.connections.fragment.AppListDialogFragment.ViewModel
+app_list_dialog_fragment.xml|16|fragment|pw.idrug.connections.fragment.AppListDialogFragment
+tunnel_detail_peer.xml|10|peer|pw.idrug.connections.viewmodel.PeerProxy
+tunnel_editor_fragment.xml|14|fragment|pw.idrug.connections.fragment.TunnelEditorFragment
+tunnel_editor_fragment.xml|18|config|pw.idrug.connections.viewmodel.ConfigProxy
+tunnel_editor_fragment.xml|22|keyPair|pw.idrug.connections.viewmodel.KeyPairProxy
+app_list_item.xml|9|item|pw.idrug.connections.model.ApplicationData
+app_list_item.xml|13|view|android.view.View
+app_list_item.xml|17|fragment|pw.idrug.connections.fragment.AppListDialogFragment
+tunnel_list_fragment.xml|10|fragment|pw.idrug.connections.fragment.TunnelListFragment
+tunnel_list_fragment.xml|14|tunnel|pw.idrug.connections.model.ObservableTunnel
+tunnel_list_fragment.xml|18|config|pw.idrug.connections.config.Config
+tunnel_editor_peer.xml|13|fragment|pw.idrug.connections.fragment.TunnelEditorFragment
+tunnel_editor_peer.xml|17|peer|pw.idrug.connections.viewmodel.PeerProxy
+tunnel_editor_peer.xml|21|keyPair|pw.idrug.connections.viewmodel.KeyPairProxy
+tunnel_list_item.xml|12|collection|pw.idrug.connections.databinding.ObservableKeyedArrayList<String, ObservableTunnel>
+tunnel_list_item.xml|16|key|String
+tunnel_list_item.xml|20|item|pw.idrug.connections.model.ObservableTunnel
+tunnel_list_item.xml|24|fragment|pw.idrug.connections.fragment.TunnelListFragment
+tunnel_detail_fragment.xml|12|fragment|pw.idrug.connections.fragment.TunnelDetailFragment
+tunnel_detail_fragment.xml|16|tunnel|pw.idrug.connections.model.ObservableTunnel
+tunnel_detail_fragment.xml|20|config|org.amnezia.awg.config.Config

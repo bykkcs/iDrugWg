@@ -1,0 +1,13 @@
+diff --git a/ui/src/main/res/layout/tunnel_detail_peer.xml b/ui/src/main/res/layout/tunnel_detail_peer.xml
+index 82b53b9..455688a 100644
+--- a/ui/src/main/res/layout/tunnel_detail_peer.xml
++++ b/ui/src/main/res/layout/tunnel_detail_peer.xml
+@@ -9,7 +9,8 @@
+         <import type="pw.idrug.connections.util.ClipboardUtils" />
+ 
+         <variable
+-            name="item"
+-            type="pw.idrug.connections.config.Peer" />
++            name="item"
++            type="org.amnezia.awg.config.Peer" />
+     </data>

@@ -1,0 +1,71 @@
+DATA BINDING BACKEND ANALYSIS REPORT
+====================================
+
+TARGET PROPERTIES INVESTIGATION:
+--------------------------------
+Searching for: cookieReplyPacketJunkSize, transportPacketJunkSize
+
+DIRECT FINDINGS:
+---------------
+1. These exact property names DO NOT exist in the tunnel module (backend)
+2. These property names ARE used in the UI module:
+   - ui/src/main/res/layout/tunnel_editor_fragment.xml
+   - ui/src/main/res/layout/tunnel_detail_fragment.xml
+   - ui/src/main/java/pw/idrug/connections/viewmodel/InterfaceProxy.kt
+
+BACKEND (TUNNEL MODULE) REAL PROPERTIES:
+---------------------------------------
+Actual properties in org.amnezia.awg.config.Interface:
+1. getJunkPacketCount() : Optional<Integer>
+2. getJunkPacketMinSize() : Optional<Integer>
+3. getJunkPacketMaxSize() : Optional<Integer>
+4. getInitPacketJunkSize() : Optional<Integer>
+5. getResponsePacketJunkSize() : Optional<Integer> ← This is likely the intended target for cookieReplyPacketJunkSize
+6. getInitPacketMagicHeader() : Optional<Long>
+7. getResponsePacketMagicHeader() : Optional<Long>
+8. getUnderloadPacketMagicHeader() : Optional<Long>
+9. getTransportPacketMagicHeader() : Optional<Long> ← This is likely the intended target for transportPacketJunkSize
+
+MAPPING ISSUE IDENTIFIED:
+------------------------
+In InterfaceProxy.kt:
+- cookieReplyPacketJunkSize maps to parseCookieReplyPacketJunkSize() ← DOES NOT EXIST
+- transportPacketJunkSize maps to parseTransportPacketJunkSize() ← DOES NOT EXIST
+
+CORRECT MAPPINGS SHOULD BE:
+--------------------------
+- cookieReplyPacketJunkSize should map to parseResponsePacketJunkSize() 
+- transportPacketJunkSize should map to parseTransportPacketMagicHeader()
+
+TYPE INFORMATION:
+----------------
+Both properties in UI are defined as String type in InterfaceProxy.kt
+Backend methods work with Integer/Long types with Optional wrapper
+
+BINDING RECOMMENDATION:
+----------------------
+1. In XML layouts, reference should be:
+   @{config.interface.responsePacketJunkSize} instead of @{config.interface.cookieReplyPacketJunkSize}
+   @{config.interface.transportPacketMagicHeader} instead of @{config.interface.transportPacketJunkSize}
+
+2. Or fix InterfaceProxy.kt to correctly map:
+   - cookieReplyPacketJunkSize → responsePacketJunkSize (Integer)
+   - transportPacketJunkSize → transportPacketMagicHeader (Long)
+
+ISSUE SUMMARY:
+--------------
+The UI is trying to access non-existent properties. The data binding compiler can't find:
+- config.interface.cookieReplyPacketJunkSize (should be config.interface.responsePacketJunkSize)
+- config.interface.transportPacketJunkSize (should be config.interface.transportPacketMagicHeader)
+
+FIX OPTIONS:
+------------
+1. Update XML layouts to use correct backend property names
+2. Update InterfaceProxy.kt to correctly map UI property names to backend method names
+3. Both approaches are valid depending on desired naming consistency
+
+RECOMMENDED SOLUTION:
+--------------------
+Update InterfaceProxy.kt to correctly map the UI property names to actual backend methods:
+- cookieReplyPacketJunkSize ↔ responsePacketJunkSize
+- transportPacketJunkSize ↔ transportPacketMagicHeader (note: this is MagicHeader, not JunkSize)

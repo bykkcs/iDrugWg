@@ -1,0 +1,1502 @@
+› откати эти изменения › Ты senior Android dev. Проект: iDrug Connections (Compose + Material3).
+    ЗАДАЧА: добавить НОВУЮ тему «iDRUG Liquid Glass» и тумблер в настройках.
+    ВАЖНО: существующую тему/цвета/типографику НЕ ТРОГАТЬ. Новая тема применяется ТОЛЬКО если включён тумблер «Тема iDRUG».
+
+    Требования:
+    - Оставить текущую тему по умолчанию без изменений.
+    - Добавить toggle "Тема iDRUG" (ключ в prefs: THEME_IDRUG_ENABLED = true/false).
+    - При включенном тумблере:
+      1) фон всего приложения — живой AGSL-шейдер «liquid glass» в палитре iDRUG;
+      2) карточки/панели — стеклянные (blur + полупрозрачный тинт + блик), границы с лёгким свечением;
+      3) кнопка primary — #00FFD0 с тёмным текстом; остальное наследует Material.
+    - minSdk не менять. Реальный blur (RenderEffect) включать на SDK >= 31, ниже — мягкий fallback без blur.
+    - Рефактор легкий, без каскадного перепила. Всё новое положить в отдельные файлы/слои.
+    - Не трогать существующие стили/темы/цветовые схемы, только добавить альтернативную ветку применяемую по флагу.
+
+    Цвета iDRUG:
+      idrugBlack = #0A0F12
+      idrugInk   = #0E1418
+      idrugCyan  = #00FFD0
+      idrugBlue  = #18A4FF
+      idrugWhite = #EAF6FF
+
+    Файлы/изменения (создай недостающие):
+
+    1) settings/ThemePrefs.kt
+    --------------------------------
+    object ThemePrefs {
+      private const val KEY = "idrug_theme_enabled"
+      fun isIdrugEnabled(ctx: Context): Boolean
+      fun setIdrugEnabled(ctx: Context, enabled: Boolean)
+    }
+
+    2) ui/settings/AppearanceSettingsScreen.kt
+    --------------------------------
+    - Добавить тумблер "Тема iDRUG" (описание: «жидкое стекло + неон»).
+    - При переключении — сохранять в ThemePrefs и делать callback наверх (recompose).
+    - Кнопку «Применить» (если у вас паттерн подтверждения), иначе — instant apply.
+
+    3) theme/IdrugTheme.kt (новый)
+    --------------------------------
+    @Composable
+    fun IDrugTheme(content: @Composable () -> Unit) {
+      val colors = darkColorScheme(
+        primary = Color(0xFF00FFD0),
+        onPrimary = Color(0xFF0A0F12),
+        secondary = Color(0xFF18A4FF),
+        onSecondary = Color(0xFF081015),
+        background = Color(0xFF0A0F12),
+        surface = Color(0xFF0E1418),
+        onSurface = Color(0xFFEAF6FF)
+      )
+      MaterialTheme(colorScheme = colors, typography = MaterialTheme.typography, content = content)
+    }
+
+    4) graphics/LiquidShader.kt (новый)
+    --------------------------------
+    private const val LIQUID_SHADER = """
+    uniform float2 iResolution;
+    uniform float  iTime;
+    float hash(float2 p){ return fract(sin(dot(p, float2(127.1,311.7))) * 43758.5453123); }
+    float noise(float2 p){
+      float2 i=floor(p), f=fract(p);
+      float a=hash(i), b=hash(i+float2(1,0)), c=hash(i+float2(0,1)), d=hash(i+float2(1,1));
+      float2 u=f*f*(3.0-2.0*f);
+      return mix(a,b,u.x) + (c-a)*u.y*(1.0-u.x) + (d-b)*u.x*u.y;
+    }
+    half4 main(float2 fragCoord){
+      float2 uv = fragCoord / iResolution.xy;
+      uv.x *= iResolution.x / iResolution.y;
+      float t = iTime * 0.06;
+      float n1 = noise(uv*2.3 + t);
+      float n2 = noise(uv*4.7 - t*0.8);
+      float n3 = noise(uv*1.1 + float2(t*0.4, -t*0.3));
+      float h  = (n1*0.55 + n2*0.35 + n3*0.10);
+      float3 cBase = float3(0.039, 0.063, 0.071); // #0A0F12
+      float3 cCyan = float3(0.000, 1.000, 0.816); // #00FFD0
+      float3 cBlue = float3(0.094, 0.643, 1.000); // #18A4FF
+      float3 col = mix(cBase, cBlue, smoothstep(0.22,0.82,h));
+      col = mix(col, cCyan, smoothstep(0.80,1.00,h)*0.85);
+      col += hash(fragCoord*0.75)*0.010;
+      return half4(col, 1.0);
+    }
+    """
+
+    @Composable
+    fun IdgLiquidBackground(modifier: Modifier = Modifier) {
+      val shader = remember { RuntimeShader(LIQUID_SHADER) }
+      var time by remember { mutableStateOf(0f) }
+      LaunchedEffect(Unit) { while (true) { withFrameNanos { time += 1/60f } } }
+      AndroidView(
+        factory = { ctx ->
+          object : View(ctx) {
+            private val paint = Paint()
+            private val rs = android.graphics.RuntimeShader(LIQUID_SHADER)
+            override fun onDraw(c: Canvas) {
+              val w = width.toFloat(); val h = height.toFloat()
+              rs.setFloatUniform("iResolution", w, h)
+              rs.setFloatUniform("iTime", time)
+              paint.shader = rs
+              c.drawRect(0f, 0f, w, h, paint)
+              invalidate()
+            }
+          }
+        },
+        modifier = modifier.fillMaxSize().background(Color(0xFF0A0F12))
+      )
+    }
+
+    5) ui/components/GlassCard.kt (новый)
+    --------------------------------
+    @Composable
+    fun GlassCard(
+      modifier: Modifier = Modifier,
+      corner: Dp = 24.dp,
+      content: @Composable ColumnScope.() -> Unit
+    ) {
+      val shape = RoundedCornerShape(corner)
+      val baseTint = Color.White.copy(alpha = 0.12f)
+      val stroke   = Color.White.copy(alpha = 0.22f)
+      val highlight = Brush.linearGradient(
+        0f to Color(0x66FFFFFF), 1f to Color(0x00FFFFFF),
+        start = Offset.Zero, end = Offset.Infinite
+      )
+      Box(
+        modifier
+          .clip(shape)
+          .graphicsLayer {
+            if (Build.VERSION.SDK_INT >= 31) {
+              renderEffect = RenderEffect.createBlurEffect(24f, 24f, Shader.TileMode.CLAMP)
+            }
+          }
+          .background(baseTint)
+          .border(1.dp, stroke, shape)
+      ) {
+        Box(Modifier.matchParentSize().background(highlight))
+        Column(Modifier.padding(16.dp), content = content)
+      }
+    }
+
+    6) ui/components/IdgPrimaryButton.kt (новый)
+    --------------------------------
+    @Composable
+    fun IdgPrimaryButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
+      Button(
+        onClick = onClick,
+        modifier = modifier.height(52.dp),
+        shape = RoundedCornerShape(16.dp),
+        colors = ButtonDefaults.buttonColors(
+          containerColor = Color(0xFF00FFD0),
+          contentColor = Color(0xFF0A0F12)
+        ),
+        contentPadding = PaddingValues(horizontal = 20.dp)
+      ) { Text(text, style = MaterialTheme.typography.titleMedium) }
+    }
+
+    7) AppTheme wiring (где у вас корневой setContent/Theme)
+    --------------------------------
+    - Добавь флаг: val idrug = remember { mutableStateOf(ThemePrefs.isIdrugEnabled(context)) }
+    - Перед MaterialTheme вызови:
+      if (idrug.value) {
+         IDrugTheme {
+           Box(Modifier.fillMaxSize()) {
+             IdgLiquidBackground(Modifier.matchParentSize())
+             CompositionLocalProvider { content() } // ваш корневой нав/экраны
+           }
+         }
+      } else {
+         // СТАРАЯ, текущее поведение, как было (НЕ МЕНЯТЬ)
+         ExistingAppTheme { content() }
+      }
+
+    - В настройках AppearanceSettingsScreen при toggle:
+      ThemePrefs.setIdrugEnabled(context, newValue)
+      поднять state наверх (через callback/VM) и обновить idrug.value = newValue
+
+    8) Центровка кнопки «Применить промокод» (если используется на экране оплаты)
+    --------------------------------
+    - В layout/compose того экрана обернуть кнопку в Box/Row с Modifier.fillMaxWidth() и alignment = CenterHorizontally.
+
+    Пример:
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+      IdgPrimaryButton("Применить", onClick = { ... })
+    }
+
+    9) Тест/акцептанс:
+    - При выключенном тумблере — приложение работает ровно как раньше (никаких визуальных изменений).
+    - Включаем «Тема iDRUG»:
+      - фон — живой liquid shader;
+      - экраны лежат поверх в MaterialTheme из IDrugTheme;
+      - карточки со стеклянным эффектом (GlassCard) применяются там, где контейнеры карточек.
+    - На Android 12+ виден blur, на младших — без blur, но всё выглядит корректно.
+    - Primary кнопки — #00FFD0, тексты читаемы, контрасты AA+.
+    - Никаких изменений старых цветов/типографики/ресурсов.
+
+    Выдай итоговый код новых файлов и необходимые диффы в существующие (Theme wiring и экран настроек). Не добавляй сторонние либы. Без объяснений — просто код.
+
+
+  ⚠ Heads up, you've used over 75% of your 5h limit. Run /status for a breakdown.
+
+  ⚠ Heads up, you've used over 90% of your 5h limit. Run /status for a breakdown.
+
+  ⚠ Heads up, you've used over 95% of your 5h limit. Run /status for a breakdown.
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ──
+
+  • // ui/src/main/java/pw/idrug/connections/settings/ThemePrefs.kt
+    package pw.idrug.connections.settings
+
+    import android.content.Context
+    import androidx.core.content.edit
+
+    object ThemePrefs {
+        private const val PREF_NAME = "idrug_theme"
+        private const val KEY = "idrug_theme_enabled"
+
+        fun isIdrugEnabled(ctx: Context): Boolean {
+            val prefs = ctx.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            return prefs.getBoolean(KEY, false)
+        }
+
+        fun setIdrugEnabled(ctx: Context, enabled: Boolean) {
+            val prefs = ctx.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            prefs.edit { putBoolean(KEY, enabled) }
+        }
+    }
+
+    // ui/src/main/java/pw/idrug/connections/ui/settings/AppearanceSettingsScreen.kt
+    package pw.idrug.connections.ui.settings
+
+    import androidx.compose.foundation.layout.Arrangement
+    import androidx.compose.foundation.layout.Column
+    import androidx.compose.foundation.layout.PaddingValues
+    import androidx.compose.foundation.layout.Row
+    import androidx.compose.foundation.layout.fillMaxWidth
+    import androidx.compose.foundation.layout.padding
+    import androidx.compose.material3.MaterialTheme
+    import androidx.compose.material3.Switch
+    import androidx.compose.material3.Text
+    import androidx.compose.runtime.Composable
+    import androidx.compose.runtime.getValue
+    import androidx.compose.runtime.mutableStateOf
+    import androidx.compose.runtime.remember
+    import androidx.compose.runtime.setValue
+    import androidx.compose.ui.Alignment
+    import androidx.compose.ui.Modifier
+    import androidx.compose.ui.platform.LocalContext
+    import androidx.compose.ui.unit.dp
+    import pw.idrug.connections.settings.ThemePrefs
+
+    @Composable
+    fun AppearanceSettingsScreen(
+        modifier: Modifier = Modifier,
+        contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 16.dp),
+        onThemeToggle: (Boolean) -> Unit
+    ) {
+        val context = LocalContext.current
+        var enabled by remember { mutableStateOf(ThemePrefs.isIdrugEnabled(context)) }
+
+        Column(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(contentPadding),
+            verticalArrangement = Arrangement.spacedBy(24.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = "Тема iDRUG",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Text(
+                        text = "жидкое стекло + неон",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+                Switch(
+                    checked = enabled,
+                    onCheckedChange = { value ->
+                        enabled = value
+                        ThemePrefs.setIdrugEnabled(context, value)
+                        onThemeToggle(value)
+                    }
+                )
+            }
+        }
+    }
+
+    // ui/src/main/java/pw/idrug/connections/theme/IdrugTheme.kt
+    package pw.idrug.connections.theme
+
+    import androidx.compose.material3.MaterialTheme
+    import androidx.compose.material3.darkColorScheme
+    import androidx.compose.runtime.Composable
+    import androidx.compose.ui.graphics.Color
+
+    @Composable
+    fun IDrugTheme(content: @Composable () -> Unit) {
+        val colors = darkColorScheme(
+            primary = Color(0xFF00FFD0),
+            onPrimary = Color(0xFF0A0F12),
+            secondary = Color(0xFF18A4FF),
+            onSecondary = Color(0xFF081015),
+            background = Color(0xFF0A0F12),
+            surface = Color(0xFF0E1418),
+            onSurface = Color(0xFFEAF6FF)
+        )
+        MaterialTheme(colorScheme = colors, typography = MaterialTheme.typography, content = content)
+    }
+
+    // ui/src/main/java/pw/idrug/connections/graphics/LiquidShader.kt
+    package pw.idrug.connections.graphics
+
+    import android.content.Context
+    import android.graphics.Canvas
+    import android.graphics.LinearGradient
+    import android.graphics.Paint
+    import android.graphics.RuntimeShader
+    import android.graphics.Shader
+    import android.os.Build
+    import android.os.SystemClock
+    import android.util.AttributeSet
+    import android.view.View
+    import android.view.ViewGroup
+    import androidx.compose.foundation.background
+    import androidx.compose.foundation.layout.Box
+    import androidx.compose.foundation.layout.fillMaxSize
+    import androidx.compose.runtime.Composable
+    import androidx.compose.runtime.LaunchedEffect
+    import androidx.compose.runtime.getValue
+    import androidx.compose.runtime.mutableStateOf
+    import androidx.compose.runtime.remember
+    import androidx.compose.runtime.setValue
+    import androidx.compose.ui.Modifier
+    import androidx.compose.ui.graphics.Color
+    import androidx.compose.ui.viewinterop.AndroidView
+    import androidx.core.view.children
+    import kotlinx.coroutines.android.awaitFrame
+
+    private const val LIQUID_SHADER = """
+    uniform float2 iResolution;
+    uniform float  iTime;
+    float hash(float2 p){ return fract(sin(dot(p, float2(127.1,311.7))) * 43758.5453123); }
+    float noise(float2 p){
+      float2 i=floor(p), f=fract(p);
+      float a=hash(i), b=hash(i+float2(1,0)), c=hash(i+float2(0,1)), d=hash(i+float2(1,1));
+      float2 u=f*f*(3.0-2.0*f);
+      return mix(a,b,u.x) + (c-a)*u.y*(1.0-u.x) + (d-b)*u.x*u.y;
+    }
+    half4 main(float2 fragCoord){
+      float2 uv = fragCoord / iResolution.xy;
+      uv.x *= iResolution.x / iResolution.y;
+      float t = iTime * 0.06;
+      float n1 = noise(uv*2.3 + t);
+      float n2 = noise(uv*4.7 - t*0.8);
+      float n3 = noise(uv*1.1 + float2(t*0.4, -t*0.3));
+      float h  = (n1*0.55 + n2*0.35 + n3*0.10);
+      float3 cBase = float3(0.039, 0.063, 0.071); // #0A0F12
+      float3 cCyan = float3(0.000, 1.000, 0.816); // #00FFD0
+      float3 cBlue = float3(0.094, 0.643, 1.000); // #18A4FF
+      float3 col = mix(cBase, cBlue, smoothstep(0.22,0.82,h));
+      col = mix(col, cCyan, smoothstep(0.80,1.00,h)*0.85);
+      col += hash(fragCoord*0.75)*0.010;
+      return half4(col, 1.0);
+    }
+    """
+
+    @Composable
+    fun IdgLiquidBackground(modifier: Modifier = Modifier) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val shader = remember { RuntimeShader(LIQUID_SHADER) }
+            val paint = remember { Paint() }
+            var time by remember { mutableStateOf(0f) }
+
+            LaunchedEffect(Unit) {
+                while (true) {
+                    awaitFrame()
+                    time += 1f / 60f
+                }
+            }
+
+            AndroidView(
+                factory = { context ->
+                    object : View(context) {
+                        override fun onDraw(canvas: Canvas) {
+                            val w = width.toFloat()
+                            val h = height.toFloat()
+                            shader.setFloatUniform("iResolution", w, h)
+                            shader.setFloatUniform("iTime", time)
+                            paint.shader = shader
+                            canvas.drawRect(0f, 0f, w, h, paint)
+                            invalidate()
+                        }
+                    }
+                },
+                modifier = modifier
+                    .fillMaxSize()
+                    .background(Color(0xFF0A0F12))
+            )
+        } else {
+            Box(
+                modifier = modifier
+                    .fillMaxSize()
+                    .background(Color(0xFF0A0F12))
+            )
+        }
+    }
+
+    class LiquidGlassView @JvmOverloads constructor(
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0
+    ) : View(context, attrs, defStyleAttr) {
+
+        private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val runtimeShader: RuntimeShader? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            RuntimeShader(LIQUID_SHADER)
+        } else {
+            null
+        }
+        private val fallbackShader: Shader = LinearGradient(
+            0f,
+            0f,
+            0f,
+            1200f,
+            intArrayOf(0xFF0A0F12.toInt(), 0xFF18A4FF.toInt(), 0xFF00FFD0.toInt()),
+            floatArrayOf(0f, 0.65f, 1f),
+            Shader.TileMode.CLAMP
+        )
+        private var startTime = SystemClock.elapsedRealtime()
+
+        init {
+            setWillNotDraw(false)
+        }
+
+        override fun onAttachedToWindow() {
+            super.onAttachedToWindow()
+            startTime = SystemClock.elapsedRealtime()
+            invalidate()
+        }
+
+        override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+            if (runtimeShader == null) paint.shader = fallbackShader
+        }
+
+        override fun onDraw(canvas: Canvas) {
+            val w = width.toFloat()
+            val h = height.toFloat()
+            val shader = runtimeShader
+            if (shader != null) {
+                val time = (SystemClock.elapsedRealtime() - startTime) / 1000f
+                shader.setFloatUniform("iResolution", w, h)
+                shader.setFloatUniform("iTime", time)
+                paint.shader = shader
+                canvas.drawRect(0f, 0f, w, h, paint)
+                postInvalidateOnAnimation()
+            } else {
+                paint.shader = fallbackShader
+                canvas.drawRect(0f, 0f, w, h, paint)
+            }
+        }
+    }
+
+    fun ViewGroup.ensureLiquidBackground() {
+        if (children.any { it is LiquidGlassView }) return
+        val background = LiquidGlassView(context)
+        addView(
+            background,
+            0,
+            ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        )
+    }
+
+    // ui/src/main/java/pw/idrug/connections/ui/components/GlassCard.kt
+    package pw.idrug.connections.ui.components
+
+    import android.graphics.RenderEffect
+    import android.graphics.Shader
+    import android.os.Build
+    import androidx.compose.foundation.background
+    import androidx.compose.foundation.border
+    import androidx.compose.foundation.layout.Box
+    import androidx.compose.foundation.layout.Column
+    import androidx.compose.foundation.layout.ColumnScope
+    import androidx.compose.foundation.layout.matchParentSize
+    import androidx.compose.foundation.layout.padding
+    import androidx.compose.foundation.shape.RoundedCornerShape
+    import androidx.compose.runtime.Composable
+    import androidx.compose.ui.Modifier
+    import androidx.compose.ui.draw.clip
+    import androidx.compose.ui.geometry.Offset
+    import androidx.compose.ui.graphics.Brush
+    import androidx.compose.ui.graphics.Color
+    import androidx.compose.ui.graphics.graphicsLayer
+    import androidx.compose.ui.unit.Dp
+    import androidx.compose.ui.unit.dp
+
+    @Composable
+    fun GlassCard(
+        modifier: Modifier = Modifier,
+        corner: Dp = 24.dp,
+        content: @Composable ColumnScope.() -> Unit
+    ) {
+        val shape = RoundedCornerShape(corner)
+        val baseTint = Color.White.copy(alpha = 0.12f)
+        val stroke = Color.White.copy(alpha = 0.22f)
+        val highlight = Brush.linearGradient(
+            colors = listOf(Color(0x66FFFFFF), Color(0x00FFFFFF)),
+            start = Offset.Zero,
+            end = Offset.Infinite
+        )
+
+        Box(
+            modifier
+                .clip(shape)
+                .graphicsLayer {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                        renderEffect = RenderEffect.createBlurEffect(24f, 24f, Shader.TileMode.CLAMP)
+                    }
+                }
+                .background(baseTint)
+                .border(1.dp, stroke, shape)
+        ) {
+            Box(Modifier.matchParentSize().background(highlight))
+            Column(modifier = Modifier.padding(16.dp), content = content)
+        }
+    }
+
+    // ui/src/main/java/pw/idrug/connections/ui/components/IdgPrimaryButton.kt
+    package pw.idrug.connections.ui.components
+
+    import androidx.compose.foundation.layout.PaddingValues
+    import androidx.compose.foundation.layout.height
+    import androidx.compose.foundation.shape.RoundedCornerShape
+    import androidx.compose.material3.Button
+    import androidx.compose.material3.ButtonDefaults
+    import androidx.compose.material3.MaterialTheme
+    import androidx.compose.material3.Text
+    import androidx.compose.runtime.Composable
+    import androidx.compose.ui.Modifier
+    import androidx.compose.ui.graphics.Color
+    import androidx.compose.ui.unit.dp
+
+    @Composable
+    fun IdgPrimaryButton(
+        text: String,
+        onClick: () -> Unit,
+        modifier: Modifier = Modifier
+    ) {
+        Button(
+            onClick = onClick,
+            modifier = modifier.height(52.dp),
+            shape = RoundedCornerShape(16.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF00FFD0),
+                contentColor = Color(0xFF0A0F12)
+            ),
+            contentPadding = PaddingValues(horizontal = 20.dp)
+        ) {
+            Text(text = text, style = MaterialTheme.typography.titleMedium)
+        }
+    }
+
+    // ui/src/main/java/pw/idrug/connections/activity/ThemeAwareActivity.kt
+    package pw.idrug.connections.activity
+
+    import android.view.View
+    import android.view.ViewGroup
+    import android.widget.FrameLayout
+    import androidx.appcompat.app.AppCompatActivity
+    import pw.idrug.connections.graphics.ensureLiquidBackground
+    import pw.idrug.connections.settings.ThemePrefs
+
+    open class ThemeAwareActivity : AppCompatActivity() {
+        private var themedRoot: FrameLayout? = null
+
+        override fun setContentView(layoutResID: Int) {
+            if (applyIdgThemeIfNeeded { layoutInflater.inflate(layoutResID, null, false) }) return
+            super.setContentView(layoutResID)
+        }
+
+        override fun setContentView(view: View?) {
+            if (view != null && applyIdgThemeIfNeeded { view }) return
+            super.setContentView(view)
+        }
+
+        override fun setContentView(view: View?, params: ViewGroup.LayoutParams?) {
+            if (view != null && applyIdgThemeIfNeeded({ view }, params)) return
+            super.setContentView(view, params)
+        }
+
+        private fun applyIdgThemeIfNeeded(viewFactory: () -> View, params: ViewGroup.LayoutParams? = null): Boolean {
+            if (!ThemePrefs.isIdrugEnabled(this)) return false
+            val root = themedRoot ?: ThemeContainer(this).also { themedRoot = it }
+            root.removeAllViews()
+            root.ensureLiquidBackground()
+            val content = viewFactory()
+            root.addView(
+                content,
+                params ?: FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+            )
+            super.setContentView(root)
+            return true
+        }
+
+        private class ThemeContainer(context: android.content.Context) : FrameLayout(context) {
+            init {
+                setBackgroundColor(0xE60A0F12.toInt())
+            }
+        }
+    }
+
+    --- a/ui/src/main/java/pw/idrug/connections/activity/BaseActivity.kt
+    +++ b/ui/src/main/java/pw/idrug/connections/activity/BaseActivity.kt
+    @@
+    -import androidx.appcompat.app.AppCompatActivity
+    @@
+    -abstract class BaseActivity : AppCompatActivity() {
+    +abstract class BaseActivity : ThemeAwareActivity() {
+    --- a/ui/src/main/java/pw/idrug/connections/activity/OnboardingActivity.kt
+    +++ b/ui/src/main/java/pw/idrug/connections/activity/OnboardingActivity.kt
+    @@
+    -import android.widget.TextView
+    -import androidx.appcompat.app.AppCompatActivity
+    +import android.widget.TextView
+    @@
+    -class OnboardingActivity : AppCompatActivity() {
+    +class OnboardingActivity : ThemeAwareActivity() {
+    --- a/ui/src/main/java/pw/idrug/connections/activity/ConfigListActivity.kt
+    +++ b/ui/src/main/java/pw/idrug/connections/activity/ConfigListActivity.kt
+    @@
+    -import androidx.appcompat.app.AppCompatActivity
+    @@
+    -class ConfigListActivity : AppCompatActivity() {
+    +class ConfigListActivity : ThemeAwareActivity() {
+    --- a/ui/src/main/java/pw/idrug/connections/activity/LinkCodeActivity.kt
+    +++ b/ui/src/main/java/pw/idrug/connections/activity/LinkCodeActivity.kt
+    @@
+    -import android.widget.ProgressBar
+    -import android.widget.Toast
+    -import androidx.appcompat.app.AppCompatActivity
+    +import android.widget.ProgressBar
+    +import android.widget.Toast
+    @@
+    -class LinkCodeActivity : AppCompatActivity() {
+    +class LinkCodeActivity : ThemeAwareActivity() {
+    --- a/ui/src/main/java/pw/idrug/connections/activity/LogViewerActivity.kt
+    +++ b/ui/src/main/java/pw/idrug/connections/activity/LogViewerActivity.kt
+    @@
+    -import androidx.activity.result.contract.ActivityResultContracts
+    -import androidx.appcompat.app.AppCompatActivity
+    +import androidx.activity.result.contract.ActivityResultContracts
+    @@
+    -class LogViewerActivity : AppCompatActivity() {
+    +class LogViewerActivity : ThemeAwareActivity() {
+    --- a/ui/src/main/java/pw/idrug/connections/activity/SplashActivity.kt
+    +++ b/ui/src/main/java/pw/idrug/connections/activity/SplashActivity.kt
+    @@
+    -import android.os.Bundle
+    -import androidx.appcompat.app.AppCompatActivity
+    -import android.util.Log
+    +import android.os.Bundle
+    +import android.util.Log
+    @@
+    -class SplashActivity : AppCompatActivity() {
+    +class SplashActivity : ThemeAwareActivity() {
+    --- a/ui/src/main/java/pw/idrug/connections/activity/TunnelToggleActivity.kt
+    +++ b/ui/src/main/java/pw/idrug/connections/activity/TunnelToggleActivity.kt
+    @@
+    -import androidx.activity.result.contract.ActivityResultContracts
+    -import androidx.appcompat.app.AppCompatActivity
+    +import androidx.activity.result.contract.ActivityResultContracts
+    @@
+    -class TunnelToggleActivity : AppCompatActivity() {
+    +class TunnelToggleActivity : ThemeAwareActivity() {
+    --- a/ui/src/main/java/pw/idrug/connections/activity/TvEntryActivity.kt
+    +++ b/ui/src/main/java/pw/idrug/connections/activity/TvEntryActivity.kt
+    @@
+    -import android.widget.TextView
+    -import android.widget.Toast
+    -import androidx.appcompat.app.AppCompatActivity
+    +import android.widget.TextView
+    +import android.widget.Toast
+    @@
+    -class TvEntryActivity : AppCompatActivity() {
+    +class TvEntryActivity : ThemeAwareActivity() {
+    --- a/ui/src/main/java/pw/idrug/connections/activity/SettingsActivity.kt
+    +++ b/ui/src/main/java/pw/idrug/connections/activity/SettingsActivity.kt
+    @@
+    -import android.view.MenuItem
+    -import androidx.appcompat.app.AppCompatActivity
+    +import android.view.MenuItem
+    @@
+    -import androidx.preference.PreferenceFragmentCompat
+    +import androidx.preference.PreferenceFragmentCompat
+    +import androidx.preference.SwitchPreferenceCompat
+    @@
+    -import pw.idrug.connections.backend.AwgQuickBackend
+    +import org.amnezia.awg.backend.AwgQuickBackend
+    @@
+    -import pw.idrug.connections.util.applyStatusBarInsetToActionBar
+    +import pw.idrug.connections.util.applyStatusBarInsetToActionBar
+    +import pw.idrug.connections.settings.ThemePrefs
+    @@
+    -class SettingsActivity : AppCompatActivity() {
+    +class SettingsActivity : ThemeAwareActivity() {
+    @@
+    -            preferenceManager.findPreference<Preference>("ota_update")?.setOnPreferenceClickListener {
+    +            preferenceManager.findPreference<SwitchPreferenceCompat>("idrug_theme_enabled")?.apply {
+    +                isChecked = ThemePrefs.isIdrugEnabled(requireContext())
+    +                setOnPreferenceChangeListener { _, newValue ->
+    +                    val enabled = newValue as Boolean
+    +                    ThemePrefs.setIdrugEnabled(requireContext(), enabled)
+    +                    activity?.recreate()
+    +                    true
+    +                }
+    +            }
+    +
+    +            preferenceManager.findPreference<Preference>("ota_update")?.setOnPreferenceClickListener {
+                     UpdateDialogFragment.show(parentFragmentManager)
+                     true
+                 }
+
+    --- a/ui/src/main/res/xml/preferences.xml
+    +++ b/ui/src/main/res/xml/preferences.xml
+    @@
+         <pw.idrug.connections.preference.QuickTilePreference
+             android:key="quick_tile" />
+
+    +    <androidx.preference.SwitchPreferenceCompat
+    +        android:key="idrug_theme_enabled"
+    +        android:title="@string/theme_idrug_title"
+    +        android:summary="@string/theme_idrug_summary"
+    +        android:persistent="false"
+    +        android:defaultValue="false"
+    +        app:widgetLayout="@layout/preference_widget_material_switch" />
+    +
+         <!-- BUTTON FOR APP UPDATE -->
+         <Preference
+             android:key="ota_update"
+             android:title="@string/update_application_title"
+             android:summary="@string/update_application_summary" />
+    --- a/ui/src/main/res/values/strings.xml
+    +++ b/ui/src/main/res/values/strings.xml
+    @@
+    -    <string name="enable_notification_title">Notification</string>
+    -    <string name="enable_notification_summary_off">Connection status notification is disabled</string>
+    -    <string name="enable_notification_summary_on">Connection status notification is enabled</string>
+    +    <string name="enable_notification_title">Notification</string>
+    +    <string name="enable_notification_summary_off">Connection status notification is disabled</string>
+    +    <string name="enable_notification_summary_on">Connection status notification is enabled</string>
+    +    <string name="promo_hint">Promo code</string>
+    +    <string name="promo_apply">Apply</string>
+    +    <string name="promo_applied">✅ Promo applied: %1$s</string>
+    +    <string name="promo_invalid">Promo code is invalid</string>
+    +    <string name="theme_idrug_title">iDRUG theme</string>
+    +    <string name="theme_idrug_summary">Liquid glass + neon</string>
+     </resources>
+    --- a/ui/src/main/res/values-ru/strings.xml
+    +++ b/ui/src/main/res/values-ru/strings.xml
+    @@
+    -    <string name="enable_notification_title">Уведомление</string>
+    -    <string name="enable_notification_summary_off">Уведомление о состоянии соединения отключено</string>
+    -    <string name="enable_notification_summary_on">Уведомление о состоянии соединения включено</string>
+    +    <string name="enable_notification_title">Уведомление</string>
+    +    <string name="enable_notification_summary_off">Уведомление о состоянии соединения отключено</string>
+    +    <string name="enable_notification_summary_on">Уведомление о состоянии соединения включено</string>
+    +    <string name="theme_idrug_title">Тема iDRUG</string>
+    +    <string name="theme_idrug_summary">жидкое стекло + неон</string>
+     </resources>
+    --- a/ui/src/main/res/layout/dialog_subscription.xml
+    +++ b/ui/src/main/res/layout/dialog_subscription.xml
+    @@
+    -    <LinearLayout
+    -        android:id="@+id/row_promo"
+    -        android:layout_width="match_parent"
+    -        android:layout_height="wrap_content"
+    -        android:layout_marginTop="20dp"
+    -        android:gravity="center_vertical"
+    -        android:orientation="horizontal"
+    -        android:visibility="gone">
+    -
+    -        <com.google.android.material.textfield.TextInputLayout
+    -            android:id="@+id/promo_container"
+    -            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+    -            android:layout_width="0dp"
+    -            android:layout_height="wrap_content"
+    -            android:layout_weight="1"
+    -            android:hint="@string/promo_hint">
+    -
+    -            <com.google.android.material.textfield.TextInputEditText
+    -                android:id="@+id/input_promo"
+    -                android:layout_width="match_parent"
+    -                android:layout_height="wrap_content"
+    -                android:inputType="textCapCharacters"
+    -                android:maxLines="1" />
+    -        </com.google.android.material.textfield.TextInputLayout>
+    -
+    -        <com.google.android.material.button.MaterialButton
+    -            android:id="@+id/btn_apply_promo"
+    -            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+    -            android:layout_width="wrap_content"
+    -            android:layout_height="wrap_content"
+    -            android:layout_marginStart="12dp"
+    -            android:paddingHorizontal="20dp"
+    -            android:minWidth="0dp"
+    -            android:text="@string/promo_apply"
+    -            android:textAllCaps="false"
+    -            android:textAppearance="?attr/textAppearanceLabelLarge" />
+    -    </LinearLayout>
+    +    <LinearLayout
+    +        android:id="@+id/row_promo"
+    +        android:layout_width="match_parent"
+    +        android:layout_height="wrap_content"
+    +        android:layout_marginTop="20dp"
+    +        android:gravity="center_horizontal"
+    +        android:orientation="vertical"
+    +        android:visibility="gone">
+    +
+    +        <com.google.android.material.textfield.TextInputLayout
+    +            android:id="@+id/promo_container"
+    +            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+    +            android:layout_width="match_parent"
+    +            android:layout_height="wrap_content"
+    +            android:hint="@string/promo_hint">
+    +
+    +            <com.google.android.material.textfield.TextInputEditText
+    +                android:id="@+id/input_promo"
+    +                android:layout_width="match_parent"
+    +                android:layout_height="wrap_content"
+    +                android:inputType="textCapCharacters"
+    +                android:maxLines="1" />
+    +        </com.google.android.material.textfield.TextInputLayout>
+    +
+    +        <com.google.android.material.button.MaterialButton
+    +            android:id="@+id/btn_apply_promo"
+    +            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+    +            android:layout_width="wrap_content"
+    +            android:layout_height="wrap_content"
+    +            android:layout_marginTop="12dp"
+    +            android:paddingHorizontal="20dp"
+    +            android:minWidth="0dp"
+    +            android:text="@string/promo_apply"
+    +            android:textAllCaps="false"
+    +            android:textAppearance="?attr/textAppearanceLabelLarge" />
+    +    </LinearLayout>
+
+
+  › отмени полностью это изменение с дизайном • // ui/src/main/java/pw/idrug/connections/settings/ThemePrefs.kt
+      package pw.idrug.connections.settings
+
+      import android.content.Context
+      import androidx.core.content.edit
+
+      object ThemePrefs {
+          private const val PREF_NAME = "idrug_theme"
+          private const val KEY = "idrug_theme_enabled"
+
+          fun isIdrugEnabled(ctx: Context): Boolean {
+              val prefs = ctx.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+              return prefs.getBoolean(KEY, false)
+          }
+
+          fun setIdrugEnabled(ctx: Context, enabled: Boolean) {
+              val prefs = ctx.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+              prefs.edit { putBoolean(KEY, enabled) }
+          }
+      }
+
+      // ui/src/main/java/pw/idrug/connections/ui/settings/AppearanceSettingsScreen.kt
+      package pw.idrug.connections.ui.settings
+
+      import androidx.compose.foundation.layout.Arrangement
+      import androidx.compose.foundation.layout.Column
+      import androidx.compose.foundation.layout.PaddingValues
+      import androidx.compose.foundation.layout.Row
+      import androidx.compose.foundation.layout.fillMaxWidth
+      import androidx.compose.foundation.layout.padding
+      import androidx.compose.material3.MaterialTheme
+      import androidx.compose.material3.Switch
+      import androidx.compose.material3.Text
+      import androidx.compose.runtime.Composable
+      import androidx.compose.runtime.getValue
+      import androidx.compose.runtime.mutableStateOf
+      import androidx.compose.runtime.remember
+      import androidx.compose.runtime.setValue
+      import androidx.compose.ui.Alignment
+      import androidx.compose.ui.Modifier
+      import androidx.compose.ui.platform.LocalContext
+      import androidx.compose.ui.unit.dp
+      import pw.idrug.connections.settings.ThemePrefs
+
+      @Composable
+      fun AppearanceSettingsScreen(
+          modifier: Modifier = Modifier,
+          contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 16.dp),
+          onThemeToggle: (Boolean) -> Unit
+      ) {
+          val context = LocalContext.current
+          var enabled by remember { mutableStateOf(ThemePrefs.isIdrugEnabled(context)) }
+
+          Column(
+              modifier = modifier
+                  .fillMaxWidth()
+                  .padding(contentPadding),
+              verticalArrangement = Arrangement.spacedBy(24.dp)
+          ) {
+              Row(
+                  modifier = Modifier.fillMaxWidth(),
+                  verticalAlignment = Alignment.CenterVertically,
+                  horizontalArrangement = Arrangement.SpaceBetween
+              ) {
+                  Column(modifier = Modifier.weight(1f)) {
+                      Text(
+                          text = "Тема iDRUG",
+                          style = MaterialTheme.typography.titleMedium
+                      )
+                      Text(
+                          text = "жидкое стекло + неон",
+                          style = MaterialTheme.typography.bodyMedium,
+                          color = MaterialTheme.colorScheme.onSurfaceVariant
+                      )
+                  }
+                  Switch(
+                      checked = enabled,
+                      onCheckedChange = { value ->
+                          enabled = value
+                          ThemePrefs.setIdrugEnabled(context, value)
+                          onThemeToggle(value)
+                      }
+                  )
+              }
+          }
+      }
+
+      // ui/src/main/java/pw/idrug/connections/theme/IdrugTheme.kt
+      package pw.idrug.connections.theme
+
+      import androidx.compose.material3.MaterialTheme
+      import androidx.compose.material3.darkColorScheme
+      import androidx.compose.runtime.Composable
+      import androidx.compose.ui.graphics.Color
+
+      @Composable
+      fun IDrugTheme(content: @Composable () -> Unit) {
+          val colors = darkColorScheme(
+              primary = Color(0xFF00FFD0),
+              onPrimary = Color(0xFF0A0F12),
+              secondary = Color(0xFF18A4FF),
+              onSecondary = Color(0xFF081015),
+              background = Color(0xFF0A0F12),
+              surface = Color(0xFF0E1418),
+              onSurface = Color(0xFFEAF6FF)
+          )
+          MaterialTheme(colorScheme = colors, typography = MaterialTheme.typography, content = content)
+      }
+
+      // ui/src/main/java/pw/idrug/connections/graphics/LiquidShader.kt
+      package pw.idrug.connections.graphics
+
+      import android.content.Context
+      import android.graphics.Canvas
+      import android.graphics.LinearGradient
+      import android.graphics.Paint
+      import android.graphics.RuntimeShader
+      import android.graphics.Shader
+      import android.os.Build
+      import android.os.SystemClock
+      import android.util.AttributeSet
+      import android.view.View
+      import android.view.ViewGroup
+      import androidx.compose.foundation.background
+      import androidx.compose.foundation.layout.Box
+      import androidx.compose.foundation.layout.fillMaxSize
+      import androidx.compose.runtime.Composable
+      import androidx.compose.runtime.LaunchedEffect
+      import androidx.compose.runtime.getValue
+      import androidx.compose.runtime.mutableStateOf
+      import androidx.compose.runtime.remember
+      import androidx.compose.runtime.setValue
+      import androidx.compose.ui.Modifier
+      import androidx.compose.ui.graphics.Color
+      import androidx.compose.ui.viewinterop.AndroidView
+      import androidx.core.view.children
+      import kotlinx.coroutines.android.awaitFrame
+
+      private const val LIQUID_SHADER = """
+      uniform float2 iResolution;
+      uniform float  iTime;
+      float hash(float2 p){ return fract(sin(dot(p, float2(127.1,311.7))) * 43758.5453123); }
+      float noise(float2 p){
+        float2 i=floor(p), f=fract(p);
+        float a=hash(i), b=hash(i+float2(1,0)), c=hash(i+float2(0,1)), d=hash(i+float2(1,1));
+        float2 u=f*f*(3.0-2.0*f);
+        return mix(a,b,u.x) + (c-a)*u.y*(1.0-u.x) + (d-b)*u.x*u.y;
+      }
+      half4 main(float2 fragCoord){
+        float2 uv = fragCoord / iResolution.xy;
+        uv.x *= iResolution.x / iResolution.y;
+        float t = iTime * 0.06;
+        float n1 = noise(uv*2.3 + t);
+        float n2 = noise(uv*4.7 - t*0.8);
+        float n3 = noise(uv*1.1 + float2(t*0.4, -t*0.3));
+        float h  = (n1*0.55 + n2*0.35 + n3*0.10);
+        float3 cBase = float3(0.039, 0.063, 0.071); // #0A0F12
+        float3 cCyan = float3(0.000, 1.000, 0.816); // #00FFD0
+        float3 cBlue = float3(0.094, 0.643, 1.000); // #18A4FF
+        float3 col = mix(cBase, cBlue, smoothstep(0.22,0.82,h));
+        col = mix(col, cCyan, smoothstep(0.80,1.00,h)*0.85);
+        col += hash(fragCoord*0.75)*0.010;
+        return half4(col, 1.0);
+      }
+      """
+
+      @Composable
+      fun IdgLiquidBackground(modifier: Modifier = Modifier) {
+          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+              val shader = remember { RuntimeShader(LIQUID_SHADER) }
+              val paint = remember { Paint() }
+              var time by remember { mutableStateOf(0f) }
+
+              LaunchedEffect(Unit) {
+                  while (true) {
+                      awaitFrame()
+                      time += 1f / 60f
+                  }
+              }
+
+              AndroidView(
+                  factory = { context ->
+                      object : View(context) {
+                          override fun onDraw(canvas: Canvas) {
+                              val w = width.toFloat()
+                              val h = height.toFloat()
+                              shader.setFloatUniform("iResolution", w, h)
+                              shader.setFloatUniform("iTime", time)
+                              paint.shader = shader
+                              canvas.drawRect(0f, 0f, w, h, paint)
+                              invalidate()
+                          }
+                      }
+                  },
+                  modifier = modifier
+                      .fillMaxSize()
+                      .background(Color(0xFF0A0F12))
+              )
+          } else {
+              Box(
+                  modifier = modifier
+                      .fillMaxSize()
+                      .background(Color(0xFF0A0F12))
+              )
+          }
+      }
+
+      class LiquidGlassView @JvmOverloads constructor(
+          context: Context,
+          attrs: AttributeSet? = null,
+          defStyleAttr: Int = 0
+      ) : View(context, attrs, defStyleAttr) {
+
+          private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+          private val runtimeShader: RuntimeShader? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+              RuntimeShader(LIQUID_SHADER)
+          } else {
+              null
+          }
+          private val fallbackShader: Shader = LinearGradient(
+              0f,
+              0f,
+              0f,
+              1200f,
+              intArrayOf(0xFF0A0F12.toInt(), 0xFF18A4FF.toInt(), 0xFF00FFD0.toInt()),
+              floatArrayOf(0f, 0.65f, 1f),
+              Shader.TileMode.CLAMP
+          )
+          private var startTime = SystemClock.elapsedRealtime()
+
+          init {
+              setWillNotDraw(false)
+          }
+
+          override fun onAttachedToWindow() {
+              super.onAttachedToWindow()
+              startTime = SystemClock.elapsedRealtime()
+              invalidate()
+          }
+
+          override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+              super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+              if (runtimeShader == null) paint.shader = fallbackShader
+          }
+
+          override fun onDraw(canvas: Canvas) {
+              val w = width.toFloat()
+              val h = height.toFloat()
+              val shader = runtimeShader
+              if (shader != null) {
+                  val time = (SystemClock.elapsedRealtime() - startTime) / 1000f
+                  shader.setFloatUniform("iResolution", w, h)
+                  shader.setFloatUniform("iTime", time)
+                  paint.shader = shader
+                  canvas.drawRect(0f, 0f, w, h, paint)
+                  postInvalidateOnAnimation()
+              } else {
+                  paint.shader = fallbackShader
+                  canvas.drawRect(0f, 0f, w, h, paint)
+              }
+          }
+      }
+
+      fun ViewGroup.ensureLiquidBackground() {
+          if (children.any { it is LiquidGlassView }) return
+          val background = LiquidGlassView(context)
+          addView(
+              background,
+              0,
+              ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+          )
+      }
+
+      // ui/src/main/java/pw/idrug/connections/ui/components/GlassCard.kt
+      package pw.idrug.connections.ui.components
+
+      import android.graphics.RenderEffect
+      import android.graphics.Shader
+      import android.os.Build
+      import androidx.compose.foundation.background
+      import androidx.compose.foundation.border
+      import androidx.compose.foundation.layout.Box
+      import androidx.compose.foundation.layout.Column
+      import androidx.compose.foundation.layout.ColumnScope
+      import androidx.compose.foundation.layout.matchParentSize
+      import androidx.compose.foundation.layout.padding
+      import androidx.compose.foundation.shape.RoundedCornerShape
+      import androidx.compose.runtime.Composable
+      import androidx.compose.ui.Modifier
+      import androidx.compose.ui.draw.clip
+      import androidx.compose.ui.geometry.Offset
+      import androidx.compose.ui.graphics.Brush
+      import androidx.compose.ui.graphics.Color
+      import androidx.compose.ui.graphics.graphicsLayer
+      import androidx.compose.ui.unit.Dp
+      import androidx.compose.ui.unit.dp
+
+      @Composable
+      fun GlassCard(
+          modifier: Modifier = Modifier,
+          corner: Dp = 24.dp,
+          content: @Composable ColumnScope.() -> Unit
+      ) {
+          val shape = RoundedCornerShape(corner)
+          val baseTint = Color.White.copy(alpha = 0.12f)
+          val stroke = Color.White.copy(alpha = 0.22f)
+          val highlight = Brush.linearGradient(
+              colors = listOf(Color(0x66FFFFFF), Color(0x00FFFFFF)),
+              start = Offset.Zero,
+              end = Offset.Infinite
+          )
+
+          Box(
+              modifier
+                  .clip(shape)
+                  .graphicsLayer {
+                      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                          renderEffect = RenderEffect.createBlurEffect(24f, 24f, Shader.TileMode.CLAMP)
+                      }
+                  }
+                  .background(baseTint)
+                  .border(1.dp, stroke, shape)
+          ) {
+              Box(Modifier.matchParentSize().background(highlight))
+              Column(modifier = Modifier.padding(16.dp), content = content)
+          }
+      }
+
+      // ui/src/main/java/pw/idrug/connections/ui/components/IdgPrimaryButton.kt
+      package pw.idrug.connections.ui.components
+
+      import androidx.compose.foundation.layout.PaddingValues
+      import androidx.compose.foundation.layout.height
+      import androidx.compose.foundation.shape.RoundedCornerShape
+      import androidx.compose.material3.Button
+      import androidx.compose.material3.ButtonDefaults
+      import androidx.compose.material3.MaterialTheme
+      import androidx.compose.material3.Text
+      import androidx.compose.runtime.Composable
+      import androidx.compose.ui.Modifier
+      import androidx.compose.ui.graphics.Color
+      import androidx.compose.ui.unit.dp
+
+      @Composable
+      fun IdgPrimaryButton(
+          text: String,
+          onClick: () -> Unit,
+          modifier: Modifier = Modifier
+      ) {
+          Button(
+              onClick = onClick,
+              modifier = modifier.height(52.dp),
+              shape = RoundedCornerShape(16.dp),
+              colors = ButtonDefaults.buttonColors(
+                  containerColor = Color(0xFF00FFD0),
+                  contentColor = Color(0xFF0A0F12)
+              ),
+              contentPadding = PaddingValues(horizontal = 20.dp)
+          ) {
+              Text(text = text, style = MaterialTheme.typography.titleMedium)
+          }
+      }
+
+      // ui/src/main/java/pw/idrug/connections/activity/ThemeAwareActivity.kt
+      package pw.idrug.connections.activity
+
+      import android.view.View
+      import android.view.ViewGroup
+      import android.widget.FrameLayout
+      import androidx.appcompat.app.AppCompatActivity
+      import pw.idrug.connections.graphics.ensureLiquidBackground
+      import pw.idrug.connections.settings.ThemePrefs
+
+      open class ThemeAwareActivity : AppCompatActivity() {
+          private var themedRoot: FrameLayout? = null
+
+          override fun setContentView(layoutResID: Int) {
+              if (applyIdgThemeIfNeeded { layoutInflater.inflate(layoutResID, null, false) }) return
+              super.setContentView(layoutResID)
+          }
+
+          override fun setContentView(view: View?) {
+              if (view != null && applyIdgThemeIfNeeded { view }) return
+              super.setContentView(view)
+          }
+
+          override fun setContentView(view: View?, params: ViewGroup.LayoutParams?) {
+              if (view != null && applyIdgThemeIfNeeded({ view }, params)) return
+              super.setContentView(view, params)
+          }
+
+          private fun applyIdgThemeIfNeeded(viewFactory: () -> View, params: ViewGroup.LayoutParams? = null): Boolean {
+              if (!ThemePrefs.isIdrugEnabled(this)) return false
+              val root = themedRoot ?: ThemeContainer(this).also { themedRoot = it }
+              root.removeAllViews()
+              root.ensureLiquidBackground()
+              val content = viewFactory()
+              root.addView(
+                  content,
+                  params ?: FrameLayout.LayoutParams(
+                      ViewGroup.LayoutParams.MATCH_PARENT,
+                      ViewGroup.LayoutParams.MATCH_PARENT
+                  )
+              )
+              super.setContentView(root)
+              return true
+          }
+
+          private class ThemeContainer(context: android.content.Context) : FrameLayout(context) {
+              init {
+                  setBackgroundColor(0xE60A0F12.toInt())
+              }
+          }
+      }
+
+      --- a/ui/src/main/java/pw/idrug/connections/activity/BaseActivity.kt
+      +++ b/ui/src/main/java/pw/idrug/connections/activity/BaseActivity.kt
+      @@
+      -import androidx.appcompat.app.AppCompatActivity
+      @@
+      -abstract class BaseActivity : AppCompatActivity() {
+      +abstract class BaseActivity : ThemeAwareActivity() {
+      --- a/ui/src/main/java/pw/idrug/connections/activity/OnboardingActivity.kt
+      +++ b/ui/src/main/java/pw/idrug/connections/activity/OnboardingActivity.kt
+      @@
+      -import android.widget.TextView
+      -import androidx.appcompat.app.AppCompatActivity
+      +import android.widget.TextView
+      @@
+      -class OnboardingActivity : AppCompatActivity() {
+      +class OnboardingActivity : ThemeAwareActivity() {
+      --- a/ui/src/main/java/pw/idrug/connections/activity/ConfigListActivity.kt
+      +++ b/ui/src/main/java/pw/idrug/connections/activity/ConfigListActivity.kt
+      @@
+      -import androidx.appcompat.app.AppCompatActivity
+      @@
+      -class ConfigListActivity : AppCompatActivity() {
+      +class ConfigListActivity : ThemeAwareActivity() {
+      --- a/ui/src/main/java/pw/idrug/connections/activity/LinkCodeActivity.kt
+      +++ b/ui/src/main/java/pw/idrug/connections/activity/LinkCodeActivity.kt
+      @@
+      -import android.widget.ProgressBar
+      -import android.widget.Toast
+      -import androidx.appcompat.app.AppCompatActivity
+      +import android.widget.ProgressBar
+      +import android.widget.Toast
+      @@
+      -class LinkCodeActivity : AppCompatActivity() {
+      +class LinkCodeActivity : ThemeAwareActivity() {
+      --- a/ui/src/main/java/pw/idrug/connections/activity/LogViewerActivity.kt
+      +++ b/ui/src/main/java/pw/idrug/connections/activity/LogViewerActivity.kt
+      @@
+      -import androidx.activity.result.contract.ActivityResultContracts
+      -import androidx.appcompat.app.AppCompatActivity
+      +import androidx.activity.result.contract.ActivityResultContracts
+      @@
+      -class LogViewerActivity : AppCompatActivity() {
+      +class LogViewerActivity : ThemeAwareActivity() {
+      --- a/ui/src/main/java/pw/idrug/connections/activity/SplashActivity.kt
+      +++ b/ui/src/main/java/pw/idrug/connections/activity/SplashActivity.kt
+      @@
+      -import android.os.Bundle
+      -import androidx.appcompat.app.AppCompatActivity
+      -import android.util.Log
+      +import android.os.Bundle
+      +import android.util.Log
+      @@
+      -class SplashActivity : AppCompatActivity() {
+      +class SplashActivity : ThemeAwareActivity() {
+      --- a/ui/src/main/java/pw/idrug/connections/activity/TunnelToggleActivity.kt
+      +++ b/ui/src/main/java/pw/idrug/connections/activity/TunnelToggleActivity.kt
+      @@
+      -import androidx.activity.result.contract.ActivityResultContracts
+      -import androidx.appcompat.app.AppCompatActivity
+      +import androidx.activity.result.contract.ActivityResultContracts
+      @@
+      -class TunnelToggleActivity : AppCompatActivity() {
+      +class TunnelToggleActivity : ThemeAwareActivity() {
+      --- a/ui/src/main/java/pw/idrug/connections/activity/TvEntryActivity.kt
+      +++ b/ui/src/main/java/pw/idrug/connections/activity/TvEntryActivity.kt
+      @@
+      -import android.widget.TextView
+      -import android.widget.Toast
+      -import androidx.appcompat.app.AppCompatActivity
+      +import android.widget.TextView
+      +import android.widget.Toast
+      @@
+      -class TvEntryActivity : AppCompatActivity() {
+      +class TvEntryActivity : ThemeAwareActivity() {
+      --- a/ui/src/main/java/pw/idrug/connections/activity/SettingsActivity.kt
+      +++ b/ui/src/main/java/pw/idrug/connections/activity/SettingsActivity.kt
+      @@
+      -import android.view.MenuItem
+      -import androidx.appcompat.app.AppCompatActivity
+      +import android.view.MenuItem
+      @@
+      -import androidx.preference.PreferenceFragmentCompat
+      +import androidx.preference.PreferenceFragmentCompat
+      +import androidx.preference.SwitchPreferenceCompat
+      @@
+      -import pw.idrug.connections.backend.AwgQuickBackend
+      +import org.amnezia.awg.backend.AwgQuickBackend
+      @@
+      -import pw.idrug.connections.util.applyStatusBarInsetToActionBar
+      +import pw.idrug.connections.util.applyStatusBarInsetToActionBar
+      +import pw.idrug.connections.settings.ThemePrefs
+      @@
+      -class SettingsActivity : AppCompatActivity() {
+      +class SettingsActivity : ThemeAwareActivity() {
+      @@
+      -            preferenceManager.findPreference<Preference>("ota_update")?.setOnPreferenceClickListener {
+      +            preferenceManager.findPreference<SwitchPreferenceCompat>("idrug_theme_enabled")?.apply {
+      +                isChecked = ThemePrefs.isIdrugEnabled(requireContext())
+      +                setOnPreferenceChangeListener { _, newValue ->
+      +                    val enabled = newValue as Boolean
+      +                    ThemePrefs.setIdrugEnabled(requireContext(), enabled)
+      +                    activity?.recreate()
+      +                    true
+      +                }
+      +            }
+      +
+      +            preferenceManager.findPreference<Preference>("ota_update")?.setOnPreferenceClickListener {
+                       UpdateDialogFragment.show(parentFragmentManager)
+                       true
+                   }
+
+      --- a/ui/src/main/res/xml/preferences.xml
+      +++ b/ui/src/main/res/xml/preferences.xml
+      @@
+           <pw.idrug.connections.preference.QuickTilePreference
+               android:key="quick_tile" />
+
+      +    <androidx.preference.SwitchPreferenceCompat
+      +        android:key="idrug_theme_enabled"
+      +        android:title="@string/theme_idrug_title"
+      +        android:summary="@string/theme_idrug_summary"
+      +        android:persistent="false"
+      +        android:defaultValue="false"
+      +        app:widgetLayout="@layout/preference_widget_material_switch" />
+      +
+           <!-- BUTTON FOR APP UPDATE -->
+           <Preference
+               android:key="ota_update"
+               android:title="@string/update_application_title"
+               android:summary="@string/update_application_summary" />
+      --- a/ui/src/main/res/values/strings.xml
+      +++ b/ui/src/main/res/values/strings.xml
+      @@
+      -    <string name="enable_notification_title">Notification</string>
+      -    <string name="enable_notification_summary_off">Connection status notification is disabled</string>
+      -    <string name="enable_notification_summary_on">Connection status notification is enabled</string>
+      +    <string name="enable_notification_title">Notification</string>
+      +    <string name="enable_notification_summary_off">Connection status notification is disabled</string>
+      +    <string name="enable_notification_summary_on">Connection status notification is enabled</string>
+      +    <string name="promo_hint">Promo code</string>
+      +    <string name="promo_apply">Apply</string>
+      +    <string name="promo_applied">✅ Promo applied: %1$s</string>
+      +    <string name="promo_invalid">Promo code is invalid</string>
+      +    <string name="theme_idrug_title">iDRUG theme</string>
+      +    <string name="theme_idrug_summary">Liquid glass + neon</string>
+       </resources>
+      --- a/ui/src/main/res/values-ru/strings.xml
+      +++ b/ui/src/main/res/values-ru/strings.xml
+      @@
+      -    <string name="enable_notification_title">Уведомление</string>
+      -    <string name="enable_notification_summary_off">Уведомление о состоянии соединения отключено</string>
+      -    <string name="enable_notification_summary_on">Уведомление о состоянии соединения включено</string>
+      +    <string name="enable_notification_title">Уведомление</string>
+      +    <string name="enable_notification_summary_off">Уведомление о состоянии соединения отключено</string>
+      +    <string name="enable_notification_summary_on">Уведомление о состоянии соединения включено</string>
+      +    <string name="theme_idrug_title">Тема iDRUG</string>
+      +    <string name="theme_idrug_summary">жидкое стекло + неон</string>
+       </resources>
+      --- a/ui/src/main/res/layout/dialog_subscription.xml
+      +++ b/ui/src/main/res/layout/dialog_subscription.xml
+      @@
+      -    <LinearLayout
+      -        android:id="@+id/row_promo"
+      -        android:layout_width="match_parent"
+      -        android:layout_height="wrap_content"
+      -        android:layout_marginTop="20dp"
+      -        android:gravity="center_vertical"
+      -        android:orientation="horizontal"
+      -        android:visibility="gone">
+      -
+      -        <com.google.android.material.textfield.TextInputLayout
+      -            android:id="@+id/promo_container"
+      -            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+      -            android:layout_width="0dp"
+      -            android:layout_height="wrap_content"
+      -            android:layout_weight="1"
+      -            android:hint="@string/promo_hint">
+      -
+      -            <com.google.android.material.textfield.TextInputEditText
+      -                android:id="@+id/input_promo"
+      -                android:layout_width="match_parent"
+      -                android:layout_height="wrap_content"
+      -                android:inputType="textCapCharacters"
+      -                android:maxLines="1" />
+      -        </com.google.android.material.textfield.TextInputLayout>
+      -
+      -        <com.google.android.material.button.MaterialButton
+      -            android:id="@+id/btn_apply_promo"
+      -            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+      -            android:layout_width="wrap_content"
+      -            android:layout_height="wrap_content"
+      -            android:layout_marginStart="12dp"
+      -            android:paddingHorizontal="20dp"
+      -            android:minWidth="0dp"
+      -            android:text="@string/promo_apply"
+      -            android:textAllCaps="false"
+      -            android:textAppearance="?attr/textAppearanceLabelLarge" />
+      -    </LinearLayout>
+      +    <LinearLayout
+      +        android:id="@+id/row_promo"
+      +        android:layout_width="match_parent"
+      +        android:layout_height="wrap_content"
+      +        android:layout_marginTop="20dp"
+      +        android:gravity="center_horizontal"
+      +        android:orientation="vertical"
+      +        android:visibility="gone">
+      +
+      +        <com.google.android.material.textfield.TextInputLayout
+      +            android:id="@+id/promo_container"
+      +            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+      +            android:layout_width="match_parent"
+      +            android:layout_height="wrap_content"
+      +            android:hint="@string/promo_hint">
+      +
+      +                android:layout_width="match_parent"
+      +                android:layout_height="wrap_content"
+      +                android:inputType="textCapCharacters"
+      +                android:maxLines="1" />
+      +
+      +        <com.google.android.material.button.MaterialButton
+      +            android:id="@+id/btn_apply_promo"
+      +            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+      +            android:layout_width="wrap_content"
+      +            android:paddingHorizontal="20dp"
+      +            android:minWidth="0dp"
+      +            android:text="@string/promo_apply"
+      +            android:textAllCaps="false"
+      +            android:textAppearance="?attr/textAppearanceLabelLarge" />
+      +    </LinearLayout>
+
