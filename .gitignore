@@ -25,3 +25,4 @@
 # Sensitive files
 idrug-release-key.jks
 google-services.json
+*.zip
