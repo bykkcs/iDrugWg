@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package pw.idrug.connections.backend;
+package org.amnezia.awg.backend;
 
-import pw.idrug.connections.util.NonNullForAll;
+import org.amnezia.awg.util.NonNullForAll;
 
 import java.util.regex.Pattern;
 
 /**
- * Represents an iDrugConnections tunnel.
+ * Represents an AmneziaWG tunnel.
  */
 
 @NonNullForAll

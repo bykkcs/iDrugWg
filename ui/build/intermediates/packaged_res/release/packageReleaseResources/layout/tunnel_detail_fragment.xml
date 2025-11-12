@@ -5,9 +5,11 @@
 
     
 
-                                                                   
+                                                              
 
                                                                   
+
+                                           
 
                  
                            
@@ -19,7 +21,7 @@
 
                  
                          
-                                                        
+                                                                
            
 
     <ScrollView
@@ -57,6 +59,18 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <TextView
+                        android:id="@+id/interface_quic_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/tunnel_quic_ready"
+                        android:textColor="@color/config_quic_ready"
+                        android:textStyle="bold"
+                        android:tag="binding_1"                                                 
+                        app:layout_constraintStart_toStartOf="@id/interface_title"
+                        app:layout_constraintTop_toBottomOf="@id/interface_title" />
+
                     <pw.idrug.connections.widget.ToggleSwitch
                         android:id="@+id/tunnel_switch"
                         android:layout_width="wrap_content"
@@ -64,7 +78,7 @@
                         android:layout_marginTop="16dp"
                         android:nextFocusDown="@id/interface_name_text"
                         android:nextFocusForward="@id/interface_name_text"
-                        android:tag="binding_1"                  
+                        android:tag="binding_2"                  
                         app:layout_constraintBaseline_toBottomOf="@+id/interface_title"
                         app:layout_constraintEnd_toEndOf="parent"
                                                                                  />
@@ -77,7 +91,8 @@
                         android:labelFor="@+id/interface_name_text"
                         android:text="@string/name"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/interface_title" />
+                        app:layout_constraintTop_toBottomOf="@+id/interface_quic_badge"
+                        app:layout_goneMarginTop="8dp" />
 
                     <TextView
                         android:id="@+id/interface_name_text"
@@ -87,7 +102,7 @@
                         android:nextFocusUp="@id/tunnel_switch"
                         android:nextFocusDown="@id/public_key_text"
                         android:nextFocusForward="@id/public_key_text"
-                        android:tag="binding_2"                          
+                        android:tag="binding_3"                          
                                                      
                         android:textAppearance="?attr/textAppearanceBodyLarge"
                         app:layout_constraintStart_toStartOf="parent"
@@ -114,9 +129,9 @@
                         android:nextFocusUp="@id/interface_name_text"
                         android:nextFocusDown="@id/addresses_text"
                         android:nextFocusForward="@id/addresses_text"
-                        android:tag="binding_3"                          
+                        android:tag="binding_4"                          
                         android:singleLine="true"
-                                                                                     
+                                                                    
                         android:textAppearance="?attr/textAppearanceBodyLarge"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/public_key_label"
@@ -129,7 +144,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/addresses_text"
                         android:text="@string/addresses"
-                        android:tag="binding_4"                                                                                          
+                        android:tag="binding_5"                                                                                          
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/public_key_text" />
 
@@ -141,7 +156,7 @@
                         android:nextFocusUp="@id/public_key_text"
                         android:nextFocusDown="@id/dns_servers_text"
                         android:nextFocusForward="@id/dns_servers_text"
-                        android:tag="binding_5"                          
+                        android:tag="binding_6"                          
                                                                     
                         android:textAppearance="?attr/textAppearanceBodyLarge"
                                                                                                                                          
@@ -156,7 +171,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/dns_servers_text"
                         android:text="@string/dns_servers"
-                        android:tag="binding_6"                                                                                           
+                        android:tag="binding_7"                                                                                           
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/addresses_text" />
 
@@ -168,7 +183,7 @@
                         android:nextFocusUp="@id/addresses_text"
                         android:nextFocusDown="@id/dns_search_domains_text"
                         android:nextFocusForward="@id/dns_search_domains_text"
-                        android:tag="binding_7"                          
+                        android:tag="binding_8"                          
                                                                      
                         android:textAppearance="?attr/textAppearanceBodyLarge"
                                                                                                                                           
@@ -183,7 +198,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/dns_search_domain_text"
                         android:text="@string/dns_search_domains"
-                        android:tag="binding_8"                                                                                                 
+                        android:tag="binding_9"                                                                                                 
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/dns_servers_text" />
 
@@ -195,7 +210,7 @@
                         android:nextFocusUp="@id/dns_servers_text"
                         android:nextFocusDown="@id/listen_port_text"
                         android:nextFocusForward="@id/listen_port_text"
-                        android:tag="binding_9"                          
+                        android:tag="binding_10"                         
                                                                            
                         android:textAppearance="?attr/textAppearanceBodyLarge"
                                                                                                                                                 
@@ -210,7 +225,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/listen_port_text"
                         android:text="@string/listen_port"
-                        android:tag="binding_10"                                                                                             
+                        android:tag="binding_11"                                                                                          
                         app:layout_constraintEnd_toStartOf="@id/mtu_label"
                         app:layout_constraintHorizontal_weight="0.5"
                         app:layout_constraintStart_toStartOf="parent"
@@ -225,10 +240,10 @@
                         android:nextFocusUp="@id/dns_search_domains_text"
                         android:nextFocusDown="@id/applications_text"
                         android:nextFocusForward="@id/mtu_text"
-                        android:tag="binding_11"                         
+                        android:tag="binding_12"                         
                                                                      
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                             
+                                                                                                                                          
                         app:layout_constraintEnd_toStartOf="@id/mtu_label"
                         app:layout_constraintHorizontal_weight="0.5"
                         app:layout_constraintStart_toStartOf="parent"
@@ -242,7 +257,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/mtu_text"
                         android:text="@string/mtu"
-                        android:tag="binding_12"                                                                                      
+                        android:tag="binding_13"                                                                                   
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_weight="0.5"
                         app:layout_constraintLeft_toRightOf="@id/listen_port_label"
@@ -257,10 +272,10 @@
                         android:nextFocusLeft="@id/listen_port_text"
                         android:nextFocusUp="@id/dns_servers_text"
                         android:nextFocusForward="@id/applications_text"
-                        android:tag="binding_13"                         
+                        android:tag="binding_14"                         
                                                               
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                      
+                                                                                                                                   
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_weight="0.5"
                         app:layout_constraintStart_toEndOf="@id/listen_port_label"
@@ -282,7 +297,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/junk_packet_count_text"
                         android:text="@string/junk_packet_count"
-                        android:tag="binding_14"                                                                                                  
+                        android:tag="binding_15"                                                                                               
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/listen_port_mtu_barrier" />
 
@@ -291,9 +306,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_15"                          
+                        android:tag="binding_16"                          
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                  
+                                                                                                                                               
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/junk_packet_count_label"
                         tools:text="3" />
@@ -305,7 +320,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/junk_packet_min_size_text"
                         android:text="@string/junk_packet_min_size"
-                        android:tag="binding_16"                                                                                                    
+                        android:tag="binding_17"                                                                                                 
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/junk_packet_count_text" />
 
@@ -314,9 +329,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_17"                            
+                        android:tag="binding_18"                            
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                    
+                                                                                                                                                 
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/junk_packet_min_size_label"
                         tools:text="10" />
@@ -328,7 +343,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/junk_packet_max_size_text"
                         android:text="@string/junk_packet_max_size"
-                        android:tag="binding_18"                                                                                                    
+                        android:tag="binding_19"                                                                                                 
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/junk_packet_min_size_text" />
 
@@ -337,9 +352,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_19"                            
+                        android:tag="binding_20"                            
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                    
+                                                                                                                                                 
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/junk_packet_max_size_label"
                         tools:text="30" />
@@ -351,7 +366,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/init_packet_junk_size_text"
                         android:text="@string/init_packet_junk_size"
-                        android:tag="binding_20"                                                                                                     
+                        android:tag="binding_21"                                                                                                  
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/junk_packet_max_size_text" />
 
@@ -360,9 +375,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_21"                             
+                        android:tag="binding_22"                             
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                     
+                                                                                                                                                  
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/init_packet_junk_size_label"
                         tools:text="15" />
@@ -374,7 +389,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/response_packet_junk_size_text"
                         android:text="@string/response_packet_junk_size"
-                        android:tag="binding_22"                                                                                                         
+                        android:tag="binding_23"                                                                                                      
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/init_packet_junk_size_text" />
 
@@ -383,9 +398,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_23"                                 
+                        android:tag="binding_24"                                 
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                         
+                                                                                                                                                      
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/response_packet_junk_size_label"
                         tools:text="18" />
@@ -397,7 +412,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/cookie_reply_packet_junk_size_text"
                         android:text="@string/cookie_reply_packet_junk_size"
-                        android:tag="binding_24"                                                                                                            
+                        android:tag="binding_25"                                                                                                      
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/response_packet_junk_size_text" />
 
@@ -406,9 +421,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_25"                                    
+                        android:tag="binding_26"                                 
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                            
+                                                                                                                                                      
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/cookie_reply_packet_junk_size_label"
                         tools:text="22" />
@@ -420,7 +435,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/transport_packet_junk_size_text"
                         android:text="@string/transport_packet_junk_size"
-                        android:tag="binding_26"                                                                                                          
+                        android:tag="binding_27"                                                                                                       
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/cookie_reply_packet_junk_size_text" />
 
@@ -429,9 +444,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_27"                                  
+                        android:tag="binding_28"                                  
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                          
+                                                                                                                                                       
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/transport_packet_junk_size_label"
                         tools:text="24" />
@@ -443,7 +458,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/init_packet_magic_header_text"
                         android:text="@string/init_packet_magic_header"
-                        android:tag="binding_28"                                                                                                        
+                        android:tag="binding_29"                                                                                                     
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/transport_packet_junk_size_text" />
 
@@ -452,9 +467,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_29"                                
+                        android:tag="binding_30"                                
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                        
+                                                                                                                                                     
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/init_packet_magic_header_label"
                         tools:text="1020325451" />
@@ -466,7 +481,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/response_packet_magic_header_text"
                         android:text="@string/response_packet_magic_header"
-                        android:tag="binding_30"                                                                                                            
+                        android:tag="binding_31"                                                                                                         
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/init_packet_magic_header_text" />
 
@@ -475,9 +490,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_31"                                    
+                        android:tag="binding_32"                                    
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                            
+                                                                                                                                                         
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/response_packet_magic_header_label"
                         tools:text="3288052141" />
@@ -489,7 +504,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/underload_packet_magic_header_text"
                         android:text="@string/underload_packet_magic_header"
-                        android:tag="binding_32"                                                                                                             
+                        android:tag="binding_33"                                                                                                          
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/response_packet_magic_header_text" />
 
@@ -498,9 +513,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_33"                                     
+                        android:tag="binding_34"                                     
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                             
+                                                                                                                                                          
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/underload_packet_magic_header_label"
                         tools:text="2528465083" />
@@ -512,7 +527,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/transport_packet_magic_header_text"
                         android:text="@string/transport_packet_magic_header"
-                        android:tag="binding_34"                                                                                                             
+                        android:tag="binding_35"                                                                                                          
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/underload_packet_magic_header_text" />
 
@@ -521,9 +536,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_35"                                     
+                        android:tag="binding_36"                                     
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                             
+                                                                                                                                                          
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/transport_packet_magic_header_label"
                         tools:text="1766607858" />
@@ -535,7 +550,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/special_junk_packet_1_text"
                         android:text="@string/special_junk_packet_1"
-                        android:tag="binding_36"                                                                                                     
+                        android:tag="binding_37"                                                                                                  
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/transport_packet_magic_header_text" />
 
@@ -544,9 +559,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_37"                             
+                        android:tag="binding_38"                             
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                     
+                                                                                                                                                  
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/special_junk_packet_1_label"
                         tools:text="&lt;b 0x...>" />
@@ -558,7 +573,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/special_junk_packet_2_text"
                         android:text="@string/special_junk_packet_2"
-                        android:tag="binding_38"                                                                                                     
+                        android:tag="binding_39"                                                                                                  
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/special_junk_packet_1_text" />
 
@@ -567,9 +582,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_39"                             
+                        android:tag="binding_40"                             
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                     
+                                                                                                                                                  
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/special_junk_packet_2_label"
                         tools:text="&lt;b 0x...>" />
@@ -581,7 +596,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/special_junk_packet_3_text"
                         android:text="@string/special_junk_packet_3"
-                        android:tag="binding_40"                                                                                                     
+                        android:tag="binding_41"                                                                                                  
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/special_junk_packet_2_text" />
 
@@ -590,9 +605,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_41"                             
+                        android:tag="binding_42"                             
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                     
+                                                                                                                                                  
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/special_junk_packet_3_label"
                         tools:text="&lt;b 0x...>" />
@@ -604,7 +619,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/special_junk_packet_4_text"
                         android:text="@string/special_junk_packet_4"
-                        android:tag="binding_42"                                                                                                     
+                        android:tag="binding_43"                                                                                                  
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/special_junk_packet_3_text" />
 
@@ -613,9 +628,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_43"                             
+                        android:tag="binding_44"                             
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                     
+                                                                                                                                                  
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/special_junk_packet_4_label"
                         tools:text="&lt;b 0x...>" />
@@ -627,7 +642,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/special_junk_packet_5_text"
                         android:text="@string/special_junk_packet_5"
-                        android:tag="binding_44"                                                                                                     
+                        android:tag="binding_45"                                                                                                  
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/special_junk_packet_4_text" />
 
@@ -636,9 +651,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_45"                             
+                        android:tag="binding_46"                             
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                     
+                                                                                                                                                  
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/special_junk_packet_5_label"
                         tools:text="&lt;b 0x...>" />
@@ -650,7 +665,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/controlled_junk_packet_1_text"
                         android:text="@string/controlled_junk_packet_1"
-                        android:tag="binding_46"                                                                                                        
+                        android:tag="binding_47"                                                                                                     
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/special_junk_packet_5_text" />
 
@@ -659,9 +674,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_47"                                
+                        android:tag="binding_48"                                
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                        
+                                                                                                                                                     
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/controlled_junk_packet_1_label"
                         tools:text="&lt;b 0x...>" />
@@ -673,7 +688,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/controlled_junk_packet_2_text"
                         android:text="@string/controlled_junk_packet_2"
-                        android:tag="binding_48"                                                                                                        
+                        android:tag="binding_49"                                                                                                     
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/controlled_junk_packet_1_text" />
 
@@ -682,9 +697,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_49"                                
+                        android:tag="binding_50"                                
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                        
+                                                                                                                                                     
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/controlled_junk_packet_2_label"
                         tools:text="&lt;b 0x...>" />
@@ -696,7 +711,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/controlled_junk_packet_3_text"
                         android:text="@string/controlled_junk_packet_3"
-                        android:tag="binding_50"                                                                                                        
+                        android:tag="binding_51"                                                                                                     
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/controlled_junk_packet_2_text" />
 
@@ -705,9 +720,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_51"                                
+                        android:tag="binding_52"                                
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                                        
+                                                                                                                                                     
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/controlled_junk_packet_3_label"
                         tools:text="&lt;b 0x...>" />
@@ -719,7 +734,7 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/itime_text"
                         android:text="@string/itime_seconds"
-                        android:tag="binding_52"                                                                                               
+                        android:tag="binding_53"                                                                                            
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/controlled_junk_packet_3_text" />
 
@@ -728,9 +743,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:tag="binding_53"                       
+                        android:tag="binding_54"                       
                         android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                               
+                                                                                                                                            
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/itime_label"
                         tools:text="60" />
@@ -760,7 +775,7 @@
                         android:nextFocusUp="@id/mtu_text"
                         android:nextFocusDown="@id/peers_layout"
                         android:nextFocusForward="@id/peers_layout"
-                        android:tag="binding_54"                         
+                        android:tag="binding_55"                         
                                                                                                                                                                                                                                                                                                                                                        
                         android:textAppearance="?attr/textAppearanceBodyLarge"
                                                                                                                                                                                                                
@@ -777,7 +792,7 @@
                 android:layout_marginTop="8dp"
                 android:divider="@null"
                 android:orientation="vertical"
-                android:tag="binding_55"   
+                android:tag="binding_56"   
                                                           
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tunnel_detail_card"

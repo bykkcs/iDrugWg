@@ -24,8 +24,8 @@ import pw.idrug.connections.databinding.ObservableKeyedRecyclerViewAdapter.RowCo
 import pw.idrug.connections.widget.ToggleSwitch
 import pw.idrug.connections.widget.ToggleSwitch.OnBeforeCheckedChangeListener
 import pw.idrug.connections.widget.TvCardView
-import pw.idrug.connections.config.Attribute
-import pw.idrug.connections.config.InetNetwork
+import org.amnezia.awg.config.Attribute
+import org.amnezia.awg.config.InetNetwork
 import java.net.InetAddress
 import java.util.Optional
 

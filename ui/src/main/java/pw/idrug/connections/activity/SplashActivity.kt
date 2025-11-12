@@ -3,8 +3,8 @@ package pw.idrug.connections.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import pw.idrug.connections.util.DeviceUtils
 
 class SplashActivity : AppCompatActivity() {

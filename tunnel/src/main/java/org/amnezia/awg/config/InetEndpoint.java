@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package pw.idrug.connections.config;
+package org.amnezia.awg.config;
 
-import pw.idrug.connections.util.NonNullForAll;
+import org.amnezia.awg.util.NonNullForAll;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -21,7 +21,7 @@ import androidx.annotation.Nullable;
 
 
 /**
- * An external endpoint (host and port) used to connect to an iDrugConnections {@link Peer}.
+ * An external endpoint (host and port) used to connect to an AmneziaWG {@link Peer}.
  * <p>
  * Instances of this class are externally immutable.
  */

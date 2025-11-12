@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package pw.idrug.connections.util;
+package org.amnezia.awg.util;
 
 import android.content.Context;
 import android.util.Log;
 
-import pw.idrug.connections.util.RootShell.RootShellException.Reason;
-import pw.idrug.connections.util.NonNullForAll;
+import org.amnezia.awg.util.RootShell.RootShellException.Reason;
+import org.amnezia.awg.util.NonNullForAll;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -29,7 +29,7 @@ import androidx.annotation.Nullable;
 @NonNullForAll
 public class RootShell {
     private static final String SU = "su";
-    private static final String TAG = "iDrugConnections/RootShell";
+    private static final String TAG = "AmneziaWG/RootShell";
 
     private final File localBinaryDir;
     private final File localTemporaryDir;

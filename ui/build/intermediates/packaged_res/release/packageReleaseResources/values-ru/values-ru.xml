@@ -6,7 +6,7 @@
         <item>Подключайся мгновенно. Конфиги и ключи автоматически сохраняются в приложении — ничего не теряется.</item>
         <item>Удобное приложение для телевизоров — линкинг через код, запуск в 1 клик. Всё, как надо.</item>
         <item>В настройках туннеля выбери приложения — их трафик пойдёт только через VPN, остальное напрямую.</item>
-        <item>Тарифы от 250₽ в месяц. Без скрытых платежей, оплата любым способом: карта, крипта, всё что удобно.</item>
+        <item>Тарифы от 199₽ в месяц. Без скрытых платежей, оплата любым способом: карта, крипта, всё что удобно.</item>
     </string-array>
     <string-array name="onboarding_emojis">
         <item>🔒</item>
@@ -274,13 +274,17 @@
     <string name="no_configs_error">Конфигурации не найдены</string>
     <string name="no_tunnels_error">Туннелей не существует</string>
     <string name="notification_action_disconnect">Отключить</string>
+    <string name="notification_action_exclude_app">Исключить из VPN</string>
+    <string name="notification_action_include_app">Добавить в VPN</string>
     <string name="notification_channel_name">Статус соединения</string>
     <string name="notification_status_chip_connecting">Связь</string>
     <string name="notification_status_chip_disconnected">Выкл.</string>
     <string name="notification_status_chip_disconnecting">Стоп</string>
     <string name="notification_status_chip_multiple">%d VPN</string>
+    <string name="notification_status_chip_offline">Оффлайн</string>
     <string name="notification_status_chip_online">Онлайн</string>
     <string name="notification_text_connected_default">Защищённое соединение активно</string>
+    <string name="notification_text_paused">Защищённое соединение приостановлено — %1$s идёт напрямую</string>
     <string name="notification_text_speed">↑ %1$s • ↓ %2$s</string>
     <string name="notification_text_tunnels_count">Количество активных туннелей: %d</string>
     <string name="notification_title_connected">Подключено</string>
@@ -307,11 +311,17 @@
     <string name="ping_value_ms">%1$d мс</string>
     <string name="pre_shared_key">Общий ключ</string>
     <string name="pre_shared_key_enabled">включено</string>
+    <string name="pref_live_usage_summary">Показывать Online/Offline по активному приложению (нужно разрешение Usage Access)</string>
+    <string name="pref_live_usage_title">Live-статус VPN</string>
     <string name="price_template">Цена: %1$d₽</string>
     <string name="private_key">Приватный ключ</string>
     <string name="profile_processing_error">Ошибка обработки профиля: %s</string>
     <string name="profile_retrieval_failed">Не удалось получить профиль: %d</string>
     <string name="profile_timeout_error">Не удалось загрузить профиль: истекло время ожидания. Проверьте подключение и попробуйте снова.</string>
+    <string name="promo_applied">✅ Промокод применён: %1$s</string>
+    <string name="promo_apply">Применить</string>
+    <string name="promo_hint">Промокод</string>
+    <string name="promo_invalid">Промокод недействителен</string>
     <string name="public_key">Публичный ключ</string>
     <string name="qr_code_content_description">QR-код для входа через Telegram</string>
     <string name="qr_code_hint">Совет: генерировать с “qrencode -t ansiutf8 &lt; tunnel.conf”.</string>
@@ -371,11 +381,15 @@
     <string name="speed_test_upload_presets">Профиль загрузки</string>
     <string name="submit_code">Войти</string>
     <string name="subscription_active_days">%1$s: до %2$s (%3$d дн.)</string>
+    <string name="subscription_catalog_empty">Актуальные тарифы временно недоступны</string>
+    <string name="subscription_catalog_error">Не удалось загрузить каталог тарифов</string>
+    <string name="subscription_catalog_loading">Загружаем тарифы…</string>
     <string name="subscription_forever">%1$s: навсегда</string>
     <string name="subscription_inactive">%1$s: не активна</string>
     <string name="subscription_inactive_msg">Подписка не активна</string>
     <string name="subscription_lifetime">Навсегда</string>
     <string name="subscription_placeholder_entry">• %1$s — …</string>
+    <string name="subscription_purchase_disabled">Тариф временно недоступен для покупки</string>
     <string name="subscription_renewed">Подписка продлена</string>
     <string name="success_application_will_restart">Успешно. Приложение будет перезапущено…</string>
     <string name="telegram_login_successful">Вход через Telegram выполнен!</string>
@@ -416,8 +430,11 @@
     <string name="tunnel_list_placeholder">Добавьте туннель с помощью кнопки ниже</string>
     <string name="tunnel_name">Название туннеля</string>
     <string name="tunnel_on_error">Не удалось включить туннель (wgTurnOn вернул %d)</string>
+    <string name="tunnel_quic_ready">awg1.5 (quic-ready)</string>
     <string name="tunnel_rename_error">Не удалось переименовать туннель: %s</string>
     <string name="tunnel_rename_success">Туннель успешно переименован в “%s”</string>
+    <string name="tv_action_hint_connect">Нажмите ОК, чтобы подключиться</string>
+    <string name="tv_action_hint_disconnect">Нажмите ОК, чтобы отключиться</string>
     <string name="tv_add_tunnel_get_started">Добавьте туннель, чтобы начать</string>
     <string name="tv_auto_connect">Автоподключение при старте</string>
     <string name="tv_config_subtitle">Выберите сервер пультом и нажмите ОК, чтобы подключиться</string>
@@ -454,6 +471,7 @@
     <string name="update_later_cta">Позже</string>
     <string name="update_latest_message">Вы используете последнюю версию</string>
     <string name="update_source">Источник: idrug.pw/ota</string>
+    <string name="usage_access_request">Выдайте доступ к статистике использования, чтобы включить live-статус</string>
     <string name="use_all_applications">Выбрать все</string>
     <string name="version_summary">Бэкенд: %1$s %2$s</string>
     <string name="version_summary_checking">Проверка версии бэкэнда %s</string>

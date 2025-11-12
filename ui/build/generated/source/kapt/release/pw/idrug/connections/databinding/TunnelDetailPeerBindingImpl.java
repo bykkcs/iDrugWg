@@ -32,7 +32,7 @@ public class TunnelDetailPeerBindingImpl extends TunnelDetailPeerBinding  {
         this(bindingComponent, root, mapBindings(bindingComponent, root, 16, sIncludes, sViewsWithIds));
     }
     private TunnelDetailPeerBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
-        super(bindingComponent, root, 0
+        super(bindingComponent, root, 1
             , (android.widget.TextView) bindings[4]
             , (android.widget.TextView) bindings[5]
             , (android.widget.TextView) bindings[6]
@@ -70,7 +70,7 @@ public class TunnelDetailPeerBindingImpl extends TunnelDetailPeerBinding  {
     @Override
     public void invalidateAll() {
         synchronized(this) {
-                mDirtyFlags = 0x2L;
+                mDirtyFlags = 0x40L;
         }
         requestRebind();
     }
@@ -89,7 +89,7 @@ public class TunnelDetailPeerBindingImpl extends TunnelDetailPeerBinding  {
     public boolean setVariable(int variableId, @Nullable Object variable)  {
         boolean variableSet = true;
         if (BR.item == variableId) {
-            setItem((pw.idrug.connections.config.Peer) variable);
+            setItem((pw.idrug.connections.viewmodel.PeerProxy) variable);
         }
         else {
             variableSet = false;
@@ -97,7 +97,8 @@ public class TunnelDetailPeerBindingImpl extends TunnelDetailPeerBinding  {
             return variableSet;
     }
 
-    public void setItem(@Nullable pw.idrug.connections.config.Peer Item) {
+    public void setItem(@Nullable pw.idrug.connections.viewmodel.PeerProxy Item) {
+        updateRegistration(0, Item);
         this.mItem = Item;
         synchronized(this) {
             mDirtyFlags |= 0x1L;
@@ -109,6 +110,47 @@ public class TunnelDetailPeerBindingImpl extends TunnelDetailPeerBinding  {
     @Override
     protected boolean onFieldChange(int localFieldId, Object object, int fieldId) {
         switch (localFieldId) {
+            case 0 :
+                return onChangeItem((pw.idrug.connections.viewmodel.PeerProxy) object, fieldId);
+        }
+        return false;
+    }
+    private boolean onChangeItem(pw.idrug.connections.viewmodel.PeerProxy Item, int fieldId) {
+        if (fieldId == BR._all) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x1L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.publicKeyBase64) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x2L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.preSharedKey) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x4L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.allowedIps) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x8L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.endpoint) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x10L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.persistentKeepalive) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x20L;
+            }
+            return true;
         }
         return false;
     }
@@ -120,140 +162,156 @@ public class TunnelDetailPeerBindingImpl extends TunnelDetailPeerBinding  {
             dirtyFlags = mDirtyFlags;
             mDirtyFlags = 0;
         }
-        java.util.Optional<pw.idrug.connections.config.InetEndpoint> itemEndpoint = null;
-        boolean itemPreSharedKeyIsPresent = false;
-        pw.idrug.connections.config.Peer item = mItem;
-        boolean ItemPreSharedKeyIsPresent1 = false;
-        pw.idrug.connections.crypto.Key itemPublicKey = null;
-        java.lang.String persistentKeepaliveTextAndroidPluralsPersistentKeepaliveSecondsUnitItemPersistentKeepaliveOrElseInt0ItemPersistentKeepaliveOrElseInt0 = null;
-        int itemPreSharedKeyIsPresentAndroidViewViewGONEAndroidViewViewVISIBLE = 0;
-        java.util.Optional<pw.idrug.connections.crypto.Key> itemPreSharedKey = null;
+        java.lang.String itemEndpoint = null;
+        pw.idrug.connections.viewmodel.PeerProxy item = mItem;
+        java.lang.String itemPublicKeyBase64 = null;
+        boolean itemPreSharedKeyIsEmpty = false;
+        boolean itemPersistentKeepaliveIsEmpty = false;
+        int itemPreSharedKeyIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE = 0;
+        boolean itemEndpointIsEmpty = false;
+        java.lang.String persistentKeepaliveTextAndroidPluralsPersistentKeepaliveSecondsUnitItemPersistentKeepaliveSecondsItemPersistentKeepaliveSeconds = null;
+        java.lang.String itemPreSharedKey = null;
         int itemAllowedIpsIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE = 0;
-        boolean itemPersistentKeepaliveIsPresent = false;
-        java.util.Optional<java.lang.Integer> itemPersistentKeepalive = null;
-        java.util.Set<pw.idrug.connections.config.InetNetwork> itemAllowedIps = null;
-        java.lang.String itemPublicKeyToBase64 = null;
+        java.lang.String itemPersistentKeepalive = null;
+        java.lang.String itemAllowedIps = null;
         boolean itemAllowedIpsIsEmpty = false;
-        boolean itemEndpointIsPresent = false;
-        boolean ItemPersistentKeepaliveIsPresent1 = false;
-        boolean ItemEndpointIsPresent1 = false;
-        java.lang.Integer itemPersistentKeepaliveOrElseInt0 = null;
-        int itemPersistentKeepaliveIsPresentAndroidViewViewGONEAndroidViewViewVISIBLE = 0;
-        int itemEndpointIsPresentAndroidViewViewGONEAndroidViewViewVISIBLE = 0;
+        int itemPersistentKeepaliveIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE = 0;
+        int itemEndpointIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE = 0;
+        int itemPersistentKeepaliveSeconds = 0;
 
-        if ((dirtyFlags & 0x3L) != 0) {
+        if ((dirtyFlags & 0x7fL) != 0) {
 
 
+            if ((dirtyFlags & 0x51L) != 0) {
 
-                if (item != null) {
-                    // read item.endpoint
-                    itemEndpoint = item.getEndpoint();
-                    // read item.publicKey
-                    itemPublicKey = item.getPublicKey();
-                    // read item.preSharedKey
-                    itemPreSharedKey = item.getPreSharedKey();
-                    // read item.persistentKeepalive
-                    itemPersistentKeepalive = item.getPersistentKeepalive();
-                    // read item.allowedIps
-                    itemAllowedIps = item.getAllowedIps();
-                }
+                    if (item != null) {
+                        // read item.endpoint
+                        itemEndpoint = item.getEndpoint();
+                    }
 
 
-                if (itemEndpoint != null) {
-                    // read item.endpoint.isPresent()
-                    itemEndpointIsPresent = itemEndpoint.isPresent();
+                    if (itemEndpoint != null) {
+                        // read item.endpoint.isEmpty()
+                        itemEndpointIsEmpty = itemEndpoint.isEmpty();
+                    }
+                if((dirtyFlags & 0x51L) != 0) {
+                    if(itemEndpointIsEmpty) {
+                            dirtyFlags |= 0x4000L;
+                    }
+                    else {
+                            dirtyFlags |= 0x2000L;
+                    }
                 }
-                if (itemPublicKey != null) {
-                    // read item.publicKey.toBase64
-                    itemPublicKeyToBase64 = itemPublicKey.toBase64();
-                }
-                if (itemPreSharedKey != null) {
-                    // read item.preSharedKey.isPresent()
-                    itemPreSharedKeyIsPresent = itemPreSharedKey.isPresent();
-                }
-                if (itemPersistentKeepalive != null) {
-                    // read item.persistentKeepalive.isPresent()
-                    itemPersistentKeepaliveIsPresent = itemPersistentKeepalive.isPresent();
-                    // read item.persistentKeepalive.orElse(0)
-                    itemPersistentKeepaliveOrElseInt0 = itemPersistentKeepalive.orElse(0);
-                }
-                if (itemAllowedIps != null) {
-                    // read item.allowedIps.isEmpty()
-                    itemAllowedIpsIsEmpty = itemAllowedIps.isEmpty();
-                }
-            if((dirtyFlags & 0x3L) != 0) {
-                if(itemAllowedIpsIsEmpty) {
-                        dirtyFlags |= 0x20L;
-                }
-                else {
-                        dirtyFlags |= 0x10L;
-                }
+
+
+                    // read item.endpoint.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE
+                    itemEndpointIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE = ((itemEndpointIsEmpty) ? (android.view.View.GONE) : (android.view.View.VISIBLE));
             }
+            if ((dirtyFlags & 0x43L) != 0) {
 
-
-                // read !item.endpoint.isPresent()
-                ItemEndpointIsPresent1 = !itemEndpointIsPresent;
-                // read !item.preSharedKey.isPresent()
-                ItemPreSharedKeyIsPresent1 = !itemPreSharedKeyIsPresent;
-                // read !item.persistentKeepalive.isPresent()
-                ItemPersistentKeepaliveIsPresent1 = !itemPersistentKeepaliveIsPresent;
-                // read @android:plurals/persistent_keepalive_seconds_unit
-                persistentKeepaliveTextAndroidPluralsPersistentKeepaliveSecondsUnitItemPersistentKeepaliveOrElseInt0ItemPersistentKeepaliveOrElseInt0 = persistentKeepaliveText.getResources().getQuantityString(R.plurals.persistent_keepalive_seconds_unit, itemPersistentKeepaliveOrElseInt0, itemPersistentKeepaliveOrElseInt0);
-                // read @android:plurals/persistent_keepalive_seconds_unit
-                persistentKeepaliveTextAndroidPluralsPersistentKeepaliveSecondsUnitItemPersistentKeepaliveOrElseInt0ItemPersistentKeepaliveOrElseInt0 = persistentKeepaliveText.getResources().getQuantityString(R.plurals.persistent_keepalive_seconds_unit, itemPersistentKeepaliveOrElseInt0, itemPersistentKeepaliveOrElseInt0);
-                // read item.allowedIps.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE
-                itemAllowedIpsIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE = ((itemAllowedIpsIsEmpty) ? (android.view.View.GONE) : (android.view.View.VISIBLE));
-            if((dirtyFlags & 0x3L) != 0) {
-                if(ItemEndpointIsPresent1) {
-                        dirtyFlags |= 0x200L;
-                }
-                else {
-                        dirtyFlags |= 0x100L;
-                }
+                    if (item != null) {
+                        // read item.publicKeyBase64
+                        itemPublicKeyBase64 = item.getPublicKeyBase64();
+                    }
             }
-            if((dirtyFlags & 0x3L) != 0) {
-                if(ItemPreSharedKeyIsPresent1) {
-                        dirtyFlags |= 0x8L;
-                }
-                else {
-                        dirtyFlags |= 0x4L;
-                }
-            }
-            if((dirtyFlags & 0x3L) != 0) {
-                if(ItemPersistentKeepaliveIsPresent1) {
-                        dirtyFlags |= 0x80L;
-                }
-                else {
-                        dirtyFlags |= 0x40L;
-                }
-            }
+            if ((dirtyFlags & 0x45L) != 0) {
+
+                    if (item != null) {
+                        // read item.preSharedKey
+                        itemPreSharedKey = item.getPreSharedKey();
+                    }
 
 
-                // read !item.endpoint.isPresent() ? android.view.View.GONE : android.view.View.VISIBLE
-                itemEndpointIsPresentAndroidViewViewGONEAndroidViewViewVISIBLE = ((ItemEndpointIsPresent1) ? (android.view.View.GONE) : (android.view.View.VISIBLE));
-                // read !item.preSharedKey.isPresent() ? android.view.View.GONE : android.view.View.VISIBLE
-                itemPreSharedKeyIsPresentAndroidViewViewGONEAndroidViewViewVISIBLE = ((ItemPreSharedKeyIsPresent1) ? (android.view.View.GONE) : (android.view.View.VISIBLE));
-                // read !item.persistentKeepalive.isPresent() ? android.view.View.GONE : android.view.View.VISIBLE
-                itemPersistentKeepaliveIsPresentAndroidViewViewGONEAndroidViewViewVISIBLE = ((ItemPersistentKeepaliveIsPresent1) ? (android.view.View.GONE) : (android.view.View.VISIBLE));
+                    if (itemPreSharedKey != null) {
+                        // read item.preSharedKey.isEmpty()
+                        itemPreSharedKeyIsEmpty = itemPreSharedKey.isEmpty();
+                    }
+                if((dirtyFlags & 0x45L) != 0) {
+                    if(itemPreSharedKeyIsEmpty) {
+                            dirtyFlags |= 0x100L;
+                    }
+                    else {
+                            dirtyFlags |= 0x80L;
+                    }
+                }
+
+
+                    // read item.preSharedKey.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE
+                    itemPreSharedKeyIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE = ((itemPreSharedKeyIsEmpty) ? (android.view.View.GONE) : (android.view.View.VISIBLE));
+            }
+            if ((dirtyFlags & 0x61L) != 0) {
+
+                    if (item != null) {
+                        // read item.persistentKeepalive
+                        itemPersistentKeepalive = item.getPersistentKeepalive();
+                    }
+
+
+                    if (itemPersistentKeepalive != null) {
+                        // read item.persistentKeepalive.isEmpty()
+                        itemPersistentKeepaliveIsEmpty = itemPersistentKeepalive.isEmpty();
+                    }
+                if((dirtyFlags & 0x61L) != 0) {
+                    if(itemPersistentKeepaliveIsEmpty) {
+                            dirtyFlags |= 0x1000L;
+                    }
+                    else {
+                            dirtyFlags |= 0x800L;
+                    }
+                }
+
+
+                    // read item.persistentKeepalive.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE
+                    itemPersistentKeepaliveIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE = ((itemPersistentKeepaliveIsEmpty) ? (android.view.View.GONE) : (android.view.View.VISIBLE));
+            }
+            if ((dirtyFlags & 0x49L) != 0) {
+
+                    if (item != null) {
+                        // read item.allowedIps
+                        itemAllowedIps = item.getAllowedIps();
+                    }
+
+
+                    if (itemAllowedIps != null) {
+                        // read item.allowedIps.isEmpty()
+                        itemAllowedIpsIsEmpty = itemAllowedIps.isEmpty();
+                    }
+                if((dirtyFlags & 0x49L) != 0) {
+                    if(itemAllowedIpsIsEmpty) {
+                            dirtyFlags |= 0x400L;
+                    }
+                    else {
+                            dirtyFlags |= 0x200L;
+                    }
+                }
+
+
+                    // read item.allowedIps.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE
+                    itemAllowedIpsIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE = ((itemAllowedIpsIsEmpty) ? (android.view.View.GONE) : (android.view.View.VISIBLE));
+            }
+            if ((dirtyFlags & 0x41L) != 0) {
+
+                    if (item != null) {
+                        // read item.persistentKeepaliveSeconds
+                        itemPersistentKeepaliveSeconds = item.getPersistentKeepaliveSeconds();
+                    }
+
+
+                    // read @android:plurals/persistent_keepalive_seconds_unit
+                    persistentKeepaliveTextAndroidPluralsPersistentKeepaliveSecondsUnitItemPersistentKeepaliveSecondsItemPersistentKeepaliveSeconds = persistentKeepaliveText.getResources().getQuantityString(R.plurals.persistent_keepalive_seconds_unit, itemPersistentKeepaliveSeconds, itemPersistentKeepaliveSeconds);
+                    // read @android:plurals/persistent_keepalive_seconds_unit
+                    persistentKeepaliveTextAndroidPluralsPersistentKeepaliveSecondsUnitItemPersistentKeepaliveSecondsItemPersistentKeepaliveSeconds = persistentKeepaliveText.getResources().getQuantityString(R.plurals.persistent_keepalive_seconds_unit, itemPersistentKeepaliveSeconds, itemPersistentKeepaliveSeconds);
+            }
         }
         // batch finished
-        if ((dirtyFlags & 0x3L) != 0) {
+        if ((dirtyFlags & 0x49L) != 0) {
             // api target 1
 
             this.allowedIpsLabel.setVisibility(itemAllowedIpsIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE);
-            pw.idrug.connections.databinding.BindingAdapters.setInetNetworkSetText(this.allowedIpsText, itemAllowedIps);
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.allowedIpsText, itemAllowedIps);
             this.allowedIpsText.setVisibility(itemAllowedIpsIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE);
-            this.endpointLabel.setVisibility(itemEndpointIsPresentAndroidViewViewGONEAndroidViewViewVISIBLE);
-            pw.idrug.connections.databinding.BindingAdapters.setOptionalText(this.endpointText, itemEndpoint);
-            this.endpointText.setVisibility(itemEndpointIsPresentAndroidViewViewGONEAndroidViewViewVISIBLE);
-            this.persistentKeepaliveLabel.setVisibility(itemPersistentKeepaliveIsPresentAndroidViewViewGONEAndroidViewViewVISIBLE);
-            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.persistentKeepaliveText, persistentKeepaliveTextAndroidPluralsPersistentKeepaliveSecondsUnitItemPersistentKeepaliveOrElseInt0ItemPersistentKeepaliveOrElseInt0);
-            this.persistentKeepaliveText.setVisibility(itemPersistentKeepaliveIsPresentAndroidViewViewGONEAndroidViewViewVISIBLE);
-            this.preSharedKeyLabel.setVisibility(itemPreSharedKeyIsPresentAndroidViewViewGONEAndroidViewViewVISIBLE);
-            this.preSharedKeyText.setVisibility(itemPreSharedKeyIsPresentAndroidViewViewGONEAndroidViewViewVISIBLE);
-            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.publicKeyText, itemPublicKeyToBase64);
         }
-        if ((dirtyFlags & 0x2L) != 0) {
+        if ((dirtyFlags & 0x40L) != 0) {
             // api target 1
 
             this.allowedIpsText.setOnClickListener((((mClipboardUtilsCopyTextViewAndroidViewViewOnClickListener == null) ? (mClipboardUtilsCopyTextViewAndroidViewViewOnClickListener = new OnClickListenerImpl()) : mClipboardUtilsCopyTextViewAndroidViewViewOnClickListener)));
@@ -262,6 +320,35 @@ public class TunnelDetailPeerBindingImpl extends TunnelDetailPeerBinding  {
             this.persistentKeepaliveText.setOnClickListener((((mClipboardUtilsCopyTextViewAndroidViewViewOnClickListener == null) ? (mClipboardUtilsCopyTextViewAndroidViewViewOnClickListener = new OnClickListenerImpl()) : mClipboardUtilsCopyTextViewAndroidViewViewOnClickListener)));
             this.publicKeyText.setOnClickListener((((mClipboardUtilsCopyTextViewAndroidViewViewOnClickListener == null) ? (mClipboardUtilsCopyTextViewAndroidViewViewOnClickListener = new OnClickListenerImpl()) : mClipboardUtilsCopyTextViewAndroidViewViewOnClickListener)));
             this.transferText.setOnClickListener((((mClipboardUtilsCopyTextViewAndroidViewViewOnClickListener == null) ? (mClipboardUtilsCopyTextViewAndroidViewViewOnClickListener = new OnClickListenerImpl()) : mClipboardUtilsCopyTextViewAndroidViewViewOnClickListener)));
+        }
+        if ((dirtyFlags & 0x51L) != 0) {
+            // api target 1
+
+            this.endpointLabel.setVisibility(itemEndpointIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE);
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.endpointText, itemEndpoint);
+            this.endpointText.setVisibility(itemEndpointIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE);
+        }
+        if ((dirtyFlags & 0x61L) != 0) {
+            // api target 1
+
+            this.persistentKeepaliveLabel.setVisibility(itemPersistentKeepaliveIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE);
+            this.persistentKeepaliveText.setVisibility(itemPersistentKeepaliveIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE);
+        }
+        if ((dirtyFlags & 0x41L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.persistentKeepaliveText, persistentKeepaliveTextAndroidPluralsPersistentKeepaliveSecondsUnitItemPersistentKeepaliveSecondsItemPersistentKeepaliveSeconds);
+        }
+        if ((dirtyFlags & 0x45L) != 0) {
+            // api target 1
+
+            this.preSharedKeyLabel.setVisibility(itemPreSharedKeyIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE);
+            this.preSharedKeyText.setVisibility(itemPreSharedKeyIsEmptyAndroidViewViewGONEAndroidViewViewVISIBLE);
+        }
+        if ((dirtyFlags & 0x43L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.publicKeyText, itemPublicKeyBase64);
         }
     }
     // Listener Stub Implementations
@@ -276,15 +363,20 @@ public class TunnelDetailPeerBindingImpl extends TunnelDetailPeerBinding  {
     private  long mDirtyFlags = 0xffffffffffffffffL;
     /* flag mapping
         flag 0 (0x1L): item
-        flag 1 (0x2L): null
-        flag 2 (0x3L): !item.preSharedKey.isPresent() ? android.view.View.GONE : android.view.View.VISIBLE
-        flag 3 (0x4L): !item.preSharedKey.isPresent() ? android.view.View.GONE : android.view.View.VISIBLE
-        flag 4 (0x5L): item.allowedIps.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE
-        flag 5 (0x6L): item.allowedIps.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE
-        flag 6 (0x7L): !item.persistentKeepalive.isPresent() ? android.view.View.GONE : android.view.View.VISIBLE
-        flag 7 (0x8L): !item.persistentKeepalive.isPresent() ? android.view.View.GONE : android.view.View.VISIBLE
-        flag 8 (0x9L): !item.endpoint.isPresent() ? android.view.View.GONE : android.view.View.VISIBLE
-        flag 9 (0xaL): !item.endpoint.isPresent() ? android.view.View.GONE : android.view.View.VISIBLE
+        flag 1 (0x2L): item.publicKeyBase64
+        flag 2 (0x3L): item.preSharedKey
+        flag 3 (0x4L): item.allowedIps
+        flag 4 (0x5L): item.endpoint
+        flag 5 (0x6L): item.persistentKeepalive
+        flag 6 (0x7L): null
+        flag 7 (0x8L): item.preSharedKey.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE
+        flag 8 (0x9L): item.preSharedKey.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE
+        flag 9 (0xaL): item.allowedIps.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE
+        flag 10 (0xbL): item.allowedIps.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE
+        flag 11 (0xcL): item.persistentKeepalive.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE
+        flag 12 (0xdL): item.persistentKeepalive.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE
+        flag 13 (0xeL): item.endpoint.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE
+        flag 14 (0xfL): item.endpoint.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE
     flag mapping end*/
     //end
 }

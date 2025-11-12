@@ -1,6 +1,6 @@
 <lint-module
     format="1"
-    dir="/home/bykk/iDrugWgtest/iDrugWg-master/tunnel"
+    dir="/home/bykk/idrug1.5/iDrugWg/tunnel"
     name=":tunnel"
     type="LIBRARY"
     maven="idrugconnections-android:tunnel:unspecified"

@@ -14,7 +14,7 @@ import com.google.android.material.textview.MaterialTextView;
 import java.lang.Deprecated;
 import java.lang.Object;
 import pw.idrug.connections.R;
-import pw.idrug.connections.config.Peer;
+import pw.idrug.connections.viewmodel.PeerProxy;
 
 public abstract class TunnelDetailPeerBinding extends ViewDataBinding {
   @NonNull
@@ -63,7 +63,7 @@ public abstract class TunnelDetailPeerBinding extends ViewDataBinding {
   public final TextView transferText;
 
   @Bindable
-  protected Peer mItem;
+  protected PeerProxy mItem;
 
   protected TunnelDetailPeerBinding(Object _bindingComponent, View _root, int _localFieldCount,
       TextView allowedIpsLabel, TextView allowedIpsText, TextView endpointLabel,
@@ -90,10 +90,10 @@ public abstract class TunnelDetailPeerBinding extends ViewDataBinding {
     this.transferText = transferText;
   }
 
-  public abstract void setItem(@Nullable Peer item);
+  public abstract void setItem(@Nullable PeerProxy item);
 
   @Nullable
-  public Peer getItem() {
+  public PeerProxy getItem() {
     return mItem;
   }
 

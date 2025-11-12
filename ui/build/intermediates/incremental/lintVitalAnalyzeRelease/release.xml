@@ -7,7 +7,7 @@
     mergedManifest="build/intermediates/merged_manifest/release/processReleaseMainManifest/AndroidManifest.xml"
     proguardFiles="proguard-android-optimize.txt:proguard-rules.pro"
     partialResultsDir="build/intermediates/lint_vital_partial_results/release/lintVitalAnalyzeRelease/out"
-    desugaredMethodsFiles="/home/bykk/.gradle/caches/8.11.1/transforms/2bd47c7903366f01e3373a5425824ff6/transformed/desugar_jdk_libs_configuration-2.0.4-desugar-lint.txt:/home/bykk/.gradle/caches/8.11.1/transforms/2faa46dba24ac2ea41234786eeb9a7d7/transformed/D8BackportedDesugaredMethods.txt">
+    desugaredMethodsFiles="/home/bykk/.gradle/caches/8.13/transforms/51315e90502caf955838e5ffaddb64d0/transformed/desugar_jdk_libs_configuration-2.0.4-desugar-lint.txt:/home/bykk/.gradle/caches/8.13/transforms/3e7d17c929992c7f7d1cb64de7d65a37/transformed/D8BackportedDesugaredMethods.txt">
   <buildFeatures
       coreLibraryDesugaring="true"
       viewBinding="true"
@@ -29,6 +29,6 @@
       applicationId="pw.idrug.connections"
       generatedSourceFolders="build/generated/source/kapt/release:build/generated/ksp/release/java:build/generated/ksp/release/kotlin:build/generated/ap_generated_sources/release/out:build/generated/source/buildConfig/release:build/generated/data_binding_base_class_source_out/release/out"
       generatedResourceFolders="build/generated/res/processReleaseGoogleServices"
-      desugaredMethodsFiles="/home/bykk/.gradle/caches/8.11.1/transforms/2bd47c7903366f01e3373a5425824ff6/transformed/desugar_jdk_libs_configuration-2.0.4-desugar-lint.txt:/home/bykk/.gradle/caches/8.11.1/transforms/2faa46dba24ac2ea41234786eeb9a7d7/transformed/D8BackportedDesugaredMethods.txt">
+      desugaredMethodsFiles="/home/bykk/.gradle/caches/8.13/transforms/51315e90502caf955838e5ffaddb64d0/transformed/desugar_jdk_libs_configuration-2.0.4-desugar-lint.txt:/home/bykk/.gradle/caches/8.13/transforms/3e7d17c929992c7f7d1cb64de7d65a37/transformed/D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>

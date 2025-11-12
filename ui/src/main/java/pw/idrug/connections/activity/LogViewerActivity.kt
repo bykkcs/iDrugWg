@@ -25,8 +25,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.collection.CircularArray
 import androidx.core.app.ShareCompat
 import androidx.core.content.res.ResourcesCompat
@@ -42,7 +42,7 @@ import pw.idrug.connections.databinding.LogViewerActivityBinding
 import pw.idrug.connections.util.DownloadsFileSaver
 import pw.idrug.connections.util.ErrorMessages
 import pw.idrug.connections.util.resolveAttribute
-import pw.idrug.connections.crypto.KeyPair
+import org.amnezia.awg.crypto.KeyPair
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

@@ -8,11 +8,12 @@ import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import pw.idrug.connections.BR
-import pw.idrug.connections.backend.Statistics
-import pw.idrug.connections.backend.Tunnel
+import org.amnezia.awg.backend.Statistics
+import org.amnezia.awg.backend.Tunnel
 import pw.idrug.connections.databinding.Keyed
 import pw.idrug.connections.util.applicationScope
-import pw.idrug.connections.config.Config
+import pw.idrug.connections.viewmodel.ConfigProxy
+import org.amnezia.awg.config.Config
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,33 +23,47 @@ import kotlinx.coroutines.withContext
  */
 class ObservableTunnel internal constructor(
     private val manager: TunnelManager,
-    private var name: String,
+    initialName: String,
     config: Config?,
-    state: Tunnel.State
+    amConfig: Config?,
+    initialAmQuick: String?,
+    initialState: Tunnel.State
 ) : BaseObservable(), Keyed<String>, Tunnel {
-    override val key
-        get() = name
+    private var internalName: String = initialName
+
+    override val key: String
+        get() = internalName
 
     @Bindable
-    override fun getName() = name
+    override fun getName(): String = internalName
+
+    private fun updateName(newName: String) {
+        if (internalName != newName) {
+            internalName = newName
+            notifyPropertyChanged(BR.name)
+        }
+    }
 
     suspend fun setNameAsync(name: String): String = withContext(Dispatchers.Main.immediate) {
-        if (name != this@ObservableTunnel.name)
+        if (name != internalName) {
             manager.setTunnelName(this@ObservableTunnel, name)
-        else
-            this@ObservableTunnel.name
+        } else {
+            internalName
+        }
     }
 
     fun onNameChanged(name: String): String {
-        this.name = name
-        notifyPropertyChanged(BR.name)
+        updateName(name)
         return name
     }
 
 
     @get:Bindable
-    var state = state
-        private set
+    var state: Tunnel.State = initialState
+        private set(value) {
+            field = value
+            notifyPropertyChanged(BR.state)
+        }
 
     override fun onStateChange(newState: Tunnel.State) {
         onStateChanged(newState)
@@ -85,23 +100,53 @@ class ObservableTunnel internal constructor(
         }
         private set
 
+    var amConfig: Config? = amConfig
+        private set
+
+    var amQuick: String? = initialAmQuick
+        private set
+
     suspend fun getConfigAsync(): Config = withContext(Dispatchers.Main.immediate) {
         config ?: manager.getTunnelConfig(this@ObservableTunnel)
     }
 
-    suspend fun setConfigAsync(config: Config): Config = withContext(Dispatchers.Main.immediate) {
-        this@ObservableTunnel.config.let {
-            if (config != it)
-                manager.setTunnelConfig(this@ObservableTunnel, config)
-            else
-                it
-        }
+    suspend fun getAmConfigAsync(): Config = withContext(Dispatchers.Main.immediate) {
+        amConfig ?: manager.getTunnelAmConfig(this@ObservableTunnel)
     }
+
+    @get:Bindable
+    val quicReadyBadge: Boolean
+        get() = config?.let {
+            runCatching { it.getInterface().i1.orElse("").isNotEmpty() }.getOrDefault(false)
+        } ?: false
+
+    suspend fun setConfigAsync(configs: ConfigProxy.BuiltConfigs): Config = withContext(Dispatchers.Main.immediate) {
+        val currentConfig = this@ObservableTunnel.config
+        val currentQuick = this@ObservableTunnel.amQuick
+        if (currentConfig != null && currentConfig == configs.awg && currentQuick == configs.amQuick) {
+            return@withContext currentConfig
+        }
+        manager.setTunnelConfig(this@ObservableTunnel, configs)
+    }
+
+    suspend fun setConfigAsync(config: Config): Config =
+        setConfigAsync(ConfigProxy(config).buildConfigs())
 
     fun onConfigChanged(config: Config?): Config? {
         this.config = config
         notifyPropertyChanged(BR.config)
+        notifyPropertyChanged(BR.quicReadyBadge)
         return config
+    }
+
+    fun onAmConfigChanged(amConfig: Config?): Config? {
+        this.amConfig = amConfig
+        return amConfig
+    }
+
+    fun onAmQuickChanged(amQuick: String?): String? {
+        this.amQuick = amQuick
+        return amQuick
     }
 
 

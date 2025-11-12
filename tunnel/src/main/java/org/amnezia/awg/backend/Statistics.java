@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package pw.idrug.connections.backend;
+package org.amnezia.awg.backend;
 
 import android.os.SystemClock;
 
-import pw.idrug.connections.crypto.Key;
-import pw.idrug.connections.util.NonNullForAll;
+import org.amnezia.awg.crypto.Key;
+import org.amnezia.awg.util.NonNullForAll;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,12 +30,12 @@ public class Statistics {
     /**
      * Add a peer and its current stats to the internal map.
      *
-     * @param key               An iDrugConnections public key bound to a particular peer
-     * @param rxBytes           The received traffic for the {@link pw.idrug.connections.config.Peer} referenced by
+     * @param key               An AmneziaWG public key bound to a particular peer
+     * @param rxBytes           The received traffic for the {@link org.amnezia.config.Peer} referenced by
      *                          the provided {@link Key}. This value is in bytes
-     * @param txBytes           The transmitted traffic for the {@link pw.idrug.connections.config.Peer} referenced by
+     * @param txBytes           The transmitted traffic for the {@link org.amnezia.config.Peer} referenced by
      *                          the provided {@link Key}. This value is in bytes.
-     * @param latestHandshake   The timestamp of the latest handshake for the {@link pw.idrug.connections.config.Peer}
+     * @param latestHandshake   The timestamp of the latest handshake for the {@link org.amnezia.config.Peer}
      *                          referenced by the provided {@link Key}. The value is in epoch milliseconds.
      */
     void add(final Key key, final long rxBytes, final long txBytes, final long latestHandshake) {
@@ -53,9 +53,9 @@ public class Statistics {
     }
 
     /**
-     * Get the statistics for the {@link pw.idrug.connections.config.Peer} referenced by the provided {@link Key}
+     * Get the statistics for the {@link org.amnezia.config.Peer} referenced by the provided {@link Key}
      *
-     * @param peer A {@link Key} representing a {@link pw.idrug.connections.config.Peer}.
+     * @param peer A {@link Key} representing a {@link org.amnezia.config.Peer}.
      * @return a {@link PeerStats} representing various statistics about this peer.
      */
     @Nullable
@@ -66,8 +66,8 @@ public class Statistics {
     /**
      * Get the list of peers being tracked by this instance.
      *
-     * @return An array of {@link Key} instances representing iDrugConnections
-     * {@link pw.idrug.connections.config.Peer}s
+     * @return An array of {@link Key} instances representing AmneziaWG
+     * {@link org.amnezia.config.Peer}s
      */
     public Key[] peers() {
         return stats.keySet().toArray(new Key[0]);

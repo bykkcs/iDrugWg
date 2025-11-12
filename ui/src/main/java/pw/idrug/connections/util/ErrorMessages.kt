@@ -10,14 +10,14 @@ import com.google.zxing.ChecksumException
 import com.google.zxing.NotFoundException
 import pw.idrug.connections.Application
 import pw.idrug.connections.R
-import pw.idrug.connections.backend.BackendException
-import pw.idrug.connections.util.RootShell.RootShellException
-import pw.idrug.connections.config.BadConfigException
-import pw.idrug.connections.config.InetEndpoint
-import pw.idrug.connections.config.InetNetwork
-import pw.idrug.connections.config.ParseException
-import pw.idrug.connections.crypto.Key
-import pw.idrug.connections.crypto.KeyFormatException
+import org.amnezia.awg.backend.BackendException
+import org.amnezia.awg.util.RootShell.RootShellException
+import org.amnezia.awg.config.BadConfigException
+import org.amnezia.awg.config.InetEndpoint
+import org.amnezia.awg.config.InetNetwork
+import org.amnezia.awg.config.ParseException
+import org.amnezia.awg.crypto.Key
+import org.amnezia.awg.crypto.KeyFormatException
 import java.net.InetAddress
 
 object ErrorMessages {

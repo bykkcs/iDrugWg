@@ -21,7 +21,7 @@ import androidx.databinding.Observable
 import androidx.databinding.Observable.OnPropertyChangedCallback
 import pw.idrug.connections.activity.MainActivity
 import pw.idrug.connections.activity.TunnelToggleActivity
-import pw.idrug.connections.backend.Tunnel
+import org.amnezia.awg.backend.Tunnel
 import pw.idrug.connections.model.ObservableTunnel
 import pw.idrug.connections.util.applicationScope
 import pw.idrug.connections.widget.SlashDrawable

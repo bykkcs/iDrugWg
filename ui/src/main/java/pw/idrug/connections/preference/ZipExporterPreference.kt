@@ -36,10 +36,14 @@ class ZipExporterPreference(context: Context, attrs: AttributeSet?) : Preference
 
     private fun exportZip() {
         lifecycleScope.launch {
-            val tunnels = Application.getTunnelManager().getTunnels()
+            val manager = Application.getTunnelManager()
+            val tunnels = manager.getTunnels()
             try {
                 exportedFilePath = withContext(Dispatchers.IO) {
-                    val configs = tunnels.map { async(SupervisorJob()) { it.getConfigAsync() } }.awaitAll()
+                    val configsDeferred = tunnels.map { async(SupervisorJob()) { it.getConfigAsync() } }
+                    val amQuickDeferred = tunnels.map { async(SupervisorJob()) { manager.getAmQuick(it) } }
+                    val configs = configsDeferred.awaitAll()
+                    val amQuicks = amQuickDeferred.awaitAll()
                     if (configs.isEmpty()) {
                         throw IllegalArgumentException(context.getString(R.string.no_tunnels_error))
                     }
@@ -53,10 +57,17 @@ class ZipExporterPreference(context: Context, attrs: AttributeSet?) : Preference
                     try {
                         ZipOutputStream(outputFile.outputStream).use { zip ->
                             for (i in configs.indices) {
-                                zip.putNextEntry(ZipEntry(tunnels[i].name + ".conf"))
+                                val tunnelName = tunnels[i].name
+                                zip.putNextEntry(ZipEntry("$tunnelName.conf"))
                                 zip.write(configs[i].toAwgQuickString().toByteArray(StandardCharsets.UTF_8))
+                                zip.closeEntry()
+                                val amQuick = amQuicks[i]
+                                if (!amQuick.isNullOrEmpty()) {
+                                    zip.putNextEntry(ZipEntry("$tunnelName.amquick"))
+                                    zip.write(amQuick.toByteArray(StandardCharsets.UTF_8))
+                                    zip.closeEntry()
+                                }
                             }
-                            zip.closeEntry()
                         }
                     } catch (e: Throwable) {
                         outputFile.delete()

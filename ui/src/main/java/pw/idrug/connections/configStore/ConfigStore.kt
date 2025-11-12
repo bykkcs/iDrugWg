@@ -4,7 +4,7 @@
  */
 package pw.idrug.connections.configStore
 
-import pw.idrug.connections.config.Config
+import org.amnezia.awg.config.Config
 
 /**
  * Interface for persistent storage providers for iDrugConnections configurations.
@@ -54,6 +54,14 @@ interface ConfigStore {
      */
     @Throws(Exception::class)
     fun rename(name: String, replacement: String)
+
+    fun loadAmQuick(name: String): String?
+
+    fun saveAmQuick(name: String, amQuick: String)
+
+    fun deleteAmQuick(name: String)
+
+    fun renameAmQuick(name: String, replacement: String)
 
     /**
      * Save the configuration for an existing tunnel given by `name`.

@@ -6,7 +6,7 @@
         <item>Instant connection. Configs and keys are saved in-app — nothing gets lost.</item>
         <item>Dedicated TV app — link by code, launch in one click. Pure comfort.</item>
         <item>Pick apps for VPN in tunnel settings — only their traffic goes via VPN, the rest goes direct.</item>
-        <item>Plans from 250₽/month. No hidden fees, pay by card or crypto, whatever suits you.</item>
+        <item>Plans from 199₽/month. No hidden fees, pay by card or crypto, whatever suits you.</item>
     </string-array>
     <string-array name="onboarding_emojis">
         <item>🔒</item>
@@ -27,6 +27,7 @@
     <bool name="light_navigation_bar">true</bool>
     <bool name="light_status_bar">true</bool>
     <color name="background">#FFFFFF</color>
+    <color name="config_quic_ready">#1B5E20</color>
     <color name="debug_tag_color">#444444</color>
     <color name="error_tag_color">#aa0000</color>
     <color name="ic_launcher_background">#15181B</color>
@@ -362,13 +363,17 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="no_configs_error">No configurations found</string>
     <string name="no_tunnels_error">No tunnels exist</string>
     <string name="notification_action_disconnect">Disconnect</string>
+    <string name="notification_action_exclude_app">Exclude app from VPN</string>
+    <string name="notification_action_include_app">Route app through VPN</string>
     <string name="notification_channel_name">Connection status</string>
     <string name="notification_status_chip_connecting">Conn</string>
     <string name="notification_status_chip_disconnected">Off</string>
     <string name="notification_status_chip_disconnecting">Stop</string>
     <string name="notification_status_chip_multiple">%d VPN</string>
+    <string name="notification_status_chip_offline">Offline</string>
     <string name="notification_status_chip_online">Online</string>
     <string name="notification_text_connected_default">Secure connection active</string>
+    <string name="notification_text_paused">Secure connection paused — %1$s bypassed</string>
     <string name="notification_text_speed">↑ %1$s • ↓ %2$s</string>
     <string name="notification_text_tunnels_count">Active tunnels count: %d</string>
     <string name="notification_title_connected">Connected</string>
@@ -395,12 +400,18 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="ping_value_ms">%1$d ms</string>
     <string name="pre_shared_key">Pre-shared key</string>
     <string name="pre_shared_key_enabled">enabled</string>
+    <string name="pref_live_usage_summary">Show Online/Offline based on the current app (requires usage access)</string>
+    <string name="pref_live_usage_title">Live VPN status chip</string>
     <string name="price_template">Price: %1$d₽</string>
     <string name="private_key">Private key</string>
     <string name="profile_processing_error">Profile processing error: %s</string>
     <string name="profile_retrieval_failed">Failed to retrieve profile: %d</string>
     <string name="profile_timeout_error">Failed to load profile: request timed out. Check your connection and try again.</string>
     <string name="project_id" translatable="false">idrugwg</string>
+    <string name="promo_applied">✅ Promo applied: %1$s</string>
+    <string name="promo_apply">Apply</string>
+    <string name="promo_hint">Promo code</string>
+    <string name="promo_invalid">Promo code is invalid</string>
     <string name="public_key">Public key</string>
     <string name="qr_code_content_description">QR code for Telegram login</string>
     <string name="qr_code_hint">Tip: generate with `qrencode -t ansiutf8 &lt; tunnel.conf`.</string>
@@ -460,11 +471,15 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="speed_test_upload_presets">Upload preset</string>
     <string name="submit_code">Link</string>
     <string name="subscription_active_days">%1$s: until %2$s (%3$d d)</string>
+    <string name="subscription_catalog_empty">No subscription plans are currently available</string>
+    <string name="subscription_catalog_error">Unable to load subscription catalog</string>
+    <string name="subscription_catalog_loading">Loading plans…</string>
     <string name="subscription_forever">%1$s: lifetime</string>
     <string name="subscription_inactive">%1$s: inactive</string>
     <string name="subscription_inactive_msg">Subscription inactive</string>
     <string name="subscription_lifetime">Lifetime</string>
     <string name="subscription_placeholder_entry">• %1$s — …</string>
+    <string name="subscription_purchase_disabled">This plan is temporarily unavailable</string>
     <string name="subscription_renewed">Subscription renewed</string>
     <string name="success_application_will_restart">Success. The application will now restart…</string>
     <string name="telegram_login_successful">Telegram login successful!</string>
@@ -505,8 +520,11 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="tunnel_list_placeholder">Add a tunnel using the button below</string>
     <string name="tunnel_name">Tunnel Name</string>
     <string name="tunnel_on_error">Unable to turn tunnel on (wgTurnOn returned %d)</string>
+    <string name="tunnel_quic_ready">awg1.5 (quic-ready)</string>
     <string name="tunnel_rename_error">Unable to rename tunnel: %s</string>
     <string name="tunnel_rename_success">Successfully renamed tunnel to “%s”</string>
+    <string name="tv_action_hint_connect">Press OK to connect</string>
+    <string name="tv_action_hint_disconnect">Press OK to disconnect</string>
     <string name="tv_add_tunnel_get_started">Add a tunnel to get started</string>
     <string name="tv_auto_connect">Auto-connect on boot</string>
     <string name="tv_config_subtitle">Use the remote to choose a server and press OK to connect</string>
@@ -543,6 +561,7 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="update_later_cta">Later</string>
     <string name="update_latest_message">You are using the latest version</string>
     <string name="update_source">Source: idrug.pw/ota</string>
+    <string name="usage_access_request">Grant usage access to enable live status updates</string>
     <string name="use_all_applications">Select all</string>
     <string name="version_summary">%1$s backend %2$s</string>
     <string name="version_summary_checking">Checking %s backend version</string>
@@ -622,6 +641,16 @@ Official iDrug Connections services are available only at <a href="https://idrug
         <item name="colorSecondary">@color/secondary</item>
         <item name="colorOnSecondary">@color/onSecondary</item>
         <item name="android:windowBackground">@color/background</item>
+    </style>
+    <style name="TvSwitchStyle" parent="@style/Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:textColor">@color/tv_text_primary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@drawable/tv_item_background</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:minHeight">64dp</item>
     </style>
     <style name="TvTheme" parent="Theme.Idrug">
         <item name="windowActionBar">false</item>

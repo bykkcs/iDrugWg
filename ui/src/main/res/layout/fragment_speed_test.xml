@@ -56,12 +56,17 @@
 
                         <TextView
                             android:id="@+id/text_ping_value"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                            android:gravity="center"
+                            android:minWidth="72dp"
                             android:text="--"
-                            android:textStyle="bold" />
+                            android:textAlignment="center"
+                            android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                            android:textStyle="bold"
+                            android:fontFamily="monospace"
+                            android:includeFontPadding="false" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -79,12 +84,17 @@
 
                         <TextView
                             android:id="@+id/text_download_value"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                            android:gravity="center"
+                            android:minWidth="72dp"
                             android:text="--"
-                            android:textStyle="bold" />
+                            android:textAlignment="center"
+                            android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                            android:textStyle="bold"
+                            android:fontFamily="monospace"
+                            android:includeFontPadding="false" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -102,12 +112,17 @@
 
                         <TextView
                             android:id="@+id/text_upload_value"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                            android:gravity="center"
+                            android:minWidth="72dp"
                             android:text="--"
-                            android:textStyle="bold" />
+                            android:textAlignment="center"
+                            android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                            android:textStyle="bold"
+                            android:fontFamily="monospace"
+                            android:includeFontPadding="false" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

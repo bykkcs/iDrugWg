@@ -13,8 +13,8 @@ import androidx.preference.Preference
 import pw.idrug.connections.Application
 import pw.idrug.connections.R
 import pw.idrug.connections.activity.SettingsActivity
-import pw.idrug.connections.backend.Tunnel
-import pw.idrug.connections.backend.AwgQuickBackend
+import org.amnezia.awg.backend.Tunnel
+import org.amnezia.awg.backend.AwgQuickBackend
 import pw.idrug.connections.util.UserKnobs
 import pw.idrug.connections.util.activity
 import pw.idrug.connections.util.lifecycleScope

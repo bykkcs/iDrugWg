@@ -3,15 +3,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package pw.idrug.connections.config;
+package org.amnezia.awg.config;
 
-import pw.idrug.connections.config.BadConfigException.Location;
-import pw.idrug.connections.config.BadConfigException.Reason;
-import pw.idrug.connections.config.BadConfigException.Section;
-import pw.idrug.connections.crypto.Key;
-import pw.idrug.connections.crypto.KeyFormatException;
-import pw.idrug.connections.crypto.KeyPair;
-import pw.idrug.connections.util.NonNullForAll;
+import org.amnezia.awg.config.BadConfigException;
+import org.amnezia.awg.config.BadConfigException.Location;
+import org.amnezia.awg.config.BadConfigException.Reason;
+import org.amnezia.awg.config.BadConfigException.Section;
+import org.amnezia.awg.crypto.Key;
+import org.amnezia.awg.crypto.KeyFormatException;
+import org.amnezia.awg.crypto.KeyPair;
+import org.amnezia.awg.util.NonNullForAll;
 
 import java.net.InetAddress;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.regex.Pattern;
 
 import androidx.annotation.Nullable;
 
@@ -438,6 +440,26 @@ public final class Interface {
         return getSpecialJunkPacket(5);
     }
 
+    public Optional<String> getI1() {
+        return getSpecialJunkPacket1();
+    }
+
+    public Optional<String> getI2() {
+        return getSpecialJunkPacket2();
+    }
+
+    public Optional<String> getI3() {
+        return getSpecialJunkPacket3();
+    }
+
+    public Optional<String> getI4() {
+        return getSpecialJunkPacket4();
+    }
+
+    public Optional<String> getI5() {
+        return getSpecialJunkPacket5();
+    }
+
     public Optional<String> getControlledJunkPacket1() {
         return getControlledJunkPacket(1);
     }
@@ -448,6 +470,18 @@ public final class Interface {
 
     public Optional<String> getControlledJunkPacket3() {
         return getControlledJunkPacket(3);
+    }
+
+    public Optional<String> getJ1() {
+        return getControlledJunkPacket1();
+    }
+
+    public Optional<String> getJ2() {
+        return getControlledJunkPacket2();
+    }
+
+    public Optional<String> getJ3() {
+        return getControlledJunkPacket3();
     }
 
 
@@ -500,6 +534,10 @@ public final class Interface {
      * @return The {@code Interface} represented as a series of "Key = Value" lines
      */
     public String toAwgQuickString() {
+        return toAwgQuickString(true);
+    }
+
+    public String toAwgQuickString(final boolean includePrivateKeyMaterial) {
         final StringBuilder sb = new StringBuilder();
         if (!addresses.isEmpty())
             sb.append("Address = ").append(Attribute.join(addresses)).append('\n');
@@ -532,7 +570,8 @@ public final class Interface {
             sb.append("J").append(i + 1).append(" = ").append(controlledJunkPackets.get(i)).append('\n');
         }
         itimeSeconds.ifPresent(it -> sb.append("ITime = ").append(it).append('\n'));
-        sb.append("PrivateKey = ").append(keyPair.getPrivateKey().toBase64()).append('\n');
+        if (includePrivateKeyMaterial)
+            sb.append("PrivateKey = ").append(keyPair.getPrivateKey().toBase64()).append('\n');
         return sb.toString();
     }
 
@@ -569,6 +608,7 @@ public final class Interface {
 
     @SuppressWarnings("UnusedReturnValue")
     public static final class Builder {
+        private static final Pattern TAGGED_HEX_PATTERN = Pattern.compile("^<b 0x[0-9a-fA-F]+>$");
         // Defaults to an empty set.
         private final Set<InetNetwork> addresses = new LinkedHashSet<>();
         // Defaults to an empty set.
@@ -789,9 +829,41 @@ public final class Interface {
             return setSpecialJunkPacket(index, value);
         }
 
+        public Builder parseI1(final String value) throws BadConfigException {
+            return parseSpecialJunkPacket("i1", value);
+        }
+
+        public Builder parseI2(final String value) throws BadConfigException {
+            return parseSpecialJunkPacket("i2", value);
+        }
+
+        public Builder parseI3(final String value) throws BadConfigException {
+            return parseSpecialJunkPacket("i3", value);
+        }
+
+        public Builder parseI4(final String value) throws BadConfigException {
+            return parseSpecialJunkPacket("i4", value);
+        }
+
+        public Builder parseI5(final String value) throws BadConfigException {
+            return parseSpecialJunkPacket("i5", value);
+        }
+
         public Builder parseControlledJunkPacket(final String key, final String value) throws BadConfigException {
             final int index = parseIndexedKey(key, "j", 3, Location.CONTROLLED_JUNK_PACKET, "J");
             return setControlledJunkPacket(index, value);
+        }
+
+        public Builder parseJ1(final String value) throws BadConfigException {
+            return parseControlledJunkPacket("j1", value);
+        }
+
+        public Builder parseJ2(final String value) throws BadConfigException {
+            return parseControlledJunkPacket("j2", value);
+        }
+
+        public Builder parseJ3(final String value) throws BadConfigException {
+            return parseControlledJunkPacket("j3", value);
         }
 
         public Builder parseInitPacketMagicHeader(final String initPacketMagicHeader) throws BadConfigException {
@@ -962,6 +1034,26 @@ public final class Interface {
             return this;
         }
 
+        public Builder setI1(@Nullable final String value) throws BadConfigException {
+            return setSpecialJunkPacket(1, value);
+        }
+
+        public Builder setI2(@Nullable final String value) throws BadConfigException {
+            return setSpecialJunkPacket(2, value);
+        }
+
+        public Builder setI3(@Nullable final String value) throws BadConfigException {
+            return setSpecialJunkPacket(3, value);
+        }
+
+        public Builder setI4(@Nullable final String value) throws BadConfigException {
+            return setSpecialJunkPacket(4, value);
+        }
+
+        public Builder setI5(@Nullable final String value) throws BadConfigException {
+            return setSpecialJunkPacket(5, value);
+        }
+
         public Builder setControlledJunkPacket(final int index, @Nullable final String value) throws BadConfigException {
             validateJunkPacketIndex(index, 3, Location.CONTROLLED_JUNK_PACKET, "J");
             if (value == null || value.trim().isEmpty()) {
@@ -970,6 +1062,18 @@ public final class Interface {
                 controlledJunkPacketMap.put(index, value.trim());
             }
             return this;
+        }
+
+        public Builder setJ1(@Nullable final String value) throws BadConfigException {
+            return setControlledJunkPacket(1, value);
+        }
+
+        public Builder setJ2(@Nullable final String value) throws BadConfigException {
+            return setControlledJunkPacket(2, value);
+        }
+
+        public Builder setJ3(@Nullable final String value) throws BadConfigException {
+            return setControlledJunkPacket(3, value);
         }
 
         public Builder setItimeSeconds(@Nullable final Integer itimeSeconds) throws BadConfigException {
@@ -1027,7 +1131,12 @@ public final class Interface {
             }
             final List<String> result = new ArrayList<>(orderedKeys.size());
             for (final int key : orderedKeys) {
-                result.add(source.get(key));
+                final String value = source.get(key);
+                if (value == null || !TAGGED_HEX_PATTERN.matcher(value).matches()) {
+                    throw new BadConfigException(Section.INTERFACE, location,
+                            Reason.INVALID_VALUE, value);
+                }
+                result.add(value);
             }
             return Collections.unmodifiableList(result);
         }

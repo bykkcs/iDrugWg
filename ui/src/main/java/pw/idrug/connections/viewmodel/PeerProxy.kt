@@ -12,9 +12,9 @@ import androidx.databinding.Observable
 import androidx.databinding.Observable.OnPropertyChangedCallback
 import androidx.databinding.ObservableList
 import pw.idrug.connections.BR
-import pw.idrug.connections.config.Attribute
-import pw.idrug.connections.config.BadConfigException
-import pw.idrug.connections.config.Peer
+import org.amnezia.awg.config.Attribute
+import org.amnezia.awg.config.BadConfigException
+import org.amnezia.awg.config.Peer
 import java.lang.ref.WeakReference
 
 class PeerProxy : BaseObservable, Parcelable {
@@ -47,6 +47,8 @@ class PeerProxy : BaseObservable, Parcelable {
             notifyPropertyChanged(BR.persistentKeepalive)
         }
 
+    fun getPersistentKeepaliveSeconds(): Int = persistentKeepalive.toIntOrNull() ?: 0
+
     @get:Bindable
     var preSharedKey: String = ""
         set(value) {
@@ -60,6 +62,10 @@ class PeerProxy : BaseObservable, Parcelable {
             field = value
             notifyPropertyChanged(BR.publicKey)
         }
+
+    @get:Bindable
+    val publicKeyBase64: String
+        get() = publicKey
 
     @get:Bindable
     val isAbleToExcludePrivateIps: Boolean

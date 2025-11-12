@@ -75,6 +75,8 @@
     <string name="tv_auto_connect">Auto-connect on boot</string>
     <string name="tv_route_youtube">Only route YouTube app</string>
     <string name="tv_route_label_youtube">Apps: YouTube only</string>
+    <string name="tv_action_hint_connect">Press OK to connect</string>
+    <string name="tv_action_hint_disconnect">Press OK to disconnect</string>
     <!-- Application name updated as required -->
     <string name="app_name" translatable="false">iDrug Connections</string>
     <string name="bad_config_context">%1$s\'s %2$s</string>
@@ -360,6 +362,10 @@
     <string name="duration_label">Duration</string>
     <string name="pay">Pay</string>
     <string name="price_template">Price: %1$d₽</string>
+    <string name="subscription_catalog_loading">Loading plans…</string>
+    <string name="subscription_catalog_error">Unable to load subscription catalog</string>
+    <string name="subscription_catalog_empty">No subscription plans are currently available</string>
+    <string name="subscription_purchase_disabled">This plan is temporarily unavailable</string>
     <string name="duration_1_month">1 month</string>
     <string name="duration_3_months">3 months</string>
     <string name="duration_1_year">1 year</string>
@@ -397,6 +403,7 @@
 
 Official iDrug Connections services are available only at <a href="https://idrug.pw">idrug.pw</a>
 </string>
+    <string name="tunnel_quic_ready">awg1.5 (quic-ready)</string>
     <string name="connect">Connect</string>
     <string name="disconnect">Disconnect</string>
     <string name="active">active</string>
@@ -424,7 +431,7 @@ Official iDrug Connections services are available only at <a href="https://idrug
         <item>Instant connection. Configs and keys are saved in-app — nothing gets lost.</item>
         <item>Dedicated TV app — link by code, launch in one click. Pure comfort.</item>
         <item>Pick apps for VPN in tunnel settings — only their traffic goes via VPN, the rest goes direct.</item>
-        <item>Plans from 250₽/month. No hidden fees, pay by card or crypto, whatever suits you.</item>
+        <item>Plans from 199₽/month. No hidden fees, pay by card or crypto, whatever suits you.</item>
     </string-array>
     <string name="onboarding_next">Next</string>
     <string name="onboarding_start">Start</string>
@@ -444,6 +451,10 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="notification_status_chip_disconnecting">Stop</string>
     <string name="notification_status_chip_disconnected">Off</string>
     <string name="notification_status_chip_multiple">%d VPN</string>
+    <string name="notification_status_chip_offline">Offline</string>
+    <string name="notification_text_paused">Secure connection paused — %1$s bypassed</string>
+    <string name="notification_action_include_app">Route app through VPN</string>
+    <string name="notification_action_exclude_app">Exclude app from VPN</string>
     <string name="transfer_rate_bytes">%1$.0f B/s</string>
     <string name="transfer_rate_kib">%1$.1f KiB/s</string>
     <string name="transfer_rate_mib">%1$.2f MiB/s</string>
@@ -451,4 +462,12 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="enable_notification_title">Notification</string>
     <string name="enable_notification_summary_off">Connection status notification is disabled</string>
     <string name="enable_notification_summary_on">Connection status notification is enabled</string>
+    <string name="pref_live_usage_title">Live VPN status chip</string>
+    <string name="pref_live_usage_summary">Show Online/Offline based on the current app (requires usage access)</string>
+    <string name="usage_access_request">Grant usage access to enable live status updates</string>
+    <string name="promo_hint">Promo code</string>
+    <string name="promo_apply">Apply</string>
+    <string name="promo_applied">✅ Promo applied: %1$s</string>
+    <string name="promo_invalid">Promo code is invalid</string>
+
 </resources>

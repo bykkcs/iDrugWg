@@ -10,9 +10,10 @@ import android.os.Parcelable
 import androidx.core.os.ParcelCompat
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
-import pw.idrug.connections.config.BadConfigException
-import pw.idrug.connections.config.Config
-import pw.idrug.connections.config.Peer
+import org.amnezia.awg.config.BadConfigException
+import org.amnezia.awg.config.Config
+import org.amnezia.awg.config.Interface
+import org.amnezia.awg.config.Peer
 
 class ConfigProxy : Parcelable {
     val `interface`: InterfaceProxy
@@ -50,15 +51,36 @@ class ConfigProxy : Parcelable {
 
     override fun describeContents() = 0
 
+    data class BuiltConfigs(
+        val awg: Config,
+        val amConfig: Config,
+        val amQuick: String
+    )
+
     @Throws(BadConfigException::class)
-    fun resolve(): Config {
+    fun buildConfigs(): BuiltConfigs {
         val resolvedPeers: MutableCollection<Peer> = ArrayList()
         peers.forEach { resolvedPeers.add(it.resolve()) }
-        return Config.Builder()
-            .setInterface(`interface`.resolve())
+        val awgInterface: Interface = `interface`.resolve()
+        val amInterface: Interface = `interface`.toAmInterface()
+        val awgConfig = Config.Builder()
+            .setInterface(awgInterface)
             .addPeers(resolvedPeers)
             .build()
+        val amQuick = buildString {
+            append("[Interface]\n")
+            append(amInterface.toAwgQuickString(true))
+        }
+        val amConfig = Config.Builder()
+            .setInterface(amInterface)
+            .addPeers(resolvedPeers)
+            .setAmQuick(amQuick)
+            .build()
+        return BuiltConfigs(awgConfig, amConfig, amQuick)
     }
+
+    @Throws(BadConfigException::class)
+    fun resolve(): Config = buildConfigs().awg
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
         dest.writeParcelable(`interface`, flags)

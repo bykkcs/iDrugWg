@@ -9,7 +9,7 @@
 
                  
                        
-                                                      
+                                                              
            
 
     <com.google.android.material.card.MaterialCardView
@@ -51,7 +51,7 @@
                 android:nextFocusForward="@id/pre_shared_key_text"
                 android:tag="binding_1"                          
                 android:singleLine="true"
-                                                         
+                                                      
                 android:textAppearance="?attr/textAppearanceBodyLarge"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/public_key_label"
@@ -64,7 +64,7 @@
                 android:layout_marginTop="8dp"
                 android:labelFor="@+id/pre_shared_key_text"
                 android:text="@string/pre_shared_key"
-                android:tag="binding_2"                                                                                    
+                android:tag="binding_2"                                                                                 
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/public_key_text" />
 
@@ -81,7 +81,7 @@
                 android:singleLine="true"
                 android:text="@string/pre_shared_key_enabled"
                 android:textAppearance="?attr/textAppearanceBodyLarge"
-                android:tag="binding_3"                                                                                    
+                android:tag="binding_3"                                                                                 
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pre_shared_key_label"
                 tools:text="8VyS8W8XeMcBWfKp1GuG3/fZlnUQFkqMNbrdmZtVQIM=" />
@@ -120,7 +120,7 @@
                 android:layout_marginTop="8dp"
                 android:labelFor="@+id/endpoint_text"
                 android:text="@string/endpoint"
-                android:tag="binding_6"                                                                                
+                android:tag="binding_6"                                                                             
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/allowed_ips_text" />
 
@@ -135,7 +135,7 @@
                 android:tag="binding_7"                          
                                                
                 android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                       
+                                                                                                                    
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/endpoint_label"
                 tools:text="192.168.0.1:51820" />
@@ -147,7 +147,7 @@
                 android:layout_marginTop="8dp"
                 android:labelFor="@+id/persistent_keepalive_text"
                 android:text="@string/persistent_keepalive"
-                android:tag="binding_8"                                                                                           
+                android:tag="binding_8"                                                                                        
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/endpoint_text" />
 
@@ -160,9 +160,9 @@
                 android:nextFocusDown="@id/transfer_text"
                 android:nextFocusForward="@id/transfer_text"
                 android:tag="binding_9"                          
-                                                                                                                                                    
+                                                                                                                                              
                 android:textAppearance="?attr/textAppearanceBodyLarge"
-                                                                                                                                  
+                                                                                                                               
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/persistent_keepalive_label"
                 tools:text="every 3 seconds" />

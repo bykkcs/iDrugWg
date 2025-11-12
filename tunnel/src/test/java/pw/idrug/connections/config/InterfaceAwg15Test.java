@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import pw.idrug.connections.crypto.KeyPair;
+import org.amnezia.awg.config.Interface;
+import org.amnezia.awg.config.BadConfigException;
+import org.amnezia.awg.crypto.KeyPair;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -23,10 +25,10 @@ public final class InterfaceAwg15Test {
         builder.setJunkPacketCount(2);
         builder.setInitPacketJunkSize(10);
         builder.setResponsePacketJunkSize(11);
-        builder.setSpecialJunkPacket(1, "<b 0x01>");
-        builder.setSpecialJunkPacket(2, "<b 0x02>");
-        builder.setControlledJunkPacket(1, "<b 0x03>");
-        builder.setControlledJunkPacket(2, "<b 0x04>");
+        builder.setI1("<b 0x01>");
+        builder.setI2("<b 0x02>");
+        builder.setJ1("<b 0x03>");
+        builder.setJ2("<b 0x04>");
         builder.setItimeSeconds(45);
         final Interface iface = builder.build();
 
@@ -60,7 +62,15 @@ public final class InterfaceAwg15Test {
     public void testSpecialJunkMustBeConsecutive() throws Exception {
         final Interface.Builder builder = new Interface.Builder();
         builder.setKeyPair(new KeyPair());
-        builder.setSpecialJunkPacket(2, "<b 0x01>");
+        builder.setI2("<b 0x01>");
+        builder.build();
+    }
+
+    @Test(expected = BadConfigException.class)
+    public void testSpecialJunkMustMatchTaggedHex() throws Exception {
+        final Interface.Builder builder = new Interface.Builder();
+        builder.setKeyPair(new KeyPair());
+        builder.setI1("invalid");
         builder.build();
     }
 }

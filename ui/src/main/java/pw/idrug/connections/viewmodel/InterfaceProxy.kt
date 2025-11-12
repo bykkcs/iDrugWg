@@ -11,12 +11,12 @@ import androidx.databinding.Bindable
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import pw.idrug.connections.BR
-import pw.idrug.connections.config.Attribute
-import pw.idrug.connections.config.BadConfigException
-import pw.idrug.connections.config.Interface
-import pw.idrug.connections.crypto.Key
-import pw.idrug.connections.crypto.KeyFormatException
-import pw.idrug.connections.crypto.KeyPair
+import org.amnezia.awg.config.Attribute
+import org.amnezia.awg.config.BadConfigException
+import org.amnezia.awg.config.Interface
+import org.amnezia.awg.crypto.Key
+import org.amnezia.awg.crypto.KeyFormatException
+import org.amnezia.awg.crypto.KeyPair
 
 class InterfaceProxy : BaseObservable, Parcelable {
     @get:Bindable
@@ -37,6 +37,13 @@ class InterfaceProxy : BaseObservable, Parcelable {
         set(value) {
             field = value
             notifyPropertyChanged(BR.dnsServers)
+        }
+
+    @get:Bindable
+    var dnsSearchDomains: String = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.dnsSearchDomains)
         }
 
     @get:Bindable
@@ -212,6 +219,7 @@ class InterfaceProxy : BaseObservable, Parcelable {
     private constructor(parcel: Parcel) {
         addresses = parcel.readString() ?: ""
         dnsServers = parcel.readString() ?: ""
+        dnsSearchDomains = parcel.readString() ?: ""
         parcel.readStringList(excludedApplications)
         parcel.readStringList(includedApplications)
         listenPort = parcel.readString() ?: ""
@@ -241,6 +249,7 @@ class InterfaceProxy : BaseObservable, Parcelable {
 
     constructor(other: Interface) {
         addresses = Attribute.join(other.addresses)
+        dnsSearchDomains = Attribute.join(other.dnsSearchDomains)
         val dnsServerStrings = other.dnsServers.map { it.hostAddress }.plus(other.dnsSearchDomains)
         dnsServers = Attribute.join(dnsServerStrings)
         excludedApplications.addAll(other.excludedApplications)
@@ -258,14 +267,14 @@ class InterfaceProxy : BaseObservable, Parcelable {
         responsePacketMagicHeader = other.responsePacketMagicHeader.map { it.toString() }.orElse("")
         underloadPacketMagicHeader = other.underloadPacketMagicHeader.map { it.toString() }.orElse("")
         transportPacketMagicHeader = other.transportPacketMagicHeader.map { it.toString() }.orElse("")
-        specialJunkPacket1 = other.getSpecialJunkPacket(1).orElse("")
-        specialJunkPacket2 = other.getSpecialJunkPacket(2).orElse("")
-        specialJunkPacket3 = other.getSpecialJunkPacket(3).orElse("")
-        specialJunkPacket4 = other.getSpecialJunkPacket(4).orElse("")
-        specialJunkPacket5 = other.getSpecialJunkPacket(5).orElse("")
-        controlledJunkPacket1 = other.getControlledJunkPacket(1).orElse("")
-        controlledJunkPacket2 = other.getControlledJunkPacket(2).orElse("")
-        controlledJunkPacket3 = other.getControlledJunkPacket(3).orElse("")
+        specialJunkPacket1 = other.i1.orElse("")
+        specialJunkPacket2 = other.i2.orElse("")
+        specialJunkPacket3 = other.i3.orElse("")
+        specialJunkPacket4 = other.i4.orElse("")
+        specialJunkPacket5 = other.i5.orElse("")
+        controlledJunkPacket1 = other.j1.orElse("")
+        controlledJunkPacket2 = other.j2.orElse("")
+        controlledJunkPacket3 = other.j3.orElse("")
         itimeSeconds = other.itimeSeconds.map { it.toString() }.orElse("")
         val keyPair = other.keyPair
         privateKey = keyPair.privateKey.toBase64()
@@ -283,7 +292,13 @@ class InterfaceProxy : BaseObservable, Parcelable {
     }
 
     @Throws(BadConfigException::class)
-    fun resolve(): Interface {
+    fun resolve(): Interface = buildInterface()
+
+    @Throws(BadConfigException::class)
+    fun toAmInterface(): Interface = buildInterface()
+
+    @Throws(BadConfigException::class)
+    private fun buildInterface(): Interface {
         val builder = Interface.Builder()
         if (addresses.isNotEmpty()) builder.parseAddresses(addresses)
         if (dnsServers.isNotEmpty()) builder.parseDnsServers(dnsServers)
@@ -304,14 +319,23 @@ class InterfaceProxy : BaseObservable, Parcelable {
         if (responsePacketMagicHeader.isNotEmpty()) builder.parseResponsePacketMagicHeader(responsePacketMagicHeader)
         if (underloadPacketMagicHeader.isNotEmpty()) builder.parseUnderloadPacketMagicHeader(underloadPacketMagicHeader)
         if (transportPacketMagicHeader.isNotEmpty()) builder.parseTransportPacketMagicHeader(transportPacketMagicHeader)
-        builder.setSpecialJunkPacket(1, specialJunkPacket1.trim().takeUnless { it.isEmpty() })
-        builder.setSpecialJunkPacket(2, specialJunkPacket2.trim().takeUnless { it.isEmpty() })
-        builder.setSpecialJunkPacket(3, specialJunkPacket3.trim().takeUnless { it.isEmpty() })
-        builder.setSpecialJunkPacket(4, specialJunkPacket4.trim().takeUnless { it.isEmpty() })
-        builder.setSpecialJunkPacket(5, specialJunkPacket5.trim().takeUnless { it.isEmpty() })
-        builder.setControlledJunkPacket(1, controlledJunkPacket1.trim().takeUnless { it.isEmpty() })
-        builder.setControlledJunkPacket(2, controlledJunkPacket2.trim().takeUnless { it.isEmpty() })
-        builder.setControlledJunkPacket(3, controlledJunkPacket3.trim().takeUnless { it.isEmpty() })
+        val i1Value = specialJunkPacket1.trim()
+        if (i1Value.isNotEmpty()) builder.parseI1(i1Value)
+        val i2Value = specialJunkPacket2.trim()
+        if (i2Value.isNotEmpty()) builder.parseI2(i2Value)
+        val i3Value = specialJunkPacket3.trim()
+        if (i3Value.isNotEmpty()) builder.parseI3(i3Value)
+        val i4Value = specialJunkPacket4.trim()
+        if (i4Value.isNotEmpty()) builder.parseI4(i4Value)
+        val i5Value = specialJunkPacket5.trim()
+        if (i5Value.isNotEmpty()) builder.parseI5(i5Value)
+
+        val j1Value = controlledJunkPacket1.trim()
+        if (j1Value.isNotEmpty()) builder.parseJ1(j1Value)
+        val j2Value = controlledJunkPacket2.trim()
+        if (j2Value.isNotEmpty()) builder.parseJ2(j2Value)
+        val j3Value = controlledJunkPacket3.trim()
+        if (j3Value.isNotEmpty()) builder.parseJ3(j3Value)
         val itimeValue = itimeSeconds.trim()
         if (itimeValue.isNotEmpty()) {
             builder.parseItime(itimeValue)
@@ -326,6 +350,7 @@ class InterfaceProxy : BaseObservable, Parcelable {
     override fun writeToParcel(dest: Parcel, flags: Int) {
         dest.writeString(addresses)
         dest.writeString(dnsServers)
+        dest.writeString(dnsSearchDomains)
         dest.writeStringList(excludedApplications)
         dest.writeStringList(includedApplications)
         dest.writeString(listenPort)

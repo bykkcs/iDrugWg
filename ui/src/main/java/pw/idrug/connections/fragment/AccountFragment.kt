@@ -66,12 +66,14 @@ import kotlin.math.min
 import kotlin.math.roundToInt
 import pw.idrug.connections.R
 import pw.idrug.connections.TunnelSyncManager
-import pw.idrug.connections.dialog.SubscriptionDialogFragment
+import pw.idrug.connections.Application
+import pw.idrug.connections.catalog.CatalogRepository
 import pw.idrug.connections.dialog.LinkCodeDialogFragment
 import pw.idrug.connections.dialog.LoadingDialogFragment
-import pw.idrug.connections.Application
-import pw.idrug.connections.config.Config
+import pw.idrug.connections.dialog.SubscriptionDialogFragment
+import org.amnezia.awg.config.Config
 import pw.idrug.connections.util.UserKnobs
+import pw.idrug.connections.viewmodel.ConfigProxy
 
 class AccountFragment : Fragment() {
 
@@ -90,7 +92,7 @@ class AccountFragment : Fragment() {
     private var profileCall: Call? = null
     private var profileTimeoutRunnable: Runnable? = null
 
-    private val serverOrder = listOf("germany", "multihop", "bulgaria", "madrid")
+    private val fallbackServerOrder = listOf("germany", "multihop", "bulgaria", "madrid")
 
     // Subscription model. Only the active field matters.
     private data class Subscription(
@@ -135,6 +137,9 @@ class AccountFragment : Fragment() {
             Log.w("AccountFragment", "getServerName: empty or null location")
             return "Unknown"
         }
+        context?.let { ctx ->
+            CatalogRepository.getLocationDisplayName(ctx, location, activeLocale())?.let { return it }
+        }
         return when (location) {
             "germany" -> getString(R.string.server_germany)
             "multihop" -> getString(R.string.server_multihop_germany)
@@ -148,6 +153,11 @@ class AccountFragment : Fragment() {
     }
 
     private fun getServerFlag(location: String?): String {
+        if (!location.isNullOrBlank()) {
+            context?.let { ctx ->
+                CatalogRepository.getLocationEmoji(ctx, location)?.takeIf { it.isNotBlank() }?.let { return it }
+            }
+        }
         return when (location) {
             "germany" -> "\uD83C\uDDE9\uD83C\uDDEA" // 🇩🇪
             "multihop" -> "\uD83C\uDF10" // 🌐
@@ -452,7 +462,7 @@ class AccountFragment : Fragment() {
         val summaryView = view.findViewById<TextView>(R.id.text_expiration) ?: return
         val orderedSubs = mutableListOf<Subscription>()
         val seenIds = mutableSetOf<String>()
-        serverOrder.forEach { id ->
+        resolveServerOrder().forEach { id ->
             val sub = subs.firstOrNull { it.location == id }
             if (sub != null) {
                 orderedSubs += sub
@@ -524,7 +534,7 @@ class AccountFragment : Fragment() {
         }
 
         val orderedIds = mutableListOf<String>()
-        serverOrder.forEach { id ->
+        resolveServerOrder().forEach { id ->
             if (subscriptionIds.remove(id)) orderedIds.add(id)
         }
         orderedIds.addAll(subscriptionIds)
@@ -534,6 +544,17 @@ class AccountFragment : Fragment() {
         if (previousSelection !in orderedIds) {
             selectedServerId = null
         }
+    }
+
+    private fun resolveServerOrder(): List<String> {
+        val ctx = context ?: return fallbackServerOrder
+        val catalogOrder = CatalogRepository.getOrderedLocationIds(ctx)
+        return if (catalogOrder.isNotEmpty()) catalogOrder else fallbackServerOrder
+    }
+
+    private fun activeLocale(): Locale {
+        val cfg = (context?.resources ?: resources).configuration
+        return if (cfg.locales.size() > 0) cfg.locales[0] else Locale.getDefault()
     }
 
     private fun refreshServerPings(root: View) {
@@ -637,7 +658,7 @@ private suspend fun downloadConfig(token: String, serverId: String): String? =
         try {
             val client = OkHttpClient()
             val request = Request.Builder()
-                .url("https://idrug.pw/api/profile/download?server=$serverId")
+                .url("https://idrug.pw/api/profile/download?server=$serverId&version=1.5")
                 .addHeader("Authorization", "Bearer $token")
                 .build()
 
@@ -872,9 +893,10 @@ private suspend fun handleDownloadConfig() {
             val parsed = withContext(Dispatchers.IO) {
                 temp.inputStream().bufferedReader().use { Config.parse(it) }
             }
+            val built = ConfigProxy(parsed).buildConfigs()
             // Создание ТОЛЬКО после успешного парса
             withContext(Dispatchers.Main) {
-                tunnelManager.create(tunnelName, parsed)
+                tunnelManager.create(tunnelName, built)
             }
             safeUi { Toast.makeText(requireContext(), R.string.tunnel_added, Toast.LENGTH_SHORT).show() }
         } catch (e: Exception) {
@@ -940,7 +962,7 @@ private suspend fun handleDownloadConfig() {
                 val parsed = withContext(Dispatchers.IO) {
                     temp.inputStream().bufferedReader().use { Config.parse(it) }
                 }
-                tunnelManager.create(name, parsed)
+                tunnelManager.create(name, ConfigProxy(parsed).buildConfigs())
             } catch (e: Exception) {
                 Log.w("AccountFragment", "Unable to create tunnel $name", e)
             } finally {

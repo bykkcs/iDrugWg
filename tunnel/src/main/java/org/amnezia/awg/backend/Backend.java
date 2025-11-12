@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package pw.idrug.connections.backend;
+package org.amnezia.awg.backend;
 
-import pw.idrug.connections.config.Config;
-import pw.idrug.connections.util.NonNullForAll;
+import org.amnezia.awg.config.Config;
+import org.amnezia.awg.util.NonNullForAll;
 
 import java.util.Set;
 
 import androidx.annotation.Nullable;
 
 /**
- * Interface for implementations of the iDrugConnections secure network tunnel.
+ * Interface for implementations of the AmneziaWG secure network tunnel.
  */
 
 @NonNullForAll

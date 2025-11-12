@@ -18,8 +18,8 @@ import pw.idrug.connections.Application
 import pw.idrug.connections.R
 import pw.idrug.connections.activity.BaseActivity
 import pw.idrug.connections.activity.BaseActivity.OnSelectedTunnelChangedListener
-import pw.idrug.connections.backend.GoBackend
-import pw.idrug.connections.backend.Tunnel
+import org.amnezia.awg.backend.GoBackend
+import org.amnezia.awg.backend.Tunnel
 import pw.idrug.connections.databinding.TunnelDetailFragmentBinding
 import pw.idrug.connections.databinding.TunnelListItemBinding
 import pw.idrug.connections.model.ObservableTunnel

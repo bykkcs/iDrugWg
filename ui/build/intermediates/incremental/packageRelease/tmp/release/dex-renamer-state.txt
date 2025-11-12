@@ -1,7 +1,7 @@
-#Wed Oct 22 16:30:56 MSK 2025
-base.1=/home/bykk/iDrugWgtest/iDrugWg-master/ui/build/intermediates/desugar_lib_dex/release/l8DexDesugarLibRelease/classes1000.dex
+#Tue Nov 11 13:44:01 MSK 2025
+base.1=/home/bykk/idrug1.5/iDrugWg/ui/build/intermediates/desugar_lib_dex/release/l8DexDesugarLibRelease/classes1000.dex
 path.1=classes1000.dex
-base.0=/home/bykk/iDrugWgtest/iDrugWg-master/ui/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
+base.0=/home/bykk/idrug1.5/iDrugWg/ui/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
 path.0=classes.dex

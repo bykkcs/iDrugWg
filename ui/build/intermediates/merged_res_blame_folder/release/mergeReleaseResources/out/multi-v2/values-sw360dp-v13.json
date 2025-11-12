@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-64:/values-sw360dp-v13/values-sw360dp-v13.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-83:/values-sw360dp-v13/values-sw360dp-v13.xml",
             "map": [
                 {
-                    "source": "/home/bykk/.gradle/caches/8.11.1/transforms/891360c59c31c39e1fff9411b6dc8a89/transformed/preference-1.2.1/res/values-sw360dp-v13/values-sw360dp-v13.xml",
+                    "source": "/home/bykk/.gradle/caches/8.13/transforms/090605ea81cb6cb05719e81c36d31747/transformed/preference-1.2.1/res/values-sw360dp-v13/values-sw360dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

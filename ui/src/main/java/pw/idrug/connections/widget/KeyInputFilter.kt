@@ -7,7 +7,7 @@ package pw.idrug.connections.widget
 import android.text.InputFilter
 import android.text.SpannableStringBuilder
 import android.text.Spanned
-import pw.idrug.connections.crypto.Key
+import org.amnezia.awg.crypto.Key
 
 /**
  * InputFilter for entering iDrugConnections private/public keys encoded with base64.

@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.card.MaterialCardView
-import com.google.android.material.switchmaterial.SwitchMaterial
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
+import androidx.core.content.ContextCompat
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,9 +22,9 @@ import org.json.JSONArray
 import org.json.JSONObject
 import pw.idrug.connections.R
 import pw.idrug.connections.Application
-import pw.idrug.connections.backend.GoBackend
-import pw.idrug.connections.backend.Tunnel
-import pw.idrug.connections.config.Config
+import org.amnezia.awg.backend.GoBackend
+import org.amnezia.awg.backend.Tunnel
+import org.amnezia.awg.config.Config
 import pw.idrug.connections.model.ObservableTunnel
 import pw.idrug.connections.viewmodel.ConfigProxy
 import java.net.InetSocketAddress
@@ -55,8 +53,8 @@ class ConfigListActivity : AppCompatActivity() {
         }
 
     private lateinit var emptyView: TextView
-    private lateinit var autoConnectSwitch: SwitchMaterial
-    private lateinit var routeYoutubeSwitch: SwitchMaterial
+    private lateinit var autoConnectSwitch: SwitchCompat
+    private lateinit var routeYoutubeSwitch: SwitchCompat
     private lateinit var emptyContainer: View
     private val pingResults = mutableMapOf<String, PingResult>()
     private var pingJob: Job? = null
@@ -186,7 +184,7 @@ class ConfigListActivity : AppCompatActivity() {
 
     private suspend fun downloadConfig(token: String, serverId: String): String? {
         val client = OkHttpClient()
-        val url = "https://idrug.pw/api/profile/download?server=$serverId"
+        val url = "https://idrug.pw/api/profile/download?server=$serverId&version=1.5"
         val request = Request.Builder()
             .url(url)
             .addHeader("Authorization", "Bearer $token")
@@ -214,7 +212,7 @@ class ConfigListActivity : AppCompatActivity() {
                     withContext(Dispatchers.IO) { file.writeText(config) }
                     try {
                         val parsed = Config.parse(file.bufferedReader())
-                        tm.create(name, parsed)
+                        tm.create(name, ConfigProxy(parsed).buildConfigs())
                     } catch (_: Exception) {
                     } finally {
                         file.delete()
@@ -242,13 +240,13 @@ class ConfigListActivity : AppCompatActivity() {
     }
 
     private inner class TunnelViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val card: MaterialCardView = view.findViewById(R.id.tv_config_card)
+        private val card: View = view.findViewById(R.id.tv_config_card)
         private val name: TextView = view.findViewById(R.id.config_name)
         private val status: TextView = view.findViewById(R.id.config_status)
         private val expiration: TextView = view.findViewById(R.id.config_expiration)
         private val ping: TextView = view.findViewById(R.id.config_ping)
         private val routeHint: TextView = view.findViewById(R.id.config_route)
-        private val button: MaterialButton = view.findViewById(R.id.btn_connect)
+        private val actionHint: TextView = view.findViewById(R.id.config_action_hint)
         private lateinit var tunnel: ObservableTunnel
         fun bind(t: ObservableTunnel) {
             tunnel = t
@@ -273,13 +271,11 @@ class ConfigListActivity : AppCompatActivity() {
                 }
                 else -> ""
             }
-            button.text = if (t.state == Tunnel.State.UP) {
-                itemView.context.getString(R.string.disconnect)
+            actionHint.text = if (isUp) {
+                itemView.context.getString(R.string.tv_action_hint_disconnect)
             } else {
-                itemView.context.getString(R.string.connect)
+                itemView.context.getString(R.string.tv_action_hint_connect)
             }
-            button.setOnClickListener { requestToggle(tunnel) }
-            button.isFocusable = false
 
             val routeYoutube = prefs.getBoolean(PREF_TV_ROUTE_YOUTUBE, false)
             if (routeYoutube && t.name.startsWith("idrug_")) {
@@ -318,18 +314,14 @@ class ConfigListActivity : AppCompatActivity() {
                 ping.setTextColor(color)
             }
             card.setOnClickListener { requestToggle(tunnel) }
-            card.setOnFocusChangeListener { _, hasFocus -> applyCardFocus(card, hasFocus) }
-            applyCardFocus(card, card.isFocused)
+            card.setOnFocusChangeListener { view, hasFocus ->
+                view.animate()
+                    .scaleX(if (hasFocus) 1.03f else 1f)
+                    .scaleY(if (hasFocus) 1.03f else 1f)
+                    .setDuration(120)
+                    .start()
+            }
         }
-    }
-
-    private fun applyCardFocus(card: MaterialCardView, focused: Boolean) {
-        val surface = ContextCompat.getColor(card.context, R.color.tv_card_surface)
-        val highlight = ContextCompat.getColor(card.context, R.color.tv_card_highlight)
-        val strokeColor = ContextCompat.getColor(card.context, R.color.tv_focus_stroke)
-        card.setCardBackgroundColor(if (focused) highlight else surface)
-        card.strokeWidth = if (focused) (card.resources.displayMetrics.density * 2f).roundToInt() else 0
-        card.strokeColor = strokeColor
     }
 
     private fun refreshPings(tunnels: List<ObservableTunnel>) {
@@ -375,7 +367,7 @@ class ConfigListActivity : AppCompatActivity() {
             proxy.`interface`.includedApplications.addAll(frequentApps)
         }
         val resolved = try {
-            proxy.resolve()
+            proxy.buildConfigs()
         } catch (_: Exception) {
             return
         }

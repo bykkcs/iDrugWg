@@ -43,6 +43,13 @@
         android:title="@string/enable_notification_title"
         app:widgetLayout="@layout/preference_widget_material_switch" />
 
+    <androidx.preference.SwitchPreferenceCompat
+        android:key="live_usage_chip"
+        android:title="@string/pref_live_usage_title"
+        android:summary="@string/pref_live_usage_summary"
+        android:defaultValue="false"
+        app:widgetLayout="@layout/preference_widget_material_switch" />
+
     <!--
     <CheckBoxPreference
         android:defaultValue="false"

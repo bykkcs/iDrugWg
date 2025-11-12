@@ -17,9 +17,9 @@ import com.google.android.material.textview.MaterialTextView;
 import java.lang.Deprecated;
 import java.lang.Object;
 import pw.idrug.connections.R;
-import pw.idrug.connections.config.Config;
 import pw.idrug.connections.fragment.TunnelDetailFragment;
 import pw.idrug.connections.model.ObservableTunnel;
+import pw.idrug.connections.viewmodel.ConfigProxy;
 import pw.idrug.connections.widget.ToggleSwitch;
 
 public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
@@ -91,6 +91,9 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
 
   @NonNull
   public final TextView interfaceNameText;
+
+  @NonNull
+  public final TextView interfaceQuicBadge;
 
   @NonNull
   public final MaterialTextView interfaceTitle;
@@ -216,7 +219,7 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
   protected ObservableTunnel mTunnel;
 
   @Bindable
-  protected Config mConfig;
+  protected ConfigProxy mConfig;
 
   protected TunnelDetailFragmentBinding(Object _bindingComponent, View _root, int _localFieldCount,
       TextView addressesLabel, TextView addressesText, TextView applicationsLabel,
@@ -229,23 +232,23 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
       Barrier idrugconnectionsBarrier, TextView initPacketJunkSizeLabel,
       TextView initPacketJunkSizeText, TextView initPacketMagicHeaderLabel,
       TextView initPacketMagicHeaderText, TextView interfaceNameLabel, TextView interfaceNameText,
-      MaterialTextView interfaceTitle, TextView itimeLabel, TextView itimeText,
-      TextView junkPacketCountLabel, TextView junkPacketCountText, TextView junkPacketMaxSizeLabel,
-      TextView junkPacketMaxSizeText, TextView junkPacketMinSizeLabel,
-      TextView junkPacketMinSizeText, TextView listenPortLabel, Barrier listenPortMtuBarrier,
-      TextView listenPortText, TextView mtuLabel, TextView mtuText, LinearLayout peersLayout,
-      TextView publicKeyLabel, TextView publicKeyText, TextView responsePacketJunkSizeLabel,
-      TextView responsePacketJunkSizeText, TextView responsePacketMagicHeaderLabel,
-      TextView responsePacketMagicHeaderText, TextView specialJunkPacket1Label,
-      TextView specialJunkPacket1Text, TextView specialJunkPacket2Label,
-      TextView specialJunkPacket2Text, TextView specialJunkPacket3Label,
-      TextView specialJunkPacket3Text, TextView specialJunkPacket4Label,
-      TextView specialJunkPacket4Text, TextView specialJunkPacket5Label,
-      TextView specialJunkPacket5Text, TextView transportPacketJunkSizeLabel,
-      TextView transportPacketJunkSizeText, TextView transportPacketMagicHeaderLabel,
-      TextView transportPacketMagicHeaderText, MaterialCardView tunnelDetailCard,
-      ToggleSwitch tunnelSwitch, TextView underloadPacketMagicHeaderLabel,
-      TextView underloadPacketMagicHeaderText) {
+      TextView interfaceQuicBadge, MaterialTextView interfaceTitle, TextView itimeLabel,
+      TextView itimeText, TextView junkPacketCountLabel, TextView junkPacketCountText,
+      TextView junkPacketMaxSizeLabel, TextView junkPacketMaxSizeText,
+      TextView junkPacketMinSizeLabel, TextView junkPacketMinSizeText, TextView listenPortLabel,
+      Barrier listenPortMtuBarrier, TextView listenPortText, TextView mtuLabel, TextView mtuText,
+      LinearLayout peersLayout, TextView publicKeyLabel, TextView publicKeyText,
+      TextView responsePacketJunkSizeLabel, TextView responsePacketJunkSizeText,
+      TextView responsePacketMagicHeaderLabel, TextView responsePacketMagicHeaderText,
+      TextView specialJunkPacket1Label, TextView specialJunkPacket1Text,
+      TextView specialJunkPacket2Label, TextView specialJunkPacket2Text,
+      TextView specialJunkPacket3Label, TextView specialJunkPacket3Text,
+      TextView specialJunkPacket4Label, TextView specialJunkPacket4Text,
+      TextView specialJunkPacket5Label, TextView specialJunkPacket5Text,
+      TextView transportPacketJunkSizeLabel, TextView transportPacketJunkSizeText,
+      TextView transportPacketMagicHeaderLabel, TextView transportPacketMagicHeaderText,
+      MaterialCardView tunnelDetailCard, ToggleSwitch tunnelSwitch,
+      TextView underloadPacketMagicHeaderLabel, TextView underloadPacketMagicHeaderText) {
     super(_bindingComponent, _root, _localFieldCount);
     this.addressesLabel = addressesLabel;
     this.addressesText = addressesText;
@@ -270,6 +273,7 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
     this.initPacketMagicHeaderText = initPacketMagicHeaderText;
     this.interfaceNameLabel = interfaceNameLabel;
     this.interfaceNameText = interfaceNameText;
+    this.interfaceQuicBadge = interfaceQuicBadge;
     this.interfaceTitle = interfaceTitle;
     this.itimeLabel = itimeLabel;
     this.itimeText = itimeText;
@@ -325,10 +329,10 @@ public abstract class TunnelDetailFragmentBinding extends ViewDataBinding {
     return mTunnel;
   }
 
-  public abstract void setConfig(@Nullable Config config);
+  public abstract void setConfig(@Nullable ConfigProxy config);
 
   @Nullable
-  public Config getConfig() {
+  public ConfigProxy getConfig() {
     return mConfig;
   }
 

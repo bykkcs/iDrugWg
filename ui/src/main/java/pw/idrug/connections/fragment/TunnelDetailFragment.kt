@@ -16,11 +16,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import pw.idrug.connections.R
-import pw.idrug.connections.backend.Tunnel
+import org.amnezia.awg.backend.Tunnel
 import pw.idrug.connections.databinding.TunnelDetailFragmentBinding
 import pw.idrug.connections.databinding.TunnelDetailPeerBinding
 import pw.idrug.connections.model.ObservableTunnel
 import pw.idrug.connections.util.QuantityFormatter
+import pw.idrug.connections.viewmodel.ConfigProxy
+import org.amnezia.awg.crypto.Key
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -79,7 +81,8 @@ class TunnelDetailFragment : BaseFragment(), MenuProvider {
         } else {
             lifecycleScope.launch {
                 try {
-                    binding.config = newTunnel.getConfigAsync()
+                    val cfg = newTunnel.getConfigAsync()
+                    binding.config = ConfigProxy(cfg)
                 } catch (_: Throwable) {
                     binding.config = null
                 }
@@ -113,8 +116,9 @@ class TunnelDetailFragment : BaseFragment(), MenuProvider {
             for (i in 0 until binding.peersLayout.childCount) {
                 val peer: TunnelDetailPeerBinding = DataBindingUtil.getBinding(binding.peersLayout.getChildAt(i))
                     ?: continue
-                val publicKey = peer.item!!.publicKey
-                val peerStats = statistics.peer(publicKey)
+                val publicKeyString = peer.item!!.publicKey
+                val peerKey = runCatching { Key.fromBase64(publicKeyString) }.getOrNull()
+                val peerStats = peerKey?.let { statistics.peer(it) }
                 if (peerStats == null || (peerStats.rxBytes == 0L && peerStats.txBytes == 0L)) {
                     peer.transferLabel.visibility = View.GONE
                     peer.transferText.visibility = View.GONE

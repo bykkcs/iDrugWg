@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-64:/values-v27/values-v27.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-83:/values-v27/values-v27.xml",
             "map": [
                 {
-                    "source": "/home/bykk/iDrugWgtest/iDrugWg-master/ui/src/main/res/values-v27/styles.xml",
+                    "source": "/home/bykk/idrug1.5/iDrugWg/ui/src/main/res/values-v27/styles.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "4",

@@ -99,5 +99,6 @@
   <color name="tv_text_primary">#FFFFFF</color>
   <color name="tv_text_secondary">#A4B0B6</color>
   <color name="tv_text_hint">#7A8489</color>
+  <color name="config_quic_ready">#1B5E20</color>
 
 </resources>

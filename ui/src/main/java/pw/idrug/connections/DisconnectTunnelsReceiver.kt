@@ -6,7 +6,7 @@ import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import kotlinx.coroutines.launch
-import pw.idrug.connections.backend.Tunnel
+import org.amnezia.awg.backend.Tunnel
 import pw.idrug.connections.util.ErrorMessages
 import pw.idrug.connections.util.applicationScope
 

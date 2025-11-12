@@ -3,7 +3,7 @@ package pw.idrug.connections.configStore;
 /**
  * Interface for persistent storage providers for iDrugConnections configurations.
  */
-@kotlin.Metadata(mv = {2, 1, 0}, k = 1, xi = 48, d1 = {"\u0000&\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\"\n\u0002\b\u0005\bf\u0018\u00002\u00020\u0001J\u0018\u0010\u0002\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\u0006\u001a\u00020\u0003H&J\u0010\u0010\u0007\u001a\u00020\b2\u0006\u0010\u0004\u001a\u00020\u0005H&J\u000e\u0010\t\u001a\b\u0012\u0004\u0012\u00020\u00050\nH&J\u0010\u0010\u000b\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u0005H&J\u0018\u0010\f\u001a\u00020\b2\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\r\u001a\u00020\u0005H&J\u0018\u0010\u000e\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\u0006\u001a\u00020\u0003H&\u00a8\u0006\u000f"}, d2 = {"Lpw/idrug/connections/configStore/ConfigStore;", "", "create", "Lpw/idrug/connections/config/Config;", "name", "", "config", "delete", "", "enumerate", "", "load", "rename", "replacement", "save", "ui_release"})
+@kotlin.Metadata(mv = {2, 1, 0}, k = 1, xi = 48, d1 = {"\u0000&\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\"\n\u0002\b\n\bf\u0018\u00002\u00020\u0001J\u0018\u0010\u0002\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\u0006\u001a\u00020\u0003H&J\u0010\u0010\u0007\u001a\u00020\b2\u0006\u0010\u0004\u001a\u00020\u0005H&J\u000e\u0010\t\u001a\b\u0012\u0004\u0012\u00020\u00050\nH&J\u0010\u0010\u000b\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u0005H&J\u0018\u0010\f\u001a\u00020\b2\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\r\u001a\u00020\u0005H&J\u0012\u0010\u000e\u001a\u0004\u0018\u00010\u00052\u0006\u0010\u0004\u001a\u00020\u0005H&J\u0018\u0010\u000f\u001a\u00020\b2\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\u0010\u001a\u00020\u0005H&J\u0010\u0010\u0011\u001a\u00020\b2\u0006\u0010\u0004\u001a\u00020\u0005H&J\u0018\u0010\u0012\u001a\u00020\b2\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\r\u001a\u00020\u0005H&J\u0018\u0010\u0013\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\u0006\u001a\u00020\u0003H&\u00a8\u0006\u0014"}, d2 = {"Lpw/idrug/connections/configStore/ConfigStore;", "", "create", "Lorg/amnezia/awg/config/Config;", "name", "", "config", "delete", "", "enumerate", "", "load", "rename", "replacement", "loadAmQuick", "saveAmQuick", "amQuick", "deleteAmQuick", "renameAmQuick", "save", "ui_release"})
 public abstract interface ConfigStore {
     
     /**
@@ -16,9 +16,9 @@ public abstract interface ConfigStore {
      */
     @kotlin.jvm.Throws(exceptionClasses = {java.lang.Exception.class})
     @org.jetbrains.annotations.NotNull()
-    public abstract pw.idrug.connections.config.Config create(@org.jetbrains.annotations.NotNull()
+    public abstract org.amnezia.awg.config.Config create(@org.jetbrains.annotations.NotNull()
     java.lang.String name, @org.jetbrains.annotations.NotNull()
-    pw.idrug.connections.config.Config config) throws java.lang.Exception;
+    org.amnezia.awg.config.Config config) throws java.lang.Exception;
     
     /**
      * Delete a persistent tunnel.
@@ -46,7 +46,7 @@ public abstract interface ConfigStore {
      */
     @kotlin.jvm.Throws(exceptionClasses = {java.lang.Exception.class})
     @org.jetbrains.annotations.NotNull()
-    public abstract pw.idrug.connections.config.Config load(@org.jetbrains.annotations.NotNull()
+    public abstract org.amnezia.awg.config.Config load(@org.jetbrains.annotations.NotNull()
     java.lang.String name) throws java.lang.Exception;
     
     /**
@@ -60,6 +60,21 @@ public abstract interface ConfigStore {
     java.lang.String name, @org.jetbrains.annotations.NotNull()
     java.lang.String replacement) throws java.lang.Exception;
     
+    @org.jetbrains.annotations.Nullable()
+    public abstract java.lang.String loadAmQuick(@org.jetbrains.annotations.NotNull()
+    java.lang.String name);
+    
+    public abstract void saveAmQuick(@org.jetbrains.annotations.NotNull()
+    java.lang.String name, @org.jetbrains.annotations.NotNull()
+    java.lang.String amQuick);
+    
+    public abstract void deleteAmQuick(@org.jetbrains.annotations.NotNull()
+    java.lang.String name);
+    
+    public abstract void renameAmQuick(@org.jetbrains.annotations.NotNull()
+    java.lang.String name, @org.jetbrains.annotations.NotNull()
+    java.lang.String replacement);
+    
     /**
      * Save the configuration for an existing tunnel given by `name`.
      *
@@ -70,7 +85,7 @@ public abstract interface ConfigStore {
      */
     @kotlin.jvm.Throws(exceptionClasses = {java.lang.Exception.class})
     @org.jetbrains.annotations.NotNull()
-    public abstract pw.idrug.connections.config.Config save(@org.jetbrains.annotations.NotNull()
+    public abstract org.amnezia.awg.config.Config save(@org.jetbrains.annotations.NotNull()
     java.lang.String name, @org.jetbrains.annotations.NotNull()
-    pw.idrug.connections.config.Config config) throws java.lang.Exception;
+    org.amnezia.awg.config.Config config) throws java.lang.Exception;
 }

@@ -100,7 +100,9 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            WindowCompat.setDecorFitsSystemWindows(window, false)
+        }
         @Suppress("DEPRECATION")
         window.statusBarColor = Color.TRANSPARENT
         val prefs = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)

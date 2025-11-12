@@ -3,7 +3,7 @@ package pw.idrug.connections.model;
 /**
  * Maintains and mediates changes to the set of available iDrugConnections tunnels,
  */
-@kotlin.Metadata(mv = {2, 1, 0}, k = 1, xi = 48, d1 = {"\u0000`\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0010\u000e\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0010\u0002\n\u0002\b\f\n\u0002\u0010\u001c\n\u0000\n\u0002\u0010\u001e\n\u0002\b\r\n\u0002\u0018\u0002\n\u0002\b\u0004\u0018\u0000 ;2\u00020\u0001:\u0002:;B\u000f\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0004\b\u0004\u0010\u0005J\"\u0010\u0010\u001a\u00020\n2\u0006\u0010\u0011\u001a\u00020\t2\b\u0010\u0012\u001a\u0004\u0018\u00010\u00132\u0006\u0010\u0014\u001a\u00020\u0015H\u0002J\u001a\u0010\u0016\u001a\u000e\u0012\u0004\u0012\u00020\t\u0012\u0004\u0012\u00020\n0\bH\u0086@\u00a2\u0006\u0002\u0010\u0017J \u0010\u0018\u001a\u00020\n2\u0006\u0010\u0011\u001a\u00020\t2\b\u0010\u0012\u001a\u0004\u0018\u00010\u0013H\u0086@\u00a2\u0006\u0002\u0010\u0019J\u0016\u0010\u001a\u001a\u00020\u001b2\u0006\u0010\u001c\u001a\u00020\nH\u0086@\u00a2\u0006\u0002\u0010\u001dJ\u0016\u0010$\u001a\u00020\u00132\u0006\u0010\u001c\u001a\u00020\nH\u0086@\u00a2\u0006\u0002\u0010\u001dJ\u0006\u0010%\u001a\u00020\u001bJ$\u0010&\u001a\u00020\u001b2\f\u0010\'\u001a\b\u0012\u0004\u0012\u00020\t0(2\f\u0010)\u001a\b\u0012\u0004\u0012\u00020\t0*H\u0002J\b\u0010+\u001a\u00020\u001bH\u0002J\u0016\u0010,\u001a\u00020\u001b2\u0006\u0010-\u001a\u00020\u000fH\u0086@\u00a2\u0006\u0002\u0010.J\u000e\u0010/\u001a\u00020\u001bH\u0086@\u00a2\u0006\u0002\u0010\u0017J\u001e\u00100\u001a\u00020\u00132\u0006\u0010\u001c\u001a\u00020\n2\u0006\u0010\u0012\u001a\u00020\u0013H\u0086@\u00a2\u0006\u0002\u00101J\u001e\u00102\u001a\u00020\t2\u0006\u0010\u001c\u001a\u00020\n2\u0006\u0010\u0011\u001a\u00020\tH\u0086@\u00a2\u0006\u0002\u00103J\u001e\u00104\u001a\u00020\u00152\u0006\u0010\u001c\u001a\u00020\n2\u0006\u0010\u0014\u001a\u00020\u0015H\u0086@\u00a2\u0006\u0002\u00105J\u0016\u00106\u001a\u00020\u00152\u0006\u0010\u001c\u001a\u00020\nH\u0086@\u00a2\u0006\u0002\u0010\u001dJ\u0016\u00107\u001a\u0002082\u0006\u0010\u001c\u001a\u00020\nH\u0086@\u00a2\u0006\u0002\u0010\u001dJ\b\u00109\u001a\u00020\u001bH\u0002R\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000R \u0010\u0006\u001a\u0014\u0012\u0010\u0012\u000e\u0012\u0004\u0012\u00020\t\u0012\u0004\u0012\u00020\n0\b0\u0007X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000b\u001a\u00020\fX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u001a\u0010\r\u001a\u000e\u0012\u0004\u0012\u00020\t\u0012\u0004\u0012\u00020\n0\bX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000e\u001a\u00020\u000fX\u0082\u000e\u00a2\u0006\u0002\n\u0000R*\u0010\u001f\u001a\u0004\u0018\u00010\n2\b\u0010\u001e\u001a\u0004\u0018\u00010\n8G@BX\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b \u0010!\"\u0004\b\"\u0010#\u00a8\u0006<"}, d2 = {"Lpw/idrug/connections/model/TunnelManager;", "Landroidx/databinding/BaseObservable;", "configStore", "Lpw/idrug/connections/configStore/ConfigStore;", "<init>", "(Lpw/idrug/connections/configStore/ConfigStore;)V", "tunnels", "Lkotlinx/coroutines/CompletableDeferred;", "Lpw/idrug/connections/databinding/ObservableSortedKeyedArrayList;", "", "Lpw/idrug/connections/model/ObservableTunnel;", "context", "Landroid/content/Context;", "tunnelMap", "haveLoaded", "", "addToList", "name", "config", "Lpw/idrug/connections/config/Config;", "state", "Lpw/idrug/connections/backend/Tunnel$State;", "getTunnels", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "create", "(Ljava/lang/String;Lpw/idrug/connections/config/Config;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "delete", "", "tunnel", "(Lpw/idrug/connections/model/ObservableTunnel;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "value", "lastUsedTunnel", "getLastUsedTunnel", "()Lpw/idrug/connections/model/ObservableTunnel;", "setLastUsedTunnel", "(Lpw/idrug/connections/model/ObservableTunnel;)V", "getTunnelConfig", "onCreate", "onTunnelsLoaded", "present", "", "running", "", "refreshTunnelStates", "restoreState", "force", "(ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "saveState", "setTunnelConfig", "(Lpw/idrug/connections/model/ObservableTunnel;Lpw/idrug/connections/config/Config;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "setTunnelName", "(Lpw/idrug/connections/model/ObservableTunnel;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "setTunnelState", "(Lpw/idrug/connections/model/ObservableTunnel;Lpw/idrug/connections/backend/Tunnel$State;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getTunnelState", "getTunnelStatistics", "Lpw/idrug/connections/backend/Statistics;", "completeTunnelsDeferred", "IntentReceiver", "Companion", "ui_release"})
+@kotlin.Metadata(mv = {2, 1, 0}, k = 1, xi = 48, d1 = {"\u0000j\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0010\u000e\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0006\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0002\b\u000e\n\u0002\u0010\u001c\n\u0000\n\u0002\u0010\u001e\n\u0002\b\r\n\u0002\u0018\u0002\n\u0002\b\u0004\u0018\u0000 C2\u00020\u0001:\u0002BCB\u000f\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0004\b\u0004\u0010\u0005J6\u0010\u0010\u001a\u00020\n2\u0006\u0010\u0011\u001a\u00020\t2\b\u0010\u0012\u001a\u0004\u0018\u00010\u00132\b\u0010\u0014\u001a\u0004\u0018\u00010\u00132\b\u0010\u0015\u001a\u0004\u0018\u00010\t2\u0006\u0010\u0016\u001a\u00020\u0017H\u0002J&\u0010\u0018\u001a\u0004\u0018\u00010\u00132\u0006\u0010\u0011\u001a\u00020\t2\b\u0010\u0015\u001a\u0004\u0018\u00010\t2\b\u0010\u0019\u001a\u0004\u0018\u00010\u0013H\u0002J\u001a\u0010\u001a\u001a\u000e\u0012\u0004\u0012\u00020\t\u0012\u0004\u0012\u00020\n0\bH\u0086@\u00a2\u0006\u0002\u0010\u001bJ\u001e\u0010\u001c\u001a\u00020\n2\u0006\u0010\u0011\u001a\u00020\t2\u0006\u0010\u001d\u001a\u00020\u001eH\u0086@\u00a2\u0006\u0002\u0010\u001fJ\u0016\u0010 \u001a\u00020!2\u0006\u0010\"\u001a\u00020\nH\u0086@\u00a2\u0006\u0002\u0010#J\u0016\u0010*\u001a\u00020\u00132\u0006\u0010\"\u001a\u00020\nH\u0086@\u00a2\u0006\u0002\u0010#J\u0016\u0010+\u001a\u00020\u00132\u0006\u0010\"\u001a\u00020\nH\u0086@\u00a2\u0006\u0002\u0010#J\u0018\u0010,\u001a\u0004\u0018\u00010\t2\u0006\u0010\"\u001a\u00020\nH\u0086@\u00a2\u0006\u0002\u0010#J\u0006\u0010-\u001a\u00020!J$\u0010.\u001a\u00020!2\f\u0010/\u001a\b\u0012\u0004\u0012\u00020\t002\f\u00101\u001a\b\u0012\u0004\u0012\u00020\t02H\u0002J\b\u00103\u001a\u00020!H\u0002J\u0016\u00104\u001a\u00020!2\u0006\u00105\u001a\u00020\u000fH\u0086@\u00a2\u0006\u0002\u00106J\u000e\u00107\u001a\u00020!H\u0086@\u00a2\u0006\u0002\u0010\u001bJ\u001e\u00108\u001a\u00020\u00132\u0006\u0010\"\u001a\u00020\n2\u0006\u0010\u001d\u001a\u00020\u001eH\u0086@\u00a2\u0006\u0002\u00109J\u001e\u0010:\u001a\u00020\t2\u0006\u0010\"\u001a\u00020\n2\u0006\u0010\u0011\u001a\u00020\tH\u0086@\u00a2\u0006\u0002\u0010;J\u001e\u0010<\u001a\u00020\u00172\u0006\u0010\"\u001a\u00020\n2\u0006\u0010\u0016\u001a\u00020\u0017H\u0086@\u00a2\u0006\u0002\u0010=J\u0016\u0010>\u001a\u00020\u00172\u0006\u0010\"\u001a\u00020\nH\u0086@\u00a2\u0006\u0002\u0010#J\u0016\u0010?\u001a\u00020@2\u0006\u0010\"\u001a\u00020\nH\u0086@\u00a2\u0006\u0002\u0010#J\b\u0010A\u001a\u00020!H\u0002R\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000R \u0010\u0006\u001a\u0014\u0012\u0010\u0012\u000e\u0012\u0004\u0012\u00020\t\u0012\u0004\u0012\u00020\n0\b0\u0007X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000b\u001a\u00020\fX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u001a\u0010\r\u001a\u000e\u0012\u0004\u0012\u00020\t\u0012\u0004\u0012\u00020\n0\bX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000e\u001a\u00020\u000fX\u0082\u000e\u00a2\u0006\u0002\n\u0000R*\u0010%\u001a\u0004\u0018\u00010\n2\b\u0010$\u001a\u0004\u0018\u00010\n8G@BX\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b&\u0010\'\"\u0004\b(\u0010)\u00a8\u0006D"}, d2 = {"Lpw/idrug/connections/model/TunnelManager;", "Landroidx/databinding/BaseObservable;", "configStore", "Lpw/idrug/connections/configStore/ConfigStore;", "<init>", "(Lpw/idrug/connections/configStore/ConfigStore;)V", "tunnels", "Lkotlinx/coroutines/CompletableDeferred;", "Lpw/idrug/connections/databinding/ObservableSortedKeyedArrayList;", "", "Lpw/idrug/connections/model/ObservableTunnel;", "context", "Landroid/content/Context;", "tunnelMap", "haveLoaded", "", "addToList", "name", "config", "Lorg/amnezia/awg/config/Config;", "amConfig", "amQuick", "state", "Lorg/amnezia/awg/backend/Tunnel$State;", "parseAmConfig", "fallback", "getTunnels", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "create", "configs", "Lpw/idrug/connections/viewmodel/ConfigProxy$BuiltConfigs;", "(Ljava/lang/String;Lpw/idrug/connections/viewmodel/ConfigProxy$BuiltConfigs;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "delete", "", "tunnel", "(Lpw/idrug/connections/model/ObservableTunnel;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "value", "lastUsedTunnel", "getLastUsedTunnel", "()Lpw/idrug/connections/model/ObservableTunnel;", "setLastUsedTunnel", "(Lpw/idrug/connections/model/ObservableTunnel;)V", "getTunnelConfig", "getTunnelAmConfig", "getAmQuick", "onCreate", "onTunnelsLoaded", "present", "", "running", "", "refreshTunnelStates", "restoreState", "force", "(ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "saveState", "setTunnelConfig", "(Lpw/idrug/connections/model/ObservableTunnel;Lpw/idrug/connections/viewmodel/ConfigProxy$BuiltConfigs;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "setTunnelName", "(Lpw/idrug/connections/model/ObservableTunnel;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "setTunnelState", "(Lpw/idrug/connections/model/ObservableTunnel;Lorg/amnezia/awg/backend/Tunnel$State;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getTunnelState", "getTunnelStatistics", "Lorg/amnezia/awg/backend/Statistics;", "completeTunnelsDeferred", "IntentReceiver", "Companion", "ui_release"})
 public final class TunnelManager extends androidx.databinding.BaseObservable {
     @org.jetbrains.annotations.NotNull()
     private final pw.idrug.connections.configStore.ConfigStore configStore = null;
@@ -26,7 +26,11 @@ public final class TunnelManager extends androidx.databinding.BaseObservable {
         super();
     }
     
-    private final pw.idrug.connections.model.ObservableTunnel addToList(java.lang.String name, pw.idrug.connections.config.Config config, pw.idrug.connections.backend.Tunnel.State state) {
+    private final pw.idrug.connections.model.ObservableTunnel addToList(java.lang.String name, org.amnezia.awg.config.Config config, org.amnezia.awg.config.Config amConfig, java.lang.String amQuick, org.amnezia.awg.backend.Tunnel.State state) {
+        return null;
+    }
+    
+    private final org.amnezia.awg.config.Config parseAmConfig(java.lang.String name, java.lang.String amQuick, org.amnezia.awg.config.Config fallback) {
         return null;
     }
     
@@ -38,8 +42,8 @@ public final class TunnelManager extends androidx.databinding.BaseObservable {
     
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object create(@org.jetbrains.annotations.NotNull()
-    java.lang.String name, @org.jetbrains.annotations.Nullable()
-    pw.idrug.connections.config.Config config, @org.jetbrains.annotations.NotNull()
+    java.lang.String name, @org.jetbrains.annotations.NotNull()
+    pw.idrug.connections.viewmodel.ConfigProxy.BuiltConfigs configs, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super pw.idrug.connections.model.ObservableTunnel> $completion) {
         return null;
     }
@@ -63,7 +67,21 @@ public final class TunnelManager extends androidx.databinding.BaseObservable {
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object getTunnelConfig(@org.jetbrains.annotations.NotNull()
     pw.idrug.connections.model.ObservableTunnel tunnel, @org.jetbrains.annotations.NotNull()
-    kotlin.coroutines.Continuation<? super pw.idrug.connections.config.Config> $completion) {
+    kotlin.coroutines.Continuation<? super org.amnezia.awg.config.Config> $completion) {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Object getTunnelAmConfig(@org.jetbrains.annotations.NotNull()
+    pw.idrug.connections.model.ObservableTunnel tunnel, @org.jetbrains.annotations.NotNull()
+    kotlin.coroutines.Continuation<? super org.amnezia.awg.config.Config> $completion) {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Object getAmQuick(@org.jetbrains.annotations.NotNull()
+    pw.idrug.connections.model.ObservableTunnel tunnel, @org.jetbrains.annotations.NotNull()
+    kotlin.coroutines.Continuation<? super java.lang.String> $completion) {
         return null;
     }
     
@@ -91,8 +109,8 @@ public final class TunnelManager extends androidx.databinding.BaseObservable {
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object setTunnelConfig(@org.jetbrains.annotations.NotNull()
     pw.idrug.connections.model.ObservableTunnel tunnel, @org.jetbrains.annotations.NotNull()
-    pw.idrug.connections.config.Config config, @org.jetbrains.annotations.NotNull()
-    kotlin.coroutines.Continuation<? super pw.idrug.connections.config.Config> $completion) {
+    pw.idrug.connections.viewmodel.ConfigProxy.BuiltConfigs configs, @org.jetbrains.annotations.NotNull()
+    kotlin.coroutines.Continuation<? super org.amnezia.awg.config.Config> $completion) {
         return null;
     }
     
@@ -107,22 +125,22 @@ public final class TunnelManager extends androidx.databinding.BaseObservable {
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object setTunnelState(@org.jetbrains.annotations.NotNull()
     pw.idrug.connections.model.ObservableTunnel tunnel, @org.jetbrains.annotations.NotNull()
-    pw.idrug.connections.backend.Tunnel.State state, @org.jetbrains.annotations.NotNull()
-    kotlin.coroutines.Continuation<? super pw.idrug.connections.backend.Tunnel.State> $completion) {
+    org.amnezia.awg.backend.Tunnel.State state, @org.jetbrains.annotations.NotNull()
+    kotlin.coroutines.Continuation<? super org.amnezia.awg.backend.Tunnel.State> $completion) {
         return null;
     }
     
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object getTunnelState(@org.jetbrains.annotations.NotNull()
     pw.idrug.connections.model.ObservableTunnel tunnel, @org.jetbrains.annotations.NotNull()
-    kotlin.coroutines.Continuation<? super pw.idrug.connections.backend.Tunnel.State> $completion) {
+    kotlin.coroutines.Continuation<? super org.amnezia.awg.backend.Tunnel.State> $completion) {
         return null;
     }
     
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object getTunnelStatistics(@org.jetbrains.annotations.NotNull()
     pw.idrug.connections.model.ObservableTunnel tunnel, @org.jetbrains.annotations.NotNull()
-    kotlin.coroutines.Continuation<? super pw.idrug.connections.backend.Statistics> $completion) {
+    kotlin.coroutines.Continuation<? super org.amnezia.awg.backend.Statistics> $completion) {
         return null;
     }
     

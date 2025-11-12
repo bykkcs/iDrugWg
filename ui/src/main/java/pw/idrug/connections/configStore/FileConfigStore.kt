@@ -7,8 +7,8 @@ package pw.idrug.connections.configStore
 import android.content.Context
 import android.util.Log
 import pw.idrug.connections.R
-import pw.idrug.connections.config.BadConfigException
-import pw.idrug.connections.config.Config
+import org.amnezia.awg.config.BadConfigException
+import org.amnezia.awg.config.Config
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileNotFoundException
@@ -20,6 +20,8 @@ import java.nio.charset.StandardCharsets
  * Configuration store that uses a `awg-quick`-style file for each configured tunnel.
  */
 class FileConfigStore(private val context: Context) : ConfigStore {
+    private val amQuickPrefs = context.getSharedPreferences("amneziawg_amquick", Context.MODE_PRIVATE)
+
     @Throws(IOException::class)
     override fun create(name: String, config: Config): Config {
         Log.d(TAG, "Creating configuration for tunnel $name")
@@ -84,6 +86,23 @@ class FileConfigStore(private val context: Context) : ConfigStore {
             throw FileNotFoundException(context.getString(R.string.config_not_found_error, file.name))
         FileOutputStream(file, false).use { stream -> stream.write(config.toAwgQuickString().toByteArray(StandardCharsets.UTF_8)) }
         return config
+    }
+
+    override fun loadAmQuick(name: String): String? = amQuickPrefs.getString(name, null)
+
+    override fun saveAmQuick(name: String, amQuick: String) {
+        amQuickPrefs.edit().putString(name, amQuick).apply()
+    }
+
+    override fun deleteAmQuick(name: String) {
+        amQuickPrefs.edit().remove(name).apply()
+    }
+
+    override fun renameAmQuick(name: String, replacement: String) {
+        val existing = loadAmQuick(name)
+        val editor = amQuickPrefs.edit().remove(name)
+        if (existing != null) editor.putString(replacement, existing)
+        editor.apply()
     }
 
     companion object {

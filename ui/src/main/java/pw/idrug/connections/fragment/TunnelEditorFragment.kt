@@ -25,14 +25,14 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import pw.idrug.connections.Application
 import pw.idrug.connections.R
-import pw.idrug.connections.backend.Tunnel
+import org.amnezia.awg.backend.Tunnel
 import pw.idrug.connections.databinding.TunnelEditorFragmentBinding
 import pw.idrug.connections.model.ObservableTunnel
 import pw.idrug.connections.util.AdminKnobs
 import pw.idrug.connections.util.BiometricAuthenticator
 import pw.idrug.connections.util.ErrorMessages
 import pw.idrug.connections.viewmodel.ConfigProxy
-import pw.idrug.connections.config.Config
+import org.amnezia.awg.config.Config
 import kotlinx.coroutines.launch
 
 /**
@@ -125,8 +125,8 @@ class TunnelEditorFragment : BaseFragment(), MenuProvider {
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         if (menuItem.itemId == R.id.menu_action_save) {
             binding ?: return false
-            val newConfig = try {
-                binding!!.config!!.resolve()
+            val newConfigs = try {
+                binding!!.config!!.buildConfigs()
             } catch (e: Throwable) {
                 val error = ErrorMessages[e]
                 val tunnelName = if (tunnel == null) binding!!.name else tunnel!!.name
@@ -142,7 +142,7 @@ class TunnelEditorFragment : BaseFragment(), MenuProvider {
                         Log.d(TAG, "Attempting to create new tunnel " + binding!!.name)
                         val manager = Application.getTunnelManager()
                         try {
-                            onTunnelCreated(manager.create(binding!!.name!!, newConfig), null)
+                            onTunnelCreated(manager.create(binding!!.name!!, newConfigs), null)
                         } catch (e: Throwable) {
                             onTunnelCreated(null, e)
                         }
@@ -152,16 +152,16 @@ class TunnelEditorFragment : BaseFragment(), MenuProvider {
                         Log.d(TAG, "Attempting to rename tunnel to " + binding!!.name)
                         try {
                             tunnel!!.setNameAsync(binding!!.name!!)
-                            onTunnelRenamed(tunnel!!, newConfig, null)
+                            onTunnelRenamed(tunnel!!, newConfigs, null)
                         } catch (e: Throwable) {
-                            onTunnelRenamed(tunnel!!, newConfig, e)
+                            onTunnelRenamed(tunnel!!, newConfigs, e)
                         }
                     }
 
                     else -> {
                         Log.d(TAG, "Attempting to save config of " + tunnel!!.name)
                         try {
-                            tunnel!!.setConfigAsync(newConfig)
+                            tunnel!!.setConfigAsync(newConfigs)
                             onConfigSaved(tunnel!!, null)
                         } catch (e: Throwable) {
                             onConfigSaved(tunnel!!, e)
@@ -254,7 +254,7 @@ class TunnelEditorFragment : BaseFragment(), MenuProvider {
     }
 
     private suspend fun onTunnelRenamed(
-        renamedTunnel: ObservableTunnel, newConfig: Config,
+        renamedTunnel: ObservableTunnel, newConfigs: ConfigProxy.BuiltConfigs,
         throwable: Throwable?
     ) {
         val ctx = activity ?: Application.get()
@@ -264,7 +264,7 @@ class TunnelEditorFragment : BaseFragment(), MenuProvider {
             // Now save the rest of configuration changes.
             Log.d(TAG, "Attempting to save config of renamed tunnel " + tunnel!!.name)
             try {
-                renamedTunnel.setConfigAsync(newConfig)
+                renamedTunnel.setConfigAsync(newConfigs)
                 onConfigSaved(renamedTunnel, null)
             } catch (e: Throwable) {
                 onConfigSaved(renamedTunnel, e)

@@ -10,7 +10,7 @@
 
     <application>
         <service
-            android:name="pw.idrug.connections.backend.GoBackend$VpnService"
+            android:name="org.amnezia.awg.backend.GoBackend$VpnService"
             android:exported="false"
             android:permission="android.permission.BIND_VPN_SERVICE" >
             <intent-filter>

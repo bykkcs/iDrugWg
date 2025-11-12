@@ -9,7 +9,7 @@ import android.util.AttributeSet
 import androidx.preference.Preference
 import pw.idrug.connections.Application
 import pw.idrug.connections.R
-import pw.idrug.connections.util.ToolsInstaller
+import org.amnezia.awg.util.ToolsInstaller
 import pw.idrug.connections.util.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

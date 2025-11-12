@@ -8,7 +8,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import pw.idrug.connections.backend.AwgQuickBackend
+import org.amnezia.awg.backend.AwgQuickBackend
 import pw.idrug.connections.util.applicationScope
 import kotlinx.coroutines.launch
 

@@ -17,14 +17,15 @@ import pw.idrug.connections.Application.Companion.getBackend
 import pw.idrug.connections.Application.Companion.getTunnelManager
 import pw.idrug.connections.BR
 import pw.idrug.connections.R
-import pw.idrug.connections.backend.Statistics
-import pw.idrug.connections.backend.Tunnel
+import org.amnezia.awg.backend.Statistics
+import org.amnezia.awg.backend.Tunnel
 import pw.idrug.connections.configStore.ConfigStore
 import pw.idrug.connections.databinding.ObservableSortedKeyedArrayList
 import pw.idrug.connections.util.ErrorMessages
 import pw.idrug.connections.util.UserKnobs
 import pw.idrug.connections.util.applicationScope
-import pw.idrug.connections.config.Config
+import pw.idrug.connections.viewmodel.ConfigProxy
+import org.amnezia.awg.config.Config
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -33,6 +34,8 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.BufferedReader
+import java.io.StringReader
 
 /**
  * Maintains and mediates changes to the set of available iDrugConnections tunnels,
@@ -43,20 +46,42 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
     private val tunnelMap: ObservableSortedKeyedArrayList<String, ObservableTunnel> = ObservableSortedKeyedArrayList(TunnelComparator)
     private var haveLoaded = false
 
-    private fun addToList(name: String, config: Config?, state: Tunnel.State): ObservableTunnel {
-        val tunnel = ObservableTunnel(this, name, config, state)
+    private fun addToList(name: String, config: Config?, amConfig: Config?, amQuick: String?, state: Tunnel.State): ObservableTunnel {
+        val tunnel = ObservableTunnel(this, name, config, amConfig, amQuick, state)
         tunnelMap.add(tunnel)
         return tunnel
     }
 
+    private fun parseAmConfig(name: String, amQuick: String?, fallback: Config?): Config? {
+        if (amQuick.isNullOrBlank())
+            return fallback
+        return try {
+            val parsed = Config.parse(BufferedReader(StringReader(amQuick)))
+            val builder = Config.Builder()
+                .setInterface(parsed.getInterface())
+                .setAmQuick(amQuick)
+            val peers = fallback?.peers ?: emptyList()
+            if (peers.isNotEmpty()) builder.addPeers(peers)
+            builder.build()
+        } catch (e: Throwable) {
+            Log.e(TAG, "Failed to parse Amnezia quick config for tunnel $name", e)
+            fallback
+        }
+    }
+
     suspend fun getTunnels(): ObservableSortedKeyedArrayList<String, ObservableTunnel> = tunnels.await()
 
-    suspend fun create(name: String, config: Config?): ObservableTunnel = withContext(Dispatchers.Main.immediate) {
+    suspend fun create(name: String, configs: ConfigProxy.BuiltConfigs): ObservableTunnel = withContext(Dispatchers.Main.immediate) {
         if (Tunnel.isNameInvalid(name))
             throw IllegalArgumentException(context.getString(R.string.tunnel_error_invalid_name))
         if (tunnelMap.containsKey(name))
             throw IllegalArgumentException(context.getString(R.string.tunnel_error_already_exists, name))
-        addToList(name, withContext(Dispatchers.IO) { configStore.create(name, config!!) }, Tunnel.State.DOWN)
+        val awgConfig = withContext(Dispatchers.IO) {
+            val saved = configStore.create(name, configs.awg)
+            configStore.saveAmQuick(name, configs.amQuick)
+            saved
+        }
+        addToList(name, awgConfig, configs.amConfig, configs.amQuick, Tunnel.State.DOWN)
     }
 
     suspend fun delete(tunnel: ObservableTunnel) = withContext(Dispatchers.Main.immediate) {
@@ -70,10 +95,15 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
             if (originalState == Tunnel.State.UP)
                 withContext(Dispatchers.IO) { getBackend().setState(tunnel, Tunnel.State.DOWN, null) }
             try {
-                withContext(Dispatchers.IO) { configStore.delete(tunnel.name) }
+                withContext(Dispatchers.IO) {
+                    configStore.delete(tunnel.name)
+                    configStore.deleteAmQuick(tunnel.name)
+                }
             } catch (e: Throwable) {
-                if (originalState == Tunnel.State.UP)
-                    withContext(Dispatchers.IO) { getBackend().setState(tunnel, Tunnel.State.UP, tunnel.config) }
+                if (originalState == Tunnel.State.UP) {
+                    val revertConfig = tunnel.amConfig ?: tunnel.config
+                    withContext(Dispatchers.IO) { getBackend().setState(tunnel, Tunnel.State.UP, revertConfig) }
+                }
                 throw e
             }
         } catch (e: Throwable) {
@@ -95,7 +125,38 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
         }
 
     suspend fun getTunnelConfig(tunnel: ObservableTunnel): Config = withContext(Dispatchers.Main.immediate) {
-        tunnel.onConfigChanged(withContext(Dispatchers.IO) { configStore.load(tunnel.name) })!!
+        val triple = withContext(Dispatchers.IO) {
+            val awg = configStore.load(tunnel.name)
+            val amQuick = configStore.loadAmQuick(tunnel.name)
+            val amConfig = parseAmConfig(tunnel.name, amQuick, awg)
+            Triple(awg, amConfig, amQuick)
+        }
+        tunnel.onAmQuickChanged(triple.third)
+        tunnel.onAmConfigChanged(triple.second ?: triple.first)
+        tunnel.onConfigChanged(triple.first)!!
+    }
+
+    suspend fun getTunnelAmConfig(tunnel: ObservableTunnel): Config = withContext(Dispatchers.Main.immediate) {
+        val cached = tunnel.amConfig
+        if (cached != null) return@withContext cached
+        val triple = withContext(Dispatchers.IO) {
+            val awg = configStore.load(tunnel.name)
+            val amQuick = configStore.loadAmQuick(tunnel.name)
+            val amConfig = parseAmConfig(tunnel.name, amQuick, awg) ?: awg
+            Triple(amConfig, amQuick, awg)
+        }
+        tunnel.onAmQuickChanged(triple.second)
+        tunnel.onAmConfigChanged(triple.first)
+        if (tunnel.config == null) tunnel.onConfigChanged(triple.third)
+        triple.first
+    }
+
+    suspend fun getAmQuick(tunnel: ObservableTunnel): String? = withContext(Dispatchers.Main.immediate) {
+        val cached = tunnel.amQuick
+        if (cached != null) return@withContext cached
+        val quick = withContext(Dispatchers.IO) { configStore.loadAmQuick(tunnel.name) }
+        tunnel.onAmQuickChanged(quick)
+        quick
     }
 
     fun onCreate() {
@@ -112,8 +173,10 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
     }
 
     private fun onTunnelsLoaded(present: Iterable<String>, running: Collection<String>) {
-        for (name in present)
-            addToList(name, null, if (running.contains(name)) Tunnel.State.UP else Tunnel.State.DOWN)
+        for (name in present) {
+            val amQuick = configStore.loadAmQuick(name)
+            addToList(name, null, null, amQuick, if (running.contains(name)) Tunnel.State.UP else Tunnel.State.DOWN)
+        }
         completeTunnelsDeferred()
         applicationScope.launch {
             try {
@@ -178,11 +241,15 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
         UserKnobs.setRunningTunnels(tunnelMap.filter { it.state == Tunnel.State.UP }.map { it.name }.toSet())
     }
 
-    suspend fun setTunnelConfig(tunnel: ObservableTunnel, config: Config): Config = withContext(Dispatchers.Main.immediate) {
-        tunnel.onConfigChanged(withContext(Dispatchers.IO) {
-            getBackend().setState(tunnel, tunnel.state, config)
-            configStore.save(tunnel.name, config)
-        })!!
+    suspend fun setTunnelConfig(tunnel: ObservableTunnel, configs: ConfigProxy.BuiltConfigs): Config = withContext(Dispatchers.Main.immediate) {
+        val savedConfig = withContext(Dispatchers.IO) {
+            getBackend().setState(tunnel, tunnel.state, configs.amConfig)
+            configStore.saveAmQuick(tunnel.name, configs.amQuick)
+            configStore.save(tunnel.name, configs.awg)
+        }
+        tunnel.onAmQuickChanged(configs.amQuick)
+        tunnel.onAmConfigChanged(configs.amConfig)
+        tunnel.onConfigChanged(savedConfig)!!
     }
 
     suspend fun setTunnelName(tunnel: ObservableTunnel, name: String): String = withContext(Dispatchers.Main.immediate) {
@@ -191,6 +258,7 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
         if (tunnelMap.containsKey(name)) {
             throw IllegalArgumentException(context.getString(R.string.tunnel_error_already_exists, name))
         }
+        val oldName = tunnel.name
         val originalState = tunnel.state
         val wasLastUsed = tunnel == lastUsedTunnel
         // Make sure nothing touches the tunnel.
@@ -202,10 +270,16 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
         try {
             if (originalState == Tunnel.State.UP)
                 withContext(Dispatchers.IO) { getBackend().setState(tunnel, Tunnel.State.DOWN, null) }
-            withContext(Dispatchers.IO) { configStore.rename(tunnel.name, name) }
+            withContext(Dispatchers.IO) {
+                configStore.rename(oldName, name)
+                configStore.renameAmQuick(oldName, name)
+            }
             newName = tunnel.onNameChanged(name)
             if (originalState == Tunnel.State.UP)
-                withContext(Dispatchers.IO) { getBackend().setState(tunnel, Tunnel.State.UP, tunnel.config) }
+                withContext(Dispatchers.IO) {
+                    val revertConfig = tunnel.amConfig ?: tunnel.config
+                    getBackend().setState(tunnel, Tunnel.State.UP, revertConfig)
+                }
         } catch (e: Throwable) {
             throwable = e
             // On failure, we don't know what state the tunnel might be in. Fix that.
@@ -224,7 +298,7 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
         var newState = tunnel.state
         var throwable: Throwable? = null
         try {
-            newState = withContext(Dispatchers.IO) { getBackend().setState(tunnel, state, tunnel.getConfigAsync()) }
+            newState = withContext(Dispatchers.IO) { getBackend().setState(tunnel, state, tunnel.getAmConfigAsync()) }
             if (newState == Tunnel.State.UP)
                 lastUsedTunnel = tunnel
         } catch (e: Throwable) {

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-64:/values-port/values-port.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-83:/values-port/values-port.xml",
             "map": [
                 {
-                    "source": "/home/bykk/.gradle/caches/8.11.1/transforms/437effbb0b007a85c7a396b0dfebe74f/transformed/appcompat-1.6.1/res/values-port/values-port.xml",
+                    "source": "/home/bykk/.gradle/caches/8.13/transforms/73ed5a963feab88417b2a6878d1fcc41/transformed/appcompat-1.6.1/res/values-port/values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

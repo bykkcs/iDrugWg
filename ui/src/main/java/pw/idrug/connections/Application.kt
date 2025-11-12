@@ -18,13 +18,14 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.core.content.ContextCompat
 import com.google.android.material.color.DynamicColors
-import pw.idrug.connections.backend.Backend
-import pw.idrug.connections.backend.GoBackend
-import pw.idrug.connections.backend.AwgQuickBackend
+import org.amnezia.awg.backend.Backend
+import org.amnezia.awg.backend.GoBackend
+import org.amnezia.awg.backend.AwgQuickBackend
 import pw.idrug.connections.configStore.FileConfigStore
 import pw.idrug.connections.model.TunnelManager
-import pw.idrug.connections.util.RootShell
-import pw.idrug.connections.util.ToolsInstaller
+import org.amnezia.awg.util.RootShell
+import org.amnezia.awg.util.ToolsInstaller
+import pw.idrug.connections.catalog.CatalogRepository
 import pw.idrug.connections.util.UserKnobs
 import pw.idrug.connections.util.applicationScope
 import kotlinx.coroutines.CompletableDeferred
@@ -146,6 +147,8 @@ class Application : android.app.Application() {
         applicationScope.launch {
             processNotification()
         }
+
+        CatalogRepository.prefetch(this)
 
         if (BuildConfig.DEBUG) {
             StrictMode.setVmPolicy(VmPolicy.Builder().detectAll().penaltyLog().build())

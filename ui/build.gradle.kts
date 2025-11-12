@@ -11,16 +11,25 @@ plugins {
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.ksp)
     id("com.google.gms.google-services")
+    kotlin("plugin.compose") // версия берётся из корня (2.1.0)
 }
 
 android {
     compileSdk = 36
+    namespace = pkg
+
     buildFeatures {
         buildConfig = true
         dataBinding = true
         viewBinding = true
+        compose = true
     }
-    namespace = pkg
+
+    // ВАЖНО: для Kotlin 2.1.x нужен Compose Compiler 1.7.x
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.7.1"
+    }
+
     defaultConfig {
         applicationId = pkg
         targetSdk = 36
@@ -28,11 +37,13 @@ android {
         versionName = providers.gradleProperty("idrugconnectionsVersionName").get()
         buildConfigField("int", "MIN_SDK_VERSION", minSdk.toString())
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
         isCoreLibraryDesugaringEnabled = true
     }
+
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -55,9 +66,9 @@ android {
             matchingFallbacks += "release"
         }
     }
-    androidResources {
-        generateLocaleConfig = true
-    }
+
+    androidResources { generateLocaleConfig = true }
+
     lint {
         disable += "LongLogTag"
         warning += "MissingTranslation"
@@ -68,6 +79,15 @@ android {
 dependencies {
     implementation(project(":tunnel"))
 
+    // Обновим BOM, чтобы не ловить несовместимости с compiler 1.7.x
+    implementation(platform("androidx.compose:compose-bom:2024.12.01"))
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.foundation:foundation")
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.activity:activity-compose:1.9.3")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.6")
+
+    // остальное как было
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.appcompat)
@@ -83,13 +103,11 @@ dependencies {
     implementation(libs.zxing.android.embedded)
     implementation(libs.kotlinx.coroutines.android)
 
-    // --- OTA network stack ---
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
 
-    // --- Moshi с codegen ---
     implementation("com.squareup.moshi:moshi:1.15.1")
     implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
     ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.1")

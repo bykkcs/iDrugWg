@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package pw.idrug.connections.crypto;
+package org.amnezia.awg.crypto;
 
-import pw.idrug.connections.util.NonNullForAll;
+import org.amnezia.awg.util.NonNullForAll;
 
 /**
  * An exception thrown when attempting to parse an invalid key (too short, too long, or byte

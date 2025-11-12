@@ -154,6 +154,8 @@
   <androidx.xr.arcore/>
   <androidx.xr.compose/>
   <androidx.xr.compose.material3/>
+  <androidx.xr.glimmer/>
+  <androidx.xr.projected/>
   <androidx.xr.runtime/>
   <androidx.xr.scenecore/>
   <com.android/>
@@ -163,6 +165,7 @@
   <com.android.asset-pack/>
   <com.android.asset-pack-bundle/>
   <com.android.billingclient/>
+  <com.android.built-in-kotlin/>
   <com.android.car.setupwizardlib/>
   <com.android.car.ui/>
   <com.android.compose.screenshot/>

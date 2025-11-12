@@ -9,7 +9,7 @@
 
         <variable
             name="item"
-            type="pw.idrug.connections.config.Peer" />
+            type="pw.idrug.connections.viewmodel.PeerProxy" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -51,7 +51,7 @@
                 android:nextFocusForward="@id/pre_shared_key_text"
                 android:onClick="@{ClipboardUtils::copyTextView}"
                 android:singleLine="true"
-                android:text="@{item.publicKey.toBase64}"
+                android:text="@{item.publicKeyBase64}"
                 android:textAppearance="?attr/textAppearanceBodyLarge"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/public_key_label"
@@ -64,7 +64,7 @@
                 android:layout_marginTop="8dp"
                 android:labelFor="@+id/pre_shared_key_text"
                 android:text="@string/pre_shared_key"
-                android:visibility="@{!item.preSharedKey.isPresent() ? android.view.View.GONE : android.view.View.VISIBLE}"
+                android:visibility="@{item.preSharedKey.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/public_key_text" />
 
@@ -81,7 +81,7 @@
                 android:singleLine="true"
                 android:text="@string/pre_shared_key_enabled"
                 android:textAppearance="?attr/textAppearanceBodyLarge"
-                android:visibility="@{!item.preSharedKey.isPresent() ? android.view.View.GONE : android.view.View.VISIBLE}"
+                android:visibility="@{item.preSharedKey.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pre_shared_key_label"
                 tools:text="8VyS8W8XeMcBWfKp1GuG3/fZlnUQFkqMNbrdmZtVQIM=" />
@@ -120,7 +120,7 @@
                 android:layout_marginTop="8dp"
                 android:labelFor="@+id/endpoint_text"
                 android:text="@string/endpoint"
-                android:visibility="@{!item.endpoint.isPresent() ? android.view.View.GONE : android.view.View.VISIBLE}"
+                android:visibility="@{item.endpoint.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/allowed_ips_text" />
 
@@ -135,7 +135,7 @@
                 android:onClick="@{ClipboardUtils::copyTextView}"
                 android:text="@{item.endpoint}"
                 android:textAppearance="?attr/textAppearanceBodyLarge"
-                android:visibility="@{!item.endpoint.isPresent() ? android.view.View.GONE : android.view.View.VISIBLE}"
+                android:visibility="@{item.endpoint.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/endpoint_label"
                 tools:text="192.168.0.1:51820" />
@@ -147,7 +147,7 @@
                 android:layout_marginTop="8dp"
                 android:labelFor="@+id/persistent_keepalive_text"
                 android:text="@string/persistent_keepalive"
-                android:visibility="@{!item.persistentKeepalive.isPresent() ? android.view.View.GONE : android.view.View.VISIBLE}"
+                android:visibility="@{item.persistentKeepalive.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/endpoint_text" />
 
@@ -160,9 +160,9 @@
                 android:nextFocusDown="@id/transfer_text"
                 android:nextFocusForward="@id/transfer_text"
                 android:onClick="@{ClipboardUtils::copyTextView}"
-                android:text="@{@plurals/persistent_keepalive_seconds_unit(item.persistentKeepalive.orElse(0), item.persistentKeepalive.orElse(0))}"
+                android:text="@{@plurals/persistent_keepalive_seconds_unit(item.persistentKeepaliveSeconds, item.persistentKeepaliveSeconds)}"
                 android:textAppearance="?attr/textAppearanceBodyLarge"
-                android:visibility="@{!item.persistentKeepalive.isPresent() ? android.view.View.GONE : android.view.View.VISIBLE}"
+                android:visibility="@{item.persistentKeepalive.isEmpty() ? android.view.View.GONE : android.view.View.VISIBLE}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/persistent_keepalive_label"
                 tools:text="every 3 seconds" />

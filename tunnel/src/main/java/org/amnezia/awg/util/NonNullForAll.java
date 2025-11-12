@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package pw.idrug.connections.util;
+package org.amnezia.awg.util;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

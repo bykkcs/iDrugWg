@@ -101,6 +101,8 @@
     <string name="tv_auto_connect">Автоподключение при старте</string>
     <string name="tv_route_youtube">Маршрутизировать только YouTube</string>
     <string name="tv_route_label_youtube">Приложения: только YouTube</string>
+    <string name="tv_action_hint_connect">Нажмите ОК, чтобы подключиться</string>
+    <string name="tv_action_hint_disconnect">Нажмите ОК, чтобы отключиться</string>
     <string name="bad_config_context">%1$s из %2$s</string>
     <string name="bad_config_context_top_level">%s</string>
     <string name="bad_config_error">%1$s в %2$s</string>
@@ -381,6 +383,10 @@
     <string name="duration_label">Срок</string>
     <string name="pay">Оплатить</string>
     <string name="price_template">Цена: %1$d₽</string>
+    <string name="subscription_catalog_loading">Загружаем тарифы…</string>
+    <string name="subscription_catalog_error">Не удалось загрузить каталог тарифов</string>
+    <string name="subscription_catalog_empty">Актуальные тарифы временно недоступны</string>
+    <string name="subscription_purchase_disabled">Тариф временно недоступен для покупки</string>
     <string name="duration_1_month">1 месяц</string>
     <string name="duration_3_months">3 месяца</string>
     <string name="duration_1_year">1 год</string>
@@ -418,6 +424,11 @@
     <string name="disconnect">Отключить</string>
     <string name="inactive">Неактивно</string>
     <string name="import_disclaimer">Убедитесь, что вы получили файл конфигурации в надёжном источнике.\n\nОфициальные сервисы iDrug Connections доступны только на сайте <a href="https://idrug.pw">idrug.pw</a>\n</string>
+    <string name="tunnel_quic_ready">awg1.5 (quic-ready)</string>
+    <string name="promo_hint">Промокод</string>
+    <string name="promo_apply">Применить</string>
+    <string name="promo_applied">✅ Промокод применён: %1$s</string>
+    <string name="promo_invalid">Промокод недействителен</string>
     <string-array name="onboarding_emojis">
         <item>🔒</item>
         <item>📡</item>
@@ -440,7 +451,7 @@
         <item>Подключайся мгновенно. Конфиги и ключи автоматически сохраняются в приложении — ничего не теряется.</item>
         <item>Удобное приложение для телевизоров — линкинг через код, запуск в 1 клик. Всё, как надо.</item>
         <item>В настройках туннеля выбери приложения — их трафик пойдёт только через VPN, остальное напрямую.</item>
-        <item>Тарифы от 250₽ в месяц. Без скрытых платежей, оплата любым способом: карта, крипта, всё что удобно.</item>
+        <item>Тарифы от 199₽ в месяц. Без скрытых платежей, оплата любым способом: карта, крипта, всё что удобно.</item>
     </string-array>
     <string name="onboarding_next">Далее</string>
     <string name="onboarding_start">Начать</string>
@@ -460,6 +471,10 @@
     <string name="notification_status_chip_disconnecting">Стоп</string>
     <string name="notification_status_chip_disconnected">Выкл.</string>
     <string name="notification_status_chip_multiple">%d VPN</string>
+    <string name="notification_status_chip_offline">Оффлайн</string>
+    <string name="notification_text_paused">Защищённое соединение приостановлено — %1$s идёт напрямую</string>
+    <string name="notification_action_include_app">Добавить в VPN</string>
+    <string name="notification_action_exclude_app">Исключить из VPN</string>
     <string name="transfer_rate_bytes">%1$.0f Б/с</string>
     <string name="transfer_rate_kib">%1$.1f КиБ/с</string>
     <string name="transfer_rate_mib">%1$.2f МиБ/с</string>
@@ -467,4 +482,7 @@
     <string name="enable_notification_title">Уведомление</string>
     <string name="enable_notification_summary_off">Уведомление о состоянии соединения отключено</string>
     <string name="enable_notification_summary_on">Уведомление о состоянии соединения включено</string>
+    <string name="pref_live_usage_title">Live-статус VPN</string>
+    <string name="pref_live_usage_summary">Показывать Online/Offline по активному приложению (нужно разрешение Usage Access)</string>
+    <string name="usage_access_request">Выдайте доступ к статистике использования, чтобы включить live-статус</string>
 </resources>

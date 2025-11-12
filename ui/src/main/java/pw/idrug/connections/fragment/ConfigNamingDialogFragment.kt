@@ -13,8 +13,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import pw.idrug.connections.Application
 import pw.idrug.connections.R
 import pw.idrug.connections.databinding.ConfigNamingDialogFragmentBinding
-import pw.idrug.connections.config.BadConfigException
-import pw.idrug.connections.config.Config
+import org.amnezia.awg.config.BadConfigException
+import org.amnezia.awg.config.Config
+import pw.idrug.connections.viewmodel.ConfigProxy
 import kotlinx.coroutines.launch
 import java.io.ByteArrayInputStream
 import java.io.IOException
@@ -30,7 +31,8 @@ class ConfigNamingDialogFragment : DialogFragment() {
         val name = binding.tunnelNameText.text.toString()
         activity.lifecycleScope.launch {
             try {
-                Application.getTunnelManager().create(name, config)
+                val currentConfig = config ?: return@launch
+                Application.getTunnelManager().create(name, ConfigProxy(currentConfig).buildConfigs())
                 dismiss()
             } catch (e: Throwable) {
                 binding.tunnelNameTextLayout.error = e.message

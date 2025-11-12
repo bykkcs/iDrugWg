@@ -33,6 +33,9 @@ public abstract class TunnelListItemBinding extends ViewDataBinding {
   public final TextView tunnelPing;
 
   @NonNull
+  public final TextView tunnelQuicBadge;
+
+  @NonNull
   public final ToggleSwitch tunnelSwitch;
 
   @Bindable
@@ -49,12 +52,14 @@ public abstract class TunnelListItemBinding extends ViewDataBinding {
 
   protected TunnelListItemBinding(Object _bindingComponent, View _root, int _localFieldCount,
       MaterialCardView tunnelCard, MultiselectableRelativeLayout tunnelContainer,
-      TextView tunnelName, TextView tunnelPing, ToggleSwitch tunnelSwitch) {
+      TextView tunnelName, TextView tunnelPing, TextView tunnelQuicBadge,
+      ToggleSwitch tunnelSwitch) {
     super(_bindingComponent, _root, _localFieldCount);
     this.tunnelCard = tunnelCard;
     this.tunnelContainer = tunnelContainer;
     this.tunnelName = tunnelName;
     this.tunnelPing = tunnelPing;
+    this.tunnelQuicBadge = tunnelQuicBadge;
     this.tunnelSwitch = tunnelSwitch;
   }
 

@@ -1,0 +1,58 @@
+Data Binding Analysis Report
+============================
+
+SUMMARY OF ISSUES FOUND:
+------------------------
+
+1. TYPE MISMATCH IN tunnel_detail_peer.xml
+   - File: ui/src/main/res/layout/tunnel_detail_peer.xml
+   - Line: 12
+   - Current: type="pw.idrug.connections.config.Peer"
+   - Problem: Type 'pw.idrug.connections.config.Peer' does not exist
+   - Correct: Should be type="org.amnezia.awg.config.Peer"
+   - Note: The pw.idrug.connections.config package does not exist, actual peer class is in org.amnezia.awg.config package
+
+2. PROPERTY ACCESSOR ISSUE IN tunnel_detail_fragment.xml
+   - File: ui/src/main/res/layout/tunnel_detail_fragment.xml
+   - Lines: 400, 409, 411 (cookieReplyPacketJunkSize property access)
+   - Current Expression: @{config.interface.cookieReplyPacketJunkSize}
+   - Problem: The Interface class from AmneziaWG should have cookieReplyPacketJunkSize property
+   - Status: Based on InterfaceAwg15Test.java, getCookieReplyPacketJunkSize() method exists in the actual Interface class
+   - Suggestion: This might be a build-time issue where the method isn't accessible during kapt processing
+
+DETAILED ANALYSIS:
+------------------
+
+1. Variable Type Validation:
+   - All variable types were checked against .binding-index.txt
+   - Found issue with tunnel_detail_peer.xml line 12
+   - Expected type org.amnezia.awg.config.Peer exists in the tunnel module
+   - pw.idrug.connections.config.Peer does not exist in the codebase
+
+2. Import Validation:
+   - Checked all imports in .binding-imports.txt against available types
+   - Most imports are valid
+   - Import type="pw.idrug.connections.config.Peer" does not exist
+
+3. Property Access Validation:
+   - The expression @{config.interface.cookieReplyPacketJunkSize} should work
+   - Config.java has getInterface() method that returns Interface
+   - According to the test file InterfaceAwg15Test.java, Interface has getCookieReplyPacketJunkSize() method
+   - This suggests it's likely a KAPT build configuration issue
+
+SUGGESTED FIXES:
+----------------
+
+1. FOR tunnel_detail_peer.xml:
+   - Change: type="pw.idrug.connections.config.Peer"
+   - To: type="org.amnezia.awg.config.Peer"
+   - Action: Update variable declaration and potentially add import if needed
+
+2. FOR tunnel_detail_fragment.xml PROPERTY ACCESS:
+   - If build fails with kapt, verify that AmneziaWG extended Interface methods are available to the UI module
+   - The properties like cookieReplyPacketJunkSize, transportPacketJunkSize, etc. exist in the AmneziaWG extension
+   - Ensure proper dependencies and visibility of these extended methods to the data binding compiler
+
+RECOMMENDATION:
+---------------
+Run with --apply flag to automatically fix the variable type issue in tunnel_detail_peer.xml. The property accessor issue may require checking the actual AmneziaWG interface implementation or build configuration to ensure the extended methods are visible during compilation.

@@ -14,8 +14,8 @@ public class TunnelListItemBindingImpl extends TunnelListItemBinding  {
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.tunnel_container, 3);
-        sViewsWithIds.put(R.id.tunnel_ping, 4);
+        sViewsWithIds.put(R.id.tunnel_container, 4);
+        sViewsWithIds.put(R.id.tunnel_ping, 5);
     }
     // views
     // variables
@@ -25,18 +25,20 @@ public class TunnelListItemBindingImpl extends TunnelListItemBinding  {
     // Inverse Binding Event Handlers
 
     public TunnelListItemBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 5, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 6, sIncludes, sViewsWithIds));
     }
     private TunnelListItemBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 2
             , (com.google.android.material.card.MaterialCardView) bindings[0]
-            , (pw.idrug.connections.widget.MultiselectableRelativeLayout) bindings[3]
+            , (pw.idrug.connections.widget.MultiselectableRelativeLayout) bindings[4]
             , (android.widget.TextView) bindings[1]
-            , (android.widget.TextView) bindings[4]
-            , (pw.idrug.connections.widget.ToggleSwitch) bindings[2]
+            , (android.widget.TextView) bindings[5]
+            , (android.widget.TextView) bindings[2]
+            , (pw.idrug.connections.widget.ToggleSwitch) bindings[3]
             );
         this.tunnelCard.setTag(null);
         this.tunnelName.setTag(null);
+        this.tunnelQuicBadge.setTag(null);
         this.tunnelSwitch.setTag(null);
         setRootTag(root);
         // listeners
@@ -46,7 +48,7 @@ public class TunnelListItemBindingImpl extends TunnelListItemBinding  {
     @Override
     public void invalidateAll() {
         synchronized(this) {
-                mDirtyFlags = 0x20L;
+                mDirtyFlags = 0x40L;
         }
         requestRebind();
     }
@@ -128,9 +130,15 @@ public class TunnelListItemBindingImpl extends TunnelListItemBinding  {
             }
             return true;
         }
-        else if (fieldId == BR.state) {
+        else if (fieldId == BR.quicReadyBadge) {
             synchronized(this) {
                     mDirtyFlags |= 0x10L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.state) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x20L;
             }
             return true;
         }
@@ -156,24 +164,47 @@ public class TunnelListItemBindingImpl extends TunnelListItemBinding  {
         pw.idrug.connections.model.ObservableTunnel item = mItem;
         pw.idrug.connections.fragment.TunnelListFragment fragment = mFragment;
         pw.idrug.connections.widget.ToggleSwitch.OnBeforeCheckedChangeListener fragmentSetTunnelStatePwIdrugConnectionsWidgetToggleSwitchOnBeforeCheckedChangeListener = null;
-        pw.idrug.connections.backend.Tunnel.State itemState = null;
+        boolean itemQuicReadyBadge = false;
+        org.amnezia.awg.backend.Tunnel.State itemState = null;
         boolean itemStateStateUP = false;
         java.lang.String key = mKey;
+        int itemQuicReadyBadgeViewVISIBLEViewGONE = 0;
 
-        if ((dirtyFlags & 0x31L) != 0) {
+        if ((dirtyFlags & 0x71L) != 0) {
 
 
+            if ((dirtyFlags & 0x51L) != 0) {
 
-                if (item != null) {
-                    // read item.state
-                    itemState = item.getState();
+                    if (item != null) {
+                        // read item.quicReadyBadge
+                        itemQuicReadyBadge = item.getQuicReadyBadge();
+                    }
+                if((dirtyFlags & 0x51L) != 0) {
+                    if(itemQuicReadyBadge) {
+                            dirtyFlags |= 0x100L;
+                    }
+                    else {
+                            dirtyFlags |= 0x80L;
+                    }
                 }
 
 
-                // read item.state == State.UP
-                itemStateStateUP = (itemState) == (pw.idrug.connections.backend.Tunnel.State.UP);
+                    // read item.quicReadyBadge ? View.VISIBLE : View.GONE
+                    itemQuicReadyBadgeViewVISIBLEViewGONE = ((itemQuicReadyBadge) ? (android.view.View.VISIBLE) : (android.view.View.GONE));
+            }
+            if ((dirtyFlags & 0x61L) != 0) {
+
+                    if (item != null) {
+                        // read item.state
+                        itemState = item.getState();
+                    }
+
+
+                    // read item.state == State.UP
+                    itemStateStateUP = (itemState) == (org.amnezia.awg.backend.Tunnel.State.UP);
+            }
         }
-        if ((dirtyFlags & 0x24L) != 0) {
+        if ((dirtyFlags & 0x44L) != 0) {
 
 
 
@@ -182,20 +213,25 @@ public class TunnelListItemBindingImpl extends TunnelListItemBinding  {
                     fragmentSetTunnelStatePwIdrugConnectionsWidgetToggleSwitchOnBeforeCheckedChangeListener = (((mFragmentSetTunnelStatePwIdrugConnectionsWidgetToggleSwitchOnBeforeCheckedChangeListener == null) ? (mFragmentSetTunnelStatePwIdrugConnectionsWidgetToggleSwitchOnBeforeCheckedChangeListener = new OnBeforeCheckedChangeListenerImpl()) : mFragmentSetTunnelStatePwIdrugConnectionsWidgetToggleSwitchOnBeforeCheckedChangeListener).setValue(fragment));
                 }
         }
-        if ((dirtyFlags & 0x28L) != 0) {
+        if ((dirtyFlags & 0x48L) != 0) {
         }
         // batch finished
-        if ((dirtyFlags & 0x28L) != 0) {
+        if ((dirtyFlags & 0x48L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.tunnelName, key);
         }
-        if ((dirtyFlags & 0x31L) != 0) {
+        if ((dirtyFlags & 0x51L) != 0) {
+            // api target 1
+
+            this.tunnelQuicBadge.setVisibility(itemQuicReadyBadgeViewVISIBLEViewGONE);
+        }
+        if ((dirtyFlags & 0x61L) != 0) {
             // api target 1
 
             pw.idrug.connections.databinding.BindingAdapters.setChecked(this.tunnelSwitch, itemStateStateUP);
         }
-        if ((dirtyFlags & 0x24L) != 0) {
+        if ((dirtyFlags & 0x44L) != 0) {
             // api target 1
 
             pw.idrug.connections.databinding.BindingAdapters.setOnBeforeCheckedChanged(this.tunnelSwitch, fragmentSetTunnelStatePwIdrugConnectionsWidgetToggleSwitchOnBeforeCheckedChangeListener);
@@ -221,8 +257,11 @@ public class TunnelListItemBindingImpl extends TunnelListItemBinding  {
         flag 1 (0x2L): collection
         flag 2 (0x3L): fragment
         flag 3 (0x4L): key
-        flag 4 (0x5L): item.state
-        flag 5 (0x6L): null
+        flag 4 (0x5L): item.quicReadyBadge
+        flag 5 (0x6L): item.state
+        flag 6 (0x7L): null
+        flag 7 (0x8L): item.quicReadyBadge ? View.VISIBLE : View.GONE
+        flag 8 (0x9L): item.quicReadyBadge ? View.VISIBLE : View.GONE
     flag mapping end*/
     //end
 }

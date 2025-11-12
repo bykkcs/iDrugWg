@@ -7,7 +7,7 @@ package pw.idrug.connections.widget
 import android.text.InputFilter
 import android.text.SpannableStringBuilder
 import android.text.Spanned
-import pw.idrug.connections.backend.Tunnel
+import org.amnezia.awg.backend.Tunnel
 
 /**
  * InputFilter for entering iDrugConnections configuration names (Linux interface names).

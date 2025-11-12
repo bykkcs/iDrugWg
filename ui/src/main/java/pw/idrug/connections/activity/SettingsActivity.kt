@@ -4,17 +4,20 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
 import pw.idrug.connections.Application
 import pw.idrug.connections.QuickTileService
 import pw.idrug.connections.R
-import pw.idrug.connections.backend.AwgQuickBackend
+import org.amnezia.awg.backend.AwgQuickBackend
 import pw.idrug.connections.preference.PreferencesPreferenceDataStore
 import pw.idrug.connections.util.AdminKnobs
+import pw.idrug.connections.util.UsageAccessUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -91,6 +94,19 @@ class SettingsActivity : AppCompatActivity() {
                 }
             } else {
                 kernelModuleEnabler?.parent?.removePreference(kernelModuleEnabler)
+            }
+
+            preferenceManager.findPreference<SwitchPreferenceCompat>("live_usage_chip")?.apply {
+                setOnPreferenceChangeListener { _, newValue ->
+                    val enabled = newValue as Boolean
+                    if (enabled && !UsageAccessUtils.hasUsageAccess(requireContext())) {
+                        UsageAccessUtils.openUsageAccessSettings(requireContext())
+                        Toast.makeText(requireContext(), R.string.usage_access_request, Toast.LENGTH_LONG).show()
+                        false
+                    } else {
+                        true
+                    }
+                }
             }
 
             preferenceManager.findPreference<Preference>("ota_update")?.setOnPreferenceClickListener {

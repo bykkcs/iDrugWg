@@ -59,6 +59,12 @@ object UserKnobs {
             it[ENABLE_NOTIFICATION] ?: false
         }
 
+    private val LIVE_USAGE_CHIP = booleanPreferencesKey("live_usage_chip")
+    val liveUsageChip: Flow<Boolean>
+        get() = Application.getPreferencesDataStore().data.map {
+            it[LIVE_USAGE_CHIP] ?: false
+        }
+
     private val RESTORE_ON_BOOT = booleanPreferencesKey("restore_on_boot")
     val restoreOnBoot: Flow<Boolean>
         get() = Application.getPreferencesDataStore().data.map {

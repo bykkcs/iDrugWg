@@ -18,25 +18,49 @@ import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.ServiceCompat
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import pw.idrug.connections.activity.MainActivity
-import pw.idrug.connections.backend.Tunnel
+import org.amnezia.awg.backend.Tunnel
+import org.amnezia.awg.config.Config
 import pw.idrug.connections.model.ObservableTunnel
 import pw.idrug.connections.model.TunnelManager
+import pw.idrug.connections.util.UsageAccessUtils
+import pw.idrug.connections.util.UserKnobs
 import pw.idrug.connections.util.applicationScope
+import pw.idrug.connections.viewmodel.ConfigProxy
+import pw.idrug.connections.viewmodel.InterfaceProxy
 import kotlin.math.abs
 
 class ConnectionStatusService : Service() {
 
     private var isUpdateActive = true
     private val lastTrafficSamples = mutableMapOf<String, TrafficSample>()
+    private val cachedConfigs = mutableMapOf<String, Config>()
+    private val appLabelCache = mutableMapOf<String, String>()
+    private val selectableAppsCache = mutableMapOf<String, Boolean>()
+    private var liveUsageChipEnabled = false
+    private var liveUsagePreferenceJob: Job? = null
+    private var statusJob: Job? = null
+    private var lastUsageStatus: UsageStatus? = null
+    private val reconfigInProgress = mutableSetOf<String>()
 
     private data class TrafficSample(
         val totalRx: Long,
         val totalTx: Long,
         val timestampMs: Long
     )
+
+    private data class UsageStatus(
+        val tunnelName: String,
+        val packageName: String,
+        val appLabel: String?,
+        val isRouted: Boolean
+    ) {
+        val displayName: String?
+            get() = appLabel?.takeUnless { it.isBlank() }
+    }
 
     private enum class Stage {
         CONNECTING,
@@ -58,21 +82,51 @@ class ConnectionStatusService : Service() {
             .setShowBadge(false)
             .build()
         NotificationManagerCompat.from(this).createNotificationChannel(channel)
+        liveUsagePreferenceJob = applicationScope.launch {
+            UserKnobs.liveUsageChip.collect { liveUsageChipEnabled = it }
+        }
     }
 
     override fun onDestroy() {
         showDisconnectingNotification()
         isUpdateActive = false
         lastTrafficSamples.clear()
+        cachedConfigs.clear()
+        liveUsagePreferenceJob?.cancel()
+        liveUsagePreferenceJob = null
+        statusJob?.cancel()
+        statusJob = null
         super.onDestroy()
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        when (intent?.action) {
+            ACTION_INCLUDE_APP -> {
+                val tunnelName = intent.getStringExtra(EXTRA_TUNNEL_NAME)
+                val packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME)
+                if (tunnelName != null && packageName != null) {
+                    applyUsagePreference(tunnelName, packageName, include = true)
+                }
+                return START_STICKY
+            }
+
+            ACTION_EXCLUDE_APP -> {
+                val tunnelName = intent.getStringExtra(EXTRA_TUNNEL_NAME)
+                val packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME)
+                if (tunnelName != null && packageName != null) {
+                    applyUsagePreference(tunnelName, packageName, include = false)
+                }
+                return START_STICKY
+            }
+        }
+
         startForeground()
-        applicationScope.launch {
-            while (isUpdateActive) {
-                updateConnectionStatus()
-                delay(STATUS_REFRESH_INTERVAL_MS)
+        if (statusJob?.isActive != true) {
+            statusJob = applicationScope.launch {
+                while (isUpdateActive) {
+                    updateConnectionStatus()
+                    delay(STATUS_REFRESH_INTERVAL_MS)
+                }
             }
         }
         return START_STICKY
@@ -94,11 +148,34 @@ class ConnectionStatusService : Service() {
         return PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
     }
 
+    private fun createUsageActionIntent(
+        action: String,
+        tunnelName: String,
+        packageName: String
+    ): PendingIntent {
+        val intent = Intent(this, ConnectionStatusService::class.java).apply {
+            this.action = action
+            putExtra(EXTRA_TUNNEL_NAME, tunnelName)
+            putExtra(EXTRA_PACKAGE_NAME, packageName)
+        }
+        val requestCode = (31 * action.hashCode() + packageName.hashCode()).and(0x7FFFFFFF)
+        return PendingIntent.getService(
+            this,
+            requestCode,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+    }
+
     private suspend fun updateConnectionStatus() {
         val manager = Application.getTunnelManager()
         val activeTunnels = manager.getTunnels().filter { it.state == Tunnel.State.UP }
-        val activeNames = activeTunnels.map { it.name }.toSet()
+        val activeNames = activeTunnels.map { it.name }.toMutableSet()
+        synchronized(reconfigInProgress) {
+            activeNames.addAll(reconfigInProgress)
+        }
         lastTrafficSamples.keys.retainAll(activeNames)
+        cachedConfigs.keys.retainAll(activeNames)
 
         val notification = when {
             activeTunnels.size == 1 -> {
@@ -113,18 +190,122 @@ class ConnectionStatusService : Service() {
         showNotification(notification)
     }
 
+    private fun applyUsagePreference(tunnelName: String, packageName: String, include: Boolean) {
+        if (!isSelectableApp(packageName)) {
+            Log.d(TAG, "applyUsagePreference: package=$packageName is not selectable, skipping")
+            return
+        }
+        applicationScope.launch {
+            val manager = Application.getTunnelManager()
+            val tunnel = manager.getTunnels()[tunnelName] ?: return@launch
+            val currentConfig = runCatching { tunnel.getConfigAsync() }.getOrNull() ?: return@launch
+            val proxy = ConfigProxy(currentConfig)
+            val changed = updateInterfaceRouting(proxy.`interface`, packageName, include)
+            Log.d(TAG, "applyUsagePreference: tunnel=$tunnelName pkg=$packageName include=$include changed=$changed")
+            if (!changed) {
+                updateLastUsageStatus(tunnelName, packageName, include)
+                updateConnectionStatus()
+                return@launch
+            }
+            val configsToApply = runCatching { proxy.buildConfigs() }.getOrNull() ?: return@launch
+            synchronized(reconfigInProgress) { reconfigInProgress.add(tunnelName) }
+            try {
+                reconfigureTunnel(tunnel, configsToApply)
+            } finally {
+                synchronized(reconfigInProgress) { reconfigInProgress.remove(tunnelName) }
+            }
+            cachedConfigs[tunnelName] = configsToApply.awg
+            updateLastUsageStatus(tunnelName, packageName, include)
+            Log.d(TAG, "applyUsagePreference: reconfigured tunnel=$tunnelName pkg=$packageName routed=$include")
+            updateConnectionStatus()
+        }
+    }
+
+    private fun updateLastUsageStatus(tunnelName: String, packageName: String, include: Boolean) {
+        lastUsageStatus = lastUsageStatus
+            ?.takeIf { it.tunnelName == tunnelName && it.packageName == packageName }
+            ?.copy(isRouted = include)
+            ?: lastUsageStatus
+    }
+
+    private fun updateInterfaceRouting(
+        iface: InterfaceProxy,
+        packageName: String,
+        include: Boolean
+    ): Boolean {
+        val includes = iface.includedApplications
+        val excludes = iface.excludedApplications
+        val includeMode = includes.isNotEmpty()
+        val excludeMode = excludes.isNotEmpty()
+
+        return when {
+            includeMode -> {
+                if (include) {
+                    if (includes.contains(packageName)) false else {
+                        includes.add(packageName)
+                        true
+                    }
+                } else {
+                    includes.remove(packageName)
+                }
+            }
+
+            excludeMode -> {
+                if (include) {
+                    excludes.remove(packageName)
+                } else {
+                    if (excludes.contains(packageName)) false else {
+                        excludes.add(packageName)
+                        true
+                    }
+                }
+            }
+
+            include -> false
+
+            else -> {
+                if (excludes.contains(packageName)) false else {
+                    excludes.add(packageName)
+                    true
+                }
+            }
+        }
+    }
+
+    private fun isSelectableApp(packageName: String): Boolean {
+        selectableAppsCache[packageName]?.let { return it }
+        val pm = packageManager
+        val hasLauncher = pm.getLaunchIntentForPackage(packageName) != null
+        val hasInternetPermission =
+            pm.checkPermission(Manifest.permission.INTERNET, packageName) == PackageManager.PERMISSION_GRANTED
+        return (hasLauncher && hasInternetPermission).also { selectableAppsCache[packageName] = it }
+    }
+
     private suspend fun createSingleTunnelNotification(
         tunnel: ObservableTunnel,
         manager: TunnelManager
     ): Notification {
-        val contentText = resolveSpeedText(tunnel, manager)
-            ?: getString(R.string.notification_text_connected_default)
+        val usageStatus = resolveUsageStatus(tunnel)
+        val pausedAppName = usageStatus?.displayName
+        val contentText = when {
+            usageStatus != null && !usageStatus.isRouted && !pausedAppName.isNullOrBlank() ->
+                getString(R.string.notification_text_paused, pausedAppName)
+            else -> resolveSpeedText(tunnel, manager)
+                ?: getString(R.string.notification_text_connected_default)
+        }
+        val statusChip = when {
+            usageStatus == null -> null
+            usageStatus.isRouted -> getString(R.string.notification_status_chip_online)
+            else -> getString(R.string.notification_status_chip_offline)
+        }
         return buildStatusNotification(
             stage = Stage.CONNECTED_SINGLE,
             title = getString(R.string.notification_title_connected_to, tunnel.name),
             contentText = contentText,
             includeDisconnectAction = true,
-            statusChipText = null
+            statusChipText = statusChip,
+            usageStatus = usageStatus,
+            tunnelName = tunnel.name
         )
     }
 
@@ -160,6 +341,7 @@ class ConnectionStatusService : Service() {
     }
 
     private fun createMultipleTunnelNotification(tunnels: List<ObservableTunnel>): Notification {
+        lastUsageStatus = null
         val chipText = getString(R.string.notification_status_chip_multiple, tunnels.size)
         return buildStatusNotification(
             stage = Stage.CONNECTED_MULTIPLE,
@@ -182,6 +364,8 @@ class ConnectionStatusService : Service() {
 
     private fun createDisconnectedNotification(): Notification {
         lastTrafficSamples.clear()
+        cachedConfigs.clear()
+        lastUsageStatus = null
         return buildStatusNotification(
             stage = Stage.DISCONNECTED,
             title = getString(R.string.notification_title_disconnected),
@@ -189,6 +373,54 @@ class ConnectionStatusService : Service() {
             includeDisconnectAction = false,
             statusChipText = getString(R.string.notification_status_chip_disconnected)
         )
+    }
+
+    private suspend fun resolveUsageStatus(tunnel: ObservableTunnel): UsageStatus? {
+        if (!liveUsageChipEnabled) {
+            lastUsageStatus = null
+            return null
+        }
+        if (!UsageAccessUtils.hasUsageAccess(this)) {
+            lastUsageStatus = null
+            return null
+        }
+        val config = cachedConfigs[tunnel.name] ?: run {
+            runCatching { tunnel.getConfigAsync() }.getOrNull()?.also { cachedConfigs[tunnel.name] = it }
+        } ?: return null
+        val iface = config.getInterface()
+        val includes = iface.includedApplications
+        val excludes = iface.excludedApplications
+        if (includes.isEmpty() && excludes.isEmpty()) {
+            lastUsageStatus = null
+            return null
+        }
+        val foregroundPackage = UsageAccessUtils.getForegroundPackage(this)
+        if (foregroundPackage.isNullOrEmpty()) {
+            lastUsageStatus = null
+            return null
+        }
+        if (!isSelectableApp(foregroundPackage)) {
+            lastUsageStatus = null
+            return null
+        }
+        val appLabel = resolveAppLabel(foregroundPackage)
+        if (appLabel.isNullOrBlank()) {
+            lastUsageStatus = null
+            return null
+        }
+        val isRouted = when {
+            includes.isNotEmpty() -> includes.contains(foregroundPackage)
+            excludes.isNotEmpty() -> !excludes.contains(foregroundPackage)
+            else -> true
+        }
+        val usageStatus = UsageStatus(
+            tunnelName = tunnel.name,
+            packageName = foregroundPackage,
+            appLabel = appLabel,
+            isRouted = isRouted
+        )
+        lastUsageStatus = usageStatus
+        return usageStatus
     }
 
     private fun showDisconnectingNotification() {
@@ -222,7 +454,9 @@ class ConnectionStatusService : Service() {
         contentText: CharSequence?,
         includeDisconnectAction: Boolean,
         statusChipText: CharSequence?,
-        timeoutAfterMs: Long? = null
+        timeoutAfterMs: Long? = null,
+        usageStatus: UsageStatus? = null,
+        tunnelName: String? = null
     ): Notification {
         val builder = NotificationCompat.Builder(this, CONNECTION_STATUS_NOTIFICATION_CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_icon_notification)
@@ -259,6 +493,26 @@ class ConnectionStatusService : Service() {
             )
         }
 
+        if (usageStatus != null && tunnelName != null) {
+            val actionLabel = if (usageStatus.isRouted) {
+                R.string.notification_action_exclude_app
+            } else {
+                R.string.notification_action_include_app
+            }
+            val actionIntent = createUsageActionIntent(
+                if (usageStatus.isRouted) ACTION_EXCLUDE_APP else ACTION_INCLUDE_APP,
+                tunnelName,
+                usageStatus.packageName
+            )
+            builder.addAction(
+                NotificationCompat.Action.Builder(
+                    null,
+                    getString(actionLabel),
+                    actionIntent
+                ).build()
+            )
+        }
+
         timeoutAfterMs?.let(builder::setTimeoutAfter)
 
         return builder.build()
@@ -282,6 +536,21 @@ class ConnectionStatusService : Service() {
         }
     }
 
+    private fun resolveAppLabel(packageName: String): String? {
+        appLabelCache[packageName]?.let { return it }
+        return runCatching {
+            val pm = packageManager
+            val appInfo = pm.getApplicationInfo(packageName, 0)
+            pm.getApplicationLabel(appInfo).toString().also { appLabelCache[packageName] = it }
+        }.getOrNull()
+    }
+
+    private suspend fun reconfigureTunnel(
+        tunnel: ObservableTunnel,
+        configs: ConfigProxy.BuiltConfigs
+    ) {
+        runCatching { tunnel.setConfigAsync(configs) }.getOrNull()
+    }
 
     private fun formatRate(bytesPerSecond: Double): String {
         val magnitude = abs(bytesPerSecond)
@@ -325,6 +594,12 @@ class ConnectionStatusService : Service() {
         private const val FOREGROUND_NOTIFICATION_ID = 1
         private const val ACTION_SET_ALL_TUNNELS_DOWN =
             "pw.idrug.connections.action.SET_ALL_TUNNELS_DOWN"
+        private const val ACTION_INCLUDE_APP =
+            "pw.idrug.connections.action.INCLUDE_APP"
+        private const val ACTION_EXCLUDE_APP =
+            "pw.idrug.connections.action.EXCLUDE_APP"
+        private const val EXTRA_TUNNEL_NAME = "extra_tunnel_name"
+        private const val EXTRA_PACKAGE_NAME = "extra_package_name"
         private const val STATUS_REFRESH_INTERVAL_MS = 1_000L
         private const val DISCONNECTING_TIMEOUT_MS = 500L
         private const val MAX_STATUS_CHIP_CHARS = 7

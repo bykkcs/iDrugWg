@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package pw.idrug.connections.config;
+package org.amnezia.awg.config;
 
-import pw.idrug.connections.config.BadConfigException.Location;
-import pw.idrug.connections.config.BadConfigException.Reason;
-import pw.idrug.connections.config.BadConfigException.Section;
-import pw.idrug.connections.util.NonNullForAll;
+import org.amnezia.awg.config.BadConfigException.Location;
+import org.amnezia.awg.config.BadConfigException.Reason;
+import org.amnezia.awg.config.BadConfigException.Section;
+import org.amnezia.awg.util.NonNullForAll;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,11 +32,13 @@ import androidx.annotation.Nullable;
 public final class Config {
     private final Interface interfaze;
     private final List<Peer> peers;
+    @Nullable private final String amQuick;
 
     private Config(final Builder builder) {
         interfaze = Objects.requireNonNull(builder.interfaze, "An [Interface] section is required");
         // Defensively copy to ensure immutability even if the Builder is reused.
         peers = Collections.unmodifiableList(new ArrayList<>(builder.peers));
+        amQuick = builder.amQuick;
     }
 
     /**
@@ -44,7 +46,7 @@ public final class Config {
      * {@link BadConfigException} if the input is not well-formed or contains data that cannot
      * be parsed.
      *
-     * @param stream a stream of UTF-8 text that is interpreted as an iDrugConnections configuration
+     * @param stream a stream of UTF-8 text that is interpreted as an AmneziaWG configuration
      * @return a {@code Config} instance representing the supplied configuration
      */
     public static Config parse(final InputStream stream)
@@ -57,7 +59,7 @@ public final class Config {
      * {@link BadConfigException} if the input is not well-formed or contains data that cannot
      * be parsed.
      *
-     * @param reader a BufferedReader of UTF-8 text that is interpreted as an iDrugConnections configuration
+     * @param reader a BufferedReader of UTF-8 text that is interpreted as an AmneziaWG configuration
      * @return a {@code Config} instance representing the supplied configuration
      */
     public static Config parse(final BufferedReader reader)
@@ -129,6 +131,11 @@ public final class Config {
         return interfaze;
     }
 
+    @Nullable
+    public String getAmQuick() {
+        return amQuick;
+    }
+
     /**
      * Returns a list of the configuration's peer sections.
      *
@@ -161,15 +168,31 @@ public final class Config {
      * @return the {@code Config} represented as one [Interface] and zero or more [Peer] sections
      */
     public String toAwgQuickString() {
+        return toAwgQuickString(true, true);
+    }
+
+    public String toAwgQuickString(final boolean includePrivateKeyMaterial, final boolean includePeers) {
+        if (amQuick != null && includePrivateKeyMaterial) {
+            final StringBuilder sb = new StringBuilder(amQuick);
+            if (!amQuick.endsWith("\n"))
+                sb.append('\n');
+            if (includePeers) {
+                for (final Peer peer : peers)
+                    sb.append("\n[Peer]\n").append(peer.toAwgQuickString(includePrivateKeyMaterial));
+            }
+            return sb.toString();
+        }
         final StringBuilder sb = new StringBuilder();
-        sb.append("[Interface]\n").append(interfaze.toAwgQuickString());
-        for (final Peer peer : peers)
-            sb.append("\n[Peer]\n").append(peer.toAwgQuickString());
+        sb.append("[Interface]\n").append(interfaze.toAwgQuickString(includePrivateKeyMaterial));
+        if (includePeers) {
+            for (final Peer peer : peers)
+                sb.append("\n[Peer]\n").append(peer.toAwgQuickString(includePrivateKeyMaterial));
+        }
         return sb.toString();
     }
 
     /**
-     * Serializes the {@code Config} for use with the iDrugConnections cross-platform userspace API.
+     * Serializes the {@code Config} for use with the AmneziaWG cross-platform userspace API.
      *
      * @return the {@code Config} represented as a series of "key=value" lines
      */
@@ -188,6 +211,7 @@ public final class Config {
         private final ArrayList<Peer> peers = new ArrayList<>();
         // No default; must be provided before building.
         @Nullable private Interface interfaze;
+        @Nullable private String amQuick;
 
         public Builder addPeer(final Peer peer) {
             peers.add(peer);
@@ -217,6 +241,11 @@ public final class Config {
 
         public Builder setInterface(final Interface interfaze) {
             this.interfaze = interfaze;
+            return this;
+        }
+
+        public Builder setAmQuick(@Nullable final String amQuick) {
+            this.amQuick = amQuick;
             return this;
         }
     }

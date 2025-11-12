@@ -3,19 +3,19 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package pw.idrug.connections.backend;
+package org.amnezia.awg.backend;
 
 import android.content.Context;
 import android.util.Log;
 import android.util.Pair;
 
-import pw.idrug.connections.backend.BackendException.Reason;
-import pw.idrug.connections.backend.Tunnel.State;
-import pw.idrug.connections.util.RootShell;
-import pw.idrug.connections.util.ToolsInstaller;
-import pw.idrug.connections.config.Config;
-import pw.idrug.connections.crypto.Key;
-import pw.idrug.connections.util.NonNullForAll;
+import org.amnezia.awg.backend.BackendException.Reason;
+import org.amnezia.awg.backend.Tunnel.State;
+import org.amnezia.awg.util.RootShell;
+import org.amnezia.awg.util.ToolsInstaller;
+import org.amnezia.awg.config.Config;
+import org.amnezia.awg.crypto.Key;
+import org.amnezia.awg.util.NonNullForAll;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -35,12 +35,12 @@ import androidx.annotation.Nullable;
 
 /**
  * Implementation of {@link Backend} that uses the kernel module and {@code awg-quick} to provide
- * iDrugConnections tunnels.
+ * AmneziaWG tunnels.
  */
 
 @NonNullForAll
 public final class AwgQuickBackend implements Backend {
-    private static final String TAG = "iDrugConnections/AwgQuickBackend";
+    private static final String TAG = "AmneziaWG/AwgQuickBackend";
     private final File localTemporaryDir;
     private final RootShell rootShell;
     private final Map<Tunnel, Config> runningConfigs = new HashMap<>();

@@ -14,7 +14,9 @@ import pw.idrug.connections.Application
 import pw.idrug.connections.R
 import pw.idrug.connections.fragment.ConfigNamingDialogFragment
 import pw.idrug.connections.model.ObservableTunnel
-import pw.idrug.connections.config.Config
+import pw.idrug.connections.util.ErrorMessages
+import pw.idrug.connections.viewmodel.ConfigProxy
+import org.amnezia.awg.config.Config
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -64,29 +66,32 @@ object TunnelImporter {
                         name = entry.name
                         idx = name.lastIndexOf('/')
                         if (idx >= 0) {
-                            if (idx >= name.length - 1) {
-                                continue
-                            }
+                            if (idx >= name.length - 1) continue
                             name = name.substring(name.lastIndexOf('/') + 1)
                         }
-                        if (name.lowercase().endsWith(".conf")) {
-                            name = name.substring(0, name.length - ".conf".length)
-                        } else {
+                        if (!name.lowercase().endsWith(".conf"))
                             continue
-                        }
-                        try {
+                        name = name.substring(0, name.length - ".conf".length)
+                        val parsed = try {
                             Config.parse(reader)
                         } catch (e: Throwable) {
                             throwables.add(e)
                             null
-                        }?.let {
+                        }
+                        parsed?.let { config ->
                             val nameCopy = name
-                            futureTunnels.add(async(SupervisorJob()) { Application.getTunnelManager().create(nameCopy, it) })
+                            futureTunnels.add(async(SupervisorJob()) {
+                                val built = ConfigProxy(config).buildConfigs()
+                                Application.getTunnelManager().create(nameCopy, built)
+                            })
                         }
                     }
                 }
             } else {
-                futureTunnels.add(async(SupervisorJob()) { Application.getTunnelManager().create(name, Config.parse(contentResolver.openInputStream(uri)!!)) })
+                futureTunnels.add(async(SupervisorJob()) {
+                    val config = Config.parse(contentResolver.openInputStream(uri)!!)
+                    Application.getTunnelManager().create(name, ConfigProxy(config).buildConfigs())
+                })
             }
 
             if (futureTunnels.isEmpty()) {

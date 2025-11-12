@@ -9,14 +9,14 @@ import android.os.Bundle
 import android.service.quicksettings.TileService
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.lifecycleScope
 import pw.idrug.connections.Application
 import pw.idrug.connections.QuickTileService
 import pw.idrug.connections.R
-import pw.idrug.connections.backend.GoBackend
-import pw.idrug.connections.backend.Tunnel
+import org.amnezia.awg.backend.GoBackend
+import org.amnezia.awg.backend.Tunnel
 import pw.idrug.connections.util.ErrorMessages
 import kotlinx.coroutines.launch
 

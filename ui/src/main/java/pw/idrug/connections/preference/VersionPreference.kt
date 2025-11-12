@@ -13,9 +13,9 @@ import androidx.preference.Preference
 import pw.idrug.connections.Application
 import pw.idrug.connections.BuildConfig
 import pw.idrug.connections.R
-import pw.idrug.connections.backend.Backend
-import pw.idrug.connections.backend.GoBackend
-import pw.idrug.connections.backend.AwgQuickBackend
+import org.amnezia.awg.backend.Backend
+import org.amnezia.awg.backend.GoBackend
+import org.amnezia.awg.backend.AwgQuickBackend
 import pw.idrug.connections.util.ErrorMessages
 import pw.idrug.connections.util.lifecycleScope
 import kotlinx.coroutines.Dispatchers

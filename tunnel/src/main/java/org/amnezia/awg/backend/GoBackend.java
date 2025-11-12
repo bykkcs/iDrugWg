@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package pw.idrug.connections.backend;
+package org.amnezia.awg.backend;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,16 +12,16 @@ import android.os.ParcelFileDescriptor;
 import android.system.OsConstants;
 import android.util.Log;
 
-import pw.idrug.connections.backend.BackendException.Reason;
-import pw.idrug.connections.backend.Tunnel.State;
-import pw.idrug.connections.util.SharedLibraryLoader;
-import pw.idrug.connections.config.Config;
-import pw.idrug.connections.config.InetEndpoint;
-import pw.idrug.connections.config.InetNetwork;
-import pw.idrug.connections.config.Peer;
-import pw.idrug.connections.crypto.Key;
-import pw.idrug.connections.crypto.KeyFormatException;
-import pw.idrug.connections.util.NonNullForAll;
+import org.amnezia.awg.backend.BackendException.Reason;
+import org.amnezia.awg.backend.Tunnel.State;
+import org.amnezia.awg.util.SharedLibraryLoader;
+import org.amnezia.awg.config.Config;
+import org.amnezia.awg.config.InetEndpoint;
+import org.amnezia.awg.config.InetNetwork;
+import org.amnezia.awg.config.Peer;
+import org.amnezia.awg.crypto.Key;
+import org.amnezia.awg.crypto.KeyFormatException;
+import org.amnezia.awg.util.NonNullForAll;
 
 import java.net.InetAddress;
 import java.util.Collections;
@@ -39,12 +39,12 @@ import static org.amnezia.awg.GoBackend.*;
 
 /**
  * Implementation of {@link Backend} that uses the amneziawg-go userspace implementation to provide
- * iDrugConnections tunnels.
+ * AmneziaWG tunnels.
  */
 @NonNullForAll
 public final class GoBackend implements Backend {
     private static final int DNS_RESOLUTION_RETRIES = 10;
-    private static final String TAG = "iDrugConnections/GoBackend";
+    private static final String TAG = "AmneziaWG/GoBackend";
     @Nullable private static AlwaysOnCallback alwaysOnCallback;
     private static GhettoCompletableFuture<VpnService> vpnService = new GhettoCompletableFuture<>();
     private final Context context;

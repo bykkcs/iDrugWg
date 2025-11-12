@@ -1,1 +1,1 @@
-/home/bykk/iDrugWgtest/iDrugWg-master/tunnel/tools/CMakeLists.txt
+/home/bykk/amneziawg-android/tunnel/tools/CMakeLists.txt

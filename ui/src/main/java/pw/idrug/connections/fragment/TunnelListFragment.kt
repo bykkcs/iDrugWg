@@ -301,15 +301,15 @@ class TunnelListFragment : BaseFragment() {
                 } else {
                     proxy.`interface`.includedApplications.addAll(apps)
                 }
-                val newConfig = try {
-                    proxy.resolve()
+                val newConfigs = try {
+                    proxy.buildConfigs()
                 } catch (e: Throwable) {
                     showSnackbar(ErrorMessages[e])
                     return@setFragmentResultListener
                 }
                 lifecycleScope.launch {
                     try {
-                        tunnel.setConfigAsync(newConfig)
+                        tunnel.setConfigAsync(newConfigs)
                     } catch (e: Throwable) {
                         showSnackbar(ErrorMessages[e])
                     }
