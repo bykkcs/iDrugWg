@@ -11,8 +11,8 @@
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 12,
-      "versionName": "1.6",
+      "versionCode": 15,
+      "versionName": "2.0",
       "outputFile": "ui-release-unsigned.apk"
     }
   ],

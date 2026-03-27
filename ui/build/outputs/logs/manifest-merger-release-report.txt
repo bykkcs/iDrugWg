@@ -1,64 +1,62 @@
 -- Merging decision tree log ---
 permission#pw.idrug.connections.permission.CONTROL_TUNNELS
-INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:37:5-42:47
+INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:34:5-39:47
 	android:label
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:41:9-49
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:38:9-49
 	android:protectionLevel
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:42:9-44
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:39:9-44
 	android:icon
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:40:9-43
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:37:9-43
 	android:description
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:39:9-61
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:36:9-61
 	android:name
-		INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:38:9-67
+		INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:35:9-67
 provider#androidx.core.content.FileProvider
-INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:94:9-102:12
+INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:92:9-100:12
 	android:grantUriPermissions
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:98:5-39
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:96:5-39
 	android:authorities
-		INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:96:5-52
+		INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:94:5-52
 	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:97:5-29
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:95:5-29
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:95:5-54
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:93:5-54
 provider#pw.idrug.connections.activity.LogViewerActivity$ExportedLogContentProvider
-INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:150:9-154:50
+INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:134:9-138:50
 	android:grantUriPermissions
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:154:13-47
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:138:13-47
 	android:authorities
-		INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:152:13-64
+		INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:136:13-64
 	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:153:13-37
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:137:13-37
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:151:13-82
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:135:13-82
 receiver#pw.idrug.connections.model.TunnelManager$IntentReceiver
-INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:165:9-174:20
+INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:149:9-158:20
 	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:167:13-36
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:151:13-36
 	android:permission
-		INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:168:13-77
+		INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:152:13-77
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:166:13-63
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:150:13-63
 manifest
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:2:1-252:12
-INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:2:1-252:12
-INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:2:1-252:12
-INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:2:1-252:12
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:2:1-236:12
+INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:2:1-236:12
+INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:2:1-236:12
+INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:2:1-236:12
 MERGED from [androidx.databinding:databinding-adapters:8.9.1] /home/bykk/.gradle/caches/8.13/transforms/8c1cbe94fbec14a26eb14962476d02e1/transformed/databinding-adapters-8.9.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-ktx:8.9.1] /home/bykk/.gradle/caches/8.13/transforms/0a4005ef4c463bcb57be102dc72b6ee2/transformed/databinding-ktx-8.9.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-runtime:8.9.1] /home/bykk/.gradle/caches/8.13/transforms/3955e51424424c08a1957e1df0b5c40c/transformed/databinding-runtime-8.9.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:viewbinding:8.9.1] /home/bykk/.gradle/caches/8.13/transforms/1d85f38b5aa275190c649887160c7824/transformed/viewbinding-8.9.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.preference:preference-ktx:1.2.1] /home/bykk/.gradle/caches/8.13/transforms/a4907f90e6d5a6fee57b902de6858198/transformed/preference-ktx-1.2.1/AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.android.material:material:1.12.0] /home/bykk/.gradle/caches/8.13/transforms/a298f67c85a00545661e2dcfa54fd38e/transformed/material-1.12.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/8.13/transforms/363f01641a33bd99d6684eeb05d8be02/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/06e028b5a87240b27e65abb22be7ba83/transformed/biometric-1.1.0/AndroidManifest.xml:17:1-29:12
-MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /home/bykk/.gradle/caches/8.13/transforms/3feee6d5fab00240fdc7923afed9eb20/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.preference:preference:1.2.1] /home/bykk/.gradle/caches/8.13/transforms/090605ea81cb6cb05719e81c36d31747/transformed/preference-1.2.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.appcompat:appcompat:1.6.1] /home/bykk/.gradle/caches/8.13/transforms/73ed5a963feab88417b2a6878d1fcc41/transformed/appcompat-1.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.zaneschepke:amneziawg-android:2.3.4] /home/bykk/.gradle/caches/8.13/transforms/8c5b9b4118085171e81c3f0fbf1e9dbb/transformed/amneziawg-android-2.3.4/AndroidManifest.xml:6:1-24:12
+MERGED from [com.zaneschepke:hevtunnel:1.0.1] /home/bykk/.gradle/caches/8.13/transforms/ce266d17d59208d41656ea04971c91dc/transformed/hevtunnel-1.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.material:material:1.12.0] /home/bykk/.gradle/caches/8.13/transforms/a298f67c85a00545661e2dcfa54fd38e/transformed/material-1.12.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/1558544271be135cedd9d77cff0c2e4a/transformed/viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/8.13/transforms/2c955696ead0ac43dce581dc3f97c596/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:17:1-66:12
 MERGED from [com.google.firebase:firebase-analytics:21.5.1] /home/bykk/.gradle/caches/8.13/transforms/a59c62fa3ab7946ef32a1131eea30b72/transformed/firebase-analytics-21.5.1/AndroidManifest.xml:2:1-9:12
@@ -78,8 +76,8 @@ MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] /home/b
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:21.5.1] /home/bykk/.gradle/caches/8.13/transforms/6a9a7e9c0f10aa51c3a7c93fdfaf8622/transformed/play-services-measurement-sdk-api-21.5.1/AndroidManifest.xml:17:1-30:12
 MERGED from [com.google.android.gms:play-services-measurement-base:21.5.1] /home/bykk/.gradle/caches/8.13/transforms/ae5377469bc75534477a6c7a08a716ef/transformed/play-services-measurement-base-21.5.1/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-installations-interop:17.1.1] /home/bykk/.gradle/caches/8.13/transforms/e38e9e9f45496396794283998d5acc98/transformed/firebase-installations-interop-17.1.1/AndroidManifest.xml:15:1-19:12
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/776d003bd6d9afd66dec0648709ac466/transformed/coordinatorlayout-1.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.activity:activity:1.9.3] /home/bykk/.gradle/caches/8.13/transforms/0e1ff535061ba1aee1630bca0cb49638/transformed/activity-1.9.3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.datastore:datastore-preferences:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/e2eb3c7dc387b373fa38dda7e2cb404d/transformed/datastore-preferences-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.datastore:datastore:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/a28a9849032b9ca9fa5709fb8c8631e9/transformed/datastore-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.compose.material3:material3-android:1.3.1] /home/bykk/.gradle/caches/8.13/transforms/2f7e54dad46d5f7ac65e0f63af8d108b/transformed/material3-release/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.compose.animation:animation-core-android:1.7.6] /home/bykk/.gradle/caches/8.13/transforms/102d5c4de66021d26e196ab27e7d78f8/transformed/animation-core-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.material:material-ripple-android:1.7.6] /home/bykk/.gradle/caches/8.13/transforms/98acb1a7f97cc5c684cbb63bcaee7e4d/transformed/material-ripple-release/AndroidManifest.xml:2:1-7:12
@@ -95,44 +93,48 @@ MERGED from [androidx.compose.material:material-icons-core-android:1.7.6] /home/
 MERGED from [androidx.compose.ui:ui-android:1.7.6] /home/bykk/.gradle/caches/8.13/transforms/ba4340ea4b8d7ebe794d99c647835cab/transformed/ui-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.work:work-runtime-ktx:2.9.1] /home/bykk/.gradle/caches/8.13/transforms/373f3f5e6789ab4a1c0699644ec688c8/transformed/work-runtime-ktx-2.9.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.work:work-runtime:2.9.1] /home/bykk/.gradle/caches/8.13/transforms/6e04f0fd93dfb7b601db6db504ce1e0e/transformed/work-runtime-2.9.1/AndroidManifest.xml:17:1-145:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/8.13/transforms/363f01641a33bd99d6684eeb05d8be02/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.preference:preference:1.2.1] /home/bykk/.gradle/caches/8.13/transforms/090605ea81cb6cb05719e81c36d31747/transformed/preference-1.2.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.7.1] /home/bykk/.gradle/caches/8.13/transforms/1547788e6d6e846c32d7031dd62aca8c/transformed/appcompat-resources-1.7.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat:1.7.1] /home/bykk/.gradle/caches/8.13/transforms/66c6df8c5112bf992f14e3270bcc29b3/transformed/appcompat-1.7.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity:1.9.3] /home/bykk/.gradle/caches/8.13/transforms/0e1ff535061ba1aee1630bca0cb49638/transformed/activity-1.9.3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/776d003bd6d9afd66dec0648709ac466/transformed/coordinatorlayout-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/0b8454d78a1fbed9d55f305d11c33a9c/transformed/swiperefreshlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/8e583578514df6a923902cecb953e361/transformed/drawerlayout-1.1.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/0b3973c3334637007f7e5f77a392c636/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.transition:transition:1.5.0] /home/bykk/.gradle/caches/8.13/transforms/2d9f4b465c0953c827813169dad4cebe/transformed/transition-1.5.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/cd9d50638f38f04f6124dcb17a3fd94f/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/cefaeb319408f69bd06746b724fd191c/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/8523a3f6ab1e6529b0f5d095afe99072/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/4a49d1c9083165104efb650c02db3cc4/transformed/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/a5846064b8f4d77228824f5a0f87af33/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.privacysandbox.ads:ads-adservices-java:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/d3d2772caf5eb2c48c636767fb484a60/transformed/ads-adservices-java-1.0.0-beta05/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/85b043510e1b4a61f4454369aed229b5/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.core:core-ktx:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/3c1afffabc6a6b26dbc37496d03ee691/transformed/core-ktx-1.17.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/245a99ba6cf73fcf509696d536416dbb/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/f086831cbd2b9ab56ade1196743ff658/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/41e1d3d422289e7fe649dc722483918f/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/6a05cd453ac8d941b943222f72fa0090/transformed/customview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/19e4062173d2808c28f657c87c039a5d/transformed/emoji2-views-helper-1.3.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.autofill:autofill:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/1a5c2b30379b891d2de44969a8cc06c6/transformed/autofill-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/28262af804ebc1add1680c788fe6c448/transformed/window-1.0.0/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.graphics:graphics-path:1.0.1] /home/bykk/.gradle/caches/8.13/transforms/60d9d5f378c243d09efe752e4cacb22d/transformed/graphics-path-1.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:17:1-30:12
 MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /home/bykk/.gradle/caches/8.13/transforms/3335371337106315effe52fb5e131f14/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.savedstate:savedstate:1.2.1] /home/bykk/.gradle/caches/8.13/transforms/948d169b2a7ec5661f79893241e222d4/transformed/savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/c2e4a0b6105b95ef07a75feffa909155/transformed/lifecycle-runtime-ktx-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/4a49faaaf43ea68ce868f00ba043cc13/transformed/lifecycle-viewmodel-2.8.6/AndroidManifest.xml:2:1-5:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/b8d53f92e0bc722cc8fbebb2acdb5a78/transformed/lifecycle-viewmodel-release/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/2e0368a9510159725aa414e6d2c049ad/transformed/lifecycle-runtime-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/d2c11b1c819e5373ba29e0c9efcfb35f/transformed/lifecycle-viewmodel-savedstate-2.8.6/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/eb436bd26fc0c22d5c50d6d30b32e638/transformed/lifecycle-viewmodel-ktx-2.8.6/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.lifecycle:lifecycle-service:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/40fca72e4ee8d6055bbcf243022f9527/transformed/lifecycle-service-2.8.6/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/19e4062173d2808c28f657c87c039a5d/transformed/emoji2-views-helper-1.3.0/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:17:1-35:12
 MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/3d8d347df7a9293fb6cb648a2411729a/transformed/lifecycle-process-2.8.6/AndroidManifest.xml:17:1-35:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/31d314a2c963a16379f65297f65100c6/transformed/lifecycle-livedata-core-ktx-2.8.6/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/24525eb9c0737e63979e27c9fd169e57/transformed/lifecycle-livedata-core-2.8.6/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/064955024d2a2a9f3a6823dbf81e4d6f/transformed/lifecycle-livedata-2.8.6/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/c9e373627f1312edf598e2689829e0bc/transformed/lifecycle-runtime-compose-release/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/d2c11b1c819e5373ba29e0c9efcfb35f/transformed/lifecycle-viewmodel-savedstate-2.8.6/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/a5846064b8f4d77228824f5a0f87af33/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:17:1-23:12
-MERGED from [androidx.privacysandbox.ads:ads-adservices-java:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/d3d2772caf5eb2c48c636767fb484a60/transformed/ads-adservices-java-1.0.0-beta05/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/85b043510e1b4a61f4454369aed229b5/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:17:1-28:12
-MERGED from [androidx.core:core-ktx:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/d48234e23c796c14ab2a1dd42946d3cb/transformed/core-ktx-1.17.0-alpha01/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/0b8454d78a1fbed9d55f305d11c33a9c/transformed/swiperefreshlayout-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/8e583578514df6a923902cecb953e361/transformed/drawerlayout-1.1.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/cefaeb319408f69bd06746b724fd191c/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/8523a3f6ab1e6529b0f5d095afe99072/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/4a49d1c9083165104efb650c02db3cc4/transformed/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.viewpager:viewpager:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/41e1d3d422289e7fe649dc722483918f/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.customview:customview:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/6a05cd453ac8d941b943222f72fa0090/transformed/customview-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.autofill:autofill:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/1a5c2b30379b891d2de44969a8cc06c6/transformed/autofill-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/28262af804ebc1add1680c788fe6c448/transformed/window-1.0.0/AndroidManifest.xml:17:1-33:12
-MERGED from [androidx.graphics:graphics-path:1.0.1] /home/bykk/.gradle/caches/8.13/transforms/60d9d5f378c243d09efe752e4cacb22d/transformed/graphics-path-1.0.1/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:17:1-30:12
-MERGED from [androidx.datastore:datastore-preferences:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/e2eb3c7dc387b373fa38dda7e2cb404d/transformed/datastore-preferences-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.datastore:datastore:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/a28a9849032b9ca9fa5709fb8c8631e9/transformed/datastore-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.6] /home/bykk/.gradle/caches/8.13/transforms/2210916b363a6809887a5355d5f85742/transformed/runtime-saveable-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.runtime:runtime-android:1.7.6] /home/bykk/.gradle/caches/8.13/transforms/ffb6a99314ed9f8d92bd73491f6073ec/transformed/runtime-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.room:room-ktx:2.5.0] /home/bykk/.gradle/caches/8.13/transforms/96e7b5f2e3fc59ce656d3d37fe45ec5e/transformed/room-ktx-2.5.0/AndroidManifest.xml:17:1-22:12
@@ -142,10 +144,8 @@ MERGED from [androidx.fragment:fragment:1.6.2] /home/bykk/.gradle/caches/8.13/tr
 MERGED from [androidx.fragment:fragment-ktx:1.6.2] /home/bykk/.gradle/caches/8.13/transforms/1c375736b9a1ce546d49609e45def43a/transformed/fragment-ktx-1.6.2/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.activity:activity-ktx:1.9.3] /home/bykk/.gradle/caches/8.13/transforms/0f8a8711799928fd7df6e62830e3a350/transformed/activity-ktx-1.9.3/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.activity:activity-compose:1.9.3] /home/bykk/.gradle/caches/8.13/transforms/fec1880291acb60bade240413fda247a/transformed/activity-compose-1.9.3/AndroidManifest.xml:2:1-7:12
-MERGED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:2:1-14:12
 MERGED from [androidx.room:room-runtime:2.5.0] /home/bykk/.gradle/caches/8.13/transforms/0a2db549704d2c3e475f6496f6dc2a1f/transformed/room-runtime-2.5.0/AndroidManifest.xml:17:1-31:12
-MERGED from [:tunnel] /home/bykk/idrug1.5/iDrugWg/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:6:1-22:12
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/3cd364396758ae7ca2e15ba8e73c8db9/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/78a49a0ee9c43b152710b74cb0936c27/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.cardview:cardview:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/ae228cc73329185aba409000277ee6a7/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/4a316226f89a88d0679b011d0aa0bbc9/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] /home/bykk/.gradle/caches/8.13/transforms/2f626843c1e94e7cc1fb6903fab04296/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:15:1-33:12
@@ -154,54 +154,57 @@ MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /home/byk
 MERGED from [com.google.android.datatransport:transport-api:3.1.0] /home/bykk/.gradle/caches/8.13/transforms/95a000847a25a28d71e5b2501c149a9c/transformed/transport-api-3.1.0/AndroidManifest.xml:15:1-20:12
 MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /home/bykk/.gradle/caches/8.13/transforms/cc5013efeeb865f6829abe970e8a7904/transformed/firebase-encoders-json-18.0.0/AndroidManifest.xml:15:1-23:12
 MERGED from [com.google.firebase:firebase-components:17.1.5] /home/bykk/.gradle/caches/8.13/transforms/72173d9c723157866e45f24acd0fff81/transformed/firebase-components-17.1.5/AndroidManifest.xml:15:1-20:12
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:2:1-14:12
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.0] /home/bykk/.gradle/caches/8.13/transforms/106f92f21a6258af99d79c7a6638a37f/transformed/okhttp-release/AndroidManifest.xml:2:1-22:12
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/bykk/.gradle/caches/8.13/transforms/c4331e8f3162ce80db7fc30fda966156/transformed/profileinstaller-1.3.1/AndroidManifest.xml:17:1-55:12
-MERGED from [androidx.startup:startup-runtime:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/31c882f602f03b8a1398c0bd192a6ba3/transformed/startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
-MERGED from [androidx.tracing:tracing:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/db7465fe8f4e4300da661e60df79c858/transformed/tracing-1.2.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/78a49a0ee9c43b152710b74cb0936c27/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.sqlite:sqlite-framework:2.3.0] /home/bykk/.gradle/caches/8.13/transforms/b17840e28eba27b0e775dd4f87e81da0/transformed/sqlite-framework-2.3.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.startup:startup-runtime:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/15f8f91382ac5208b515ac095c652855/transformed/startup-runtime-1.2.0/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/3cd364396758ae7ca2e15ba8e73c8db9/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/bykk/.gradle/caches/8.13/transforms/ec4262851e91b338d5605a0a112eef5e/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/d42d58e0d711ae5bff521524dab1ed53/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/64425bd622d430e348e3d698412cb4ab/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/18c676bd4751067bf7ade552161959f2/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.sqlite:sqlite:2.3.0] /home/bykk/.gradle/caches/8.13/transforms/02ca13789731cfaae890f6cb6e05fe83/transformed/sqlite-2.3.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.tracing:tracing:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/db7465fe8f4e4300da661e60df79c858/transformed/tracing-1.2.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.4.1] /home/bykk/.gradle/caches/8.13/transforms/83761ee5d1245e5c72604949ff6055b2/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.core:core-viewtree:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/8852d245a6881fd33a05cecba955c9d6/transformed/core-viewtree-1.0.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/8.13/transforms/c94d974208255412a1d18d3f1039472c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:17:1-56:12
+MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] /home/bykk/.gradle/caches/8.13/transforms/daa7db8a5444bfa26703afd8e83fc105/transformed/relinker-1.4.5/AndroidManifest.xml:2:1-7:12
 MERGED from [com.android.support:exifinterface:27.1.0] /home/bykk/.gradle/caches/8.13/transforms/1760844deb70df0102d26a8ec1e07056/transformed/exifinterface-27.1.0/AndroidManifest.xml:17:1-22:12
 	package
-		INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml
+		INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml
+		INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml
 	xmlns:tools
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:3:5-51
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml
+		INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:2:11-69
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:2:11-69
 	android:installLocation
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:4:5-43
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:4:5-43
 uses-permission#android.permission.REQUEST_INSTALL_PACKAGES
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:6:5-83
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:6:5-83
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:6:22-80
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:6:22-80
 uses-permission#android.permission.CAMERA
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:7:5-65
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:7:5-65
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/8.13/transforms/c94d974208255412a1d18d3f1039472c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:22:5-65
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/8.13/transforms/c94d974208255412a1d18d3f1039472c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:22:5-65
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:7:22-62
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:7:22-62
 uses-permission#android.permission.FOREGROUND_SERVICE
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:8:5-77
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:8:5-77
 MERGED from [androidx.work:work-runtime:2.9.1] /home/bykk/.gradle/caches/8.13/transforms/6e04f0fd93dfb7b601db6db504ce1e0e/transformed/work-runtime-2.9.1/AndroidManifest.xml:26:5-77
 MERGED from [androidx.work:work-runtime:2.9.1] /home/bykk/.gradle/caches/8.13/transforms/6e04f0fd93dfb7b601db6db504ce1e0e/transformed/work-runtime-2.9.1/AndroidManifest.xml:26:5-77
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:8:22-74
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:8:22-74
 uses-permission#android.permission.FOREGROUND_SERVICE_SPECIAL_USE
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:9:5-89
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:9:5-89
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:9:22-86
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:9:22-86
 uses-permission#android.permission.INTERNET
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:10:5-67
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:10:5-67
 MERGED from [com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/8.13/transforms/2a691b431549777fb89e2bde240ab376/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/8.13/transforms/2a691b431549777fb89e2bde240ab376/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/8.13/transforms/d33017f05ae4541bf93b3dea58f8be9b/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:22:5-67
@@ -216,75 +219,71 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:21.5.1] /h
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:21.5.1] /home/bykk/.gradle/caches/8.13/transforms/6a9a7e9c0f10aa51c3a7c93fdfaf8622/transformed/play-services-measurement-sdk-api-21.5.1/AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/8.13/transforms/fbfa601d1a997a07d2e4dc668a622c54/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:25:5-67
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/8.13/transforms/fbfa601d1a997a07d2e4dc668a622c54/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:25:5-67
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.0] /home/bykk/.gradle/caches/8.13/transforms/106f92f21a6258af99d79c7a6638a37f/transformed/okhttp-release/AndroidManifest.xml:8:5-67
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.0] /home/bykk/.gradle/caches/8.13/transforms/106f92f21a6258af99d79c7a6638a37f/transformed/okhttp-release/AndroidManifest.xml:8:5-67
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:10:22-64
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:10:22-64
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:11:5-81
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:11:5-81
 MERGED from [androidx.work:work-runtime:2.9.1] /home/bykk/.gradle/caches/8.13/transforms/6e04f0fd93dfb7b601db6db504ce1e0e/transformed/work-runtime-2.9.1/AndroidManifest.xml:25:5-81
 MERGED from [androidx.work:work-runtime:2.9.1] /home/bykk/.gradle/caches/8.13/transforms/6e04f0fd93dfb7b601db6db504ce1e0e/transformed/work-runtime-2.9.1/AndroidManifest.xml:25:5-81
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:11:22-78
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:11:22-78
 uses-permission#android.permission.POST_NOTIFICATIONS
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:12:5-77
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:12:5-77
 MERGED from [com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/8.13/transforms/2c955696ead0ac43dce581dc3f97c596/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:23:5-77
 MERGED from [com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/8.13/transforms/2c955696ead0ac43dce581dc3f97c596/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:23:5-77
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:12:22-74
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:12:22-74
 uses-permission#android.permission.POST_PROMOTED_NOTIFICATIONS
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:13:5-86
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:13:5-86
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:13:22-83
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:13:22-83
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:14:5-78
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:14:5-78
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:14:22-75
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:14:22-75
 uses-permission#android.permission.PACKAGE_USAGE_STATS
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:15:5-17:47
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:15:5-17:47
 	tools:ignore
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:17:9-44
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:17:9-44
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:16:9-62
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:16:9-62
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:19:5-22:40
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:19:5-22:40
 	android:maxSdkVersion
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:21:9-35
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:21:9-35
 	tools:ignore
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:22:9-37
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:22:9-37
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:20:9-65
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:20:9-65
 uses-feature#android.hardware.touchscreen
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:24:5-26:36
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:24:5-26:36
 	android:required
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:26:9-33
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:26:9-33
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:25:9-52
-uses-feature#android.software.leanback
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:27:5-29:36
-	android:required
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:29:9-33
-	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:28:9-49
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:25:9-52
 uses-feature#android.hardware.camera.any
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:30:5-32:36
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:27:5-29:36
 	android:required
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:32:9-33
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:29:9-33
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:31:9-51
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:28:9-51
 uses-feature#android.hardware.camera
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:33:5-35:36
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:30:5-32:36
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/8.13/transforms/c94d974208255412a1d18d3f1039472c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:25:5-27:36
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/8.13/transforms/c94d974208255412a1d18d3f1039472c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:25:5-27:36
 	android:required
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:35:9-33
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:32:9-33
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:34:9-47
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:31:9-47
 application
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:44:5-244:19
-INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:44:5-244:19
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:41:5-228:19
+INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:41:5-228:19
+MERGED from [com.zaneschepke:amneziawg-android:2.3.4] /home/bykk/.gradle/caches/8.13/transforms/8c5b9b4118085171e81c3f0fbf1e9dbb/transformed/amneziawg-android-2.3.4/AndroidManifest.xml:13:5-22:19
+MERGED from [com.zaneschepke:amneziawg-android:2.3.4] /home/bykk/.gradle/caches/8.13/transforms/8c5b9b4118085171e81c3f0fbf1e9dbb/transformed/amneziawg-android-2.3.4/AndroidManifest.xml:13:5-22:19
 MERGED from [com.google.android.material:material:1.12.0] /home/bykk/.gradle/caches/8.13/transforms/a298f67c85a00545661e2dcfa54fd38e/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] /home/bykk/.gradle/caches/8.13/transforms/a298f67c85a00545661e2dcfa54fd38e/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/8.13/transforms/363f01641a33bd99d6684eeb05d8be02/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/8.13/transforms/363f01641a33bd99d6684eeb05d8be02/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
 MERGED from [com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/8.13/transforms/2c955696ead0ac43dce581dc3f97c596/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:28:5-64:19
 MERGED from [com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/8.13/transforms/2c955696ead0ac43dce581dc3f97c596/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:28:5-64:19
 MERGED from [com.google.firebase:firebase-analytics:21.5.1] /home/bykk/.gradle/caches/8.13/transforms/a59c62fa3ab7946ef32a1131eea30b72/transformed/firebase-analytics-21.5.1/AndroidManifest.xml:7:5-20
@@ -317,174 +316,158 @@ MERGED from [com.google.android.gms:play-services-measurement-base:21.5.1] /home
 MERGED from [com.google.android.gms:play-services-measurement-base:21.5.1] /home/bykk/.gradle/caches/8.13/transforms/ae5377469bc75534477a6c7a08a716ef/transformed/play-services-measurement-base-21.5.1/AndroidManifest.xml:7:5-20
 MERGED from [androidx.work:work-runtime:2.9.1] /home/bykk/.gradle/caches/8.13/transforms/6e04f0fd93dfb7b601db6db504ce1e0e/transformed/work-runtime-2.9.1/AndroidManifest.xml:28:5-143:19
 MERGED from [androidx.work:work-runtime:2.9.1] /home/bykk/.gradle/caches/8.13/transforms/6e04f0fd93dfb7b601db6db504ce1e0e/transformed/work-runtime-2.9.1/AndroidManifest.xml:28:5-143:19
-MERGED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:23:5-33:19
-MERGED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:23:5-33:19
-MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/3d8d347df7a9293fb6cb648a2411729a/transformed/lifecycle-process-2.8.6/AndroidManifest.xml:23:5-33:19
-MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/3d8d347df7a9293fb6cb648a2411729a/transformed/lifecycle-process-2.8.6/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/8.13/transforms/363f01641a33bd99d6684eeb05d8be02/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/8.13/transforms/363f01641a33bd99d6684eeb05d8be02/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
 MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/85b043510e1b4a61f4454369aed229b5/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/85b043510e1b4a61f4454369aed229b5/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/28262af804ebc1add1680c788fe6c448/transformed/window-1.0.0/AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/28262af804ebc1add1680c788fe6c448/transformed/window-1.0.0/AndroidManifest.xml:24:5-31:19
-MERGED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:28:5-89
-MERGED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/3d8d347df7a9293fb6cb648a2411729a/transformed/lifecycle-process-2.8.6/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/3d8d347df7a9293fb6cb648a2411729a/transformed/lifecycle-process-2.8.6/AndroidManifest.xml:23:5-33:19
 MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /home/bykk/.gradle/caches/8.13/transforms/02df3f9de491b112dca736f3798f40be/transformed/play-services-tasks-18.0.2/AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /home/bykk/.gradle/caches/8.13/transforms/02df3f9de491b112dca736f3798f40be/transformed/play-services-tasks-18.0.2/AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-basement:18.1.0] /home/bykk/.gradle/caches/8.13/transforms/788b78407de77f3e568fb6db3ff9d47a/transformed/play-services-basement-18.1.0/AndroidManifest.xml:20:5-24:19
 MERGED from [com.google.android.gms:play-services-basement:18.1.0] /home/bykk/.gradle/caches/8.13/transforms/788b78407de77f3e568fb6db3ff9d47a/transformed/play-services-basement-18.1.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:7:5-12:19
-MERGED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:7:5-12:19
 MERGED from [androidx.room:room-runtime:2.5.0] /home/bykk/.gradle/caches/8.13/transforms/0a2db549704d2c3e475f6496f6dc2a1f/transformed/room-runtime-2.5.0/AndroidManifest.xml:23:5-29:19
 MERGED from [androidx.room:room-runtime:2.5.0] /home/bykk/.gradle/caches/8.13/transforms/0a2db549704d2c3e475f6496f6dc2a1f/transformed/room-runtime-2.5.0/AndroidManifest.xml:23:5-29:19
-MERGED from [:tunnel] /home/bykk/idrug1.5/iDrugWg/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:11:5-20:19
-MERGED from [:tunnel] /home/bykk/idrug1.5/iDrugWg/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:11:5-20:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/78a49a0ee9c43b152710b74cb0936c27/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/78a49a0ee9c43b152710b74cb0936c27/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] /home/bykk/.gradle/caches/8.13/transforms/2f626843c1e94e7cc1fb6903fab04296/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:23:5-31:19
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] /home/bykk/.gradle/caches/8.13/transforms/2f626843c1e94e7cc1fb6903fab04296/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:23:5-31:19
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/8.13/transforms/fbfa601d1a997a07d2e4dc668a622c54/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:27:5-35:19
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /home/bykk/.gradle/caches/8.13/transforms/fbfa601d1a997a07d2e4dc668a622c54/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:27:5-35:19
 MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/8.13/transforms/7a612996bc6b64d9f9b79b8b759d1b64/transformed/transport-runtime-3.1.8/AndroidManifest.xml:25:5-39:19
 MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/8.13/transforms/7a612996bc6b64d9f9b79b8b759d1b64/transformed/transport-runtime-3.1.8/AndroidManifest.xml:25:5-39:19
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:7:5-12:19
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:7:5-12:19
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.0] /home/bykk/.gradle/caches/8.13/transforms/106f92f21a6258af99d79c7a6638a37f/transformed/okhttp-release/AndroidManifest.xml:10:5-20:19
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.0] /home/bykk/.gradle/caches/8.13/transforms/106f92f21a6258af99d79c7a6638a37f/transformed/okhttp-release/AndroidManifest.xml:10:5-20:19
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/bykk/.gradle/caches/8.13/transforms/c4331e8f3162ce80db7fc30fda966156/transformed/profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/bykk/.gradle/caches/8.13/transforms/c4331e8f3162ce80db7fc30fda966156/transformed/profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
-MERGED from [androidx.startup:startup-runtime:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/31c882f602f03b8a1398c0bd192a6ba3/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
-MERGED from [androidx.startup:startup-runtime:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/31c882f602f03b8a1398c0bd192a6ba3/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/78a49a0ee9c43b152710b74cb0936c27/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/78a49a0ee9c43b152710b74cb0936c27/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.startup:startup-runtime:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/15f8f91382ac5208b515ac095c652855/transformed/startup-runtime-1.2.0/AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.startup:startup-runtime:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/15f8f91382ac5208b515ac095c652855/transformed/startup-runtime-1.2.0/AndroidManifest.xml:23:5-29:19
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/8.13/transforms/c94d974208255412a1d18d3f1039472c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:46:5-54:19
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/8.13/transforms/c94d974208255412a1d18d3f1039472c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:46:5-54:19
 	android:extractNativeLibs
-		INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml
+		INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:28:18-86
+		ADDED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:52:9-35
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:49:9-35
 	android:label
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:50:9-41
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:47:9-41
 	android:roundIcon
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:51:9-54
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:48:9-54
 	android:icon
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:49:9-43
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:46:9-43
 	android:allowBackup
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:46:9-36
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:43:9-36
 	android:banner
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:47:9-40
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:44:9-40
 	android:theme
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:53:9-40
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:50:9-40
 	android:enableOnBackInvokedCallback
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:48:9-51
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:45:9-51
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:45:9-36
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:42:9-36
 activity#pw.idrug.connections.activity.TunnelToggleActivity
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:55:9-58:56
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:52:9-55:56
 	android:excludeFromRecents
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:57:13-46
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:54:13-46
 	android:theme
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:58:13-53
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:55:13-53
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:56:13-58
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:53:13-58
 activity#pw.idrug.connections.activity.OnboardingActivity
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:60:9-62:40
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:57:9-59:40
 	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:62:13-37
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:59:13-37
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:61:13-56
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:58:13-56
 activity#pw.idrug.connections.activity.SplashActivity
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:63:9-71:20
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:60:9-68:20
 	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:65:13-36
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:62:13-36
 	android:theme
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:66:13-53
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:63:13-53
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:64:13-52
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:61:13-52
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:67:13-70:29
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:64:13-67:29
 action#android.intent.action.MAIN
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:68:17-69
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:65:17-69
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:68:25-66
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:65:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:69:17-77
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:66:17-77
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:69:27-74
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:66:27-74
 activity#pw.idrug.connections.activity.MainActivity
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:73:9-92:20
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:70:9-90:20
 	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:75:13-36
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:72:13-36
+	android:theme
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:73:13-53
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:74:13-50
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:71:13-50
 intent-filter#action:name:android.service.quicksettings.action.QS_TILE_PREFERENCES
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:77:13-79:29
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:75:13-77:29
 action#android.service.quicksettings.action.QS_TILE_PREFERENCES
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:78:17-99
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:76:17-99
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:78:25-96
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:76:25-96
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:auth+data:scheme:idrug
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:80:13-85:17
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:78:13-83:17
 action#android.intent.action.VIEW
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:81:5-57
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:79:5-57
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:81:13-54
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:79:13-54
 category#android.intent.category.DEFAULT
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:82:5-64
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:80:5-64
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:82:15-61
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:80:15-61
 category#android.intent.category.BROWSABLE
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:83:5-66
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:81:5-66
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:83:15-63
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:81:15-63
 data
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:84:5-55
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:82:5-55
 	android:host
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:84:34-53
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:82:34-53
 	android:scheme
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:84:11-33
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:82:11-33
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:apps+data:scheme:idrug
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:86:13-91:29
-activity#pw.idrug.connections.activity.TvEntryActivity
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:105:9-113:20
-	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:107:13-36
-	android:theme
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:108:13-43
-	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:106:13-53
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LEANBACK_LAUNCHER
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:109:13-112:29
-category#android.intent.category.LEANBACK_LAUNCHER
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:111:17-86
-	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:111:27-83
-activity#pw.idrug.connections.activity.ConfigListActivity
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:115:9-118:46
-	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:117:13-37
-	android:theme
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:118:13-43
-	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:116:13-56
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:84:13-89:29
 activity#pw.idrug.connections.activity.SettingsActivity
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:120:9-123:67
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:103:9-107:56
 	android:parentActivityName
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:123:13-64
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:106:13-64
 	android:label
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:122:13-45
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:105:13-45
+	android:theme
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:107:13-53
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:121:13-54
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:104:13-54
 activity#pw.idrug.connections.activity.TunnelCreatorActivity
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:125:9-128:67
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:109:9-112:67
 	android:parentActivityName
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:128:13-64
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:112:13-64
 	android:label
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:127:13-58
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:111:13-58
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:126:13-59
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:110:13-59
 activity#com.journeyapps.barcodescanner.CaptureActivity
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:130:9-133:49
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:114:9-117:49
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/8.13/transforms/c94d974208255412a1d18d3f1039472c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/8.13/transforms/c94d974208255412a1d18d3f1039472c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
 	android:clearTaskOnLaunch
 		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/8.13/transforms/c94d974208255412a1d18d3f1039472c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
 	android:screenOrientation
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:132:13-51
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:116:13-51
 		REJECTED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/8.13/transforms/c94d974208255412a1d18d3f1039472c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:50:13-56
 	android:stateNotNeeded
 		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/8.13/transforms/c94d974208255412a1d18d3f1039472c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
@@ -493,185 +476,185 @@ MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/ca
 	android:theme
 		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/8.13/transforms/c94d974208255412a1d18d3f1039472c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
 	tools:replace
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:133:13-46
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:117:13-46
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:131:13-74
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:115:13-74
 activity#pw.idrug.connections.activity.LogViewerActivity
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:135:9-142:20
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:119:9-126:20
 	android:label
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:138:13-53
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:122:13-53
 	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:137:13-37
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:121:13-37
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:136:13-55
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:120:13-55
 intent-filter#action:name:android.intent.action.MAIN
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:139:13-141:29
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:123:13-125:29
 activity#pw.idrug.connections.activity.LinkCodeActivity
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:144:9-148:67
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:128:9-132:67
 	android:parentActivityName
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:148:13-64
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:132:13-64
 	android:label
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:147:13-48
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:131:13-48
 	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:146:13-37
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:130:13-37
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:145:13-54
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:129:13-54
 receiver#pw.idrug.connections.BootShutdownReceiver
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:156:9-163:20
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:140:9-147:20
 	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:158:13-36
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:142:13-36
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:157:13-49
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:141:13-49
 intent-filter#action:name:android.intent.action.ACTION_SHUTDOWN+action:name:android.intent.action.BOOT_COMPLETED
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:159:13-162:29
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:143:13-146:29
 action#android.intent.action.ACTION_SHUTDOWN
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:160:17-80
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:144:17-80
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:160:25-77
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:144:25-77
 action#android.intent.action.BOOT_COMPLETED
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:161:17-79
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:145:17-79
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:161:25-76
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:145:25-76
 receiver#pw.idrug.connections.DisconnectTunnelsReceiver
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:176:9-183:20
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:160:9-167:20
 	android:enabled
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:178:13-35
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:162:13-35
 	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:179:13-37
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:163:13-37
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:177:13-54
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:161:13-54
 intent-filter#action:name:pw.idrug.connections.action.SET_ALL_TUNNELS_DOWN
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:180:13-182:29
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:164:13-166:29
 action#pw.idrug.connections.action.SET_ALL_TUNNELS_DOWN
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:181:17-91
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:165:17-91
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:181:25-88
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:165:25-88
 service#pw.idrug.connections.QuickTileService
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:185:9-202:19
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:169:9-186:19
 	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:187:13-36
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:171:13-36
 	android:permission
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:189:13-77
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:173:13-77
 	android:icon
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:188:13-45
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:172:13-45
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:186:13-45
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:170:13-45
 intent-filter#action:name:android.service.quicksettings.action.QS_TILE
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:191:13-193:29
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:175:13-177:29
 action#android.service.quicksettings.action.QS_TILE
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:192:17-87
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:176:17-87
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:192:25-84
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:176:25-84
 meta-data#android.service.quicksettings.ACTIVE_TILE
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:195:13-197:41
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:179:13-181:41
 	android:value
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:197:17-38
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:181:17-38
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:196:17-73
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:180:17-73
 meta-data#android.service.quicksettings.TOGGLEABLE_TILE
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:199:13-201:40
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:183:13-185:40
 	android:value
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:201:17-37
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:185:17-37
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:200:17-77
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:184:17-77
 service#pw.idrug.connections.ConnectionStatusService
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:204:9-210:19
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:188:9-194:19
 	android:foregroundServiceType
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:206:13-55
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:190:13-55
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:205:13-52
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:189:13-52
 meta-data#android.app.background_running
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:207:13-209:40
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:191:13-193:40
 	android:value
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:209:17-37
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:193:17-37
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:208:17-62
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:192:17-62
 service#pw.idrug.connections.MyFirebaseMessagingService
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:212:9-218:19
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:196:9-202:19
 	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:214:13-37
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:198:13-37
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:213:13-55
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:197:13-55
 intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:215:13-217:29
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:199:13-201:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:216:17-78
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:200:17-78
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:216:25-75
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:200:25-75
 receiver#pw.idrug.connections.receiver.DownloadCompleteReceiver
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:219:9-225:20
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:203:9-209:20
 	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:221:13-37
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:205:13-37
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:220:13-62
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:204:13-62
 intent-filter#action:name:android.intent.action.DOWNLOAD_COMPLETE
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:222:13-224:29
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:206:13-208:29
 action#android.intent.action.DOWNLOAD_COMPLETE
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:223:17-82
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:207:17-82
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:223:25-79
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:207:25-79
 receiver#pw.idrug.connections.receiver.UpdateActionReceiver
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:226:9-233:20
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:210:9-217:20
 	android:exported
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:228:13-37
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:212:13-37
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:227:13-58
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:211:13-58
 intent-filter#action:name:pw.idrug.connections.action.UPDATE_DOWNLOAD+action:name:pw.idrug.connections.action.UPDATE_IGNORE
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:229:13-232:29
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:213:13-216:29
 action#pw.idrug.connections.action.UPDATE_DOWNLOAD
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:230:17-86
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:214:17-86
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:230:25-83
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:214:25-83
 action#pw.idrug.connections.action.UPDATE_IGNORE
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:231:17-84
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:215:17-84
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:231:25-81
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:215:25-81
 meta-data#com.google.firebase.messaging.default_notification_icon
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:234:9-236:60
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:218:9-220:60
 	android:resource
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:236:13-57
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:220:13-57
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:235:13-83
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:219:13-83
 meta-data#com.google.firebase.messaging.default_notification_channel_id
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:237:9-239:51
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:221:9-223:51
 	android:value
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:239:13-48
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:223:13-48
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:238:13-89
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:222:13-89
 meta-data#android.content.APP_RESTRICTIONS
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:241:9-243:56
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:225:9-227:56
 	android:resource
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:243:13-53
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:227:13-53
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:242:13-60
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:226:13-60
 queries
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:246:5-251:15
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:230:5-235:15
 intent#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:247:9-250:18
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:231:9-234:18
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:99:5-101:46
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:97:5-99:46
 	android:resource
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:101:9-43
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:99:9-43
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:100:9-59
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:98:9-59
 intent-filter#action:name:pw.idrug.connections.action.REFRESH_TUNNEL_STATES+action:name:pw.idrug.connections.action.SET_TUNNEL_DOWN+action:name:pw.idrug.connections.action.SET_TUNNEL_UP
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:169:13-173:29
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:153:13-157:29
 action#pw.idrug.connections.action.REFRESH_TUNNEL_STATES
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:170:17-92
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:154:17-92
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:170:25-89
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:154:25-89
 action#pw.idrug.connections.action.SET_TUNNEL_UP
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:171:17-84
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:155:17-84
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:171:25-81
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:155:25-81
 action#pw.idrug.connections.action.SET_TUNNEL_DOWN
-ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:172:17-86
+ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:156:17-86
 	android:name
-		ADDED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml:172:25-83
+		ADDED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml:156:25-83
 uses-sdk
-INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml
-INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml
+INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml
+INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml
 MERGED from [androidx.databinding:databinding-adapters:8.9.1] /home/bykk/.gradle/caches/8.13/transforms/8c1cbe94fbec14a26eb14962476d02e1/transformed/databinding-adapters-8.9.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.databinding:databinding-adapters:8.9.1] /home/bykk/.gradle/caches/8.13/transforms/8c1cbe94fbec14a26eb14962476d02e1/transformed/databinding-adapters-8.9.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.databinding:databinding-ktx:8.9.1] /home/bykk/.gradle/caches/8.13/transforms/0a4005ef4c463bcb57be102dc72b6ee2/transformed/databinding-ktx-8.9.1/AndroidManifest.xml:5:5-44
@@ -682,18 +665,14 @@ MERGED from [androidx.databinding:viewbinding:8.9.1] /home/bykk/.gradle/caches/8
 MERGED from [androidx.databinding:viewbinding:8.9.1] /home/bykk/.gradle/caches/8.13/transforms/1d85f38b5aa275190c649887160c7824/transformed/viewbinding-8.9.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.preference:preference-ktx:1.2.1] /home/bykk/.gradle/caches/8.13/transforms/a4907f90e6d5a6fee57b902de6858198/transformed/preference-ktx-1.2.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.preference:preference-ktx:1.2.1] /home/bykk/.gradle/caches/8.13/transforms/a4907f90e6d5a6fee57b902de6858198/transformed/preference-ktx-1.2.1/AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.android.material:material:1.12.0] /home/bykk/.gradle/caches/8.13/transforms/a298f67c85a00545661e2dcfa54fd38e/transformed/material-1.12.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.material:material:1.12.0] /home/bykk/.gradle/caches/8.13/transforms/a298f67c85a00545661e2dcfa54fd38e/transformed/material-1.12.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/8.13/transforms/363f01641a33bd99d6684eeb05d8be02/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/8.13/transforms/363f01641a33bd99d6684eeb05d8be02/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/06e028b5a87240b27e65abb22be7ba83/transformed/biometric-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/06e028b5a87240b27e65abb22be7ba83/transformed/biometric-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /home/bykk/.gradle/caches/8.13/transforms/3feee6d5fab00240fdc7923afed9eb20/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /home/bykk/.gradle/caches/8.13/transforms/3feee6d5fab00240fdc7923afed9eb20/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.preference:preference:1.2.1] /home/bykk/.gradle/caches/8.13/transforms/090605ea81cb6cb05719e81c36d31747/transformed/preference-1.2.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.preference:preference:1.2.1] /home/bykk/.gradle/caches/8.13/transforms/090605ea81cb6cb05719e81c36d31747/transformed/preference-1.2.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat:1.6.1] /home/bykk/.gradle/caches/8.13/transforms/73ed5a963feab88417b2a6878d1fcc41/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.appcompat:appcompat:1.6.1] /home/bykk/.gradle/caches/8.13/transforms/73ed5a963feab88417b2a6878d1fcc41/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [com.zaneschepke:amneziawg-android:2.3.4] /home/bykk/.gradle/caches/8.13/transforms/8c5b9b4118085171e81c3f0fbf1e9dbb/transformed/amneziawg-android-2.3.4/AndroidManifest.xml:9:5-44
+MERGED from [com.zaneschepke:amneziawg-android:2.3.4] /home/bykk/.gradle/caches/8.13/transforms/8c5b9b4118085171e81c3f0fbf1e9dbb/transformed/amneziawg-android-2.3.4/AndroidManifest.xml:9:5-44
+MERGED from [com.zaneschepke:hevtunnel:1.0.1] /home/bykk/.gradle/caches/8.13/transforms/ce266d17d59208d41656ea04971c91dc/transformed/hevtunnel-1.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.zaneschepke:hevtunnel:1.0.1] /home/bykk/.gradle/caches/8.13/transforms/ce266d17d59208d41656ea04971c91dc/transformed/hevtunnel-1.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.material:material:1.12.0] /home/bykk/.gradle/caches/8.13/transforms/a298f67c85a00545661e2dcfa54fd38e/transformed/material-1.12.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.12.0] /home/bykk/.gradle/caches/8.13/transforms/a298f67c85a00545661e2dcfa54fd38e/transformed/material-1.12.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/1558544271be135cedd9d77cff0c2e4a/transformed/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/1558544271be135cedd9d77cff0c2e4a/transformed/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/8.13/transforms/2c955696ead0ac43dce581dc3f97c596/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:20:5-44
@@ -732,10 +711,10 @@ MERGED from [com.google.android.gms:play-services-measurement-base:21.5.1] /home
 MERGED from [com.google.android.gms:play-services-measurement-base:21.5.1] /home/bykk/.gradle/caches/8.13/transforms/ae5377469bc75534477a6c7a08a716ef/transformed/play-services-measurement-base-21.5.1/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-installations-interop:17.1.1] /home/bykk/.gradle/caches/8.13/transforms/e38e9e9f45496396794283998d5acc98/transformed/firebase-installations-interop-17.1.1/AndroidManifest.xml:17:5-44
 MERGED from [com.google.firebase:firebase-installations-interop:17.1.1] /home/bykk/.gradle/caches/8.13/transforms/e38e9e9f45496396794283998d5acc98/transformed/firebase-installations-interop-17.1.1/AndroidManifest.xml:17:5-44
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/776d003bd6d9afd66dec0648709ac466/transformed/coordinatorlayout-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/776d003bd6d9afd66dec0648709ac466/transformed/coordinatorlayout-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity:1.9.3] /home/bykk/.gradle/caches/8.13/transforms/0e1ff535061ba1aee1630bca0cb49638/transformed/activity-1.9.3/AndroidManifest.xml:20:5-44
-MERGED from [androidx.activity:activity:1.9.3] /home/bykk/.gradle/caches/8.13/transforms/0e1ff535061ba1aee1630bca0cb49638/transformed/activity-1.9.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-preferences:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/e2eb3c7dc387b373fa38dda7e2cb404d/transformed/datastore-preferences-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.datastore:datastore-preferences:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/e2eb3c7dc387b373fa38dda7e2cb404d/transformed/datastore-preferences-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.datastore:datastore:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/a28a9849032b9ca9fa5709fb8c8631e9/transformed/datastore-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.datastore:datastore:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/a28a9849032b9ca9fa5709fb8c8631e9/transformed/datastore-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.compose.material3:material3-android:1.3.1] /home/bykk/.gradle/caches/8.13/transforms/2f7e54dad46d5f7ac65e0f63af8d108b/transformed/material3-release/AndroidManifest.xml:20:5-44
 MERGED from [androidx.compose.material3:material3-android:1.3.1] /home/bykk/.gradle/caches/8.13/transforms/2f7e54dad46d5f7ac65e0f63af8d108b/transformed/material3-release/AndroidManifest.xml:20:5-44
 MERGED from [androidx.compose.animation:animation-core-android:1.7.6] /home/bykk/.gradle/caches/8.13/transforms/102d5c4de66021d26e196ab27e7d78f8/transformed/animation-core-release/AndroidManifest.xml:5:5-44
@@ -766,16 +745,62 @@ MERGED from [androidx.work:work-runtime-ktx:2.9.1] /home/bykk/.gradle/caches/8.1
 MERGED from [androidx.work:work-runtime-ktx:2.9.1] /home/bykk/.gradle/caches/8.13/transforms/373f3f5e6789ab4a1c0699644ec688c8/transformed/work-runtime-ktx-2.9.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.work:work-runtime:2.9.1] /home/bykk/.gradle/caches/8.13/transforms/6e04f0fd93dfb7b601db6db504ce1e0e/transformed/work-runtime-2.9.1/AndroidManifest.xml:21:5-44
 MERGED from [androidx.work:work-runtime:2.9.1] /home/bykk/.gradle/caches/8.13/transforms/6e04f0fd93dfb7b601db6db504ce1e0e/transformed/work-runtime-2.9.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/8.13/transforms/363f01641a33bd99d6684eeb05d8be02/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/bykk/.gradle/caches/8.13/transforms/363f01641a33bd99d6684eeb05d8be02/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.preference:preference:1.2.1] /home/bykk/.gradle/caches/8.13/transforms/090605ea81cb6cb05719e81c36d31747/transformed/preference-1.2.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.preference:preference:1.2.1] /home/bykk/.gradle/caches/8.13/transforms/090605ea81cb6cb05719e81c36d31747/transformed/preference-1.2.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.7.1] /home/bykk/.gradle/caches/8.13/transforms/1547788e6d6e846c32d7031dd62aca8c/transformed/appcompat-resources-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.1] /home/bykk/.gradle/caches/8.13/transforms/1547788e6d6e846c32d7031dd62aca8c/transformed/appcompat-resources-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.1] /home/bykk/.gradle/caches/8.13/transforms/66c6df8c5112bf992f14e3270bcc29b3/transformed/appcompat-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.1] /home/bykk/.gradle/caches/8.13/transforms/66c6df8c5112bf992f14e3270bcc29b3/transformed/appcompat-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity:1.9.3] /home/bykk/.gradle/caches/8.13/transforms/0e1ff535061ba1aee1630bca0cb49638/transformed/activity-1.9.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.9.3] /home/bykk/.gradle/caches/8.13/transforms/0e1ff535061ba1aee1630bca0cb49638/transformed/activity-1.9.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/776d003bd6d9afd66dec0648709ac466/transformed/coordinatorlayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/776d003bd6d9afd66dec0648709ac466/transformed/coordinatorlayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/0b8454d78a1fbed9d55f305d11c33a9c/transformed/swiperefreshlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/0b8454d78a1fbed9d55f305d11c33a9c/transformed/swiperefreshlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/8e583578514df6a923902cecb953e361/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/8e583578514df6a923902cecb953e361/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/0b3973c3334637007f7e5f77a392c636/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/0b3973c3334637007f7e5f77a392c636/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.transition:transition:1.5.0] /home/bykk/.gradle/caches/8.13/transforms/2d9f4b465c0953c827813169dad4cebe/transformed/transition-1.5.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.transition:transition:1.5.0] /home/bykk/.gradle/caches/8.13/transforms/2d9f4b465c0953c827813169dad4cebe/transformed/transition-1.5.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/cd9d50638f38f04f6124dcb17a3fd94f/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/cd9d50638f38f04f6124dcb17a3fd94f/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/cefaeb319408f69bd06746b724fd191c/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/cefaeb319408f69bd06746b724fd191c/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/8523a3f6ab1e6529b0f5d095afe99072/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/8523a3f6ab1e6529b0f5d095afe99072/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/4a49d1c9083165104efb650c02db3cc4/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/4a49d1c9083165104efb650c02db3cc4/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/a5846064b8f4d77228824f5a0f87af33/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/a5846064b8f4d77228824f5a0f87af33/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.privacysandbox.ads:ads-adservices-java:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/d3d2772caf5eb2c48c636767fb484a60/transformed/ads-adservices-java-1.0.0-beta05/AndroidManifest.xml:5:5-44
+MERGED from [androidx.privacysandbox.ads:ads-adservices-java:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/d3d2772caf5eb2c48c636767fb484a60/transformed/ads-adservices-java-1.0.0-beta05/AndroidManifest.xml:5:5-44
+MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/85b043510e1b4a61f4454369aed229b5/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:20:5-44
+MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/85b043510e1b4a61f4454369aed229b5/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/3c1afffabc6a6b26dbc37496d03ee691/transformed/core-ktx-1.17.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/3c1afffabc6a6b26dbc37496d03ee691/transformed/core-ktx-1.17.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/245a99ba6cf73fcf509696d536416dbb/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/245a99ba6cf73fcf509696d536416dbb/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/f086831cbd2b9ab56ade1196743ff658/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/f086831cbd2b9ab56ade1196743ff658/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/41e1d3d422289e7fe649dc722483918f/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/41e1d3d422289e7fe649dc722483918f/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/6a05cd453ac8d941b943222f72fa0090/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/6a05cd453ac8d941b943222f72fa0090/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/19e4062173d2808c28f657c87c039a5d/transformed/emoji2-views-helper-1.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/19e4062173d2808c28f657c87c039a5d/transformed/emoji2-views-helper-1.3.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.autofill:autofill:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/1a5c2b30379b891d2de44969a8cc06c6/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/1a5c2b30379b891d2de44969a8cc06c6/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/28262af804ebc1add1680c788fe6c448/transformed/window-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/28262af804ebc1add1680c788fe6c448/transformed/window-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.graphics:graphics-path:1.0.1] /home/bykk/.gradle/caches/8.13/transforms/60d9d5f378c243d09efe752e4cacb22d/transformed/graphics-path-1.0.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] /home/bykk/.gradle/caches/8.13/transforms/60d9d5f378c243d09efe752e4cacb22d/transformed/graphics-path-1.0.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /home/bykk/.gradle/caches/8.13/transforms/3335371337106315effe52fb5e131f14/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /home/bykk/.gradle/caches/8.13/transforms/3335371337106315effe52fb5e131f14/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.savedstate:savedstate:1.2.1] /home/bykk/.gradle/caches/8.13/transforms/948d169b2a7ec5661f79893241e222d4/transformed/savedstate-1.2.1/AndroidManifest.xml:20:5-44
@@ -788,14 +813,12 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.6] /home/bykk/.g
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/b8d53f92e0bc722cc8fbebb2acdb5a78/transformed/lifecycle-viewmodel-release/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/2e0368a9510159725aa414e6d2c049ad/transformed/lifecycle-runtime-release/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/2e0368a9510159725aa414e6d2c049ad/transformed/lifecycle-runtime-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/d2c11b1c819e5373ba29e0c9efcfb35f/transformed/lifecycle-viewmodel-savedstate-2.8.6/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/d2c11b1c819e5373ba29e0c9efcfb35f/transformed/lifecycle-viewmodel-savedstate-2.8.6/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/eb436bd26fc0c22d5c50d6d30b32e638/transformed/lifecycle-viewmodel-ktx-2.8.6/AndroidManifest.xml:5:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/eb436bd26fc0c22d5c50d6d30b32e638/transformed/lifecycle-viewmodel-ktx-2.8.6/AndroidManifest.xml:5:5-44
 MERGED from [androidx.lifecycle:lifecycle-service:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/40fca72e4ee8d6055bbcf243022f9527/transformed/lifecycle-service-2.8.6/AndroidManifest.xml:5:5-44
 MERGED from [androidx.lifecycle:lifecycle-service:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/40fca72e4ee8d6055bbcf243022f9527/transformed/lifecycle-service-2.8.6/AndroidManifest.xml:5:5-44
-MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/19e4062173d2808c28f657c87c039a5d/transformed/emoji2-views-helper-1.3.0/AndroidManifest.xml:5:5-44
-MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/19e4062173d2808c28f657c87c039a5d/transformed/emoji2-views-helper-1.3.0/AndroidManifest.xml:5:5-44
-MERGED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:21:5-44
-MERGED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:21:5-44
 MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/3d8d347df7a9293fb6cb648a2411729a/transformed/lifecycle-process-2.8.6/AndroidManifest.xml:21:5-44
 MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/3d8d347df7a9293fb6cb648a2411729a/transformed/lifecycle-process-2.8.6/AndroidManifest.xml:21:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/31d314a2c963a16379f65297f65100c6/transformed/lifecycle-livedata-core-ktx-2.8.6/AndroidManifest.xml:5:5-44
@@ -806,42 +829,6 @@ MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.6] /home/bykk/.gradle/cac
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/064955024d2a2a9f3a6823dbf81e4d6f/transformed/lifecycle-livedata-2.8.6/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/c9e373627f1312edf598e2689829e0bc/transformed/lifecycle-runtime-compose-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/c9e373627f1312edf598e2689829e0bc/transformed/lifecycle-runtime-compose-release/AndroidManifest.xml:5:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/d2c11b1c819e5373ba29e0c9efcfb35f/transformed/lifecycle-viewmodel-savedstate-2.8.6/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/d2c11b1c819e5373ba29e0c9efcfb35f/transformed/lifecycle-viewmodel-savedstate-2.8.6/AndroidManifest.xml:20:5-44
-MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/a5846064b8f4d77228824f5a0f87af33/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
-MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/a5846064b8f4d77228824f5a0f87af33/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
-MERGED from [androidx.privacysandbox.ads:ads-adservices-java:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/d3d2772caf5eb2c48c636767fb484a60/transformed/ads-adservices-java-1.0.0-beta05/AndroidManifest.xml:5:5-44
-MERGED from [androidx.privacysandbox.ads:ads-adservices-java:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/d3d2772caf5eb2c48c636767fb484a60/transformed/ads-adservices-java-1.0.0-beta05/AndroidManifest.xml:5:5-44
-MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/85b043510e1b4a61f4454369aed229b5/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:20:5-44
-MERGED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/85b043510e1b4a61f4454369aed229b5/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core-ktx:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/d48234e23c796c14ab2a1dd42946d3cb/transformed/core-ktx-1.17.0-alpha01/AndroidManifest.xml:5:5-44
-MERGED from [androidx.core:core-ktx:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/d48234e23c796c14ab2a1dd42946d3cb/transformed/core-ktx-1.17.0-alpha01/AndroidManifest.xml:5:5-44
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/0b8454d78a1fbed9d55f305d11c33a9c/transformed/swiperefreshlayout-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/0b8454d78a1fbed9d55f305d11c33a9c/transformed/swiperefreshlayout-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/8e583578514df6a923902cecb953e361/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/8e583578514df6a923902cecb953e361/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/cefaeb319408f69bd06746b724fd191c/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/cefaeb319408f69bd06746b724fd191c/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/8523a3f6ab1e6529b0f5d095afe99072/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/8523a3f6ab1e6529b0f5d095afe99072/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/4a49d1c9083165104efb650c02db3cc4/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/4a49d1c9083165104efb650c02db3cc4/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.viewpager:viewpager:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/41e1d3d422289e7fe649dc722483918f/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/41e1d3d422289e7fe649dc722483918f/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.customview:customview:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/6a05cd453ac8d941b943222f72fa0090/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.customview:customview:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/6a05cd453ac8d941b943222f72fa0090/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.autofill:autofill:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/1a5c2b30379b891d2de44969a8cc06c6/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.autofill:autofill:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/1a5c2b30379b891d2de44969a8cc06c6/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/28262af804ebc1add1680c788fe6c448/transformed/window-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/28262af804ebc1add1680c788fe6c448/transformed/window-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.graphics:graphics-path:1.0.1] /home/bykk/.gradle/caches/8.13/transforms/60d9d5f378c243d09efe752e4cacb22d/transformed/graphics-path-1.0.1/AndroidManifest.xml:5:5-44
-MERGED from [androidx.graphics:graphics-path:1.0.1] /home/bykk/.gradle/caches/8.13/transforms/60d9d5f378c243d09efe752e4cacb22d/transformed/graphics-path-1.0.1/AndroidManifest.xml:5:5-44
-MERGED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:20:5-44
-MERGED from [androidx.datastore:datastore-preferences:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/e2eb3c7dc387b373fa38dda7e2cb404d/transformed/datastore-preferences-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.datastore:datastore-preferences:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/e2eb3c7dc387b373fa38dda7e2cb404d/transformed/datastore-preferences-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.datastore:datastore:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/a28a9849032b9ca9fa5709fb8c8631e9/transformed/datastore-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.datastore:datastore:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/a28a9849032b9ca9fa5709fb8c8631e9/transformed/datastore-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.6] /home/bykk/.gradle/caches/8.13/transforms/2210916b363a6809887a5355d5f85742/transformed/runtime-saveable-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.6] /home/bykk/.gradle/caches/8.13/transforms/2210916b363a6809887a5355d5f85742/transformed/runtime-saveable-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.runtime:runtime-android:1.7.6] /home/bykk/.gradle/caches/8.13/transforms/ffb6a99314ed9f8d92bd73491f6073ec/transformed/runtime-release/AndroidManifest.xml:5:5-44
@@ -860,14 +847,10 @@ MERGED from [androidx.activity:activity-ktx:1.9.3] /home/bykk/.gradle/caches/8.1
 MERGED from [androidx.activity:activity-ktx:1.9.3] /home/bykk/.gradle/caches/8.13/transforms/0f8a8711799928fd7df6e62830e3a350/transformed/activity-ktx-1.9.3/AndroidManifest.xml:5:5-44
 MERGED from [androidx.activity:activity-compose:1.9.3] /home/bykk/.gradle/caches/8.13/transforms/fec1880291acb60bade240413fda247a/transformed/activity-compose-1.9.3/AndroidManifest.xml:5:5-44
 MERGED from [androidx.activity:activity-compose:1.9.3] /home/bykk/.gradle/caches/8.13/transforms/fec1880291acb60bade240413fda247a/transformed/activity-compose-1.9.3/AndroidManifest.xml:5:5-44
-MERGED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:5:5-44
-MERGED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:5:5-44
 MERGED from [androidx.room:room-runtime:2.5.0] /home/bykk/.gradle/caches/8.13/transforms/0a2db549704d2c3e475f6496f6dc2a1f/transformed/room-runtime-2.5.0/AndroidManifest.xml:21:5-44
 MERGED from [androidx.room:room-runtime:2.5.0] /home/bykk/.gradle/caches/8.13/transforms/0a2db549704d2c3e475f6496f6dc2a1f/transformed/room-runtime-2.5.0/AndroidManifest.xml:21:5-44
-MERGED from [:tunnel] /home/bykk/idrug1.5/iDrugWg/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:9:5-44
-MERGED from [:tunnel] /home/bykk/idrug1.5/iDrugWg/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:9:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/3cd364396758ae7ca2e15ba8e73c8db9/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/3cd364396758ae7ca2e15ba8e73c8db9/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/78a49a0ee9c43b152710b74cb0936c27/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/78a49a0ee9c43b152710b74cb0936c27/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cardview:cardview:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/ae228cc73329185aba409000277ee6a7/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/ae228cc73329185aba409000277ee6a7/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/4a316226f89a88d0679b011d0aa0bbc9/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
@@ -884,16 +867,18 @@ MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /home/bykk/.grad
 MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /home/bykk/.gradle/caches/8.13/transforms/cc5013efeeb865f6829abe970e8a7904/transformed/firebase-encoders-json-18.0.0/AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-components:17.1.5] /home/bykk/.gradle/caches/8.13/transforms/72173d9c723157866e45f24acd0fff81/transformed/firebase-components-17.1.5/AndroidManifest.xml:18:5-44
 MERGED from [com.google.firebase:firebase-components:17.1.5] /home/bykk/.gradle/caches/8.13/transforms/72173d9c723157866e45f24acd0fff81/transformed/firebase-components-17.1.5/AndroidManifest.xml:18:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.0] /home/bykk/.gradle/caches/8.13/transforms/106f92f21a6258af99d79c7a6638a37f/transformed/okhttp-release/AndroidManifest.xml:6:5-44
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.0] /home/bykk/.gradle/caches/8.13/transforms/106f92f21a6258af99d79c7a6638a37f/transformed/okhttp-release/AndroidManifest.xml:6:5-44
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/bykk/.gradle/caches/8.13/transforms/c4331e8f3162ce80db7fc30fda966156/transformed/profileinstaller-1.3.1/AndroidManifest.xml:21:5-44
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/bykk/.gradle/caches/8.13/transforms/c4331e8f3162ce80db7fc30fda966156/transformed/profileinstaller-1.3.1/AndroidManifest.xml:21:5-44
-MERGED from [androidx.startup:startup-runtime:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/31c882f602f03b8a1398c0bd192a6ba3/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
-MERGED from [androidx.startup:startup-runtime:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/31c882f602f03b8a1398c0bd192a6ba3/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
-MERGED from [androidx.tracing:tracing:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/db7465fe8f4e4300da661e60df79c858/transformed/tracing-1.2.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.tracing:tracing:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/db7465fe8f4e4300da661e60df79c858/transformed/tracing-1.2.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/78a49a0ee9c43b152710b74cb0936c27/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/78a49a0ee9c43b152710b74cb0936c27/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.sqlite:sqlite-framework:2.3.0] /home/bykk/.gradle/caches/8.13/transforms/b17840e28eba27b0e775dd4f87e81da0/transformed/sqlite-framework-2.3.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.sqlite:sqlite-framework:2.3.0] /home/bykk/.gradle/caches/8.13/transforms/b17840e28eba27b0e775dd4f87e81da0/transformed/sqlite-framework-2.3.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.startup:startup-runtime:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/15f8f91382ac5208b515ac095c652855/transformed/startup-runtime-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/15f8f91382ac5208b515ac095c652855/transformed/startup-runtime-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/3cd364396758ae7ca2e15ba8e73c8db9/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/3cd364396758ae7ca2e15ba8e73c8db9/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/bykk/.gradle/caches/8.13/transforms/ec4262851e91b338d5605a0a112eef5e/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/bykk/.gradle/caches/8.13/transforms/ec4262851e91b338d5605a0a112eef5e/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/d42d58e0d711ae5bff521524dab1ed53/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
@@ -904,18 +889,22 @@ MERGED from [androidx.print:print:1.0.0] /home/bykk/.gradle/caches/8.13/transfor
 MERGED from [androidx.print:print:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/18c676bd4751067bf7ade552161959f2/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.sqlite:sqlite:2.3.0] /home/bykk/.gradle/caches/8.13/transforms/02ca13789731cfaae890f6cb6e05fe83/transformed/sqlite-2.3.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.sqlite:sqlite:2.3.0] /home/bykk/.gradle/caches/8.13/transforms/02ca13789731cfaae890f6cb6e05fe83/transformed/sqlite-2.3.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.tracing:tracing:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/db7465fe8f4e4300da661e60df79c858/transformed/tracing-1.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.tracing:tracing:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/db7465fe8f4e4300da661e60df79c858/transformed/tracing-1.2.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.4.1] /home/bykk/.gradle/caches/8.13/transforms/83761ee5d1245e5c72604949ff6055b2/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.4.1] /home/bykk/.gradle/caches/8.13/transforms/83761ee5d1245e5c72604949ff6055b2/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.core:core-viewtree:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/8852d245a6881fd33a05cecba955c9d6/transformed/core-viewtree-1.0.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.core:core-viewtree:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/8852d245a6881fd33a05cecba955c9d6/transformed/core-viewtree-1.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/8.13/transforms/c94d974208255412a1d18d3f1039472c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:20:5-44
 MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] /home/bykk/.gradle/caches/8.13/transforms/c94d974208255412a1d18d3f1039472c/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:20:5-44
+MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] /home/bykk/.gradle/caches/8.13/transforms/daa7db8a5444bfa26703afd8e83fc105/transformed/relinker-1.4.5/AndroidManifest.xml:5:5-43
+MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] /home/bykk/.gradle/caches/8.13/transforms/daa7db8a5444bfa26703afd8e83fc105/transformed/relinker-1.4.5/AndroidManifest.xml:5:5-43
 MERGED from [com.android.support:exifinterface:27.1.0] /home/bykk/.gradle/caches/8.13/transforms/1760844deb70df0102d26a8ec1e07056/transformed/exifinterface-27.1.0/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:exifinterface:27.1.0] /home/bykk/.gradle/caches/8.13/transforms/1760844deb70df0102d26a8ec1e07056/transformed/exifinterface-27.1.0/AndroidManifest.xml:20:5-44
 	android:targetSdkVersion
-		INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml
+		INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /home/bykk/idrug1.5/iDrugWg/ui/src/main/AndroidManifest.xml
+		INJECTED from /home/bykk/iDrugWg/ui/src/main/AndroidManifest.xml
 uses-permission#android.permission.USE_BIOMETRIC
 ADDED from [androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/06e028b5a87240b27e65abb22be7ba83/transformed/biometric-1.1.0/AndroidManifest.xml:24:5-72
 	android:name
@@ -925,7 +914,9 @@ ADDED from [androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/8.13/t
 	android:name
 		ADDED from [androidx.biometric:biometric:1.1.0] /home/bykk/.gradle/caches/8.13/transforms/06e028b5a87240b27e65abb22be7ba83/transformed/biometric-1.1.0/AndroidManifest.xml:27:22-71
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/8.13/transforms/2c955696ead0ac43dce581dc3f97c596/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:22:5-79
+ADDED from [com.zaneschepke:amneziawg-android:2.3.4] /home/bykk/.gradle/caches/8.13/transforms/8c5b9b4118085171e81c3f0fbf1e9dbb/transformed/amneziawg-android-2.3.4/AndroidManifest.xml:11:5-79
+MERGED from [com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/8.13/transforms/2c955696ead0ac43dce581dc3f97c596/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/8.13/transforms/2c955696ead0ac43dce581dc3f97c596/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:22:5-79
 MERGED from [com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/8.13/transforms/2a691b431549777fb89e2bde240ab376/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/8.13/transforms/2a691b431549777fb89e2bde240ab376/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:21.5.1] /home/bykk/.gradle/caches/8.13/transforms/d33017f05ae4541bf93b3dea58f8be9b/transformed/play-services-measurement-api-21.5.1/AndroidManifest.xml:23:5-79
@@ -945,7 +936,21 @@ MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] /home
 MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/8.13/transforms/7a612996bc6b64d9f9b79b8b759d1b64/transformed/transport-runtime-3.1.8/AndroidManifest.xml:22:5-79
 MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/8.13/transforms/7a612996bc6b64d9f9b79b8b759d1b64/transformed/transport-runtime-3.1.8/AndroidManifest.xml:22:5-79
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/8.13/transforms/2c955696ead0ac43dce581dc3f97c596/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:22:22-76
+		ADDED from [com.zaneschepke:amneziawg-android:2.3.4] /home/bykk/.gradle/caches/8.13/transforms/8c5b9b4118085171e81c3f0fbf1e9dbb/transformed/amneziawg-android-2.3.4/AndroidManifest.xml:11:22-76
+service#org.amnezia.awg.backend.AbstractBackend$VpnService
+ADDED from [com.zaneschepke:amneziawg-android:2.3.4] /home/bykk/.gradle/caches/8.13/transforms/8c5b9b4118085171e81c3f0fbf1e9dbb/transformed/amneziawg-android-2.3.4/AndroidManifest.xml:14:9-21:19
+	android:exported
+		ADDED from [com.zaneschepke:amneziawg-android:2.3.4] /home/bykk/.gradle/caches/8.13/transforms/8c5b9b4118085171e81c3f0fbf1e9dbb/transformed/amneziawg-android-2.3.4/AndroidManifest.xml:16:13-37
+	android:permission
+		ADDED from [com.zaneschepke:amneziawg-android:2.3.4] /home/bykk/.gradle/caches/8.13/transforms/8c5b9b4118085171e81c3f0fbf1e9dbb/transformed/amneziawg-android-2.3.4/AndroidManifest.xml:17:13-69
+	android:name
+		ADDED from [com.zaneschepke:amneziawg-android:2.3.4] /home/bykk/.gradle/caches/8.13/transforms/8c5b9b4118085171e81c3f0fbf1e9dbb/transformed/amneziawg-android-2.3.4/AndroidManifest.xml:15:13-78
+intent-filter#action:name:android.net.VpnService
+ADDED from [com.zaneschepke:amneziawg-android:2.3.4] /home/bykk/.gradle/caches/8.13/transforms/8c5b9b4118085171e81c3f0fbf1e9dbb/transformed/amneziawg-android-2.3.4/AndroidManifest.xml:18:13-20:29
+action#android.net.VpnService
+ADDED from [com.zaneschepke:amneziawg-android:2.3.4] /home/bykk/.gradle/caches/8.13/transforms/8c5b9b4118085171e81c3f0fbf1e9dbb/transformed/amneziawg-android-2.3.4/AndroidManifest.xml:19:17-65
+	android:name
+		ADDED from [com.zaneschepke:amneziawg-android:2.3.4] /home/bykk/.gradle/caches/8.13/transforms/8c5b9b4118085171e81c3f0fbf1e9dbb/transformed/amneziawg-android-2.3.4/AndroidManifest.xml:19:25-62
 uses-permission#android.permission.WAKE_LOCK
 ADDED from [com.google.firebase:firebase-messaging:23.4.1] /home/bykk/.gradle/caches/8.13/transforms/2c955696ead0ac43dce581dc3f97c596/transformed/firebase-messaging-23.4.1/AndroidManifest.xml:24:5-68
 MERGED from [com.google.android.gms:play-services-measurement:21.5.1] /home/bykk/.gradle/caches/8.13/transforms/2a691b431549777fb89e2bde240ab376/transformed/play-services-measurement-21.5.1/AndroidManifest.xml:25:5-68
@@ -1144,10 +1149,12 @@ MERGED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transf
 MERGED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
 MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/3d8d347df7a9293fb6cb648a2411729a/transformed/lifecycle-process-2.8.6/AndroidManifest.xml:24:9-32:20
 MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/3d8d347df7a9293fb6cb648a2411729a/transformed/lifecycle-process-2.8.6/AndroidManifest.xml:24:9-32:20
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.0] /home/bykk/.gradle/caches/8.13/transforms/106f92f21a6258af99d79c7a6638a37f/transformed/okhttp-release/AndroidManifest.xml:11:9-19:20
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.0] /home/bykk/.gradle/caches/8.13/transforms/106f92f21a6258af99d79c7a6638a37f/transformed/okhttp-release/AndroidManifest.xml:11:9-19:20
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/bykk/.gradle/caches/8.13/transforms/c4331e8f3162ce80db7fc30fda966156/transformed/profileinstaller-1.3.1/AndroidManifest.xml:24:9-32:20
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/bykk/.gradle/caches/8.13/transforms/c4331e8f3162ce80db7fc30fda966156/transformed/profileinstaller-1.3.1/AndroidManifest.xml:24:9-32:20
-MERGED from [androidx.startup:startup-runtime:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/31c882f602f03b8a1398c0bd192a6ba3/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
-MERGED from [androidx.startup:startup-runtime:1.1.1] /home/bykk/.gradle/caches/8.13/transforms/31c882f602f03b8a1398c0bd192a6ba3/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/15f8f91382ac5208b515ac095c652855/transformed/startup-runtime-1.2.0/AndroidManifest.xml:24:9-28:34
+MERGED from [androidx.startup:startup-runtime:1.2.0] /home/bykk/.gradle/caches/8.13/transforms/15f8f91382ac5208b515ac095c652855/transformed/startup-runtime-1.2.0/AndroidManifest.xml:24:9-28:34
 	tools:node
 		ADDED from [androidx.work:work-runtime:2.9.1] /home/bykk/.gradle/caches/8.13/transforms/6e04f0fd93dfb7b601db6db504ce1e0e/transformed/work-runtime-2.9.1/AndroidManifest.xml:33:13-31
 	android:authorities
@@ -1360,24 +1367,18 @@ action#androidx.work.diagnostics.REQUEST_DIAGNOSTICS
 ADDED from [androidx.work:work-runtime:2.9.1] /home/bykk/.gradle/caches/8.13/transforms/6e04f0fd93dfb7b601db6db504ce1e0e/transformed/work-runtime-2.9.1/AndroidManifest.xml:140:17-88
 	android:name
 		ADDED from [androidx.work:work-runtime:2.9.1] /home/bykk/.gradle/caches/8.13/transforms/6e04f0fd93dfb7b601db6db504ce1e0e/transformed/work-runtime-2.9.1/AndroidManifest.xml:140:25-85
-meta-data#androidx.emoji2.text.EmojiCompatInitializer
-ADDED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
-	android:value
-		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
-	android:name
-		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
-meta-data#androidx.lifecycle.ProcessLifecycleInitializer
-ADDED from [androidx.lifecycle:lifecycle-process:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/3d8d347df7a9293fb6cb648a2411729a/transformed/lifecycle-process-2.8.6/AndroidManifest.xml:29:13-31:52
-	android:value
-		ADDED from [androidx.lifecycle:lifecycle-process:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/3d8d347df7a9293fb6cb648a2411729a/transformed/lifecycle-process-2.8.6/AndroidManifest.xml:31:17-49
-	android:name
-		ADDED from [androidx.lifecycle:lifecycle-process:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/3d8d347df7a9293fb6cb648a2411729a/transformed/lifecycle-process-2.8.6/AndroidManifest.xml:30:17-78
 uses-library#android.ext.adservices
 ADDED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/85b043510e1b4a61f4454369aed229b5/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:23:9-25:40
 	android:required
 		ADDED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/85b043510e1b4a61f4454369aed229b5/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:25:13-37
 	android:name
 		ADDED from [androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /home/bykk/.gradle/caches/8.13/transforms/85b043510e1b4a61f4454369aed229b5/transformed/ads-adservices-1.0.0-beta05/AndroidManifest.xml:24:13-50
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/bykk/.gradle/caches/8.13/transforms/31c6752db3659598117be40cba94a364/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/28262af804ebc1add1680c788fe6c448/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
 	android:required
@@ -1391,39 +1392,37 @@ ADDED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/8.13/transfo
 	android:name
 		ADDED from [androidx.window:window:1.0.0] /home/bykk/.gradle/caches/8.13/transforms/28262af804ebc1add1680c788fe6c448/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
 permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
-ADDED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:22:5-24:47
+ADDED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:22:5-24:47
 	android:protectionLevel
-		ADDED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:24:9-44
+		ADDED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:24:9-44
 	android:name
-		ADDED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:23:9-81
+		ADDED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:23:9-81
 permission#pw.idrug.connections.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
-ADDED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:22:5-24:47
+ADDED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:22:5-24:47
 	android:protectionLevel
-		ADDED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:24:9-44
+		ADDED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:24:9-44
 	android:name
-		ADDED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:23:9-81
+		ADDED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:23:9-81
 uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
-ADDED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:26:5-97
+ADDED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:26:5-97
 	android:name
-		ADDED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:26:22-94
+		ADDED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:26:22-94
 uses-permission#pw.idrug.connections.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
-ADDED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:26:5-97
+ADDED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:26:5-97
 	android:name
-		ADDED from [androidx.core:core:1.17.0-alpha01] /home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/AndroidManifest.xml:26:22-94
+		ADDED from [androidx.core:core:1.17.0] /home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/AndroidManifest.xml:26:22-94
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/3d8d347df7a9293fb6cb648a2411729a/transformed/lifecycle-process-2.8.6/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/3d8d347df7a9293fb6cb648a2411729a/transformed/lifecycle-process-2.8.6/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.6] /home/bykk/.gradle/caches/8.13/transforms/3d8d347df7a9293fb6cb648a2411729a/transformed/lifecycle-process-2.8.6/AndroidManifest.xml:30:17-78
 meta-data#com.google.android.gms.version
 ADDED from [com.google.android.gms:play-services-basement:18.1.0] /home/bykk/.gradle/caches/8.13/transforms/788b78407de77f3e568fb6db3ff9d47a/transformed/play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
 	android:value
 		ADDED from [com.google.android.gms:play-services-basement:18.1.0] /home/bykk/.gradle/caches/8.13/transforms/788b78407de77f3e568fb6db3ff9d47a/transformed/play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
 	android:name
 		ADDED from [com.google.android.gms:play-services-basement:18.1.0] /home/bykk/.gradle/caches/8.13/transforms/788b78407de77f3e568fb6db3ff9d47a/transformed/play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
-provider#com.squareup.picasso.PicassoProvider
-ADDED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:8:9-11:40
-	android:authorities
-		ADDED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:10:13-72
-	android:exported
-		ADDED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:11:13-37
-	android:name
-		ADDED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:9:13-64
 service#androidx.room.MultiInstanceInvalidationService
 ADDED from [androidx.room:room-runtime:2.5.0] /home/bykk/.gradle/caches/8.13/transforms/0a2db549704d2c3e475f6496f6dc2a1f/transformed/room-runtime-2.5.0/AndroidManifest.xml:24:9-28:63
 	android:exported
@@ -1434,20 +1433,6 @@ ADDED from [androidx.room:room-runtime:2.5.0] /home/bykk/.gradle/caches/8.13/tra
 		ADDED from [androidx.room:room-runtime:2.5.0] /home/bykk/.gradle/caches/8.13/transforms/0a2db549704d2c3e475f6496f6dc2a1f/transformed/room-runtime-2.5.0/AndroidManifest.xml:26:13-43
 	android:name
 		ADDED from [androidx.room:room-runtime:2.5.0] /home/bykk/.gradle/caches/8.13/transforms/0a2db549704d2c3e475f6496f6dc2a1f/transformed/room-runtime-2.5.0/AndroidManifest.xml:25:13-74
-service#org.amnezia.awg.backend.GoBackend$VpnService
-ADDED from [:tunnel] /home/bykk/idrug1.5/iDrugWg/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:12:9-19:19
-	android:exported
-		ADDED from [:tunnel] /home/bykk/idrug1.5/iDrugWg/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:14:13-37
-	android:permission
-		ADDED from [:tunnel] /home/bykk/idrug1.5/iDrugWg/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:15:13-69
-	android:name
-		ADDED from [:tunnel] /home/bykk/idrug1.5/iDrugWg/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:13:13-72
-intent-filter#action:name:android.net.VpnService
-ADDED from [:tunnel] /home/bykk/idrug1.5/iDrugWg/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:16:13-18:29
-action#android.net.VpnService
-ADDED from [:tunnel] /home/bykk/idrug1.5/iDrugWg/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:17:17-65
-	android:name
-		ADDED from [:tunnel] /home/bykk/idrug1.5/iDrugWg/tunnel/build/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:17:25-62
 meta-data#com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar
 ADDED from [com.google.firebase:firebase-datatransport:18.1.7] /home/bykk/.gradle/caches/8.13/transforms/2f626843c1e94e7cc1fb6903fab04296/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:27:13-29:85
 	android:value
@@ -1482,6 +1467,20 @@ ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk
 		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/8.13/transforms/7a612996bc6b64d9f9b79b8b759d1b64/transformed/transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
 	android:name
 		ADDED from [com.google.android.datatransport:transport-runtime:3.1.8] /home/bykk/.gradle/caches/8.13/transforms/7a612996bc6b64d9f9b79b8b759d1b64/transformed/transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
+provider#com.squareup.picasso.PicassoProvider
+ADDED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:8:9-11:40
+	android:authorities
+		ADDED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:10:13-72
+	android:exported
+		ADDED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [com.squareup.picasso:picasso:2.71828] /home/bykk/.gradle/caches/8.13/transforms/8fe26f65e6081d388ff7f71523608dcf/transformed/picasso-2.71828/AndroidManifest.xml:9:13-64
+meta-data#okhttp3.internal.platform.PlatformInitializer
+ADDED from [com.squareup.okhttp3:okhttp-android:5.3.0] /home/bykk/.gradle/caches/8.13/transforms/106f92f21a6258af99d79c7a6638a37f/transformed/okhttp-release/AndroidManifest.xml:16:13-18:52
+	android:value
+		ADDED from [com.squareup.okhttp3:okhttp-android:5.3.0] /home/bykk/.gradle/caches/8.13/transforms/106f92f21a6258af99d79c7a6638a37f/transformed/okhttp-release/AndroidManifest.xml:18:17-49
+	android:name
+		ADDED from [com.squareup.okhttp3:okhttp-android:5.3.0] /home/bykk/.gradle/caches/8.13/transforms/106f92f21a6258af99d79c7a6638a37f/transformed/okhttp-release/AndroidManifest.xml:17:17-77
 meta-data#androidx.profileinstaller.ProfileInstallerInitializer
 ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /home/bykk/.gradle/caches/8.13/transforms/c4331e8f3162ce80db7fc30fda966156/transformed/profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
 	android:value

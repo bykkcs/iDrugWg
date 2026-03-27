@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -89,18 +91,53 @@ public final class MainActivityBinding implements ViewBinding {
    * </ul>
    */
   @Nullable
+  public final MaterialToolbar topAppBar;
+
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-sw600dp/</li>
+   * </ul>
+   */
+  @Nullable
+  public final AppBarLayout topAppBarContainer;
+
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-sw600dp/</li>
+   * </ul>
+   */
+  @Nullable
   public final TextView vpnStatusText;
 
   private MainActivityBinding(@NonNull View rootView,
       @Nullable BottomNavigationView bottomNavigation, @NonNull View fragmentContainer,
       @Nullable FragmentContainerView listFragment, @NonNull View mainActivityContainer,
-      @Nullable LinearLayout masterDetailWrapper, @Nullable TextView vpnStatusText) {
+      @Nullable LinearLayout masterDetailWrapper, @Nullable MaterialToolbar topAppBar,
+      @Nullable AppBarLayout topAppBarContainer, @Nullable TextView vpnStatusText) {
     this.rootView = rootView;
     this.bottomNavigation = bottomNavigation;
     this.fragmentContainer = fragmentContainer;
     this.listFragment = listFragment;
     this.mainActivityContainer = mainActivityContainer;
     this.masterDetailWrapper = masterDetailWrapper;
+    this.topAppBar = topAppBar;
+    this.topAppBarContainer = topAppBarContainer;
     this.vpnStatusText = vpnStatusText;
   }
 
@@ -148,11 +185,17 @@ public final class MainActivityBinding implements ViewBinding {
       id = R.id.master_detail_wrapper;
       LinearLayout masterDetailWrapper = ViewBindings.findChildViewById(rootView, id);
 
+      id = R.id.top_app_bar;
+      MaterialToolbar topAppBar = ViewBindings.findChildViewById(rootView, id);
+
+      id = R.id.top_app_bar_container;
+      AppBarLayout topAppBarContainer = ViewBindings.findChildViewById(rootView, id);
+
       id = R.id.vpnStatusText;
       TextView vpnStatusText = ViewBindings.findChildViewById(rootView, id);
 
       return new MainActivityBinding(rootView, bottomNavigation, fragmentContainer, listFragment,
-          mainActivityContainer, masterDetailWrapper, vpnStatusText);
+          mainActivityContainer, masterDetailWrapper, topAppBar, topAppBarContainer, vpnStatusText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -1,12 +1,12 @@
 <lint-module
     format="1"
-    dir="/home/bykk/idrug1.5/iDrugWg/ui"
+    dir="/home/bykk/iDrugWg/ui"
     name=":ui"
     type="APP"
     maven="idrugconnections-android:ui:unspecified"
     agpVersion="8.9.1"
     buildFolder="build"
-    bootClassPath="/home/bykk/android-sdk/platforms/android-36/android.jar:/home/bykk/android-sdk/build-tools/35.0.0/core-lambda-stubs.jar"
+    bootClassPath="/home/bykk/Android/Sdk/platforms/android-36/android.jar:/home/bykk/Android/Sdk/build-tools/35.0.0/core-lambda-stubs.jar"
     javaSourceLevel="17"
     compileTarget="android-36">
   <lintOptions

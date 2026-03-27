@@ -356,7 +356,6 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="multiple_tunnels_title">Allow multiple simultaneous tunnels</string>
     <string name="name">Name</string>
     <string name="nav_account_title">Account</string>
-    <string name="nav_speed_test_title">Speed Test</string>
     <string name="network_error_msg">Network error: %s</string>
     <string name="no_config_error">Trying to bring up a tunnel with no config</string>
     <string name="no_configs">Нет доступных конфигов</string>
@@ -395,9 +394,6 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="permission_description">control iDrug Connections tunnels, enabling and disabling tunnels at will, potentially misdirecting Internet traffic</string>
     <string name="permission_label">control iDrug Connections tunnels</string>
     <string name="persistent_keepalive">Persistent keepalive</string>
-    <string name="ping_loading">Measuring...</string>
-    <string name="ping_unavailable">Unavailable</string>
-    <string name="ping_value_ms">%1$d ms</string>
     <string name="pre_shared_key">Pre-shared key</string>
     <string name="pre_shared_key_enabled">enabled</string>
     <string name="pref_live_usage_summary">Show Online/Offline based on the current app (requires usage access)</string>
@@ -424,6 +420,7 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="quick_settings_tile_add_summary">The shortcut tile toggles the most recent tunnel</string>
     <string name="quick_settings_tile_add_title">Add tile to quick settings panel</string>
     <string name="referral_link">Referral link</string>
+    <string name="refresh_data">Refresh data</string>
     <string name="renew_subscription">Buy/Renew</string>
     <string name="response_packet_junk_size">Response packet junk size</string>
     <string name="response_packet_magic_header">Response packet magic header</string>
@@ -434,9 +431,9 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="select_all">Select all</string>
     <string name="select_server">Select a server</string>
     <string name="server_bulgaria">Bulgaria</string>
+    <string name="server_finland">Finland</string>
     <string name="server_germany">Germany</string>
     <string name="server_madrid">Madrid</string>
-    <string name="server_multihop_germany">Multihop Germany</string>
     <string name="settings">Settings</string>
     <string name="shell_exit_status_read_error">Shell cannot read exit status</string>
     <string name="shell_marker_count_error">Shell expected 4 markers, received %d</string>
@@ -446,29 +443,6 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="special_junk_packet_3">Special junk packet I3</string>
     <string name="special_junk_packet_4">Special junk packet I4</string>
     <string name="special_junk_packet_5">Special junk packet I5</string>
-    <string name="speed_test_cancel">Cancel</string>
-    <string name="speed_test_download_label">Download</string>
-    <string name="speed_test_download_presets">Download preset</string>
-    <string name="speed_test_error_format">%1$s</string>
-    <string name="speed_test_last_updated_format">Updated %1$d s ago</string>
-    <string name="speed_test_ping_format">%1$s</string>
-    <string name="speed_test_ping_label">Ping</string>
-    <string name="speed_test_preset_extended">Extended</string>
-    <string name="speed_test_preset_full">Full</string>
-    <string name="speed_test_preset_quick">Quick</string>
-    <string name="speed_test_preset_standard">Standard</string>
-    <string name="speed_test_start">Start Test</string>
-    <string name="speed_test_status_cancelled">Speed test cancelled</string>
-    <string name="speed_test_status_download_done">Download complete</string>
-    <string name="speed_test_status_download_running">Running download test…</string>
-    <string name="speed_test_status_error">Error during speed test</string>
-    <string name="speed_test_status_finished">Speed test finished</string>
-    <string name="speed_test_status_idle">Ready to run speed test</string>
-    <string name="speed_test_status_ping_done">Ping complete</string>
-    <string name="speed_test_status_pinging">Measuring ping…</string>
-    <string name="speed_test_status_upload_running">Running upload test…</string>
-    <string name="speed_test_upload_label">Upload</string>
-    <string name="speed_test_upload_presets">Upload preset</string>
     <string name="submit_code">Link</string>
     <string name="subscription_active_days">%1$s: until %2$s (%3$d d)</string>
     <string name="subscription_catalog_empty">No subscription plans are currently available</string>
@@ -520,7 +494,7 @@ Official iDrug Connections services are available only at <a href="https://idrug
     <string name="tunnel_list_placeholder">Add a tunnel using the button below</string>
     <string name="tunnel_name">Tunnel Name</string>
     <string name="tunnel_on_error">Unable to turn tunnel on (wgTurnOn returned %d)</string>
-    <string name="tunnel_quic_ready">awg1.5 (quic-ready)</string>
+    <string name="tunnel_quic_ready">awg 2.0</string>
     <string name="tunnel_rename_error">Unable to rename tunnel: %s</string>
     <string name="tunnel_rename_success">Successfully renamed tunnel to “%s”</string>
     <string name="tv_action_hint_connect">Press OK to connect</string>
@@ -608,6 +582,31 @@ Official iDrug Connections services are available only at <a href="https://idrug
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">?attr/colorOnSurface</item>
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+    <style name="MainActivityActionMode" parent="Widget.AppCompat.ActionMode">
+        <item name="background">?android:colorBackground</item>
+        <item name="titleTextStyle">@style/MainActivityActionModeTitle</item>
+        <item name="subtitleTextStyle">@style/MainActivityActionModeSubtitle</item>
+    </style>
+    <style name="MainActivityActionModeSubtitle" parent="TextAppearance.AppCompat.Widget.ActionMode.Subtitle">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+    <style name="MainActivityActionModeTitle" parent="TextAppearance.AppCompat.Widget.ActionMode.Title">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+    <style name="MainActivityTheme" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="actionModeStyle">@style/MainActivityActionMode</item>
+        <item name="android:actionModeStyle">@style/MainActivityActionMode</item>
+        <item name="actionModeBackground">?android:colorBackground</item>
+        <item name="android:actionModeBackground">?android:colorBackground</item>
+        <item name="colorPrimaryDark">?android:colorBackground</item>
+        <item name="android:enforceStatusBarContrast">false</item>
     </style>
     <style name="MonetAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="backgroundTint">?attr/colorSurface</item>

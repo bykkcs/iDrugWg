@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pw.idrug.connections"
     android:installLocation="internalOnly"
-    android:versionCode="12"
-    android:versionName="1.6" >
+    android:versionCode="15"
+    android:versionName="2.0" >
 
     <uses-sdk
         android:minSdkVersion="24"
@@ -25,9 +25,6 @@
 
     <uses-feature
         android:name="android.hardware.touchscreen"
-        android:required="false" />
-    <uses-feature
-        android:name="android.software.leanback"
         android:required="false" />
     <uses-feature
         android:name="android.hardware.camera.any"
@@ -116,7 +113,8 @@
         </activity>
         <activity
             android:name="pw.idrug.connections.activity.MainActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:theme="@style/MainActivityTheme" >
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
@@ -153,23 +151,10 @@
         </provider>
 
         <activity
-            android:name="pw.idrug.connections.activity.TvEntryActivity"
-            android:exported="true"
-            android:theme="@style/TvTheme" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="pw.idrug.connections.activity.ConfigListActivity"
-            android:exported="false"
-            android:theme="@style/TvTheme" />
-        <activity
             android:name="pw.idrug.connections.activity.SettingsActivity"
             android:label="@string/settings"
-            android:parentActivityName="pw.idrug.connections.activity.MainActivity" />
+            android:parentActivityName="pw.idrug.connections.activity.MainActivity"
+            android:theme="@style/MainActivityTheme" />
         <activity
             android:name="pw.idrug.connections.activity.TunnelCreatorActivity"
             android:label="@string/create_activity_title"
@@ -285,6 +270,15 @@
             android:name="android.content.APP_RESTRICTIONS"
             android:resource="@xml/app_restrictions" />
 
+        <service
+            android:name="org.amnezia.awg.backend.AbstractBackend$VpnService"
+            android:exported="false"
+            android:permission="android.permission.BIND_VPN_SERVICE" >
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+        </service>
+
         <receiver
             android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
             android:exported="true"
@@ -382,6 +376,9 @@
                 android:value="androidx.startup" />
             <meta-data
                 android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="okhttp3.internal.platform.PlatformInitializer"
                 android:value="androidx.startup" />
             <meta-data
                 android:name="androidx.profileinstaller.ProfileInstallerInitializer"
@@ -494,23 +491,10 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <provider
-            android:name="com.squareup.picasso.PicassoProvider"
-            android:authorities="pw.idrug.connections.com.squareup.picasso"
-            android:exported="false" />
-
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"
             android:directBootAware="true"
             android:exported="false" />
-        <service
-            android:name="org.amnezia.awg.backend.GoBackend$VpnService"
-            android:exported="false"
-            android:permission="android.permission.BIND_VPN_SERVICE" >
-            <intent-filter>
-                <action android:name="android.net.VpnService" />
-            </intent-filter>
-        </service>
         <service
             android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
             android:exported="false" >
@@ -527,6 +511,12 @@
         <receiver
             android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
             android:exported="false" />
+
+        <provider
+            android:name="com.squareup.picasso.PicassoProvider"
+            android:authorities="pw.idrug.connections.com.squareup.picasso"
+            android:exported="false" />
+
         <receiver
             android:name="androidx.profileinstaller.ProfileInstallReceiver"
             android:directBootAware="false"

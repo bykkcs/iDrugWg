@@ -8,7 +8,7 @@ public final class TunnelDetailFragment extends pw.idrug.connections.fragment.Ba
     @org.jetbrains.annotations.Nullable()
     private pw.idrug.connections.databinding.TunnelDetailFragmentBinding binding;
     @org.jetbrains.annotations.NotNull()
-    private org.amnezia.awg.backend.Tunnel.State lastState = org.amnezia.awg.backend.Tunnel.State.TOGGLE;
+    private org.amnezia.awg.backend.Tunnel.State lastState = org.amnezia.awg.backend.Tunnel.State.DOWN;
     private boolean timerActive = true;
     
     public TunnelDetailFragment() {

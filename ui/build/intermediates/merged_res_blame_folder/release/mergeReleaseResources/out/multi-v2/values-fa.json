@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-83:/values-fa/values-fa.xml",
+            "outputFile": "pw.idrug.connections.ui-mergeReleaseResources-82:/values-fa/values-fa.xml",
             "map": [
                 {
                     "source": "/home/bykk/.gradle/caches/8.13/transforms/788b78407de77f3e568fb6db3ff9d47a/transformed/play-services-basement-18.1.0/res/values-fa/values.xml",
@@ -72,23 +72,6 @@
                     }
                 },
                 {
-                    "source": "/home/bykk/.gradle/caches/8.13/transforms/589b4bc97ddb92b2f2e1562464988a06/transformed/core-1.17.0-alpha01/res/values-fa/values-fa.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,154,256,355,455,556,662,779",
-                        "endColumns": "98,101,98,99,100,105,116,100",
-                        "endOffsets": "149,251,350,450,551,657,774,875"
-                    },
-                    "to": {
-                        "startLines": "38,39,40,41,42,43,44,222",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "3413,3512,3614,3713,3813,3914,4020,21150",
-                        "endColumns": "98,101,98,99,100,105,116,100",
-                        "endOffsets": "3507,3609,3708,3808,3909,4015,4132,21246"
-                    }
-                },
-                {
                     "source": "/home/bykk/.gradle/caches/8.13/transforms/60a5817d24522ac425af67e5d5e53db9/transformed/play-services-base-18.0.1/res/values-fa/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -103,6 +86,23 @@
                         "startOffsets": "4613,4721,4878,5007,5110,5250,5376,5490,5747,5900,6010,6180,6311,6464,6620,6686,6754",
                         "endColumns": "107,156,128,102,139,125,113,101,152,109,169,130,152,155,65,67,84",
                         "endOffsets": "4716,4873,5002,5105,5245,5371,5485,5587,5895,6005,6175,6306,6459,6615,6681,6749,6834"
+                    }
+                },
+                {
+                    "source": "/home/bykk/.gradle/caches/8.13/transforms/ca17acf4426b604f66b195066560a867/transformed/core-1.17.0/res/values-fa/values-fa.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,154,256,355,455,556,662,779",
+                        "endColumns": "98,101,98,99,100,105,116,100",
+                        "endOffsets": "149,251,350,450,551,657,774,875"
+                    },
+                    "to": {
+                        "startLines": "38,39,40,41,42,43,44,222",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "3413,3512,3614,3713,3813,3914,4020,21150",
+                        "endColumns": "98,101,98,99,100,105,116,100",
+                        "endOffsets": "3507,3609,3708,3808,3909,4015,4132,21246"
                     }
                 },
                 {
@@ -142,7 +142,7 @@
                     }
                 },
                 {
-                    "source": "/home/bykk/.gradle/caches/8.13/transforms/73ed5a963feab88417b2a6878d1fcc41/transformed/appcompat-1.6.1/res/values-fa/values-fa.xml",
+                    "source": "/home/bykk/.gradle/caches/8.13/transforms/66c6df8c5112bf992f14e3270bcc29b3/transformed/appcompat-1.7.1/res/values-fa/values-fa.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

@@ -33,9 +33,6 @@ public final class FragmentAccountBinding implements ViewBinding {
   public final MaterialButton btnDownload;
 
   @NonNull
-  public final MaterialButton btnLinkDevice;
-
-  @NonNull
   public final MaterialButton btnLoginTelegram;
 
   @NonNull
@@ -43,6 +40,9 @@ public final class FragmentAccountBinding implements ViewBinding {
 
   @NonNull
   public final MaterialButton btnReferral;
+
+  @NonNull
+  public final MaterialButton btnRefreshData;
 
   @NonNull
   public final MaterialButton btnRenew;
@@ -97,8 +97,8 @@ public final class FragmentAccountBinding implements ViewBinding {
 
   private FragmentAccountBinding(@NonNull CoordinatorLayout rootView,
       @NonNull ImageView avatarImage, @NonNull MaterialButton btnDownload,
-      @NonNull MaterialButton btnLinkDevice, @NonNull MaterialButton btnLoginTelegram,
-      @NonNull MaterialButton btnLogout, @NonNull MaterialButton btnReferral,
+      @NonNull MaterialButton btnLoginTelegram, @NonNull MaterialButton btnLogout,
+      @NonNull MaterialButton btnReferral, @NonNull MaterialButton btnRefreshData,
       @NonNull MaterialButton btnRenew, @NonNull MaterialCardView cardConnection,
       @NonNull MaterialCardView cardLogin, @NonNull MaterialCardView cardProfile,
       @NonNull CoordinatorLayout coordinator, @NonNull MaterialAutoCompleteTextView dropdownServer,
@@ -111,10 +111,10 @@ public final class FragmentAccountBinding implements ViewBinding {
     this.rootView = rootView;
     this.avatarImage = avatarImage;
     this.btnDownload = btnDownload;
-    this.btnLinkDevice = btnLinkDevice;
     this.btnLoginTelegram = btnLoginTelegram;
     this.btnLogout = btnLogout;
     this.btnReferral = btnReferral;
+    this.btnRefreshData = btnRefreshData;
     this.btnRenew = btnRenew;
     this.cardConnection = cardConnection;
     this.cardLogin = cardLogin;
@@ -173,12 +173,6 @@ public final class FragmentAccountBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.btn_link_device;
-      MaterialButton btnLinkDevice = ViewBindings.findChildViewById(rootView, id);
-      if (btnLinkDevice == null) {
-        break missingId;
-      }
-
       id = R.id.btn_login_telegram;
       MaterialButton btnLoginTelegram = ViewBindings.findChildViewById(rootView, id);
       if (btnLoginTelegram == null) {
@@ -194,6 +188,12 @@ public final class FragmentAccountBinding implements ViewBinding {
       id = R.id.btn_referral;
       MaterialButton btnReferral = ViewBindings.findChildViewById(rootView, id);
       if (btnReferral == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_refresh_data;
+      MaterialButton btnRefreshData = ViewBindings.findChildViewById(rootView, id);
+      if (btnRefreshData == null) {
         break missingId;
       }
 
@@ -296,7 +296,7 @@ public final class FragmentAccountBinding implements ViewBinding {
       }
 
       return new FragmentAccountBinding((CoordinatorLayout) rootView, avatarImage, btnDownload,
-          btnLinkDevice, btnLoginTelegram, btnLogout, btnReferral, btnRenew, cardConnection,
+          btnLoginTelegram, btnLogout, btnReferral, btnRefreshData, btnRenew, cardConnection,
           cardLogin, cardProfile, coordinator, dropdownServer, loginIllustration, qrCodeImage,
           rootLayout, scrollView, serverDropdownContainer, statusText, textConnectionTitle,
           textCurrentUser, textExpiration, textLoginDescription, textLoginTitle);

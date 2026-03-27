@@ -1,13 +1,12 @@
 -keep class j$.time.Duration {
   public static j$.time.Duration between(j$.time.temporal.Temporal,j$.time.temporal.Temporal);
+  public long getSeconds();
   public long toMillis();
-  public long toMinutes();
 }
 -keep class j$.time.Instant {
   public j$.time.OffsetDateTime atOffset(j$.time.ZoneOffset);
   public static j$.time.Instant now();
-  public long toEpochMilli();
-  j$.time.Instant EPOCH;
+  j$.time.Instant MIN;
 }
 -keep class j$.time.LocalDateTime {
   public java.lang.String format(j$.time.format.DateTimeFormatter);
@@ -25,6 +24,9 @@
 }
 -keep class j$.util.DateRetargetClass {
   public static j$.time.Instant toInstant(java.util.Date);
+}
+-keep class j$.util.DesugarDate {
+  public static java.util.Date from(j$.time.Instant);
 }
 -keep class j$.util.DesugarTimeZone {
   public static java.util.TimeZone getTimeZone(java.lang.String);
