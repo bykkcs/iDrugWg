@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import pw.idrug.connections.Application
 import pw.idrug.connections.R
 import okhttp3.*
 import org.json.JSONObject
@@ -50,7 +51,7 @@ class LinkCodeActivity : AppCompatActivity() {
     }
 
     private fun linkAccountWithCode(code: String, callback: (Boolean, String?, String?, String?) -> Unit) {
-        val client = OkHttpClient()
+        val client = Application.getHttpClient()
         val body = FormBody.Builder().add("code", code).build()
         val request = Request.Builder()
             .url("https://idrug.pw/api/linking/consume")

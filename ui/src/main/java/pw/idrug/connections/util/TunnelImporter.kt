@@ -16,14 +16,12 @@ import pw.idrug.connections.fragment.ConfigNamingDialogFragment
 import pw.idrug.connections.model.ObservableTunnel
 import pw.idrug.connections.util.ErrorMessages
 import pw.idrug.connections.viewmodel.ConfigProxy
-import org.amnezia.awg.config.Config
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 import java.io.BufferedReader
-import java.io.ByteArrayInputStream
 import java.io.InputStreamReader
 import java.nio.charset.StandardCharsets
 import java.util.zip.ZipEntry
@@ -73,7 +71,7 @@ object TunnelImporter {
                             continue
                         name = name.substring(0, name.length - ".conf".length)
                         val parsed = try {
-                            Config.parse(reader)
+                            AwgConfigParser.parse(reader)
                         } catch (e: Throwable) {
                             throwables.add(e)
                             null
@@ -89,7 +87,7 @@ object TunnelImporter {
                 }
             } else {
                 futureTunnels.add(async(SupervisorJob()) {
-                    val config = Config.parse(contentResolver.openInputStream(uri)!!)
+                    val config = AwgConfigParser.parse(contentResolver.openInputStream(uri)!!)
                     Application.getTunnelManager().create(name, ConfigProxy(config).buildConfigs())
                 })
             }
@@ -118,7 +116,7 @@ object TunnelImporter {
     fun importTunnel(parentFragmentManager: FragmentManager, configText: String, messageCallback: (CharSequence) -> Unit) {
         try {
             // Ensure the config text is parseable before proceeding…
-            Config.parse(ByteArrayInputStream(configText.toByteArray(StandardCharsets.UTF_8)))
+            AwgConfigParser.parse(configText)
 
             // Config text is valid, now create the tunnel…
             ConfigNamingDialogFragment.newInstance(configText).show(parentFragmentManager, null)

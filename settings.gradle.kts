@@ -23,7 +23,6 @@ plugins {
 
 rootProject.name = "idrugconnections-android"
 
-include(":tunnel")
 include(":ui")
 
 configure<SettingsExtension> {

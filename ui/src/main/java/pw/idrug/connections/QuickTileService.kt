@@ -67,7 +67,8 @@ class QuickTileService : TileService() {
                 unlockAndRun {
                     applicationScope.launch {
                         try {
-                            tunnel.setStateAsync(Tunnel.State.TOGGLE)
+                            val targetState = if (tunnel.state == Tunnel.State.UP) Tunnel.State.DOWN else Tunnel.State.UP
+                            tunnel.setStateAsync(targetState)
                             updateTile()
                         } catch (_: Throwable) {
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE && !Settings.canDrawOverlays(this@QuickTileService)) {

@@ -69,6 +69,10 @@ class ObservableTunnel internal constructor(
         onStateChanged(newState)
     }
 
+    override fun isIpv4ResolutionPreferred(): Boolean = true
+
+    override fun isMetered(): Boolean = false
+
     fun onStateChanged(state: Tunnel.State): Tunnel.State {
         if (state != Tunnel.State.UP) onStatisticsChanged(null)
         this.state = state
@@ -117,7 +121,7 @@ class ObservableTunnel internal constructor(
     @get:Bindable
     val quicReadyBadge: Boolean
         get() = config?.let {
-            runCatching { it.getInterface().i1.orElse("").isNotEmpty() }.getOrDefault(false)
+            runCatching { it.getInterface().specialJunkI1.orElse("").isNotEmpty() }.getOrDefault(false)
         } ?: false
 
     suspend fun setConfigAsync(configs: ConfigProxy.BuiltConfigs): Config = withContext(Dispatchers.Main.immediate) {

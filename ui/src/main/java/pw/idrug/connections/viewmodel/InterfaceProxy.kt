@@ -267,15 +267,15 @@ class InterfaceProxy : BaseObservable, Parcelable {
         responsePacketMagicHeader = other.responsePacketMagicHeader.map { it.toString() }.orElse("")
         underloadPacketMagicHeader = other.underloadPacketMagicHeader.map { it.toString() }.orElse("")
         transportPacketMagicHeader = other.transportPacketMagicHeader.map { it.toString() }.orElse("")
-        specialJunkPacket1 = other.i1.orElse("")
-        specialJunkPacket2 = other.i2.orElse("")
-        specialJunkPacket3 = other.i3.orElse("")
-        specialJunkPacket4 = other.i4.orElse("")
-        specialJunkPacket5 = other.i5.orElse("")
-        controlledJunkPacket1 = other.j1.orElse("")
-        controlledJunkPacket2 = other.j2.orElse("")
-        controlledJunkPacket3 = other.j3.orElse("")
-        itimeSeconds = other.itimeSeconds.map { it.toString() }.orElse("")
+        specialJunkPacket1 = other.specialJunkI1.orElse("")
+        specialJunkPacket2 = other.specialJunkI2.orElse("")
+        specialJunkPacket3 = other.specialJunkI3.orElse("")
+        specialJunkPacket4 = other.specialJunkI4.orElse("")
+        specialJunkPacket5 = other.specialJunkI5.orElse("")
+        controlledJunkPacket1 = ""
+        controlledJunkPacket2 = ""
+        controlledJunkPacket3 = ""
+        itimeSeconds = ""
         val keyPair = other.keyPair
         privateKey = keyPair.privateKey.toBase64()
     }
@@ -320,29 +320,15 @@ class InterfaceProxy : BaseObservable, Parcelable {
         if (underloadPacketMagicHeader.isNotEmpty()) builder.parseUnderloadPacketMagicHeader(underloadPacketMagicHeader)
         if (transportPacketMagicHeader.isNotEmpty()) builder.parseTransportPacketMagicHeader(transportPacketMagicHeader)
         val i1Value = specialJunkPacket1.trim()
-        if (i1Value.isNotEmpty()) builder.parseI1(i1Value)
+        if (i1Value.isNotEmpty()) builder.parseSpecialJunkI1(i1Value)
         val i2Value = specialJunkPacket2.trim()
-        if (i2Value.isNotEmpty()) builder.parseI2(i2Value)
+        if (i2Value.isNotEmpty()) builder.parseSpecialJunkI2(i2Value)
         val i3Value = specialJunkPacket3.trim()
-        if (i3Value.isNotEmpty()) builder.parseI3(i3Value)
+        if (i3Value.isNotEmpty()) builder.parseSpecialJunkI3(i3Value)
         val i4Value = specialJunkPacket4.trim()
-        if (i4Value.isNotEmpty()) builder.parseI4(i4Value)
+        if (i4Value.isNotEmpty()) builder.parseSpecialJunkI4(i4Value)
         val i5Value = specialJunkPacket5.trim()
-        if (i5Value.isNotEmpty()) builder.parseI5(i5Value)
-
-        val j1Value = controlledJunkPacket1.trim()
-        if (j1Value.isNotEmpty()) builder.parseJ1(j1Value)
-        val j2Value = controlledJunkPacket2.trim()
-        if (j2Value.isNotEmpty()) builder.parseJ2(j2Value)
-        val j3Value = controlledJunkPacket3.trim()
-        if (j3Value.isNotEmpty()) builder.parseJ3(j3Value)
-        val itimeValue = itimeSeconds.trim()
-        if (itimeValue.isNotEmpty()) {
-            builder.parseItime(itimeValue)
-        } else {
-            val noItime: Int? = null
-            builder.setItimeSeconds(noItime)
-        }
+        if (i5Value.isNotEmpty()) builder.parseSpecialJunkI5(i5Value)
         if (privateKey.isNotEmpty()) builder.parsePrivateKey(privateKey)
         return builder.build()
     }

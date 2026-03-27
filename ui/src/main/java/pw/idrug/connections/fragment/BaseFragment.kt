@@ -5,6 +5,7 @@
 package pw.idrug.connections.fragment
 
 import android.content.Context
+import android.net.VpnService
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -68,7 +69,7 @@ abstract class BaseFragment : Fragment(), OnSelectedTunnelChangedListener {
         activity.lifecycleScope.launch {
             if (Application.getBackend() is GoBackend) {
                 try {
-                    val intent = GoBackend.VpnService.prepare(activity)
+                    val intent = VpnService.prepare(activity)
                     if (intent != null) {
                         pendingTunnel = tunnel
                         pendingTunnelUp = checked

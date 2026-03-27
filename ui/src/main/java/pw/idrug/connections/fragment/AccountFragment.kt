@@ -24,12 +24,6 @@ import android.graphics.BitmapShader
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Shader
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.ForegroundColorSpan
-import android.text.style.StyleSpan
-import android.graphics.Color
-import android.graphics.Typeface
 import android.util.Log
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -54,8 +48,8 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 import java.io.IOException
-import java.net.InetSocketAddress
-import java.net.Socket
+import java.io.InterruptedIOException
+import java.net.SocketTimeoutException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -63,15 +57,13 @@ import java.util.Timer
 import java.util.LinkedHashSet
 import java.util.concurrent.TimeUnit
 import kotlin.math.min
-import kotlin.math.roundToInt
 import pw.idrug.connections.R
 import pw.idrug.connections.TunnelSyncManager
 import pw.idrug.connections.Application
 import pw.idrug.connections.catalog.CatalogRepository
-import pw.idrug.connections.dialog.LinkCodeDialogFragment
 import pw.idrug.connections.dialog.LoadingDialogFragment
 import pw.idrug.connections.dialog.SubscriptionDialogFragment
-import org.amnezia.awg.config.Config
+import pw.idrug.connections.util.AwgConfigParser
 import pw.idrug.connections.util.UserKnobs
 import pw.idrug.connections.viewmodel.ConfigProxy
 
@@ -85,14 +77,17 @@ class AccountFragment : Fragment() {
     private var serverList: List<Pair<String, String>> = listOf()
     private var qrPollingTimer: Timer? = null
     @Volatile private var isLogoutRunning = false
-    private var pingJob: Job? = null
-    private val serverPings = mutableMapOf<String, PingResult>()
     private var cachedProfile: ProfileSnapshot? = null
     private var cachedProfileTimestamp: Long = 0L
     private var profileCall: Call? = null
-    private var profileTimeoutRunnable: Runnable? = null
+    private var skipNextOnResumeRefresh: Boolean = false
 
-    private val fallbackServerOrder = listOf("germany", "multihop", "bulgaria", "madrid")
+    private val fallbackServerOrder = listOf(
+        "awg2_germany",
+        "awg2_bulgaria",
+        "awg2_madrid",
+        "awg2_finland"
+    )
 
     // Subscription model. Only the active field matters.
     private data class Subscription(
@@ -104,65 +99,66 @@ class AccountFragment : Fragment() {
     )
     private var subscriptions: List<Subscription> = emptyList()
 
-    private enum class PingState { LOADING, SUCCESS, ERROR }
-
-    private data class PingResult(
-        val state: PingState,
-        val latencyMs: Int? = null
-    )
-
-    private data class TcpEndpoint(val host: String, val port: Int)
-
     private data class ProfileSnapshot(
         val username: String,
         val photoUrl: String?,
         val subscriptions: List<Subscription>
     )
 
-    private val pingEndpoints = mapOf(
-        "germany" to TcpEndpoint("194.113.233.251", 51821),
-        "madrid" to TcpEndpoint("159.255.34.41", 51821),
-        "bulgaria" to TcpEndpoint("185.232.170.117", 51821)
-    )
+    private fun normalizeServerId(raw: String?): String? {
+        val value = raw?.trim()?.lowercase(Locale.ROOT).orEmpty()
+        if (value.isBlank()) return null
+        return when {
+            value == "awg2_bundle" -> value
+            value.startsWith("awg2_") -> value
+            else -> null
+        }
+    }
 
-    private fun resetPingState() {
-        pingJob?.cancel()
-        pingJob = null
-        serverPings.clear()
+    private fun serverIdToTunnelName(serverId: String?): String? {
+        val normalized = normalizeServerId(serverId) ?: return null
+        if (!normalized.startsWith("awg2_")) return null
+        return "id2_${normalized.removePrefix("awg2_")}"
+    }
+
+    private fun isManagedTunnelName(name: String): Boolean {
+        return name.startsWith("id2_") || name.startsWith("idrug_")
     }
 
     // --- Локализация названия сервера ---
     private fun getServerName(location: String?): String {
-        if (location.isNullOrBlank()) {
+        val normalized = normalizeServerId(location)
+        if (normalized.isNullOrBlank()) {
             Log.w("AccountFragment", "getServerName: empty or null location")
             return "Unknown"
         }
         context?.let { ctx ->
-            CatalogRepository.getLocationDisplayName(ctx, location, activeLocale())?.let { return it }
+            CatalogRepository.getLocationDisplayName(ctx, normalized, activeLocale())?.let { return it }
         }
-        return when (location) {
-            "germany" -> getString(R.string.server_germany)
-            "multihop" -> getString(R.string.server_multihop_germany)
-            "bulgaria" -> getString(R.string.server_bulgaria)
-            "madrid" -> getString(R.string.server_madrid)
+        return when (normalized) {
+            "awg2_germany" -> getString(R.string.server_germany)
+            "awg2_bulgaria" -> getString(R.string.server_bulgaria)
+            "awg2_madrid" -> getString(R.string.server_madrid)
+            "awg2_finland" -> getString(R.string.server_finland)
             else -> {
-                Log.w("AccountFragment", "getServerName: unrecognized location $location")
-                location
+                Log.w("AccountFragment", "getServerName: unrecognized location $normalized")
+                normalized
             }
         }
     }
 
     private fun getServerFlag(location: String?): String {
-        if (!location.isNullOrBlank()) {
+        val normalized = normalizeServerId(location)
+        if (!normalized.isNullOrBlank()) {
             context?.let { ctx ->
-                CatalogRepository.getLocationEmoji(ctx, location)?.takeIf { it.isNotBlank() }?.let { return it }
+                CatalogRepository.getLocationEmoji(ctx, normalized)?.takeIf { it.isNotBlank() }?.let { return it }
             }
         }
-        return when (location) {
-            "germany" -> "\uD83C\uDDE9\uD83C\uDDEA" // 🇩🇪
-            "multihop" -> "\uD83C\uDF10" // 🌐
-            "bulgaria" -> "\uD83C\uDDE7\uD83C\uDDEC" // 🇧🇬
-            "madrid" -> "\uD83C\uDDEA\uD83C\uDDF8" // 🇪🇸
+        return when (normalized) {
+            "awg2_germany" -> "\uD83C\uDDE9\uD83C\uDDEA" // 🇩🇪
+            "awg2_bulgaria" -> "\uD83C\uDDE7\uD83C\uDDEC" // 🇧🇬
+            "awg2_madrid" -> "\uD83C\uDDEA\uD83C\uDDF8" // 🇪🇸
+            "awg2_finland" -> "\uD83C\uDDEB\uD83C\uDDEE" // 🇫🇮
             else -> ""
         }
     }
@@ -171,7 +167,6 @@ class AccountFragment : Fragment() {
         super.onDestroyView()
         destroyed = true
         qrPollingTimer?.cancel()
-        resetPingState()
         cancelProfileCall()
         (parentFragmentManager.findFragmentByTag("code_input") as? DialogFragment)?.dismissAllowingStateLoss()
         (parentFragmentManager.findFragmentByTag("link_code") as? DialogFragment)?.dismissAllowingStateLoss()
@@ -185,9 +180,14 @@ class AccountFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        handleDeepLink(requireActivity().intent)
+        val deepLinkHandled = handleDeepLink(requireActivity().intent)
+        if (deepLinkHandled) return
+        if (skipNextOnResumeRefresh) {
+            skipNextOnResumeRefresh = false
+            return
+        }
         if (isLoggedIn()) {
-            loadServersAndProfileUI(requireView())
+            view?.let { loadServersAndProfileUI(it) }
         }
     }
 
@@ -196,6 +196,7 @@ class AccountFragment : Fragment() {
         setupListeners(view)
         setupServerDropdown(view)
         showCorrectScreen(view)
+        skipNextOnResumeRefresh = true
     }
 
     private fun setupListeners(view: View) {
@@ -215,12 +216,18 @@ class AccountFragment : Fragment() {
                 }
             }
         }
-        view.findViewById<Button>(R.id.btn_link_device).setOnClickListener {
-            LinkCodeDialogFragment().show(parentFragmentManager, "link_code")
-        }
         view.findViewById<Button>(R.id.btn_download).setOnClickListener {
             viewLifecycleOwner.lifecycleScope.launch {
                 handleDownloadConfig()
+            }
+        }
+        view.findViewById<Button>(R.id.btn_refresh_data).setOnClickListener {
+            if (!isLoggedIn()) {
+                Toast.makeText(requireContext(), R.string.login_telegram_first, Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            viewLifecycleOwner.lifecycleScope.launch {
+                refreshDataFromSite(view)
             }
         }
         view.findViewById<Button>(R.id.btn_renew).setOnClickListener {
@@ -255,7 +262,7 @@ class AccountFragment : Fragment() {
         val useCache = snapshot != null && now - cachedProfileTimestamp <= PROFILE_CACHE_VALIDITY_MS
         if (useCache) {
             val cached = snapshot!!
-            showAccountScreen(view, cached.username, cached.photoUrl, cached.subscriptions, cacheResult = false, refreshPings = false)
+            showAccountScreen(view, cached.username, cached.photoUrl, cached.subscriptions, cacheResult = false)
             loadProfileAndSetupUI(view, showLoading = false)
         } else {
             setLoading(true)
@@ -282,9 +289,9 @@ class AccountFragment : Fragment() {
             view?.let { root ->
                 root.findViewById<Button>(R.id.btn_login_telegram)?.isEnabled = !isLoading
                 root.findViewById<Button>(R.id.btn_logout)?.isEnabled = !isLoading
-                root.findViewById<Button>(R.id.btn_link_device)?.isEnabled = !isLoading
                 root.findViewById<Button>(R.id.btn_renew)?.isEnabled = !isLoading
                 root.findViewById<Button>(R.id.btn_referral)?.isEnabled = !isLoading
+                root.findViewById<Button>(R.id.btn_refresh_data)?.isEnabled = !isLoading
                 root.findViewById<Button>(R.id.btn_download)?.isEnabled =
                     !isLoading && !selectedServerId.isNullOrEmpty()
             }
@@ -295,7 +302,6 @@ class AccountFragment : Fragment() {
         qrPollingTimer?.cancel()
         selectedServerId = null
         subscriptions = emptyList()
-        resetPingState()
         cachedProfile = null
         cachedProfileTimestamp = 0L
         cancelProfileCall()
@@ -313,7 +319,6 @@ class AccountFragment : Fragment() {
         updateSubscriptionSummary(view, emptyList())
         view.findViewById<ImageView>(R.id.avatar_image)?.setImageResource(R.drawable.ic_avatar_placeholder)
         setStatusMessage(view, null, false)
-        // Ping indicator lives inside dropdown entries, nothing extra under the field
     }
 
     private fun showAccountScreen(
@@ -321,8 +326,7 @@ class AccountFragment : Fragment() {
         username: String,
         photoUrl: String?,
         subs: List<Subscription>,
-        cacheResult: Boolean,
-        refreshPings: Boolean
+        cacheResult: Boolean
     ) {
         if (cacheResult) {
             val cachedSubs = subs.map { it.copy() }
@@ -345,10 +349,6 @@ class AccountFragment : Fragment() {
             if (dropdownVisible) View.VISIBLE else View.GONE
 
         view.findViewById<Button>(R.id.btn_download)?.isEnabled = serverList.isNotEmpty()
-        view.findViewById<Button>(R.id.btn_link_device)?.apply {
-            visibility = View.VISIBLE
-            isEnabled = true
-        }
         view.findViewById<Button>(R.id.btn_referral)?.apply {
             visibility = View.VISIBLE
             isEnabled = true
@@ -359,6 +359,10 @@ class AccountFragment : Fragment() {
         }
         view.findViewById<Button>(R.id.btn_renew)?.isEnabled = true
         view.findViewById<Button>(R.id.btn_renew)?.visibility = View.VISIBLE
+        view.findViewById<Button>(R.id.btn_refresh_data)?.apply {
+            visibility = View.VISIBLE
+            isEnabled = true
+        }
         view.findViewById<MaterialAutoCompleteTextView>(R.id.dropdown_server)?.isEnabled = serverList.isNotEmpty()
 
         val titleView = view.findViewById<TextView>(R.id.text_current_user)
@@ -386,30 +390,24 @@ class AccountFragment : Fragment() {
                 .into(avatarView)
         }
 
-        if (refreshPings) {
-            refreshServerPings(view)
-        } else {
-            setupServerDropdown(view)   // <-- listeners
-            updateDropdownItems(view)
-        }
+        setupServerDropdown(view)
+        updateDropdownItems(view)
         updateDownloadButtonState(view)
     }
 
     private fun applyLoadingState(view: View) {
         val username = prefs.getString("username", "") ?: ""
         val photoUrl = prefs.getString("photo_url", null)
-        resetPingState()
 
         view.findViewById<View>(R.id.card_login)?.visibility = View.GONE
         view.findViewById<View>(R.id.card_profile)?.visibility = View.VISIBLE
         view.findViewById<View>(R.id.card_connection)?.visibility = View.VISIBLE
         view.findViewById<ImageView>(R.id.qr_code_image)?.visibility = View.GONE
-
-        view.findViewById<Button>(R.id.btn_link_device)?.apply {
+        view.findViewById<Button>(R.id.btn_renew)?.apply {
             visibility = View.VISIBLE
             isEnabled = false
         }
-        view.findViewById<Button>(R.id.btn_renew)?.apply {
+        view.findViewById<Button>(R.id.btn_refresh_data)?.apply {
             visibility = View.VISIBLE
             isEnabled = false
         }
@@ -530,7 +528,7 @@ class AccountFragment : Fragment() {
     private fun updateServerListFromSubscriptions() {
         val subscriptionIds = LinkedHashSet<String>()
         subscriptions.forEach { sub ->
-            if (!sub.location.isNullOrBlank()) subscriptionIds.add(sub.location)
+            normalizeServerId(sub.location)?.let { subscriptionIds.add(it) }
         }
 
         val orderedIds = mutableListOf<String>()
@@ -557,108 +555,13 @@ class AccountFragment : Fragment() {
         return if (cfg.locales.size() > 0) cfg.locales[0] else Locale.getDefault()
     }
 
-    private fun refreshServerPings(root: View) {
-        val ids = serverList.map { it.first }
-        if (ids.isEmpty()) {
-            resetPingState()
-            updateDropdownItems(root)
-            return
-        }
-        pingJob?.cancel()
-        val idSet = ids.toSet()
-        serverPings.keys.retainAll(idSet)
-        ids.forEach { id ->
-            serverPings[id] = PingResult(PingState.LOADING)
-        }
-        updateDropdownItems(root)
-
-        pingJob = viewLifecycleOwner.lifecycleScope.launch {
-            val token = prefs.getString("token", null)
-            val client = OkHttpClient()
-            for (id in ids) {
-                val result = requestPing(client, token, id)
-                serverPings[id] = result
-                safeUi {
-                    this@AccountFragment.view?.let { updateDropdownItems(it) }
-                }
-            }
-        }
-    }
-
-    private suspend fun requestPing(client: OkHttpClient, token: String?, serverId: String): PingResult =
-        withContext(Dispatchers.IO) {
-            val endpoint = pingEndpoints[serverId]
-            if (endpoint != null) {
-                measureTcpPing(endpoint)
-            } else {
-                fetchPingViaApi(client, token, serverId)
-            }
-        }
-
-    private fun measureTcpPing(endpoint: TcpEndpoint): PingResult {
-        val samples = mutableListOf<Int>()
-        repeat(3) {
-            val latency = try {
-                Socket().use { socket ->
-                    val address = InetSocketAddress(endpoint.host, endpoint.port)
-                    socket.soTimeout = PING_SOCKET_TIMEOUT_MS
-                    val start = SystemClock.elapsedRealtimeNanos()
-                    socket.connect(address, PING_CONNECT_TIMEOUT_MS)
-                    val output = socket.getOutputStream()
-                    output.write(byteArrayOf(0))
-                    output.flush()
-                    val end = SystemClock.elapsedRealtimeNanos()
-                    val latencyMs = ((end - start) / 1_000_000.0).roundToInt().coerceAtLeast(0)
-                    Log.d("Ping", "Accurate ping ${endpoint.host}:${endpoint.port} = ${latencyMs} ms")
-                    latencyMs
-                }
-            } catch (_: Exception) {
-                null
-            }
-            if (latency != null && latency > 0) {
-                samples += latency
-            }
-        }
-        return if (samples.isNotEmpty()) {
-            PingResult(PingState.SUCCESS, samples.min())
-        } else {
-            PingResult(PingState.ERROR)
-        }
-    }
-
-    private fun fetchPingViaApi(client: OkHttpClient, token: String?, serverId: String): PingResult {
-        val requestBuilder = Request.Builder()
-            .url("https://idrug.pw/api/ping?location=$serverId")
-        if (!token.isNullOrBlank()) {
-            requestBuilder.addHeader("Authorization", "Bearer $token")
-        }
-        val request = requestBuilder.build()
-        return try {
-            client.newCall(request).execute().use { response ->
-                if (!response.isSuccessful) {
-                    PingResult(PingState.ERROR)
-                } else {
-                    val latency = parsePingMs(response.body?.string())
-                    if (latency != null) {
-                        PingResult(PingState.SUCCESS, latency)
-                    } else {
-                        PingResult(PingState.ERROR)
-                    }
-                }
-            }
-        } catch (e: IOException) {
-            Log.w("AccountFragment", "Failed to fetch ping for $serverId via API", e)
-            PingResult(PingState.ERROR)
-        }
-    }
-
-// Добавь внутрь класса AccountFragment (например, рядом с другими private suspend функциями)
 private suspend fun downloadConfig(token: String, serverId: String): String? =
     withContext(Dispatchers.IO) {
         try {
-            val client = OkHttpClient()
+            val client = Application.getHttpClient()
+            val normalized = normalizeServerId(serverId) ?: serverId
             val request = Request.Builder()
-                .url("https://idrug.pw/api/profile/download?server=$serverId&version=1.5")
+                .url("https://idrug.pw/api/profile/download?server=$normalized")
                 .addHeader("Authorization", "Bearer $token")
                 .build()
 
@@ -671,65 +574,6 @@ private suspend fun downloadConfig(token: String, serverId: String): String? =
         }
     }
 
-
-    private fun parsePingMs(body: String?): Int? {
-        if (body.isNullOrBlank()) return null
-        val text = body.trim()
-        if (text.startsWith("{") && text.endsWith("}")) {
-            try {
-                val json = JSONObject(text)
-                val keys = listOf("rtt", "latency", "latency_ms", "ping", "ping_ms", "ms")
-                for (key in keys) {
-                    if (!json.has(key)) continue
-                    val value = json.get(key)
-                    val number = when (value) {
-                        is Number -> value.toDouble()
-                        is String -> value.toDoubleOrNull()
-                        else -> null
-                    }
-                    if (number != null) {
-                        return number.roundToInt()
-                    }
-                }
-            } catch (_: Exception) {
-                // Fallback to non-JSON parsing below
-            }
-        }
-        val match = Regex("([0-9]+(?:\\.[0-9]+)?)").find(text)
-        val value = match?.groupValues?.getOrNull(1)?.toDoubleOrNull()
-        return value?.roundToInt()
-    }
-
-    private fun buildPingStatus(id: String, subscription: Subscription?): Pair<String, Int> {
-        if (subscription != null && !subscription.active && !subscription.forever) {
-            val inactiveText = getString(R.string.inactive)
-            val inactiveColor = Color.parseColor("#D32F2F")
-            return inactiveText to inactiveColor
-        }
-
-        val result = serverPings[id]
-        if (result == null) {
-            return getString(R.string.ping_loading) to Color.parseColor("#616161")
-        }
-        return when (result.state) {
-            PingState.SUCCESS -> {
-                val latency = result.latencyMs ?: return getString(R.string.ping_unavailable) to Color.parseColor("#D32F2F")
-                val text = getString(R.string.ping_value_ms, latency)
-                val color = when {
-                    latency <= 80 -> Color.parseColor("#388E3C")
-                    latency <= 160 -> Color.parseColor("#F9A825")
-                    else -> Color.parseColor("#D32F2F")
-                }
-                text to color
-            }
-            PingState.LOADING -> {
-                getString(R.string.ping_loading) to Color.parseColor("#616161")
-            }
-            PingState.ERROR -> {
-                getString(R.string.ping_unavailable) to Color.parseColor("#D32F2F")
-            }
-        }
-    }
 
     private fun formatExpirationDate(raw: String?): String {
         if (raw.isNullOrBlank()) return ""
@@ -797,14 +641,7 @@ private suspend fun downloadConfig(token: String, serverId: String): String? =
 
     private fun formatServerDisplayName(id: String, name: String): CharSequence {
         val flag = getServerFlag(id)
-        val prefix = if (flag.isNotBlank()) "$flag $name" else name
-        val subscription = subscriptions.firstOrNull { it.location == id }
-        val (statusText, color) = buildPingStatus(id, subscription)
-        val display = "$prefix — $statusText"
-        return SpannableString(display).apply {
-            setSpan(StyleSpan(Typeface.BOLD), 0, prefix.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            setSpan(ForegroundColorSpan(color), prefix.length + 3, display.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        }
+        return if (flag.isNotBlank()) "$flag $name" else name
     }
 
     private fun updateDownloadButtonState(view: View) {
@@ -832,6 +669,17 @@ private suspend fun downloadConfig(token: String, serverId: String): String? =
         statusView.setTextColor(color)
     }
 
+    private suspend fun refreshDataFromSite(view: View) {
+        if (!isAdded) return
+        val ctx = context ?: return
+        setLoading(true)
+        withContext(Dispatchers.IO) {
+            runCatching { CatalogRepository.getCatalog(ctx, forceRefresh = true) }
+        }
+        if (!isAdded) return
+        loadProfileAndSetupUI(view, showLoading = true)
+    }
+
 private suspend fun handleDownloadConfig() {
     if (view == null) return
     val serverId = selectedServerId
@@ -857,7 +705,11 @@ private suspend fun handleDownloadConfig() {
             return
         }
 
-        val tunnelName = "idrug_$serverId"
+        val tunnelName = serverIdToTunnelName(serverId)
+        if (tunnelName.isNullOrBlank()) {
+            safeUi { Toast.makeText(requireContext(), R.string.select_server, Toast.LENGTH_SHORT).show() }
+            return
+        }
         val tunnelManager = Application.getTunnelManager()
         val configFile = File(requireContext().filesDir, "$tunnelName.conf")
 
@@ -891,7 +743,7 @@ private suspend fun handleDownloadConfig() {
 
         try {
             val parsed = withContext(Dispatchers.IO) {
-                temp.inputStream().bufferedReader().use { Config.parse(it) }
+                temp.inputStream().bufferedReader().use { AwgConfigParser.parse(it) }
             }
             val built = ConfigProxy(parsed).buildConfigs()
             // Создание ТОЛЬКО после успешного парса
@@ -923,7 +775,10 @@ private suspend fun handleDownloadConfig() {
 
     private fun syncTunnelsWithProfile() {
         val token = prefs.getString("token", null) ?: return
-        val activeServers = subscriptions.filter { it.active || it.forever }.map { it.location }
+        val activeServers = subscriptions
+            .filter { it.active || it.forever }
+            .mapNotNull { normalizeServerId(it.location) }
+            .distinct()
         if (activeServers.isEmpty()) return
         viewLifecycleOwner.lifecycleScope.launch {
             if (!UserKnobs.accountAutoImport.first()) return@launch
@@ -942,8 +797,8 @@ private suspend fun handleDownloadConfig() {
     private suspend fun synchronizeTunnels(token: String, activeServers: List<String>) {
         val tunnelManager = Application.getTunnelManager()
         val tunnels = tunnelManager.getTunnels()
-        val activeNames = activeServers.map { "idrug_$it" }.toSet()
-        val toRemove = tunnels.filter { it.name.startsWith("idrug_") && it.name !in activeNames }
+        val activeNames = activeServers.mapNotNull { serverIdToTunnelName(it) }.toSet()
+        val toRemove = tunnels.filter { isManagedTunnelName(it.name) && it.name !in activeNames }
         for (tunnel in toRemove) {
             try {
                 tunnelManager.delete(tunnel)
@@ -952,7 +807,7 @@ private suspend fun handleDownloadConfig() {
             }
         }
         for (server in activeServers) {
-            val name = "idrug_$server"
+            val name = serverIdToTunnelName(server) ?: continue
             if (tunnels.any { it.name == name }) continue
             val config = downloadConfig(token, server)
             if (config.isNullOrBlank()) continue
@@ -960,7 +815,7 @@ private suspend fun handleDownloadConfig() {
             withContext(Dispatchers.IO) { temp.writeText(config) }
             try {
                 val parsed = withContext(Dispatchers.IO) {
-                    temp.inputStream().bufferedReader().use { Config.parse(it) }
+                    temp.inputStream().bufferedReader().use { AwgConfigParser.parse(it) }
                 }
                 tunnelManager.create(name, ConfigProxy(parsed).buildConfigs())
             } catch (e: Exception) {
@@ -976,7 +831,7 @@ private suspend fun handleDownloadConfig() {
     private suspend fun removeSubscriptionTunnelsAndConfigs() {
         val tunnelManager = Application.getTunnelManager()
         val idrugTunnels = withContext(Dispatchers.Main) {
-            tunnelManager.getTunnels().filter { it.name.startsWith("idrug_") }.toList()
+            tunnelManager.getTunnels().filter { isManagedTunnelName(it.name) }.toList()
         }
         withContext(Dispatchers.Main) {
             idrugTunnels.forEach { tunnel ->
@@ -987,7 +842,10 @@ private suspend fun handleDownloadConfig() {
         withContext(Dispatchers.IO) {
             val dir = context?.filesDir ?: return@withContext
             dir.listFiles()?.forEach { file ->
-                if (file.isFile && file.name.startsWith("idrug_") && file.name.endsWith(".conf")) {
+                if (file.isFile &&
+                    (file.name.startsWith("id2_") || file.name.startsWith("idrug_")) &&
+                    file.name.endsWith(".conf")
+                ) {
                     if (!file.delete()) {
                         Log.w("AccountFragment", "Failed to delete config file ${'$'}{file.name}")
                     }
@@ -1011,7 +869,7 @@ private suspend fun handleDownloadConfig() {
                             .addHeader("Authorization", "Bearer $token")
                             .post(body)
                             .build()
-                        OkHttpClient().newCall(request).execute().close()
+                        Application.getHttpClient().newCall(request).execute().close()
                     }
                 }
             }
@@ -1035,13 +893,18 @@ private suspend fun handleDownloadConfig() {
         }
     }
 
-    private fun handleDeepLink(intent: Intent?) {
-        val data = intent?.data ?: return
-        if (data.scheme != "idrug") return
-        when (data.host) {
-            "auth" -> handleAuthDeepLink(data)
+    private fun handleDeepLink(intent: Intent?): Boolean {
+        val data = intent?.data ?: return false
+        if (data.scheme != "idrug") return false
+        val handled = when (data.host) {
+            "auth" -> {
+                handleAuthDeepLink(data)
+                true
+            }
+            else -> false
         }
         intent.data = null
+        return handled
     }
 
     private fun handleAuthDeepLink(uri: Uri) {
@@ -1132,7 +995,7 @@ private fun setupServerDropdown(view: View) {
             }
             return
         }
-        val client = OkHttpClient.Builder()
+        val client = Application.getHttpClient().newBuilder()
             .connectTimeout(PROFILE_TIMEOUT_MS, TimeUnit.MILLISECONDS)
             .readTimeout(PROFILE_TIMEOUT_MS, TimeUnit.MILLISECONDS)
             .writeTimeout(PROFILE_TIMEOUT_MS, TimeUnit.MILLISECONDS)
@@ -1146,23 +1009,6 @@ private fun setupServerDropdown(view: View) {
         cancelProfileCall()
         val call = client.newCall(request)
         profileCall = call
-        val timeoutRunnable = Runnable {
-            if (profileCall == call && !call.isCanceled()) {
-                call.cancel()
-                safeUi {
-                    if (prefs.getString("token", null) != token) return@safeUi
-                    if (showLoading) setLoading(false)
-                    val cached = cachedProfile
-                    if (cached != null) {
-                        showAccountScreen(view, cached.username, cached.photoUrl, cached.subscriptions, cacheResult = false, refreshPings = false)
-                    } else {
-                        setStatusMessage(view, getString(R.string.profile_timeout_error), true)
-                    }
-                }
-            }
-        }
-        profileTimeoutRunnable = timeoutRunnable
-        handler.postDelayed(timeoutRunnable, PROFILE_TIMEOUT_MS)
 
         call.enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
@@ -1171,15 +1017,19 @@ private fun setupServerDropdown(view: View) {
                     if (prefs.getString("token", null) != token) return@safeUi
                     if (showLoading) setLoading(false)
                     if (cachedProfile != null) {
-                        showAccountScreen(view, cachedProfile!!.username, cachedProfile!!.photoUrl, cachedProfile!!.subscriptions, cacheResult = false, refreshPings = false)
+                        showAccountScreen(view, cachedProfile!!.username, cachedProfile!!.photoUrl, cachedProfile!!.subscriptions, cacheResult = false)
                     } else {
                         if (call.isCanceled() || e.message?.equals("Canceled", ignoreCase = true) == true) {
                             return@safeUi
                         }
-                        val message = getString(
-                            R.string.network_error_msg,
-                            e.message ?: getString(R.string.generic_error)
-                        )
+                        val message = if (e is SocketTimeoutException || e is InterruptedIOException) {
+                            getString(R.string.profile_timeout_error)
+                        } else {
+                            getString(
+                                R.string.network_error_msg,
+                                e.message ?: getString(R.string.generic_error)
+                            )
+                        }
                         setStatusMessage(view, message, true)
                         setLoading(false)
                     }
@@ -1200,7 +1050,7 @@ private fun setupServerDropdown(view: View) {
                             val subsList = mutableListOf<Subscription>()
                             for (i in 0 until subsArr.length()) {
                                 val o = subsArr.getJSONObject(i)
-                                val id = o.optString("location", o.optString("id", ""))
+                                val id = normalizeServerId(o.optString("location", o.optString("id", ""))) ?: continue
                                 val name = getServerName(id)
                                 val expires = o.optString("expires")
                                 val forever = o.optBoolean("forever", false)
@@ -1217,14 +1067,14 @@ private fun setupServerDropdown(view: View) {
                                 prefs.edit().putString("telegram_id", telegramId).apply()
                                 FirebaseMessaging.getInstance().subscribeToTopic("user_$telegramId")
                             }
-                            showAccountScreen(view, username, photoUrl, subsList, cacheResult = true, refreshPings = true)
+                            showAccountScreen(view, username, photoUrl, subsList, cacheResult = true)
                             syncTunnelsWithProfile()
                         } catch (e: Exception) {
                             Toast.makeText(requireContext(), getString(R.string.profile_processing_error, e.message), Toast.LENGTH_SHORT).show()
                             subscriptions = emptyList()
                             val cachedUsername = prefs.getString("username", "") ?: ""
                             val cachedPhoto = prefs.getString("photo_url", null)
-                            showAccountScreen(view, cachedUsername, cachedPhoto, emptyList(), cacheResult = true, refreshPings = true)
+                            showAccountScreen(view, cachedUsername, cachedPhoto, emptyList(), cacheResult = true)
                         }
                     } else {
                         setStatusMessage(
@@ -1233,7 +1083,7 @@ private fun setupServerDropdown(view: View) {
                             true
                         )
                         cachedProfile?.let {
-                            showAccountScreen(view, it.username, it.photoUrl, it.subscriptions, cacheResult = false, refreshPings = false)
+                            showAccountScreen(view, it.username, it.photoUrl, it.subscriptions, cacheResult = false)
                         }
                     }
                 }
@@ -1242,15 +1092,11 @@ private fun setupServerDropdown(view: View) {
     }
 
     companion object {
-        private const val PING_CONNECT_TIMEOUT_MS = 2000
-        private const val PING_SOCKET_TIMEOUT_MS = 2000
         private const val PROFILE_CACHE_VALIDITY_MS = 15_000L
-        private const val PROFILE_TIMEOUT_MS = 5_000L
+        private const val PROFILE_TIMEOUT_MS = 12_000L
     }
 
     private fun cancelProfileCall() {
-        profileTimeoutRunnable?.let { handler.removeCallbacks(it) }
-        profileTimeoutRunnable = null
         profileCall?.cancel()
         profileCall = null
     }

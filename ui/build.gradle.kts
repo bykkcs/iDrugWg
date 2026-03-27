@@ -36,12 +36,22 @@ android {
         versionCode = providers.gradleProperty("idrugconnectionsVersionCode").get().toInt()
         versionName = providers.gradleProperty("idrugconnectionsVersionName").get()
         buildConfigField("int", "MIN_SDK_VERSION", minSdk.toString())
+
+        ndk {
+            abiFilters += listOf("arm64-v8a")
+        }
     }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
         isCoreLibraryDesugaringEnabled = true
+    }
+
+    packaging {
+        resources {
+            excludes += "META-INF/versions/9/OSGI-INF/MANIFEST.MF"
+        }
     }
 
     buildTypes {
@@ -77,7 +87,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":tunnel"))
+    implementation("com.zaneschepke:amneziawg-android:2.3.4")
 
     // Обновим BOM, чтобы не ловить несовместимости с compiler 1.7.x
     implementation(platform("androidx.compose:compose-bom:2024.12.01"))

@@ -31,7 +31,7 @@ import kotlinx.coroutines.launch
  */
 class TunnelDetailFragment : BaseFragment(), MenuProvider {
     private var binding: TunnelDetailFragmentBinding? = null
-    private var lastState = Tunnel.State.TOGGLE
+    private var lastState = Tunnel.State.DOWN
     private var timerActive = true
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -88,7 +88,7 @@ class TunnelDetailFragment : BaseFragment(), MenuProvider {
                 }
             }
         }
-        lastState = Tunnel.State.TOGGLE
+        lastState = Tunnel.State.DOWN
         lifecycleScope.launch { updateStats() }
     }
 

@@ -5,20 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import pw.idrug.connections.util.DeviceUtils
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (DeviceUtils.isTv(this)) {
-            val tvIntent = Intent(this, TvEntryActivity::class.java).apply {
-                action = intent?.action
-                data = intent?.data
-            }
-            startActivity(tvIntent)
-            finish()
-            return
-        }
 
         val targetIntent = when {
             isLoggedIn() || isOnboardingCompleted() -> Intent(this, MainActivity::class.java)

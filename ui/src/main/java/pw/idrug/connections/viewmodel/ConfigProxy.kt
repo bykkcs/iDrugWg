@@ -74,7 +74,6 @@ class ConfigProxy : Parcelable {
         val amConfig = Config.Builder()
             .setInterface(amInterface)
             .addPeers(resolvedPeers)
-            .setAmQuick(amQuick)
             .build()
         return BuiltConfigs(awgConfig, amConfig, amQuick)
     }

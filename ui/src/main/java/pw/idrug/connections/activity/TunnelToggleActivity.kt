@@ -5,6 +5,7 @@
 package pw.idrug.connections.activity
 
 import android.content.ComponentName
+import android.net.VpnService
 import android.os.Bundle
 import android.service.quicksettings.TileService
 import android.util.Log
@@ -28,7 +29,8 @@ class TunnelToggleActivity : AppCompatActivity() {
         val tunnel = Application.getTunnelManager().lastUsedTunnel ?: return
         lifecycleScope.launch {
             try {
-                tunnel.setStateAsync(Tunnel.State.TOGGLE)
+                val targetState = if (tunnel.state == Tunnel.State.UP) Tunnel.State.DOWN else Tunnel.State.UP
+                tunnel.setStateAsync(targetState)
             } catch (e: Throwable) {
                 TileService.requestListeningState(this@TunnelToggleActivity, ComponentName(this@TunnelToggleActivity, QuickTileService::class.java))
                 val error = ErrorMessages[e]
@@ -47,7 +49,7 @@ class TunnelToggleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         lifecycleScope.launch {
             if (Application.getBackend() is GoBackend) {
-                val intent = GoBackend.VpnService.prepare(this@TunnelToggleActivity)
+                val intent = VpnService.prepare(this@TunnelToggleActivity)
                 if (intent != null) {
                     permissionActivityResultLauncher.launch(intent)
                     return@launch

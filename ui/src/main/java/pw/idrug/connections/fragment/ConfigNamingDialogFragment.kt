@@ -15,11 +15,10 @@ import pw.idrug.connections.R
 import pw.idrug.connections.databinding.ConfigNamingDialogFragmentBinding
 import org.amnezia.awg.config.BadConfigException
 import org.amnezia.awg.config.Config
+import pw.idrug.connections.util.AwgConfigParser
 import pw.idrug.connections.viewmodel.ConfigProxy
 import kotlinx.coroutines.launch
-import java.io.ByteArrayInputStream
 import java.io.IOException
-import java.nio.charset.StandardCharsets
 
 class ConfigNamingDialogFragment : DialogFragment() {
     private var binding: ConfigNamingDialogFragmentBinding? = null
@@ -43,9 +42,8 @@ class ConfigNamingDialogFragment : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val configText = requireArguments().getString(KEY_CONFIG_TEXT)
-        val configBytes = configText!!.toByteArray(StandardCharsets.UTF_8)
         config = try {
-            Config.parse(ByteArrayInputStream(configBytes))
+            AwgConfigParser.parse(configText!!)
         } catch (e: Throwable) {
             when (e) {
                 is BadConfigException, is IOException -> throw IllegalArgumentException("Invalid config passed to ${javaClass.simpleName}", e)

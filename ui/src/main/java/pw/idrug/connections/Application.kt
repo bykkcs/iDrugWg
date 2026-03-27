@@ -18,9 +18,10 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.core.content.ContextCompat
 import com.google.android.material.color.DynamicColors
+import org.amnezia.awg.backend.AbstractBackend
 import org.amnezia.awg.backend.Backend
 import org.amnezia.awg.backend.GoBackend
-import org.amnezia.awg.backend.AwgQuickBackend
+import org.amnezia.awg.backend.NoopTunnelActionHandler
 import pw.idrug.connections.configStore.FileConfigStore
 import pw.idrug.connections.model.TunnelManager
 import org.amnezia.awg.util.RootShell
@@ -40,8 +41,10 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import okhttp3.OkHttpClient
 import java.lang.ref.WeakReference
 import java.util.Locale
+import java.util.concurrent.TimeUnit
 
 class Application : android.app.Application() {
     private val futureBackend = CompletableDeferred<Backend>()
@@ -54,6 +57,13 @@ class Application : android.app.Application() {
     private lateinit var initialPreferencesSnapshot: Preferences
     private lateinit var toolsInstaller: ToolsInstaller
     private lateinit var tunnelManager: TunnelManager
+    private val httpClient: OkHttpClient by lazy {
+        OkHttpClient.Builder()
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(10, TimeUnit.SECONDS)
+            .build()
+    }
 
     override fun attachBaseContext(context: Context) {
         super.attachBaseContext(context)
@@ -68,23 +78,8 @@ class Application : android.app.Application() {
     }
 
     private suspend fun determineBackend(): Backend {
-        var backend: Backend? = null
-        if (UserKnobs.enableKernelModule.first() && AwgQuickBackend.hasKernelSupport()) {
-            try {
-                rootShell.start()
-                val awgQuickBackend = AwgQuickBackend(applicationContext, rootShell, toolsInstaller)
-                awgQuickBackend.setMultipleTunnels(UserKnobs.multipleTunnels.first())
-                backend = awgQuickBackend
-                UserKnobs.multipleTunnels.onEach {
-                    awgQuickBackend.setMultipleTunnels(it)
-                }.launchIn(coroutineScope)
-            } catch (ignored: Exception) {
-            }
-        }
-        if (backend == null) {
-            backend = GoBackend(applicationContext)
-            GoBackend.setAlwaysOnCallback { get().applicationScope.launch { get().tunnelManager.restoreState(true) } }
-        }
+        val backend = GoBackend(applicationContext, NoopTunnelActionHandler())
+        AbstractBackend.setAlwaysOnCallback { get().applicationScope.launch { get().tunnelManager.restoreState(true) } }
         return backend
     }
 
@@ -185,6 +180,8 @@ class Application : android.app.Application() {
         fun getTunnelManager() = get().tunnelManager
 
         fun getCoroutineScope() = get().coroutineScope
+
+        fun getHttpClient() = get().httpClient
     }
 
     init {

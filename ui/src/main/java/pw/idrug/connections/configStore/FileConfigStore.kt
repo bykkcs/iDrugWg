@@ -9,6 +9,7 @@ import android.util.Log
 import pw.idrug.connections.R
 import org.amnezia.awg.config.BadConfigException
 import org.amnezia.awg.config.Config
+import pw.idrug.connections.util.AwgConfigParser
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileNotFoundException
@@ -28,7 +29,9 @@ class FileConfigStore(private val context: Context) : ConfigStore {
         val file = fileFor(name)
         if (!file.createNewFile())
             throw IOException(context.getString(R.string.config_file_exists_error, file.name))
-        FileOutputStream(file, false).use { it.write(config.toAwgQuickString().toByteArray(StandardCharsets.UTF_8)) }
+        FileOutputStream(file, false).use {
+            it.write(config.toAwgQuickString(true, false).toByteArray(StandardCharsets.UTF_8))
+        }
         return config
     }
 
@@ -58,7 +61,7 @@ class FileConfigStore(private val context: Context) : ConfigStore {
     @Throws(BadConfigException::class, IOException::class)
     override fun load(name: String): Config {
         try {
-            FileInputStream(fileFor(name)).use { stream -> return Config.parse(stream) }
+            FileInputStream(fileFor(name)).use { stream -> return AwgConfigParser.parse(stream) }
         } catch (e: BadConfigException) {
             Log.e(TAG, "Corrupted config detected for $name", e)
             // Логируем битый конфиг — дальше TunnelManager снимет его из автозапуска.
@@ -84,7 +87,9 @@ class FileConfigStore(private val context: Context) : ConfigStore {
         val file = fileFor(name)
         if (!file.isFile)
             throw FileNotFoundException(context.getString(R.string.config_not_found_error, file.name))
-        FileOutputStream(file, false).use { stream -> stream.write(config.toAwgQuickString().toByteArray(StandardCharsets.UTF_8)) }
+        FileOutputStream(file, false).use { stream ->
+            stream.write(config.toAwgQuickString(true, false).toByteArray(StandardCharsets.UTF_8))
+        }
         return config
     }
 

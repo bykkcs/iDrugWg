@@ -155,7 +155,7 @@
                         android:orientation="horizontal">
 
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_link_device"
+                            android:id="@+id/btn_refresh_data"
                             style="@style/Widget.MaterialComponents.Button"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -164,7 +164,7 @@
                             android:minWidth="0dp"
                             android:maxLines="1"
                             android:ellipsize="end"
-                            android:text="@string/link_device"
+                            android:text="@string/refresh_data"
                             app:cornerRadius="28dp" />
 
                         <com.google.android.material.button.MaterialButton
@@ -276,7 +276,6 @@
                             android:text="@string/renew_subscription"
                             app:cornerRadius="28dp" />
                     </LinearLayout>
-
                     <TextView
                         android:id="@+id/status_text"
                         android:layout_width="match_parent"

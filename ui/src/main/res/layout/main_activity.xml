@@ -4,7 +4,25 @@
     android:id="@+id/main_activity_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:colorBackground"
     android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/top_app_bar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:colorBackground"
+        android:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/top_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?android:colorBackground"
+            android:elevation="0dp"
+            app:title="@string/app_name"
+            app:titleTextColor="?attr/colorOnSurface" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <!-- TextView для статуса VPN, добавлен здесь, чтобы MainActivity могла безопасно обновлять текст -->
     <TextView

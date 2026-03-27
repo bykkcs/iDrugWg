@@ -14,6 +14,7 @@ import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.view.ActionMode
 import androidx.core.content.ContextCompat
 import android.content.res.ColorStateList
 import androidx.core.graphics.ColorUtils
@@ -24,6 +25,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import android.graphics.Color
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.shape.MaterialShapeDrawable
@@ -40,7 +42,6 @@ import pw.idrug.connections.R
 import pw.idrug.connections.fragment.TunnelDetailFragment
 import pw.idrug.connections.fragment.TunnelEditorFragment
 import pw.idrug.connections.fragment.TunnelListFragment
-import pw.idrug.connections.fragment.SpeedTestFragment
 import pw.idrug.connections.activity.OnboardingActivity
 import pw.idrug.connections.fragment.AccountFragment
 import pw.idrug.connections.model.ObservableTunnel
@@ -52,7 +53,7 @@ import pw.idrug.connections.ota.UpdateState
 import pw.idrug.connections.ota.UpdateViewModel
 import pw.idrug.connections.util.UserKnobs
 import pw.idrug.connections.util.applyNavigationBarAndImePadding
-import pw.idrug.connections.util.applyStatusBarInsetToActionBar
+import pw.idrug.connections.util.applyStatusBarPadding
 
 /**
  * CRUD interface for iDrugConnections tunnels. This activity serves as the main entry point to the
@@ -98,6 +99,16 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
         syncSystemNavigationBarColor(findViewById(R.id.bottom_navigation))
     }
 
+    override fun onSupportActionModeStarted(mode: ActionMode) {
+        super.onSupportActionModeStarted(mode)
+        setSelectionActionModeActive(true)
+    }
+
+    override fun onSupportActionModeFinished(mode: ActionMode) {
+        super.onSupportActionModeFinished(mode)
+        setSelectionActionModeActive(false)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -115,8 +126,14 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
             return
         }
         setContentView(R.layout.main_activity)
-        applyStatusBarInsetToActionBar()
-
+        findViewById<View>(R.id.top_app_bar_container)?.applyStatusBarPadding()
+        findViewById<MaterialToolbar>(R.id.top_app_bar)?.let { toolbar ->
+            setSupportActionBar(toolbar)
+            supportActionBar?.setDisplayShowTitleEnabled(true)
+            supportActionBar?.title = getString(R.string.app_name)
+            toolbar.title = getString(R.string.app_name)
+        }
+        setSelectionActionModeActive(false)
         actionBar = supportActionBar
         isTwoPaneLayout = findViewById<View?>(R.id.master_detail_wrapper) != null
         supportFragmentManager.addOnBackStackChangedListener(this)
@@ -165,11 +182,6 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
                     R.id.nav_account -> {
                         supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                         safeReplaceFragment(AccountFragment())
-                        true
-                    }
-                    R.id.nav_speed_test -> {
-                        supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-                        safeReplaceFragment(SpeedTestFragment())
                         true
                     }
                     else -> false
@@ -266,6 +278,27 @@ class MainActivity : BaseActivity(), FragmentManager.OnBackStackChangedListener 
 
     fun refreshSystemNavigationBarColor() {
         syncSystemNavigationBarColor(findViewById(R.id.bottom_navigation))
+    }
+
+    fun setSelectionActionModeActive(active: Boolean) {
+        val topBarContainer = findViewById<View>(R.id.top_app_bar_container)
+        val baseView = topBarContainer ?: window.decorView
+        val normalColor = MaterialColors.getColor(
+            baseView,
+            android.R.attr.colorBackground,
+            Color.BLACK
+        )
+        val selectionColor = MaterialColors.getColor(
+            baseView,
+            com.google.android.material.R.attr.colorSurfaceContainerHigh,
+            normalColor
+        )
+        topBarContainer?.setBackgroundColor(if (active) selectionColor else normalColor)
+        @Suppress("DEPRECATION")
+        window.statusBarColor = if (active) selectionColor else normalColor
+        val colorForStatusIcons = if (active) selectionColor else normalColor
+        WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars =
+            ColorUtils.calculateLuminance(colorForStatusIcons) > 0.5
     }
 
     private fun subscribeToGlobalNotifications() {

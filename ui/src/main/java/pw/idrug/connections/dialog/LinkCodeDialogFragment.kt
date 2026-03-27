@@ -10,6 +10,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.fragment.app.DialogFragment
 import okhttp3.*
 import org.json.JSONObject
+import pw.idrug.connections.Application
 import pw.idrug.connections.R
 import java.io.IOException
 
@@ -40,7 +41,7 @@ class LinkCodeDialogFragment : DialogFragment() {
             codeText.text = getString(R.string.generic_error)
             return
         }
-        val client = OkHttpClient()
+        val client = Application.getHttpClient()
         val req = Request.Builder()
             .url("https://idrug.pw/api/linking/generate")
             .addHeader("Authorization", "Bearer $token")

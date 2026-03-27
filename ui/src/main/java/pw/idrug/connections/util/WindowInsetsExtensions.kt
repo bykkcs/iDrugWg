@@ -63,7 +63,7 @@ fun View.applyNavigationBarAndImePadding(extraBottom: Int = 0, dispatchIme: Bool
     }
 }
 
-fun AppCompatActivity.applyStatusBarInsetToActionBar() {
+fun AppCompatActivity.applyStatusBarInsetToActionBar(): Boolean {
     val overlay = findViewById<View>(AppCompatR.id.decor_content_parent)
     val actionBarContainer = findViewById<View>(AppCompatR.id.action_bar_container)
 
@@ -77,8 +77,10 @@ fun AppCompatActivity.applyStatusBarInsetToActionBar() {
                 .build()
         }
         ViewCompat.requestApplyInsets(overlay)
+        return true
     } else {
-        actionBarContainer?.applyStatusBarPadding()
-            ?: findViewById<View>(AppCompatR.id.action_bar)?.applyStatusBarPadding()
+        val actionBar = actionBarContainer ?: findViewById<View>(AppCompatR.id.action_bar)
+        actionBar?.applyStatusBarPadding()
+        return actionBar != null
     }
 }

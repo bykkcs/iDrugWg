@@ -12,6 +12,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
+import pw.idrug.connections.BuildConfig
 import pw.idrug.connections.Application.Companion.get
 import pw.idrug.connections.Application.Companion.getBackend
 import pw.idrug.connections.Application.Companion.getTunnelManager
@@ -22,7 +23,9 @@ import org.amnezia.awg.backend.Tunnel
 import pw.idrug.connections.configStore.ConfigStore
 import pw.idrug.connections.databinding.ObservableSortedKeyedArrayList
 import pw.idrug.connections.util.ErrorMessages
+import pw.idrug.connections.util.AwgRuntimeConfigVerifier
 import pw.idrug.connections.util.UserKnobs
+import pw.idrug.connections.util.AwgConfigParser
 import pw.idrug.connections.util.applicationScope
 import pw.idrug.connections.viewmodel.ConfigProxy
 import org.amnezia.awg.config.Config
@@ -34,8 +37,6 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.BufferedReader
-import java.io.StringReader
 
 /**
  * Maintains and mediates changes to the set of available iDrugConnections tunnels,
@@ -56,10 +57,9 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
         if (amQuick.isNullOrBlank())
             return fallback
         return try {
-            val parsed = Config.parse(BufferedReader(StringReader(amQuick)))
+            val parsed = AwgConfigParser.parse(amQuick)
             val builder = Config.Builder()
                 .setInterface(parsed.getInterface())
-                .setAmQuick(amQuick)
             val peers = fallback?.peers ?: emptyList()
             if (peers.isNotEmpty()) builder.addPeers(peers)
             builder.build()
@@ -243,7 +243,11 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
 
     suspend fun setTunnelConfig(tunnel: ObservableTunnel, configs: ConfigProxy.BuiltConfigs): Config = withContext(Dispatchers.Main.immediate) {
         val savedConfig = withContext(Dispatchers.IO) {
-            getBackend().setState(tunnel, tunnel.state, configs.amConfig)
+            val backend = getBackend()
+            val resultingState = backend.setState(tunnel, tunnel.state, configs.amConfig)
+            if (BuildConfig.DEBUG && resultingState == Tunnel.State.UP) {
+                AwgRuntimeConfigVerifier.verifyAndLog(backend, tunnel, configs.amConfig)
+            }
             configStore.saveAmQuick(tunnel.name, configs.amQuick)
             configStore.save(tunnel.name, configs.awg)
         }
@@ -298,7 +302,15 @@ class TunnelManager(private val configStore: ConfigStore) : BaseObservable() {
         var newState = tunnel.state
         var throwable: Throwable? = null
         try {
-            newState = withContext(Dispatchers.IO) { getBackend().setState(tunnel, state, tunnel.getAmConfigAsync()) }
+            newState = withContext(Dispatchers.IO) {
+                val backend = getBackend()
+                val amConfig = tunnel.getAmConfigAsync()
+                val result = backend.setState(tunnel, state, amConfig)
+                if (BuildConfig.DEBUG && result == Tunnel.State.UP) {
+                    AwgRuntimeConfigVerifier.verifyAndLog(backend, tunnel, amConfig)
+                }
+                result
+            }
             if (newState == Tunnel.State.UP)
                 lastUsedTunnel = tunnel
         } catch (e: Throwable) {

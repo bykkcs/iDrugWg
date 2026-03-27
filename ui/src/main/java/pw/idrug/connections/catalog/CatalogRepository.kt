@@ -4,13 +4,11 @@ import android.content.Context
 import android.util.Log
 import java.io.IOException
 import java.util.Locale
-import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONArray
 import org.json.JSONObject
@@ -28,12 +26,6 @@ object CatalogRepository {
     private const val CATALOG_URL = "https://idrug.pw/api/catalog"
 
     private val mutex = Mutex()
-    private val httpClient: OkHttpClient by lazy {
-        OkHttpClient.Builder()
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .readTimeout(10, TimeUnit.SECONDS)
-            .build()
-    }
 
     @Volatile
     private var cachedData: CatalogData? = null
@@ -128,7 +120,7 @@ object CatalogRepository {
             .header("User-Agent", Application.USER_AGENT)
             .build()
         try {
-            httpClient.newCall(request).execute().use { resp ->
+            Application.getHttpClient().newCall(request).execute().use { resp ->
                 if (!resp.isSuccessful) {
                     Log.w(TAG, "Catalog request failed: HTTP ${resp.code}")
                     return@withContext null

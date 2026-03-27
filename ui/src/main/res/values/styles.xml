@@ -17,6 +17,35 @@
     <!-- Various additional API-specific features in values-v*/styles.xml -->
     <style name="AppTheme" parent="AppThemeBase" />
 
+    <style name="MainActivityTheme" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="actionModeStyle">@style/MainActivityActionMode</item>
+        <item name="android:actionModeStyle">@style/MainActivityActionMode</item>
+        <item name="actionModeBackground">?android:colorBackground</item>
+        <item name="android:actionModeBackground">?android:colorBackground</item>
+        <item name="colorPrimaryDark">?android:colorBackground</item>
+        <item name="android:enforceStatusBarContrast">false</item>
+    </style>
+
+    <style name="MainActivityActionMode" parent="Widget.AppCompat.ActionMode">
+        <item name="background">?android:colorBackground</item>
+        <item name="titleTextStyle">@style/MainActivityActionModeTitle</item>
+        <item name="subtitleTextStyle">@style/MainActivityActionModeSubtitle</item>
+    </style>
+
+    <style name="MainActivityActionModeTitle" parent="TextAppearance.AppCompat.Widget.ActionMode.Title">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="MainActivityActionModeSubtitle" parent="TextAppearance.AppCompat.Widget.ActionMode.Subtitle">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
     <style name="iDrugConnectionsTheme.MaterialCardView" parent="Widget.Material3.CardView.Elevated">
         <item name="cornerRadius">4dp</item>
         <item name="contentPadding">8dp</item>

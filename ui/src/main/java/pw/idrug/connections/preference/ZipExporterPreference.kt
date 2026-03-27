@@ -59,7 +59,7 @@ class ZipExporterPreference(context: Context, attrs: AttributeSet?) : Preference
                             for (i in configs.indices) {
                                 val tunnelName = tunnels[i].name
                                 zip.putNextEntry(ZipEntry("$tunnelName.conf"))
-                                zip.write(configs[i].toAwgQuickString().toByteArray(StandardCharsets.UTF_8))
+                                zip.write(configs[i].toAwgQuickString(true, false).toByteArray(StandardCharsets.UTF_8))
                                 zip.closeEntry()
                                 val amQuick = amQuicks[i]
                                 if (!amQuick.isNullOrEmpty()) {
